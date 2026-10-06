@@ -6,7 +6,7 @@ import { contact } from '../../data/site';
 const subject = encodeURIComponent('Hợp tác cùng Hiền Nương Farm');
 ---
 <section class="section partner" id="hop-tac" aria-labelledby="partner-title">
-  <div class="container grid partner__grid">
+  <div class="container partner__grid">
     <div class="partner__heading" data-reveal>
       <Eyebrow num="05">Hợp tác cùng Hiền Nương</Eyebrow>
       <h2 class="h2 partner__title" id="partner-title">
@@ -14,53 +14,58 @@ const subject = encodeURIComponent('Hợp tác cùng Hiền Nương Farm');
       </h2>
     </div>
 
-    <div class="partner__body" data-reveal style="--reveal-delay: 120ms">
+    <div class="partner__body" data-reveal style="--reveal-delay: 100ms">
       <p class="body">
         Chúng tôi luôn chào đón đối tác, khách hàng và những người cùng chung chí hướng phát triển
         nông nghiệp bền vững, nâng tầm giá trị nông sản Việt.
       </p>
-      <a class="btn partner__cta" href={`mailto:${contact.email}?subject=${subject}`}>
+      <a class="link-arrow partner__cta" href={`mailto:${contact.email}?subject=${subject}`}>
         Liên hệ hợp tác <Arrow />
       </a>
-
-      <dl class="partner__contact">
-        <div>
-          <dt>Địa chỉ</dt>
-          <dd>{contact.addressLines[0]},<br />{contact.addressLines[1]}</dd>
-        </div>
-        <div>
-          <dt>Email</dt>
-          <dd><a href={`mailto:${contact.email}`}>{contact.email}</a></dd>
-        </div>
-      </dl>
     </div>
+
+    <!-- VERIFY: address and email (see src/data/site.ts). -->
+    <dl class="partner__contact" data-reveal style="--reveal-delay: 180ms">
+      <div>
+        <dt>Địa chỉ</dt>
+        <dd>{contact.addressLines[0]},<br />{contact.addressLines[1]}</dd>
+      </div>
+      <div>
+        <dt>Email</dt>
+        <dd><a href={`mailto:${contact.email}`}>{contact.email}</a></dd>
+      </div>
+    </dl>
   </div>
 </section>
 
 <style>
+  /* Quiet close: three columns of type divided by hairlines. */
   .partner {
-    background: var(--color-cream);
-    border-top: 1px solid var(--color-line);
+    background: var(--color-paper);
+    padding-block: clamp(2.75rem, 1.5rem + 2.5vw, 4.25rem);
   }
 
-  .partner__grid { row-gap: var(--space-xl); }
+  .partner__grid {
+    display: grid;
+    row-gap: var(--space-l);
+  }
 
-  .partner__heading,
-  .partner__body { grid-column: 1 / -1; }
+  .partner__title { margin-top: var(--space-m); max-width: 20ch; }
 
-  .partner__title { margin-top: var(--space-l); max-width: 19ch; }
+  .partner__body .body { max-width: 30rem; font-size: 0.9375rem; }
+  .partner__cta { margin-top: var(--space-m); }
 
-  .partner__body .body { max-width: 30rem; }
-
-  .partner__cta { margin-top: var(--space-l); }
+  .partner__body,
+  .partner__contact {
+    padding-top: var(--space-l);
+    border-top: 1px solid var(--color-line);
+  }
 
   .partner__contact {
     display: grid;
     gap: var(--space-m);
-    margin-top: var(--space-2xl);
-    padding-top: var(--space-l);
-    border-top: 1px solid var(--color-line);
     font-size: var(--fs-small);
+    line-height: 1.6;
   }
 
   .partner__contact dt {
@@ -78,12 +83,30 @@ const subject = encodeURIComponent('Hợp tác cùng Hiền Nương Farm');
   }
   .partner__contact a:hover { border-color: currentColor; }
 
-  @media (min-width: 640px) {
-    .partner__contact { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--col-gap); }
+  @media (min-width: 768px) {
+    .partner__grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      column-gap: var(--space-xl);
+    }
+    .partner__heading { grid-column: 1 / -1; }
+    .partner__contact { grid-template-columns: 1fr; }
   }
 
-  @media (min-width: 1024px) {
-    .partner__heading { grid-column: 1 / span 6; }
-    .partner__body { grid-column: 8 / span 5; padding-top: 2.75rem; }
+  @media (min-width: 1000px) {
+    .partner__grid {
+      grid-template-columns: 5fr 4fr 3fr;
+      column-gap: 0;
+      align-items: start;
+    }
+
+    .partner__heading { grid-column: auto; padding-right: var(--space-xl); }
+
+    .partner__body,
+    .partner__contact {
+      align-self: stretch;
+      padding: var(--space-xs) 0 var(--space-xs) var(--space-xl);
+      border-top: 0;
+      border-left: 1px solid var(--color-line);
+    }
   }
 </style>

@@ -2,173 +2,157 @@
 
 ## Project
 
-Hiền Nương Farm is a premium corporate brand website for a Vietnamese agricultural company.
+Hiền Nương Farm is a premium Vietnamese agricultural brand/company website.
 
-This is a new project built from scratch. It is a brand/company presentation website, not an e-commerce storefront.
-
-Current stack:
+Stack:
 - Astro
 - Plain CSS
 - Minimal JavaScript
-- No UI framework unless clearly necessary
+- No UI framework unless necessary
 
-Keep the architecture simple and avoid unnecessary dependencies.
+Keep architecture simple. Avoid unnecessary dependencies.
 
-## Design Direction
+## Design
 
-Target aesthetic:
+Direction: **Contemporary Vietnamese Agricultural Editorial**
 
-> Contemporary Vietnamese Agricultural Editorial
-
-The website should feel premium, authentic, calm, contemporary, and rooted in Vietnamese agriculture and Bảy Núi / An Giang.
+Feel:
+- authentic
+- premium
+- calm
+- contemporary
+- rooted in Bảy Núi / An Giang
 
 Prioritize:
 
 **Authenticity → Composition → Typography → Spacing → Photography → Interaction**
 
-Prefer:
-- Editorial/asymmetrical composition
-- Strong typography
-- Generous whitespace
-- Large photography
-- Warm cream, deep green, earth tones
-- Thin dividers
-- Clear scale contrast
-- Restrained motion
+Prefer editorial/asymmetrical layouts, strong typography, controlled whitespace,
+authentic photography, warm cream/deep green/earth tones, thin dividers and restrained motion.
 
-Avoid:
-- Generic AI-generated layouts
-- SaaS aesthetics
-- Generic eco/organic templates
-- Excessive rounded cards
-- Cards inside cards
-- Glassmorphism
-- Decorative gradients/blobs
-- Excessive shadows, pills, icons, or emoji
-- Generic leaf decorations
-- Excessive animation
-- E-commerce-style product grids unless explicitly requested
+Avoid generic AI/SaaS/eco-template aesthetics, excessive cards, rounded boxes,
+gradients, glassmorphism, pills, shadows, icons, emoji and decorative clutter.
 
-Do not solve weak composition by adding decoration.
+Do not fix weak composition by adding decoration.
 
-The website should feel specifically like Hiền Nương Farm, not like an architecture studio, fashion brand, hotel, or generic premium template.
-
-## Content Integrity
-
-Never invent company facts, dates, founders, certifications, statistics, awards, partners, testimonials, addresses, contact details, product claims, or health claims.
-
-Unverified information must remain clearly marked `VERIFY`.
-
-Do not present placeholders, mockup content, stock images, or AI-generated imagery as authentic company information.
-
-## Design Reference
-
-Primary reference:
-
+Primary visual reference:
 `design-reference/homepage-mockup.png`
 
-Use it for visual direction, not pixel-perfect copying.
+Use it for direction, not pixel-perfect copying.
 
-Preserve the mood, hierarchy, editorial character, photography emphasis, and overall brand direction while improving implementation where necessary.
+## Content
 
-## Responsive & Accessibility
+Never invent company facts, dates, founders, certifications, statistics,
+partners, testimonials, contact details, product claims or health claims.
 
-The site must work intentionally across desktop, tablet, and mobile.
+Unverified information stays `VERIFY`.
 
-Check at minimum:
+`design-reference/CONTENT_EVIDENCE_BANK.md` is the factual source of truth.
+
+Owner-verified:
+- Hiền Nương Farm was established in 2020.
+- Co-founders are husband and wife:
+  **chị Châu Thị Nương và anh Trần Phương Hiền**
+- Always name them in that order.
+
+Do not present mockup/placeholder/stock/AI content as authentic company information.
+
+## Context Efficiency
+
+Use the minimum context necessary for the current task.
+
+- Read only relevant files.
+- Do not scan the whole repository when target files are known.
+- Do not re-read unchanged reference files without a reason.
+- Prefer targeted search/read over broad exploration.
+- Do not restate project rules in task reports.
+- Do not inspect unrelated pages/components unless the change can affect them.
+- Keep completion reports concise: changes, QA, blockers, Git status.
+- Do not use Graphify unless explicitly requested.
+
+## Development
+
+Before editing:
+1. Read this file.
+2. Run `git status`.
+3. Inspect only relevant existing code.
+4. Preserve existing user work.
+
+Do not rewrite working architecture without a clear reason.
+Do not expand scope without instruction.
+
+## Local Server
+
+Port `4321` is the user's persistent development server.
+
+NEVER stop, kill, restart, replace, clean up, or take ownership of any
+process using port 4321.
+
+Pre-existing Node/Astro processes are user-owned.
+
+For Claude QA, use temporary ports `>=4330`.
+
+Claude may stop only processes created by the current Claude session.
+
+If port 4321 is unavailable or stale, report it. The user will restart it.
+
+## Visual QA
+
+Judge typography, spacing and section density at **100% browser zoom on a
+normal laptop viewport**.
+
+Full-page screenshots are review aids, not scale references.
+
+During iterative visual work:
+- test only the viewport(s) relevant to the reported problem
+- normally use `1366x768` and `390`
+- do not run exhaustive QA after every small CSS/content correction
+
+Before a visual milestone is approved/committed, run final QA at:
 
 `1440 / 1280 / 1024 / 768 / 390 / 375 / 320`
 
-Prevent horizontal overflow, broken typography, awkward heading wraps, poor image crops, excessive mobile spacing, and unusable navigation.
+Check:
+- horizontal overflow
+- typography/wrapping
+- spacing/alignment
+- image crops
+- navigation/interactions
+- keyboard/focus
+- console errors
+- reduced motion where relevant
 
-Maintain semantic HTML, keyboard navigation, visible focus states, logical heading hierarchy, sufficient contrast, meaningful alt text, and `prefers-reduced-motion`.
+Production build must pass.
 
-Keep JavaScript minimal.
+For major visual milestones, save final review screenshots under:
+`design-reference/screenshots/`
 
-## Development Rules
+Do not commit screenshots unless explicitly requested.
 
-Before significant work:
-
-1. Read this file.
-2. Inspect relevant existing code.
-3. Run `git status`.
-4. Preserve existing user work.
-5. Understand the current implementation before editing.
-
-Do not rewrite working architecture without a clear reason.
-
-Do not build unrelated features or expand scope without instruction.
-
-Prefer simple, maintainable solutions.
-
-## Mandatory QA
-
-Never declare a visual task complete from code inspection alone.
-
-Before completion:
-
-1. Run the application.
-2. Inspect the rendered website in a real browser.
-3. Check browser console errors.
-4. Test relevant interactions.
-5. Check desktop and mobile layouts.
-6. Check horizontal overflow.
-7. Inspect typography, spacing, alignment, and image cropping.
-8. Fix discovered issues.
-9. Re-test after fixes.
-
-For major visual work, inspect at least 1440px and 390px before checking the remaining supported widths.
-
-Production builds must complete without blocking errors.
-
-## Local Servers
-
-- Port `4321` is the user's persistent dev server. Never stop, kill, restart, replace, or use it for QA.
-- For automated QA, use a separate port starting from `4330`.
-- Only terminate server processes started by the current Claude session.
-- Treat any pre-existing Node/Astro/server process as user-owned.
-- If port `4321` has a problem, report it; do not modify it.
-
-## Visual QA Screenshots
-
-For every task that changes UI, layout, styling, responsive behavior, images, typography, or visible content:
-
-- Perform browser-based visual QA after implementation.
-- Capture full-page screenshots from the final tested build/preview, at minimum desktop at 1440px and mobile at 390px viewport width.
-- Store final review screenshots in `design-reference/screenshots/`.
-- Never delete the final desktop and mobile review screenshots. Temporary/debug screenshots may be deleted.
-- Report the exact screenshot paths in the final task summary.
-- Screenshots are review artifacts: do not commit them unless explicitly requested.
-
-## Git & GitHub
+## Git
 
 GitHub is the source of truth.
 
-After every meaningful completed task or milestone:
-
-1. Run relevant QA/tests.
+After an **approved meaningful milestone**:
+1. Run final QA/tests.
 2. Review `git status` and `git diff`.
 3. Stage only relevant files.
 4. Commit with a meaningful message.
-5. Push to the configured GitHub remote.
+5. Push to the configured remote.
 
 Do not blindly use `git add .`.
 
-Never commit secrets, API keys, `.env`, credentials, broken experiments, or unnecessary generated files.
+Never commit secrets, `.env`, credentials, broken experiments,
+reference/source materials, or unnecessary generated files.
 
-Never overwrite or discard existing user work without permission.
+Never overwrite/discard user work without permission.
 
-If push fails, investigate and retry. Never claim a push succeeded when it did not.
+If push fails, investigate and retry. Never claim success if it failed.
 
-At task completion, report:
-- What changed
-- QA performed
-- Commit hash
-- Push status
-- Remaining issues
+Do not commit/push during visual iteration when the user has requested review first.
 
-## Working Principle
+## Principle
 
-Build less, but build it exceptionally well.
+**Build less, but build it exceptionally well.**
 
-When uncertain, choose the simpler, more intentional, and more authentic solution.
+When uncertain, choose the simpler and more authentic solution.

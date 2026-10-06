@@ -8,10 +8,26 @@ import BayNui from '../components/home/BayNui.astro';
 import Partner from '../components/home/Partner.astro';
 ---
 <BaseLayout overlayHeader>
-  <Hero />
-  <About />
-  <Cycle />
-  <Products />
-  <BayNui />
-  <Partner />
+  <div class="home">
+    <Hero />
+    <About />
+    <Cycle />
+    <Products />
+    <BayNui />
+    <Partner />
+  </div>
 </BaseLayout>
+
+<style>
+  /* Homepage scale, set for 100% browser zoom on laptop screens: the hero
+     headline carries the page; section headings, leads and section spacing
+     step down to a website measure rather than a slide measure. */
+  .home {
+    /* Homepage display serif: Lora (Vietnamese subset via Google Fonts) — a
+       calmer, contemporary serif with clean stacked diacritics. */
+    --font-display: "Lora", Georgia, "Times New Roman", serif;
+    --fs-h2: clamp(1.5rem, 1rem + 1.4vw, 2.375rem);
+    --fs-lead: clamp(1.0625rem, 0.95rem + 0.45vw, 1.3125rem);
+    --section-y: clamp(3rem, 1.5rem + 4vw, 5.5rem);
+  }
+</style>

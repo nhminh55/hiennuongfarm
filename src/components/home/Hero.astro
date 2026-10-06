@@ -14,41 +14,38 @@ import Arrow from '../Arrow.astro';
   />
   <div class="hero__scrim" aria-hidden="true"></div>
 
-  <div class="container grid hero__inner">
+  <div class="container hero__inner">
     <div class="hero__content">
-      <p class="hero__kicker"><span>Hiền Nương Farm</span><span aria-hidden="true">·</span><span>Bảy Núi, An Giang</span></p>
+      <p class="hero__kicker">Hiền Nương Farm</p>
+      <!-- Two phrases, one per line where width allows; a phrase that must
+           wrap breaks before its last two words ("từ đất", "bền vững"). -->
       <h1 class="display hero__title" id="hero-title">
-        <span>Nông nghiệp</span>
-        <span>từ đất</span>
-        <span>đến giá trị</span>
-        <span>bền vững</span>
+        <span>Nông nghiệp từ&nbsp;đất</span>
+        <span>đến giá trị bền&nbsp;vững</span>
       </h1>
-      <p class="hero__sub">Mô hình nông nghiệp tuần hoàn tại vùng Bảy&nbsp;Núi – An&nbsp;Giang.</p>
+      <p class="hero__sub">Mô hình nông nghiệp tuần hoàn tại vùng Bảy&nbsp;Núi – An&nbsp;Giang</p>
       <a class="btn btn--light hero__cta" href="#ve-hien-nuong">
         Khám phá Hiền Nương <Arrow />
       </a>
     </div>
 
-    <!-- The land (background) and what it yields (inset): the headline told in two photographs. -->
-    <!-- Video frame 01:44.97. -->
-    <Photo
-      class="hero__inset"
-      src="/images/farm/hero-dong-trung-thu-hai.webp"
-      width={576}
-      height={720}
-      ratio="4 / 5"
-      alt="Bàn tay đeo găng cầm một khối đông trùng hạ thảo vừa thu hái, bên cạnh khay và hộp nuôi cấy"
-    />
+    <!-- Decorative cue only; the CTA above is the link to the next section. -->
+    <span class="hero__scroll" aria-hidden="true">
+      <span class="hero__scroll-line"></span>
+      <span>Kéo xuống</span>
+    </span>
   </div>
 </section>
 
 <style>
+  /* The landscape is the canvas: one photograph, full bleed, with the
+     statement set into the land rather than beside it. The frame is an
+     opening, not the whole screen — the next section stays within reach. */
   .hero {
-    --hero-pad-bottom: clamp(2.5rem, 2rem + 4vh, 5.5rem);
     position: relative;
     z-index: 1;
     display: flex;
-    min-height: max(36rem, 100svh);
+    min-height: clamp(30rem, 80svh, 42rem);
     color: var(--color-cream);
     background: var(--color-deep-green);
     isolation: isolate;
@@ -63,86 +60,130 @@ import Arrow from '../Arrow.astro';
   /* Portrait screens: shift right so the nearer hill joins the ridge. */
   .hero :global(.hero__media) { --pos: 66% 50%; }
   @media (min-width: 1024px) {
-    .hero :global(.hero__media) { --pos: 50% 50%; }
+    /* The low frame crops mostly foreground: anchor high so the ridge sits
+       clear of the navigation with sky above it. */
+    .hero :global(.hero__media) { --pos: 50% 28%; }
   }
 
-  /* Legibility scrim for the headline over the photograph. On phones the
-     text block reaches up to the pale ridge, so the lower scrim rises higher. */
+  /* Legibility scrim. Phones: the text sits low, so the lower edge darkens. */
   .hero__scrim {
     position: absolute;
     inset: 0;
     z-index: -1;
     background:
       linear-gradient(to bottom, rgba(16, 43, 33, 0.5) 0%, rgba(16, 43, 33, 0) 22%),
-      linear-gradient(to top, rgba(16, 43, 33, 0.72) 0%, rgba(16, 43, 33, 0.42) 55%, rgba(16, 43, 33, 0.22) 80%, rgba(16, 43, 33, 0) 95%);
+      linear-gradient(to top, rgba(16, 43, 33, 0.74) 0%, rgba(16, 43, 33, 0.44) 55%, rgba(16, 43, 33, 0.2) 80%, rgba(16, 43, 33, 0) 95%);
   }
 
   .hero__inner {
-    align-items: end;
-    padding-top: calc(var(--header-h) + var(--space-2xl));
-    padding-bottom: var(--hero-pad-bottom);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-inline: max(var(--gutter), 1.5rem);
+    padding-top: calc(var(--header-h) + var(--space-xl));
+    padding-bottom: clamp(2.25rem, 1.5rem + 3svh, 3.5rem);
   }
 
-  .hero__content { grid-column: 1 / -1; }
-
   .hero__kicker {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0 0.875rem;
-    margin-bottom: var(--space-m);
-    font-size: 0.75rem;
+    margin-bottom: var(--space-s);
+    font-size: 0.6875rem;
     font-weight: 500;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--color-text-inverse-muted);
   }
 
-  .hero__kicker span { white-space: nowrap; }
-
-  /* Narrow phones: the two parts stack, so the separator would dangle. */
-  @media (max-width: 379px) {
-    .hero__kicker span[aria-hidden] { display: none; }
+  /* Two lines: one phrase each, in sentence case — Lora (the homepage
+     display serif) at a medium-regular 450 with open leading, so Vietnamese
+     diacritics sit cleanly. The longer phrase measures about 9.3em, so it
+     holds two lines down to 320px. Wider screens keep the editorial scale. */
+  .hero__title {
+    font-size: clamp(1.625rem, 7.2vw, 2.125rem);
+    font-weight: 450;
+    text-transform: none;
+    letter-spacing: -0.005em;
+    line-height: 1.14;
   }
-
-  .hero__title span { display: block; }
+  .hero__title span {
+    display: block;
+    text-wrap: balance;
+  }
 
   .hero__sub {
-    max-width: 32rem;
-    margin-top: var(--space-m);
-    font-family: var(--font-display);
-    font-size: var(--fs-lead);
-    line-height: 1.45;
+    max-width: 36rem;
+    margin-top: var(--space-s);
+    font-size: clamp(0.9375rem, 0.9rem + 0.2vw, 1.0625rem);
+    font-weight: 300;
+    line-height: 1.55;
     color: var(--color-text-inverse-muted);
+    text-wrap: balance;
   }
 
-  .hero__cta { margin-top: var(--space-xl); }
+  /* Compact, editorial CTA: smaller than the site default button. */
+  .hero__cta {
+    gap: 0.875rem;
+    min-height: 2.875rem;
+    margin-top: var(--space-m);
+    padding: 0.7rem 1.125rem 0.7rem 1.25rem;
+    font-size: 0.6875rem;
+  }
+  .hero__cta :global(.arrow) { width: 1rem; }
 
-  .hero :global(.hero__inset) { display: none; }
+  .hero__scroll { display: none; }
 
-  /* Wider screens: the kicker and headline sit over the pale mountain
-     ridge, so the scrim also darkens the text side. */
+  /* Wider screens: the statement rises into the frame, over the ridge;
+     a soft scrim on the left keeps it legible. */
   @media (min-width: 768px) {
+    /* Cinematic, not full screen: the About section is in view on load. */
+    .hero { min-height: clamp(22rem, 59svh, 40rem); }
+
+    .hero__title { font-size: clamp(2.25rem, min(1rem + 2.5vw, 7.4svh), 3.375rem); }
+
     .hero__scrim {
       background:
-        linear-gradient(to right, rgba(16, 43, 33, 0.5) 0%, rgba(16, 43, 33, 0) 60%),
-        linear-gradient(to bottom, rgba(16, 43, 33, 0.5) 0%, rgba(16, 43, 33, 0) 22%),
-        linear-gradient(to top, rgba(16, 43, 33, 0.72) 0%, rgba(16, 43, 33, 0.18) 55%, rgba(16, 43, 33, 0) 80%);
+        linear-gradient(to right, rgba(16, 43, 33, 0.62) 0%, rgba(16, 43, 33, 0.3) 38%, rgba(16, 43, 33, 0) 62%),
+        linear-gradient(to bottom, rgba(16, 43, 33, 0.45) 0%, rgba(16, 43, 33, 0) 24%),
+        linear-gradient(to top, rgba(16, 43, 33, 0.4) 0%, rgba(16, 43, 33, 0) 26%);
+    }
+
+    .hero__inner {
+      justify-content: center;
+      padding-top: calc(var(--header-h) + clamp(0.75rem, 2.5svh, 2rem));
+      padding-bottom: clamp(3.5rem, 9svh, 5.5rem);
+    }
+
+    .hero__kicker { margin-bottom: clamp(0.75rem, 2svh, 1.25rem); }
+    .hero__sub { margin-top: clamp(0.875rem, 2.2svh, 1.375rem); }
+    .hero__cta { margin-top: clamp(1.25rem, 3.2svh, 2rem); }
+
+    /* Short rule at the foot of the frame: the page continues below. */
+    .hero__scroll {
+      position: absolute;
+      left: max(var(--gutter), 1.5rem);
+      bottom: clamp(1rem, 2.5svh, 1.75rem);
+      display: flex;
+      align-items: flex-end;
+      gap: 0.875rem;
+      font-size: 0.625rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-text-inverse-muted);
+    }
+
+    .hero__scroll-line {
+      width: 1px;
+      height: clamp(1.75rem, 4svh, 2.75rem);
+      background: currentColor;
+      opacity: 0.7;
     }
   }
 
-  @media (min-width: 1024px) {
-    .hero {
-      --hero-overlap: clamp(4rem, 6vw, 6rem);
-    }
-
-    .hero__content { grid-column: 1 / span 7; }
-
-    /* Sits on the hero's lower edge and steps down into the next section. */
-    .hero :global(.hero__inset) {
-      display: block;
-      grid-column: 9 / span 4;
-      align-self: end;
-      margin-bottom: calc(-1 * (var(--hero-pad-bottom) + var(--hero-overlap)));
-    }
+  /* Laptop-height screens: the decorative cue gives way so the frame can
+     stay low; the CTA already leads to the next section. */
+  @media (min-width: 768px) and (max-height: 799px) {
+    .hero__scroll { display: none; }
+    .hero__inner { padding-bottom: clamp(2rem, 6svh, 3rem); }
   }
 </style>

@@ -1,7 +1,8 @@
 # HIỀN NƯƠNG FARM — CONTENT & EVIDENCE BANK
 
 > Internal research document. Use this file to prevent unsupported claims in website copy.
-> Status vocabulary: VERIFIED / SAMPLE-SPECIFIC / TIME-BOUND / CONFLICTING / VERIFY.
+> Status vocabulary: VERIFIED / OWNER-VERIFIED / SAMPLE-SPECIFIC / TIME-BOUND / CONFLICTING / VERIFY.
+> OWNER-VERIFIED = confirmed directly by the Hiền Nương owners for website use (no public document cited).
 
 ## 1. Core identity and place
 
@@ -13,9 +14,17 @@
 - “Từ vùng Bảy Núi, chị Châu Thị Nương phát triển mô hình trồng nấm gắn với nguồn nguyên liệu nông nghiệp tại địa phương.”
 - “Câu chuyện Hiền Nương gắn với vùng đất Tà Đảnh và hành trình đưa phụ phẩm nông nghiệp trở lại chu trình sản xuất.”
 
-**Do not state without further confirmation:**
-- exact legal founder(s) of the Hiền Nương Farm brand/company
-- exact legal founding date of the brand/company
+### Founding and co-founders
+**Status:** OWNER-VERIFIED  
+**Evidence:** Confirmed by the owners: Hiền Nương Farm was established in 2020 by husband-and-wife co-founders chị Châu Thị Nương and anh Trần Phương Hiền.
+
+**Approved website wording:**
+- “Hiền Nương Farm được thành lập năm 2020 bởi hai vợ chồng chị Châu Thị Nương và anh Trần Phương Hiền.”
+
+**Rule:** Always name them in this order: chị Châu Thị Nương, then anh Trần Phương Hiền.
+
+**Still do not state without further confirmation:**
+- the legal entity behind the Hiền Nương Farm brand (see §7)
 
 ### HTX Nông nghiệp Tà Đảnh
 **Status:** VERIFIED  
@@ -205,8 +214,6 @@ rather than presenting the number as current.
 
 Keep these unresolved until direct business documentation/confirmation is available:
 - legal entity behind the “Hiền Nương Farm” brand
-- exact legal founder(s)
-- exact brand/company founding date
 - whether “Hiền Nương Farm”, “Nương Farm”, “Nàng Nương”, and HTX Nông nghiệp Tà Đảnh should be presented as one entity or distinct brand/legal layers
 - current official address(es)
 - current official phone/email
@@ -214,6 +221,8 @@ Keep these unresolved until direct business documentation/confirmation is availa
 - current OCOP certificate validity/details
 - current certifications beyond the reports already held
 - current partners/distributors
+
+Brand founding year (2020) and the co-founders are now OWNER-VERIFIED — see §1.
 
 ---
 

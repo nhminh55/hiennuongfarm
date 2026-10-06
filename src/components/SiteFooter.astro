@@ -44,6 +44,7 @@ const year = new Date().getFullYear();
 </footer>
 
 <style>
+  /* Dense, quiet close: one band of brand, links and contact over a hairline. */
   .site-footer {
     background: var(--color-deep-green);
     color: var(--color-cream);
@@ -53,20 +54,20 @@ const year = new Date().getFullYear();
   .site-footer__top {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-xl);
-    padding-block: var(--space-3xl) var(--space-2xl);
+    gap: var(--space-l);
+    padding-block: var(--space-2xl) var(--space-xl);
   }
 
   .site-footer__line {
-    margin-top: var(--space-m);
+    margin-top: var(--space-s);
     font-family: var(--font-display);
-    font-size: 1.125rem;
+    font-size: 1rem;
     line-height: 1.5;
     color: var(--color-text-inverse-muted);
   }
 
   .site-footer__heading {
-    margin-bottom: var(--space-s);
+    margin-bottom: var(--space-xs);
     font-size: 0.6875rem;
     font-weight: 500;
     letter-spacing: 0.18em;
@@ -76,7 +77,7 @@ const year = new Date().getFullYear();
 
   .site-footer__list {
     display: grid;
-    gap: 0.5rem;
+    gap: 0.375rem;
     font-style: normal;
   }
 
@@ -85,16 +86,21 @@ const year = new Date().getFullYear();
   }
   .site-footer__list a:hover { color: var(--color-text-inverse-muted); }
 
+  .site-footer__col--nav .site-footer__list {
+    grid-template-columns: repeat(2, max-content);
+    column-gap: var(--space-l);
+  }
+
   .site-footer__bottom {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    gap: var(--space-s) var(--space-l);
-    padding-block: var(--space-m);
+    gap: var(--space-2xs) var(--space-l);
+    padding-block: var(--space-xs);
     border-top: 1px solid var(--color-line-inverse);
     color: var(--color-text-inverse-muted);
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
   }
 
   .site-footer__top-link {
@@ -112,13 +118,28 @@ const year = new Date().getFullYear();
       column-gap: var(--col-gap);
     }
     .site-footer__brand { grid-column: 1 / span 12; }
-    .site-footer__col--nav { grid-column: 1 / span 5; }
+    .site-footer__col--nav { grid-column: 1 / span 6; }
     .site-footer__col--contact { grid-column: 7 / span 6; }
   }
 
+  /* Desktop: links run in a single line, as a running footer. */
   @media (min-width: 1024px) {
-    .site-footer__brand { grid-column: 1 / span 5; }
-    .site-footer__col--nav { grid-column: 7 / span 3; }
-    .site-footer__col--contact { grid-column: 10 / span 3; }
+    .site-footer__top {
+      align-items: start;
+      padding-block: var(--space-xl);
+    }
+    .site-footer__brand { grid-column: 1 / span 3; }
+    .site-footer__col--nav { grid-column: 4 / span 6; }
+    .site-footer__col--contact {
+      grid-column: 10 / span 3;
+      padding-left: var(--col-gap);
+      border-left: 1px solid var(--color-line-inverse);
+    }
+
+    .site-footer__col--nav .site-footer__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.375rem var(--space-l);
+    }
   }
 </style>

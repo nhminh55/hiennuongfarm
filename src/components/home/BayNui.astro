@@ -3,17 +3,18 @@ import Photo from '../Photo.astro';
 import Eyebrow from '../Eyebrow.astro';
 ---
 <section class="baynui" id="bay-nui" aria-labelledby="baynui-title">
-  <div class="baynui__hero">
-    <!-- Video frame 00:00.5 (opening aerial, no subtitle). -->
-    <Photo
-      class="baynui__media"
-      src="/images/farm/bay-nui-canh-dong.webp"
-      width={1280}
-      height={720}
-      alt="Ô ruộng lúa xanh nhìn thẳng từ trên cao, những cây thốt nốt mọc dọc bờ ruộng"
-    />
-    <div class="baynui__scrim" aria-hidden="true"></div>
-    <div class="container baynui__heading" data-reveal>
+  <!-- Video frame 00:00.5 (opening aerial, no subtitle). -->
+  <Photo
+    class="baynui__media"
+    src="/images/farm/bay-nui-canh-dong.webp"
+    width={1280}
+    height={720}
+    alt="Ô ruộng lúa xanh nhìn thẳng từ trên cao, những cây thốt nốt mọc dọc bờ ruộng"
+  />
+  <div class="baynui__scrim" aria-hidden="true"></div>
+
+  <div class="container grid baynui__inner">
+    <div class="baynui__heading" data-reveal>
       <Eyebrow num="04" class="baynui__eyebrow">Từ vùng Bảy Núi</Eyebrow>
       <h2 class="h2 baynui__title" id="baynui-title">
         <span>Một vùng đất.</span>
@@ -21,60 +22,34 @@ import Eyebrow from '../Eyebrow.astro';
         <span>Một cách làm nông nghiệp.</span>
       </h2>
     </div>
-  </div>
 
-  <div class="section baynui__story">
-    <div class="container grid baynui__grid">
-      <div class="baynui__text" data-reveal>
-        <p class="lead">
-          Bảy Núi không chỉ là nơi chúng tôi bắt đầu, mà còn là nguồn cảm hứng để Hiền Nương kiến tạo
-          những giá trị bền vững cho cộng đồng và thế hệ mai sau.
-        </p>
-        <p class="body baynui__body">
-          Bảy Núi — còn gọi là Thất Sơn — là vùng đồi núi phía tây An Giang, một trong số ít nơi
-          núi non xuất hiện giữa đồng bằng sông Cửu Long.
-        </p>
-        <!-- Source: the Hiền Nương Farm video (01:32–01:41, 02:04–02:07). -->
-        <p class="body baynui__body">
-          Từ phối trộn, đóng bịch giá thể đến chăm sóc và thu hái, công việc ở trang trại
-          tạo sinh kế ổn định cho người lao động địa phương.
-        </p>
-      </div>
-
-      <!-- Video frames 02:12.67 and 02:02.67 (the latter cropped above its subtitle). -->
-      <Photo
-        class="baynui__photo baynui__photo--a"
-        src="/images/farm/community-dong-bich.webp"
-        width={576}
-        height={720}
-        ratio="4 / 5"
-        alt="Hai người phụ nữ mặc áo khoác xanh ngồi đóng bịch giá thể, cười nói bên đống giá thể"
-      />
-      <Photo
-        class="baynui__photo baynui__photo--b"
-        src="/images/farm/community-chan-dung.webp"
-        width={450}
-        height={600}
-        ratio="3 / 4"
-        alt="Một người phụ nữ lớn tuổi mặc áo khoác xanh mỉm cười tại khu làm việc của trang trại"
-      />
+    <div class="baynui__text" data-reveal style="--reveal-delay: 120ms">
+      <p class="baynui__lead">
+        Bảy Núi không chỉ là nơi chúng tôi bắt đầu, mà còn là nguồn cảm hứng để Hiền Nương kiến tạo
+        những giá trị bền vững cho cộng đồng và thế hệ mai sau.
+      </p>
+      <p class="baynui__body">
+        Bảy Núi — còn gọi là Thất Sơn — là vùng đồi núi phía tây An Giang, một trong số ít nơi
+        núi non xuất hiện giữa đồng bằng sông Cửu Long.
+      </p>
     </div>
   </div>
 </section>
 
 <style>
-  .baynui { background: var(--color-paper); }
-
-  .baynui__hero {
+  /* A panoramic break in the page: the land itself, with the words set
+     into it. */
+  .baynui {
     position: relative;
     display: flex;
     align-items: flex-end;
-    min-height: clamp(30rem, 62vw, 50rem);
+    min-height: 34rem;
     color: var(--color-cream);
+    background: var(--color-deep-green);
     isolation: isolate;
   }
 
-  .baynui__hero :global(.baynui__media) {
+  .baynui :global(.baynui__media) {
     position: absolute;
     inset: 0;
     z-index: -2;
@@ -84,42 +59,56 @@ import Eyebrow from '../Eyebrow.astro';
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: linear-gradient(to top, rgba(16, 43, 33, 0.62) 0%, rgba(16, 43, 33, 0) 60%);
+    background: linear-gradient(to top, rgba(16, 43, 33, 0.86) 0%, rgba(16, 43, 33, 0.55) 50%, rgba(16, 43, 33, 0.1) 100%);
   }
 
-  .baynui__heading { padding-block: var(--space-3xl) var(--space-2xl); }
+  .baynui__inner {
+    row-gap: var(--space-l);
+    padding-block: 12rem var(--space-xl);
+  }
 
-  .baynui__hero :global(.baynui__eyebrow) { color: var(--color-cream); }
+  .baynui__heading,
+  .baynui__text { grid-column: 1 / -1; }
 
-  .baynui__title { margin-top: var(--space-l); }
+  .baynui :global(.baynui__eyebrow) { color: var(--color-cream); }
+
+  .baynui__title { margin-top: var(--space-m); }
   .baynui__title span { display: block; }
 
-  .baynui__grid { row-gap: var(--space-xl); }
+  .baynui__lead {
+    max-width: 30rem;
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
 
-  .baynui__text { grid-column: 1 / -1; }
-  .baynui__text .lead { max-width: 30ch; }
-  .baynui__body { margin-top: var(--space-l); max-width: 30rem; }
+  .baynui__body {
+    max-width: 30rem;
+    margin-top: var(--space-s);
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: var(--color-text-inverse-muted);
+  }
 
-  .baynui__grid :global(.baynui__photo--a) { grid-column: 1 / span 10; }
-  .baynui__grid :global(.baynui__photo--b) { grid-column: 5 / -1; }
-
+  /* Wide screens: a short, wide band — heading low on the left, the
+     place described on the right. Capped by screen height so it reads as a
+     panoramic break, never a second hero. */
   @media (min-width: 768px) {
-    .baynui__text { grid-column: 1 / span 5; }
-    .baynui__grid :global(.baynui__photo--a) { grid-column: 7 / span 6; grid-row: 1 / span 2; }
-    .baynui__grid :global(.baynui__photo--b) {
-      grid-column: 2 / span 4;
-      grid-row: 2;
-      margin-top: 0;
+    .baynui { min-height: clamp(22rem, min(4rem + 26vw, 62svh), 30rem); }
+
+    .baynui__scrim {
+      background:
+        linear-gradient(to right, rgba(16, 43, 33, 0.66) 0%, rgba(16, 43, 33, 0.25) 50%, rgba(16, 43, 33, 0.6) 100%),
+        linear-gradient(to top, rgba(16, 43, 33, 0.55) 0%, rgba(16, 43, 33, 0) 60%);
     }
+
+    .baynui__inner { align-items: end; padding-block: var(--space-xl); }
+    .baynui__heading { grid-column: 1 / span 7; }
+    .baynui__text { grid-column: 8 / -1; }
   }
 
   @media (min-width: 1024px) {
-    .baynui__text { grid-column: 1 / span 4; align-self: end; }
-    .baynui__grid :global(.baynui__photo--a) { grid-column: 6 / span 4; grid-row: 1; }
-    .baynui__grid :global(.baynui__photo--b) {
-      grid-column: 10 / span 3;
-      grid-row: 1;
-      margin-top: var(--space-3xl);
-    }
+    .baynui__text { grid-column: 9 / -1; }
+    .baynui__lead { font-size: 1.0625rem; }
   }
 </style>
