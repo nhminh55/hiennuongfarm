@@ -1,0 +1,23 @@
+:root .site-footer.site-footer .site-footer__mountains { display: none; }
+  @media (min-width: 1024px) {
+    :root .site-footer.site-footer .site-footer__landscape { display: none; }
+    :root .site-footer.site-footer .site-footer__mountains { display: block; position: absolute; width: 25rem; max-width: 32%; height: auto; right: 1.5%; bottom: 4.5rem; opacity: 0.65; z-index: -1; pointer-events: none; }
+    :root .site-footer.site-footer .site-footer__top { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 0.8fr); grid-template-areas: "brand nav contact social"; column-gap: clamp(1.5rem, 2.8vw, 3rem); row-gap: 0; padding-block: 1rem 0.5rem; align-items: start; }
+    :root .site-footer.site-footer .site-footer__brand { grid-area: brand; }
+    :root .site-footer.site-footer .site-footer__brand .wordmark { width: 100%; max-width: 25rem; }
+    :root .site-footer.site-footer .site-footer__line { display: none; }
+    :root .site-footer.site-footer .site-footer__col--nav { grid-area: nav; }
+    :root .site-footer.site-footer .site-footer__col--contact { grid-area: contact; }
+    :root .site-footer.site-footer .site-footer__col--social { grid-area: social; }
+    :root .site-footer.site-footer .site-footer__heading { margin-bottom: 0.75rem; font-size: 0.875rem; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--color-cream); }
+    :root .site-footer.site-footer .site-footer__col--nav .site-footer__list { grid-template-columns: 1fr; gap: 0.4rem; font-family: var(--font-body); font-size: 0.875rem; font-weight: 400; line-height: 1.6; color: var(--color-text-inverse-muted); }
+    :root .site-footer.site-footer .site-footer__list a { min-height: 0; }
+    :root .site-footer.site-footer .site-footer__col--contact .site-footer__list { gap: 0.5rem; color: var(--color-text-inverse-muted); line-height: 1.7; }
+    :root .site-footer.site-footer .site-footer__col--contact address a { order: -1; margin-bottom: 0.25rem; }
+    :root .site-footer.site-footer .site-footer__col--social .site-footer__heading { margin-bottom: 0.75rem; }
+    :root .site-footer.site-footer .site-footer__col--social .site-footer__list { display: flex; flex-wrap: wrap; gap: 0.625rem; font-size: 0; }
+    :root .site-footer.site-footer .site-footer__social { font-size: 0; gap: 0; justify-content: center; width: 2rem; height: 2rem; min-height: 2rem; border: 1px solid var(--color-text-inverse-muted); border-radius: 50%; }
+    :root .site-footer.site-footer .site-footer__social svg { width: 1.125rem; height: 1.125rem; }
+    :root .site-footer.site-footer .site-footer__bottom { padding-block: 1rem; }
+    :root .site-footer.site-footer .site-footer__top-link .arrow { rotate: 0deg !important; }
+  }

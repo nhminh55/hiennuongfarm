@@ -1,6 +1,13 @@
 ---
 import Photo from '../Photo.astro';
 import Arrow from '../Arrow.astro';
+const sections = [
+  { id: 've-hien-nuong', label: 'Về Hiền Nương' },
+  { id: 'tuan-hoan', label: 'Nông nghiệp tuần hoàn' },
+  { id: 'san-vat', label: 'Sản phẩm' },
+  { id: 'bay-nui', label: 'Vùng Bảy Núi' },
+  { id: 'hop-tac', label: 'Hợp tác' },
+];
 ---
 <section class="hero" aria-labelledby="hero-title">
   <!-- Frame from the Hiền Nương Farm video, 00:12.8 (clean frame, no subtitle). -->
@@ -28,6 +35,14 @@ import Arrow from '../Arrow.astro';
       </a>
     </div>
 
+    <nav class="hero__navigator" aria-label="Các phần trang chủ">
+      {sections.map((section, i) => (
+        <a href={'#' + section.id} aria-label={String(i + 1).padStart(2, '0') + ' — ' + section.label} aria-current={i === 0 ? 'location' : undefined} data-hero-section>
+          {String(i + 1).padStart(2, '0')}
+        </a>
+      ))}
+    </nav>
+
     <!-- Decorative cue only; the CTA above is the link to the next section. -->
     <span class="eyebrow hero__scroll" aria-hidden="true">
       <span class="hero__scroll-line"></span>
@@ -36,7 +51,27 @@ import Arrow from '../Arrow.astro';
   </div>
 </section>
 
+<script>
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-hero-section]')];
+  const sync = () => {
+    const selected = links.find(link => link.hash === window.location.hash) ?? links[0];
+    links.forEach(link => {
+      if (link === selected) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  };
+  window.addEventListener('hashchange', sync);
+  sync();
+</script>
+
 <style>
+  .hero__navigator { display: none; }
+  @media (min-width: 1000px) {
+    .hero__navigator { position: absolute; right: max(var(--gutter), 1.5rem); bottom: 1rem; display: flex; gap: 1.25rem; color: var(--color-cream); }
+    .hero__navigator a { display: grid; place-items: center; min-width: 2rem; min-height: 2.75rem; font-size: 0.75rem; font-variant-numeric: tabular-nums; border-bottom: 1px solid transparent; opacity: 0.7; text-shadow: 0 1px 3px rgba(8, 45, 34, 0.6); }
+    .hero__navigator a:hover, .hero__navigator a[aria-current] { opacity: 1; border-bottom-color: currentColor; }
+  }
+
   /* The landscape is the canvas: one photograph, full bleed, with the
      statement set into the land rather than beside it. The frame is an
      opening, not the whole screen — the next section stays within reach. */

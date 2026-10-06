@@ -1,5 +1,6 @@
 ---
 import Photo from '../Photo.astro';
+import Arrow from '../Arrow.astro';
 import Eyebrow from '../Eyebrow.astro';
 
 // 2020 and the co-founders: OWNER-VERIFIED; Bảy Núi / Tà Đảnh and the
@@ -13,21 +14,18 @@ import Eyebrow from '../Eyebrow.astro';
     <div class="grid about__grid">
       <div class="about__text" data-reveal>
         <h2 class="h2 about__title" id="about-title">
-          Từ Bảy Núi, một hành trình nông nghiệp bắt đầu.
+          Xuất phát từ tình yêu với đất và những điều giản dị
         </h2>
-        <!-- Brand belief line, set as the section's secondary statement. -->
-        <p class="lead about__lead">
-          Nông nghiệp tốt không chỉ tạo ra sản phẩm tốt, mà còn trả lại giá trị cho đất, cho người
-          và cho vùng quê.
-        </p>
         <!-- Founding year and co-founders: OWNER-VERIFIED (CONTENT_EVIDENCE_BANK.md §1).
              Always name them in this order: chị Châu Thị Nương, then anh Trần Phương Hiền.
              Tà Đảnh and the by-product substrate: VERIFIED (§1–2). -->
         <p class="body about__body">
-          Hiền Nương Farm được thành lập năm 2020 bởi hai vợ chồng chị Châu Thị Nương
-          và anh Trần Phương Hiền. Tại Tà Đảnh, vùng Bảy Núi – An&nbsp;Giang, phụ phẩm
-          nông nghiệp được tận dụng làm giá thể trồng nấm, theo hướng nông nghiệp tuần hoàn.
+          Hiền Nương Farm được thành lập năm 2020 bởi chị Châu Thị Nương và anh Trần Phương Hiền.
+          Từ Tà Đảnh, Bảy Núi – An Giang, Hiền Nương phát triển nông nghiệp tuần hoàn,
+          tận dụng phụ phẩm nông nghiệp để tạo nên những giá trị mới.
         </p>
+        <!-- Temporary section destination until the introduction page exists. -->
+        <a class="link-arrow about__more" href="/#ve-hien-nuong">Tìm hiểu thêm <Arrow /></a>
       </div>
 
       <figure class="about__figure" data-reveal style="--reveal-delay: 120ms">
@@ -58,15 +56,12 @@ import Eyebrow from '../Eyebrow.astro';
   .about__figure { grid-column: 1 / -1; }
 
   .about__title { margin-top: var(--space-m); max-width: 20ch; }
-  /* A quieter serif statement under the title, then a compact note. */
-  .about__lead {
-    margin-top: var(--space-m);
-    max-width: 30rem;
-  }
   .about__body {
     margin-top: var(--space-m);
     max-width: 30rem;
   }
+
+  .about .about__more { margin-top: var(--space-m); text-transform: none; }
 
   /* Phones: the photograph runs to the screen edges. */
   .about__figure { margin-inline: calc(-1 * var(--gutter)); }

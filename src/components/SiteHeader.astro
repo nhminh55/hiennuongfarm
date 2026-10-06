@@ -1,5 +1,6 @@
 ---
 import { contact } from '../data/site';
+import '../styles/desktop-header.css';
 import BrandLogo from './BrandLogo.astro';
 
 interface Props {
@@ -42,14 +43,14 @@ const current = (href: string) => {
 
       <nav class="site-nav" aria-label="Điều hướng chính">
         <ul class="site-nav__list">
-          {links.map((item) => (
-            <li><a class="site-nav__link" href={item.href} aria-current={current(item.href)}>{item.label}</a></li>
+          {links.map((item, i) => (
+            <li><a class="site-nav__link" href={item.href} aria-current={current(item.href)}>{i > 0 && <span class="site-nav__num" aria-hidden="true">{String(i).padStart(2, '0')}</span>}{item.label}</a></li>
           ))}
-          <li class="site-nav__contact">
-            <a class="site-nav__link" href={contactLink.href}>{contactLink.label}</a>
-          </li>
+
         </ul>
       </nav>
+
+      <a class="desktop-contact" href={contactLink.href}><span class="desktop-contact__sizer" aria-hidden="true">{contactLink.label}</span><span class="desktop-contact__label">{contactLink.label} <span aria-hidden="true">→</span></span></a>
 
       <button
         class="menu-toggle"
@@ -205,7 +206,7 @@ const current = (href: string) => {
   .site-nav__list {
     display: flex;
     align-items: center;
-    gap: clamp(1rem, 0.1rem + 1.45vw, 1.875rem);
+    gap: clamp(0.5rem, 1vw, 1rem);
   }
 
   .site-nav__link {
@@ -238,19 +239,10 @@ const current = (href: string) => {
   .site-nav__link:hover::after,
   .site-nav__link[aria-current="page"]::after { transform: scaleX(1); }
 
-  .site-nav__contact {
-    display: flex;
-    align-items: center;
-    gap: clamp(1rem, 0.1rem + 1.45vw, 1.875rem);
-  }
-  .site-nav__contact::before {
-    content: "";
-    width: 1px;
-    height: 0.875rem;
-    background: currentColor;
-    opacity: 0.35;
-  }
-  .site-nav__contact .site-nav__link { font-weight: 500; opacity: 1; }
+  .site-nav__num { margin-right: 0.4rem; font-size: 0.625rem; font-variant-numeric: tabular-nums; opacity: 0.65; letter-spacing: 0; }
+  .site-nav__contact .site-nav__link { padding: 0.7rem 1rem; background: var(--color-forest); color: var(--color-cream); opacity: 1; }
+  .site-nav__contact .site-nav__link:hover { background: var(--color-deep-green); }
+  .site-nav__contact .site-nav__link::after { display: none; }
 
   /* Menu toggle (below desktop) */
   .menu-toggle {
