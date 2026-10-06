@@ -4,31 +4,35 @@ import Eyebrow from '../Eyebrow.astro';
 import Arrow from '../Arrow.astro';
 
 // The four main mushroom lines, as presented in the Hiền Nương Farm video
-// (01:24–01:31). Photos are frames from that sequence.
+// (01:24–01:31). Photos are from the photo collection (HN-xxx) or, for
+// Nấm Bào Ngư, a frame from that video sequence.
 // Descriptions are pending from Hiền Nương — no product or health claims
 // should be added without a source.
 const lead = {
   name: 'Nấm Mối Đen',
-  src: '/images/farm/product-nam-moi-den.webp',
-  width: 750,
-  height: 600,
-  alt: 'Những cây nấm mối đen mọc lên từ bịch giá thể, cây lớn nhất bên phải',
+  // HN-017
+  src: '/images/farm/product-nam-moi-den-bich-phoi.webp',
+  width: 1000,
+  height: 750,
+  alt: 'Nhiều cây nấm mối đen mũ nâu xám, thân trắng, mọc lên từ các bịch giá thể',
 };
 
 const others = [
   {
     name: 'Nấm Linh Chi',
-    src: '/images/farm/product-linh-chi.webp',
-    width: 576,
-    height: 720,
-    alt: 'Một tai nấm linh chi mọc từ bịch phôi đặt trên lớp rơm',
+    // HN-024, cropped to 4:5
+    src: '/images/farm/product-linh-chi-luong-nuoi.webp',
+    width: 720,
+    height: 900,
+    alt: 'Những hàng nấm linh chi mọc từ bịch phôi đặt trên luống đất, kéo dài theo lối đi trong nhà nuôi',
   },
   {
     name: 'Đông Trùng Hạ Thảo',
-    src: '/images/farm/product-dong-trung-ha-thao.webp',
-    width: 476,
-    height: 595,
-    alt: 'Cận cảnh những sợi đông trùng hạ thảo màu cam nhạt mọc dày',
+    // HN-003, cropped to 4:5
+    src: '/images/farm/product-dong-trung-ha-thao-thu-hoach.webp',
+    width: 720,
+    height: 900,
+    alt: 'Bàn tay đeo găng cầm một khối đông trùng hạ thảo màu cam vừa thu hái, phía sau là các hộp đông trùng hạ thảo',
   },
   {
     name: 'Nấm Bào Ngư',
