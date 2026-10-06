@@ -1,0 +1,300 @@
+/* ==========================================================================
+   Hiền Nương Farm — global foundation
+   Tokens, reset, typography, layout primitives, buttons, motion.
+   Section-specific layout lives in each component's scoped <style>.
+   ========================================================================== */
+
+:root {
+  /* Colour */
+  --color-cream: #F3F0E7;
+  --color-paper: #F8F6F0;
+  --color-forest: #173D2D;
+  --color-deep-green: #102B21;
+  --color-earth: #866B48;
+  --color-charcoal: #20221F;
+  --color-muted-moss: #788267;
+  --color-line: rgba(32, 34, 31, 0.16);
+  --color-line-strong: rgba(32, 34, 31, 0.34);
+  --color-line-inverse: rgba(243, 240, 231, 0.2);
+
+  --color-text: var(--color-charcoal);
+  --color-text-muted: #575A52;
+  --color-text-inverse: var(--color-cream);
+  --color-text-inverse-muted: rgba(243, 240, 231, 0.74);
+
+  /* Type */
+  --font-display: "Noto Serif Display", "Lora", Georgia, "Times New Roman", serif;
+  --font-body: "Be Vietnam Pro", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --fs-hero: clamp(2.25rem, 1.1rem + 4.4vw, 5.25rem);
+  --fs-h2: clamp(2rem, 1.45rem + 2.3vw, 3.625rem);
+  --fs-h3: clamp(1.375rem, 1.18rem + 0.75vw, 1.875rem);
+  --fs-lead: clamp(1.1875rem, 1.05rem + 0.55vw, 1.5rem);
+  --fs-body: clamp(1rem, 0.97rem + 0.12vw, 1.0625rem);
+  --fs-small: 0.875rem;
+  --fs-eyebrow: 0.75rem;
+
+  --lh-display: 1.1;   /* stacked Vietnamese diacritics need room */
+  --lh-heading: 1.18;
+  --lh-body: 1.72;
+
+  /* Space */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-s: 1rem;
+  --space-m: 1.5rem;
+  --space-l: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: clamp(3.5rem, 2.5rem + 3vw, 5rem);
+  --space-3xl: clamp(4.5rem, 3rem + 5vw, 7.5rem);
+  --section-y: clamp(5rem, 3.2rem + 7vw, 10rem);
+
+  /* Layout */
+  --container: 1360px;
+  --gutter: clamp(1.25rem, 0.4rem + 3.6vw, 3.5rem);
+  --col-gap: clamp(1rem, 0.5rem + 1.6vw, 2rem);
+  --header-h: 4.5rem;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur: 700ms;
+}
+
+@media (min-width: 1120px) {
+  :root { --header-h: 5.5rem; }
+}
+
+/* Reset ------------------------------------------------------------------ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 300;
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+body.is-locked { overflow: hidden; }
+
+img, svg, video { display: block; max-width: 100%; }
+img { height: auto; }
+
+h1, h2, h3, h4, p, figure, blockquote, ol, ul, dl, dd { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+
+:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+
+::selection { background: var(--color-forest); color: var(--color-cream); }
+
+/* Typography ------------------------------------------------------------- */
+
+.display,
+.h2,
+.h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.display {
+  font-size: var(--fs-hero);
+  line-height: var(--lh-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+}
+
+.h2 { font-size: var(--fs-h2); line-height: var(--lh-heading); }
+.h3 { font-size: var(--fs-h3); line-height: 1.25; }
+
+.lead {
+  font-family: var(--font-display);
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+  font-weight: 400;
+  text-wrap: pretty;
+}
+
+.body { color: var(--color-text-muted); text-wrap: pretty; }
+.body + .body { margin-top: 1em; }
+
+.small { font-size: var(--fs-small); line-height: 1.6; }
+
+em, .italic { font-style: italic; }
+
+/* Eyebrow: "01 —— Về Hiền Nương" */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-earth);
+  line-height: 1.4;
+}
+.eyebrow__num { font-variant-numeric: tabular-nums; }
+@media (max-width: 479px) {
+  .eyebrow { gap: 0.625rem; letter-spacing: 0.16em; }
+  .eyebrow__rule { width: 1.25rem; }
+}
+.eyebrow__rule {
+  width: 2.25rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+  flex: none;
+}
+
+/* Content awaiting real copy from the client — kept visibly provisional. */
+.tbd {
+  color: var(--color-text-muted);
+  font-style: italic;
+  font-size: var(--fs-small);
+  line-height: 1.6;
+}
+
+/* Layout ----------------------------------------------------------------- */
+
+.container {
+  width: 100%;
+  max-width: calc(var(--container) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+}
+
+.section { padding-block: var(--section-y); }
+
+.rule {
+  height: 1px;
+  border: 0;
+  margin: 0;
+  background: var(--color-line);
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--gutter);
+  top: 0;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: var(--color-forest);
+  color: var(--color-cream);
+  font-size: var(--fs-small);
+  transform: translateY(-120%);
+}
+.skip-link:focus { transform: none; }
+
+/* Buttons & links -------------------------------------------------------- */
+
+.btn {
+  --btn-bg: var(--color-forest);
+  --btn-fg: var(--color-cream);
+  --btn-bg-hover: var(--color-deep-green);
+  display: inline-flex;
+  align-items: center;
+  gap: 1.125rem;
+  min-height: 3.25rem;
+  padding: 0.9rem 1.5rem 0.9rem 1.625rem;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border: 1px solid var(--btn-bg);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1.3;
+  transition: background-color 300ms var(--ease), border-color 300ms var(--ease), color 300ms var(--ease);
+}
+.btn:hover { background: var(--btn-bg-hover); border-color: var(--btn-bg-hover); }
+
+.btn--light {
+  --btn-bg: var(--color-cream);
+  --btn-fg: var(--color-deep-green);
+  --btn-bg-hover: var(--color-paper);
+}
+
+.btn--ghost-light {
+  --btn-bg: transparent;
+  --btn-fg: var(--color-cream);
+  --btn-bg-hover: rgba(243, 240, 231, 0.1);
+  border-color: rgba(243, 240, 231, 0.55);
+}
+.btn--ghost-light:hover { border-color: var(--color-cream); }
+
+.arrow { width: 1.125rem; height: auto; flex: none; transition: transform 350ms var(--ease); }
+.btn:hover .arrow,
+.link-arrow:hover .arrow { transform: translateX(4px); }
+
+/* Underlined text link with arrow: "CÂU CHUYỆN CỦA CHÚNG TÔI →" */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding-block: 0.5rem;
+  border-bottom: 1px solid var(--color-line-strong);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  transition: border-color 300ms var(--ease);
+}
+.link-arrow:hover { border-color: currentColor; }
+
+/* Motion ----------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}

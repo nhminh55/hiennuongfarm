@@ -1,0 +1,147 @@
+---
+import Photo from '../Photo.astro';
+import Arrow from '../Arrow.astro';
+---
+<section class="hero" aria-labelledby="hero-title">
+  <Photo
+    class="hero__media"
+    tone="deep"
+    loading="eager"
+    labelPosition="top-right"
+    alt="Toàn cảnh vùng Bảy Núi lúc bình minh, núi phía sau, vườn và trang trại phía trước"
+    brief="Toàn cảnh Bảy Núi lúc bình minh — núi phía sau, vườn trại phía trước. Ảnh ngang, tối thiểu 2400px."
+  />
+  <div class="hero__scrim" aria-hidden="true"></div>
+
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <p class="hero__kicker"><span>Hiền Nương Farm</span><span aria-hidden="true">·</span><span>Bảy Núi, An Giang</span></p>
+      <h1 class="display hero__title" id="hero-title">
+        <span>Nông nghiệp</span>
+        <span>từ đất</span>
+        <span>đến giá trị</span>
+        <span>bền vững</span>
+      </h1>
+      <p class="hero__sub">Mô hình nông nghiệp tuần hoàn tại vùng Bảy&nbsp;Núi – An&nbsp;Giang.</p>
+      <a class="btn btn--light hero__cta" href="#ve-hien-nuong">
+        Khám phá Hiền Nương <Arrow />
+      </a>
+    </div>
+
+    <a class="hero__scroll" href="#ve-hien-nuong" aria-label="Kéo xuống phần tiếp theo">
+      <span class="hero__scroll-line" aria-hidden="true"></span>
+      <span class="hero__scroll-text" aria-hidden="true">Kéo xuống</span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    display: flex;
+    min-height: max(36rem, 100svh);
+    color: var(--color-cream);
+    background: var(--color-deep-green);
+    isolation: isolate;
+  }
+
+  .hero :global(.hero__media) {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+  }
+
+  /* Pushes the placeholder label clear of the fixed header. */
+  .hero :global(.hero__media .photo__label) { top: var(--header-h); }
+
+  /* Legibility scrim for the headline over any photograph. */
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(to bottom, rgba(16, 43, 33, 0.5) 0%, rgba(16, 43, 33, 0) 22%),
+      linear-gradient(to top, rgba(16, 43, 33, 0.72) 0%, rgba(16, 43, 33, 0.18) 55%, rgba(16, 43, 33, 0) 80%);
+  }
+
+  .hero__inner {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-xl);
+    padding-top: calc(var(--header-h) + var(--space-2xl));
+    padding-bottom: clamp(2.5rem, 2rem + 4vh, 5.5rem);
+  }
+
+  .hero__content { max-width: 52rem; }
+
+  .hero__kicker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.875rem;
+    margin-bottom: var(--space-m);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-text-inverse-muted);
+  }
+
+  .hero__kicker span { white-space: nowrap; }
+
+  .hero__title span { display: block; }
+
+  .hero__sub {
+    max-width: 32rem;
+    margin-top: var(--space-m);
+    font-family: var(--font-display);
+    font-size: var(--fs-lead);
+    line-height: 1.45;
+    color: var(--color-text-inverse-muted);
+  }
+
+  .hero__cta { margin-top: var(--space-xl); }
+
+  .hero__scroll {
+    display: none;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 0.25rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-text-inverse-muted);
+  }
+
+  .hero__scroll-text { writing-mode: vertical-rl; }
+
+  .hero__scroll-line {
+    position: relative;
+    width: 1px;
+    height: 4.5rem;
+    overflow: hidden;
+    background: var(--color-line-inverse);
+  }
+
+  .hero__scroll-line::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--color-cream);
+    transform: translateY(-100%);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero__scroll-line::after { animation: scroll-cue 2.8s var(--ease) infinite; }
+    @keyframes scroll-cue {
+      0% { transform: translateY(-100%); }
+      55%, 100% { transform: translateY(100%); }
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero__scroll { display: flex; }
+  }
+</style>

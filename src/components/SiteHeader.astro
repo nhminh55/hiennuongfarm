@@ -1,0 +1,297 @@
+---
+import { nav, contact } from '../data/site';
+import Wordmark from './Wordmark.astro';
+
+interface Props {
+  /** Transparent header over a full-bleed hero; turns solid on scroll. */
+  overlay?: boolean;
+}
+
+const { overlay = false } = Astro.props;
+---
+<header
+  class:list={['site-header', { 'site-header--overlay': overlay }]}
+  data-header
+  data-overlay={overlay ? '' : undefined}
+>
+  <div class="site-header__bar">
+    <div class="container site-header__inner">
+      <Wordmark href="/" class="site-header__brand" />
+
+      <nav class="site-nav" aria-label="Điều hướng chính">
+        <ul class="site-nav__list">
+          {nav.map((item) => (
+            <li><a class="site-nav__link" href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <a class="site-header__cta" href="/#hop-tac">Liên hệ</a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        data-menu-toggle
+      >
+        <span class="menu-toggle__label" data-menu-label>Menu</span>
+        <span class="menu-toggle__icon" aria-hidden="true"><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" data-menu hidden>
+    <div class="container mobile-menu__inner">
+      <nav aria-label="Điều hướng">
+        <ol class="mobile-menu__list">
+          {nav.map((item, i) => (
+            <li>
+              <a class="mobile-menu__link" href={item.href} data-menu-link>
+                <span class="mobile-menu__num">{String(i + 1).padStart(2, '0')}</span>
+                <span>{item.label}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+      <div class="mobile-menu__foot">
+        <a href={`mailto:${contact.email}`}>{contact.email}</a>
+        <p>{contact.addressLines.join(', ')}</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-header]');
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const label = document.querySelector<HTMLElement>('[data-menu-label]');
+  const menu = document.querySelector<HTMLElement>('[data-menu]');
+
+  if (header && toggle && label && menu) {
+    // Solid background once the page has scrolled past the top.
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      label.textContent = open ? 'Đóng' : 'Menu';
+      header.classList.toggle('is-menu-open', open);
+      document.body.classList.toggle('is-locked', open);
+      menu.hidden = !open;
+      if (open) menu.querySelector<HTMLElement>('a')?.focus();
+    };
+
+    toggle.addEventListener('click', () => {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    menu.querySelectorAll('[data-menu-link]').forEach((link) => {
+      link.addEventListener('click', () => setOpen(false));
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !menu.hidden) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    // Close the menu if the viewport grows into the desktop layout.
+    window.matchMedia('(min-width: 1120px)').addEventListener('change', (event) => {
+      if (event.matches) setOpen(false);
+    });
+  }
+</script>
+
+<style>
+  .site-header {
+    --header-fg: var(--color-charcoal);
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 50;
+    color: var(--header-fg);
+  }
+
+  .site-header__bar {
+    position: relative;
+    z-index: 2;
+    background: var(--color-paper);
+    border-bottom: 1px solid var(--color-line);
+    transition: background-color 400ms var(--ease), border-color 400ms var(--ease), color 400ms var(--ease);
+  }
+
+  .site-header--overlay { --header-fg: var(--color-cream); }
+  .site-header--overlay .site-header__bar {
+    background: transparent;
+    border-bottom-color: transparent;
+  }
+
+  .site-header--overlay.is-scrolled { --header-fg: var(--color-charcoal); }
+  .site-header--overlay.is-scrolled .site-header__bar {
+    background: var(--color-paper);
+    border-bottom-color: var(--color-line);
+  }
+
+  .site-header.is-menu-open { --header-fg: var(--color-cream); }
+  .site-header.is-menu-open .site-header__bar {
+    background: transparent;
+    border-bottom-color: var(--color-line-inverse);
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-l);
+    height: var(--header-h);
+  }
+
+  .site-nav { margin-left: auto; display: none; }
+
+  .site-nav__list {
+    display: flex;
+    gap: clamp(1.5rem, 2.4vw, 2.75rem);
+  }
+
+  .site-nav__link {
+    position: relative;
+    display: inline-block;
+    padding-block: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  .site-nav__link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.125rem;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 400ms var(--ease);
+  }
+  .site-nav__link:hover::after { transform: scaleX(1); }
+
+  .site-header__cta {
+    display: none;
+    padding: 0.625rem 1.125rem;
+    border: 1px solid currentColor;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: background-color 300ms var(--ease), color 300ms var(--ease);
+  }
+  .site-header__cta:hover {
+    background: var(--header-fg);
+    color: var(--color-paper);
+  }
+  .site-header--overlay:not(.is-scrolled) .site-header__cta:hover { color: var(--color-deep-green); }
+
+  /* Menu toggle (below desktop) */
+  .menu-toggle {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 2.75rem;
+    padding-inline: 0.25rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .menu-toggle__icon {
+    position: relative;
+    width: 1.5rem;
+    height: 0.5rem;
+  }
+  .menu-toggle__icon span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: currentColor;
+    transition: transform 400ms var(--ease), top 400ms var(--ease);
+  }
+  .menu-toggle__icon span:first-child { top: 0; }
+  .menu-toggle__icon span:last-child { top: calc(100% - 1px); }
+
+  .is-menu-open .menu-toggle__icon span { top: calc(50% - 0.5px); }
+  .is-menu-open .menu-toggle__icon span:first-child { transform: rotate(18deg); }
+  .is-menu-open .menu-toggle__icon span:last-child { transform: rotate(-18deg); }
+
+  /* Mobile menu overlay */
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    background: var(--color-deep-green);
+    color: var(--color-cream);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .mobile-menu:not([hidden]) { animation: menu-in 400ms var(--ease); }
+    @keyframes menu-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  }
+
+  .mobile-menu__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-xl);
+    min-height: 100%;
+    padding-top: calc(var(--header-h) + var(--space-xl));
+    padding-bottom: var(--space-xl);
+  }
+
+  .mobile-menu__list { border-top: 1px solid var(--color-line-inverse); }
+  .mobile-menu__list li { border-bottom: 1px solid var(--color-line-inverse); }
+
+  .mobile-menu__link {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    padding-block: 1rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.625rem, 1.2rem + 2.4vw, 2.5rem);
+    line-height: 1.25;
+  }
+
+  .mobile-menu__num {
+    flex: none;
+    width: 1.75rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: var(--color-text-inverse-muted);
+  }
+
+  .mobile-menu__foot {
+    display: grid;
+    gap: 0.375rem;
+    font-size: var(--fs-small);
+    color: var(--color-text-inverse-muted);
+  }
+  .mobile-menu__foot a { color: var(--color-cream); }
+
+  @media (min-width: 1120px) {
+    .site-nav,
+    .site-header__cta { display: block; }
+    .menu-toggle,
+    .mobile-menu { display: none; }
+  }
+</style>

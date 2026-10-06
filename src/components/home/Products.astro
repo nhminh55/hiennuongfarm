@@ -1,0 +1,156 @@
+---
+import Photo from '../Photo.astro';
+import Eyebrow from '../Eyebrow.astro';
+import Arrow from '../Arrow.astro';
+
+// VERIFY: product names are from the design mockup. Descriptions are pending
+// from Hiền Nương — no product or health claims should be added without a source.
+const lead = {
+  name: 'Nấm Linh Chi Tai To',
+  tone: 'earth' as const,
+  alt: 'Những tai nấm linh chi lớn đặt trên mặt gỗ',
+  brief: 'Nấm linh chi tai to, chụp cận trên nền gỗ hoặc vải thô. Ảnh dọc 4:5.',
+};
+
+const others = [
+  {
+    name: 'Nấm Mối Đen',
+    tone: 'deep' as const,
+    alt: 'Nấm mối đen sau thu hoạch',
+    brief: 'Nấm mối đen, chụp từ trên xuống. Ảnh vuông.',
+  },
+  {
+    name: 'Đông Trùng Hạ Thảo',
+    tone: 'clay' as const,
+    alt: 'Đông trùng hạ thảo nuôi cấy',
+    brief: 'Đông trùng hạ thảo trong bình nuôi hoặc sau sấy. Ảnh vuông.',
+  },
+  {
+    name: 'Trà Linh Chi',
+    tone: 'moss' as const,
+    alt: 'Trà linh chi đóng gói bên tách trà',
+    brief: 'Bao bì trà linh chi cạnh tách trà. Ảnh vuông.',
+  },
+];
+---
+<section class="section products" id="san-vat" aria-labelledby="products-title">
+  <div class="container">
+    <header class="grid products__head" data-reveal>
+      <div class="products__heading">
+        <Eyebrow num="03">Sản vật từ trang trại</Eyebrow>
+        <h2 class="h2 products__title" id="products-title">Tinh hoa từ những loại nấm quý</h2>
+      </div>
+      <p class="body products__intro">
+        Mỗi sản phẩm là kết tinh của thiên nhiên, kinh nghiệm và sự tận tâm của người nông dân
+        Hiền Nương.
+      </p>
+    </header>
+
+    <div class="grid products__body">
+      <article class="feature" data-reveal>
+        <Photo ratio="4 / 5" tone={lead.tone} alt={lead.alt} brief={lead.brief} />
+        <div class="feature__text">
+          <span class="products__num">01</span>
+          <h3 class="h3">{lead.name}</h3>
+          <p class="tbd">Mô tả sản phẩm đang được cập nhật.</p>
+        </div>
+      </article>
+
+      <ol class="index" start="2">
+        {others.map((item, i) => (
+          <li class="index__item" data-reveal style={`--reveal-delay: ${120 + i * 100}ms`}>
+            <Photo class="index__photo" ratio="1 / 1" tone={item.tone} alt={item.alt} brief={item.brief} />
+            <div class="index__text">
+              <span class="products__num">{String(i + 2).padStart(2, '0')}</span>
+              <h3 class="h3">{item.name}</h3>
+              <p class="tbd">Mô tả sản phẩm đang được cập nhật.</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <div class="products__foot" data-reveal>
+      <a class="link-arrow" href="#hop-tac">Liên hệ về sản phẩm <Arrow /></a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .products { background: var(--color-paper); }
+
+  .products__head {
+    row-gap: var(--space-m);
+    align-items: end;
+    padding-bottom: var(--space-2xl);
+  }
+
+  .products__heading,
+  .products__intro { grid-column: 1 / -1; }
+
+  .products__title { margin-top: var(--space-l); max-width: 14ch; }
+  .products__intro { max-width: 28rem; }
+
+  .products__body { row-gap: var(--space-2xl); }
+
+  .feature,
+  .index { grid-column: 1 / -1; }
+
+  .products__num {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: var(--color-earth);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .feature__text { margin-top: var(--space-m); }
+  .feature__text .tbd,
+  .index__text .tbd { margin-top: 0.5rem; }
+
+  .index { border-top: 1px solid var(--color-line); }
+
+  .index__item {
+    display: grid;
+    grid-template-columns: minmax(0, 6rem) minmax(0, 1fr);
+    gap: var(--space-m);
+    align-items: center;
+    padding-block: var(--space-m);
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  @media (min-width: 480px) {
+    .index__item { grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr); }
+  }
+
+  .products__foot {
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-l);
+    border-top: 1px solid var(--color-line);
+  }
+
+  @media (min-width: 768px) {
+    .products__heading { grid-column: 1 / span 7; }
+    .products__intro { grid-column: 9 / span 4; }
+
+    .feature { grid-column: 1 / span 6; }
+    .index { grid-column: 7 / span 6; align-self: start; border-top: 0; }
+    .index__item { grid-template-columns: minmax(0, 9rem) minmax(0, 1fr); }
+    .index__item:first-child { padding-top: 0; }
+  }
+
+  @media (min-width: 1024px) {
+    .feature { grid-column: 1 / span 6; }
+    .index { grid-column: 8 / span 5; }
+    .index__item {
+      grid-template-columns: minmax(0, 11rem) minmax(0, 1fr);
+      gap: var(--space-l);
+      padding-block: var(--space-l);
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .index__item { grid-template-columns: minmax(0, 13rem) minmax(0, 1fr); }
+  }
+</style>

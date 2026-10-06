@@ -1,0 +1,89 @@
+---
+import Eyebrow from '../Eyebrow.astro';
+import Arrow from '../Arrow.astro';
+import { contact } from '../../data/site';
+
+const subject = encodeURIComponent('Hợp tác cùng Hiền Nương Farm');
+---
+<section class="section partner" id="hop-tac" aria-labelledby="partner-title">
+  <div class="container grid partner__grid">
+    <div class="partner__heading" data-reveal>
+      <Eyebrow num="05">Hợp tác cùng Hiền Nương</Eyebrow>
+      <h2 class="h2 partner__title" id="partner-title">
+        Cùng tạo nên những giá trị bền vững từ nông nghiệp.
+      </h2>
+    </div>
+
+    <div class="partner__body" data-reveal style="--reveal-delay: 120ms">
+      <p class="body">
+        Chúng tôi luôn chào đón đối tác, khách hàng và những người cùng chung chí hướng phát triển
+        nông nghiệp bền vững, nâng tầm giá trị nông sản Việt.
+      </p>
+      <a class="btn partner__cta" href={`mailto:${contact.email}?subject=${subject}`}>
+        Liên hệ hợp tác <Arrow />
+      </a>
+
+      <dl class="partner__contact">
+        <div>
+          <dt>Địa chỉ</dt>
+          <dd>{contact.addressLines[0]},<br />{contact.addressLines[1]}</dd>
+        </div>
+        <div>
+          <dt>Email</dt>
+          <dd><a href={`mailto:${contact.email}`}>{contact.email}</a></dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<style>
+  .partner {
+    background: var(--color-cream);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .partner__grid { row-gap: var(--space-xl); }
+
+  .partner__heading,
+  .partner__body { grid-column: 1 / -1; }
+
+  .partner__title { margin-top: var(--space-l); max-width: 19ch; }
+
+  .partner__body .body { max-width: 30rem; }
+
+  .partner__cta { margin-top: var(--space-l); }
+
+  .partner__contact {
+    display: grid;
+    gap: var(--space-m);
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-l);
+    border-top: 1px solid var(--color-line);
+    font-size: var(--fs-small);
+  }
+
+  .partner__contact dt {
+    margin-bottom: 0.25rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-earth);
+  }
+
+  .partner__contact a {
+    border-bottom: 1px solid var(--color-line-strong);
+    transition: border-color 300ms var(--ease);
+  }
+  .partner__contact a:hover { border-color: currentColor; }
+
+  @media (min-width: 640px) {
+    .partner__contact { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--col-gap); }
+  }
+
+  @media (min-width: 1024px) {
+    .partner__heading { grid-column: 1 / span 6; }
+    .partner__body { grid-column: 8 / span 5; padding-top: 2.75rem; }
+  }
+</style>

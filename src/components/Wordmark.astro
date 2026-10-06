@@ -1,0 +1,44 @@
+---
+// Typographic wordmark. Stand-in until the official Hiền Nương logo file is supplied.
+interface Props {
+  href?: string;
+  class?: string;
+}
+const { href, class: className } = Astro.props;
+const Tag = href ? 'a' : 'span';
+---
+<Tag
+  class:list={['wordmark', className]}
+  href={href}
+  aria-label={href ? 'Hiền Nương Farm — Trang chủ' : undefined}
+>
+  <span class="wordmark__name">Hiền Nương</span>
+  <span class="wordmark__sub">Farm</span>
+</Tag>
+
+<style>
+  .wordmark {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .wordmark__name {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.15;
+  }
+
+  .wordmark__sub {
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+</style>

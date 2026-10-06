@@ -1,0 +1,19 @@
+---
+// Thin directional arrow used in buttons and text links.
+interface Props {
+  direction?: 'right' | 'up' | 'down';
+}
+const { direction = 'right' } = Astro.props;
+const rotate = { right: 0, up: -90, down: 90 }[direction];
+---
+<svg
+  class="arrow"
+  viewBox="0 0 18 10"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1"
+  aria-hidden="true"
+  style={rotate ? `rotate: ${rotate}deg` : undefined}
+>
+  <path d="M0 5h17M12.5 0.5 17 5l-4.5 4.5" />
+</svg>

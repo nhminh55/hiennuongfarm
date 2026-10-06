@@ -1,0 +1,13 @@
+---
+// Section label: "01 —— Về Hiền Nương".
+interface Props {
+  num?: string;
+  class?: string;
+}
+const { num, class: className } = Astro.props;
+---
+<p class:list={['eyebrow', className]}>
+  {num && <span class="eyebrow__num">{num}</span>}
+  {num && <span class="eyebrow__rule" aria-hidden="true"></span>}
+  <span><slot /></span>
+</p>

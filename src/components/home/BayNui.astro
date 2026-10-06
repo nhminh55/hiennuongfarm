@@ -1,0 +1,116 @@
+---
+import Photo from '../Photo.astro';
+import Eyebrow from '../Eyebrow.astro';
+---
+<section class="baynui" id="bay-nui" aria-labelledby="baynui-title">
+  <div class="baynui__hero">
+    <Photo
+      class="baynui__media"
+      tone="moss"
+      labelPosition="top-right"
+      alt="Dãy núi vùng Bảy Núi lúc hoàng hôn, cánh đồng trải dài phía trước"
+      brief="Toàn cảnh dãy Bảy Núi lúc hoàng hôn, đồng ruộng phía trước. Ảnh ngang toàn khổ, tối thiểu 2400px."
+    />
+    <div class="baynui__scrim" aria-hidden="true"></div>
+    <div class="container baynui__heading" data-reveal>
+      <Eyebrow num="04" class="baynui__eyebrow">Từ vùng Bảy Núi</Eyebrow>
+      <h2 class="h2 baynui__title" id="baynui-title">
+        <span>Một vùng đất.</span>
+        <span>Một hệ sinh thái.</span>
+        <span>Một cách làm nông nghiệp.</span>
+      </h2>
+    </div>
+  </div>
+
+  <div class="section baynui__story">
+    <div class="container grid baynui__grid">
+      <div class="baynui__text" data-reveal>
+        <p class="lead">
+          Bảy Núi không chỉ là nơi chúng tôi bắt đầu, mà còn là nguồn cảm hứng để Hiền Nương kiến tạo
+          những giá trị bền vững cho cộng đồng và thế hệ mai sau.
+        </p>
+        <p class="body baynui__body">
+          Bảy Núi — còn gọi là Thất Sơn — là vùng đồi núi phía tây An Giang, một trong số ít nơi
+          núi non xuất hiện giữa đồng bằng sông Cửu Long.
+        </p>
+      </div>
+
+      <Photo
+        class="baynui__photo baynui__photo--a"
+        ratio="4 / 5"
+        tone="forest"
+        alt="Vườn cây dưới chân núi vào buổi sáng sớm"
+        brief="Vườn trại dưới chân núi, sáng sớm có sương. Ảnh dọc 4:5."
+      />
+      <Photo
+        class="baynui__photo baynui__photo--b"
+        ratio="3 / 4"
+        tone="stone"
+        alt="Người làm vườn trên lối đi giữa trang trại"
+        brief="Người làm vườn trong trang trại, khung hình rộng. Ảnh dọc 3:4."
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .baynui { background: var(--color-paper); }
+
+  .baynui__hero {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: clamp(30rem, 62vw, 50rem);
+    color: var(--color-cream);
+    isolation: isolate;
+  }
+
+  .baynui__hero :global(.baynui__media) {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+  }
+
+  .baynui__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(to top, rgba(16, 43, 33, 0.62) 0%, rgba(16, 43, 33, 0) 60%);
+  }
+
+  .baynui__heading { padding-block: var(--space-3xl) var(--space-2xl); }
+
+  .baynui__hero :global(.baynui__eyebrow) { color: var(--color-cream); }
+
+  .baynui__title { margin-top: var(--space-l); }
+  .baynui__title span { display: block; }
+
+  .baynui__grid { row-gap: var(--space-xl); }
+
+  .baynui__text { grid-column: 1 / -1; }
+  .baynui__text .lead { max-width: 30ch; }
+  .baynui__body { margin-top: var(--space-l); max-width: 30rem; }
+
+  .baynui__grid :global(.baynui__photo--a) { grid-column: 1 / span 10; }
+  .baynui__grid :global(.baynui__photo--b) { grid-column: 5 / -1; }
+
+  @media (min-width: 768px) {
+    .baynui__text { grid-column: 1 / span 5; }
+    .baynui__grid :global(.baynui__photo--a) { grid-column: 7 / span 6; grid-row: 1 / span 2; }
+    .baynui__grid :global(.baynui__photo--b) {
+      grid-column: 2 / span 4;
+      grid-row: 2;
+      margin-top: 0;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .baynui__text { grid-column: 1 / span 4; }
+    .baynui__grid :global(.baynui__photo--a) { grid-column: 6 / span 4; grid-row: 1; }
+    .baynui__grid :global(.baynui__photo--b) {
+      grid-column: 10 / span 3;
+      grid-row: 1;
+      margin-top: var(--space-3xl);
+    }
+  }
+</style>

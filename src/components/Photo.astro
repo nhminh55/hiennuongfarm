@@ -1,0 +1,130 @@
+---
+/**
+ * Photograph slot.
+ *
+ * No real photography has been supplied yet, so every slot currently renders a
+ * clearly labelled placeholder ("Ảnh tạm") describing the intended shot.
+ * To use a real photo, pass `src` (a path under /public, e.g. "/images/hero.jpg").
+ */
+interface Props {
+  /** Path to the real photo. Omit to render the labelled placeholder. */
+  src?: string;
+  /** Alt text describing the photo. */
+  alt: string;
+  /** Short brief of the intended shot, shown on the placeholder. */
+  brief: string;
+  /** CSS aspect-ratio, e.g. "4 / 5". Omit when the parent sets the size. */
+  ratio?: string;
+  tone?: 'forest' | 'deep' | 'earth' | 'moss' | 'stone' | 'clay';
+  loading?: 'lazy' | 'eager';
+  /** Placement of the placeholder label. */
+  labelPosition?: 'bottom-left' | 'bottom-right' | 'top-right';
+  class?: string;
+}
+
+const {
+  src,
+  alt,
+  brief,
+  ratio,
+  tone = 'moss',
+  loading = 'lazy',
+  labelPosition = 'bottom-left',
+  class: className,
+} = Astro.props;
+
+const style = ratio ? `--ratio: ${ratio}` : undefined;
+---
+{
+  src ? (
+    <div class:list={['photo', className]} style={style}>
+      <img src={src} alt={alt} loading={loading} decoding="async" />
+    </div>
+  ) : (
+    <div
+      class:list={['photo', 'photo--placeholder', `photo--${tone}`, `photo--label-${labelPosition}`, className]}
+      style={style}
+      role="img"
+      aria-label={`Ảnh tạm: ${alt}`}
+      data-placeholder="photo"
+    >
+      <span class="photo__label" aria-hidden="true">
+        <span class="photo__tag">Ảnh tạm</span>
+        <span class="photo__brief">{brief}</span>
+      </span>
+    </div>
+  )
+}
+
+<style>
+  .photo {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: var(--ratio, auto);
+    background: var(--ph-bg, var(--color-cream));
+    container-type: inline-size;
+  }
+
+  .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Placeholder: tonal field + fine grain + inset frame, so it reads as an
+     empty photograph slot rather than a design element. */
+  .photo--placeholder {
+    --ph-ink: rgba(243, 240, 231, 0.86);
+    --ph-frame: rgba(243, 240, 231, 0.16);
+    background-color: var(--ph-bg);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .photo--placeholder::after {
+    content: "";
+    position: absolute;
+    inset: clamp(0.625rem, 1.2vw, 1rem);
+    border: 1px solid var(--ph-frame);
+    pointer-events: none;
+  }
+
+  .photo--forest { --ph-bg: #2C4638; }
+  .photo--deep   { --ph-bg: #1A3127; }
+  .photo--earth  { --ph-bg: #7E6748; }
+  .photo--moss   { --ph-bg: #6F785D; }
+  .photo--clay   { --ph-bg: #9A7E62; }
+  .photo--stone  {
+    --ph-bg: #CBC3AF;
+    --ph-ink: rgba(32, 34, 31, 0.78);
+    --ph-frame: rgba(32, 34, 31, 0.14);
+  }
+
+  .photo__label {
+    position: absolute;
+    z-index: 1;
+    display: grid;
+    gap: 0.25rem;
+    max-width: min(22rem, calc(100% - 3rem));
+    padding: clamp(1.25rem, 2vw, 1.75rem);
+    color: var(--ph-ink);
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .photo--label-bottom-left .photo__label { left: 0; bottom: 0; }
+  .photo--label-bottom-right .photo__label { right: 0; bottom: 0; text-align: right; }
+  .photo--label-top-right .photo__label { right: 0; top: 0; text-align: right; }
+
+  .photo__tag {
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  /* Small slots only carry the tag; the alt text still describes the image. */
+  @container (max-width: 240px) {
+    .photo__brief { display: none; }
+  }
+</style>

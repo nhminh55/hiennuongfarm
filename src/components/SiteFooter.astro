@@ -1,0 +1,124 @@
+---
+import { nav, contact } from '../data/site';
+import Wordmark from './Wordmark.astro';
+import Arrow from './Arrow.astro';
+
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <Wordmark href="/" />
+        <p class="site-footer__line">
+          Nông nghiệp tuần hoàn<br />từ vùng Bảy Núi, An Giang.
+        </p>
+      </div>
+
+      <nav class="site-footer__col site-footer__col--nav" aria-label="Điều hướng chân trang">
+        <p class="site-footer__heading">Khám phá</p>
+        <ul class="site-footer__list">
+          {nav.map((item) => (
+            <li><a href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="site-footer__col site-footer__col--contact">
+        <p class="site-footer__heading">Liên hệ</p>
+        <address class="site-footer__list">
+          <span>{contact.addressLines[0]}</span>
+          <span>{contact.addressLines[1]}</span>
+          <a href={`mailto:${contact.email}`}>{contact.email}</a>
+        </address>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <p>© {year} Hiền Nương Farm. Bảo lưu mọi quyền.</p>
+      <a class="site-footer__top-link" href="#top">
+        Lên đầu trang <Arrow direction="up" />
+      </a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-deep-green);
+    color: var(--color-cream);
+    font-size: var(--fs-small);
+  }
+
+  .site-footer__top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    padding-block: var(--space-3xl) var(--space-2xl);
+  }
+
+  .site-footer__line {
+    margin-top: var(--space-m);
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    line-height: 1.5;
+    color: var(--color-text-inverse-muted);
+  }
+
+  .site-footer__heading {
+    margin-bottom: var(--space-s);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-inverse-muted);
+  }
+
+  .site-footer__list {
+    display: grid;
+    gap: 0.5rem;
+    font-style: normal;
+  }
+
+  .site-footer__list a {
+    transition: color 300ms var(--ease);
+  }
+  .site-footer__list a:hover { color: var(--color-text-inverse-muted); }
+
+  .site-footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-s) var(--space-l);
+    padding-block: var(--space-m);
+    border-top: 1px solid var(--color-line-inverse);
+    color: var(--color-text-inverse-muted);
+    font-size: 0.8125rem;
+  }
+
+  .site-footer__top-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    min-height: 2.75rem;
+    color: var(--color-cream);
+  }
+  .site-footer__top-link :global(.arrow) { width: 0.875rem; }
+
+  @media (min-width: 768px) {
+    .site-footer__top {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: var(--col-gap);
+    }
+    .site-footer__brand { grid-column: 1 / span 12; }
+    .site-footer__col--nav { grid-column: 1 / span 5; }
+    .site-footer__col--contact { grid-column: 7 / span 6; }
+  }
+
+  @media (min-width: 1024px) {
+    .site-footer__brand { grid-column: 1 / span 5; }
+    .site-footer__col--nav { grid-column: 7 / span 3; }
+    .site-footer__col--contact { grid-column: 10 / span 3; }
+  }
+</style>
