@@ -4,12 +4,13 @@ import Eyebrow from '../Eyebrow.astro';
 ---
 <section class="baynui" id="bay-nui" aria-labelledby="baynui-title">
   <div class="baynui__hero">
+    <!-- Video frame 00:00.5 (opening aerial, no subtitle). -->
     <Photo
       class="baynui__media"
-      tone="moss"
-      labelPosition="top-right"
-      alt="Dãy núi vùng Bảy Núi lúc hoàng hôn, cánh đồng trải dài phía trước"
-      brief="Toàn cảnh dãy Bảy Núi lúc hoàng hôn, đồng ruộng phía trước. Ảnh ngang toàn khổ, tối thiểu 2400px."
+      src="/images/farm/bay-nui-canh-dong.webp"
+      width={1280}
+      height={720}
+      alt="Ô ruộng lúa xanh nhìn thẳng từ trên cao, những cây thốt nốt mọc dọc bờ ruộng"
     />
     <div class="baynui__scrim" aria-hidden="true"></div>
     <div class="container baynui__heading" data-reveal>
@@ -33,21 +34,29 @@ import Eyebrow from '../Eyebrow.astro';
           Bảy Núi — còn gọi là Thất Sơn — là vùng đồi núi phía tây An Giang, một trong số ít nơi
           núi non xuất hiện giữa đồng bằng sông Cửu Long.
         </p>
+        <!-- Source: the Hiền Nương Farm video (01:32–01:41, 02:04–02:07). -->
+        <p class="body baynui__body">
+          Từ phối trộn, đóng bịch giá thể đến chăm sóc và thu hái, công việc ở trang trại
+          tạo sinh kế ổn định cho người lao động địa phương.
+        </p>
       </div>
 
+      <!-- Video frames 02:12.67 and 02:02.67 (the latter cropped above its subtitle). -->
       <Photo
         class="baynui__photo baynui__photo--a"
+        src="/images/farm/community-dong-bich.webp"
+        width={576}
+        height={720}
         ratio="4 / 5"
-        tone="forest"
-        alt="Vườn cây dưới chân núi vào buổi sáng sớm"
-        brief="Vườn trại dưới chân núi, sáng sớm có sương. Ảnh dọc 4:5."
+        alt="Hai người phụ nữ mặc áo khoác xanh ngồi đóng bịch giá thể, cười nói bên đống giá thể"
       />
       <Photo
         class="baynui__photo baynui__photo--b"
+        src="/images/farm/community-chan-dung.webp"
+        width={450}
+        height={600}
         ratio="3 / 4"
-        tone="stone"
-        alt="Người làm vườn trên lối đi giữa trang trại"
-        brief="Người làm vườn trong trang trại, khung hình rộng. Ảnh dọc 3:4."
+        alt="Một người phụ nữ lớn tuổi mặc áo khoác xanh mỉm cười tại khu làm việc của trang trại"
       />
     </div>
   </div>

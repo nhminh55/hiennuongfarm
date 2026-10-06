@@ -3,32 +3,39 @@ import Photo from '../Photo.astro';
 import Eyebrow from '../Eyebrow.astro';
 import Arrow from '../Arrow.astro';
 
-// VERIFY: product names are from the design mockup. Descriptions are pending
-// from Hiền Nương — no product or health claims should be added without a source.
+// The four main mushroom lines, as presented in the Hiền Nương Farm video
+// (01:24–01:31). Photos are frames from that sequence.
+// Descriptions are pending from Hiền Nương — no product or health claims
+// should be added without a source.
 const lead = {
-  name: 'Nấm Linh Chi Tai To',
-  alt: 'Những tai nấm linh chi lớn đặt trên mặt gỗ',
-  brief: 'Nấm linh chi tai to đặt trên nền gỗ mộc hoặc vải thô, ánh sáng cửa sổ. Ảnh ngang 5:4.',
+  name: 'Nấm Mối Đen',
+  src: '/images/farm/product-nam-moi-den.webp',
+  width: 750,
+  height: 600,
+  alt: 'Những cây nấm mối đen mọc lên từ bịch giá thể, cây lớn nhất bên phải',
 };
 
 const others = [
   {
-    name: 'Nấm Mối Đen',
-    tone: 'deep' as const,
-    alt: 'Nấm mối đen sau thu hoạch',
-    brief: 'Nấm mối đen sau thu hoạch, chụp từ trên xuống. Ảnh dọc 4:5.',
+    name: 'Nấm Linh Chi',
+    src: '/images/farm/product-linh-chi.webp',
+    width: 576,
+    height: 720,
+    alt: 'Một tai nấm linh chi mọc từ bịch phôi đặt trên lớp rơm',
   },
   {
     name: 'Đông Trùng Hạ Thảo',
-    tone: 'clay' as const,
-    alt: 'Đông trùng hạ thảo nuôi cấy',
-    brief: 'Đông trùng hạ thảo trong bình nuôi hoặc sau sấy. Ảnh dọc 4:5.',
+    src: '/images/farm/product-dong-trung-ha-thao.webp',
+    width: 476,
+    height: 595,
+    alt: 'Cận cảnh những sợi đông trùng hạ thảo màu cam nhạt mọc dày',
   },
   {
-    name: 'Trà Linh Chi',
-    tone: 'moss' as const,
-    alt: 'Trà linh chi đóng gói bên tách trà',
-    brief: 'Bao bì trà linh chi cạnh tách trà, trên bàn gỗ. Ảnh dọc 4:5.',
+    name: 'Nấm Bào Ngư',
+    src: '/images/farm/product-nam-bao-ngu.webp',
+    width: 576,
+    height: 720,
+    alt: 'Chùm nấm bào ngư trắng xám mọc từ bịch phôi trong nhà trồng',
   },
 ];
 ---
@@ -38,17 +45,18 @@ const others = [
       <Eyebrow num="03">Sản vật từ trang trại</Eyebrow>
       <h2 class="h2 products__title" id="products-title">Tinh hoa từ những loại nấm quý</h2>
       <p class="body products__intro">
-        Mỗi sản phẩm là kết tinh của thiên nhiên, kinh nghiệm và sự tận tâm của người nông dân
-        Hiền Nương.
+        Bốn dòng nấm chính được nuôi trồng tại trang trại: nấm mối đen, nấm linh chi,
+        đông trùng hạ thảo và nấm bào ngư.
       </p>
     </header>
 
     <Photo
       class="products__feature-photo"
+      src={lead.src}
+      width={lead.width}
+      height={lead.height}
       ratio="5 / 4"
-      tone="earth"
       alt={lead.alt}
-      brief={lead.brief}
     />
 
     <div class="products__feature-text" data-reveal>
@@ -60,7 +68,14 @@ const others = [
     <ol class="products__more">
       {others.map((item, i) => (
         <li class="more" data-reveal style={`--reveal-delay: ${i * 100}ms`}>
-          <Photo class="more__photo" ratio="4 / 5" tone={item.tone} alt={item.alt} brief={item.brief} />
+          <Photo
+            class="more__photo"
+            src={item.src}
+            width={item.width}
+            height={item.height}
+            ratio="4 / 5"
+            alt={item.alt}
+          />
           <div class="more__text">
             <span class="products__num">{String(i + 2).padStart(2, '0')}</span>
             <h3 class="h3 more__name">{item.name}</h3>

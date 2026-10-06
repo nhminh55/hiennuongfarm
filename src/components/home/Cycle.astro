@@ -2,8 +2,10 @@
 import Photo from '../Photo.astro';
 import Eyebrow from '../Eyebrow.astro';
 
+// Inputs named in the Hiền Nương video (00:41): rice husks, bran and sawdust.
+// VERIFY: "Phân hữu cơ" for the by-product stage is from the design mockup.
 const steps = [
-  { name: 'Nguyên liệu', note: 'Phụ phẩm nông nghiệp' },
+  { name: 'Nguyên liệu', note: 'Trấu, cám, mùn cưa' },
   { name: 'Trồng', note: 'Nấm & dược liệu' },
   { name: 'Thu hoạch', note: 'Sản phẩm tươi' },
   { name: 'Chế biến', note: 'Tăng giá trị' },
@@ -24,8 +26,9 @@ const chevrons = steps.map((_, i) => {
       <Eyebrow num="02" class="cycle__eyebrow">Nông nghiệp tuần hoàn</Eyebrow>
       <h2 class="h2 cycle__title" id="cycle-title">Vòng tuần hoàn khép kín từ thiên nhiên</h2>
       <p class="cycle__body">
-        Chúng tôi theo đuổi mô hình nông nghiệp tuần hoàn: biến phụ phẩm thành tài nguyên,
-        giảm thiểu tác động đến môi trường, và để mỗi vụ mùa nuôi dưỡng vụ mùa tiếp theo.
+        Phụ phẩm nông nghiệp của địa phương như trấu, cám và mùn cưa được tận dụng làm giá thể
+        trồng nấm. Sau thu hoạch, giá thể đã qua sử dụng tiếp tục quay lại phục vụ nông nghiệp —
+        để mỗi vụ mùa nuôi dưỡng vụ mùa tiếp theo.
       </p>
     </div>
 
@@ -57,14 +60,17 @@ const chevrons = steps.map((_, i) => {
     </div>
 
     <figure class="cycle__figure" data-reveal style="--reveal-delay: 200ms">
+      <!-- Video frame 00:49.23. -->
       <Photo
+        class="cycle__photo"
+        src="/images/farm/circular-dong-bich-gia-the.webp"
+        width={1040}
+        height={720}
         ratio="3 / 4"
-        tone="earth"
-        alt="Những chùm nấm đang phát triển trên giá thể trong nhà nuôi trồng"
-        brief="Nấm đang lên trên giá thể trong nhà trồng. Ảnh dọc 3:4."
+        alt="Đôi tay xếp bịch giá thể đã đóng nắp vào giỏ sắt, bên trong là các bịch giá thể khác"
       />
       <figcaption class="cycle__caption">
-        Nông nghiệp tuần hoàn là cách chúng tôi trả lại sự cân bằng cho đất.
+        Giá thể từ phụ phẩm nông nghiệp được đóng bịch, chuẩn bị cho một vụ nấm mới.
       </figcaption>
     </figure>
   </div>
@@ -94,6 +100,9 @@ const chevrons = steps.map((_, i) => {
     color: var(--color-text-inverse-muted);
     text-wrap: pretty;
   }
+
+  /* Crop keeps the hands and the bag they are placing in frame. */
+  .cycle__figure :global(.cycle__photo) { --pos: 62% 50%; }
 
   /* Phones: a landscape crop keeps the section from running long. */
   @media (max-width: 767px) {

@@ -3,13 +3,14 @@ import Photo from '../Photo.astro';
 import Arrow from '../Arrow.astro';
 ---
 <section class="hero" aria-labelledby="hero-title">
+  <!-- Frame from the Hiền Nương Farm video, 00:12.8 (clean frame, no subtitle). -->
   <Photo
     class="hero__media"
-    tone="deep"
+    src="/images/farm/hero-bay-nui.webp"
+    width={1280}
+    height={720}
     loading="eager"
-    labelPosition="top-right"
-    alt="Toàn cảnh vùng Bảy Núi lúc bình minh, núi phía sau, vườn và trang trại phía trước"
-    brief="Toàn cảnh Bảy Núi lúc bình minh — núi phía sau, vườn trại phía trước. Ảnh ngang, tối thiểu 2400px."
+    alt="Cánh đồng lúa xanh điểm hàng thốt nốt, dãy núi vùng Bảy Núi phía xa, nhìn từ trên cao"
   />
   <div class="hero__scrim" aria-hidden="true"></div>
 
@@ -29,13 +30,14 @@ import Arrow from '../Arrow.astro';
     </div>
 
     <!-- The land (background) and what it yields (inset): the headline told in two photographs. -->
+    <!-- Video frame 01:44.97. -->
     <Photo
       class="hero__inset"
+      src="/images/farm/hero-dong-trung-thu-hai.webp"
+      width={576}
+      height={720}
       ratio="4 / 5"
-      tone="earth"
-      loading="eager"
-      alt="Đôi bàn tay người làm nông nâng nấm linh chi vừa thu hái"
-      brief="Cận cảnh đôi tay nâng nấm linh chi vừa thu hái, ánh sáng tự nhiên. Ảnh dọc 4:5."
+      alt="Bàn tay đeo găng cầm một khối đông trùng hạ thảo vừa thu hái, bên cạnh khay và hộp nuôi cấy"
     />
   </div>
 </section>
@@ -58,17 +60,21 @@ import Arrow from '../Arrow.astro';
     z-index: -2;
   }
 
-  /* Pushes the placeholder label clear of the fixed header. */
-  .hero :global(.hero__media .photo__label) { top: var(--header-h); }
+  /* Portrait screens: shift right so the nearer hill joins the ridge. */
+  .hero :global(.hero__media) { --pos: 66% 50%; }
+  @media (min-width: 1024px) {
+    .hero :global(.hero__media) { --pos: 50% 50%; }
+  }
 
-  /* Legibility scrim for the headline over any photograph. */
+  /* Legibility scrim for the headline over the photograph. On phones the
+     text block reaches up to the pale ridge, so the lower scrim rises higher. */
   .hero__scrim {
     position: absolute;
     inset: 0;
     z-index: -1;
     background:
       linear-gradient(to bottom, rgba(16, 43, 33, 0.5) 0%, rgba(16, 43, 33, 0) 22%),
-      linear-gradient(to top, rgba(16, 43, 33, 0.72) 0%, rgba(16, 43, 33, 0.18) 55%, rgba(16, 43, 33, 0) 80%);
+      linear-gradient(to top, rgba(16, 43, 33, 0.72) 0%, rgba(16, 43, 33, 0.42) 55%, rgba(16, 43, 33, 0.22) 80%, rgba(16, 43, 33, 0) 95%);
   }
 
   .hero__inner {
@@ -112,6 +118,17 @@ import Arrow from '../Arrow.astro';
   .hero__cta { margin-top: var(--space-xl); }
 
   .hero :global(.hero__inset) { display: none; }
+
+  /* Wider screens: the kicker and headline sit over the pale mountain
+     ridge, so the scrim also darkens the text side. */
+  @media (min-width: 768px) {
+    .hero__scrim {
+      background:
+        linear-gradient(to right, rgba(16, 43, 33, 0.5) 0%, rgba(16, 43, 33, 0) 60%),
+        linear-gradient(to bottom, rgba(16, 43, 33, 0.5) 0%, rgba(16, 43, 33, 0) 22%),
+        linear-gradient(to top, rgba(16, 43, 33, 0.72) 0%, rgba(16, 43, 33, 0.18) 55%, rgba(16, 43, 33, 0) 80%);
+    }
+  }
 
   @media (min-width: 1024px) {
     .hero {

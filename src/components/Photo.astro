@@ -2,17 +2,25 @@
 /**
  * Photograph slot.
  *
- * No real photography has been supplied yet, so every slot currently renders a
- * clearly labelled placeholder ("Ảnh tạm") describing the intended shot.
- * To use a real photo, pass `src` (a path under /public, e.g. "/images/hero.jpg").
+ * Pass `src` (a path under /public, e.g. "/images/farm/hero.webp") with its
+ * intrinsic `width`/`height` to render the photo. Without `src`, the slot
+ * renders a clearly labelled placeholder ("Ảnh tạm") describing the intended shot.
+ *
+ * Crops are set per photo with `position` (CSS object-position). A section can
+ * override it at a breakpoint by setting `--pos` on the slot.
  */
 interface Props {
   /** Path to the real photo. Omit to render the labelled placeholder. */
   src?: string;
+  /** Intrinsic pixel size of `src`; reserves space before the image loads. */
+  width?: number;
+  height?: number;
+  /** object-position for the crop, e.g. "60% 40%". */
+  position?: string;
   /** Alt text describing the photo. */
   alt: string;
   /** Short brief of the intended shot, shown on the placeholder. */
-  brief: string;
+  brief?: string;
   /** CSS aspect-ratio, e.g. "4 / 5". Omit when the parent sets the size. */
   ratio?: string;
   tone?: 'forest' | 'deep' | 'earth' | 'moss' | 'stone' | 'clay';
@@ -24,6 +32,9 @@ interface Props {
 
 const {
   src,
+  width,
+  height,
+  position,
   alt,
   brief,
   ratio,
@@ -33,12 +44,22 @@ const {
   class: className,
 } = Astro.props;
 
-const style = ratio ? `--ratio: ${ratio}` : undefined;
+const style = [ratio && `--ratio: ${ratio}`, position && `--pos: ${position}`]
+  .filter(Boolean)
+  .join('; ') || undefined;
 ---
 {
   src ? (
     <div class:list={['photo', className]} style={style}>
-      <img src={src} alt={alt} loading={loading} decoding="async" />
+      <img
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        loading={loading}
+        fetchpriority={loading === 'eager' ? 'high' : undefined}
+        decoding={loading === 'eager' ? 'sync' : 'async'}
+      />
     </div>
   ) : (
     <div
@@ -72,6 +93,7 @@ const style = ratio ? `--ratio: ${ratio}` : undefined;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: var(--pos, 50% 50%);
   }
 
   /* Placeholder: tonal field + fine grain + inset frame, so it reads as an
