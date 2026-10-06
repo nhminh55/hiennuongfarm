@@ -70,10 +70,10 @@ const items = products.map((p) => ({ ...p, href: productHref(p), photo: photos[p
             position={item.photo.pos}
             alt={item.photo.alt}
           />
-          <span class="entry__num">{String(i + 1).padStart(2, '0')}</span>
+          <span class="eyebrow entry__num">{String(i + 1).padStart(2, '0')}</span>
           <h3 class="entry__name"><a class="entry__link" href={item.href}>{item.name}</a></h3>
-          <p class="entry__note">{item.photo.note}</p>
-          <span class="entry__more" aria-hidden="true">{item.detail ? 'Xem sản phẩm' : 'Tìm hiểu thêm'} <Arrow /></span>
+          <p class="small entry__note">{item.photo.note}</p>
+          <span class="cta-label entry__more" aria-hidden="true">{item.detail ? 'Xem sản phẩm' : 'Tìm hiểu thêm'} <Arrow /></span>
         </li>
       ))}
     </ol>
@@ -122,26 +122,19 @@ const items = products.map((p) => ({ ...p, href: productHref(p), photo: photos[p
   }
   .entry :global(.entry__photo img) { transition: transform 900ms var(--ease); }
 
-  .entry__num {
-    font-size: 0.6875rem;
-    letter-spacing: 0.14em;
-    color: var(--color-earth);
-    font-variant-numeric: tabular-nums;
-  }
+  .entry__num { font-variant-numeric: tabular-nums; }
 
   .entry__name {
     margin-top: 0.125rem;
     font-family: var(--font-display);
-    font-weight: 400;
-    font-size: 1.3125rem;
-    line-height: 1.25;
+    font-weight: 500;
+    font-size: var(--type-product);
+    line-height: 1.15;
     text-wrap: balance;
   }
 
   .entry__note {
     margin-top: 0.375rem;
-    font-size: 0.875rem;
-    line-height: 1.55;
     color: var(--color-text-muted);
     text-wrap: pretty;
   }
@@ -151,10 +144,6 @@ const items = products.map((p) => ({ ...p, href: productHref(p), photo: photos[p
     align-items: center;
     gap: 0.625rem;
     margin-top: var(--space-xs);
-    font-size: 0.6875rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
     justify-self: start;
   }
   .entry__more :global(.arrow) { width: 0.875rem; }
@@ -170,7 +159,6 @@ const items = products.map((p) => ({ ...p, href: productHref(p), photo: photos[p
     aspect-ratio: 4 / 3;
     margin-bottom: var(--space-s);
   }
-  .entry--lead .entry__name { font-size: 1.75rem; }
 
   /* Tablet: two by two, columns divided by a hairline. */
   @media (min-width: 640px) {
@@ -194,9 +182,6 @@ const items = products.map((p) => ({ ...p, href: productHref(p), photo: photos[p
       aspect-ratio: 3 / 2;
       margin-bottom: var(--space-s);
     }
-
-    .entry__name,
-    .entry--lead .entry__name { font-size: 1.375rem; }
   }
 
   /* Laptop: the four entries in one catalogue row, Nấm Mối Đen widest;
@@ -237,18 +222,15 @@ const items = products.map((p) => ({ ...p, href: productHref(p), photo: photos[p
       margin-bottom: var(--space-m);
     }
 
-    .entry__name { font-size: 1.25rem; }
-    .entry--lead .entry__name { font-size: 1.5rem; }
-    .entry__note { font-size: 0.8125rem; }
     .entry__more { margin-top: auto; padding-top: var(--space-m); }
   }
 
   /* Desktop: the introduction moves beside the catalogue, the two divided
      by a single vertical rule. */
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     .products__grid {
       display: grid;
-      grid-template-columns: minmax(0, 3.5fr) minmax(0, 8.5fr);
+      grid-template-columns: minmax(22.5rem, 3.5fr) minmax(0, 8.5fr);
     }
 
     .products__head {
@@ -264,6 +246,49 @@ const items = products.map((p) => ({ ...p, href: productHref(p), photo: photos[p
       margin-top: 0;
       padding: 0 0 0 var(--space-xl);
       border-top: 0;
+    }
+  }
+
+  /* Laptops (1024–1365): the catalogue takes priority. Each entry is held
+     wide enough for its link on one line and its name in two; the
+     introduction gives up width and the gaps tighten. */
+  @media (min-width: 1024px) and (max-width: 1365px) {
+    .catalogue { column-gap: var(--space-m); }
+    .entry__more { gap: 0.5rem; }
+  }
+
+  /* 1280–1365: the label still fits the narrower introduction column. */
+  @media (min-width: 1280px) and (max-width: 1365px) {
+    .products__grid { grid-template-columns: minmax(0, 1fr) minmax(46.75rem, 2.4fr); }
+    .products__head { padding-right: var(--space-l); }
+
+    .catalogue {
+      grid-template-columns: minmax(10.125rem, 1.25fr) repeat(3, minmax(10rem, 1fr));
+      padding-left: var(--space-l);
+    }
+  }
+
+  /* 1024–1279: the label runs across the top of both columns, so the
+     introduction can narrow further; the rule moves to the catalogue. */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .products__grid {
+      grid-template-columns: minmax(0, 1fr) minmax(43.25rem, 2.4fr);
+      grid-template-rows: auto auto auto auto 1fr;
+      column-gap: var(--space-m);
+    }
+
+    .products__head { display: contents; }
+    .products__head > :global(.eyebrow) { grid-column: 1 / -1; grid-row: 1; margin-bottom: var(--space-l); }
+    .products__title { grid-column: 1; grid-row: 2; margin-top: 0; }
+    .products__intro { grid-column: 1; grid-row: 3; }
+    .products__all { grid-column: 1; grid-row: 4; justify-self: start; }
+
+    .catalogue {
+      grid-column: 2;
+      grid-row: 2 / -1;
+      grid-template-columns: minmax(9.375rem, 1.25fr) repeat(3, minmax(9.25rem, 1fr));
+      padding-left: var(--space-m);
+      border-left: 1px solid var(--color-line);
     }
   }
 </style>

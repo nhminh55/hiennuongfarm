@@ -16,21 +16,21 @@ import Arrow from '../Arrow.astro';
 
   <div class="container hero__inner">
     <div class="hero__content">
-      <p class="hero__kicker">Hiền Nương Farm</p>
+      <p class="eyebrow hero__kicker">Hiền Nương Farm</p>
       <!-- Two phrases, one per line where width allows; a phrase that must
            wrap breaks before its last two words ("từ đất", "bền vững"). -->
       <h1 class="display hero__title" id="hero-title">
         <span>Nông nghiệp từ&nbsp;đất</span>
         <span>đến giá trị bền&nbsp;vững</span>
       </h1>
-      <p class="hero__sub">Mô hình nông nghiệp tuần hoàn tại vùng Bảy&nbsp;Núi – An&nbsp;Giang</p>
+      <p class="body hero__sub">Mô hình nông nghiệp tuần hoàn tại vùng Bảy&nbsp;Núi – An&nbsp;Giang</p>
       <a class="btn btn--light hero__cta" href="#ve-hien-nuong">
         Khám phá Hiền Nương <Arrow />
       </a>
     </div>
 
     <!-- Decorative cue only; the CTA above is the link to the next section. -->
-    <span class="hero__scroll" aria-hidden="true">
+    <span class="eyebrow hero__scroll" aria-hidden="true">
       <span class="hero__scroll-line"></span>
       <span>Kéo xuống</span>
     </span>
@@ -87,23 +87,18 @@ import Arrow from '../Arrow.astro';
 
   .hero__kicker {
     margin-bottom: var(--space-s);
-    font-size: 0.6875rem;
-    font-weight: 500;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
     color: var(--color-text-inverse-muted);
   }
 
   /* Two lines: one phrase each, in sentence case — Lora (the homepage
-     display serif) at a medium-regular 450 with open leading, so Vietnamese
-     diacritics sit cleanly. The longer phrase measures about 9.3em, so it
-     holds two lines down to 320px. Wider screens keep the editorial scale. */
+     display serif) at the hero type role. The longer phrase measures about
+     9.3em, so it holds two lines down to 320px. */
   .hero__title {
-    font-size: clamp(1.625rem, 7.2vw, 2.125rem);
-    font-weight: 450;
+    font-size: var(--type-hero);
+    font-weight: 500;
     text-transform: none;
     letter-spacing: -0.005em;
-    line-height: 1.14;
+    line-height: 1.05;
   }
   .hero__title span {
     display: block;
@@ -113,9 +108,6 @@ import Arrow from '../Arrow.astro';
   .hero__sub {
     max-width: 36rem;
     margin-top: var(--space-s);
-    font-size: clamp(0.9375rem, 0.9rem + 0.2vw, 1.0625rem);
-    font-weight: 300;
-    line-height: 1.55;
     color: var(--color-text-inverse-muted);
     text-wrap: balance;
   }
@@ -126,7 +118,6 @@ import Arrow from '../Arrow.astro';
     min-height: 2.875rem;
     margin-top: var(--space-m);
     padding: 0.7rem 1.125rem 0.7rem 1.25rem;
-    font-size: 0.6875rem;
   }
   .hero__cta :global(.arrow) { width: 1rem; }
 
@@ -138,7 +129,6 @@ import Arrow from '../Arrow.astro';
     /* Cinematic, not full screen: the About section is in view on load. */
     .hero { min-height: clamp(22rem, 59svh, 40rem); }
 
-    .hero__title { font-size: clamp(2.25rem, min(1rem + 2.5vw, 7.4svh), 3.375rem); }
 
     .hero__scrim {
       background:
@@ -165,10 +155,6 @@ import Arrow from '../Arrow.astro';
       display: flex;
       align-items: flex-end;
       gap: 0.875rem;
-      font-size: 0.625rem;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
       color: var(--color-text-inverse-muted);
     }
 

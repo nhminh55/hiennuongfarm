@@ -19,15 +19,65 @@ import Partner from '../components/home/Partner.astro';
 </BaseLayout>
 
 <style>
-  /* Homepage scale, set for 100% browser zoom on laptop screens: the hero
-     headline carries the page; section headings, leads and section spacing
-     step down to a website measure rather than a slide measure. */
+  /* Homepage section spacing, set for 100% browser zoom on laptop screens. */
   .home {
     /* Homepage display serif: Lora (Vietnamese subset via Google Fonts) — a
        calmer, contemporary serif with clean stacked diacritics. */
-    --font-display: "Lora", Georgia, "Times New Roman", serif;
-    --fs-h2: clamp(1.5rem, 1rem + 1.4vw, 2.375rem);
-    --fs-lead: clamp(1.0625rem, 0.95rem + 0.45vw, 1.3125rem);
+    --font-display: var(--font-editorial);
     --section-y: clamp(3rem, 1.5rem + 4vw, 5.5rem);
+  }
+
+  @media (min-width: 1024px) {
+    .home { --section-y: clamp(3rem, 1rem + 3vw, 4.5rem); }
+  }
+
+  /* Type roles. Sizes are the --type-* tokens (global.css); each role's
+     line height, weight and tracking are set once here. Product titles and
+     the hero headline have one element each and take their tokens in
+     Products.astro and Hero.astro. */
+  .home :global(.h2) {
+    font-size: var(--type-h2);
+    line-height: 1.12;
+    font-weight: 500;
+  }
+
+  .home :global(.lead) {
+    font-family: var(--font-display);
+    font-size: var(--type-lead);
+    line-height: 1.45;
+    font-weight: 400;
+  }
+
+  .home :global(.body) {
+    font-size: var(--type-body);
+    line-height: 1.65;
+    font-weight: 400;
+  }
+
+  .home :global(.small) {
+    font-size: var(--type-small);
+    line-height: 1.55;
+    font-weight: 400;
+  }
+
+  .home :global(.eyebrow) {
+    font-family: var(--font-body);
+    font-size: var(--type-eyebrow);
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  @media (max-width: 479px) {
+    .home :global(.eyebrow) { letter-spacing: 0.16em; }
+  }
+
+  .home :global(:is(.btn, .link-arrow, .cta-label)) {
+    font-family: var(--font-body);
+    font-size: var(--type-cta);
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
   }
 </style>

@@ -24,6 +24,8 @@
 
   /* Type */
   --font-display: "Noto Serif Display", "Lora", Georgia, "Times New Roman", serif;
+  /* Editorial serif of the homepage (Lora); also the footer line. */
+  --font-editorial: "Lora", Georgia, "Times New Roman", serif;
   --font-body: "Be Vietnam Pro", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
   --fs-hero: clamp(2.25rem, 1.1rem + 4.4vw, 5.25rem);
@@ -33,6 +35,19 @@
   --fs-body: clamp(1rem, 0.97rem + 0.12vw, 1.0625rem);
   --fs-small: 0.875rem;
   --fs-eyebrow: 0.75rem;
+
+  /* Type roles (homepage). Fixed steps, no vw: phone, tablet ≥768,
+     compact desktop 1024–1279, desktop ≥1280. Line height, weight and
+     tracking per role are set where the role is applied (index.astro). */
+  --type-hero: 1.75rem;
+  --type-h2: 1.5rem;
+  --type-lead: 1.125rem;
+  --type-product: 1.375rem;
+  --type-body: 1rem;
+  --type-small: 0.875rem;
+  --type-eyebrow: 0.75rem;
+  --type-nav: 0.8125rem;
+  --type-cta: 0.75rem;
 
   --lh-display: 1.1;   /* stacked Vietnamese diacritics need room */
   --lh-heading: 1.18;
@@ -63,6 +78,47 @@
 
 @media (min-width: 1120px) {
   :root { --header-h: 5.5rem; }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --type-hero: 2.25rem;
+    --type-h2: 1.75rem;
+    --type-lead: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --type-hero: 2.375rem;      /* 38px */
+    --type-h2: 1.75rem;         /* 28px */
+    --type-lead: 1.1875rem;     /* 19px */
+    --type-product: 1.25rem;    /* 20px */
+    --type-body: 0.9375rem;     /* 15px */
+    --type-small: 0.8125rem;    /* 13px */
+    --type-eyebrow: 0.6875rem;  /* 11px */
+    --type-nav: 0.875rem;       /* 14px */
+    --type-cta: 0.75rem;        /* 12px */
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --type-hero: 2.625rem;      /* 42px */
+    --type-h2: 1.875rem;        /* 30px */
+    --type-lead: 1.25rem;       /* 20px */
+    --type-product: 1.3125rem;  /* 21px */
+    --type-body: 0.96875rem;    /* 15.5px */
+    --type-small: 0.84375rem;   /* 13.5px */
+    --type-eyebrow: 0.75rem;    /* 12px */
+    --type-nav: 0.875rem;       /* 14px */
+    --type-cta: 0.75rem;        /* 12px */
+  }
+}
+
+/* Desktop: gutters widen to the mockup's margin. */
+@media (min-width: 1024px) {
+  :root { --gutter: clamp(3.5rem, 6vw, 7rem); }
 }
 
 /* Reset ------------------------------------------------------------------ */

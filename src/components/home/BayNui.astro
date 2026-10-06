@@ -24,11 +24,11 @@ import Eyebrow from '../Eyebrow.astro';
     </div>
 
     <div class="baynui__text" data-reveal style="--reveal-delay: 120ms">
-      <p class="baynui__lead">
+      <p class="lead baynui__lead">
         Bảy Núi không chỉ là nơi chúng tôi bắt đầu, mà còn là nguồn cảm hứng để Hiền Nương kiến tạo
         những giá trị bền vững cho cộng đồng và thế hệ mai sau.
       </p>
-      <p class="baynui__body">
+      <p class="body baynui__body">
         Bảy Núi — còn gọi là Thất Sơn — là vùng đồi núi phía tây An Giang, một trong số ít nơi
         núi non xuất hiện giữa đồng bằng sông Cửu Long.
       </p>
@@ -75,18 +75,11 @@ import Eyebrow from '../Eyebrow.astro';
   .baynui__title { margin-top: var(--space-m); }
   .baynui__title span { display: block; }
 
-  .baynui__lead {
-    max-width: 30rem;
-    font-family: var(--font-display);
-    font-size: 1.125rem;
-    line-height: 1.5;
-  }
+  .baynui__lead { max-width: 30rem; }
 
   .baynui__body {
     max-width: 30rem;
     margin-top: var(--space-s);
-    font-size: 0.875rem;
-    line-height: 1.65;
     color: var(--color-text-inverse-muted);
   }
 
@@ -109,6 +102,5 @@ import Eyebrow from '../Eyebrow.astro';
 
   @media (min-width: 1024px) {
     .baynui__text { grid-column: 9 / -1; }
-    .baynui__lead { font-size: 1.0625rem; }
   }
 </style>

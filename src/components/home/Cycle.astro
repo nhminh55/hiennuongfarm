@@ -2,177 +2,196 @@
 import Photo from '../Photo.astro';
 import Eyebrow from '../Eyebrow.astro';
 
-// Inputs named in the Hiền Nương video (00:41): rice husks, bran and sawdust.
-// By-product → organic fertiliser: CONTENT_EVIDENCE_BANK.md §2 (VERIFIED).
+// By-products → substrate → mushrooms → organic fertiliser → soil:
+// CONTENT_EVIDENCE_BANK.md §2 (VERIFIED). Inputs: rơm (§2); trấu, cám,
+// mùn cưa (Hiền Nương video, 00:41).
+// Icons are illustrations (design-reference/source), not farm photographs.
+// x / y place each icon's centre in the diagram, after the section mockup.
 const steps = [
-  { name: 'Nguyên liệu', note: 'Trấu, cám, mùn cưa' },
-  { name: 'Trồng', note: 'Nấm & dược liệu' },
-  { name: 'Thu hoạch', note: 'Sản phẩm tươi' },
-  { name: 'Chế biến', note: 'Tăng giá trị' },
-  { name: 'Phụ phẩm', note: 'Phân hữu cơ' },
-  { name: 'Tái sử dụng', note: 'Trở về đất' },
+  { name: 'Phụ phẩm nông nghiệp', note: 'Tận dụng phụ phẩm\nđịa phương', icon: 'phu-pham', x: 50, y: 12.33 },
+  { name: 'Giá thể trồng nấm', note: 'Chế biến thành giá thể', icon: 'gia-the', x: 84.44, y: 34.89 },
+  { name: 'Thu hoạch nấm', note: 'Tạo ra nấm tươi', icon: 'thu-hoach', x: 74, y: 78.35 },
+  { name: 'Chế biến', note: 'Giá thể sau thu hoạch\nđược ủ thành phân hữu cơ', icon: 'u-phan', x: 26, y: 78.35 },
+  { name: 'Trở về đất', note: 'Bổ sung dinh dưỡng\ncho đất', icon: 'tro-ve-dat', x: 15.56, y: 34.89 },
 ];
 
-// Direction chevrons sit midway between steps on the ring (clockwise).
-const chevrons = steps.map((_, i) => {
-  const deg = 30 + i * 60;
+// Clockwise arrows between the stages, drawn in a 585 × 665 box around
+// the diagram's centre: [from°, to°, radius].
+const W = 585;
+const H = 665;
+const C = { x: W / 2, y: 330 };
+const at = (deg: number, r: number) => {
   const rad = (deg * Math.PI) / 180;
-  return { x: 50 + 50 * Math.sin(rad), y: 50 - 50 * Math.cos(rad), deg };
-});
+  return `${(C.x + r * Math.sin(rad)).toFixed(1)} ${(C.y - r * Math.cos(rad)).toFixed(1)}`;
+};
+const arrows = [
+  [22, 43, 251],
+  [103, 122, 245],
+  [167, 191, 228],
+  [236, 251, 238],
+  [317, 337, 252],
+].map(([a, b, r]) => `M${at(a, r)} A${r} ${r} 0 0 1 ${at(b, r)}`);
 ---
 <section class="section cycle" id="tuan-hoan" aria-labelledby="cycle-title">
-  <div class="container grid cycle__grid">
-    <div class="cycle__text" data-reveal>
-      <Eyebrow num="02">Nông nghiệp tuần hoàn</Eyebrow>
-      <h2 class="h2 cycle__title" id="cycle-title">Vòng tuần hoàn khép kín từ thiên nhiên</h2>
-      <p class="body cycle__body">
-        Phụ phẩm nông nghiệp của địa phương như trấu, cám và mùn cưa được tận dụng làm giá thể
-        trồng nấm. Sau thu hoạch, giá thể đã qua sử dụng tiếp tục quay lại phục vụ nông nghiệp —
-        để mỗi vụ mùa nuôi dưỡng vụ mùa tiếp theo.
-      </p>
-    </div>
+  <div class="container">
+    <Eyebrow num="02" class="cycle__eyebrow">Nông nghiệp tuần hoàn</Eyebrow>
 
-    <div class="cycle__diagram" data-reveal style="--reveal-delay: 120ms">
-      <div class="ring">
-        <svg class="ring__svg" viewBox="0 0 100 100" aria-hidden="true">
-          <circle cx="50" cy="50" r="50" />
-          {chevrons.map((c) => (
-            <path d="M-1.4 -1.6 L0.2 0 L-1.4 1.6" transform={`translate(${c.x.toFixed(2)} ${c.y.toFixed(2)}) rotate(${c.deg})`} />
-          ))}
-        </svg>
-        <div class="ring__orbit" aria-hidden="true"><span></span></div>
-        <div class="ring__center" aria-hidden="true">
-          <p class="ring__motto">Từ đất,<br />trở về đất.</p>
-        </div>
-
-        <ol class="ring__steps" aria-label="Chu trình nông nghiệp tuần hoàn, sáu giai đoạn nối tiếp thành một vòng">
-          {steps.map((step, i) => (
-            <li class="ring__step" style={`--i: ${i}`}>
-              <span class="ring__num">{String(i + 1).padStart(2, '0')}</span>
-              <span class="ring__name">{step.name}</span>
-              <span class="ring__note">{step.note}</span>
-            </li>
-          ))}
-        </ol>
-        <p class="ring__loop">Sau giai đoạn 06, vòng quay trở lại 01.</p>
+    <div class="grid cycle__grid">
+      <div class="cycle__head" data-reveal>
+        <h2 class="h2 cycle__title" id="cycle-title">Nông nghiệp tuần hoàn</h2>
+        <p class="lead cycle__sub">Hướng đi bền vững <br />cùng thiên nhiên</p>
       </div>
-    </div>
 
-    <figure class="cycle__figure">
-      <!-- Photo collection HN-011, cropped to remove a pillar (left) and a
-           Nhân Dân watermark (bottom right). VERIFY: publication rights. -->
-      <Photo
-        class="cycle__photo"
-        src="/images/farm/circular-day-bich-gia-the.webp"
-        width={1280}
-        height={680}
-        alt="Hàng trăm bịch giá thể xếp sát nhau thành từng dãy trên nền nhà trồng nấm, miệng bịch lộ lớp giá thể màu nâu đỏ"
-      />
-      <figcaption class="cycle__caption">
-        Giá thể từ phụ phẩm nông nghiệp được đóng bịch, chuẩn bị cho một vụ nấm mới.
-      </figcaption>
-    </figure>
+      <div class="cycle__copy" data-reveal style="--reveal-delay: 80ms">
+        <p class="body">
+          Chúng tôi tận dụng phụ phẩm nông nghiệp tại địa phương như rơm, trấu, cám và mùn cưa
+          để làm giá thể trồng nấm. Sau thu hoạch, giá thể được tiếp tục tái sử dụng thay vì
+          bỏ đi.
+        </p>
+        <p class="body cycle__more">
+          Phụ phẩm sau trồng nấm trở lại sản xuất nông nghiệp, góp phần giảm lãng phí và nối
+          tiếp một vòng tuần hoàn từ đất — rồi trở về với đất.
+        </p>
+      </div>
+
+      <div class="cycle__diagram" data-reveal style="--reveal-delay: 120ms">
+        <div class="ring">
+          <svg class="ring__svg" viewBox={`0 0 ${W} ${H}`} aria-hidden="true">
+            <defs>
+              <marker id="cycle-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto">
+                <path d="M1 1 L8 5 L1 9" />
+              </marker>
+            </defs>
+            {arrows.map((d) => <path d={d} marker-end="url(#cycle-arrow)" />)}
+          </svg>
+
+          <p class="ring__motto" aria-hidden="true">Từ đất,<br />trở về đất.</p>
+
+          <ol class="ring__steps" aria-label="Chu trình nông nghiệp tuần hoàn, năm giai đoạn nối tiếp thành một vòng">
+            {steps.map((step, i) => (
+              <li class="ring__step" style={`--x: ${step.x}%; --y: ${step.y}%`}>
+                <span class="ring__num">{String(i + 1).padStart(2, '0')}</span>
+                <img
+                  class="ring__icon"
+                  src={`/images/farm/circular-icon-${step.icon}.webp`}
+                  alt=""
+                  width="320"
+                  height="320"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="ring__name">{step.name}</span>
+                <span class="ring__note">{step.note}</span>
+              </li>
+            ))}
+          </ol>
+          <p class="ring__loop">Sau giai đoạn 05, vòng quay trở lại 01.</p>
+        </div>
+      </div>
+
+      <figure class="cycle__figure">
+        <!-- Editorial plate with its line set into the photograph; the caption
+             sits bottom left, so crops only ever trim the right edge.
+             VERIFY: provenance of this photograph before launch. -->
+        <Photo
+          class="cycle__photo"
+          src="/images/farm/circular-nam-bao-ngu-doc.webp"
+          width={1122}
+          height={1402}
+          ratio="4 / 5"
+          position="0% 50%"
+          alt="Chùm nấm bào ngư mọc từ bịch phôi trên kệ sắt trong nhà nuôi nấm. Dòng chữ trên ảnh: “Nông nghiệp tuần hoàn là cách chúng tôi trả lại sự cân bằng cho đất.”"
+        />
+      </figure>
+    </div>
   </div>
 </section>
 
 <style>
-  /* A quieter paper tone than the sections either side: the diagram is
-     drawn into the page in fine line, not set in a box. */
   .cycle {
     --cycle-bg: var(--color-cream);
-    --cycle-line: rgba(32, 34, 31, 0.28);
+    --cycle-line: rgba(32, 34, 31, 0.55);
     background: var(--cycle-bg);
     border-block: 1px solid var(--color-line);
     overflow: hidden;
   }
 
+  .cycle :global(.cycle__eyebrow) { margin-bottom: var(--space-m); }
+
   .cycle__grid { row-gap: var(--space-xl); }
 
-  .cycle__text,
+  .cycle__head,
+  .cycle__copy,
   .cycle__diagram,
   .cycle__figure { grid-column: 1 / -1; }
 
-  .cycle__title { margin-top: var(--space-m); max-width: 14ch; }
-  .cycle__body { margin-top: var(--space-m); max-width: 30rem; }
+  .cycle__title { max-width: 12ch; }
+  .cycle__sub { margin-top: var(--space-s); color: var(--color-text); }
 
-  /* The photograph supports the diagram as a short landscape crop.
-     Phones and tablets: it closes the section edge to edge, the caption set
-     into its foot. */
-  .cycle__figure {
-    position: relative;
-    margin-inline: calc(-1 * var(--gutter));
-    margin-bottom: calc(-1 * var(--section-y));
+  .cycle__copy { max-width: 34rem; margin-top: calc(var(--space-m) - var(--space-xl)); }
+  .cycle__copy .cycle__more {
+    margin-top: var(--space-m);
+    padding-top: var(--space-m);
+    border-top: 1px solid var(--color-line);
   }
 
-  .cycle__figure :global(.cycle__photo) {
-    aspect-ratio: 3 / 2;
-    --pos: 50% 62%;
-  }
+  .cycle__figure { max-width: 26rem; }
 
-  .cycle__figure::after {
-    content: "";
-    position: absolute;
-    inset: 40% 0 0;
-    background: linear-gradient(to top, rgba(16, 43, 33, 0.78), rgba(16, 43, 33, 0));
-    pointer-events: none;
-  }
-
-  .cycle__caption {
-    position: absolute;
-    z-index: 1;
-    left: var(--gutter);
-    right: var(--gutter);
-    bottom: var(--space-m);
-    max-width: 24rem;
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: var(--color-cream);
-  }
-
-  /* --- Ring diagram ----------------------------------------------------
-     Small screens: a numbered vertical sequence (the ring is hidden).
-     ≥ 640px: steps are placed around a circle with CSS trigonometry. */
+  /* --- Diagram ---------------------------------------------------------
+     Small screens: a numbered vertical sequence with small icons.
+     ≥ 640px: the five stages are set around a loop of arrows. */
 
   .ring { position: relative; }
 
   .ring__svg,
-  .ring__orbit,
-  .ring__center { display: none; }
+  .ring__motto { display: none; }
 
   .ring__steps { border-top: 1px solid var(--color-line); }
 
   .ring__step {
     display: grid;
-    grid-template-columns: 2.5rem 1fr;
-    align-items: baseline;
-    gap: 0.125rem var(--space-s);
+    grid-template-columns: 3.5rem 1fr;
+    grid-template-rows: auto auto 1fr;
+    column-gap: var(--space-s);
+    align-items: start;
     padding-block: 0.875rem;
     border-bottom: 1px solid var(--color-line);
   }
 
+  .ring__icon {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    border: 1px solid rgba(120, 130, 103, 0.45);
+  }
+
   .ring__num {
-    font-size: 0.75rem;
+    grid-column: 2;
+    font-size: 0.6875rem;
     letter-spacing: 0.12em;
+    line-height: 1.4;
     color: var(--color-earth);
     font-variant-numeric: tabular-nums;
   }
 
   .ring__name {
+    grid-column: 2;
     font-family: var(--font-display);
-    font-size: 1.25rem;
+    font-size: 1.1875rem;
     line-height: 1.3;
   }
 
   .ring__note {
     grid-column: 2;
     font-size: 0.8125rem;
+    line-height: 1.5;
     color: var(--color-text-muted);
   }
 
   .ring__loop {
-    padding: 0.875rem 0 0 calc(2.5rem + var(--space-s));
+    padding: 0.875rem 0 0 calc(3.5rem + var(--space-s));
     font-family: var(--font-display);
     font-style: italic;
     font-size: 0.9375rem;
@@ -180,159 +199,162 @@ const chevrons = steps.map((_, i) => {
   }
 
   @media (min-width: 640px) {
-    .ring {
-      --ring-pad-x: 5rem;
-      --ring-pad-y: 2.5rem;
-      width: 100%;
-      max-width: 34rem;
-      margin-inline: auto;
-      padding: var(--ring-pad-y) var(--ring-pad-x);
-    }
+    /* Sizes follow the diagram's width so the composition holds together. */
+    .cycle__diagram { container-type: inline-size; }
 
-    /* The square the circle is drawn in. */
-    .ring::before {
-      content: "";
-      display: block;
-      aspect-ratio: 1;
+    .ring {
+      --icon: 24cqi;
+      --num-h: 4.4cqi;
+      width: 100%;
+      max-width: 36.5rem;
+      margin-inline: auto;
+      aspect-ratio: 585 / 665;
     }
 
     .ring__loop { display: none; }
 
-    .ring__svg,
-    .ring__orbit,
-    .ring__steps {
+    .ring__svg {
       display: block;
       position: absolute;
-      top: var(--ring-pad-y);
-      left: var(--ring-pad-x);
-      right: var(--ring-pad-x);
-      bottom: var(--ring-pad-y);
-    }
-
-    .ring__svg {
-      width: auto;
-      height: auto;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       overflow: visible;
       fill: none;
       stroke: var(--cycle-line);
-      stroke-width: 1;
-    }
-    .ring__svg :is(circle, path) { vector-effect: non-scaling-stroke; }
-    .ring__svg path { stroke: var(--color-charcoal); stroke-opacity: 0.7; }
-
-    /* A single point travelling clockwise: the cycle never stops. */
-    .ring__orbit span {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: 7px;
-      height: 7px;
-      margin: -3.5px 0 0 -3.5px;
-      border-radius: 50%;
-      background: var(--color-forest);
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-      .ring__orbit { animation: orbit 40s linear infinite; }
-      @keyframes orbit { to { transform: rotate(360deg); } }
-    }
-
-    .ring__center {
-      display: block;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
+      stroke-width: 1.1;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .ring__motto {
+      display: block;
+      position: absolute;
+      top: 49.6%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       font-family: var(--font-display);
       font-style: italic;
-      font-size: clamp(1.25rem, 0.9rem + 0.9vw, 1.75rem);
+      font-size: max(1.25rem, 6cqi);
       line-height: 1.25;
+      text-align: center;
+      white-space: nowrap;
       color: var(--color-forest);
     }
 
     .ring__steps { border: 0; }
 
+    /* Each stage hangs from its icon's centre: number above, text below. */
     .ring__step {
-      --a: calc(var(--i) * 60deg);
       position: absolute;
-      left: calc(50% + 50% * sin(var(--a)));
-      top: calc(50% - 50% * cos(var(--a)));
-      transform: translate(-50%, -50%);
+      left: var(--x);
+      top: var(--y);
+      transform: translate(-50%, calc(-1 * (var(--num-h) + var(--icon) / 2)));
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.0625rem;
       width: max-content;
-      max-width: 10rem;
-      padding: 0.5rem 0.75rem;
+      padding: 0;
       border: 0;
-      background: var(--cycle-bg);
       text-align: center;
     }
 
-    .ring__num { font-size: 0.6875rem; }
-    .ring__name { font-size: 1.0625rem; white-space: nowrap; }
-    .ring__note { font-size: 0.75rem; line-height: 1.4; text-align: center; }
+    .ring__num {
+      height: var(--num-h);
+      font-size: max(0.6875rem, 2.9cqi);
+      line-height: 1;
+    }
 
-    /* The ring's column sets its size; in a narrow column the labels step
-       down so neighbouring stages never overlap. */
-    .cycle__diagram { container-type: inline-size; }
+    .ring__icon {
+      width: var(--icon);
+      height: var(--icon);
+      border-color: rgba(120, 130, 103, 0.5);
+    }
+
+    .ring__name {
+      margin-top: 1.4cqi;
+      font-size: max(0.875rem, 3.5cqi);
+      white-space: nowrap;
+    }
+
+    .ring__note {
+      white-space: pre-line;
+      margin-top: 0.4cqi;
+      font-size: max(0.75rem, 2.5cqi);
+      line-height: 1.45;
+    }
   }
 
-  @container (max-width: 25.5rem) {
-    .ring__step { padding: 0.25rem 0.375rem; }
-    .ring__num { font-size: 0.625rem; }
-    .ring__name { font-size: 0.9375rem; }
-    .ring__note { font-size: 0.6875rem; line-height: 1.35; }
-    .ring__motto { font-size: 1.125rem; }
-  }
-
-  /* Tablet: text beside the ring; the photograph closes the section as a
-     wide strip, edge to edge. */
+  /* Tablet: the introduction in two columns, then the
+     photograph beside the diagram. */
   @media (min-width: 768px) {
-    .cycle__grid { row-gap: var(--space-l); align-items: center; }
-    .cycle__text { grid-column: 1 / span 5; grid-row: 1; }
-    .cycle__diagram { grid-column: 6 / -1; grid-row: 1; }
+    .cycle :global(.cycle__eyebrow) { margin-bottom: var(--space-l); }
+    .cycle__grid { row-gap: var(--space-2xl); }
 
-    .cycle__figure { grid-row: 2; }
-    .cycle__figure :global(.cycle__photo) { aspect-ratio: 21 / 8; }
+    .cycle__head { grid-column: 1 / span 5; grid-row: 1; }
+    .cycle__copy { grid-column: 7 / -1; grid-row: 1; margin-top: 0; }
 
-    .ring { --ring-pad-x: 4rem; --ring-pad-y: 1.75rem; max-width: 26rem; margin-inline: auto 0; }
-    .ring__step { padding: 0.3125rem 0.5rem; }
+    .cycle__figure { grid-column: 1 / span 5; grid-row: 2; max-width: none; align-self: center; }
+    .cycle__diagram { grid-column: 6 / -1; grid-row: 2; align-self: center; }
+
+    .ring { max-width: 33rem; margin-inline: auto 0; }
   }
 
-  /* Desktop: introduction, diagram, photograph. The ring is the focus — the
-     largest element, centred; the photograph is a small landscape plate set
-     low in the right column. The ring is sized to read whole on a laptop. */
-  @media (min-width: 1000px) {
-    .cycle__grid { row-gap: 0; }
-
-    .cycle__text { grid-column: 1 / span 4; }
-    .cycle__diagram { grid-column: 5 / span 5; }
-
-    .cycle__figure {
-      grid-column: 10 / -1;
-      grid-row: 1;
-      align-self: end;
-      margin: 0;
-    }
-    .cycle__figure::after { display: none; }
-    .cycle__figure :global(.cycle__photo) { aspect-ratio: 4 / 3; --pos: 50% 60%; }
-
-    /* Desktop: a plate with its caption beneath, not over it. */
-    .cycle__caption {
-      position: static;
-      margin-top: var(--space-s);
-      font-size: 0.875rem;
-      color: var(--color-text-muted);
+  /* Desktop: photograph, diagram and text side by side, as one spread. */
+  @media (min-width: 1024px) {
+    .cycle__grid {
+      /* Outer 1fr rows centre the text column when it is shorter than
+         the photograph and diagram; they collapse when it is taller. */
+      grid-template-rows: 1fr auto auto 1fr;
+      row-gap: 0;
+      align-items: start;
     }
 
-    .ring { --ring-pad-x: 4rem; --ring-pad-y: 1.75rem; max-width: 27rem; margin-inline: auto; }
-    .ring__step { padding: 0.3125rem 0.5rem; }
+    /* Three tracks: the photograph (4:5, shown whole) sets the height;
+       the diagram's track fits a diagram of that height; the text takes
+       the rest. Widths: photograph 4 of 12 columns, as before. */
+    .cycle__grid { grid-template-columns: minmax(0, 4fr) minmax(0, 4.4fr) minmax(0, 3.6fr); }
+    .cycle__figure { grid-column: 1; grid-row: 1 / -1; align-self: center; }
+    .cycle__head { grid-column: 3; grid-row: 2; }
+    .cycle__copy { grid-column: 3; grid-row: 3; margin-top: var(--space-l); }
+
+    /* The diagram takes the height of the row (the photograph's) and sets
+       its own width from it; it adds no height of its own. Its labels
+       follow its width, so the composition scales as one. */
+    .cycle__diagram {
+      grid-column: 2;
+      grid-row: 1 / -1;
+      align-self: stretch;
+      contain: size;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* 94.5%: the top number and bottom notes hang just outside the ring's
+       box, so the drawing as a whole spans the photograph's height. */
+    .ring {
+      container-type: inline-size;
+      width: auto;
+      height: 94.5%;
+      max-width: 100%;
+    }
+    .ring__motto { font-size: 6cqi; }
+    .ring__num { font-size: 2.9cqi; }
+    .ring__name { font-size: 3.6cqi; }
+    .ring__note { font-size: 3.15cqi; }
+
+    /* The heading and subtitle take one line each where they fit. */
+    .cycle__title { max-width: none; }
+    .cycle__sub br { display: none; }
+  }
+
+  /* Small laptops: the photograph keeps its 3.5 share; the text column
+     takes a wider one, and its spacing tightens. */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .cycle__grid { grid-template-columns: minmax(0, 3.5fr) minmax(0, 3.9fr) minmax(0, 4.6fr); }
+
+    .cycle__sub { margin-top: var(--space-xs); }
+    .cycle__copy { margin-top: var(--space-m); }
+    .cycle__copy .cycle__more { margin-top: var(--space-s); padding-top: var(--space-s); }
   }
 </style>
