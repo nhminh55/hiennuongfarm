@@ -1,6 +1,6 @@
 ---
 import { contact } from '../data/site';
-import Wordmark from './Wordmark.astro';
+import BrandLogo from './BrandLogo.astro';
 
 interface Props {
   /** Transparent header over a full-bleed hero; turns solid on scroll. */
@@ -38,7 +38,7 @@ const current = (href: string) => {
 >
   <div class="site-header__bar">
     <div class="container site-header__inner">
-      <Wordmark href="/" class="site-header__brand" />
+      <BrandLogo href="/" class="site-header__brand" menuVariant />
 
       <nav class="site-nav" aria-label="Điều hướng chính">
         <ul class="site-nav__list">

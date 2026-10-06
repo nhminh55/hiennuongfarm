@@ -1,0 +1,40 @@
+﻿---
+interface Props {
+  href?: string;
+  class?: string;
+  dark?: boolean;
+  menuVariant?: boolean;
+}
+const { href, class: className, dark = false, menuVariant = false } = Astro.props;
+const Tag = href ? 'a' : 'span';
+---
+<Tag
+  class:list={['wordmark', { 'wordmark--menu': menuVariant }, className]}
+  href={href}
+  aria-label={href ? 'Hiền Nương Farm — Trang chủ' : undefined}
+>
+  <img class="wordmark__logo" src={dark ? '/05.png' : '/01.png'} width={dark ? 450 : 868} height={dark ? 179 : 323} alt="Hiền Nương Farm" />
+  {menuVariant && <img class="wordmark__menu-logo" src="/05.png" width="450" height="179" alt="" aria-hidden="true" />}
+</Tag>
+
+<style>
+  .wordmark {
+    display: inline-grid;
+    width: clamp(9rem, 12vw, 11rem);
+    max-width: 100%;
+    flex-shrink: 0;
+    vertical-align: middle;
+  }
+
+  .wordmark img {
+    grid-area: 1 / 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    align-self: center;
+  }
+
+  .wordmark__menu-logo { visibility: hidden; }
+  :global(.is-menu-open) .wordmark--menu .wordmark__logo { visibility: hidden; }
+  :global(.is-menu-open) .wordmark--menu .wordmark__menu-logo { visibility: visible; }
+</style>
