@@ -1,0 +1,702 @@
+---
+/**
+ * ChatWidget.astro
+ *
+ * A custom-branded, highly interactive client-side chatbot widget.
+ * Styled to match Hiền Nương Farm's Premium Editorial aesthetic.
+ * Runs 100% on the client side with smart keyword matching and quick replies.
+ */
+---
+
+<div class="hn-chat-container" id="hnChatWidget" data-reveal>
+  <!-- Floating Bubble Button -->
+  <button class="hn-chat-trigger" id="hnChatTrigger" aria-label="Trò chuyện với Trợ lý AI" aria-expanded="false">
+    <span class="hn-chat-trigger-icon">
+      <!-- Leaf/Mushroom-inspired chatbot bubble icon -->
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.8214 2.48697 15.5291 3.33782 17L2 22L7 20.6622C8.47087 21.513 10.1786 22 12 22Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8 10H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M8 14H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </span>
+    <span class="hn-chat-trigger-badge">1</span>
+  </button>
+
+  <!-- Chat Window Drawer -->
+  <div class="hn-chat-window" id="hnChatWindow" aria-hidden="true">
+    <!-- Header -->
+    <div class="hn-chat-header">
+      <div class="hn-chat-header-info">
+        <h3 class="hn-chat-title">Trợ lý Hiền Nương</h3>
+        <p class="hn-chat-subtitle">Nông nghiệp tuần hoàn Bảy Núi</p>
+      </div>
+      <button class="hn-chat-close" id="hnChatClose" aria-label="Đóng hộp thoại">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Messages Container -->
+    <div class="hn-chat-messages" id="hnChatMessages">
+      <!-- Welcome Message -->
+      <div class="hn-message hn-message-ai">
+        <div class="hn-message-bubble">
+          <p>Kính chào quý khách! Tôi là Trợ lý AI của <strong>Hiền Nương Farm</strong>. 🌾</p>
+          <p>Tôi rất vui được chia sẻ cùng bạn về hành trình nông nghiệp tuần hoàn bền vững tại vùng Bảy Núi (An Giang), cũng như thông tin về các dòng sản vật nấm sạch của trang trại.</p>
+          <p>Bạn muốn tìm hiểu về nội dung nào dưới đây ạ?</p>
+        </div>
+        <span class="hn-message-time" data-time>Vừa xong</span>
+      </div>
+    </div>
+
+    <!-- Typing Indicator (hidden by default) -->
+    <div class="hn-typing-indicator" id="hnTypingIndicator">
+      <span class="hn-typing-dot"></span>
+      <span class="hn-typing-dot"></span>
+      <span class="hn-typing-dot"></span>
+    </div>
+
+    <!-- Quick Replies -->
+    <div class="hn-quick-replies" id="hnQuickReplies">
+      <button class="hn-quick-btn" data-question="Giới thiệu về Hiền Nương Farm">🎋 Về Hiền Nương Farm</button>
+      <button class="hn-quick-btn" data-question="Mô hình nông nghiệp tuần hoàn hoạt động thế nào?">🔄 Nông nghiệp tuần hoàn</button>
+      <button class="hn-quick-btn" data-question="Trang trại có những sản phẩm nấm nào?">🍄 Các sản vật nấm</button>
+      <button class="hn-quick-btn" data-question="Thông tin liên hệ hợp tác và địa chỉ">📍 Địa chỉ & Liên hệ</button>
+      <button class="hn-quick-btn" data-question="Sản phẩm nấm có chứng nhận kiểm nghiệm gì không?">🔬 Kết quả kiểm nghiệm</button>
+    </div>
+
+    <!-- Footer Input Bar -->
+    <form class="hn-chat-input-form" id="hnChatForm">
+      <input 
+        type="text" 
+        class="hn-chat-input" 
+        id="hnChatInput" 
+        placeholder="Hỏi trợ lý Hiền Nương..." 
+        autocomplete="off"
+        maxlength="200"
+        aria-label="Tin nhắn hỏi trợ lý"
+      />
+      <button type="submit" class="hn-chat-submit" id="hnChatSubmit" aria-label="Gửi tin nhắn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 2L11 13M22 2L15 22L11 13M11 13L2 9L22 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+<style>
+  /* Base Container */
+  .hn-chat-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    font-family: var(--font-body);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  /* Trigger Button */
+  .hn-chat-trigger {
+    background: var(--color-forest);
+    color: var(--color-cream);
+    border: 1px solid var(--color-line-inverse);
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(16, 43, 33, 0.15);
+    transition: transform 0.3s var(--ease), background-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    position: relative;
+  }
+
+  .hn-chat-trigger:hover {
+    transform: scale(1.06);
+    background: var(--color-deep-green);
+    box-shadow: 0 6px 24px rgba(16, 43, 33, 0.25);
+  }
+
+  .hn-chat-trigger:active {
+    transform: scale(0.96);
+  }
+
+  .hn-chat-trigger-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s var(--ease);
+  }
+
+  /* Rotate icon slightly on open */
+  .hn-chat-container.is-open .hn-chat-trigger-icon {
+    transform: rotate(45deg);
+  }
+
+  /* Small red notification dot to attract attention once */
+  .hn-chat-trigger-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: var(--color-earth);
+    color: var(--color-cream);
+    font-size: 0.65rem;
+    font-weight: 600;
+    width: 1.15rem;
+    height: 1.15rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--color-paper);
+    animation: pulseBadge 2s infinite ease-in-out;
+  }
+
+  @keyframes pulseBadge {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  /* Chat Window Drawer */
+  .hn-chat-window {
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: 12px;
+    width: 360px;
+    height: 520px;
+    max-height: calc(100vh - 8rem);
+    box-shadow: 0 12px 40px rgba(32, 34, 31, 0.12);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: absolute;
+    bottom: 4.25rem;
+    right: 0;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+    transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+    transform-origin: bottom right;
+  }
+
+  @media (max-width: 480px) {
+    .hn-chat-window {
+      width: calc(100vw - 2rem);
+      right: -1rem;
+      bottom: 4.25rem;
+    }
+    .hn-chat-container {
+      bottom: 1rem;
+      right: 1rem;
+    }
+  }
+
+  .hn-chat-container.is-open .hn-chat-window {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  /* Header Styles */
+  .hn-chat-header {
+    background: var(--color-forest);
+    color: var(--color-cream);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color-line-inverse);
+  }
+
+  .hn-chat-header-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .hn-chat-title {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+
+  .hn-chat-subtitle {
+    font-size: 0.75rem;
+    color: var(--color-text-inverse-muted);
+    margin: 0;
+    font-weight: 300;
+  }
+
+  .hn-chat-close {
+    background: transparent;
+    border: none;
+    color: var(--color-cream);
+    opacity: 0.75;
+    cursor: pointer;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+    border-radius: 4px;
+  }
+
+  .hn-chat-close:hover {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+
+  /* Messages Container */
+  .hn-chat-messages {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    scroll-behavior: smooth;
+    background: var(--color-paper);
+  }
+
+  /* Message Styling */
+  .hn-message {
+    display: flex;
+    flex-direction: column;
+    max-width: 85%;
+    animation: messageIn 0.3s var(--ease) forwards;
+  }
+
+  @keyframes messageIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hn-message-ai {
+    align-self: flex-start;
+  }
+
+  .hn-message-user {
+    align-self: flex-end;
+  }
+
+  .hn-message-bubble {
+    padding: 0.85rem 1.05rem;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    line-height: 1.55;
+    font-weight: 300;
+  }
+
+  .hn-message-ai .hn-message-bubble {
+    background: var(--color-cream);
+    color: var(--color-charcoal);
+    border-bottom-left-radius: 2px;
+    border: 1px solid rgba(32, 34, 31, 0.05);
+  }
+
+  .hn-message-user .hn-message-bubble {
+    background: var(--color-forest);
+    color: var(--color-cream);
+    border-bottom-right-radius: 2px;
+    border: 1px solid var(--color-line-inverse);
+  }
+
+  .hn-message-bubble p {
+    margin: 0 0 0.5rem 0;
+  }
+
+  .hn-message-bubble p:last-child {
+    margin-bottom: 0;
+  }
+
+  .hn-message-bubble strong {
+    font-weight: 500;
+  }
+
+  .hn-message-bubble a {
+    color: var(--color-earth);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 400;
+  }
+
+  .hn-message-bubble ul, .hn-message-bubble ol {
+    margin: 0.4rem 0 0.4rem 1.15rem;
+    padding: 0;
+  }
+
+  .hn-message-bubble li {
+    margin-bottom: 0.25rem;
+  }
+
+  .hn-message-bubble li:last-child {
+    margin-bottom: 0;
+  }
+
+  .hn-message-time {
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    margin-top: 0.3rem;
+    padding: 0 0.25rem;
+  }
+
+  .hn-message-user .hn-message-time {
+    align-self: flex-end;
+  }
+
+  /* Typing Indicator */
+  .hn-typing-indicator {
+    display: none;
+    align-self: flex-start;
+    background: var(--color-cream);
+    border: 1px solid rgba(32, 34, 31, 0.05);
+    padding: 0.65rem 0.9rem;
+    border-radius: 12px;
+    border-bottom-left-radius: 2px;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    gap: 0.25rem;
+    align-items: center;
+  }
+
+  .hn-typing-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--color-muted-moss);
+    border-radius: 50%;
+    animation: pulseDot 1.4s infinite ease-in-out both;
+  }
+
+  .hn-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .hn-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes pulseDot {
+    0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+    40% { transform: scale(1); opacity: 1; }
+  }
+
+  /* Quick Replies */
+  .hn-quick-replies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: var(--color-paper);
+    border-top: 1px solid var(--color-line);
+    max-height: 120px;
+    overflow-y: auto;
+  }
+
+  .hn-quick-btn {
+    background: var(--color-paper);
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-line-strong);
+    padding: 0.4rem 0.75rem;
+    border-radius: 16px;
+    font-size: 0.75rem;
+    font-family: var(--font-body);
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.2s var(--ease);
+  }
+
+  .hn-quick-btn:hover {
+    color: var(--color-forest);
+    border-color: var(--color-forest);
+    background: var(--color-cream);
+    transform: translateY(-1px);
+  }
+
+  /* Input Bar */
+  .hn-chat-input-form {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid var(--color-line);
+    padding: 0.75rem 1.25rem;
+    background: var(--color-paper);
+    gap: 0.75rem;
+  }
+
+  .hn-chat-input {
+    flex: 1;
+    border: 1px solid var(--color-line-strong);
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 0.55rem 1rem;
+    font-size: 0.85rem;
+    font-family: var(--font-body);
+    font-weight: 300;
+    color: var(--color-charcoal);
+    outline: none;
+    transition: border-color 0.2s var(--ease);
+  }
+
+  .hn-chat-input:focus {
+    border-color: var(--color-forest);
+  }
+
+  .hn-chat-submit {
+    background: var(--color-forest);
+    color: var(--color-cream);
+    border: none;
+    width: 2.15rem;
+    height: 2.15rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s var(--ease), transform 0.2s var(--ease);
+  }
+
+  .hn-chat-submit:hover {
+    background: var(--color-deep-green);
+    transform: scale(1.05);
+  }
+
+  .hn-chat-submit:disabled {
+    background: var(--color-muted-moss);
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+</style>
+
+<script>
+  // Chatbot logic running 100% on the client side
+  document.addEventListener('DOMContentLoaded', () => {
+    const trigger = document.getElementById('hnChatTrigger');
+    const container = document.getElementById('hnChatWidget');
+    const closeBtn = document.getElementById('hnChatClose');
+    const messagesContainer = document.getElementById('hnChatMessages');
+    const chatForm = document.getElementById('hnChatForm') as HTMLFormElement;
+    const chatInput = document.getElementById('hnChatInput') as HTMLInputElement;
+    const typingIndicator = document.getElementById('hnTypingIndicator');
+    const quickReplies = document.getElementById('hnQuickReplies');
+
+    if (!trigger || !container || !closeBtn || !messagesContainer || !chatForm || !chatInput || !typingIndicator || !quickReplies) {
+      return;
+    }
+
+    // Knowledge base loaded from the CONTENT_EVIDENCE_BANK.md facts.
+    // Clean matching ignores accents and uppercase.
+    const KNOWLEDGE_BASE = [
+      {
+        keywords: ['chao', 'hello', 'hi', 'xin chao', 'bat dau', 'hey', 'alo', 'co ai khong'],
+        answers: [
+          "Dạ, Hiền Nương Farm xin kính chào bạn! Thật vui vì được đón tiếp bạn ghé thăm trang trại số của chúng tôi. Tôi có thể chia sẻ gì cùng bạn về các dòng nấm sạch hay mô hình nông nghiệp tuần hoàn ở Bảy Núi ạ?",
+          "Dạ, xin chào bạn! Chúc bạn một ngày tràn đầy năng lượng an lành. Tôi ở đây để hỗ trợ giải đáp mọi thắc mắc của bạn về Hiền Nương Farm ạ!"
+        ]
+      },
+      {
+        keywords: ['ai', 'sang lap', 'thanh lap', 'chu', 'co sang lap', 'chau thi nuong', 'tran phuong hien', 'chi nuong', 'anh hien', 'vo chong', 'co ai', 'ai lam', 'sang lap ra'],
+        answers: [
+          "Dạ, Hiền Nương Farm được thành lập vào năm 2020 bởi hai vợ chồng đồng sáng lập là <strong>chị Châu Thị Nương</strong> và <strong>anh Trần Phương Hiền</strong>.<br/><br/>Với lòng trân quý giá trị bản địa, chị Châu Thị Nương (Nông dân Việt Nam xuất sắc năm 2025) đã tâm huyết kiến tạo mô hình nuôi trồng nấm sạch gắn liền với chuỗi nông nghiệp xanh tại vùng đất Tà Đảnh, huyện Tri Tôn, tỉnh An Giang."
+        ]
+      },
+      {
+        keywords: ['tuan hoan', 'nong nghiep tuan hoan', 'quy trinh', 'xoay vong', 'phe pham', 'phu pham', 'trun que', 'phan huu co', 'rom', 'cam', 'dat', 'mo hinh', 'tiet kiem', 'bao ve moi truong', 'sinh thai'],
+        answers: [
+          "Dạ, tại Hiền Nương Farm, <strong>Nông nghiệp tuần hoàn</strong> được vận hành như một chu trình khép kín để triệt tiêu lãng phí và bồi dưỡng đất mẹ:<br/><br/>1. <strong>Thu gom phụ phẩm</strong>: Thu mua rơm rạ, cám gạo, cám bắp từ bà con nông dân địa phương làm giá thể trồng nấm.<br/>2. <strong>Nuôi trồng sạch</strong>: Trồng nấm sạch trong môi trường kiểm soát nghiêm ngặt, hoàn toàn không hóa chất.<br/>3. <strong>Tái chế bã nấm</strong>: Sau thu hoạch, các bịch giá thể thải ra (spent substrate) được tận dụng làm thức ăn nuôi trùn quế.<br/>4. <strong>Trả lại đất đai</strong>: Trùn quế xử lý bã nấm và thải ra phân hữu cơ giàu dinh dưỡng, được bón ngược lại cho đồng ruộng, khép kín dòng tuần hoàn.<br/><br/>Mô hình giúp nâng cao chuỗi giá trị và giảm thiểu ô nhiễm môi trường tại địa phương."
+        ]
+      },
+      {
+        keywords: ['san pham', 'san vat', 'mua', 'ban', 'nam', 'nam moi', 'moi den', 'linh chi', 'dong trung', 'ha thao', 'bao ngu', 'nam tuoi', 'say', 'kho'],
+        answers: [
+          "Dạ, Hiền Nương Farm tự hào cung cấp 4 dòng sản vật nấm đặc trưng nuôi trồng tại vùng Bảy Núi:<br/><br/>• <strong>Nấm Mối Đen</strong>: Thân nấm giòn sần sật, vị ngọt đậm đà, giàu chất xơ.<br/>• <strong>Nấm Linh Chi</strong>: Tai nấm dày dặn, được chăm sóc tỉ mỉ trên lớp rơm sạch.<br/>• <strong>Đông Trùng Hạ Thảo</strong>: Sợi nấm màu cam rực rỡ, được sấy thăng hoa giữ nguyên dưỡng chất quý giá.<br/>• <strong>Nấm Bào Ngư</strong>: Chùm nấm trắng xám, mọc khỏe khoắn, rất lành tính cho bữa ăn gia đình.<br/><br/>Bạn có thể tìm hiểu kỹ hơn tại trang <a href='/san-pham/'>Sản vật từ trang trại</a> nhé ạ!"
+        ]
+      },
+      {
+        keywords: ['nam moi den', 'moi den', 'moi'],
+        answers: [
+          "Dạ, <strong>Nấm Mối Đen</strong> tại Hiền Nương Farm được nuôi trồng từ bịch giá thể phối trộn rơm rạ tự nhiên. Nấm mối đen của trang trại nổi tiếng với thân nấm mập mạp, mũ nấm màu đen xám, khi ăn có độ giòn ngọt thanh nhẹ tự nhiên, rất thích hợp cho các món xào, nấu canh, lẩu hoặc nướng mỡ hành.<br/><br/>Sản phẩm mẫu đã được kiểm nghiệm an toàn vi sinh tại VietLabs và không chứa kim loại nặng độc hại."
+        ]
+      },
+      {
+        keywords: ['linh chi', 'nam linh chi'],
+        answers: [
+          "Dạ, <strong>Nấm Linh Chi</strong> của Hiền Nương Farm được trồng trực tiếp từ bịch phôi đặt trên lớp rơm sạch tại nhà nấm. Qua quy trình kiểm định chất lượng mẫu thử tại VietLabs năm 2023, nấm linh chi của trang trại đạt tỉ lệ hoạt chất quý nổi bật gồm <i>Polysaccharides (6.60 mg/g)</i> và <i>Triterpen (6.57 mg/g)</i>, đồng thời hoàn toàn không phát hiện kim loại nặng nguy hại (chì, cadmium)."
+        ]
+      },
+      {
+        keywords: ['dong trung', 'ha thao', 'dong trung ha thao'],
+        answers: [
+          "Dạ, <strong>Đông Trùng Hạ Thảo</strong> được chúng tôi nuôi cấy nghiêm ngặt bằng công nghệ hiện đại ngay tại trang trại Tà Đảnh. Sợi nấm thu hoạch đạt sắc cam chuẩn tự nhiên.<br/><br/>Báo cáo thử nghiệm mẫu tại VietLabs chỉ ra hàm lượng dưỡng chất đặc trưng vượt trội: <i>Cordycepin đạt 22.4 mg/100g</i> và <i>Adenosine đạt 3.90 mg/100g</i>, giúp bồi bổ và nâng cao sức đề kháng hiệu quả."
+        ]
+      },
+      {
+        keywords: ['bao ngu', 'nam bao ngu'],
+        answers: [
+          "Dạ, <strong>Nấm Bào Ngư</strong> được Hiền Nương Farm trồng dạng treo hoặc xếp kệ khoa học trong nhà trồng thông thoáng. Chùm nấm bào ngư xám dày dặn, lành tính, ngọt mát, là sản phẩm mộc mạc thích hợp cho thực đơn thuần chay và bữa cơm gia đình mỗi ngày."
+        ]
+      },
+      {
+        keywords: ['dia chi', 'o dau', 'cho nao', 'toa lac', 'tinh', 'an giang', 'tri ton', 'ta danh', 'thoi son', 'viet nam', 'ban do', 'diem den', 'ghe tham'],
+        answers: [
+          "Dạ, trang trại Hiền Nương Farm gắn liền với vùng đất <strong>Tà Đảnh, huyện Tri Tôn, tỉnh An Giang</strong>. Địa chỉ liên hệ và cơ sở đóng tại khóm Thới Thuận, Phường Thới Sơn, Tỉnh An Giang.<br/><br/>Trang trại nằm nép mình dưới chân vùng Bảy Núi huyền thoại với khí hậu trong lành, cực kỳ phù hợp cho việc nuôi cấy các loại nấm dược liệu và nấm ăn cao cấp."
+        ]
+      },
+      {
+        keywords: ['hop tac', 'lien he', 'mua si', 'dai ly', 'mua hang', 'so dien thoai', 'sdt', 'email', 'thu', 'facebook', 'zalo', 'gia', 'bao gia'],
+        answers: [
+          "Dạ, mọi mong muốn liên hệ tìm hiểu mua nấm, làm đại lý, tham quan trang trại hoặc hợp tác nông nghiệp xanh, bạn vui lòng:<br/><br/>• Gửi thư điện tử về: <strong>hiennuongfarm@gmail.com</strong><br/>• Hoặc điền thông tin vào mẫu đăng ký hợp tác ở phần <strong>Hợp tác</strong> ở cuối trang chủ.<br/><br/>Chúng tôi rất vinh hạnh được đồng hành cùng các đối tác có chung tình yêu với nông sinh thái tuần hoàn!"
+        ]
+      },
+      {
+        keywords: ['kiem nghiem', 'vietlabs', 'an toan', 'sach', 'hoa chat', 'chat luong', 'bao cao', 'kim loai', 'doc hai', 'chi', 'cadmium', 'adenosine', 'cordycepin', 'polysaccharide'],
+        answers: [
+          "Dạ, để bảo vệ sức khỏe người tiêu dùng, các sản phẩm nấm của Hiền Nương Farm đều được gửi đi phân tích mẫu tại trung tâm kiểm nghiệm uy tín <strong>VietLabs</strong> (các đợt kiểm nghiệm 2023, 2024).<br/><br/>Kết quả phân tích mẫu đạt tiêu chuẩn an toàn thực phẩm cực kỳ khắt khe: an toàn vi sinh (Coliforms, E. coli nằm trong ngưỡng an toàn), không phát hiện kim loại nặng độc hại (chì Pb, Cadmium Cd, ArsenicAs) và xác định rõ ràng các hoạt chất quý của nấm. Bạn có thể xem chi tiết bảng kết quả này tại trang chi tiết từng sản vật ạ."
+        ]
+      },
+      {
+        keywords: ['ocop', 'giai thuong', 'chung nhan', 'nong dan xuat sac', 'vinh danh', 'dat dai', 'nang nuong', 'ta danh an giang'],
+        answers: [
+          "Dạ, Hiền Nương Farm vô cùng tự hào khi:<br/><br/>• Ba dòng sản phẩm nấm của trang trại (gồm Linh chi, Đông trùng hạ thảo và Nấm mối) đã được ghi nhận đạt tiêu chuẩn <strong>OCOP 3 sao</strong>.<br/>• Đặc biệt, đồng sáng lập trang trại là <strong>chị Châu Thị Nương</strong> vinh dự được bình chọn là một trong những <strong>Nông dân Việt Nam xuất sắc năm 2025</strong> nhờ những đóng góp sáng tạo trong phát triển kinh tế nông thôn tuần hoàn vùng biên giới An Giang."
+        ]
+      }
+    ];
+
+    // Helper to strip accents for robust matching
+    function removeVietnameseTones(str: string) {
+      str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+      str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+      str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+      str = str.replace(/ò|ó|ọ|ỏ|ã|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+      str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+      str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+      str = str.replace(/đ/g, "d");
+      str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A");
+      str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E");
+      str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I");
+      str = str.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "O");
+      str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "U");
+      str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "Y");
+      str = str.replace(/Đ/g, "D");
+      // Some system encode some character differently
+      str = str.replace(/\u0300|\u0301|\u0309|\u0303|\u0309/g, ""); // Huyền, sắc, hỏi, ngã
+      str = str.replace(/\u02C6|\u0306|\u031B/g, ""); // Â, Ă, Ơ
+      return str.toLowerCase().trim();
+    }
+
+    // Toggle Chat Panel
+    function toggleChat() {
+      const isOpen = container.classList.contains('is-open');
+      if (isOpen) {
+        container.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+      } else {
+        container.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+        // Hide notification badge once opened
+        const badge = trigger.querySelector('.hn-chat-trigger-badge');
+        if (badge) {
+          (badge as HTMLElement).style.display = 'none';
+        }
+        // Auto-focus input
+        setTimeout(() => chatInput.focus(), 300);
+      }
+    }
+
+    trigger.addEventListener('click', toggleChat);
+    closeBtn.addEventListener('click', toggleChat);
+
+    // Add Message to Box
+    function addMessage(text: string, isUser = false) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `hn-message hn-message-${isUser ? 'user' : 'ai'}`;
+
+      const bubbleDiv = document.createElement('div');
+      bubbleDiv.className = 'hn-message-bubble';
+      bubbleDiv.innerHTML = text;
+
+      const timeSpan = document.createElement('span');
+      timeSpan.className = 'hn-message-time';
+      const now = new Date();
+      timeSpan.textContent = now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
+
+      msgDiv.appendChild(bubbleDiv);
+      msgDiv.appendChild(timeSpan);
+      messagesContainer.appendChild(msgDiv);
+
+      // Scroll to bottom
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    // AI Response Logic with typing simulation
+    function handleResponse(userQuery: string) {
+      // Show typing indicator
+      typingIndicator.style.display = 'flex';
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+      // Hide quick replies momentarily to focus on reading
+      quickReplies.style.opacity = '0.5';
+
+      // Normalize text for comparison
+      const normalizedQuery = removeVietnameseTones(userQuery);
+
+      // Simple score matching
+      let bestResponse = "";
+      let maxScore = 0;
+
+      for (const item of KNOWLEDGE_BASE) {
+        let score = 0;
+        for (const kw of item.keywords) {
+          if (normalizedQuery.includes(kw)) {
+            // Give higher weight to exact matching keywords or longer matches
+            score += kw.length;
+          }
+        }
+        if (score > maxScore) {
+          maxScore = score;
+          // Pick a random answer from the matched answers array
+          bestResponse = item.answers[Math.floor(Math.random() * item.answers.length)];
+        }
+      }
+
+      // Fallback response if no keywords match
+      if (maxScore === 0) {
+        bestResponse = "Dạ, câu hỏi của bạn rất hay! Do tôi là trợ lý mô phỏng tự động, tôi chưa được cập nhật thông tin chi tiết về chủ đề này.<br/><br/>Bạn có thể tìm hiểu thêm về mô hình <strong>Nông nghiệp tuần hoàn</strong>, các dòng <strong>Sản vật nấm</strong> của trang trại, hoặc gửi thư về email <strong>hiennuongfarm@gmail.com</strong> để được chị Châu Thị Nương và đội ngũ giải đáp thấu đáo nhất nhé ạ! 🌾";
+      }
+
+      // Simulate human typing delay (600 - 1200ms)
+      const delay = Math.max(600, Math.min(1200, userQuery.length * 8));
+      setTimeout(() => {
+        typingIndicator.style.display = 'none';
+        addMessage(bestResponse, false);
+        quickReplies.style.opacity = '1';
+      }, delay);
+    }
+
+    // Submit form handler
+    chatForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = chatInput.value.trim();
+      if (!text) return;
+
+      // User Message
+      addMessage(text, true);
+      chatInput.value = '';
+
+      // AI Response
+      handleResponse(text);
+    });
+
+    // Quick Reply Buttons Handler
+    quickReplies.addEventListener('click', (e) => {
+      const button = (e.target as HTMLElement).closest('.hn-quick-btn');
+      if (!button) return;
+
+      const question = button.getAttribute('data-question');
+      if (question) {
+        addMessage(question, true);
+        handleResponse(question);
+      }
+    });
+  });
+</script>
