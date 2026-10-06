@@ -9,7 +9,7 @@ import Eyebrow from '../Eyebrow.astro';
 // x / y place each icon's centre in the diagram, after the section mockup.
 const steps = [
   { name: 'Phụ phẩm nông nghiệp', note: 'Tận dụng phụ phẩm\nđịa phương', icon: 'phu-pham', x: 50, y: 12.33 },
-  { name: 'Giá thể trồng nấm', note: 'Chế biến thành giá thể', icon: 'gia-the', x: 84.44, y: 34.89 },
+  { name: 'Giá thể trồng nấm', note: 'Chế biến thành\ngiá thể', icon: 'gia-the', x: 84.44, y: 34.89 },
   { name: 'Thu hoạch nấm', note: 'Tạo ra nấm tươi', icon: 'thu-hoach', x: 74, y: 78.35 },
   { name: 'Chế biến', note: 'Giá thể sau thu hoạch\nđược ủ thành phân hữu cơ', icon: 'u-phan', x: 26, y: 78.35 },
   { name: 'Trở về đất', note: 'Bổ sung dinh dưỡng\ncho đất', icon: 'tro-ve-dat', x: 15.56, y: 34.89 },
@@ -37,9 +37,9 @@ const arrows = [
     <Eyebrow num="02" class="cycle__eyebrow">Nông nghiệp tuần hoàn</Eyebrow>
 
     <div class="grid cycle__grid">
+      <!-- The eyebrow already names the section; the heading carries its line. -->
       <div class="cycle__head" data-reveal>
-        <h2 class="h2 cycle__title" id="cycle-title">Nông nghiệp tuần hoàn</h2>
-        <p class="lead cycle__sub">Hướng đi bền vững <br />cùng thiên nhiên</p>
+        <h2 class="h2 cycle__title" id="cycle-title">Hướng đi bền vững cùng thiên nhiên</h2>
       </div>
 
       <div class="cycle__copy" data-reveal style="--reveal-delay: 80ms">
@@ -85,7 +85,6 @@ const arrows = [
               </li>
             ))}
           </ol>
-          <p class="ring__loop">Sau giai đoạn 05, vòng quay trở lại 01.</p>
         </div>
       </div>
 
@@ -125,8 +124,7 @@ const arrows = [
   .cycle__diagram,
   .cycle__figure { grid-column: 1 / -1; }
 
-  .cycle__title { max-width: 12ch; }
-  .cycle__sub { margin-top: var(--space-s); color: var(--color-text); }
+  .cycle__title { max-width: 20ch; text-wrap: balance; }
 
   .cycle__copy { max-width: 34rem; margin-top: calc(var(--space-m) - var(--space-xl)); }
   .cycle__copy .cycle__more {
@@ -138,151 +136,106 @@ const arrows = [
   .cycle__figure { max-width: 26rem; }
 
   /* --- Diagram ---------------------------------------------------------
-     Small screens: a numbered vertical sequence with small icons.
-     ≥ 640px: the five stages are set around a loop of arrows. */
+     The five stages are set around a loop of arrows at every width. All
+     sizes follow the ring's own width (it is the container), so the
+     composition scales as one. */
 
-  .ring { position: relative; }
-
-  .ring__svg,
-  .ring__motto { display: none; }
-
-  .ring__steps { border-top: 1px solid var(--color-line); }
-
-  .ring__step {
-    display: grid;
-    grid-template-columns: 3.5rem 1fr;
-    grid-template-rows: auto auto 1fr;
-    column-gap: var(--space-s);
-    align-items: start;
-    padding-block: 0.875rem;
-    border-bottom: 1px solid var(--color-line);
+  .ring {
+    --icon: 24cqi;
+    --num-h: 4.4cqi;
+    position: relative;
+    container-type: inline-size;
+    width: 100%;
+    max-width: 36.5rem;
+    margin-inline: auto;
+    aspect-ratio: 585 / 665;
   }
 
-  .ring__icon {
-    grid-column: 1;
-    grid-row: 1 / -1;
-    width: 3.5rem;
-    height: 3.5rem;
-    border-radius: 50%;
-    border: 1px solid rgba(120, 130, 103, 0.45);
+  .ring__svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    fill: none;
+    stroke: var(--cycle-line);
+    stroke-width: 1.1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .ring__motto {
+    position: absolute;
+    top: 49.6%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: max(1.25rem, 6cqi);
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    color: var(--color-forest);
+  }
+
+  /* Each stage hangs from its icon's centre: number above, text below. */
+  .ring__step {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    transform: translate(-50%, calc(-1 * (var(--num-h) + var(--icon) / 2)));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: max-content;
+    text-align: center;
   }
 
   .ring__num {
-    grid-column: 2;
-    font-size: 0.6875rem;
+    height: var(--num-h);
+    font-size: max(0.6875rem, 2.9cqi);
+    line-height: 1;
     letter-spacing: 0.12em;
-    line-height: 1.4;
     color: var(--color-earth);
     font-variant-numeric: tabular-nums;
   }
 
+  .ring__icon {
+    width: var(--icon);
+    height: var(--icon);
+    border-radius: 50%;
+    border: 1px solid rgba(120, 130, 103, 0.5);
+  }
+
   .ring__name {
-    grid-column: 2;
+    margin-top: 1.4cqi;
     font-family: var(--font-display);
-    font-size: 1.1875rem;
+    font-size: max(0.875rem, 3.5cqi);
     line-height: 1.3;
+    white-space: nowrap;
   }
 
   .ring__note {
-    grid-column: 2;
-    font-size: 0.8125rem;
-    line-height: 1.5;
+    white-space: pre-line;
+    margin-top: 0.4cqi;
+    font-size: max(0.75rem, 2.5cqi);
+    line-height: 1.45;
     color: var(--color-text-muted);
   }
 
-  .ring__loop {
-    padding: 0.875rem 0 0 calc(3.5rem + var(--space-s));
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 0.9375rem;
-    color: var(--color-text-muted);
-  }
-
-  @media (min-width: 640px) {
-    /* Sizes follow the diagram's width so the composition holds together. */
-    .cycle__diagram { container-type: inline-size; }
-
+  /* Phones: the ring reaches into the side margins (its widest labels
+     hang a little to the right), and its labels follow its width alone,
+     so nothing collides on a narrow screen. */
+  @media (max-width: 639px) {
     .ring {
-      --icon: 24cqi;
-      --num-h: 4.4cqi;
-      width: 100%;
-      max-width: 36.5rem;
-      margin-inline: auto;
-      aspect-ratio: 585 / 665;
+      width: calc(100% + 2 * var(--gutter));
+      max-width: none;
+      margin-inline: calc(-1 * var(--gutter));
     }
-
-    .ring__loop { display: none; }
-
-    .ring__svg {
-      display: block;
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      overflow: visible;
-      fill: none;
-      stroke: var(--cycle-line);
-      stroke-width: 1.1;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .ring__motto {
-      display: block;
-      position: absolute;
-      top: 49.6%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: max(1.25rem, 6cqi);
-      line-height: 1.25;
-      text-align: center;
-      white-space: nowrap;
-      color: var(--color-forest);
-    }
-
-    .ring__steps { border: 0; }
-
-    /* Each stage hangs from its icon's centre: number above, text below. */
-    .ring__step {
-      position: absolute;
-      left: var(--x);
-      top: var(--y);
-      transform: translate(-50%, calc(-1 * (var(--num-h) + var(--icon) / 2)));
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: max-content;
-      padding: 0;
-      border: 0;
-      text-align: center;
-    }
-
-    .ring__num {
-      height: var(--num-h);
-      font-size: max(0.6875rem, 2.9cqi);
-      line-height: 1;
-    }
-
-    .ring__icon {
-      width: var(--icon);
-      height: var(--icon);
-      border-color: rgba(120, 130, 103, 0.5);
-    }
-
-    .ring__name {
-      margin-top: 1.4cqi;
-      font-size: max(0.875rem, 3.5cqi);
-      white-space: nowrap;
-    }
-
-    .ring__note {
-      white-space: pre-line;
-      margin-top: 0.4cqi;
-      font-size: max(0.75rem, 2.5cqi);
-      line-height: 1.45;
-    }
+    .ring__motto { font-size: 6cqi; }
+    .ring__num { font-size: 2.9cqi; }
+    .ring__name { font-size: 3.6cqi; }
+    .ring__note { font-size: 3.15cqi; }
   }
 
   /* Tablet: the introduction in two columns, then the
@@ -343,17 +296,27 @@ const arrows = [
     .ring__name { font-size: 3.6cqi; }
     .ring__note { font-size: 3.15cqi; }
 
-    /* The heading and subtitle take one line each where they fit. */
-    .cycle__title { max-width: none; }
-    .cycle__sub br { display: none; }
+    .cycle__title { max-width: 16ch; }
   }
 
-  /* Small laptops: the photograph keeps its 3.5 share; the text column
-     takes a wider one, and its spacing tightens. */
+  /* Small laptops: tied to the photograph's height the ring would be too
+     small to read here, so it takes the full width of a wider middle
+     track instead (a little taller than the photograph, which centres
+     against it). Same order, same geometry. */
   @media (min-width: 1024px) and (max-width: 1279px) {
-    .cycle__grid { grid-template-columns: minmax(0, 3.5fr) minmax(0, 3.9fr) minmax(0, 4.6fr); }
+    .cycle__grid { grid-template-columns: minmax(0, 3.5fr) minmax(0, 4.4fr) minmax(0, 4.1fr); }
 
-    .cycle__sub { margin-top: var(--space-xs); }
+    .cycle__diagram {
+      align-self: center;
+      contain: none;
+      display: block;
+    }
+    .ring {
+      width: 100%;
+      height: auto;
+      max-width: none;
+    }
+
     .cycle__copy { margin-top: var(--space-m); }
     .cycle__copy .cycle__more { margin-top: var(--space-s); padding-top: var(--space-s); }
   }
