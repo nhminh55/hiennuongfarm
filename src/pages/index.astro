@@ -31,6 +31,10 @@ import Partner from '../components/home/Partner.astro';
     .home { --section-y: clamp(3rem, 1rem + 3vw, 4.5rem); }
   }
 
+  .home :global(section[id]) {
+    scroll-margin-top: calc(var(--header-h) + var(--space-m));
+  }
+
   /* Type roles. Sizes are the --type-* tokens (global.css); each role's
      line height, weight and tracking are set once here. Product titles and
      the hero headline have one element each and take their tokens in

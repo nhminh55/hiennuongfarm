@@ -56,7 +56,7 @@ import Arrow from '../Arrow.astro';
     z-index: -2;
   }
 
-  /* Portrait screens: use mobile-specific background image with fixed 3:2 geometry */
+  /* Portrait screens: a compact frame, preserving the artwork near the top. */
   @media (max-width: 767px) {
     .hero :global(.hero__media) {
       display: none;
@@ -65,10 +65,10 @@ import Arrow from '../Arrow.astro';
       min-height: 0;
       height: auto;
       width: 100%;
-      aspect-ratio: 15 / 16;
+      aspect-ratio: 15 / 14;
       background-image: url('/images/farm/hero-bay-nui-mobile.webp');
       background-size: cover;
-      background-position: center bottom;
+      background-position: center 60%;
       background-repeat: no-repeat;
     }
   }
@@ -135,6 +135,7 @@ import Arrow from '../Arrow.astro';
     }
     .hero__content {
       position: absolute;
+      top: calc(var(--header-h) + 0.75rem);
       bottom: 2rem;
       left: max(var(--gutter), 1.5rem);
       right: max(var(--gutter), 1.5rem);
@@ -145,6 +146,8 @@ import Arrow from '../Arrow.astro';
     .hero__title {
       font-size: clamp(1.55rem, 6.5vw, 1.75rem);
       line-height: 1.05;
+      margin-bottom: auto;
+      text-shadow: 0 1px 2px rgba(248, 246, 240, 0.65);
     }
     .hero__sub {
       font-size: 0.875rem;
@@ -154,9 +157,9 @@ import Arrow from '../Arrow.astro';
     .hero__cta {
       width: fit-content;
       font-size: 0.825rem;
-      padding: 1rem 1.35rem;
+      padding: 0.75rem 1rem;
       margin-top: 1.375rem;
-      min-height: auto;
+      min-height: 2.75rem;
     }
   }
 
