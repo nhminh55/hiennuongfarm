@@ -18,11 +18,11 @@ export interface NavItem {
   href: string;
 }
 
-// Secondary pages are not built yet; links point to homepage sections.
+// Links point to homepage sections until each secondary page is built.
 export const nav: NavItem[] = [
   { label: 'Về Hiền Nương', href: '/#ve-hien-nuong' },
   { label: 'Nông nghiệp tuần hoàn', href: '/#tuan-hoan' },
-  { label: 'Sản vật', href: '/#san-vat' },
+  { label: 'Sản vật', href: '/san-pham/' },
   { label: 'Vùng Bảy Núi', href: '/#bay-nui' },
   { label: 'Hợp tác', href: '/#hop-tac' },
 ];

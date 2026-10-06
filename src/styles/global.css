@@ -198,6 +198,12 @@ em, .italic { font-style: italic; }
 
 .section { padding-block: var(--section-y); }
 
+/* Pages without a full-bleed hero start below the fixed header. */
+.main--offset { padding-top: var(--header-h); }
+
+/* Anchored sections on secondary pages clear the fixed header. */
+.main--offset [id] { scroll-margin-top: calc(var(--header-h) + var(--space-m)); }
+
 .rule {
   height: 1px;
   border: 0;

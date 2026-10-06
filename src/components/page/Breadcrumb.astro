@@ -1,0 +1,56 @@
+---
+// Quiet trail above a secondary page title: "Trang chủ / Sản phẩm / Nấm Mối Đen".
+export interface Crumb {
+  label: string;
+  /** Omit for the current page. */
+  href?: string;
+}
+
+interface Props {
+  items: Crumb[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+---
+<nav class:list={['breadcrumb', className]} aria-label="Đường dẫn">
+  <ol class="breadcrumb__list">
+    {items.map((item) => (
+      <li class="breadcrumb__item">
+        {item.href ? (
+          <a class="breadcrumb__link" href={item.href}>{item.label}</a>
+        ) : (
+          <span aria-current="page">{item.label}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<style>
+  .breadcrumb__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+  }
+
+  .breadcrumb__item + .breadcrumb__item::before {
+    content: "/";
+    margin-inline: 0.625rem;
+    color: var(--color-line-strong);
+  }
+
+  .breadcrumb__link {
+    border-bottom: 1px solid transparent;
+    transition: border-color 300ms var(--ease), color 300ms var(--ease);
+  }
+  .breadcrumb__link:hover {
+    color: var(--color-text);
+    border-color: currentColor;
+  }
+
+  [aria-current="page"] { color: var(--color-text); }
+</style>

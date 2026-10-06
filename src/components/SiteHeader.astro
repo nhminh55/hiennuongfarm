@@ -8,6 +8,13 @@ interface Props {
 }
 
 const { overlay = false } = Astro.props;
+
+// A page link is current for its own path and everything below it.
+const path = Astro.url.pathname;
+const current = (href: string) =>
+  href.startsWith('/') && !href.startsWith('/#') && href !== '/' && path.startsWith(href)
+    ? 'page'
+    : undefined;
 ---
 <header
   class:list={['site-header', { 'site-header--overlay': overlay }]}
@@ -21,7 +28,7 @@ const { overlay = false } = Astro.props;
       <nav class="site-nav" aria-label="Điều hướng chính">
         <ul class="site-nav__list">
           {nav.map((item) => (
-            <li><a class="site-nav__link" href={item.href}>{item.label}</a></li>
+            <li><a class="site-nav__link" href={item.href} aria-current={current(item.href)}>{item.label}</a></li>
           ))}
         </ul>
       </nav>
@@ -47,7 +54,7 @@ const { overlay = false } = Astro.props;
         <ol class="mobile-menu__list">
           {nav.map((item, i) => (
             <li>
-              <a class="mobile-menu__link" href={item.href} data-menu-link>
+              <a class="mobile-menu__link" href={item.href} aria-current={current(item.href)} data-menu-link>
                 <span class="mobile-menu__num">{String(i + 1).padStart(2, '0')}</span>
                 <span>{item.label}</span>
               </a>
@@ -177,7 +184,8 @@ const { overlay = false } = Astro.props;
     transform-origin: left;
     transition: transform 400ms var(--ease);
   }
-  .site-nav__link:hover::after { transform: scaleX(1); }
+  .site-nav__link:hover::after,
+  .site-nav__link[aria-current="page"]::after { transform: scaleX(1); }
 
   .site-header__cta {
     display: none;
@@ -270,6 +278,8 @@ const { overlay = false } = Astro.props;
     font-size: clamp(1.625rem, 1.2rem + 2.4vw, 2.5rem);
     line-height: 1.25;
   }
+
+  .mobile-menu__link[aria-current="page"] { font-style: italic; }
 
   .mobile-menu__num {
     flex: none;

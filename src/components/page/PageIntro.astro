@@ -1,0 +1,82 @@
+---
+/**
+ * Editorial opening for a secondary page: breadcrumb, eyebrow, a large
+ * title on the left and the introduction set low on the right.
+ * The default slot holds the introduction; `foot` sits under a thin rule.
+ */
+import Breadcrumb, { type Crumb } from './Breadcrumb.astro';
+import Eyebrow from '../Eyebrow.astro';
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  crumbs: Crumb[];
+  id?: string;
+}
+
+const { eyebrow, title, crumbs, id = 'page-title' } = Astro.props;
+---
+<header class="page-intro">
+  <div class="container grid page-intro__grid">
+    <Breadcrumb class="page-intro__crumbs" items={crumbs} />
+
+    <div class="page-intro__head">
+      <Eyebrow>{eyebrow}</Eyebrow>
+      <h1 class="page-intro__title" id={id}>{title}</h1>
+    </div>
+
+    <div class="page-intro__text">
+      <slot />
+    </div>
+
+    {Astro.slots.has('foot') && (
+      <div class="page-intro__foot">
+        <slot name="foot" />
+      </div>
+    )}
+  </div>
+</header>
+
+<style>
+  .page-intro {
+    padding-top: clamp(2rem, 1.25rem + 3vw, 4rem);
+    padding-bottom: var(--space-2xl);
+  }
+
+  .page-intro__grid { row-gap: var(--space-l); }
+
+  .page-intro__grid > :global(.page-intro__crumbs),
+  .page-intro__head,
+  .page-intro__text,
+  .page-intro__foot { grid-column: 1 / -1; }
+
+  .page-intro__head { margin-top: clamp(1.5rem, 1rem + 3vw, 4rem); }
+
+  .page-intro__title {
+    margin-top: var(--space-l);
+    max-width: 16ch;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.25rem, 1.35rem + 3.6vw, 4.75rem);
+    line-height: var(--lh-display);
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  .page-intro__text { max-width: 34rem; }
+
+  .page-intro__foot {
+    margin-top: var(--space-l);
+    padding-top: var(--space-m);
+    border-top: 1px solid var(--color-line);
+  }
+
+  @media (min-width: 1024px) {
+    .page-intro__head { grid-column: 1 / span 7; }
+    .page-intro__text {
+      grid-column: 9 / span 4;
+      align-self: end;
+    }
+    .page-intro__foot { margin-top: var(--space-2xl); }
+  }
+</style>

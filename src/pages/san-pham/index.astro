@@ -1,0 +1,285 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIntro from '../../components/page/PageIntro.astro';
+import CtaBand from '../../components/page/CtaBand.astro';
+import Photo from '../../components/Photo.astro';
+import Eyebrow from '../../components/Eyebrow.astro';
+import Arrow from '../../components/Arrow.astro';
+import { products } from '../../data/products';
+
+const total = String(products.length).padStart(2, '0');
+const num = (i: number) => String(i + 1).padStart(2, '0');
+
+// The first line is the lead spread (5:4); the others are portraits.
+const ratio = (i: number) => (i === 0 ? '5 / 4' : '4 / 5');
+
+// Copy follows CONTENT_EVIDENCE_BANK.md §2–3 and §8 (safe wording).
+const principles = [
+  {
+    title: 'Nguyên liệu từ địa phương',
+    text: 'Rơm và các phụ phẩm nông nghiệp tại địa phương được tận dụng để tạo giá thể trồng nấm.',
+  },
+  {
+    title: 'Tái sử dụng sau thu hoạch',
+    text: 'Sau mỗi vòng trồng nấm, giá thể tiếp tục được tận dụng trong các công đoạn nông nghiệp khác, như nuôi trùn quế và tạo phân hữu cơ.',
+  },
+  {
+    title: 'Kiểm nghiệm theo mẫu',
+    text: 'Các mẫu sản phẩm được gửi kiểm nghiệm theo từng nhóm chỉ tiêu phù hợp.',
+    link: { href: '/san-pham/nam-moi-den/#kiem-nghiem', label: 'Kết quả mẫu nấm mối' },
+  },
+];
+---
+<BaseLayout
+  title="Sản phẩm"
+  description="Bốn dòng nấm chính của Hiền Nương Farm: nấm mối đen, nấm linh chi, đông trùng hạ thảo và nấm bào ngư, nuôi trồng tại vùng Bảy Núi, An Giang."
+>
+  <PageIntro
+    eyebrow="Sản vật từ trang trại"
+    title="Bốn dòng nấm từ vùng Bảy Núi"
+    crumbs={[{ label: 'Trang chủ', href: '/' }, { label: 'Sản phẩm' }]}
+  >
+    <p class="lead">
+      Nấm mối đen, nấm linh chi, đông trùng hạ thảo và nấm bào ngư — bốn dòng nấm chính được
+      nuôi trồng tại trang trại.
+    </p>
+    <p class="body intro__body">
+      Trang trại phát triển mô hình trồng nấm gắn với nguồn nguyên liệu nông nghiệp tại địa
+      phương — từ nấm tươi đến các sản phẩm chế biến sâu.
+    </p>
+
+    <nav slot="foot" aria-label="Các dòng nấm">
+      <ol class="index">
+        {products.map((p, i) => (
+          <li>
+            <a class="index__link" href={`#${p.slug}`}>
+              <span class="index__num">{num(i)}</span>
+              <span>{p.name}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  </PageIntro>
+
+  <section class="lines" aria-label="Bốn dòng nấm chính">
+    <div class="container">
+      {products.map((p, i) => (
+        <article class:list={['line', `line--${i + 1}`]} id={p.slug} aria-labelledby={`${p.slug}-name`}>
+          <Photo
+            class="line__photo"
+            src={p.image.src}
+            width={p.image.width}
+            height={p.image.height}
+            ratio={ratio(i)}
+            alt={p.image.alt}
+            loading={i === 0 ? 'eager' : 'lazy'}
+          />
+          <div class="line__text" data-reveal>
+            <p class="line__num">{num(i)} <span aria-hidden="true">/</span><span class="sr-only">trên</span> {total}</p>
+            <h2 class="line__name" id={`${p.slug}-name`}>{p.name}</h2>
+            <p class="body line__note">{p.note}</p>
+            {p.detail ? (
+              <a class="link-arrow line__link" href={p.detail}>
+                Xem chi tiết sản phẩm <Arrow />
+              </a>
+            ) : (
+              <p class="tbd line__tbd">Trang giới thiệu chi tiết đang được chuẩn bị.</p>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section approach" aria-labelledby="approach-title">
+    <div class="container grid approach__grid">
+      <div class="approach__head" data-reveal>
+        <Eyebrow>Cách trang trại làm nấm</Eyebrow>
+        <h2 class="h2 approach__title" id="approach-title">
+          Từ phụ phẩm nông nghiệp đến những mùa nấm.
+        </h2>
+      </div>
+
+      <ol class="approach__list">
+        {principles.map((item, i) => (
+          <li class="principle" data-reveal style={`--reveal-delay: ${i * 100}ms`}>
+            <span class="principle__num">{num(i)}</span>
+            <h3 class="h3 principle__title">{item.title}</h3>
+            <p class="body principle__text">{item.text}</p>
+            {item.link && (
+              <a class="link-arrow principle__link" href={item.link.href}>
+                {item.link.label} <Arrow />
+              </a>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <CtaBand title="Trao đổi về sản phẩm và hợp tác.">
+    Hiền Nương chào đón các đối tác quan tâm đến phân phối, thu mua và cùng phát triển sản phẩm
+    từ những dòng nấm của trang trại.
+  </CtaBand>
+</BaseLayout>
+
+<style>
+  /* Intro --------------------------------------------------------------- */
+
+  .intro__body { margin-top: var(--space-m); }
+
+  .index {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2xs) var(--col-gap);
+  }
+
+  .index__link {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    min-height: 2.75rem;
+    padding-block: 0.625rem;
+    font-size: var(--fs-small);
+    transition: color 300ms var(--ease);
+  }
+  .index__link:hover { color: var(--color-earth); }
+
+  .index__num {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: var(--color-earth);
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (min-width: 768px) {
+    .index { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+
+  /* Product lines ------------------------------------------------------- */
+
+  .lines { padding-block: var(--space-xl) var(--section-y); }
+
+  .line {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--col-gap);
+    row-gap: var(--space-m);
+  }
+  .line + .line { margin-top: var(--space-3xl); }
+
+  .line > :global(.line__photo),
+  .line__text { grid-column: 1 / -1; }
+
+  /* Phones: portraits step in from alternate sides. */
+  .line--2 > :global(.line__photo),
+  .line--4 > :global(.line__photo) { grid-column: 3 / -1; }
+  .line--3 > :global(.line__photo) { grid-column: 1 / span 10; }
+
+  .line__num {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: var(--color-earth);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .line__name {
+    margin-top: 0.75rem;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.875rem, 1.3rem + 2.2vw, 3.5rem);
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  .line__note { margin-top: var(--space-s); max-width: 26rem; }
+  .line__link { margin-top: var(--space-l); }
+  .line__tbd { margin-top: var(--space-m); }
+
+  /* Tablet: image and text side by side, alternating. */
+  @media (min-width: 768px) {
+    .line { align-items: end; }
+
+    .line > :global(.line__photo) { grid-row: 1; }
+    .line__text { grid-row: 1; padding-bottom: var(--space-s); }
+
+    .line--1 > :global(.line__photo) { grid-column: 1 / span 7; }
+    .line--1 .line__text { grid-column: 8 / span 5; }
+
+    .line--2 > :global(.line__photo) { grid-column: 7 / span 6; }
+    .line--2 .line__text { grid-column: 1 / span 5; }
+
+    .line--3 > :global(.line__photo) { grid-column: 1 / span 6; }
+    .line--3 .line__text { grid-column: 8 / span 5; }
+
+    .line--4 > :global(.line__photo) { grid-column: 7 / span 6; }
+    .line--4 .line__text { grid-column: 1 / span 5; }
+  }
+
+  /* Desktop: a sequence of spreads on shifting column lines. The lead
+     photograph bleeds off the left edge; the others sit on the grid at
+     different widths so no two lines read as the same card. */
+  @media (min-width: 1024px) {
+    .line--1 > :global(.line__photo) {
+      grid-column: 1 / span 7;
+      margin-left: calc(-1 * max(var(--gutter), (100vw - var(--container)) / 2));
+    }
+    .line--1 .line__text { grid-column: 9 / span 4; }
+
+    .line--2 > :global(.line__photo) { grid-column: 8 / span 4; }
+    .line--2 .line__text { grid-column: 2 / span 5; align-self: center; }
+
+    .line--3 > :global(.line__photo) { grid-column: 2 / span 4; }
+    .line--3 .line__text { grid-column: 7 / span 5; }
+
+    .line--4 > :global(.line__photo) { grid-column: 7 / span 5; }
+    .line--4 .line__text { grid-column: 1 / span 5; align-self: start; padding-top: var(--space-2xl); }
+  }
+
+  /* Approach ------------------------------------------------------------ */
+
+  .approach {
+    background: var(--color-paper);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .approach__grid { row-gap: var(--space-xl); }
+
+  .approach__head,
+  .approach__list { grid-column: 1 / -1; }
+
+  .approach__title { margin-top: var(--space-l); max-width: 17ch; }
+
+  .principle {
+    padding-block: var(--space-m) var(--space-l);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .principle__num {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: var(--color-earth);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .principle__title { margin-top: var(--space-s); }
+  .principle__text { margin-top: var(--space-s); max-width: 30rem; }
+  .principle__link { margin-top: var(--space-m); }
+
+  @media (min-width: 768px) {
+    .approach__list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: var(--col-gap);
+    }
+    .principle { padding-right: var(--space-s); }
+  }
+
+  @media (min-width: 1024px) {
+    .approach__head { grid-column: 1 / span 7; }
+    .approach__list { margin-top: var(--space-xl); }
+  }
+</style>

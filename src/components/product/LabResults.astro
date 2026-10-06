@@ -1,0 +1,223 @@
+---
+/**
+ * "Kết quả kiểm nghiệm mẫu" — sample-specific laboratory results, kept
+ * visually apart from product copy. Values come only from
+ * src/data/lab-reports.ts and are shown as reported, with no pass/fail
+ * reading. Each report keeps its own metadata and table.
+ *
+ * The default slot takes a page-specific note (e.g. how the sample is named).
+ */
+import Eyebrow from '../Eyebrow.astro';
+import type { LabReport } from '../../data/lab-reports';
+
+interface Props {
+  reports: LabReport[];
+}
+
+const { reports } = Astro.props;
+---
+<section class="section lab" id="kiem-nghiem" aria-labelledby="lab-title">
+  <div class="container grid lab__grid">
+    <div class="lab__head">
+      <Eyebrow>Kiểm nghiệm</Eyebrow>
+      <h2 class="h2 lab__title" id="lab-title">Kết quả kiểm nghiệm mẫu</h2>
+      <p class="body lab__intro">
+        Các chỉ tiêu và kết quả dưới đây được trình bày theo báo cáo thử nghiệm của mẫu đã gửi
+        kiểm nghiệm.
+      </p>
+      {Astro.slots.has('default') && <p class="body lab__intro"><slot /></p>}
+    </div>
+
+    <div class="lab__reports">
+      {reports.map((report) => (
+        <article class="lab__report" aria-label={`Báo cáo ${report.id}`}>
+          <dl class="lab__meta">
+            <div>
+              <dt>Mẫu thử</dt>
+              <dd>{report.sample}</dd>
+            </div>
+            <div>
+              <dt>Đơn vị thử nghiệm</dt>
+              <dd>{report.lab}</dd>
+            </div>
+            <div>
+              <dt>Đơn vị gửi mẫu</dt>
+              <dd>{report.customer}</dd>
+            </div>
+            <div>
+              <dt>Ngày thử nghiệm</dt>
+              <dd>{report.testedOn}</dd>
+            </div>
+            <div>
+              <dt>Mã báo cáo</dt>
+              <dd class="lab__code">{report.id}</dd>
+            </div>
+          </dl>
+
+          <table class="lab__table">
+            <caption class="lab__caption">{report.group}</caption>
+            <thead>
+              <tr>
+                <th scope="col">Chỉ tiêu</th>
+                <th scope="col">Kết quả</th>
+              </tr>
+            </thead>
+            <tbody>
+              {report.results.map((r) => (
+                <tr>
+                  <th scope="row">
+                    <span class:list={['lab__param', { italic: r.scientific }]}>{r.name}</span>
+                    {r.en !== r.name && <span class="lab__param-en" lang="en">{r.en}</span>}
+                  </th>
+                  <td>
+                    <span class="lab__value">{r.value}{r.exp && <sup>{r.exp}</sup>}</span>
+                    {r.unit && <span class="lab__unit"> {r.unit}</span>}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </article>
+      ))}
+
+      <div class="lab__notes">
+        <p>
+          Kết quả trên áp dụng cho mẫu thử được nêu trong báo cáo và không được hiểu là thông số cố
+          định cho mọi lô sản phẩm.
+        </p>
+        <p>
+          Kết quả được trình bày theo báo cáo, không kèm đánh giá đạt hay không đạt theo một tiêu
+          chuẩn cụ thể.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .lab {
+    background: var(--color-cream);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .lab__grid { row-gap: var(--space-xl); }
+
+  .lab__head,
+  .lab__reports { grid-column: 1 / -1; }
+
+  .lab__title { margin-top: var(--space-l); max-width: 14ch; }
+  .lab__intro { margin-top: var(--space-m); max-width: 26rem; font-size: var(--fs-small); line-height: 1.65; }
+  .lab__intro + .lab__intro { margin-top: var(--space-s); }
+
+  .lab__report + .lab__report { margin-top: var(--space-2xl); }
+
+  /* Report record: label above value, as on the homepage facts. */
+  .lab__meta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-m) var(--col-gap);
+    padding-top: var(--space-m);
+    border-top: 1px solid var(--color-line-strong);
+  }
+
+  .lab__meta dt {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-earth);
+  }
+
+  .lab__meta dd {
+    margin-top: 0.25rem;
+    font-size: var(--fs-small);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .lab__code { font-variant-numeric: tabular-nums; letter-spacing: 0.02em; white-space: nowrap; }
+
+  /* Phones: the report code gets a full row so it never breaks. */
+  .lab__meta > div:last-child { grid-column: 1 / -1; }
+
+  .lab__table {
+    width: 100%;
+    margin-top: var(--space-xl);
+    border-collapse: collapse;
+    font-size: var(--fs-small);
+    line-height: 1.5;
+  }
+
+  .lab__caption {
+    padding-bottom: var(--space-s);
+    text-align: left;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .lab__table thead th {
+    padding-block: 0.625rem;
+    border-top: 1px solid var(--color-line-strong);
+    border-bottom: 1px solid var(--color-line-strong);
+    text-align: left;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-earth);
+  }
+
+  .lab__table tbody th,
+  .lab__table tbody td {
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--color-line);
+    vertical-align: top;
+    text-align: left;
+  }
+
+  .lab__table tbody th { padding-right: var(--space-m); font-weight: 400; }
+
+  .lab__table td { width: 36%; white-space: nowrap; }
+
+  .lab__param { display: block; color: var(--color-text); }
+  .lab__param-en {
+    display: block;
+    margin-top: 0.125rem;
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+
+  .lab__value {
+    font-size: 1rem;
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+  }
+  .lab__value sup { font-size: 0.65em; line-height: 0; }
+
+  .lab__unit { color: var(--color-text-muted); }
+
+  .lab__notes {
+    display: grid;
+    gap: var(--space-xs);
+    margin-top: var(--space-l);
+    padding-left: var(--space-m);
+    border-left: 1px solid var(--color-earth);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 38rem;
+  }
+
+  @media (min-width: 640px) {
+    .lab__meta { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .lab__meta > div:last-child { grid-column: auto; }
+  }
+
+  @media (min-width: 1024px) {
+    .lab__head { grid-column: 1 / span 4; }
+    .lab__reports { grid-column: 6 / span 7; padding-top: 2.75rem; }
+  }
+</style>

@@ -1,0 +1,136 @@
+---
+/**
+ * Product page opening: name and provenance on the left, the product
+ * photograph bleeding off the right edge. No overlay — the text never sits
+ * on the image, so the crop can stay on the subject at every width.
+ */
+import Breadcrumb from '../page/Breadcrumb.astro';
+import Eyebrow from '../Eyebrow.astro';
+import Photo from '../Photo.astro';
+import Arrow from '../Arrow.astro';
+import type { Product } from '../../data/products';
+
+interface Props {
+  product: Product;
+  /** Short provenance line under the name. */
+  origin: string;
+  /** Anchor of the process section. */
+  processHref?: string;
+  contactHref?: string;
+}
+
+const { product, origin, processHref = '#quy-trinh', contactHref = '/#hop-tac' } = Astro.props;
+---
+<section class="p-hero" aria-labelledby="product-title">
+  <div class="container grid p-hero__grid">
+    <Breadcrumb
+      class="p-hero__crumbs"
+      items={[
+        { label: 'Trang chủ', href: '/' },
+        { label: 'Sản phẩm', href: '/san-pham/' },
+        { label: product.name },
+      ]}
+    />
+
+    <div class="p-hero__head">
+      <Eyebrow>Sản vật từ trang trại</Eyebrow>
+      <h1 class="display p-hero__title" id="product-title">{product.name}</h1>
+      <p class="p-hero__origin">{origin}</p>
+    </div>
+
+    <Photo
+      class="p-hero__photo"
+      src={product.image.src}
+      width={product.image.width}
+      height={product.image.height}
+      ratio="5 / 4"
+      position="60% 50%"
+      alt={product.image.alt}
+      loading="eager"
+    />
+
+    <div class="p-hero__body">
+      <p class="body p-hero__text"><slot /></p>
+      <div class="p-hero__actions">
+        <a class="btn" href={processHref}>Tìm hiểu quy trình <Arrow direction="down" /></a>
+        <a class="link-arrow" href={contactHref}>Liên hệ hợp tác <Arrow /></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .p-hero {
+    padding-top: clamp(2rem, 1.25rem + 3vw, 4rem);
+    padding-bottom: var(--section-y);
+  }
+
+  .p-hero__grid { row-gap: var(--space-l); }
+
+  .p-hero__grid > :global(.p-hero__crumbs),
+  .p-hero__head,
+  .p-hero__body,
+  .p-hero__grid > :global(.p-hero__photo) { grid-column: 1 / -1; }
+
+  .p-hero__head { margin-top: var(--space-s); }
+
+  .p-hero__title {
+    margin-top: var(--space-m);
+    color: var(--color-deep-green);
+  }
+
+  .p-hero__origin {
+    margin-top: var(--space-m);
+    max-width: 24rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+  }
+
+  /* Phones: the photograph runs edge to edge. */
+  .p-hero__grid > :global(.p-hero__photo) {
+    margin-inline: calc(-1 * var(--gutter));
+    margin-block: var(--space-2xs);
+  }
+
+  .p-hero__text { max-width: 30rem; }
+
+  .p-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-m) var(--space-l);
+    margin-top: var(--space-l);
+  }
+
+  @media (min-width: 768px) {
+    .p-hero__grid > :global(.p-hero__photo) { margin-inline: 0; }
+  }
+
+  /* Desktop: text column left, photograph to the right edge of the page. */
+  @media (min-width: 1024px) {
+    .p-hero__grid { row-gap: 0; }
+
+    .p-hero__head {
+      grid-column: 1 / span 5;
+      grid-row: 2;
+      margin-top: var(--space-2xl);
+    }
+
+    .p-hero__body {
+      grid-column: 1 / span 5;
+      grid-row: 3;
+      align-self: end;
+      padding-top: var(--space-l);
+      border-top: 1px solid var(--color-line);
+    }
+
+    .p-hero__grid > :global(.p-hero__photo) {
+      grid-column: 6 / -1;
+      grid-row: 2 / span 2;
+      margin: var(--space-xl) calc(-1 * max(var(--gutter), (100vw - var(--container)) / 2)) 0 0;
+    }
+  }
+</style>

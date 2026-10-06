@@ -1,0 +1,119 @@
+---
+// The other mushroom lines as a quiet ruled index — not a recommendation grid.
+import Eyebrow from '../Eyebrow.astro';
+import Arrow from '../Arrow.astro';
+import { products, productHref } from '../../data/products';
+
+interface Props {
+  /** Slug of the product on this page. */
+  current: string;
+}
+
+const { current } = Astro.props;
+const others = products
+  .map((p, i) => ({ ...p, num: String(i + 1).padStart(2, '0') }))
+  .filter((p) => p.slug !== current);
+---
+<section class="section related" aria-labelledby="related-title">
+  <div class="container grid related__grid">
+    <div class="related__head">
+      <Eyebrow>Sản vật từ trang trại</Eyebrow>
+      <h2 class="h2 related__title" id="related-title">Các dòng nấm khác</h2>
+      <a class="link-arrow related__all" href="/san-pham/">Tất cả sản phẩm <Arrow /></a>
+    </div>
+
+    <ul class="related__list">
+      {others.map((p) => (
+        <li>
+          <a class="related__item" href={productHref(p)}>
+            <span class="related__thumb">
+              <img
+                src={p.image.src}
+                width={p.image.width}
+                height={p.image.height}
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </span>
+            <span class="related__num">{p.num}</span>
+            <span class="related__name">{p.name}</span>
+            <Arrow />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .related { background: var(--color-paper); }
+
+  .related__grid { row-gap: var(--space-xl); }
+
+  .related__head,
+  .related__list { grid-column: 1 / -1; }
+
+  .related__title { margin-top: var(--space-l); }
+  .related__all { margin-top: var(--space-l); }
+
+  .related__list { border-top: 1px solid var(--color-line); }
+  .related__list li { border-bottom: 1px solid var(--color-line); }
+
+  .related__item {
+    display: grid;
+    grid-template-columns: 4.5rem auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-m);
+    padding-block: var(--space-s);
+  }
+
+  .related__thumb {
+    display: block;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--color-cream);
+  }
+  .related__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 700ms var(--ease);
+  }
+
+  .related__num {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: var(--color-earth);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .related__name {
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    line-height: 1.25;
+    transition: color 300ms var(--ease);
+  }
+
+  .related__item:hover .related__name { color: var(--color-earth); }
+  .related__item:hover :global(.arrow) { transform: translateX(4px); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .related__item:hover .related__thumb img { transform: scale(1.03); }
+  }
+
+  /* Narrow phones: the number gives its column to the name. */
+  @media (max-width: 479px) {
+    .related__item { grid-template-columns: 4rem minmax(0, 1fr) auto; }
+    .related__num { display: none; }
+  }
+
+  @media (min-width: 768px) {
+    .related__item { grid-template-columns: 6rem 3rem minmax(0, 1fr) auto; gap: var(--space-l); }
+  }
+
+  @media (min-width: 1024px) {
+    .related__head { grid-column: 1 / span 4; }
+    .related__list { grid-column: 6 / span 7; }
+  }
+</style>

@@ -45,7 +45,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <body>
     <a class="skip-link" href="#main">Bỏ qua đến nội dung chính</a>
     <SiteHeader overlay={overlayHeader} />
-    <main id="main">
+    <main id="main" class:list={[{ 'main--offset': !overlayHeader }]}>
       <slot />
     </main>
     <SiteFooter />
