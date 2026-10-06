@@ -121,6 +121,14 @@ For major visual work, inspect at least 1440px and 390px before checking the rem
 
 Production builds must complete without blocking errors.
 
+## Local Servers
+
+- Port `4321` is the user's persistent dev server. Never stop, kill, restart, replace, or use it for QA.
+- For automated QA, use a separate port starting from `4330`.
+- Only terminate server processes started by the current Claude session.
+- Treat any pre-existing Node/Astro/server process as user-owned.
+- If port `4321` has a problem, report it; do not modify it.
+
 ## Visual QA Screenshots
 
 For every task that changes UI, layout, styling, responsive behavior, images, typography, or visible content:
