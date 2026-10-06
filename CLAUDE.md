@@ -1,149 +1,155 @@
 # CLAUDE.md
 
-## 1. Project
+## Project
 
-Hiền Nương Farm (`hiennuongfarm.vn`) is a corporate brand website for a Vietnamese agricultural company.
+Hiền Nương Farm is a premium corporate brand website for a Vietnamese agricultural company.
 
-This is a **new project built from scratch**. Do not assume or preserve legacy website code.
+This is a new project built from scratch. It is a brand/company presentation website, not an e-commerce storefront.
 
-The website is a **brand/company presentation site**, not an e-commerce storefront.
+Current stack:
+- Astro
+- Plain CSS
+- Minimal JavaScript
+- No UI framework unless clearly necessary
 
----
+Keep the architecture simple and avoid unnecessary dependencies.
 
-## 2. Design Direction
+## Design Direction
 
 Target aesthetic:
 
-> **Contemporary Vietnamese Agricultural Editorial**
+> Contemporary Vietnamese Agricultural Editorial
 
-The site should feel:
+The website should feel premium, authentic, calm, contemporary, and rooted in Vietnamese agriculture and Bảy Núi / An Giang.
 
-* Premium
-* Editorial
-* Authentic
-* Contemporary
-* Calm
-* Connected to Vietnamese land and agriculture
+Prioritize:
 
-Avoid anything that looks like a generic AI-generated website, SaaS template, WordPress template, or generic "organic/eco" website.
+**Authenticity → Composition → Typography → Spacing → Photography → Interaction**
 
-### Visual language
+Prefer:
+- Editorial/asymmetrical composition
+- Strong typography
+- Generous whitespace
+- Large photography
+- Warm cream, deep green, earth tones
+- Thin dividers
+- Clear scale contrast
+- Restrained motion
 
-Use:
+Avoid:
+- Generic AI-generated layouts
+- SaaS aesthetics
+- Generic eco/organic templates
+- Excessive rounded cards
+- Cards inside cards
+- Glassmorphism
+- Decorative gradients/blobs
+- Excessive shadows, pills, icons, or emoji
+- Generic leaf decorations
+- Excessive animation
+- E-commerce-style product grids unless explicitly requested
 
-* Warm cream / paper backgrounds
-* Deep forest green
-* Earth brown
-* Charcoal
-* Muted moss
-* Large, high-quality photography
-* Generous whitespace
-* Strong typography
-* Thin dividers
-* Editorial/asymmetrical layouts
-* Subtle motion
+Do not solve weak composition by adding decoration.
 
-Suggested palette:
+The website should feel specifically like Hiền Nương Farm, not like an architecture studio, fashion brand, hotel, or generic premium template.
 
-```css
---color-cream: #F3F0E7;
---color-paper: #F8F6F0;
---color-forest: #173D2D;
---color-deep-green: #102B21;
---color-earth: #866B48;
---color-charcoal: #20221F;
---color-muted-moss: #788267;
---color-line: rgba(32,34,31,0.16);
-```
+## Content Integrity
 
-Typography:
+Never invent company facts, dates, founders, certifications, statistics, awards, partners, testimonials, addresses, contact details, product claims, or health claims.
 
-* Display: Lora / Noto Serif Display
-* Body/UI: Be Vietnam Pro / Inter
+Unverified information must remain clearly marked `VERIFY`.
 
----
+Do not present placeholders, mockup content, stock images, or AI-generated imagery as authentic company information.
 
-## 3. Anti-Slop Rules
+## Design Reference
 
-Do NOT use:
+Primary reference:
 
-* Excessive rounded cards
-* Cards inside cards
-* Glassmorphism
-* Large gradients
-* Blob backgrounds
-* Excessive shadows
-* Excessive pills/badges
-* Emoji as decoration
-* Generic leaf illustrations
-* Excessive icons
-* Fake statistics
-* Fake testimonials
-* Fake certifications
-* Fake company claims
-* Excessive animations
+`design-reference/homepage-mockup.png`
 
-Prefer real photography, typography, spacing, composition, and editorial hierarchy.
+Use it for visual direction, not pixel-perfect copying.
 
-Every design element should have a clear purpose.
+Preserve the mood, hierarchy, editorial character, photography emphasis, and overall brand direction while improving implementation where necessary.
 
----
+## Responsive & Accessibility
 
-## 4. Content Integrity
+The site must work intentionally across desktop, tablet, and mobile.
 
-Never invent:
+Check at minimum:
 
-* Company facts
-* Founding dates
-* Certifications
-* Production numbers
-* Awards
-* Customer names
-* Testimonials
-* Partnerships
-* Product claims
+`1440 / 1280 / 1024 / 768 / 390 / 375 / 320`
 
-If information is unavailable, use neutral placeholder content and clearly mark it for replacement.
+Prevent horizontal overflow, broken typography, awkward heading wraps, poor image crops, excessive mobile spacing, and unusable navigation.
 
-Do not copy or reproduce the old website's SEO spam or unrelated indexed content.
+Maintain semantic HTML, keyboard navigation, visible focus states, logical heading hierarchy, sufficient contrast, meaningful alt text, and `prefers-reduced-motion`.
 
----
+Keep JavaScript minimal.
 
-## 5. Homepage Structure
+## Development Rules
 
-The homepage should follow this general structure:
+Before significant work:
 
-1. **Hero**
+1. Read this file.
+2. Inspect relevant existing code.
+3. Run `git status`.
+4. Preserve existing user work.
+5. Understand the current implementation before editing.
 
-   * Strong agricultural/editorial statement
-   * Large imagery
-   * CTA: `KHÁM PHÁ HIỀN NƯƠNG`
+Do not rewrite working architecture without a clear reason.
 
-2. **Về Hiền Nương**
+Do not build unrelated features or expand scope without instruction.
 
-   * Brand story
-   * Philosophy
-   * Connection to Bảy Núi / An Giang
+Prefer simple, maintainable solutions.
 
-3. **Nông nghiệp tuần hoàn**
+## Mandatory QA
 
-   * Show the agricultural cycle:
-     `NGUYÊN LIỆU → TRỒNG → THU HOẠCH → CHẾ BIẾN → PHỤ PHẨM → TÁI SỬ DỤNG`
+Never declare a visual task complete from code inspection alone.
 
-4. **Sản vật từ trang trại**
+Before completion:
 
-   * Editorial product showcase
-   * Avoid e-commerce-style product grids
+1. Run the application.
+2. Inspect the rendered website in a real browser.
+3. Check browser console errors.
+4. Test relevant interactions.
+5. Check desktop and mobile layouts.
+6. Check horizontal overflow.
+7. Inspect typography, spacing, alignment, and image cropping.
+8. Fix discovered issues.
+9. Re-test after fixes.
 
-5. **Từ vùng Bảy Núi**
+For major visual work, inspect at least 1440px and 390px before checking the remaining supported widths.
 
-   * Landscape/place storytelling
-   * Strong photography
+Production builds must complete without blocking errors.
 
-6. **Hợp tác**
+## Git & GitHub
 
-   * Clear collaboration CTA
+GitHub is the source of truth.
 
-7. **Footer**
+After every meaningful completed task or milestone:
 
-   * Dark, refined, infor
+1. Run relevant QA/tests.
+2. Review `git status` and `git diff`.
+3. Stage only relevant files.
+4. Commit with a meaningful message.
+5. Push to the configured GitHub remote.
+
+Do not blindly use `git add .`.
+
+Never commit secrets, API keys, `.env`, credentials, broken experiments, or unnecessary generated files.
+
+Never overwrite or discard existing user work without permission.
+
+If push fails, investigate and retry. Never claim a push succeeded when it did not.
+
+At task completion, report:
+- What changed
+- QA performed
+- Commit hash
+- Push status
+- Remaining issues
+
+## Working Principle
+
+Build less, but build it exceptionally well.
+
+When uncertain, choose the simpler, more intentional, and more authentic solution.

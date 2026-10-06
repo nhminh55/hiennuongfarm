@@ -12,11 +12,27 @@ const facts = [
 ---
 <section class="section about" id="ve-hien-nuong" aria-labelledby="about-title">
   <div class="container grid about__grid">
-    <div class="about__text" data-reveal>
+    <header class="about__head" data-reveal>
       <Eyebrow num="01">Về Hiền Nương</Eyebrow>
       <h2 class="h2 about__title" id="about-title">
         Chúng tôi tin rằng nông nghiệp tốt không chỉ tạo ra sản phẩm tốt.
       </h2>
+    </header>
+
+    <figure class="about__figure" data-reveal style="--reveal-delay: 120ms">
+      <Photo
+        class="about__photo"
+        ratio="1 / 1"
+        tone="moss"
+        alt="Người làm nông đứng giữa vườn trại Hiền Nương"
+        brief="Chân dung người làm nông giữa vườn trại, ánh sáng tự nhiên, không dàn dựng. Ảnh vuông."
+      />
+      <figcaption class="about__quote">
+        “Từ tình yêu với đất, chúng tôi bắt đầu Hiền Nương Farm.”
+      </figcaption>
+    </figure>
+
+    <div class="about__story" data-reveal style="--reveal-delay: 200ms">
       <p class="lead about__lead">Nó còn trả lại giá trị cho đất, cho người và cho vùng quê.</p>
       <!-- VERIFY: founding year and founders' names are from the design mockup. -->
       <p class="body about__body">
@@ -24,45 +40,29 @@ const facts = [
         với mong muốn kiến tạo một mô hình nông nghiệp bền vững, dựa trên nền tảng nông nghiệp
         tuần hoàn và giá trị tự nhiên của vùng Bảy Núi.
       </p>
+
+      <dl class="about__facts">
+        {facts.map((fact) => (
+          <div class="about__fact">
+            <dt class="about__fact-label">{fact.label}</dt>
+            <dd class="about__fact-value">{fact.value}</dd>
+          </div>
+        ))}
+      </dl>
     </div>
-
-    <figure class="about__figure" data-reveal style="--reveal-delay: 120ms">
-      <Photo
-        ratio="4 / 5"
-        tone="earth"
-        alt="Đôi bàn tay người nông dân nâng những tai nấm linh chi vừa thu hái"
-        brief="Cận cảnh đôi tay nâng nấm linh chi vừa thu hái. Ảnh dọc 4:5, ánh sáng tự nhiên."
-      />
-      <blockquote class="about__quote">
-        <p>“Từ tình yêu với đất, chúng tôi bắt đầu Hiền Nương Farm.”</p>
-      </blockquote>
-    </figure>
-
-    <dl class="about__facts" data-reveal style="--reveal-delay: 240ms">
-      {facts.map((fact) => (
-        <div class="about__fact">
-          <dt class="about__fact-value">{fact.value}</dt>
-          <dd class="about__fact-label">{fact.label}</dd>
-        </div>
-      ))}
-    </dl>
   </div>
 </section>
 
 <style>
   .about { background: var(--color-paper); }
 
-  .about__grid { row-gap: var(--space-2xl); }
+  .about__grid { row-gap: var(--space-xl); }
 
-  .about__text,
+  .about__head,
   .about__figure,
-  .about__facts { grid-column: 1 / -1; }
+  .about__story { grid-column: 1 / -1; }
 
-  .about__title { margin-top: var(--space-l); max-width: 18ch; }
-  .about__lead { margin-top: var(--space-m); max-width: 28ch; }
-  .about__body { margin-top: var(--space-l); max-width: 34rem; }
-
-  .about__figure { position: relative; }
+  .about__title { margin-top: var(--space-l); max-width: 22ch; }
 
   .about__quote {
     margin-top: var(--space-m);
@@ -76,49 +76,58 @@ const facts = [
     max-width: 26rem;
   }
 
+  .about__lead { max-width: 26ch; }
+  .about__body { margin-top: var(--space-m); max-width: 34rem; }
+
+  /* Facts close the story: label above value, like an entry in a farm record. */
   .about__facts {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: var(--col-gap);
+    gap: var(--space-l) var(--col-gap);
+    margin-top: var(--space-xl);
+    padding-top: var(--space-l);
     border-top: 1px solid var(--color-line);
   }
 
-  .about__fact {
-    padding-block: var(--space-m);
-    border-bottom: 1px solid var(--color-line);
+  .about__fact-label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-earth);
   }
 
   .about__fact-value {
+    margin-top: 0.375rem;
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(1.1875rem, 1rem + 0.9vw, 1.375rem);
+    font-size: clamp(1.1875rem, 1rem + 0.9vw, 1.5rem);
     line-height: 1.25;
   }
 
-  .about__fact-label {
-    margin-top: 0.375rem;
-    font-size: 0.8125rem;
-    color: var(--color-text-muted);
-  }
-
   @media (min-width: 768px) {
-    .about__text { grid-column: 1 / span 6; align-self: center; }
-    .about__figure { grid-column: 8 / span 5; }
-    .about__facts {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
+    .about__grid { row-gap: var(--space-2xl); }
+    .about__figure { grid-column: 1 / span 6; }
+    .about__story { grid-column: 7 / span 6; align-self: end; }
   }
 
-  @media (min-width: 1200px) {
-    .about__text { grid-column: 1 / span 5; align-self: start; }
-    .about__figure { grid-column: 6 / span 5; }
-    .about__facts {
-      grid-column: 11 / span 2;
-      grid-template-columns: 1fr;
-      align-self: start;
-      border-top: 0;
+  @media (min-width: 1024px) {
+    .about__head { grid-column: 1 / span 8; }
+
+    .about__figure { grid-column: 1 / span 5; }
+
+    /* The photograph bleeds off the left edge of the page; its caption stays on the grid. */
+    .about__figure :global(.about__photo) {
+      margin-left: calc(-1 * max(var(--gutter), (100vw - var(--container)) / 2));
     }
-    .about__fact { padding-block: var(--space-m) var(--space-l); }
-    .about__fact:first-child { padding-top: 0; }
+
+    /* Story spans the figure: lead aligns with its top edge, facts with its bottom. */
+    .about__story {
+      grid-column: 7 / span 5;
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+    }
+    .about__facts { margin-top: auto; }
   }
 </style>

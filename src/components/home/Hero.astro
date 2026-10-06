@@ -13,7 +13,7 @@ import Arrow from '../Arrow.astro';
   />
   <div class="hero__scrim" aria-hidden="true"></div>
 
-  <div class="container hero__inner">
+  <div class="container grid hero__inner">
     <div class="hero__content">
       <p class="hero__kicker"><span>Hiền Nương Farm</span><span aria-hidden="true">·</span><span>Bảy Núi, An Giang</span></p>
       <h1 class="display hero__title" id="hero-title">
@@ -28,16 +28,23 @@ import Arrow from '../Arrow.astro';
       </a>
     </div>
 
-    <a class="hero__scroll" href="#ve-hien-nuong" aria-label="Kéo xuống phần tiếp theo">
-      <span class="hero__scroll-line" aria-hidden="true"></span>
-      <span class="hero__scroll-text" aria-hidden="true">Kéo xuống</span>
-    </a>
+    <!-- The land (background) and what it yields (inset): the headline told in two photographs. -->
+    <Photo
+      class="hero__inset"
+      ratio="4 / 5"
+      tone="earth"
+      loading="eager"
+      alt="Đôi bàn tay người làm nông nâng nấm linh chi vừa thu hái"
+      brief="Cận cảnh đôi tay nâng nấm linh chi vừa thu hái, ánh sáng tự nhiên. Ảnh dọc 4:5."
+    />
   </div>
 </section>
 
 <style>
   .hero {
+    --hero-pad-bottom: clamp(2.5rem, 2rem + 4vh, 5.5rem);
     position: relative;
+    z-index: 1;
     display: flex;
     min-height: max(36rem, 100svh);
     color: var(--color-cream);
@@ -65,15 +72,12 @@ import Arrow from '../Arrow.astro';
   }
 
   .hero__inner {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: var(--space-xl);
+    align-items: end;
     padding-top: calc(var(--header-h) + var(--space-2xl));
-    padding-bottom: clamp(2.5rem, 2rem + 4vh, 5.5rem);
+    padding-bottom: var(--hero-pad-bottom);
   }
 
-  .hero__content { max-width: 52rem; }
+  .hero__content { grid-column: 1 / -1; }
 
   .hero__kicker {
     display: flex;
@@ -89,6 +93,11 @@ import Arrow from '../Arrow.astro';
 
   .hero__kicker span { white-space: nowrap; }
 
+  /* Narrow phones: the two parts stack, so the separator would dangle. */
+  @media (max-width: 379px) {
+    .hero__kicker span[aria-hidden] { display: none; }
+  }
+
   .hero__title span { display: block; }
 
   .hero__sub {
@@ -102,46 +111,21 @@ import Arrow from '../Arrow.astro';
 
   .hero__cta { margin-top: var(--space-xl); }
 
-  .hero__scroll {
-    display: none;
-    flex-direction: column-reverse;
-    align-items: center;
-    gap: 1rem;
-    padding-bottom: 0.25rem;
-    font-size: 0.6875rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--color-text-inverse-muted);
-  }
+  .hero :global(.hero__inset) { display: none; }
 
-  .hero__scroll-text { writing-mode: vertical-rl; }
-
-  .hero__scroll-line {
-    position: relative;
-    width: 1px;
-    height: 4.5rem;
-    overflow: hidden;
-    background: var(--color-line-inverse);
-  }
-
-  .hero__scroll-line::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: var(--color-cream);
-    transform: translateY(-100%);
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .hero__scroll-line::after { animation: scroll-cue 2.8s var(--ease) infinite; }
-    @keyframes scroll-cue {
-      0% { transform: translateY(-100%); }
-      55%, 100% { transform: translateY(100%); }
+  @media (min-width: 1024px) {
+    .hero {
+      --hero-overlap: clamp(4rem, 6vw, 6rem);
     }
-  }
 
-  @media (min-width: 768px) {
-    .hero__scroll { display: flex; }
+    .hero__content { grid-column: 1 / span 7; }
+
+    /* Sits on the hero's lower edge and steps down into the next section. */
+    .hero :global(.hero__inset) {
+      display: block;
+      grid-column: 9 / span 4;
+      align-self: end;
+      margin-bottom: calc(-1 * (var(--hero-pad-bottom) + var(--hero-overlap)));
+    }
   }
 </style>

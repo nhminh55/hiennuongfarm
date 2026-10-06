@@ -2,7 +2,7 @@
  * Shared site content.
  *
  * VERIFY: values marked VERIFY are taken from the design mockup
- * (design-reference/hompage-mockup.png), not from a confirmed source.
+ * (design-reference/homepage-mockup.png), not from a confirmed source.
  * They must be confirmed by Hiền Nương before launch.
  */
 

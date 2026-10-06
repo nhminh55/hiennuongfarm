@@ -63,6 +63,9 @@ const style = ratio ? `--ratio: ${ratio}` : undefined;
     aspect-ratio: var(--ratio, auto);
     background: var(--ph-bg, var(--color-cream));
     container-type: inline-size;
+    /* Grid items with an aspect-ratio otherwise shrink to content width,
+       which is zero under inline-size containment. */
+    justify-self: stretch;
   }
 
   .photo img {

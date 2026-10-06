@@ -7,9 +7,8 @@ import Arrow from '../Arrow.astro';
 // from Hiền Nương — no product or health claims should be added without a source.
 const lead = {
   name: 'Nấm Linh Chi Tai To',
-  tone: 'earth' as const,
   alt: 'Những tai nấm linh chi lớn đặt trên mặt gỗ',
-  brief: 'Nấm linh chi tai to, chụp cận trên nền gỗ hoặc vải thô. Ảnh dọc 4:5.',
+  brief: 'Nấm linh chi tai to đặt trên nền gỗ mộc hoặc vải thô, ánh sáng cửa sổ. Ảnh ngang 5:4.',
 };
 
 const others = [
@@ -17,58 +16,59 @@ const others = [
     name: 'Nấm Mối Đen',
     tone: 'deep' as const,
     alt: 'Nấm mối đen sau thu hoạch',
-    brief: 'Nấm mối đen, chụp từ trên xuống. Ảnh vuông.',
+    brief: 'Nấm mối đen sau thu hoạch, chụp từ trên xuống. Ảnh dọc 4:5.',
   },
   {
     name: 'Đông Trùng Hạ Thảo',
     tone: 'clay' as const,
     alt: 'Đông trùng hạ thảo nuôi cấy',
-    brief: 'Đông trùng hạ thảo trong bình nuôi hoặc sau sấy. Ảnh vuông.',
+    brief: 'Đông trùng hạ thảo trong bình nuôi hoặc sau sấy. Ảnh dọc 4:5.',
   },
   {
     name: 'Trà Linh Chi',
     tone: 'moss' as const,
     alt: 'Trà linh chi đóng gói bên tách trà',
-    brief: 'Bao bì trà linh chi cạnh tách trà. Ảnh vuông.',
+    brief: 'Bao bì trà linh chi cạnh tách trà, trên bàn gỗ. Ảnh dọc 4:5.',
   },
 ];
 ---
 <section class="section products" id="san-vat" aria-labelledby="products-title">
-  <div class="container">
-    <header class="grid products__head" data-reveal>
-      <div class="products__heading">
-        <Eyebrow num="03">Sản vật từ trang trại</Eyebrow>
-        <h2 class="h2 products__title" id="products-title">Tinh hoa từ những loại nấm quý</h2>
-      </div>
+  <div class="container grid products__grid">
+    <header class="products__head" data-reveal>
+      <Eyebrow num="03">Sản vật từ trang trại</Eyebrow>
+      <h2 class="h2 products__title" id="products-title">Tinh hoa từ những loại nấm quý</h2>
       <p class="body products__intro">
         Mỗi sản phẩm là kết tinh của thiên nhiên, kinh nghiệm và sự tận tâm của người nông dân
         Hiền Nương.
       </p>
     </header>
 
-    <div class="grid products__body">
-      <article class="feature" data-reveal>
-        <Photo ratio="4 / 5" tone={lead.tone} alt={lead.alt} brief={lead.brief} />
-        <div class="feature__text">
-          <span class="products__num">01</span>
-          <h3 class="h3">{lead.name}</h3>
-          <p class="tbd">Mô tả sản phẩm đang được cập nhật.</p>
-        </div>
-      </article>
+    <Photo
+      class="products__feature-photo"
+      ratio="5 / 4"
+      tone="earth"
+      alt={lead.alt}
+      brief={lead.brief}
+    />
 
-      <ol class="index" start="2">
-        {others.map((item, i) => (
-          <li class="index__item" data-reveal style={`--reveal-delay: ${120 + i * 100}ms`}>
-            <Photo class="index__photo" ratio="1 / 1" tone={item.tone} alt={item.alt} brief={item.brief} />
-            <div class="index__text">
-              <span class="products__num">{String(i + 2).padStart(2, '0')}</span>
-              <h3 class="h3">{item.name}</h3>
-              <p class="tbd">Mô tả sản phẩm đang được cập nhật.</p>
-            </div>
-          </li>
-        ))}
-      </ol>
+    <div class="products__feature-text" data-reveal>
+      <span class="products__num">01</span>
+      <h3 class="products__feature-name">{lead.name}</h3>
+      <p class="tbd">Mô tả sản phẩm đang được cập nhật.</p>
     </div>
+
+    <ol class="products__more">
+      {others.map((item, i) => (
+        <li class="more" data-reveal style={`--reveal-delay: ${i * 100}ms`}>
+          <Photo class="more__photo" ratio="4 / 5" tone={item.tone} alt={item.alt} brief={item.brief} />
+          <div class="more__text">
+            <span class="products__num">{String(i + 2).padStart(2, '0')}</span>
+            <h3 class="h3 more__name">{item.name}</h3>
+            <p class="tbd">Mô tả sản phẩm đang được cập nhật.</p>
+          </div>
+        </li>
+      ))}
+    </ol>
 
     <div class="products__foot" data-reveal>
       <a class="link-arrow" href="#hop-tac">Liên hệ về sản phẩm <Arrow /></a>
@@ -79,22 +79,16 @@ const others = [
 <style>
   .products { background: var(--color-paper); }
 
-  .products__head {
-    row-gap: var(--space-m);
-    align-items: end;
-    padding-bottom: var(--space-2xl);
-  }
+  .products__grid { row-gap: var(--space-xl); }
 
-  .products__heading,
-  .products__intro { grid-column: 1 / -1; }
+  .products__head,
+  .products__feature-text,
+  .products__more,
+  .products__foot,
+  .products__grid > :global(.products__feature-photo) { grid-column: 1 / -1; }
 
   .products__title { margin-top: var(--space-l); max-width: 14ch; }
-  .products__intro { max-width: 28rem; }
-
-  .products__body { row-gap: var(--space-2xl); }
-
-  .feature,
-  .index { grid-column: 1 / -1; }
+  .products__intro { margin-top: var(--space-m); max-width: 28rem; }
 
   .products__num {
     display: block;
@@ -105,13 +99,26 @@ const others = [
     font-variant-numeric: tabular-nums;
   }
 
-  .feature__text { margin-top: var(--space-m); }
-  .feature__text .tbd,
-  .index__text .tbd { margin-top: 0.5rem; }
+  .products__feature-text { margin-top: calc(-1 * var(--space-m)); }
 
-  .index { border-top: 1px solid var(--color-line); }
+  .products__feature-name {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.625rem, 1.2rem + 1.6vw, 2.75rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
 
-  .index__item {
+  .products__feature-text .tbd,
+  .more__text .tbd { margin-top: 0.5rem; }
+
+  /* Secondary products — phones: compact list with thumbnails. */
+  .products__more {
+    margin-top: var(--space-m);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .more {
     display: grid;
     grid-template-columns: minmax(0, 6rem) minmax(0, 1fr);
     gap: var(--space-m);
@@ -120,37 +127,68 @@ const others = [
     border-bottom: 1px solid var(--color-line);
   }
 
+  .products__foot { padding-top: var(--space-s); }
+
   @media (min-width: 480px) {
-    .index__item { grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr); }
+    .more { grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr); }
   }
 
-  .products__foot {
-    margin-top: var(--space-2xl);
-    padding-top: var(--space-l);
-    border-top: 1px solid var(--color-line);
-  }
-
+  /* Tablet and up: secondary products become a row of photographs. */
   @media (min-width: 768px) {
-    .products__heading { grid-column: 1 / span 7; }
-    .products__intro { grid-column: 9 / span 4; }
+    .products__head { grid-column: 1 / span 8; }
 
-    .feature { grid-column: 1 / span 6; }
-    .index { grid-column: 7 / span 6; align-self: start; border-top: 0; }
-    .index__item { grid-template-columns: minmax(0, 9rem) minmax(0, 1fr); }
-    .index__item:first-child { padding-top: 0; }
-  }
-
-  @media (min-width: 1024px) {
-    .feature { grid-column: 1 / span 6; }
-    .index { grid-column: 8 / span 5; }
-    .index__item {
-      grid-template-columns: minmax(0, 11rem) minmax(0, 1fr);
-      gap: var(--space-l);
-      padding-block: var(--space-l);
+    .products__more {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: var(--col-gap);
+      margin-top: var(--space-xl);
+      border-top: 0;
     }
+
+    .more {
+      display: block;
+      padding: 0;
+      border: 0;
+    }
+
+    .more__text { margin-top: var(--space-m); }
   }
 
-  @media (min-width: 1280px) {
-    .index__item { grid-template-columns: minmax(0, 13rem) minmax(0, 1fr); }
+  /* Desktop: a spread. Large feature image on the right; title, intro and
+     the feature's name share the left column. Secondary products below,
+     smaller and staggered on the same column lines. */
+  @media (min-width: 1024px) {
+    .products__grid { row-gap: 0; }
+
+    .products__head { grid-column: 1 / span 5; grid-row: 1; }
+
+    .products__grid > :global(.products__feature-photo) {
+      grid-column: 6 / span 7;
+      grid-row: 1 / span 2;
+    }
+
+    .products__feature-text {
+      grid-column: 1 / span 5;
+      grid-row: 2;
+      align-self: end;
+      margin-top: var(--space-xl);
+      padding-top: var(--space-l);
+      border-top: 1px solid var(--color-line);
+    }
+
+    .products__more {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      margin-top: var(--space-3xl);
+    }
+
+    .more:nth-child(1) { grid-column: 1 / span 3; }
+    .more:nth-child(2) { grid-column: 6 / span 3; margin-top: var(--space-3xl); }
+    .more:nth-child(3) { grid-column: 10 / span 3; margin-top: var(--space-xl); }
+
+    .products__foot {
+      grid-column: 1 / span 4;
+      margin-top: calc(-1 * var(--space-2xl));
+      align-self: end;
+    }
   }
 </style>

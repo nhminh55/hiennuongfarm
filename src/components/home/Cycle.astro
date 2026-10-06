@@ -21,9 +21,9 @@ const chevrons = steps.map((_, i) => {
 <section class="section cycle" id="tuan-hoan" aria-labelledby="cycle-title">
   <div class="container grid cycle__grid">
     <div class="cycle__text" data-reveal>
-      <Eyebrow num="02">Nông nghiệp tuần hoàn</Eyebrow>
+      <Eyebrow num="02" class="cycle__eyebrow">Nông nghiệp tuần hoàn</Eyebrow>
       <h2 class="h2 cycle__title" id="cycle-title">Vòng tuần hoàn khép kín từ thiên nhiên</h2>
-      <p class="body cycle__body">
+      <p class="cycle__body">
         Chúng tôi theo đuổi mô hình nông nghiệp tuần hoàn: biến phụ phẩm thành tài nguyên,
         giảm thiểu tác động đến môi trường, và để mỗi vụ mùa nuôi dưỡng vụ mùa tiếp theo.
       </p>
@@ -38,9 +38,12 @@ const chevrons = steps.map((_, i) => {
           ))}
         </svg>
         <div class="ring__orbit" aria-hidden="true"><span></span></div>
-        <p class="ring__center">Từ đất,<br />trở về đất.</p>
+        <div class="ring__center" aria-hidden="true">
+          <p class="ring__motto">Từ đất,<br />trở về đất.</p>
+          <p class="ring__hint">Sáu giai đoạn · một vòng khép kín</p>
+        </div>
 
-        <ol class="ring__steps" aria-label="Chu trình nông nghiệp tuần hoàn">
+        <ol class="ring__steps" aria-label="Chu trình nông nghiệp tuần hoàn, sáu giai đoạn nối tiếp thành một vòng">
           {steps.map((step, i) => (
             <li class="ring__step" style={`--i: ${i}`}>
               <span class="ring__num">{String(i + 1).padStart(2, '0')}</span>
@@ -49,13 +52,14 @@ const chevrons = steps.map((_, i) => {
             </li>
           ))}
         </ol>
+        <p class="ring__loop">Sau giai đoạn 06, vòng quay trở lại 01.</p>
       </div>
     </div>
 
     <figure class="cycle__figure" data-reveal style="--reveal-delay: 200ms">
       <Photo
         ratio="3 / 4"
-        tone="forest"
+        tone="earth"
         alt="Những chùm nấm đang phát triển trên giá thể trong nhà nuôi trồng"
         brief="Nấm đang lên trên giá thể trong nhà trồng. Ảnh dọc 3:4."
       />
@@ -67,7 +71,15 @@ const chevrons = steps.map((_, i) => {
 </section>
 
 <style>
-  .cycle { background: var(--color-cream); }
+  /* The signature section: dark field, cream line-work. */
+  .cycle {
+    --cycle-bg: var(--color-forest);
+    --cycle-line: rgba(243, 240, 231, 0.3);
+    background: var(--cycle-bg);
+    color: var(--color-cream);
+  }
+
+  .cycle :global(.cycle__eyebrow) { color: var(--color-text-inverse-muted); }
 
   .cycle__grid { row-gap: var(--space-2xl); }
 
@@ -76,15 +88,25 @@ const chevrons = steps.map((_, i) => {
   .cycle__figure { grid-column: 1 / -1; }
 
   .cycle__title { margin-top: var(--space-l); max-width: 14ch; }
-  .cycle__body { margin-top: var(--space-l); max-width: 30rem; }
+  .cycle__body {
+    margin-top: var(--space-l);
+    max-width: 30rem;
+    color: var(--color-text-inverse-muted);
+    text-wrap: pretty;
+  }
+
+  /* Phones: a landscape crop keeps the section from running long. */
+  @media (max-width: 767px) {
+    .cycle__figure :global(.photo) { aspect-ratio: 4 / 3; }
+  }
 
   .cycle__caption {
     margin-top: var(--space-m);
     font-family: var(--font-display);
     font-style: italic;
-    font-size: 1.125rem;
+    font-size: 1.0625rem;
     line-height: 1.5;
-    color: var(--color-text-muted);
+    color: var(--color-text-inverse-muted);
     max-width: 24rem;
   }
 
@@ -98,24 +120,21 @@ const chevrons = steps.map((_, i) => {
   .ring__orbit,
   .ring__center { display: none; }
 
-  .ring__steps {
-    border-top: 1px solid var(--color-line);
-    counter-reset: step;
-  }
+  .ring__steps { border-top: 1px solid var(--color-line-inverse); }
 
   .ring__step {
     display: grid;
     grid-template-columns: 2.5rem 1fr;
     align-items: baseline;
     gap: 0.125rem var(--space-s);
-    padding-block: 1rem;
-    border-bottom: 1px solid var(--color-line);
+    padding-block: 0.875rem;
+    border-bottom: 1px solid var(--color-line-inverse);
   }
 
   .ring__num {
     font-size: 0.75rem;
     letter-spacing: 0.12em;
-    color: var(--color-earth);
+    color: var(--color-text-inverse-muted);
     font-variant-numeric: tabular-nums;
   }
 
@@ -126,17 +145,25 @@ const chevrons = steps.map((_, i) => {
   }
 
   .ring__note {
-    font-size: 0.8125rem;
     grid-column: 2;
-    color: var(--color-text-muted);
+    font-size: 0.8125rem;
+    color: var(--color-text-inverse-muted);
+  }
+
+  .ring__loop {
+    padding: 0.875rem 0 0 calc(2.5rem + var(--space-s));
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.9375rem;
+    color: var(--color-text-inverse-muted);
   }
 
   @media (min-width: 640px) {
     .ring {
       --ring-pad-x: clamp(4.5rem, 10vw, 6rem);
-      --ring-pad-y: 2.5rem;
+      --ring-pad-y: 2.75rem;
       width: 100%;
-      max-width: 34rem;
+      max-width: 40rem;
       margin-inline: auto;
       padding: var(--ring-pad-y) var(--ring-pad-x);
     }
@@ -148,66 +175,75 @@ const chevrons = steps.map((_, i) => {
       aspect-ratio: 1;
     }
 
+    .ring__loop { display: none; }
+
     .ring__svg,
-    .ring__orbit {
+    .ring__orbit,
+    .ring__steps {
       display: block;
       position: absolute;
       top: var(--ring-pad-y);
       left: var(--ring-pad-x);
       right: var(--ring-pad-x);
       bottom: var(--ring-pad-y);
-      width: auto;
-      height: auto;
     }
 
     .ring__svg {
+      width: auto;
+      height: auto;
       overflow: visible;
       fill: none;
-      stroke: var(--color-line-strong);
+      stroke: var(--cycle-line);
       stroke-width: 1;
     }
     .ring__svg :is(circle, path) { vector-effect: non-scaling-stroke; }
-    .ring__svg path { stroke: var(--color-earth); }
+    .ring__svg path { stroke: var(--color-cream); stroke-opacity: 0.75; }
 
     /* A single point travelling clockwise: the cycle never stops. */
     .ring__orbit span {
       position: absolute;
       top: 0;
       left: 50%;
-      width: 7px;
-      height: 7px;
-      margin: -3.5px 0 0 -3.5px;
+      width: 9px;
+      height: 9px;
+      margin: -4.5px 0 0 -4.5px;
       border-radius: 50%;
-      background: var(--color-forest);
+      background: var(--color-cream);
     }
 
     @media (prefers-reduced-motion: no-preference) {
-      .ring__orbit { animation: orbit 36s linear infinite; }
+      .ring__orbit { animation: orbit 40s linear infinite; }
       @keyframes orbit { to { transform: rotate(360deg); } }
     }
 
     .ring__center {
-      display: block;
+      display: grid;
+      gap: var(--space-s);
+      justify-items: center;
       position: absolute;
       top: 50%;
       left: 50%;
+      width: 50%;
       transform: translate(-50%, -50%);
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: clamp(1.125rem, 0.9rem + 0.8vw, 1.5rem);
-      line-height: 1.35;
       text-align: center;
-      color: var(--color-earth);
     }
 
-    .ring__steps {
-      position: absolute;
-      top: var(--ring-pad-y);
-      left: var(--ring-pad-x);
-      right: var(--ring-pad-x);
-      bottom: var(--ring-pad-y);
-      border: 0;
+    .ring__motto {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.375rem, 0.9rem + 1.4vw, 2.25rem);
+      line-height: 1.25;
     }
+
+    .ring__hint {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-inverse-muted);
+    }
+
+    .ring__steps { border: 0; }
 
     .ring__step {
       --a: calc(var(--i) * 60deg);
@@ -220,14 +256,14 @@ const chevrons = steps.map((_, i) => {
       align-items: center;
       gap: 0.125rem;
       width: max-content;
-      max-width: 9.5rem;
-      padding: 0.5rem 0.75rem;
+      max-width: 10rem;
+      padding: 0.625rem 0.875rem;
       border: 0;
-      background: var(--color-cream);
+      background: var(--cycle-bg);
       text-align: center;
     }
 
-    .ring__name { font-size: 1.0625rem; white-space: nowrap; }
+    .ring__name { font-size: 1.125rem; white-space: nowrap; }
     .ring__note { font-size: 0.75rem; line-height: 1.4; text-align: center; }
   }
 
@@ -238,17 +274,27 @@ const chevrons = steps.map((_, i) => {
   }
 
   @media (min-width: 1024px) {
-    .cycle__text { grid-column: 1 / span 6; grid-row: 1; }
-    .cycle__diagram { grid-column: 1 / span 7; grid-row: 2; }
-    .cycle__figure { grid-column: 8 / span 5; grid-row: 1 / span 2; align-self: center; }
+    .cycle__figure { grid-column: 9 / span 4; }
   }
 
+  /* Desktop: the ring takes two thirds of the width; text and photograph
+     share the left column. */
   @media (min-width: 1200px) {
-    .cycle__grid { align-items: center; }
-    .cycle__figure { grid-row: 1; }
-    .cycle__text { grid-column: 1 / span 4; }
-    .cycle__diagram { grid-column: 5 / span 5; grid-row: 1; }
-    .cycle__figure { grid-column: 10 / span 3; }
-    .ring { --ring-pad-x: 4.25rem; }
+    .cycle__grid { row-gap: var(--space-xl); }
+    .cycle__text { grid-column: 1 / span 4; grid-row: 1; }
+    .cycle__figure { grid-column: 1 / span 3; grid-row: 2; align-self: end; }
+    .cycle__diagram { grid-column: 5 / span 8; grid-row: 1 / span 2; align-self: center; }
+
+    .ring {
+      --ring-pad-x: 7rem;
+      --ring-pad-y: 3.5rem;
+      max-width: 56rem;
+      margin-right: 0;
+    }
+
+    .ring__step { max-width: 12rem; }
+    .ring__num { font-size: 0.8125rem; }
+    .ring__name { font-size: 1.5rem; }
+    .ring__note { font-size: 0.8125rem; }
   }
 </style>
