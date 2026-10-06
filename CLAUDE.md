@@ -121,6 +121,17 @@ For major visual work, inspect at least 1440px and 390px before checking the rem
 
 Production builds must complete without blocking errors.
 
+## Visual QA Screenshots
+
+For every task that changes UI, layout, styling, responsive behavior, images, typography, or visible content:
+
+- Perform browser-based visual QA after implementation.
+- Capture full-page screenshots from the final tested build/preview, at minimum desktop at 1440px and mobile at 390px viewport width.
+- Store final review screenshots in `design-reference/screenshots/`.
+- Never delete the final desktop and mobile review screenshots. Temporary/debug screenshots may be deleted.
+- Report the exact screenshot paths in the final task summary.
+- Screenshots are review artifacts: do not commit them unless explicitly requested.
+
 ## Git & GitHub
 
 GitHub is the source of truth.
