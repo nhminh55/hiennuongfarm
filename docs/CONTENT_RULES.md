@@ -1,48 +1,32 @@
 # Content Rules — Hiền Nương Farm
 
-Read this file only when creating, editing, validating, or restructuring site content.
+Read only for content creation, editing, validation, or restructuring.
 
-## Source Discipline
+## Sources
 
-Do not invent:
-- company facts
-- dates
-- founder information
-- certifications
-- statistics
-- partners
-- testimonials
-- contact details
-- product claims
-- health claims
+Never invent company facts, dates, founders, certifications, statistics, partners, testimonials, contact details, product claims, or health claims.
 
-`design-reference/CONTENT_EVIDENCE_BANK.md` is the main factual reference for researched content.
+Primary researched source:
+`design-reference/CONTENT_EVIDENCE_BANK.md`
 
-Information not supported by an approved source should remain `VERIFY` rather than being presented as fact.
+Unsupported information stays `VERIFY`.
 
 ## Owner-Verified Facts
 
-The following facts were directly verified by the owner and must be preserved even if another evidence file does not repeat them:
+Preserve these even if absent from the Evidence Bank:
 
-- Hiền Nương Farm was established in **2020**.
-- The co-founders are husband and wife.
-- When both founders are named together, use this exact order and wording:
-  **chị Châu Thị Nương và anh Trần Phương Hiền**
-- The farm is associated with **Tà Đảnh / the Bảy Núi region of An Giang**.
-- The brand story centers on **circular agriculture** and creating value from **agricultural by-products**.
+- Established in **2020**.
+- Co-founders are husband and wife.
+- When naming both: **chị Châu Thị Nương và anh Trần Phương Hiền**.
+- Associated with **Tà Đảnh / Bảy Núi, An Giang**.
+- Brand story centers on **circular agriculture** and creating value from **agricultural by-products**.
 
-An omission in an external evidence file is not evidence that an owner-verified fact is false.
+Omission is not contradiction. If a source directly conflicts with owner-verified information, flag it instead of silently choosing one.
 
-If a source directly contradicts an owner-verified fact, do not silently choose one. Flag the conflict for the user.
+## Copy
 
-## Copy Integrity
+Do not rewrite approved Vietnamese brand copy unless requested or technically necessary with user approval.
 
-Do not silently rewrite approved Vietnamese brand copy.
+Never present placeholders, mockup/stock content, or AI-generated copy as authentic company information.
 
-Preserve wording unless:
-- the user asks for content editing, or
-- a necessary technical change requires a wording adjustment and the user approves it.
-
-Do not present mockup text, placeholders, stock content, or AI-generated copy as authentic company information.
-
-Maintain the brand voice: grounded, specific, calm, human, and non-promotional rather than exaggerated or corporate.
+Voice: **grounded, specific, calm, human, non-exaggerated.**

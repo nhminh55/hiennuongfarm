@@ -2,118 +2,68 @@
 
 ## Project
 
-Premium Vietnamese agricultural brand/company website.
+Premium Vietnamese agricultural website built with Astro, plain CSS, and minimal JS. Keep architecture simple; avoid unnecessary dependencies.
 
-Stack:
-- Astro
-- Plain CSS
-- Minimal JavaScript
-- No UI framework unless clearly necessary
+Design: **Contemporary Vietnamese Agricultural Editorial** — authentic, restrained, photography-led, spacious, rooted in Bảy Núi / An Giang.
 
-Keep architecture simple. Avoid unnecessary dependencies.
+Avoid generic AI/SaaS/eco-template aesthetics and decorative clutter.
 
-## Core Direction
-
-Design: **Contemporary Vietnamese Agricultural Editorial**
-
-Priorities:
-**Authenticity → Composition → Typography → Spacing → Photography → Interaction**
-
-Keep the experience premium, restrained, photography-led, spacious, and grounded in Bảy Núi / An Giang.
-
-Avoid generic AI/SaaS/eco-template aesthetics, excessive cards, pills, gradients, glassmorphism, shadows, icons, emoji, and decorative clutter.
-
-Primary visual reference:
-`design-reference/homepage-mockup.png`
-
-For design-specific work, read `docs/DESIGN_SYSTEM.md`.
+Design reference: `design-reference/homepage-mockup.png`
+Design rules: `docs/DESIGN_SYSTEM.md`
 
 ## Content
 
-Never invent company facts, dates, founders, certifications, statistics, partners, testimonials, contact details, product claims, or health claims.
+Never invent company facts, claims, certifications, statistics, partners, testimonials, or contact details.
 
-Owner-verified facts:
-- Hiền Nương Farm was established in 2020.
-- The co-founders are husband and wife.
-- When naming both founders, use exactly this order:
-  **chị Châu Thị Nương và anh Trần Phương Hiền**
+Owner-verified:
+- Established in 2020.
+- Co-founders are husband and wife.
+- When naming both: **chị Châu Thị Nương và anh Trần Phương Hiền**.
 
-For content work, read:
-- `design-reference/CONTENT_EVIDENCE_BANK.md`
-- `docs/CONTENT_RULES.md`
+Content sources:
+`design-reference/CONTENT_EVIDENCE_BANK.md` and `docs/CONTENT_RULES.md`.
 
-Owner-verified facts override an evidence file that merely omits them.
+Owner-verified facts override mere omissions in the Evidence Bank.
 
-## Working Rules
+## Work
 
-Before editing:
-1. Run `git status`.
-2. Inspect only the relevant implementation.
-3. Preserve existing user work and approved UI.
-4. Make the smallest change that solves the requested problem.
+Before editing: run `git status`, inspect only relevant code, preserve user work/approved UI, and make the smallest necessary change.
 
-Do not:
-- expand scope without instruction
-- perform unrelated cleanup/refactors
-- upgrade dependencies incidentally
-- rewrite approved copy unless content editing is requested
-- redesign approved sections casually
-- use Graphify unless explicitly requested
+No unrelated refactors, dependency upgrades, copy changes, redesigns, or Graphify unless requested.
 
-## Port 4321 — Never Manage It
+Use minimum context; read task-specific docs only when relevant.
 
-Port `4321` is the user's persistent, user-owned development server.
+## Server
 
-NEVER stop, kill, restart, replace, clean up, or take ownership of the process using port 4321.
+Port `4321` is user-owned. NEVER stop, restart, replace, or take ownership of it.
 
-If it is running, it may be reused for browser/Playwright verification.
+Reuse it when available. Agent-owned testing must use `>=4330`.
 
-If isolated Claude-owned testing is necessary, use a temporary port `>=4330` and stop only the process created by the current Claude session.
+Do not modify network/firewall/VPN settings unless requested.
 
-If 4321 is unavailable or stale, report it. Do not repair or restart it.
+## Deployment
 
-Do not modify firewall, router, VPN, network-profile, or LAN settings unless explicitly asked.
+Primary production: **Cloudflare Pages — `hiennuongfarm.pages.dev`**
 
-## QA
+`main` → `.github/workflows/deploy-pages.yml` → Pages project `hiennuongfarm`.
 
-Use targeted QA during iteration. Do not run exhaustive visual QA after every small edit.
+The legacy Worker `hiennuongfarm` also auto-deploys from `main`. Do NOT modify, disconnect, migrate, or delete it unless explicitly requested.
 
-For visual milestones or before an approved commit, follow `docs/QA.md`.
+Do not create another Pages project or use `wrangler deploy` for Pages.
 
-Production build must pass before a meaningful milestone is committed.
+Never commit credentials, tokens, `.env`, or secrets.
 
-Never claim a visual issue is fixed unless the affected viewport/region was actually checked.
+## QA & Git
 
-## Git
+Use targeted QA; milestone QA follows `docs/QA.md`. Build must pass. Never claim a visual fix without checking the affected viewport.
 
-GitHub is the source of truth.
+Do not commit/push during user review.
 
-During visual iteration, do not commit/push while user review is still pending.
+After approval: review status/diff → stage only relevant files → commit → push.
 
-After an **approved meaningful milestone**:
-1. Run final relevant QA/tests.
-2. Review `git status` and `git diff`.
-3. Stage only relevant files.
-4. Commit with a meaningful message.
-5. Push to the configured remote.
-
-Never blindly use `git add .`.
-Never discard or overwrite unrelated user work.
-Never commit secrets, `.env`, credentials, broken experiments, or unnecessary generated/reference files.
-Never claim a push succeeded if it failed.
-
-## Context Efficiency
-
-Use the minimum context needed for the task.
-
-- Read only relevant files.
-- Do not scan the whole repository when targets are known.
-- Do not re-read unchanged references without a reason.
-- Open task-specific docs only when relevant.
-- Keep completion reports concise: changes, QA, blockers, Git status.
+Never blindly `git add .` or discard unrelated work.
 
 ## Principle
 
 **Build less, but build it exceptionally well.**
-
-When uncertain, preserve approved work and choose the simpler, more authentic solution.
+When uncertain, preserve approved work.

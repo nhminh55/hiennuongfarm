@@ -1,101 +1,58 @@
 # Design System — Hiền Nương Farm
 
-Read this file only for visual, layout, responsive, typography, photography, or interaction work.
+Read only for visual, layout, responsive, typography, photography, or interaction work.
 
 ## Direction
 
 **Contemporary Vietnamese Agricultural Editorial**
 
-The site should feel:
-- authentic
-- premium but restrained
-- calm
-- contemporary
-- rooted in Bảy Núi / An Giang
-- photography-led rather than UI-decoration-led
+Authentic, premium but restrained, calm, photography-led, and rooted in Bảy Núi / An Giang.
 
-Primary visual reference:
-`design-reference/homepage-mockup.png`
-
-Use the reference for direction and composition, not pixel-perfect copying.
-
-## Visual Priorities
-
+Priority:
 **Authenticity → Composition → Typography → Spacing → Photography → Interaction**
 
-Prefer:
-- editorial or asymmetrical composition
-- strong typography
-- controlled generous whitespace
-- authentic agricultural photography
-- warm cream, deep green, and earth tones
-- thin dividers
-- restrained motion
-- simple, deliberate UI
+Reference:
+`design-reference/homepage-mockup.png`
 
-Avoid:
-- generic AI-generated landing-page aesthetics
-- SaaS-style layouts
-- excessive cards or cards-inside-cards
-- rounded-box clutter
-- decorative pills/chips
-- gradients
-- glassmorphism
-- excessive shadows
-- unnecessary icons
-- emoji as decoration
-- ornamental fixes for weak composition
+Use it for direction and composition, not pixel-perfect copying.
 
-Do not fix weak composition by adding decoration.
+Prefer editorial/asymmetrical composition, strong typography, generous controlled whitespace, authentic photography, warm cream/deep green/earth tones, thin dividers, restrained motion, and deliberate UI.
 
-## Preservation
+Avoid generic AI/SaaS aesthetics, excessive/nested cards, rounded-box clutter, pills, gradients, glassmorphism, heavy shadows, unnecessary icons/emoji, and decoration used to compensate for weak composition.
 
-Approved sections should remain stable unless the user explicitly requests a redesign.
+## Responsive & Preservation
 
-When fixing one breakpoint or section:
+Approved sections remain stable unless redesign is explicitly requested.
+
+When fixing a section/breakpoint:
 - preserve approved layouts elsewhere
-- inspect the cascade before adding overrides
+- inspect the CSS cascade first
 - prefer normal document flow
-- avoid arbitrary pixel nudges and negative-margin hacks
-- avoid unnecessary absolute positioning
-- do not shrink typography merely to hide a layout problem
+- avoid arbitrary nudges, negative-margin hacks, and unnecessary absolute positioning
+- do not shrink typography merely to hide layout problems
 
-Desktop and mobile are deliberate layouts, not automatically scaled copies.
+Desktop and mobile are deliberate layouts, not scaled copies.
 
 ## Photography
 
-For image-led sections:
-- preserve aspect ratio
-- never stretch photography
-- protect important focal points
-- use breakpoint-specific assets when provided
-- do not crop, regenerate, or replace approved source imagery unless requested
+Preserve aspect ratio, focal points, and approved imagery.
+
+Never stretch, regenerate, crop, or replace approved source photography unless requested.
+
+Use breakpoint-specific assets when provided.
 
 ## Homepage Hero
 
-The homepage Hero is an approved photography-led composition.
+The Hero is approved. Preserve its branding/header, navigation, copy, CTA, photography, handwritten artwork, and desktop composition unless explicitly requested.
 
-Preserve unless explicitly requested:
-- Hiền Nương Farm branding/header
-- navigation/menu behavior
-- headline
-- subtitle
-- CTA
-- landscape photography
-- handwritten “Đất lành cho những giá trị lâu dài” artwork
-- approved desktop composition
+For mobile-only fixes:
+- prevent overlap
+- keep CTA inside the Hero
+- preserve important photographic/artwork elements where practical
+- do not affect About or desktop
 
-The mobile Hero may use its dedicated mobile image.
+## Visual Review
 
-For mobile Hero fixes:
-- prevent header/headline/subtitle/CTA overlap
-- keep the CTA fully inside the Hero
-- preserve sunlight, mountains, rice fields, and handwritten artwork where practical
-- do not let Hero fixes alter the following About section
-- do not alter desktop for a mobile-only request
-
-## Visual Judgment
-
-Judge typography, spacing, and section density at 100% browser zoom on a normal laptop viewport.
+Judge typography, spacing, and density at **100% browser zoom on a normal laptop viewport**.
 
 Full-page screenshots are review aids, not scale references.

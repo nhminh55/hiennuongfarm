@@ -1,71 +1,50 @@
 # QA Guide — Hiền Nương Farm
 
-Read this file for milestone QA, responsive audits, or when a change has meaningful regression risk.
+Read for milestone QA, responsive audits, or changes with meaningful regression risk.
 
-## During Iteration
+## Iteration
 
 Use targeted checks only.
 
-For a small visual correction:
-1. test the affected viewport(s)
-2. inspect the affected region
-3. check neighboring sections
-4. check console/build errors when relevant
+For small visual changes:
+1. Test affected viewport(s) and region.
+2. Check neighboring sections/regressions.
+3. Check console/build when relevant.
 
-Typical quick visual checks:
-- `1366x768`
-- `390px` mobile
+Typical quick checks: `1366x768` and `390px`.
 
-Do not run the full matrix after every small CSS or copy change.
+Do not run the full matrix after every small change.
 
-## Final Visual Milestone
+## Milestone QA
 
 Before an approved visual milestone is committed, verify:
 
 `1440 / 1280 / 1024 / 768 / 390 / 375 / 320`
 
 Check:
-- horizontal overflow
-- typography and awkward wrapping
-- spacing and alignment
-- image crops and aspect ratios
-- navigation and interactions
-- keyboard/focus behavior
+- overflow, wrapping, spacing, alignment
+- image crops/aspect ratios
+- navigation/interactions
+- keyboard/focus and reduced motion where relevant
+- section boundaries and regressions
 - console errors
-- reduced motion where relevant
-- section boundaries
-- unintended regressions outside the edited area
 
 Production build must pass.
 
-## Browser / Playwright
+A successful build alone does not prove visual correctness. Verify rendered results before claiming a visual fix.
 
-Port `4321` is user-owned. Never restart or manage it.
+## Testing
 
-If it is running, it may be reused for verification.
+Port `4321` is user-owned; reuse it but never manage/restart it.
 
-If isolated automated testing requires a separate server, use a temporary port `>=4330` and stop only the process created by the current agent session.
-
-A successful build is not proof that a visual task is complete.
-
-Do not claim a visual fix without checking the rendered result.
+Isolated agent testing must use `>=4330` and stop only agent-created processes.
 
 ## Screenshots
 
-For major visual milestones, save final review screenshots under:
+For major milestones, save review screenshots to `design-reference/screenshots/`.
 
-`design-reference/screenshots/`
+Do not commit screenshots unless requested.
 
-Do not commit screenshots unless explicitly requested.
+## Completion
 
-Screenshots should document the final reviewed state, not create unnecessary generated-file noise.
-
-## Completion Gate
-
-A task is complete when:
-- the requested issue is addressed
-- unrelated approved UI remains unchanged
-- relevant checks pass
-- responsive behavior is verified when applicable
-- no accidental files/dependencies were introduced
-- the final diff contains only intentional changes
+Complete only when the requested issue is fixed, relevant checks pass, approved UI remains intact, and the diff contains only intentional changes.
