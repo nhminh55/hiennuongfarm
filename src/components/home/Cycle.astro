@@ -236,6 +236,12 @@ const arrows = [
     .ring__num { font-size: 2.9cqi; }
     .ring__name { font-size: 3.6cqi; }
     .ring__note { font-size: 3.15cqi; }
+    .ring__step:nth-child(2) .ring__name {
+      /* Twice the distance from this stage's centre (84.44%) to the edge. */
+      max-width: 31.12cqi;
+      white-space: normal;
+      text-wrap: balance;
+    }
   }
 
   /* Tablet: the introduction in two columns, then the
@@ -318,6 +324,18 @@ const arrows = [
     }
 
     .cycle__copy { margin-top: var(--space-m); }
+    .ring__name { font-size: max(14px, 3.6cqi); }
+    .ring__step:nth-child(2) .ring__name {
+      max-width: 31.12cqi;
+      white-space: normal;
+      text-wrap: balance;
+    }
+    .ring__note { font-size: max(12px, 3.15cqi); }
+    .ring__step:nth-child(5) .ring__name {
+      max-width: var(--icon);
+      white-space: normal;
+      text-wrap: balance;
+    }
     .cycle__copy .cycle__more { margin-top: var(--space-s); padding-top: var(--space-s); }
   }
 </style>
