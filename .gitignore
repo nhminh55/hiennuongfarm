@@ -1,5 +1,6 @@
 node_modules/
 dist/
+dist-qa/
 .astro/
 .env
 .env.*
@@ -13,3 +14,7 @@ design-reference/NƯƠNG FARM/
 design-reference/screenshots/
 design-reference/Hiền Nương Farm Mushroom Showcase.png
 design-reference/hien-nuong-photography-candidates.jpg
+design-reference/Hiền Nương Farm Brand Homepage Mockup.png
+design-reference/Hiền Nương Farm Brand Identity Kit.png
+design-reference/Hiền Nương Farm Brand Identity Showcase.png
+design-reference/hien-nuong-farm-video.mp4

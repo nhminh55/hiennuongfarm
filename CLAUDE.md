@@ -1,158 +1,119 @@
-# CLAUDE.md
+# CLAUDE.md — Hiền Nương Farm
 
 ## Project
 
-Hiền Nương Farm is a premium Vietnamese agricultural brand/company website.
+Premium Vietnamese agricultural brand/company website.
 
 Stack:
 - Astro
 - Plain CSS
 - Minimal JavaScript
-- No UI framework unless necessary
+- No UI framework unless clearly necessary
 
 Keep architecture simple. Avoid unnecessary dependencies.
 
-## Design
+## Core Direction
 
-Direction: **Contemporary Vietnamese Agricultural Editorial**
+Design: **Contemporary Vietnamese Agricultural Editorial**
 
-Feel:
-- authentic
-- premium
-- calm
-- contemporary
-- rooted in Bảy Núi / An Giang
-
-Prioritize:
-
+Priorities:
 **Authenticity → Composition → Typography → Spacing → Photography → Interaction**
 
-Prefer editorial/asymmetrical layouts, strong typography, controlled whitespace,
-authentic photography, warm cream/deep green/earth tones, thin dividers and restrained motion.
+Keep the experience premium, restrained, photography-led, spacious, and grounded in Bảy Núi / An Giang.
 
-Avoid generic AI/SaaS/eco-template aesthetics, excessive cards, rounded boxes,
-gradients, glassmorphism, pills, shadows, icons, emoji and decorative clutter.
-
-Do not fix weak composition by adding decoration.
+Avoid generic AI/SaaS/eco-template aesthetics, excessive cards, pills, gradients, glassmorphism, shadows, icons, emoji, and decorative clutter.
 
 Primary visual reference:
 `design-reference/homepage-mockup.png`
 
-Use it for direction, not pixel-perfect copying.
+For design-specific work, read `docs/DESIGN_SYSTEM.md`.
 
 ## Content
 
-Never invent company facts, dates, founders, certifications, statistics,
-partners, testimonials, contact details, product claims or health claims.
+Never invent company facts, dates, founders, certifications, statistics, partners, testimonials, contact details, product claims, or health claims.
 
-Unverified information stays `VERIFY`.
-
-`design-reference/CONTENT_EVIDENCE_BANK.md` is the factual source of truth.
-
-Owner-verified:
+Owner-verified facts:
 - Hiền Nương Farm was established in 2020.
-- Co-founders are husband and wife:
+- The co-founders are husband and wife.
+- When naming both founders, use exactly this order:
   **chị Châu Thị Nương và anh Trần Phương Hiền**
-- Always name them in that order.
 
-Do not present mockup/placeholder/stock/AI content as authentic company information.
+For content work, read:
+- `design-reference/CONTENT_EVIDENCE_BANK.md`
+- `docs/CONTENT_RULES.md`
 
-## Context Efficiency
+Owner-verified facts override an evidence file that merely omits them.
 
-Use the minimum context necessary for the current task.
-
-- Read only relevant files.
-- Do not scan the whole repository when target files are known.
-- Do not re-read unchanged reference files without a reason.
-- Prefer targeted search/read over broad exploration.
-- Do not restate project rules in task reports.
-- Do not inspect unrelated pages/components unless the change can affect them.
-- Keep completion reports concise: changes, QA, blockers, Git status.
-- Do not use Graphify unless explicitly requested.
-
-## Development
+## Working Rules
 
 Before editing:
-1. Read this file.
-2. Run `git status`.
-3. Inspect only relevant existing code.
-4. Preserve existing user work.
+1. Run `git status`.
+2. Inspect only the relevant implementation.
+3. Preserve existing user work and approved UI.
+4. Make the smallest change that solves the requested problem.
 
-Do not rewrite working architecture without a clear reason.
-Do not expand scope without instruction.
+Do not:
+- expand scope without instruction
+- perform unrelated cleanup/refactors
+- upgrade dependencies incidentally
+- rewrite approved copy unless content editing is requested
+- redesign approved sections casually
+- use Graphify unless explicitly requested
 
-## Local Server
+## Port 4321 — Never Manage It
 
-Port `4321` is the user's persistent development server.
+Port `4321` is the user's persistent, user-owned development server.
 
-NEVER stop, kill, restart, replace, clean up, or take ownership of any
-process using port 4321.
+NEVER stop, kill, restart, replace, clean up, or take ownership of the process using port 4321.
 
-Pre-existing Node/Astro processes are user-owned.
+If it is running, it may be reused for browser/Playwright verification.
 
-For Claude QA, use temporary ports `>=4330`.
+If isolated Claude-owned testing is necessary, use a temporary port `>=4330` and stop only the process created by the current Claude session.
 
-Claude may stop only processes created by the current Claude session.
+If 4321 is unavailable or stale, report it. Do not repair or restart it.
 
-If port 4321 is unavailable or stale, report it. The user will restart it.
+Do not modify firewall, router, VPN, network-profile, or LAN settings unless explicitly asked.
 
-## Visual QA
+## QA
 
-Judge typography, spacing and section density at **100% browser zoom on a
-normal laptop viewport**.
+Use targeted QA during iteration. Do not run exhaustive visual QA after every small edit.
 
-Full-page screenshots are review aids, not scale references.
+For visual milestones or before an approved commit, follow `docs/QA.md`.
 
-During iterative visual work:
-- test only the viewport(s) relevant to the reported problem
-- normally use `1366x768` and `390`
-- do not run exhaustive QA after every small CSS/content correction
+Production build must pass before a meaningful milestone is committed.
 
-Before a visual milestone is approved/committed, run final QA at:
-
-`1440 / 1280 / 1024 / 768 / 390 / 375 / 320`
-
-Check:
-- horizontal overflow
-- typography/wrapping
-- spacing/alignment
-- image crops
-- navigation/interactions
-- keyboard/focus
-- console errors
-- reduced motion where relevant
-
-Production build must pass.
-
-For major visual milestones, save final review screenshots under:
-`design-reference/screenshots/`
-
-Do not commit screenshots unless explicitly requested.
+Never claim a visual issue is fixed unless the affected viewport/region was actually checked.
 
 ## Git
 
 GitHub is the source of truth.
 
+During visual iteration, do not commit/push while user review is still pending.
+
 After an **approved meaningful milestone**:
-1. Run final QA/tests.
+1. Run final relevant QA/tests.
 2. Review `git status` and `git diff`.
 3. Stage only relevant files.
 4. Commit with a meaningful message.
 5. Push to the configured remote.
 
-Do not blindly use `git add .`.
+Never blindly use `git add .`.
+Never discard or overwrite unrelated user work.
+Never commit secrets, `.env`, credentials, broken experiments, or unnecessary generated/reference files.
+Never claim a push succeeded if it failed.
 
-Never commit secrets, `.env`, credentials, broken experiments,
-reference/source materials, or unnecessary generated files.
+## Context Efficiency
 
-Never overwrite/discard user work without permission.
+Use the minimum context needed for the task.
 
-If push fails, investigate and retry. Never claim success if it failed.
-
-Do not commit/push during visual iteration when the user has requested review first.
+- Read only relevant files.
+- Do not scan the whole repository when targets are known.
+- Do not re-read unchanged references without a reason.
+- Open task-specific docs only when relevant.
+- Keep completion reports concise: changes, QA, blockers, Git status.
 
 ## Principle
 
 **Build less, but build it exceptionally well.**
 
-When uncertain, choose the simpler and more authentic solution.
+When uncertain, preserve approved work and choose the simpler, more authentic solution.

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Farm LAN diagnostic</title>
+  <style>
+    body { background: white; color: black; font: 16px sans-serif; margin: 20px; }
+    #css-test { background: #dff5df; border: 2px solid green; padding: 12px; }
+    pre { white-space: pre-wrap; overflow-wrap: break-word; }
+  </style>
+</head>
+<body>
+  <h1>LAN diagnostic v1</h1>
+  <p>HTML PASS: this text is visible without JavaScript or CSS.</p>
+  <p id="css-test">CSS test: this box should have a pale green background and green border.</p>
+  <p id="js-test">JavaScript: NOT EXECUTED</p>
+  <noscript><p>JavaScript is disabled in this browser.</p></noscript>
+  <pre id="details">Browser and viewport details await JavaScript execution.</pre>
+  <script>
+    (function () {
+      document.getElementById('js-test').textContent = 'JavaScript: PASS (inline script executed)';
+      document.getElementById('details').textContent =
+        'URL: ' + location.href + '\n' +
+        'User-agent: ' + navigator.userAgent + '\n' +
+        'Viewport: ' + window.innerWidth + ' x ' + window.innerHeight + ' CSS pixels\n' +
+        'Screen: ' + screen.width + ' x ' + screen.height + '\n' +
+        'Device pixel ratio: ' + window.devicePixelRatio + '\n' +
+        'CSS background: ' + getComputedStyle(document.getElementById('css-test')).backgroundColor + '\n' +
+        'Loaded at: ' + new Date().toISOString();
+    }());
+  </script>
+</body>
+</html>
