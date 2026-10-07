@@ -1,6 +1,35 @@
 ---
-import Photo from '../Photo.astro';
 import Arrow from '../Arrow.astro';
+
+/* Hero slideshow: each slide pairs a wide desktop frame (2065×762 class)
+   with a portrait mobile crop (1087×1447). `pos` sets the desktop crop. */
+const slides = [
+  {
+    // Frame from the Hiền Nương Farm video, 00:12.8 (clean frame, no subtitle).
+    desktop: { src: '/images/farm/hero-bay-nui.webp', width: 2065, height: 762 },
+    mobile: '/images/farm/hero-bay-nui-mobile.webp',
+    pos: '50% 28%',
+    alt: 'Cánh đồng lúa xanh điểm hàng thốt nốt, dãy núi vùng Bảy Núi phía xa, nhìn từ trên cao',
+  },
+  {
+    desktop: { src: '/images/farm/hero-hn-025-desktop.webp', width: 2065, height: 762 },
+    mobile: '/images/farm/hero-hn-025-mobile.webp',
+    pos: '50% 50%',
+    alt: 'Hai người đội mũ rộng vành kiểm tra nấm trong khay rơm, phía sau là đống giá thể trong nhà xưởng',
+  },
+  {
+    desktop: { src: '/images/farm/hero-hn-027-desktop.webp', width: 2065, height: 762 },
+    mobile: '/images/farm/hero-hn-027-mobile.webp',
+    pos: '50% 50%',
+    alt: 'Nhân viên đội mũ trùm, đeo khẩu trang và găng tay phân loại nấm trên các khay trong khu sơ chế',
+  },
+  {
+    desktop: { src: '/images/farm/hero-hn-031-desktop.webp', width: 1672, height: 617 },
+    mobile: '/images/farm/hero-hn-031-mobile.webp',
+    pos: '50% 50%',
+    alt: 'Các dãy nhà mái lợp tấm pin mặt trời giữa cây xanh và hàng thốt nốt, nhìn từ trên cao',
+  },
+];
 const sections = [
   { id: 've-hien-nuong', label: 'Về Hiền Nương' },
   { id: 'tuan-hoan', label: 'Nông nghiệp tuần hoàn' },
@@ -10,15 +39,22 @@ const sections = [
 ];
 ---
 <section class="hero" aria-labelledby="hero-title">
-  <!-- Frame from the Hiền Nương Farm video, 00:12.8 (clean frame, no subtitle). -->
-  <Photo
-    class="hero__media"
-    src="/images/farm/hero-bay-nui.webp"
-    width={2065}
-    height={762}
-    loading="eager"
-    alt="Cánh đồng lúa xanh điểm hàng thốt nốt, dãy núi vùng Bảy Núi phía xa, nhìn từ trên cao"
-  />
+  <div class="hero__media" data-hero-slides>
+    {slides.map((slide, i) => (
+      <picture class="hero__slide" data-active={i === 0 ? '' : undefined} aria-hidden={i === 0 ? undefined : 'true'} style={`--pos: ${slide.pos}`}>
+        <source media="(max-width: 767px)" srcset={slide.mobile} width={1087} height={1447} />
+        <img
+          src={slide.desktop.src}
+          width={slide.desktop.width}
+          height={slide.desktop.height}
+          alt={slide.alt}
+          loading={i === 0 ? 'eager' : 'lazy'}
+          fetchpriority={i === 0 ? 'high' : 'low'}
+          decoding={i === 0 ? 'sync' : 'async'}
+        />
+      </picture>
+    ))}
+  </div>
   <div class="hero__scrim" aria-hidden="true"></div>
 
   <div class="container hero__inner">
@@ -62,6 +98,45 @@ const sections = [
   };
   window.addEventListener('hashchange', sync);
   sync();
+
+  /* Slideshow: crossfade every 5s. Holds still for reduced motion, while
+     the tab is hidden, and while the pointer or focus is in the hero. */
+  const INTERVAL = 5000;
+  const root = document.querySelector<HTMLElement>('[data-hero-slides]');
+  const slides = root ? [...root.querySelectorAll<HTMLElement>('.hero__slide')] : [];
+  const hero = root?.closest<HTMLElement>('.hero');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  if (hero && slides.length > 1) {
+    let current = 0;
+    let timer: number | undefined;
+    let held = false;
+
+    const show = (next: number) => {
+      slides[current].removeAttribute('data-active');
+      slides[current].setAttribute('aria-hidden', 'true');
+      current = next;
+      slides[current].setAttribute('data-active', '');
+      slides[current].removeAttribute('aria-hidden');
+    };
+    const stop = () => { window.clearInterval(timer); timer = undefined; };
+    const start = () => {
+      stop();
+      if (held || reduced.matches || document.hidden) return;
+      timer = window.setInterval(() => show((current + 1) % slides.length), INTERVAL);
+    };
+    const hold = (value: boolean) => { held = value; start(); };
+
+    hero.addEventListener('pointerenter', () => hold(true));
+    hero.addEventListener('pointerleave', () => hold(false));
+    hero.addEventListener('focusin', () => hold(true));
+    hero.addEventListener('focusout', event => {
+      if (!hero.contains(event.relatedTarget as Node | null)) hold(false);
+    });
+    document.addEventListener('visibilitychange', start);
+    reduced.addEventListener('change', start);
+    start();
+  }
 </script>
 
 <style>
@@ -85,17 +160,35 @@ const sections = [
     isolation: isolate;
   }
 
-  .hero :global(.hero__media) {
+  .hero__media {
     position: absolute;
     inset: 0;
     z-index: -2;
+    overflow: hidden;
+    background: var(--color-cream);
+  }
+
+  /* Slides stack in place; the active one fades up over the last. */
+  .hero__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.4s ease-in-out;
+  }
+  .hero__slide[data-active] { opacity: 1; }
+  .hero__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__slide { transition: none; }
   }
 
   /* Portrait screens: a compact frame, preserving the artwork near the top. */
   @media (max-width: 767px) {
-    .hero :global(.hero__media) {
-      display: none;
-    }
+    .hero__slide img { object-position: 50% 60%; }
     .hero {
       /* The solid mobile header must sit above the entire image artwork. */
       margin-top: var(--header-h);
@@ -103,16 +196,12 @@ const sections = [
       height: auto;
       width: 100%;
       aspect-ratio: 15 / 14;
-      background-image: url('/images/farm/hero-bay-nui-mobile.webp');
-      background-size: cover;
-      background-position: center 60%;
-      background-repeat: no-repeat;
     }
   }
   @media (min-width: 1024px) {
-    /* The low frame crops mostly foreground: anchor high so the ridge sits
-       clear of the navigation with sky above it. */
-    .hero :global(.hero__media) { --pos: 50% 28%; }
+    /* The low frame crops mostly foreground: each slide sets its own anchor
+       (the landscape sits high so the ridge clears the navigation). */
+    .hero__slide img { object-position: var(--pos, 50% 50%); }
   }
 
   /* Scrim removed by request to rely on pure composition for readability. */
