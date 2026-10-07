@@ -19,7 +19,7 @@
     :root .site-footer.site-footer .site-footer__social { font-size: 0; gap: 0; justify-content: center; width: 2rem; height: 2rem; min-height: 2rem; border: 1px solid var(--color-text-inverse-muted); border-radius: 50%; }
     :root .site-footer.site-footer .site-footer__social svg { width: 1.125rem; height: 1.125rem; }
     :root .site-footer.site-footer .site-footer__bottom { padding-block: 1rem; }
-    :root .site-footer.site-footer .site-footer__top-link .arrow { rotate: 0deg !important; }
+    :root .site-footer.site-footer .site-footer__top-link .arrow { rotate: -90deg; }
   }
 
 :root .site-footer.site-footer .site-footer__mobile-top,

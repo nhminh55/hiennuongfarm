@@ -60,8 +60,16 @@ import Eyebrow from '../Eyebrow.astro';
     margin-top: var(--space-m);
     max-width: 30rem;
   }
+  .about__body::before {
+    content: "";
+    display: block;
+    width: 2.5rem;
+    height: 1px;
+    margin-bottom: var(--space-m);
+    background: var(--color-earth);
+  }
 
-  .about .about__more { margin-top: var(--space-m); text-transform: none; }
+  .about .about__more { margin-top: var(--space-m); text-transform: uppercase; }
 
   /* Phones: the photograph runs to the screen edges. */
   .about__figure { margin-inline: calc(-1 * var(--gutter)); }

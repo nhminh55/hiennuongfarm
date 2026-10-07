@@ -4,10 +4,8 @@ import Eyebrow from '../Eyebrow.astro';
 import Arrow from '../Arrow.astro';
 import { products, productHref } from '../../data/products';
 
-// The four main mushroom lines (CONTENT_EVIDENCE_BANK.md §3), linked to their
-// entries on /san-pham/. The homepage uses its own, larger photographs (from
-// the photo collection, HN-xxx, or the video for Nấm Bào Ngư); each note
-// describes only what its photograph shows — no product or health claims.
+// Preserve the four approved farm photographs. Additional product names are
+// owner-supplied; generated illustrations are explicitly labelled below.
 const photos: Record<string, { src: string; width: number; height: number; pos?: string; alt: string; note: string }> = {
   'nam-moi-den': {
     // HN-017
@@ -45,7 +43,39 @@ const photos: Record<string, { src: string; width: number; height: number; pos?:
   },
 };
 
-const items = products.map((p) => ({ ...p, href: productHref(p), photo: photos[p.slug] }));
+const additional = [
+  ['nam-moi-den-say-thang-hoa', 'Nấm Mối Đen Sấy Thăng Hoa'],
+  ['snack-nam-moi-den', 'Snack Nấm Mối Đen'],
+  ['snack-nam-bao-ngu', 'Snack Nấm Bào Ngư'],
+  ['dong-trung-ha-thao-say-thang-hoa', 'Đông Trùng Hạ Thảo Sấy Thăng Hoa'],
+  ['tra-hoa-tan-linh-chi', 'Trà Hòa Tan Linh Chi'],
+  ['tra-hoa-tan-linh-chi-trung-thao', 'Trà Hòa Tan Linh Chi Trùng Thảo'],
+  ['bao-tu-nam-linh-chi', 'Bào Tử Nấm Linh Chi'],
+  ['dong-trung-ha-thao-ngam-mat-ong', 'Đông Trùng Hạ Thảo Ngâm Mật Ong'],
+];
+// Owner-supplied homepage descriptions, in carousel order.
+const descriptions = [
+  'Nấm tươi nuôi trồng tại trang trại Hiền Nương.',
+  'Dòng linh chi được nuôi trồng và thu hái tại trang trại.',
+  'Đông trùng hạ thảo được nuôi cấy tại Hiền Nương Farm.',
+  'Nấm tươi được nuôi trồng theo quy trình của trang trại.',
+  'Nấm mối đen chế biến bằng phương pháp sấy thăng hoa.',
+  'Sản phẩm chế biến từ nấm mối đen của Hiền Nương.',
+  'Sản phẩm chế biến từ nấm bào ngư của Hiền Nương.',
+  'Đông trùng hạ thảo chế biến bằng phương pháp sấy thăng hoa.',
+  'Sản phẩm trà hòa tan được phát triển từ nấm linh chi.',
+  'Trà hòa tan kết hợp linh chi và đông trùng hạ thảo.',
+  'Sản phẩm từ bào tử của nấm linh chi tại Hiền Nương.',
+  'Sự kết hợp giữa đông trùng hạ thảo và mật ong.',
+];
+const items = [
+  ...products.map((p) => ({ ...p, name: p.slug === 'nam-linh-chi' ? 'Nấm Linh Chi Tai To' : p.name, href: productHref(p), photo: photos[p.slug] })),
+  ...additional.map(([slug, name]) => ({
+    slug, name, note: name, detail: undefined, href: '#hop-tac',
+    photo: { src: `/images/products/${slug}.webp`, width: 720, height: 1080,
+      alt: `Ảnh minh họa ${name}`, note: 'Ảnh minh họa · Tìm hiểu sản phẩm cùng trang trại.' },
+  })),
+];
 ---
 <section class="section products" id="san-vat" aria-labelledby="products-title">
   <div class="container products__grid">
@@ -59,9 +89,10 @@ const items = products.map((p) => ({ ...p, href: productHref(p), photo: photos[p
       <a class="link-arrow products__all" href="/san-pham/">Xem tất cả sản phẩm <Arrow /></a>
     </header>
 
-    <ol class="catalogue">
+    <div class="products__carousel" role="region" aria-roledescription="băng chuyền" aria-label="Sản vật từ trang trại">
+    <ol class="catalogue" id="product-catalogue" tabindex="0" aria-label="Danh sách 12 sản phẩm">
       {items.map((item, i) => (
-        <li class:list={['entry', { 'entry--lead': i === 0 }]} data-reveal style={`--reveal-delay: ${i * 80}ms`}>
+        <li class="entry">
           <Photo
             class="entry__photo"
             src={item.photo.src}
@@ -71,59 +102,82 @@ const items = products.map((p) => ({ ...p, href: productHref(p), photo: photos[p
             alt={item.photo.alt}
           />
           <span class="eyebrow entry__num">{String(i + 1).padStart(2, '0')}</span>
-          <h3 class="entry__name"><a class="entry__link" href={item.href}>{item.name}</a></h3>
-          <p class="small entry__note">{item.photo.note}</p>
-          <span class="cta-label entry__more" aria-hidden="true">{item.detail ? 'Xem sản phẩm' : 'Tìm hiểu thêm'} <Arrow /></span>
+          <h3 class="entry__name">{item.name}</h3>
+          <div class="entry__description"><p class="small entry__note">{descriptions[i] ?? item.note}</p></div>
+          <a class="link-arrow cta-label entry__link entry__more" href={item.href} aria-label={`Chi tiết ${item.name}`}>Chi tiết <Arrow /></a>
+          {i >= 4 && <span class="entry__illustration">Ảnh minh họa</span>}
         </li>
       ))}
     </ol>
+    <button class="products__arrow products__arrow--prev" type="button" aria-label="Sản phẩm trước" aria-controls="product-catalogue"><span aria-hidden="true"></span></button>
+    <button class="products__arrow products__arrow--next" type="button" aria-label="Sản phẩm tiếp theo" aria-controls="product-catalogue"><span aria-hidden="true"></span></button>
+    </div>
   </div>
 </section>
 
 <style>
   .products { background: var(--color-paper); }
-
   .products__title { margin-top: var(--space-m); max-width: 14ch; }
   .products__intro { margin-top: var(--space-m); max-width: 26rem; }
+  .products__intro::before {
+    content: "";
+    display: block;
+    width: 2.5rem;
+    height: 1px;
+    margin-bottom: var(--space-m);
+    background: var(--color-earth);
+  }
   .products__all { margin-top: var(--space-m); }
-
-  /* Phones: the lead product in full, the other three as a ledger of
-     thumbnail rows. */
+  .products__carousel {
+    --card-gap: 0.75rem;
+    --photo-h: 86cqw;
+    container-type: inline-size;
+    position: relative;
+    min-width: 0;
+    margin-top: var(--space-xl);
+  }
   .catalogue {
     display: grid;
-    margin-top: var(--space-xl);
-    border-top: 1px solid var(--color-line);
+    grid-auto-flow: column;
+    grid-auto-columns: 86%;
+    grid-template-rows: auto auto auto auto auto;
+    column-gap: var(--card-gap);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    padding-bottom: 4px;
   }
-
+  .catalogue::-webkit-scrollbar { display: none; }
+  .catalogue:focus-visible { outline: 1px solid currentColor; outline-offset: 4px; }
   .entry {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 7rem) minmax(0, 1fr);
-    column-gap: var(--space-m);
-    align-content: start;
-    padding-block: var(--space-m);
+    grid-template-rows: subgrid;
+    grid-row: 1 / span 5;
+    min-width: 0;
+    scroll-snap-align: start;
     border-bottom: 1px solid var(--color-line);
+    padding-bottom: var(--space-l);
   }
-
-  /* The name is the link; its hit area stretches over the whole entry. */
-  .entry__link::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-  }
+  .entry__link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
   .entry__link:focus-visible { outline: none; }
-  .entry:has(.entry__link:focus-visible) { outline: 1px solid currentColor; outline-offset: 4px; }
-
+  .entry:has(.entry__link:focus-visible) { outline: 1px solid currentColor; outline-offset: -1px; }
   .entry :global(.entry__photo) {
-    grid-row: 1 / span 4;
+    flex: none;
+    width: 100%;
+    height: auto;
     aspect-ratio: 1;
-    align-self: start;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: var(--space-s);
   }
-  .entry :global(.entry__photo img) { transition: transform 900ms var(--ease); }
-
+  .entry :global(.entry__photo img) { width: 100%; height: 100%; object-fit: cover; transition: transform 900ms var(--ease); }
+  @media (prefers-reduced-motion: no-preference) {
+    .entry:hover :global(.entry__photo img) { transform: scale(1.03); }
+  }
   .entry__num { font-variant-numeric: tabular-nums; }
-
   .entry__name {
     margin-top: 0.125rem;
     font-family: var(--font-display);
@@ -132,61 +186,68 @@ const items = products.map((p) => ({ ...p, href: productHref(p), photo: photos[p
     line-height: 1.15;
     text-wrap: balance;
   }
-
+  .entry__description {
+    margin-top: 0.5rem;
+  }
+  .entry__description::before {
+    content: "";
+    display: block;
+    width: 1rem;
+    height: 1px;
+    margin-bottom: 0.625rem;
+    background: var(--color-earth);
+  }
   .entry__note {
-    margin-top: 0.375rem;
     color: var(--color-text-muted);
-    text-wrap: pretty;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    line-height: 1.5;
   }
-
-  .entry__more {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.625rem;
-    margin-top: var(--space-xs);
-    justify-self: start;
-  }
+  .entry__more { display: inline-flex; align-items: center; gap: 0.625rem; margin-top: 1rem; justify-self: start; align-self: start; }
   .entry__more :global(.arrow) { width: 0.875rem; }
-  .entry:hover .entry__more :global(.arrow) { transform: translateX(4px); }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .entry:hover :global(.entry__photo img) { transform: scale(1.03); }
+  .products .entry__more { border-bottom: 0; }
+  .entry__illustration {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    padding: 0.125rem 0.375rem;
+    background: rgba(248, 246, 240, 0.85);
+    color: var(--color-text-muted);
+    font-size: 0.625rem;
+    pointer-events: none;
   }
-
-  .entry--lead { grid-template-columns: minmax(0, 1fr); }
-  .entry--lead :global(.entry__photo) {
-    grid-row: auto;
-    aspect-ratio: 4 / 3;
-    margin-bottom: var(--space-s);
+  .products__arrow {
+    position: absolute;
+    top: calc(var(--photo-h) / 2);
+    transform: translateY(-50%);
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0;
+    background: transparent;
+    color: var(--color-charcoal);
+    font-size: 1.25rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 180ms ease;
   }
-
-  /* Tablet: two by two, columns divided by a hairline. */
+  .products__arrow--prev { left: -0.625rem; }
+  .products__arrow--next { left: calc(var(--photo-h) - 2.5rem + 0.625rem); }
+  .products__arrow span { width: 0.625rem; height: 0.875rem; background: currentColor; clip-path: polygon(0 50%, 100% 0, 100% 100%); }
+  .products__arrow--next span { transform: rotate(180deg); }
+  .products__carousel:has(.products__arrow:hover) .products__arrow,
+  .products__carousel:has(.products__arrow:focus-visible) .products__arrow { opacity: 1; }
+  .products__arrow:focus-visible { outline: 2px solid var(--color-forest); outline-offset: 3px; }
+  @media (hover: none) { .products__arrow { opacity: 0.9; } }
   @media (min-width: 640px) {
-    .catalogue {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      column-gap: var(--col-gap);
-      border-top: 0;
-    }
-
-    .entry,
-    .entry--lead {
-      display: flex;
-      flex-direction: column;
-      padding-block: var(--space-m) var(--space-l);
-      border-bottom: 1px solid var(--color-line);
-    }
-
-    .entry :global(.entry__photo),
-    .entry--lead :global(.entry__photo) {
-      align-self: stretch;
-      aspect-ratio: 3 / 2;
-      margin-bottom: var(--space-s);
-    }
+    .products__carousel { --photo-h: calc((100cqw - var(--card-gap)) / 2); }
+    .products__arrow--next { left: auto; right: -0.625rem; }
+    .catalogue { grid-auto-columns: calc((100% - var(--card-gap)) / 2); }
   }
-
-  /* Laptop: the four entries in one catalogue row, Nấm Mối Đen widest;
-     all four photographs share one height. The introduction is a compact
-     band above: headline left, description and link right. */
   @media (min-width: 1000px) {
     .products__head {
       display: grid;
@@ -194,78 +255,74 @@ const items = products.map((p) => ({ ...p, href: productHref(p), photo: photos[p
       column-gap: var(--space-xl);
       align-items: end;
     }
-    .products__title { max-width: 18ch; }
+    .products__title { max-width: 18ch; grid-column: 1; }
     .products__head > :global(.eyebrow) { grid-column: 1 / -1; }
-    .products__title { grid-column: 1; }
     .products__intro { grid-column: 2; grid-row: 2; margin-top: 0; }
     .products__all { grid-column: 2; margin-top: var(--space-s); justify-self: start; }
-
-    .catalogue {
-      --photo-h: clamp(11rem, 3rem + 13vw, 17rem);
-      grid-template-columns: 1.4fr 1fr 1fr 1fr;
-      column-gap: var(--space-l);
+    .products__carousel {
+      --photo-h: calc((100cqw - 3 * var(--card-gap)) / 4);
+      --card-gap: 0.75rem;
       margin-top: var(--space-l);
       padding-top: var(--space-l);
       border-top: 1px solid var(--color-line);
     }
-
-    .entry,
-    .entry--lead {
-      padding: 0;
-      border: 0;
-    }
-
-    .entry :global(.entry__photo),
-    .entry--lead :global(.entry__photo) {
-      aspect-ratio: auto;
-      height: var(--photo-h);
-      margin-bottom: var(--space-m);
-    }
-
-    .entry__more { margin-top: auto; padding-top: var(--space-m); }
+    .catalogue { grid-auto-columns: calc((100% - 3 * var(--card-gap)) / 4); }
+    .entry { padding: 0; border: 0; }
+    .entry :global(.entry__photo) { margin-bottom: var(--space-m); }
+    .products__arrow { top: calc(var(--space-l) + var(--photo-h) / 2); }
   }
-
-  /* Desktop: the introduction moves beside the catalogue, the two divided
-     by a single vertical rule. */
   @media (min-width: 1280px) {
-    .products__grid {
-      display: grid;
-      grid-template-columns: minmax(22.5rem, 3.5fr) minmax(0, 8.5fr);
-    }
-
-    .products__head {
-      display: block;
-      padding-right: var(--space-xl);
-      border-right: 1px solid var(--color-line);
-    }
+    .products__grid { display: grid; grid-template-columns: minmax(22.5rem, 3.5fr) minmax(0, 8.5fr); }
+    .products__head { display: block; padding-right: var(--space-xl); border-right: 1px solid var(--color-line); }
     .products__title { max-width: none; }
     .products__intro { margin-top: var(--space-m); }
     .products__all { margin-top: var(--space-l); }
-
-    .catalogue {
-      margin-top: 0;
-      padding: 0 0 0 var(--space-xl);
-      border-top: 0;
-    }
+    .products__carousel { margin-top: 0; margin-left: var(--space-xl); padding-top: 0; border: 0; }
+    .products__arrow { top: calc(var(--photo-h) / 2); }
+    .entry { scroll-snap-align: none; }
+    .entry:nth-child(4n + 1) { scroll-snap-align: start; }
   }
-
-  /* Laptops (1024–1365): the catalogue takes priority. Each entry is held
-     wide enough for its link on one line and its name in two; the
-     introduction gives up width and the gaps tighten. */
   @media (min-width: 1024px) and (max-width: 1365px) {
-    .catalogue { column-gap: var(--space-m); }
-    .entry__more { gap: 0.5rem; }
+    .products__carousel { --card-gap: 0.75rem; }
   }
-
-  /* 1280–1365: the label still fits the narrower introduction column. */
   @media (min-width: 1280px) and (max-width: 1365px) {
     .products__grid { grid-template-columns: minmax(0, 1fr) minmax(46.75rem, 2.4fr); }
     .products__head { padding-right: var(--space-l); }
-
-    .catalogue {
-      grid-template-columns: minmax(10.125rem, 1.25fr) repeat(3, minmax(10rem, 1fr));
-      padding-left: var(--space-l);
-    }
+    .products__carousel { margin-left: var(--space-l); }
   }
-
+  @media (prefers-reduced-motion: reduce) {
+    .catalogue { scroll-behavior: auto; }
+    .products__arrow { transition: none; }
+  }
 </style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.products__carousel').forEach((carousel) => {
+    const list = carousel.querySelector<HTMLOListElement>('.catalogue')!;
+    const entries = Array.from(list.querySelectorAll<HTMLElement>('.entry'));
+    const desktop = window.matchMedia('(min-width: 1280px)');
+    const move = (direction: number) => {
+      const step = desktop.matches ? 4 : window.matchMedia('(min-width: 1000px)').matches ? 4 : window.matchMedia('(min-width: 640px)').matches ? 2 : 1;
+      const stride = entries[1].offsetLeft - entries[0].offsetLeft;
+      const current = Math.round(list.scrollLeft / stride);
+      const last = entries.length - step;
+      const target = direction > 0 ? (current >= last ? 0 : Math.min(last, current + step)) : (current <= 0 ? last : Math.max(0, current - step));
+      list.scrollTo({ left: target * stride });
+    };
+    carousel.querySelector('.products__arrow--prev')!.addEventListener('click', () => move(-1));
+    carousel.querySelector('.products__arrow--next')!.addEventListener('click', () => move(1));
+    list.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        move(event.key === 'ArrowRight' ? 1 : -1);
+      }
+    });
+    // Resize back onto a complete four-product slide when entering desktop.
+    const align = () => {
+      const stride = entries[1].offsetLeft - entries[0].offsetLeft;
+      const index = Math.round(list.scrollLeft / stride);
+      list.scrollTo({ left: (desktop.matches ? Math.floor(index / 4) * 4 : index) * stride, behavior: 'instant' });
+    };
+    new ResizeObserver(align).observe(list);
+  });
+</script>

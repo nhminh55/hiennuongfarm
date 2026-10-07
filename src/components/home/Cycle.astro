@@ -1,6 +1,7 @@
 ---
 import Photo from '../Photo.astro';
 import Eyebrow from '../Eyebrow.astro';
+import Arrow from '../Arrow.astro';
 
 // By-products → substrate → mushrooms → organic fertiliser → soil:
 // CONTENT_EVIDENCE_BANK.md §2 (VERIFIED). Inputs: rơm (§2); trấu, cám,
@@ -52,6 +53,7 @@ const arrows = [
           Phụ phẩm sau trồng nấm trở lại sản xuất nông nghiệp, góp phần giảm lãng phí và nối
           tiếp một vòng tuần hoàn từ đất — rồi trở về với đất.
         </p>
+        <a class="link-arrow cycle__cta" href="/#tuan-hoan">Tìm hiểu thêm <Arrow /></a>
       </div>
 
       <div class="cycle__diagram" data-reveal style="--reveal-delay: 120ms">
@@ -127,6 +129,15 @@ const arrows = [
   .cycle__title { max-width: 20ch; text-wrap: balance; }
 
   .cycle__copy { max-width: 34rem; margin-top: calc(var(--space-m) - var(--space-xl)); }
+  .cycle .cycle__cta { margin-top: var(--space-m); text-transform: uppercase; }
+  .cycle__copy::before {
+    content: "";
+    display: block;
+    width: 2.5rem;
+    height: 1px;
+    margin-bottom: var(--space-m);
+    background: var(--color-earth);
+  }
   .cycle__copy .cycle__more {
     margin-top: var(--space-m);
     padding-top: var(--space-m);
