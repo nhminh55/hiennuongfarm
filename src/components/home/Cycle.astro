@@ -9,28 +9,28 @@ import Arrow from '../Arrow.astro';
 // Icons are illustrations (design-reference/source), not farm photographs.
 // x / y place each icon's centre in the diagram, after the section mockup.
 const steps = [
-  { name: 'Phụ phẩm nông nghiệp', note: 'Tận dụng phụ phẩm\nđịa phương', icon: 'phu-pham', x: 50, y: 12.33 },
-  { name: 'Giá thể trồng nấm', note: 'Chế biến thành\ngiá thể', icon: 'gia-the', x: 84.44, y: 34.89 },
-  { name: 'Thu hoạch nấm', note: 'Tạo ra nấm tươi', icon: 'thu-hoach', x: 74, y: 78.35 },
-  { name: 'Chế biến', note: 'Giá thể sau thu hoạch\nđược ủ thành phân hữu cơ', icon: 'u-phan', x: 26, y: 78.35 },
-  { name: 'Trở về đất', note: 'Bổ sung dinh dưỡng\ncho đất', icon: 'tro-ve-dat', x: 15.56, y: 34.89 },
+  { name: 'Phụ phẩm\nnông nghiệp', icon: 'phu-pham', x: 50, y: 14.1 },
+  { name: 'Giá thể\ntrồng nấm', icon: 'gia-the', x: 84.14, y: 38.91 },
+  { name: 'Thu hoạch\nnấm', icon: 'thu-hoach', x: 71.1, y: 79.04 },
+  { name: 'Chế biến', icon: 'u-phan', x: 28.9, y: 79.04 },
+  { name: 'Trở về đất', icon: 'tro-ve-dat', x: 15.86, y: 38.91 },
 ];
 
-// Clockwise arrows between the stages, drawn in a 585 × 665 box around
+// Clockwise arrows between the stages, drawn in a square around
 // the diagram's centre: [from°, to°, radius].
 const W = 585;
-const H = 665;
-const C = { x: W / 2, y: 330 };
+const H = 585;
+const C = { x: W / 2, y: H / 2 };
 const at = (deg: number, r: number) => {
   const rad = (deg * Math.PI) / 180;
   return `${(C.x + r * Math.sin(rad)).toFixed(1)} ${(C.y - r * Math.cos(rad)).toFixed(1)}`;
 };
 const arrows = [
-  [22, 43, 251],
-  [103, 122, 245],
-  [167, 191, 228],
-  [236, 251, 238],
-  [317, 337, 252],
+  [22, 50, 210],
+  [94, 122, 210],
+  [166, 194, 210],
+  [238, 266, 210],
+  [310, 338, 210],
 ].map(([a, b, r]) => `M${at(a, r)} A${r} ${r} 0 0 1 ${at(b, r)}`);
 ---
 <section class="section cycle" id="tuan-hoan" aria-labelledby="cycle-title">
@@ -45,13 +45,9 @@ const arrows = [
 
       <div class="cycle__copy" data-reveal style="--reveal-delay: 80ms">
         <p class="body">
-          Chúng tôi tận dụng phụ phẩm nông nghiệp tại địa phương như rơm, trấu, cám và mùn cưa
-          để làm giá thể trồng nấm. Sau thu hoạch, giá thể được tiếp tục tái sử dụng thay vì
-          bỏ đi.
-        </p>
-        <p class="body cycle__more">
-          Phụ phẩm sau trồng nấm trở lại sản xuất nông nghiệp, góp phần giảm lãng phí và nối
-          tiếp một vòng tuần hoàn từ đất — rồi trở về với đất.
+          Chúng tôi tận dụng rơm, trấu, cám và mùn cưa địa phương làm giá thể trồng nấm,
+          rồi tái sử dụng giá thể sau thu hoạch trong sản xuất nông nghiệp, giảm lãng phí
+          và tiếp nối vòng tuần hoàn từ đất — trở về với đất.
         </p>
         <a class="link-arrow cycle__cta" href="/#tuan-hoan">Tìm hiểu thêm <Arrow /></a>
       </div>
@@ -60,11 +56,14 @@ const arrows = [
         <div class="ring">
           <svg class="ring__svg" viewBox={`0 0 ${W} ${H}`} aria-hidden="true">
             <defs>
-              <marker id="cycle-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto">
+              <marker id="cycle-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="13" markerHeight="13" markerUnits="userSpaceOnUse" orient="auto">
                 <path d="M1 1 L8 5 L1 9" />
               </marker>
             </defs>
             {arrows.map((d) => <path d={d} marker-end="url(#cycle-arrow)" />)}
+            <g class="ring__tracker">
+              <circle class="ring__tracker-dot" cx={W / 2} cy={H / 2 - 210} r="5" />
+            </g>
           </svg>
 
           <p class="ring__motto" aria-hidden="true">Từ đất,<br />trở về đất.</p>
@@ -83,7 +82,6 @@ const arrows = [
                   decoding="async"
                 />
                 <span class="ring__name">{step.name}</span>
-                <span class="ring__note">{step.note}</span>
               </li>
             ))}
           </ol>
@@ -159,7 +157,7 @@ const arrows = [
     width: 100%;
     max-width: 36.5rem;
     margin-inline: auto;
-    aspect-ratio: 585 / 665;
+    aspect-ratio: 1;
   }
 
   .ring__svg {
@@ -170,9 +168,26 @@ const arrows = [
     overflow: visible;
     fill: none;
     stroke: var(--cycle-line);
-    stroke-width: 1.1;
+    stroke-width: 3.5;
     stroke-linecap: round;
     stroke-linejoin: round;
+  }
+
+  .ring__tracker {
+    transform-origin: 50% 50%;
+    animation: cycle-tracker 14s linear infinite;
+  }
+  .ring__tracker-dot {
+    fill: var(--color-forest);
+    stroke: var(--cycle-bg);
+    stroke-width: 2;
+  }
+  @keyframes cycle-tracker {
+    from { transform: rotate(22deg); }
+    to { transform: rotate(382deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ring__tracker { animation: none; transform: rotate(22deg); }
   }
 
   .ring__motto {
@@ -189,7 +204,7 @@ const arrows = [
     color: var(--color-forest);
   }
 
-  /* Each stage hangs from its icon's centre: number above, text below. */
+  /* Each stage hangs from its icon's centre, with its name outside the loop. */
   .ring__step {
     position: absolute;
     left: var(--x);
@@ -219,11 +234,24 @@ const arrows = [
   }
 
   .ring__name {
-    margin-top: 1.4cqi;
+    position: absolute;
+    left: calc(100% + 0.5rem);
+    top: calc(var(--num-h) + var(--icon) / 2);
+    transform: translateY(-50%);
+    width: 5rem;
+    margin-top: 0;
     font-family: var(--font-display);
     font-size: max(0.875rem, 3.5cqi);
     line-height: 1.3;
-    white-space: nowrap;
+    white-space: normal;
+    text-align: left;
+    text-wrap: balance;
+  }
+
+  .ring__step:nth-child(n + 4) .ring__name {
+    left: auto;
+    right: calc(100% + 0.5rem);
+    text-align: right;
   }
 
   .ring__note {
@@ -280,10 +308,9 @@ const arrows = [
       align-items: start;
     }
 
-    /* Three tracks: the photograph (4:5, shown whole) sets the height;
-       the diagram's track fits a diagram of that height; the text takes
-       the rest. Widths: photograph 4 of 12 columns, as before. */
-    .cycle__grid { grid-template-columns: minmax(0, 4fr) minmax(0, 4.4fr) minmax(0, 3.6fr); }
+    /* A smaller whole portrait and a wider text column keep this spread
+       at the same scale as the neighboring About and Products sections. */
+    .cycle__grid { grid-template-columns: minmax(0, 2.8fr) minmax(0, 5.7fr) minmax(0, 3.5fr); }
     .cycle__figure { grid-column: 1; grid-row: 1 / -1; align-self: center; }
     .cycle__head { grid-column: 3; grid-row: 2; }
     .cycle__copy { grid-column: 3; grid-row: 3; margin-top: var(--space-l); }
@@ -313,7 +340,18 @@ const arrows = [
     .ring__name { font-size: 3.6cqi; }
     .ring__note { font-size: 3.15cqi; }
 
-    .cycle__title { max-width: 16ch; }
+    .cycle__title { max-width: 22ch; }
+  }
+
+  @media (min-width: 1280px) {
+    .ring__num { font-size: max(11px, 2.9cqi); }
+    .ring__name { font-size: max(14px, 3.6cqi); }
+    .ring__note { font-size: max(11px, 3.15cqi); line-height: 1.3; }
+    .ring__step:nth-child(2) .ring__name {
+      max-width: 31.12cqi;
+      white-space: normal;
+      text-wrap: balance;
+    }
   }
 
   /* Small laptops: tied to the photograph's height the ring would be too
@@ -348,5 +386,28 @@ const arrows = [
       text-wrap: balance;
     }
     .cycle__copy .cycle__more { margin-top: var(--space-s); padding-top: var(--space-s); }
+  }
+  /* Reserve space on both sides for the names, including on phones. */
+  .ring {
+    width: calc(100% - 8rem);
+    height: auto;
+    max-width: 22rem;
+    margin-inline: auto;
+  }
+  .ring__name {
+    width: max-content;
+    font-size: 0.875rem;
+    white-space: pre;
+    line-height: 1.35;
+  }
+  .ring__step:first-child .ring__name {
+    top: var(--num-h);
+    transform: translateY(-50%);
+  }
+  .ring__step:nth-child(2) .ring__name,
+  .ring__step:nth-child(5) .ring__name { max-width: none; white-space: pre; }
+
+  @media (min-width: 1280px) {
+    .ring { max-width: 26rem; }
   }
 </style>
