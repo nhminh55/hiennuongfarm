@@ -15,6 +15,9 @@ interface Props {
   /** Intrinsic pixel size of `src`; reserves space before the image loads. */
   width?: number;
   height?: number;
+  /** Optional responsive sources for `src`, with the matching `sizes`. */
+  srcset?: string;
+  sizes?: string;
   /** object-position for the crop, e.g. "60% 40%". */
   position?: string;
   /** Alt text describing the photo. */
@@ -34,6 +37,8 @@ const {
   src,
   width,
   height,
+  srcset,
+  sizes,
   position,
   alt,
   brief,
@@ -53,6 +58,8 @@ const style = [ratio && `--ratio: ${ratio}`, position && `--pos: ${position}`]
     <div class:list={['photo', className]} style={style}>
       <img
         src={src}
+        srcset={srcset}
+        sizes={sizes}
         alt={alt}
         width={width}
         height={height}

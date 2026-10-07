@@ -8,12 +8,6 @@ import { getLocale, localizePath } from '../../i18n';
 const lang = getLocale(Astro.url);
 const t = {
   vi: {
-    alts: {
-      'nam-moi-den': 'Nhiều cây nấm mối đen mũ nâu xám, thân trắng, mọc lên từ các bịch giá thể',
-      'nam-linh-chi': 'Những hàng nấm linh chi mọc từ bịch phôi đặt trên luống đất, kéo dài theo lối đi trong nhà nuôi',
-      'dong-trung-ha-thao': 'Bàn tay đeo găng cầm một khối đông trùng hạ thảo màu cam vừa thu hái, phía sau là các hộp đông trùng hạ thảo',
-      'nam-bao-ngu': 'Chùm nấm bào ngư trắng xám mọc từ bịch phôi trong nhà trồng',
-    } as Record<string, string>,
     linhChi: 'Nấm Linh Chi Tai To',
     additional: [
       'Nấm Mối Đen Sấy Thăng Hoa',
@@ -25,7 +19,6 @@ const t = {
       'Bào Tử Nấm Linh Chi',
       'Đông Trùng Hạ Thảo Ngâm Mật Ong',
     ],
-    illustrationOf: (name: string) => `Ảnh minh họa ${name}`,
     // Owner-supplied homepage descriptions, in carousel order.
     descriptions: [
       'Nấm tươi nuôi trồng tại trang trại Hiền Nương.',
@@ -43,23 +36,16 @@ const t = {
     ],
     eyebrow: 'Sản vật từ trang trại',
     title: 'Tinh hoa từ những loại nấm quý',
-    intro: 'Bốn dòng nấm chính được nuôi trồng tại trang trại: nấm mối đen, nấm linh chi, đông trùng hạ thảo và nấm bào ngư.',
+    intro: 'Bốn dòng nấm chính được nuôi trồng tại trang trại — nấm mối đen, nấm linh chi, đông trùng hạ thảo và nấm bào ngư — cùng tám sản phẩm chế biến từ chúng: nấm sấy thăng hoa, snack nấm, trà hòa tan, bào tử linh chi và đông trùng hạ thảo ngâm mật ong.',
     all: 'Xem tất cả sản phẩm',
     carousel: 'băng chuyền',
     list: 'Danh sách 12 sản phẩm',
     details: 'Chi tiết',
     detailsOf: (name: string) => `Chi tiết ${name}`,
-    illustration: 'Ảnh minh họa',
     prev: 'Sản phẩm trước',
     next: 'Sản phẩm tiếp theo',
   },
   en: {
-    alts: {
-      'nam-moi-den': 'Black termite mushrooms with grey-brown caps and white stems growing from substrate bags',
-      'nam-linh-chi': 'Rows of lingzhi growing from spawn bags set on soil beds, running along the aisle of a grow house',
-      'dong-trung-ha-thao': 'A gloved hand holding a freshly harvested clump of orange cordyceps, with boxes of cordyceps behind',
-      'nam-bao-ngu': 'A cluster of greyish-white oyster mushrooms growing from a spawn bag in a grow house',
-    } as Record<string, string>,
     linhChi: 'Large-Cap Lingzhi Mushroom',
     additional: [
       'Freeze-Dried Black Termite Mushroom',
@@ -71,7 +57,6 @@ const t = {
       'Lingzhi Spores',
       'Cordyceps in Honey',
     ],
-    illustrationOf: (name: string) => `Illustration: ${name}`,
     descriptions: [
       'Fresh mushrooms grown at the Hiền Nương farm.',
       'Lingzhi grown and harvested on the farm.',
@@ -88,23 +73,16 @@ const t = {
     ],
     eyebrow: 'Produce from the Farm',
     title: 'The essence of prized mushrooms',
-    intro: 'Four main mushroom lines are grown on the farm: black termite mushroom, lingzhi, cordyceps and oyster mushroom.',
+    intro: 'Four main mushroom lines are grown on the farm — black termite mushroom, lingzhi, cordyceps and oyster mushroom — alongside eight products made from them: freeze-dried mushrooms, mushroom snacks, instant teas, lingzhi spores and cordyceps in honey.',
     all: 'View all products',
     carousel: 'carousel',
     list: 'List of 12 products',
     details: 'Details',
     detailsOf: (name: string) => `Details: ${name}`,
-    illustration: 'Illustration',
     prev: 'Previous product',
     next: 'Next product',
   },
   zh: {
-    alts: {
-      'nam-moi-den': '许多灰褐色菌盖、白色菌柄的黑皮鸡枞菌从基质袋中长出',
-      'nam-linh-chi': '一排排灵芝从放在土垄上的菌袋中长出，沿着种植棚的通道延伸',
-      'dong-trung-ha-thao': '戴手套的手托着一簇刚采收的橙色蛹虫草，后方是一盒盒蛹虫草',
-      'nam-bao-ngu': '一簇灰白色平菇从种植棚内的菌袋中长出',
-    } as Record<string, string>,
     linhChi: '大朵灵芝',
     additional: [
       '冻干黑皮鸡枞菌',
@@ -116,7 +94,6 @@ const t = {
       '灵芝孢子',
       '蜂蜜浸蛹虫草',
     ],
-    illustrationOf: (name: string) => `${name}示意图`,
     descriptions: [
       '在 Hiền Nương 农场种植的新鲜菌菇。',
       '在农场种植和采收的灵芝。',
@@ -133,52 +110,25 @@ const t = {
     ],
     eyebrow: '农场物产',
     title: '珍贵菌菇的精华',
-    intro: '农场主要种植四类菌菇：黑皮鸡枞菌、灵芝、蛹虫草和平菇。',
+    intro: '农场主要种植四类菌菇——黑皮鸡枞菌、灵芝、蛹虫草和平菇，并以此制成八款产品：冻干菌菇、菌菇零食、速溶茶、灵芝孢子和蜂蜜浸蛹虫草。',
     all: '查看全部产品',
     carousel: '轮播',
     list: '12 款产品列表',
     details: '详情',
     detailsOf: (name: string) => `${name}详情`,
-    illustration: '示意图',
     prev: '上一个产品',
     next: '下一个产品',
   },
 }[lang];
 
-// Preserve the four approved farm photographs. Additional product names are
-// owner-supplied; generated illustrations are explicitly labelled below.
-const photos: Record<string, { src: string; width: number; height: number; pos?: string; note: string }> = {
-  'nam-moi-den': {
-    // HN-017
-    src: '/images/farm/product-nam-moi-den-bich-phoi.webp',
-    width: 1000,
-    height: 750,
-    note: 'Nấm mối đen mọc lên từ bịch giá thể, được nuôi trồng tại trang trại.',
-  },
-  'nam-linh-chi': {
-    // HN-024, cropped to 4:5
-    src: '/images/farm/product-linh-chi-luong-nuoi.webp',
-    width: 720,
-    height: 900,
-    pos: '50% 70%',
-    note: 'Những hàng nấm linh chi mọc từ bịch phôi trên luống trong nhà nuôi.',
-  },
-  'dong-trung-ha-thao': {
-    // HN-003, cropped to 4:5
-    src: '/images/farm/product-dong-trung-ha-thao-thu-hoach.webp',
-    width: 720,
-    height: 900,
-    pos: '50% 62%',
-    note: 'Những sợi đông trùng hạ thảo được nuôi cấy và thu hái tại trang trại.',
-  },
-  'nam-bao-ngu': {
-    src: '/images/farm/product-nam-bao-ngu.webp',
-    width: 1122,
-    height: 1402,
-    pos: '50% 72%',
-    note: 'Chùm nấm bào ngư mọc từ bịch phôi xếp trên kệ trong nhà trồng.',
-  },
-};
+// Studio illustrations for all 12 products (design-reference/HIEN_NUONG_12_STUDIO_WEBP),
+// AI-edited from reference photos. Product names are owner-supplied.
+const studio = (slug: string) => ({
+  src: `/images/products/studio/${slug}-1254.webp`,
+  srcset: `/images/products/studio/${slug}-640.webp 640w, /images/products/studio/${slug}-1254.webp 1254w`,
+  width: 1254,
+  height: 1254,
+});
 
 const additional = [
   'nam-moi-den-say-thang-hoa',
@@ -192,11 +142,13 @@ const additional = [
 ].map((slug, i) => [slug, t.additional[i]]);
 const descriptions = t.descriptions;
 const items = [
-  ...localizedProducts(lang).map((p) => ({ ...p, name: p.slug === 'nam-linh-chi' ? t.linhChi : p.name, href: localizedProductHref(p, lang), photo: { ...photos[p.slug], alt: t.alts[p.slug] } })),
+  ...localizedProducts(lang).map((p) => {
+    const name = p.slug === 'nam-linh-chi' ? t.linhChi : p.name;
+    return { ...p, name, href: localizedProductHref(p, lang), photo: { ...studio(p.slug), alt: name } };
+  }),
   ...additional.map(([slug, name]) => ({
     slug, name, note: name, detail: undefined, href: '#hop-tac',
-    photo: { src: `/images/products/${slug}.webp`, width: 720, height: 1080,
-      alt: t.illustrationOf(name), note: 'Ảnh minh họa · Tìm hiểu sản phẩm cùng trang trại.' },
+    photo: { ...studio(slug), alt: name },
   })),
 ];
 ---
@@ -218,14 +170,14 @@ const items = [
             src={item.photo.src}
             width={item.photo.width}
             height={item.photo.height}
-            position={item.photo.pos}
+            srcset={item.photo.srcset}
+            sizes="(min-width: 1000px) 25vw, (min-width: 640px) 50vw, 86vw"
             alt={item.photo.alt}
           />
           <span class="eyebrow entry__num">{String(i + 1).padStart(2, '0')}</span>
           <h3 class="entry__name">{item.name}</h3>
           <div class="entry__description"><p class="small entry__note">{descriptions[i] ?? item.note}</p></div>
           <a class="link-arrow cta-label entry__link entry__more" href={item.href} aria-label={t.detailsOf(item.name)}>{t.details} <Arrow /></a>
-          {i >= 4 && <span class="entry__illustration">{t.illustration}</span>}
         </li>
       ))}
     </ol>
@@ -328,16 +280,6 @@ const items = [
   .entry__more { display: inline-flex; align-items: center; gap: 0.625rem; margin-top: 1rem; justify-self: start; align-self: start; }
   .entry__more :global(.arrow) { width: 0.875rem; }
   .products .entry__more { border-bottom: 0; }
-  .entry__illustration {
-    position: absolute;
-    top: 0.5rem;
-    left: 0.5rem;
-    padding: 0.125rem 0.375rem;
-    background: rgba(248, 246, 240, 0.85);
-    color: var(--color-text-muted);
-    font-size: 0.625rem;
-    pointer-events: none;
-  }
   .products__arrow {
     position: absolute;
     top: calc(var(--photo-h) / 2);
