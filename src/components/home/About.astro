@@ -2,6 +2,7 @@
 import Photo from '../Photo.astro';
 import Arrow from '../Arrow.astro';
 import Eyebrow from '../Eyebrow.astro';
+import BrandFilm from './BrandFilm.astro';
 
 // 2020 and the co-founders: OWNER-VERIFIED; Bảy Núi / Tà Đảnh and the
 // circular model: VERIFIED (CONTENT_EVIDENCE_BANK.md §1–2). The HTX
@@ -12,6 +13,7 @@ import Eyebrow from '../Eyebrow.astro';
     <Eyebrow num="01" class="about__eyebrow">Về Hiền Nương</Eyebrow>
 
     <div class="grid about__grid">
+      <BrandFilm />
       <div class="about__text" data-reveal>
         <h2 class="h2 about__title" id="about-title">
           Xuất phát từ tình yêu với đất và những điều giản dị
@@ -51,6 +53,7 @@ import Eyebrow from '../Eyebrow.astro';
   .about { background: var(--color-paper); }
 
   .about__grid { row-gap: var(--space-xl); }
+  .about__grid :global(.brand-film) { grid-column: 1 / -1; order: 3; }
 
   .about__text,
   .about__figure { grid-column: 1 / -1; }
@@ -85,12 +88,14 @@ import Eyebrow from '../Eyebrow.astro';
     .about__figure { grid-column: 7 / span 6; margin-inline: 0; }
   }
 
-  /* Desktop: text and photograph in two halves with an open column
-     between them. The photograph is shown whole. */
+  /* Desktop: film, existing story, and photograph in one editorial row. */
   @media (min-width: 1000px) {
-    .about__text { grid-column: 1 / span 5; }
+    .about__grid { grid-template-columns: minmax(0, 35fr) minmax(0, 30fr) minmax(0, 35fr); align-items: center; }
+    .about__grid :global(.brand-film) { grid-column: 1; order: 0; }
+    .about__text { grid-column: 2; }
     .about__title { max-width: 22ch; }
-    .about__figure { grid-column: 7 / -1; }
+    .about__figure { grid-column: 3; }
+    .about__grid :global(.brand-film__media),
     .about__figure :global(.about__photo) { aspect-ratio: 1448 / 1086; }
   }
 </style>

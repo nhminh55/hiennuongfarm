@@ -1,0 +1,98 @@
+<div class="brand-film">
+  <div class="brand-film__media">
+  <button class="brand-film__poster" type="button" aria-label="Xem Brand Film: Một vòng tuần hoàn, bắt đầu từ Bảy Núi.">
+    <img src="/images/farm/bay-nui-canh-dong.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Những ô ruộng xanh và hàng thốt nốt tại Bảy Núi nhìn từ trên cao" />
+    <video class="brand-film__preview" data-src="/videos/brand-film-preview.mp4" autoplay muted loop playsinline preload="none" aria-hidden="true"></video>
+    <span class="brand-film__play" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 4v16l13-8z" /></svg>
+    </span>
+  </button>
+  </div>
+  <div class="brand-film__intro">
+    <p class="brand-film__label">Brand Film</p>
+    <h3 class="brand-film__title">Một vòng tuần hoàn, bắt đầu từ Bảy Núi.</h3>
+    <p class="body brand-film__summary">Từ Bảy Núi, khám phá câu chuyện Hiền Nương và nông nghiệp tuần hoàn.</p>
+    <button class="brand-film__cta" type="button">XEM PHIM · 02:23</button>
+  </div>
+</div>
+
+<script>
+  const poster = document.querySelector<HTMLButtonElement>('.brand-film__poster');
+  const media = document.querySelector<HTMLDivElement>('.brand-film__media');
+  let filmStarted = false;
+  const preview = document.querySelector<HTMLVideoElement>('.brand-film__preview');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let previewVisible = false;
+  const syncPreview = () => {
+    if (!preview || filmStarted) return;
+    if (reducedMotion.matches) {
+      preview.pause();
+      preview.classList.remove('is-playing');
+      if (preview.hasAttribute('src')) {
+        preview.removeAttribute('src');
+        preview.load();
+      }
+      return;
+    }
+    if (!previewVisible || document.hidden) {
+      preview.pause();
+      return;
+    }
+    if (!preview.hasAttribute('src')) preview.src = preview.dataset.src!;
+    preview.muted = true;
+    preview.play().catch(() => preview.classList.remove('is-playing'));
+  };
+  if (preview && poster) {
+    preview.addEventListener('playing', () => preview.classList.add('is-playing'));
+    preview.addEventListener('error', () => preview.classList.remove('is-playing'));
+    new IntersectionObserver(([entry]) => {
+      previewVisible = entry.isIntersecting;
+      syncPreview();
+    }, { threshold: 0.1 }).observe(poster);
+    reducedMotion.addEventListener('change', syncPreview);
+    document.addEventListener('visibilitychange', syncPreview);
+  }
+  document.querySelector<HTMLButtonElement>('.brand-film__cta')?.addEventListener('click', () => poster?.click());
+
+  if (poster && media) {
+    poster.addEventListener('click', () => {
+      if (filmStarted) return;
+      filmStarted = true;
+      preview?.pause();
+      preview?.removeAttribute('src');
+      preview?.load();
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/V-jPu_G8fe8?autoplay=1&playsinline=1&rel=0';
+      iframe.title = 'Hiền Nương Farm — Một vòng tuần hoàn, bắt đầu từ Bảy Núi.';
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.className = 'brand-film__player';
+      media.replaceChildren(iframe);
+      iframe.focus({ preventScroll: true });
+    });
+  }
+</script>
+
+<style>
+  .brand-film { display: grid; gap: var(--space-l); margin-top: var(--space-l); padding-top: var(--space-l); border-top: 1px solid var(--color-line); }
+  .brand-film__intro { display: grid; gap: var(--space-s); align-content: center; }
+  .brand-film__label { color: var(--color-earth); font-size: var(--type-eyebrow); font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+  .brand-film__title { font-family: var(--font-editorial); font-size: var(--type-h2); font-weight: 400; line-height: 1.35; text-wrap: balance; max-width: 28ch; }
+  .brand-film__summary { max-width: 34ch; }
+  .brand-film__cta { justify-self: start; min-height: 44px; margin-top: var(--space-xs); border-bottom: 1px solid var(--color-earth); color: var(--color-forest); font-size: var(--type-cta); font-weight: 600; letter-spacing: .14em; }
+  .brand-film__media { position: relative; width: 100%; aspect-ratio: 16 / 9; background: var(--color-deep-green); }
+  .brand-film__poster { display: block; position: absolute; inset: 0; width: 100%; height: 100%; color: var(--color-cream); }
+  .brand-film__poster img { width: 100%; height: 100%; object-fit: cover; }
+  .brand-film__preview { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; pointer-events: none; }
+  .brand-film__preview.is-playing { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { .brand-film__preview { display: none; } }
+  .brand-film__play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: grid; place-items: center; width: clamp(3.5rem, 4vw, 4rem); aspect-ratio: 1; border: 1px solid var(--color-cream); border-radius: 50%; background: rgba(16, 43, 33, .6); transition: background 180ms; }
+  .brand-film__play svg { margin-left: 3px; }
+  .brand-film__poster:hover .brand-film__play { background: var(--color-deep-green); }
+  .brand-film__media :global(.brand-film__player) { position: absolute; inset: 0; display: block; width: 100%; height: 100%; border: 0; }
+  @media (min-width: 1000px) {
+    .brand-film { display: block; margin-top: 0; padding-top: 0; border-top: 0; }
+    .brand-film__intro { display: none; }
+  }
+</style>
