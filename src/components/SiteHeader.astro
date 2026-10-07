@@ -60,7 +60,7 @@ const current = (href: string) => {
         data-menu-toggle
       >
         <span class="menu-toggle__label" data-menu-label>Menu</span>
-        <span class="menu-toggle__icon" aria-hidden="true"><span></span><span></span></span>
+        <span class="menu-toggle__icon" aria-hidden="true"><span></span><span class="menu-toggle__middle"></span><span></span></span>
       </button>
     </div>
   </div>
@@ -273,6 +273,7 @@ const current = (href: string) => {
   }
   .menu-toggle__icon span:first-child { top: 0; }
   .menu-toggle__icon span:last-child { top: calc(100% - 1px); }
+  .menu-toggle__middle { display: none; }
 
   /* Open: the two lines cross into a close mark. */
   .is-menu-open .menu-toggle__icon span { top: calc(50% - 0.5px); }
@@ -358,6 +359,31 @@ const current = (href: string) => {
   }
 
   @media (max-width: 767px) {
+    .site-header .site-header__bar {
+      background: var(--color-paper);
+      border-bottom: 0;
+    }
+    .site-header.is-menu-open .site-header__bar {
+      background: var(--color-deep-green);
+    }
+    .site-header__inner {
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .site-header__inner :global(.site-header__brand) { width: 11rem; }
+    .menu-toggle {
+      gap: 0.625rem;
+      padding-inline: 0;
+      font-size: 0.8125rem;
+      line-height: 1;
+      letter-spacing: 0.08em;
+    }
+    .menu-toggle__icon { height: 0.875rem; }
+    .menu-toggle__icon .menu-toggle__middle {
+      display: block;
+      top: calc(50% - 0.5px);
+    }
+    .is-menu-open .menu-toggle__middle { visibility: hidden; }
     .is-menu-open .menu-toggle { gap: 0.5rem; }
     .is-menu-open .menu-toggle__icon {
       width: 1.125rem;

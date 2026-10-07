@@ -21,3 +21,79 @@
     :root .site-footer.site-footer .site-footer__bottom { padding-block: 1rem; }
     :root .site-footer.site-footer .site-footer__top-link .arrow { rotate: 0deg !important; }
   }
+
+:root .site-footer.site-footer .site-footer__mobile-top,
+:root .site-footer.site-footer .site-footer__mobile-mountains { display: none; }
+
+  @media (max-width: 767px) {
+    :root .site-footer.site-footer .site-footer__landscape { display: none; }
+    :root .site-footer.site-footer .site-footer__top {
+      gap: 0;
+      padding-block: 1.5rem 0;
+    }
+    :root .site-footer.site-footer .site-footer__brand,
+    :root .site-footer.site-footer .site-footer__col--nav,
+    :root .site-footer.site-footer .site-footer__col--contact {
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--color-line-inverse);
+    }
+    :root .site-footer.site-footer .site-footer__col { padding-top: 1.25rem; }
+    :root .site-footer.site-footer .site-footer__brand { padding-bottom: 0.75rem; }
+    :root .site-footer.site-footer .site-footer__brand .wordmark { width: 9.625rem; }
+    :root .site-footer.site-footer .site-footer__col--nav .site-footer__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 1rem;
+    }
+    :root .site-footer.site-footer .site-footer__col--nav .site-footer__list a {
+      min-height: 2.25rem;
+      line-height: 1.4;
+    }
+    :root .site-footer.site-footer .site-footer__col--contact .site-footer__list { gap: 0.25rem; }
+    :root .site-footer.site-footer .site-footer__col--contact { padding-bottom: 0.75rem; }
+    :root .site-footer.site-footer .site-footer__col--social {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.75rem;
+    }
+    :root .site-footer.site-footer .site-footer__col--social .site-footer__heading { display: none; }
+    :root .site-footer.site-footer .site-footer__col--social .site-footer__list {
+      display: flex;
+      gap: 0.75rem;
+    }
+    :root .site-footer.site-footer .site-footer__social {
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      min-height: 2.25rem;
+      border: 1px solid var(--color-text-inverse-muted);
+      border-radius: 50%;
+      font-size: 0;
+      gap: 0;
+    }
+    :root .site-footer.site-footer .site-footer__social svg { width: 1.125rem; height: 1.125rem; }
+    :root .site-footer.site-footer .site-footer__mobile-top {
+      display: grid;
+      place-items: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border: 1px solid var(--color-text-inverse-muted);
+      border-radius: 50%;
+      color: var(--color-text-inverse-muted);
+    }
+    :root .site-footer.site-footer .site-footer__mobile-top .arrow { width: 1.125rem; }
+    :root .site-footer.site-footer .site-footer__mobile-mountains {
+      display: block;
+      width: min(100%, 22.25rem);
+      height: auto;
+      margin: 0 auto;
+      opacity: 0.65;
+    }
+    :root .site-footer.site-footer .site-footer__bottom {
+      justify-content: center;
+      border-top: 0;
+      text-align: center;
+      padding-block: 0.75rem 1rem;
+    }
+    :root .site-footer.site-footer .site-footer__bottom .site-footer__top-link { display: none; }
+  }
