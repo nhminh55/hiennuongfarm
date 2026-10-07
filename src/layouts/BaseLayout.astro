@@ -40,7 +40,21 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Noto+Serif+Display:ital,wght@0,300..600;1,300..500&family=Lora:ital,wght@0,400..600;1,400..500&display=swap"
     />
 
-    <script is:inline>document.documentElement.classList.add('js');</script>
+    <script is:inline>
+      let recovered = false;
+      const recover = () => {
+        recovered = true;
+        clearTimeout(timer);
+        document.documentElement.classList.remove('js');
+      };
+      const timer = setTimeout(recover, 3000);
+      window.__hnReveal = {
+        recover,
+        complete: () => clearTimeout(timer),
+        get recovered() { return recovered; },
+      };
+      document.documentElement.classList.add('js');
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Bỏ qua đến nội dung chính</a>
@@ -52,22 +66,37 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 
     <script>
       // Reveal-on-scroll for elements marked with [data-reveal].
-      const targets = document.querySelectorAll<HTMLElement>('[data-reveal]');
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            for (const entry of entries) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-              }
-            }
-          },
-          { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
-        );
-        targets.forEach((el) => observer.observe(el));
-      } else {
-        targets.forEach((el) => el.classList.add('is-visible'));
+      const reveal = (window as typeof window & {
+        __hnReveal?: { recover: () => void; complete: () => void; readonly recovered: boolean };
+      }).__hnReveal;
+      if (reveal && !reveal.recovered) {
+        let observer: IntersectionObserver | undefined;
+        try {
+          const targets = document.querySelectorAll<HTMLElement>('[data-reveal]');
+          if ('IntersectionObserver' in window) {
+            observer = new IntersectionObserver(
+              (entries) => {
+                for (const entry of entries) {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer?.unobserve(entry.target);
+                  }
+                }
+              },
+              { rootMargin: '0px 0px -8% 0px', threshold: 0.08 },
+            );
+            targets.forEach((el) => observer!.observe(el));
+          } else {
+            targets.forEach((el) => el.classList.add('is-visible'));
+          }
+          reveal.complete();
+        } catch {
+          try {
+            observer?.disconnect();
+          } finally {
+            reveal.recover();
+          }
+        }
       }
     </script>
   </body>
