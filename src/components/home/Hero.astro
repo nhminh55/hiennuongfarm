@@ -1,5 +1,54 @@
 ---
 import Arrow from '../Arrow.astro';
+import { getLocale } from '../../i18n';
+
+const lang = getLocale(Astro.url);
+const t = {
+  vi: {
+    alts: [
+      'Cánh đồng lúa xanh điểm hàng thốt nốt, dãy núi vùng Bảy Núi phía xa, nhìn từ trên cao',
+      'Hai người đội mũ rộng vành kiểm tra nấm trong khay rơm, phía sau là đống giá thể trong nhà xưởng',
+      'Nhân viên đội mũ trùm, đeo khẩu trang và găng tay phân loại nấm trên các khay trong khu sơ chế',
+      'Các dãy nhà mái lợp tấm pin mặt trời giữa cây xanh và hàng thốt nốt, nhìn từ trên cao',
+    ],
+    sections: ['Về Hiền Nương', 'Nông nghiệp tuần hoàn', 'Sản phẩm', 'Vùng Bảy Núi', 'Hợp tác'],
+    // Two phrases, one per line where width allows; a phrase that must
+    // wrap breaks before its last two words ("từ đất", "bền vững").
+    title: ['Nông nghiệp từ đất', 'đến giá trị bền vững'],
+    sub: 'Mô hình nông nghiệp tuần hoàn tại vùng Bảy Núi – An Giang',
+    cta: 'Khám phá Hiền Nương',
+    navLabel: 'Các phần trang chủ',
+    scroll: 'Kéo xuống',
+  },
+  en: {
+    alts: [
+      'Green rice fields dotted with palmyra palms, the mountains of the Bảy Núi region in the distance, seen from above',
+      'Two people in wide-brimmed hats checking mushrooms in straw trays, with piles of substrate behind them in the workshop',
+      'Staff in hoods, face masks and gloves sorting mushrooms on trays in the preparation area',
+      'Rows of buildings roofed with solar panels among green trees and palmyra palms, seen from above',
+    ],
+    sections: ['About Hiền Nương', 'Circular Agriculture', 'Products', 'Bảy Núi Region', 'Partnership'],
+    title: ['Farming from the soil', 'to sustainable value'],
+    sub: 'A circular agriculture model in the Bảy Núi region of An Giang',
+    cta: 'Discover Hiền Nương',
+    navLabel: 'Homepage sections',
+    scroll: 'Scroll',
+  },
+  zh: {
+    alts: [
+      '从高处俯瞰的绿色稻田，点缀着一排排糖棕树，远处是七山地区的山峦',
+      '两位戴宽檐帽的人在稻草托盘中查看菌菇，身后是车间里成堆的基质',
+      '戴着头套、口罩和手套的工作人员在初加工区的托盘上分拣菌菇',
+      '从高处俯瞰，一排排铺着太阳能板的屋顶掩映在绿树和糖棕树之间',
+    ],
+    sections: ['关于 Hiền Nương', '循环农业', '产品', '七山地区', '合作'],
+    title: ['始于土地的农业', '走向可持续的价值'],
+    sub: '位于安江省七山地区的循环农业模式',
+    cta: '探索 Hiền Nương',
+    navLabel: '首页章节',
+    scroll: '向下滚动',
+  },
+}[lang];
 
 /* Hero slideshow: each slide pairs a wide desktop frame (2065×762 class)
    with a portrait mobile crop (1087×1447). `pos` sets the desktop crop. */
@@ -9,34 +58,25 @@ const slides = [
     desktop: { src: '/images/farm/hero-bay-nui.webp', width: 2065, height: 762 },
     mobile: '/images/farm/hero-bay-nui-mobile.webp',
     pos: '50% 28%',
-    alt: 'Cánh đồng lúa xanh điểm hàng thốt nốt, dãy núi vùng Bảy Núi phía xa, nhìn từ trên cao',
   },
   {
     desktop: { src: '/images/farm/hero-hn-025-desktop.webp', width: 2065, height: 762 },
     mobile: '/images/farm/hero-hn-025-mobile.webp',
     pos: '50% 50%',
-    alt: 'Hai người đội mũ rộng vành kiểm tra nấm trong khay rơm, phía sau là đống giá thể trong nhà xưởng',
   },
   {
     desktop: { src: '/images/farm/hero-hn-027-desktop.webp', width: 2065, height: 762 },
     mobile: '/images/farm/hero-hn-027-mobile.webp',
     pos: '50% 50%',
-    alt: 'Nhân viên đội mũ trùm, đeo khẩu trang và găng tay phân loại nấm trên các khay trong khu sơ chế',
   },
   {
     desktop: { src: '/images/farm/hero-hn-031-desktop.webp', width: 1672, height: 617 },
     mobile: '/images/farm/hero-hn-031-mobile.webp',
     pos: '50% 50%',
-    alt: 'Các dãy nhà mái lợp tấm pin mặt trời giữa cây xanh và hàng thốt nốt, nhìn từ trên cao',
   },
-];
-const sections = [
-  { id: 've-hien-nuong', label: 'Về Hiền Nương' },
-  { id: 'tuan-hoan', label: 'Nông nghiệp tuần hoàn' },
-  { id: 'san-vat', label: 'Sản phẩm' },
-  { id: 'bay-nui', label: 'Vùng Bảy Núi' },
-  { id: 'hop-tac', label: 'Hợp tác' },
-];
+].map((slide, i) => ({ ...slide, alt: t.alts[i] }));
+const sections = ['ve-hien-nuong', 'tuan-hoan', 'san-vat', 'bay-nui', 'hop-tac']
+  .map((id, i) => ({ id, label: t.sections[i] }));
 ---
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero__media" data-hero-slides>
@@ -59,19 +99,17 @@ const sections = [
 
   <div class="container hero__inner">
     <div class="hero__content">
-      <!-- Two phrases, one per line where width allows; a phrase that must
-           wrap breaks before its last two words ("từ đất", "bền vững"). -->
       <h1 class="display hero__title" id="hero-title">
-        <span>Nông nghiệp từ&nbsp;đất</span>
-        <span>đến giá trị bền&nbsp;vững</span>
+        <span>{t.title[0]}</span>
+        <span>{t.title[1]}</span>
       </h1>
-      <p class="body hero__sub">Mô hình nông nghiệp tuần hoàn tại vùng Bảy&nbsp;Núi – An&nbsp;Giang</p>
+      <p class="body hero__sub">{t.sub}</p>
       <a class="btn hero__cta" href="#ve-hien-nuong">
-        Khám phá Hiền Nương <Arrow />
+        {t.cta} <Arrow />
       </a>
     </div>
 
-    <nav class="hero__navigator" aria-label="Các phần trang chủ">
+    <nav class="hero__navigator" aria-label={t.navLabel}>
       {sections.map((section, i) => (
         <a href={'#' + section.id} aria-label={String(i + 1).padStart(2, '0') + ' — ' + section.label} aria-current={i === 0 ? 'location' : undefined} data-hero-section>
           {String(i + 1).padStart(2, '0')}
@@ -82,7 +120,7 @@ const sections = [
     <!-- Decorative cue only; the CTA above is the link to the next section. -->
     <span class="eyebrow hero__scroll" aria-hidden="true">
       <span class="hero__scroll-line"></span>
-      <span>Kéo xuống</span>
+      <span>{t.scroll}</span>
     </span>
   </div>
 </section>

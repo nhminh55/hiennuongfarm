@@ -1,7 +1,9 @@
 ---
 import { contact } from '../data/site';
+import { getLocale, localizePath } from '../i18n';
 import '../styles/desktop-header.css';
 import BrandLogo from './BrandLogo.astro';
+import LanguageSwitch from './LanguageSwitch.astro';
 
 interface Props {
   /** Transparent header over a full-bleed hero; turns solid on scroll. */
@@ -9,19 +11,26 @@ interface Props {
 }
 
 const { overlay = false } = Astro.props;
+const lang = getLocale(Astro.url);
 
 // Header navigation. Kept separate from the footer's `nav` (src/data/site.ts):
 // the header says "Sản phẩm"; homepage section headings keep "Sản vật".
 const links = [
-  { label: 'Trang chủ', href: '/' },
-  { label: 'Về Hiền Nương', href: '/#ve-hien-nuong' },
-  { label: 'Nông nghiệp tuần hoàn', href: '/#tuan-hoan' },
-  { label: 'Sản phẩm', href: '/san-pham/' },
-  { label: 'Vùng Bảy Núi', href: '/#bay-nui' },
-  { label: 'Hợp tác', href: '/#hop-tac' },
-];
+  { label: { vi: 'Về Hiền Nương', en: 'About Hiền Nương', zh: '关于 Hiền Nương' }, href: '/#ve-hien-nuong' },
+  { label: { vi: 'Nông nghiệp tuần hoàn', en: 'Circular Agriculture', zh: '循环农业' }, href: '/#tuan-hoan' },
+  { label: { vi: 'Sản phẩm', en: 'Products', zh: '产品' }, href: '/san-pham/' },
+  { label: { vi: 'Vùng Bảy Núi', en: 'Bảy Núi Region', zh: '七山地区' }, href: '/#bay-nui' },
+  { label: { vi: 'Dấu ấn', en: 'Press', zh: '媒体报道' }, href: '/#dau-an' },
+  { label: { vi: 'Hợp tác', en: 'Partnership', zh: '合作' }, href: '/#hop-tac' },
+].map((item) => ({ label: item.label[lang], href: localizePath(item.href, lang) }));
 // Contact details sit in the Hợp tác section until a contact page exists.
-const contactLink = { label: 'Liên hệ', href: '/#hop-tac' };
+const contactLink = { label: { vi: 'Liên hệ', en: 'Contact', zh: '联系我们' }[lang], href: localizePath('/#hop-tac', lang) };
+
+const t = {
+  vi: { mainNav: 'Điều hướng chính', menuNav: 'Điều hướng', menu: 'Menu', close: 'Đóng' },
+  en: { mainNav: 'Main navigation', menuNav: 'Navigation', menu: 'Menu', close: 'Close' },
+  zh: { mainNav: '主导航', menuNav: '导航', menu: '菜单', close: '关闭' },
+}[lang];
 
 // Home is current only on "/"; a page link is current for its own path and
 // everything below it; in-page section links are never "current".
@@ -39,16 +48,18 @@ const current = (href: string) => {
 >
   <div class="site-header__bar">
     <div class="container site-header__inner">
-      <BrandLogo href="/" class="site-header__brand" menuVariant />
+      <BrandLogo href={localizePath('/', lang)} class="site-header__brand" menuVariant />
 
-      <nav class="site-nav" aria-label="Điều hướng chính">
+      <nav class="site-nav" aria-label={t.mainNav}>
         <ul class="site-nav__list">
           {links.map((item, i) => (
-            <li><a class="site-nav__link" href={item.href} aria-current={current(item.href)}>{i > 0 && <span class="site-nav__num" aria-hidden="true">{String(i).padStart(2, '0')}</span>}{item.label}</a></li>
+            <li><a class="site-nav__link" href={item.href} aria-current={current(item.href)}><span class="site-nav__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>{item.label}</a></li>
           ))}
 
         </ul>
       </nav>
+
+      <LanguageSwitch class="site-header__lang" />
 
       <a class="desktop-contact" href={contactLink.href}><span class="desktop-contact__sizer" aria-hidden="true">{contactLink.label}</span><span class="desktop-contact__label">{contactLink.label} <span aria-hidden="true">→</span></span></a>
 
@@ -58,8 +69,10 @@ const current = (href: string) => {
         aria-expanded="false"
         aria-controls="mobile-menu"
         data-menu-toggle
+        data-label-open={t.menu}
+        data-label-close={t.close}
       >
-        <span class="menu-toggle__label" data-menu-label>Menu</span>
+        <span class="menu-toggle__label" data-menu-label>{t.menu}</span>
         <span class="menu-toggle__icon" aria-hidden="true"><span></span><span class="menu-toggle__middle"></span><span></span></span>
       </button>
     </div>
@@ -67,12 +80,12 @@ const current = (href: string) => {
 
   <div class="mobile-menu" id="mobile-menu" data-menu hidden>
     <div class="container mobile-menu__inner">
-      <nav aria-label="Điều hướng">
+      <nav aria-label={t.menuNav}>
         <ol class="mobile-menu__list">
           {links.map((item, i) => (
             <li>
               <a class="mobile-menu__link" href={item.href} aria-current={current(item.href)} data-menu-link>
-                <span class="mobile-menu__num" aria-hidden="true">{i === 0 ? '—' : String(i).padStart(2, '0')}</span>
+                <span class="mobile-menu__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
                 <span>{item.label}</span>
               </a>
             </li>
@@ -80,11 +93,13 @@ const current = (href: string) => {
         </ol>
       </nav>
 
+      <LanguageSwitch class="mobile-menu__lang" />
+
       <!-- VERIFY: address and email (see src/data/site.ts). -->
       <div class="mobile-menu__foot">
         <p class="mobile-menu__label">{contactLink.label}</p>
         <a href={`mailto:${contact.email}`}>{contact.email}</a>
-        <p>{contact.addressLines.join(', ')}</p>
+        <p>{contact.addressLines[lang].join(', ')}</p>
       </div>
     </div>
   </div>
@@ -106,7 +121,7 @@ const current = (href: string) => {
 
     const setOpen = (open: boolean) => {
       toggle.setAttribute('aria-expanded', String(open));
-      label.textContent = open ? 'Đóng' : 'Menu';
+      label.textContent = (open ? toggle.dataset.labelClose : toggle.dataset.labelOpen) ?? '';
       header.classList.toggle('is-menu-open', open);
       document.body.classList.toggle('is-locked', open);
       menu.hidden = !open;
@@ -146,7 +161,7 @@ const current = (href: string) => {
     });
 
     // Close the menu if the viewport grows into the desktop layout.
-    window.matchMedia('(min-width: 1000px)').addEventListener('change', (event) => {
+    window.matchMedia('(min-width: 1280px)').addEventListener('change', (event) => {
       if (event.matches) setOpen(false);
     });
   }
@@ -244,6 +259,10 @@ const current = (href: string) => {
   .site-nav__contact .site-nav__link:hover { background: var(--color-deep-green); }
   .site-nav__contact .site-nav__link::after { display: none; }
 
+  /* Language switch: in the bar beside Liên hệ on desktop, in the menu
+     panel below that. */
+  .site-header__inner :global(.site-header__lang) { display: none; }
+
   /* Menu toggle (below desktop) */
   .menu-toggle {
     margin-left: auto;
@@ -325,7 +344,6 @@ const current = (href: string) => {
     line-height: 1.3;
   }
 
-  .mobile-menu__link[href="/"] { font-style: italic; }
 
   .mobile-menu__num {
     flex: none;
@@ -415,13 +433,17 @@ const current = (href: string) => {
       padding-block: 0.5rem;
     }
     .mobile-menu__label { margin-bottom: 0; }
+    .mobile-menu__inner :global(.mobile-menu__lang) { padding-left: 2.25rem; }
   }
 
   /* Horizontal navigation wherever it fits on one line with room to spare:
-     logo + links measure ≈ 800px; at 1000px about 80px remain between them.
+     logo + links + language switch + Liên hệ need ≈ 1240px (Vietnamese and
+     English labels), so the row starts at 1280px.
      Narrower than that, the menu panel takes over. */
-  @media (min-width: 1000px) {
+  @media (min-width: 1280px) {
     .site-nav { display: block; }
+    /* Set close to Liên hệ. */
+    .site-header__inner :global(.site-header__lang) { display: flex; margin-right: calc(1rem - var(--space-l)); }
     .menu-toggle,
     .mobile-menu { display: none; }
   }

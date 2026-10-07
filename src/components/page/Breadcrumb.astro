@@ -11,9 +11,12 @@ interface Props {
   class?: string;
 }
 
+import { getLocale } from '../../i18n';
+
 const { items, class: className } = Astro.props;
+const label = { vi: 'Đường dẫn', en: 'Breadcrumb', zh: '页面路径' }[getLocale(Astro.url)];
 ---
-<nav class:list={['breadcrumb', className]} aria-label="Đường dẫn">
+<nav class:list={['breadcrumb', className]} aria-label={label}>
   <ol class="breadcrumb__list">
     {items.map((item) => (
       <li class="breadcrumb__item">

@@ -1,6 +1,31 @@
 ---
 import Photo from '../Photo.astro';
 import Eyebrow from '../Eyebrow.astro';
+import { getLocale } from '../../i18n';
+
+const t = {
+  vi: {
+    alt: 'Ô ruộng lúa xanh nhìn thẳng từ trên cao, những cây thốt nốt mọc dọc bờ ruộng',
+    eyebrow: 'Từ vùng Bảy Núi',
+    title: ['Một vùng đất.', 'Một hệ sinh thái.', 'Một cách làm nông nghiệp.'],
+    lead: 'Bảy Núi không chỉ là nơi chúng tôi bắt đầu, mà còn là nguồn cảm hứng để Hiền Nương kiến tạo những giá trị bền vững cho cộng đồng và thế hệ mai sau.',
+    body: 'Bảy Núi — còn gọi là Thất Sơn — là vùng đồi núi phía tây An Giang, một trong số ít nơi núi non xuất hiện giữa đồng bằng sông Cửu Long.',
+  },
+  en: {
+    alt: 'Green rice paddies seen straight down from above, with palmyra palms along the field banks',
+    eyebrow: 'From the Bảy Núi Region',
+    title: ['One land.', 'One ecosystem.', 'One way of farming.'],
+    lead: 'Bảy Núi is not only where we began; it is also what inspires Hiền Nương to create lasting value for the community and for generations to come.',
+    body: 'Bảy Núi — also known as Thất Sơn, the Seven Mountains — is the hill country of western An Giang, one of the few places where mountains rise from the Mekong Delta.',
+  },
+  zh: {
+    alt: '从正上方俯瞰的绿色稻田，田埂上长着糖棕树',
+    eyebrow: '来自七山地区',
+    title: ['一方土地。', '一个生态系统。', '一种农业方式。'],
+    lead: '七山不仅是我们起步的地方，也激励着 Hiền Nương 为社区和子孙后代创造可持续的价值。',
+    body: '七山（越南语 Bảy Núi，又称 Thất Sơn）是安江省西部的丘陵山区，是湄公河三角洲少有的有山峦分布的地方之一。',
+  },
+}[getLocale(Astro.url)];
 ---
 <section class="baynui" id="bay-nui" aria-labelledby="baynui-title">
   <!-- Video frame 00:00.5 (opening aerial, no subtitle). -->
@@ -9,29 +34,21 @@ import Eyebrow from '../Eyebrow.astro';
     src="/images/farm/bay-nui-canh-dong.webp"
     width={1672}
     height={941}
-    alt="Ô ruộng lúa xanh nhìn thẳng từ trên cao, những cây thốt nốt mọc dọc bờ ruộng"
+    alt={t.alt}
   />
   <div class="baynui__scrim" aria-hidden="true"></div>
 
   <div class="container grid baynui__inner">
     <div class="baynui__heading" data-reveal>
-      <Eyebrow num="04" class="baynui__eyebrow">Từ vùng Bảy Núi</Eyebrow>
+      <Eyebrow num="04" class="baynui__eyebrow">{t.eyebrow}</Eyebrow>
       <h2 class="h2 baynui__title" id="baynui-title">
-        <span>Một vùng đất.</span>
-        <span>Một hệ sinh thái.</span>
-        <span>Một cách làm nông nghiệp.</span>
+        {t.title.map((line) => <span>{line}</span>)}
       </h2>
     </div>
 
     <div class="baynui__text" data-reveal style="--reveal-delay: 120ms">
-      <p class="lead baynui__lead">
-        Bảy Núi không chỉ là nơi chúng tôi bắt đầu, mà còn là nguồn cảm hứng để Hiền Nương kiến tạo
-        những giá trị bền vững cho cộng đồng và thế hệ mai sau.
-      </p>
-      <p class="body baynui__body">
-        Bảy Núi — còn gọi là Thất Sơn — là vùng đồi núi phía tây An Giang, một trong số ít nơi
-        núi non xuất hiện giữa đồng bằng sông Cửu Long.
-      </p>
+      <p class="lead baynui__lead">{t.lead}</p>
+      <p class="body baynui__body">{t.body}</p>
     </div>
   </div>
 </section>

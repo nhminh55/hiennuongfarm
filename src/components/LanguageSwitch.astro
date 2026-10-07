@@ -1,0 +1,59 @@
+---
+// "VI | EN | CH": the current page in each language.
+import { getLocale, languages, locales, localizePath, stripLocale } from '../i18n';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+const lang = getLocale(Astro.url);
+const path = stripLocale(Astro.url.pathname);
+const label = { vi: 'Ngôn ngữ', en: 'Language', zh: '语言' }[lang];
+---
+<nav class:list={['lang-switch', className]} aria-label={label}>
+  {locales.map((code, i) => (
+    <>
+      {i > 0 && <span class="lang-switch__sep" aria-hidden="true">|</span>}
+      <a
+        class="lang-switch__link"
+        href={localizePath(path, code)}
+        hreflang={languages[code].htmlLang}
+        lang={languages[code].htmlLang}
+        aria-label={languages[code].name}
+        aria-current={code === lang ? 'true' : undefined}
+      >{languages[code].label}</a>
+    </>
+  ))}
+</nav>
+
+<style>
+  .lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: var(--type-nav);
+    line-height: 1.4;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+
+  .lang-switch__link {
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.75rem;
+    min-height: 2.75rem;
+    opacity: 0.6;
+    transition: opacity 300ms var(--ease);
+  }
+  .lang-switch__link:hover { opacity: 1; }
+  .lang-switch__link[aria-current] {
+    opacity: 1;
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.35em;
+  }
+
+  .lang-switch__sep { opacity: 0.35; }
+</style>

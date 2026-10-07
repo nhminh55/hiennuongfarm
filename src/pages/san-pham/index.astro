@@ -5,8 +5,11 @@ import CtaBand from '../../components/page/CtaBand.astro';
 import Photo from '../../components/Photo.astro';
 import Eyebrow from '../../components/Eyebrow.astro';
 import Arrow from '../../components/Arrow.astro';
-import { products } from '../../data/products';
+import { localizedProducts } from '../../data/products';
+import { getLocale, localizePath } from '../../i18n';
 
+const lang = getLocale(Astro.url);
+const products = localizedProducts(lang);
 const total = String(products.length).padStart(2, '0');
 const num = (i: number) => String(i + 1).padStart(2, '0');
 
@@ -14,41 +17,128 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
 const ratio = (i: number) => (i === 0 ? '5 / 4' : '4 / 5');
 
 // Copy follows CONTENT_EVIDENCE_BANK.md §2–3 and §8 (safe wording).
-const principles = [
-  {
-    title: 'Nguyên liệu từ địa phương',
-    text: 'Rơm và các phụ phẩm nông nghiệp tại địa phương được tận dụng để tạo giá thể trồng nấm.',
+const t = {
+  vi: {
+    principles: [
+      {
+        title: 'Nguyên liệu từ địa phương',
+        text: 'Rơm và các phụ phẩm nông nghiệp tại địa phương được tận dụng để tạo giá thể trồng nấm.',
+      },
+      {
+        title: 'Tái sử dụng sau thu hoạch',
+        text: 'Sau mỗi vòng trồng nấm, giá thể tiếp tục được tận dụng trong các công đoạn nông nghiệp khác, như nuôi trùn quế và tạo phân hữu cơ.',
+      },
+      {
+        title: 'Kiểm nghiệm theo mẫu',
+        text: 'Các mẫu sản phẩm được gửi kiểm nghiệm theo từng nhóm chỉ tiêu phù hợp.',
+        linkLabel: 'Kết quả mẫu nấm mối',
+      },
+    ],
+    pageTitle: 'Sản phẩm',
+    description: 'Bốn dòng nấm chính của Hiền Nương Farm: nấm mối đen, nấm linh chi, đông trùng hạ thảo và nấm bào ngư, nuôi trồng tại vùng Bảy Núi, An Giang.',
+    eyebrow: 'Sản vật từ trang trại',
+    title: 'Bốn dòng nấm từ vùng Bảy Núi',
+    home: 'Trang chủ',
+    lead: 'Nấm mối đen, nấm linh chi, đông trùng hạ thảo và nấm bào ngư — bốn dòng nấm chính được nuôi trồng tại trang trại.',
+    body: 'Trang trại phát triển mô hình trồng nấm gắn với nguồn nguyên liệu nông nghiệp tại địa phương — từ nấm tươi đến các sản phẩm chế biến sâu.',
+    indexLabel: 'Các dòng nấm',
+    linesLabel: 'Bốn dòng nấm chính',
+    of: 'trên',
+    details: 'Xem chi tiết sản phẩm',
+    tbd: 'Trang giới thiệu chi tiết đang được chuẩn bị.',
+    approachEyebrow: 'Cách trang trại làm nấm',
+    approachTitle: 'Từ phụ phẩm nông nghiệp đến những mùa nấm.',
+    ctaTitle: 'Trao đổi về sản phẩm và hợp tác.',
+    ctaBody: 'Hiền Nương chào đón các đối tác quan tâm đến phân phối, thu mua và cùng phát triển sản phẩm từ những dòng nấm của trang trại.',
   },
-  {
-    title: 'Tái sử dụng sau thu hoạch',
-    text: 'Sau mỗi vòng trồng nấm, giá thể tiếp tục được tận dụng trong các công đoạn nông nghiệp khác, như nuôi trùn quế và tạo phân hữu cơ.',
+  en: {
+    principles: [
+      {
+        title: 'Local materials',
+        text: 'Rice straw and other local agricultural by-products are used to make the substrate for growing mushrooms.',
+      },
+      {
+        title: 'Reused after harvest',
+        text: 'After each growing cycle, the substrate goes on to be used in other farm work, such as raising earthworms and making organic fertiliser.',
+      },
+      {
+        title: 'Tested by sample',
+        text: 'Product samples are sent for testing against the relevant groups of parameters.',
+        linkLabel: 'Black termite mushroom sample results',
+      },
+    ],
+    pageTitle: 'Products',
+    description: 'The four main mushroom lines of Hiền Nương Farm: black termite mushroom, lingzhi, cordyceps and oyster mushroom, grown in the Bảy Núi region of An Giang, Vietnam.',
+    eyebrow: 'Produce from the Farm',
+    title: 'Four mushroom lines from the Bảy Núi region',
+    home: 'Home',
+    lead: 'Black termite mushroom, lingzhi, cordyceps and oyster mushroom — the four main mushroom lines grown on the farm.',
+    body: 'The farm has developed a way of growing mushrooms tied to local agricultural materials — from fresh mushrooms to further-processed products.',
+    indexLabel: 'Mushroom lines',
+    linesLabel: 'Four main mushroom lines',
+    of: 'of',
+    details: 'View product details',
+    tbd: 'A detailed product page is being prepared.',
+    approachEyebrow: 'How the farm grows mushrooms',
+    approachTitle: 'From agricultural by-products to seasons of mushrooms.',
+    ctaTitle: 'Talk with us about products and partnership.',
+    ctaBody: 'Hiền Nương welcomes partners interested in distribution, purchasing and developing products together from the farm’s mushroom lines.',
   },
-  {
-    title: 'Kiểm nghiệm theo mẫu',
-    text: 'Các mẫu sản phẩm được gửi kiểm nghiệm theo từng nhóm chỉ tiêu phù hợp.',
-    link: { href: '/san-pham/nam-moi-den/#kiem-nghiem', label: 'Kết quả mẫu nấm mối' },
+  zh: {
+    principles: [
+      {
+        title: '就地取材',
+        text: '利用当地的稻草和其他农业副产品制作种菇基质。',
+      },
+      {
+        title: '采收后再利用',
+        text: '每一季种菇结束后，基质继续用于其他农业环节，如养殖蚯蚓和制作有机肥。',
+      },
+      {
+        title: '按样品送检',
+        text: '产品样品按相应的检测项目类别送检。',
+        linkLabel: '黑皮鸡枞菌样品检测结果',
+      },
+    ],
+    pageTitle: '产品',
+    description: 'Hiền Nương Farm 的四类主要菌菇：黑皮鸡枞菌、灵芝、蛹虫草和平菇，种植于越南安江省七山地区。',
+    eyebrow: '农场物产',
+    title: '来自七山地区的四类菌菇',
+    home: '首页',
+    lead: '黑皮鸡枞菌、灵芝、蛹虫草和平菇——农场种植的四类主要菌菇。',
+    body: '农场发展了与当地农业原料相结合的种菇模式——从鲜菇到深加工产品。',
+    indexLabel: '菌菇品类',
+    linesLabel: '四类主要菌菇',
+    of: '，共',
+    details: '查看产品详情',
+    tbd: '详细介绍页面正在准备中。',
+    approachEyebrow: '农场如何种菇',
+    approachTitle: '从农业副产品到一季季菌菇。',
+    ctaTitle: '洽谈产品与合作。',
+    ctaBody: 'Hiền Nương 欢迎有意于分销、采购以及共同开发农场菌菇产品的合作伙伴。',
   },
-];
+}[lang];
+const principles = t.principles.map((item) => ({
+  title: item.title,
+  text: item.text,
+  link: 'linkLabel' in item && item.linkLabel
+    ? { href: localizePath('/san-pham/nam-moi-den/#kiem-nghiem', lang), label: item.linkLabel }
+    : undefined,
+}));
 ---
 <BaseLayout
-  title="Sản phẩm"
-  description="Bốn dòng nấm chính của Hiền Nương Farm: nấm mối đen, nấm linh chi, đông trùng hạ thảo và nấm bào ngư, nuôi trồng tại vùng Bảy Núi, An Giang."
+  title={t.pageTitle}
+  description={t.description}
 >
   <PageIntro
-    eyebrow="Sản vật từ trang trại"
-    title="Bốn dòng nấm từ vùng Bảy Núi"
-    crumbs={[{ label: 'Trang chủ', href: '/' }, { label: 'Sản phẩm' }]}
+    eyebrow={t.eyebrow}
+    title={t.title}
+    crumbs={[{ label: t.home, href: localizePath('/', lang) }, { label: t.pageTitle }]}
   >
-    <p class="lead">
-      Nấm mối đen, nấm linh chi, đông trùng hạ thảo và nấm bào ngư — bốn dòng nấm chính được
-      nuôi trồng tại trang trại.
-    </p>
-    <p class="body intro__body">
-      Trang trại phát triển mô hình trồng nấm gắn với nguồn nguyên liệu nông nghiệp tại địa
-      phương — từ nấm tươi đến các sản phẩm chế biến sâu.
-    </p>
+    <p class="lead">{t.lead}</p>
+    <p class="body intro__body">{t.body}</p>
 
-    <nav slot="foot" aria-label="Các dòng nấm">
+    <nav slot="foot" aria-label={t.indexLabel}>
       <ol class="index">
         {products.map((p, i) => (
           <li>
@@ -62,7 +152,7 @@ const principles = [
     </nav>
   </PageIntro>
 
-  <section class="lines" aria-label="Bốn dòng nấm chính">
+  <section class="lines" aria-label={t.linesLabel}>
     <div class="container">
       {products.map((p, i) => (
         <article class:list={['line', `line--${i + 1}`]} id={p.slug} aria-labelledby={`${p.slug}-name`}>
@@ -76,15 +166,15 @@ const principles = [
             loading={i === 0 ? 'eager' : 'lazy'}
           />
           <div class="line__text" data-reveal>
-            <p class="line__num">{num(i)} <span aria-hidden="true">/</span><span class="sr-only">trên</span> {total}</p>
+            <p class="line__num">{num(i)} <span aria-hidden="true">/</span><span class="sr-only">{t.of}</span> {total}</p>
             <h2 class="line__name" id={`${p.slug}-name`}>{p.name}</h2>
             <p class="body line__note">{p.note}</p>
             {p.detail ? (
               <a class="link-arrow line__link" href={p.detail}>
-                Xem chi tiết sản phẩm <Arrow />
+                {t.details} <Arrow />
               </a>
             ) : (
-              <p class="tbd line__tbd">Trang giới thiệu chi tiết đang được chuẩn bị.</p>
+              <p class="tbd line__tbd">{t.tbd}</p>
             )}
           </div>
         </article>
@@ -95,10 +185,8 @@ const principles = [
   <section class="section approach" aria-labelledby="approach-title">
     <div class="container grid approach__grid">
       <div class="approach__head" data-reveal>
-        <Eyebrow>Cách trang trại làm nấm</Eyebrow>
-        <h2 class="h2 approach__title" id="approach-title">
-          Từ phụ phẩm nông nghiệp đến những mùa nấm.
-        </h2>
+        <Eyebrow>{t.approachEyebrow}</Eyebrow>
+        <h2 class="h2 approach__title" id="approach-title">{t.approachTitle}</h2>
       </div>
 
       <ol class="approach__list">
@@ -118,10 +206,7 @@ const principles = [
     </div>
   </section>
 
-  <CtaBand title="Trao đổi về sản phẩm và hợp tác.">
-    Hiền Nương chào đón các đối tác quan tâm đến phân phối, thu mua và cùng phát triển sản phẩm
-    từ những dòng nấm của trang trại.
-  </CtaBand>
+  <CtaBand title={t.ctaTitle}>{t.ctaBody}</CtaBand>
 </BaseLayout>
 
 <style>

@@ -9,6 +9,7 @@ import Eyebrow from '../Eyebrow.astro';
 import Photo from '../Photo.astro';
 import Arrow from '../Arrow.astro';
 import type { Product } from '../../data/products';
+import { getLocale, localizePath } from '../../i18n';
 
 interface Props {
   product: Product;
@@ -19,21 +20,27 @@ interface Props {
   contactHref?: string;
 }
 
-const { product, origin, processHref = '#quy-trinh', contactHref = '/#hop-tac' } = Astro.props;
+const lang = getLocale(Astro.url);
+const { product, origin, processHref = '#quy-trinh', contactHref = localizePath('/#hop-tac', lang) } = Astro.props;
+const t = {
+  vi: { home: 'Trang chủ', products: 'Sản phẩm', eyebrow: 'Sản vật từ trang trại', process: 'Tìm hiểu quy trình', contact: 'Liên hệ hợp tác' },
+  en: { home: 'Home', products: 'Products', eyebrow: 'Produce from the Farm', process: 'See the process', contact: 'Discuss a partnership' },
+  zh: { home: '首页', products: '产品', eyebrow: '农场物产', process: '了解流程', contact: '洽谈合作' },
+}[lang];
 ---
 <section class="p-hero" aria-labelledby="product-title">
   <div class="container grid p-hero__grid">
     <Breadcrumb
       class="p-hero__crumbs"
       items={[
-        { label: 'Trang chủ', href: '/' },
-        { label: 'Sản phẩm', href: '/san-pham/' },
+        { label: t.home, href: localizePath('/', lang) },
+        { label: t.products, href: localizePath('/san-pham/', lang) },
         { label: product.name },
       ]}
     />
 
     <div class="p-hero__head">
-      <Eyebrow>Sản vật từ trang trại</Eyebrow>
+      <Eyebrow>{t.eyebrow}</Eyebrow>
       <h1 class="display p-hero__title" id="product-title">{product.name}</h1>
       <p class="p-hero__origin">{origin}</p>
     </div>
@@ -52,8 +59,8 @@ const { product, origin, processHref = '#quy-trinh', contactHref = '/#hop-tac' }
     <div class="p-hero__body">
       <p class="body p-hero__text"><slot /></p>
       <div class="p-hero__actions">
-        <a class="btn" href={processHref}>Tìm hiểu quy trình <Arrow direction="down" /></a>
-        <a class="link-arrow" href={contactHref}>Liên hệ hợp tác <Arrow /></a>
+        <a class="btn" href={processHref}>{t.process} <Arrow direction="down" /></a>
+        <a class="link-arrow" href={contactHref}>{t.contact} <Arrow /></a>
       </div>
     </div>
   </div>

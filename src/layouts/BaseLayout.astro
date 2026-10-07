@@ -3,6 +3,7 @@ import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import { site } from '../data/site';
+import { getLocale, languages, locales, localizePath, stripLocale } from '../i18n';
 
 interface Props {
   title?: string;
@@ -11,23 +12,30 @@ interface Props {
   overlayHeader?: boolean;
 }
 
-const { title, description = site.description, overlayHeader = false } = Astro.props;
+const lang = getLocale(Astro.url);
+const { title, description = site.description[lang], overlayHeader = false } = Astro.props;
 const pageTitle = title ? `${title} — ${site.name}` : site.name;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+// The same page in every language, for search engines.
+const basePath = stripLocale(Astro.url.pathname);
+const alternates = locales.map((l) => ({ hreflang: languages[l].htmlLang, href: new URL(localizePath(basePath, l), Astro.site) }));
+const skipLabel = { vi: 'Bỏ qua đến nội dung chính', en: 'Skip to main content', zh: '跳到主要内容' }[lang];
 ---
 <!doctype html>
-<html lang="vi" id="top">
+<html lang={languages[lang].htmlLang} id="top">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
+    <link rel="alternate" hreflang="x-default" href={alternates[0].href} />
     <link rel="icon" type="image/png" href="/fav.png" />
     <meta name="theme-color" content="#173D2D" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:locale" content={languages[lang].ogLocale} />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
@@ -39,6 +47,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Noto+Serif+Display:ital,wght@0,300..600;1,300..500&family=Lora:ital,wght@0,400..600;1,400..500&display=swap"
     />
+    <!-- Chinese pages: the Latin faces above have no Chinese glyphs (see global.css :lang(zh)). -->
+    {lang === 'zh' && (
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;500;600&display=swap"
+      />
+    )}
 
     <script is:inline>
       let recovered = false;
@@ -57,7 +72,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     </script>
   </head>
   <body>
-    <a class="skip-link" href="#main">Bỏ qua đến nội dung chính</a>
+    <a class="skip-link" href="#main">{skipLabel}</a>
     <SiteHeader overlay={overlayHeader} />
     <main id="main" class:list={[{ 'main--offset': !overlayHeader }]}>
       <slot />

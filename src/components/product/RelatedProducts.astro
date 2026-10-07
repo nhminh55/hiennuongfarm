@@ -2,7 +2,8 @@
 // The other mushroom lines as a quiet ruled index — not a recommendation grid.
 import Eyebrow from '../Eyebrow.astro';
 import Arrow from '../Arrow.astro';
-import { products, productHref } from '../../data/products';
+import { localizedProducts, localizedProductHref } from '../../data/products';
+import { getLocale, localizePath } from '../../i18n';
 
 interface Props {
   /** Slug of the product on this page. */
@@ -10,22 +11,28 @@ interface Props {
 }
 
 const { current } = Astro.props;
-const others = products
+const lang = getLocale(Astro.url);
+const t = {
+  vi: { eyebrow: 'Sản vật từ trang trại', title: 'Các dòng nấm khác', all: 'Tất cả sản phẩm' },
+  en: { eyebrow: 'Produce from the Farm', title: 'Other mushroom lines', all: 'All products' },
+  zh: { eyebrow: '农场物产', title: '其他菌菇品类', all: '全部产品' },
+}[lang];
+const others = localizedProducts(lang)
   .map((p, i) => ({ ...p, num: String(i + 1).padStart(2, '0') }))
   .filter((p) => p.slug !== current);
 ---
 <section class="section related" aria-labelledby="related-title">
   <div class="container grid related__grid">
     <div class="related__head">
-      <Eyebrow>Sản vật từ trang trại</Eyebrow>
-      <h2 class="h2 related__title" id="related-title">Các dòng nấm khác</h2>
-      <a class="link-arrow related__all" href="/san-pham/">Tất cả sản phẩm <Arrow /></a>
+      <Eyebrow>{t.eyebrow}</Eyebrow>
+      <h2 class="h2 related__title" id="related-title">{t.title}</h2>
+      <a class="link-arrow related__all" href={localizePath('/san-pham/', lang)}>{t.all} <Arrow /></a>
     </div>
 
     <ul class="related__list">
       {others.map((p) => (
         <li>
-          <a class="related__item" href={productHref(p)}>
+          <a class="related__item" href={localizedProductHref(p, lang)}>
             <span class="related__thumb">
               <img
                 src={p.image.src}

@@ -1,6 +1,6 @@
 .desktop-contact { display: none; }
 
-@media (min-width: 1000px) {
+@media (min-width: 1280px) {
   header.site-header.site-header--overlay { background: var(--color-paper); }
 
   header.site-header.site-header--overlay .site-header__bar {
@@ -45,7 +45,7 @@
   .desktop-contact:hover { background: var(--color-deep-green); }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1280px) {
   .site-header .site-nav .site-nav__num {
     opacity: 0;
     transition: opacity 300ms var(--ease);

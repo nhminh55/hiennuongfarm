@@ -5,13 +5,16 @@ interface Props {
   dark?: boolean;
   menuVariant?: boolean;
 }
+import { getLocale } from '../i18n';
+
 const { href, class: className, dark = false, menuVariant = false } = Astro.props;
+const home = { vi: 'Trang chủ', en: 'Home', zh: '首页' }[getLocale(Astro.url)];
 const Tag = href ? 'a' : 'span';
 ---
 <Tag
   class:list={['wordmark', { 'wordmark--menu': menuVariant }, className]}
   href={href}
-  aria-label={href ? 'Hiền Nương Farm — Trang chủ' : undefined}
+  aria-label={href ? `Hiền Nương Farm — ${home}` : undefined}
 >
   <img class="wordmark__logo" src={dark ? '/05.png' : '/01.png'} width={dark ? 450 : 868} height={dark ? 179 : 323} alt="Hiền Nương Farm" />
   {menuVariant && <img class="wordmark__menu-logo" src="/05.png" width="450" height="179" alt="" aria-hidden="true" />}

@@ -5,6 +5,7 @@
  */
 import Eyebrow from '../Eyebrow.astro';
 import Arrow from '../Arrow.astro';
+import { getLocale, localizePath } from '../../i18n';
 
 interface Props {
   eyebrow?: string;
@@ -13,11 +14,17 @@ interface Props {
   label?: string;
 }
 
+const lang = getLocale(Astro.url);
+const defaults = {
+  vi: { eyebrow: 'Hợp tác cùng Hiền Nương', label: 'Liên hệ hợp tác' },
+  en: { eyebrow: 'Partner with Hiền Nương', label: 'Discuss a partnership' },
+  zh: { eyebrow: '与 Hiền Nương 合作', label: '洽谈合作' },
+}[lang];
 const {
-  eyebrow = 'Hợp tác cùng Hiền Nương',
+  eyebrow = defaults.eyebrow,
   title,
-  href = '/#hop-tac',
-  label = 'Liên hệ hợp tác',
+  href = localizePath('/#hop-tac', lang),
+  label = defaults.label,
 } = Astro.props;
 ---
 <section class="section cta-band" aria-labelledby="cta-band-title">

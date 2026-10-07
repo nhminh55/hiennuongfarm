@@ -2,36 +2,63 @@
 import Eyebrow from '../Eyebrow.astro';
 import Arrow from '../Arrow.astro';
 import { contact } from '../../data/site';
+import { getLocale } from '../../i18n';
 
-const subject = encodeURIComponent('Hợp tác cùng Hiền Nương Farm');
+const lang = getLocale(Astro.url);
+const t = {
+  vi: {
+    subject: 'Hợp tác cùng Hiền Nương Farm',
+    eyebrow: 'Hợp tác cùng Hiền Nương',
+    title: 'Cùng tạo nên những giá trị bền vững từ nông nghiệp.',
+    body: 'Chúng tôi luôn chào đón đối tác, khách hàng và những người cùng chung chí hướng phát triển nông nghiệp bền vững, nâng tầm giá trị nông sản Việt.',
+    cta: 'Liên hệ hợp tác',
+    address: 'Địa chỉ',
+    email: 'Email',
+  },
+  en: {
+    subject: 'Partnering with Hiền Nương Farm',
+    eyebrow: 'Partner with Hiền Nương',
+    title: 'Creating lasting value from agriculture, together.',
+    body: 'We welcome partners, customers and like-minded people who share our aim of developing sustainable agriculture and raising the value of Vietnamese farm produce.',
+    cta: 'Discuss a partnership',
+    address: 'Address',
+    email: 'Email',
+  },
+  zh: {
+    subject: '与 Hiền Nương Farm 合作',
+    eyebrow: '与 Hiền Nương 合作',
+    title: '携手从农业中创造可持续的价值。',
+    body: '我们欢迎合作伙伴、客户以及志同道合的朋友，共同发展可持续农业，提升越南农产品的价值。',
+    cta: '洽谈合作',
+    address: '地址',
+    email: '电子邮箱',
+  },
+}[lang];
+const subject = encodeURIComponent(t.subject);
+const address = contact.addressLines[lang];
 ---
 <section class="section partner" id="hop-tac" aria-labelledby="partner-title">
   <div class="container partner__grid">
     <div class="partner__heading" data-reveal>
-      <Eyebrow num="05">Hợp tác cùng Hiền Nương</Eyebrow>
-      <h2 class="h2 partner__title" id="partner-title">
-        Cùng tạo nên những giá trị bền vững từ nông nghiệp.
-      </h2>
+      <Eyebrow num="06">{t.eyebrow}</Eyebrow>
+      <h2 class="h2 partner__title" id="partner-title">{t.title}</h2>
     </div>
 
     <div class="partner__body" data-reveal style="--reveal-delay: 100ms">
-      <p class="body">
-        Chúng tôi luôn chào đón đối tác, khách hàng và những người cùng chung chí hướng phát triển
-        nông nghiệp bền vững, nâng tầm giá trị nông sản Việt.
-      </p>
+      <p class="body">{t.body}</p>
       <a class="link-arrow partner__cta" href={`mailto:${contact.email}?subject=${subject}`}>
-        Liên hệ hợp tác <Arrow />
+        {t.cta} <Arrow />
       </a>
     </div>
 
     <!-- VERIFY: address and email (see src/data/site.ts). -->
     <dl class="small partner__contact" data-reveal style="--reveal-delay: 180ms">
       <div>
-        <dt class="eyebrow">Địa chỉ</dt>
-        <dd>{contact.addressLines[0]},<br />{contact.addressLines[1]}</dd>
+        <dt class="eyebrow">{t.address}</dt>
+        <dd>{address[0]},<br />{address[1]}</dd>
       </div>
       <div>
-        <dt class="eyebrow">Email</dt>
+        <dt class="eyebrow">{t.email}</dt>
         <dd><a href={`mailto:${contact.email}`}>{contact.email}</a></dd>
       </div>
     </dl>

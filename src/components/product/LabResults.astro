@@ -8,66 +8,121 @@
  * The default slot takes a page-specific note (e.g. how the sample is named).
  */
 import Eyebrow from '../Eyebrow.astro';
-import type { LabReport } from '../../data/lab-reports';
+import type { LabReport, LabResult } from '../../data/lab-reports';
+import { getLocale } from '../../i18n';
 
 interface Props {
   reports: LabReport[];
 }
 
 const { reports } = Astro.props;
+const lang = getLocale(Astro.url);
+const t = {
+  vi: {
+    eyebrow: 'Kiểm nghiệm',
+    title: 'Kết quả kiểm nghiệm mẫu',
+    intro: 'Các chỉ tiêu và kết quả dưới đây được trình bày theo báo cáo thử nghiệm của mẫu đã gửi kiểm nghiệm.',
+    report: 'Báo cáo',
+    sample: 'Mẫu thử',
+    lab: 'Đơn vị thử nghiệm',
+    customer: 'Đơn vị gửi mẫu',
+    testedOn: 'Ngày thử nghiệm',
+    code: 'Mã báo cáo',
+    param: 'Chỉ tiêu',
+    result: 'Kết quả',
+    notes: [
+      'Kết quả trên áp dụng cho mẫu thử được nêu trong báo cáo và không được hiểu là thông số cố định cho mọi lô sản phẩm.',
+      'Kết quả được trình bày theo báo cáo, không kèm đánh giá đạt hay không đạt theo một tiêu chuẩn cụ thể.',
+    ],
+  },
+  en: {
+    eyebrow: 'Testing',
+    title: 'Sample test results',
+    intro: 'The parameters and results below are presented as stated in the test report for the sample submitted for testing.',
+    report: 'Report',
+    sample: 'Sample',
+    lab: 'Testing laboratory',
+    customer: 'Submitted by',
+    testedOn: 'Test date',
+    code: 'Report no.',
+    param: 'Parameter',
+    result: 'Result',
+    notes: [
+      'These results apply to the sample named in the report and should not be read as fixed specifications for every product batch.',
+      'Results are presented as reported, without a pass/fail assessment against any particular standard.',
+    ],
+  },
+  zh: {
+    eyebrow: '检测',
+    title: '样品检测结果',
+    intro: '以下检测项目及结果依据送检样品的检测报告列出。',
+    report: '报告',
+    sample: '样品',
+    lab: '检测机构',
+    customer: '送检单位',
+    testedOn: '检测日期',
+    code: '报告编号',
+    param: '检测项目',
+    result: '结果',
+    notes: [
+      '以上结果仅适用于报告所列样品，不应视为所有批次产品的固定指标。',
+      '结果按报告原样列出，未依据任何特定标准作合格与否的判定。',
+    ],
+  },
+}[lang];
+// Parameter name in this language; Vietnamese and Chinese also show the
+// English name printed on the report. Sample and customer stay as written.
+const paramName = (r: LabResult) => ({ vi: r.name, en: r.en, zh: r.zh })[lang];
 ---
 <section class="section lab" id="kiem-nghiem" aria-labelledby="lab-title">
   <div class="container grid lab__grid">
     <div class="lab__head">
-      <Eyebrow>Kiểm nghiệm</Eyebrow>
-      <h2 class="h2 lab__title" id="lab-title">Kết quả kiểm nghiệm mẫu</h2>
-      <p class="body lab__intro">
-        Các chỉ tiêu và kết quả dưới đây được trình bày theo báo cáo thử nghiệm của mẫu đã gửi
-        kiểm nghiệm.
-      </p>
+      <Eyebrow>{t.eyebrow}</Eyebrow>
+      <h2 class="h2 lab__title" id="lab-title">{t.title}</h2>
+      <p class="body lab__intro">{t.intro}</p>
       {Astro.slots.has('default') && <p class="body lab__intro"><slot /></p>}
     </div>
 
     <div class="lab__reports">
       {reports.map((report) => (
-        <article class="lab__report" aria-label={`Báo cáo ${report.id}`}>
+        <article class="lab__report" aria-label={`${t.report} ${report.id}`}>
           <dl class="lab__meta">
             <div>
-              <dt>Mẫu thử</dt>
-              <dd>{report.sample}</dd>
+              <dt>{t.sample}</dt>
+              <dd lang="vi">{report.sample}</dd>
             </div>
             <div>
-              <dt>Đơn vị thử nghiệm</dt>
+              <dt>{t.lab}</dt>
               <dd>{report.lab}</dd>
             </div>
             <div>
-              <dt>Đơn vị gửi mẫu</dt>
-              <dd>{report.customer}</dd>
+              <dt>{t.customer}</dt>
+              <dd lang="vi">{report.customer}</dd>
             </div>
             <div>
-              <dt>Ngày thử nghiệm</dt>
+              <dt>{t.testedOn}</dt>
               <dd>{report.testedOn}</dd>
             </div>
             <div>
-              <dt>Mã báo cáo</dt>
+              <dt>{t.code}</dt>
               <dd class="lab__code">{report.id}</dd>
             </div>
           </dl>
 
           <table class="lab__table">
-            <caption class="lab__caption">{report.group}</caption>
+            <caption class="lab__caption">{report.group[lang]}</caption>
             <thead>
               <tr>
-                <th scope="col">Chỉ tiêu</th>
-                <th scope="col">Kết quả</th>
+                <th scope="col">{t.param}</th>
+                <th scope="col">{t.result}</th>
               </tr>
             </thead>
             <tbody>
               {report.results.map((r) => (
                 <tr>
                   <th scope="row">
-                    <span class:list={['lab__param', { italic: r.scientific }]}>{r.name}</span>
-                    {r.en !== r.name && <span class="lab__param-en" lang="en">{r.en}</span>}
+                    <span class:list={['lab__param', { italic: r.scientific && paramName(r) === r.en }]}>{paramName(r)}</span>
+                    {r.en !== paramName(r) && <span class:list={['lab__param-en', { italic: r.scientific }]} lang="en">{r.en}</span>}
                   </th>
                   <td>
                     <span class="lab__value">{r.value}{r.exp && <sup>{r.exp}</sup>}</span>
@@ -81,14 +136,7 @@ const { reports } = Astro.props;
       ))}
 
       <div class="lab__notes">
-        <p>
-          Kết quả trên áp dụng cho mẫu thử được nêu trong báo cáo và không được hiểu là thông số cố
-          định cho mọi lô sản phẩm.
-        </p>
-        <p>
-          Kết quả được trình bày theo báo cáo, không kèm đánh giá đạt hay không đạt theo một tiêu
-          chuẩn cụ thể.
-        </p>
+        {t.notes.map((note) => <p>{note}</p>)}
       </div>
     </div>
   </div>

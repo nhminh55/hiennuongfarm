@@ -1,5 +1,6 @@
 ---
 import { nav, contact } from '../data/site';
+import { getLocale, localizePath } from '../i18n';
 import BrandLogo from './BrandLogo.astro';
 import Arrow from './Arrow.astro';
 import '../styles/desktop-footer-layout.css';
@@ -11,6 +12,39 @@ const social = [
   { label: 'TikTok', path: 'M14 2h3c.3 2 1.6 3.5 4 4v3c-1.5 0-3-.5-4-1.3V16a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3z' },
 ];
 const year = new Date().getFullYear();
+const lang = getLocale(Astro.url);
+const t = {
+  vi: {
+    line: ['Nông nghiệp tuần hoàn', 'từ vùng Bảy Núi, An Giang.'],
+    navLabel: 'Điều hướng chân trang',
+    explore: 'Khám phá',
+    contact: 'Liên hệ',
+    social: 'Social',
+    noLink: 'liên kết chưa được cung cấp',
+    rights: 'Bảo lưu mọi quyền.',
+    top: 'Lên đầu trang',
+  },
+  en: {
+    line: ['Circular agriculture', 'from the Bảy Núi region, An Giang.'],
+    navLabel: 'Footer navigation',
+    explore: 'Explore',
+    contact: 'Contact',
+    social: 'Social',
+    noLink: 'link not yet available',
+    rights: 'All rights reserved.',
+    top: 'Back to top',
+  },
+  zh: {
+    line: ['循环农业，', '来自安江省七山地区。'],
+    navLabel: '页脚导航',
+    explore: '探索',
+    contact: '联系方式',
+    social: '社交媒体',
+    noLink: '链接暂未提供',
+    rights: '版权所有。',
+    top: '返回顶部',
+  },
+}[lang];
 ---
 <footer class="site-footer">
   <svg class="site-footer__landscape" viewBox="0 0 1440 240" preserveAspectRatio="none" aria-hidden="true" focusable="false">
@@ -20,48 +54,48 @@ const year = new Date().getFullYear();
   <div class="container">
     <div class="site-footer__top">
       <div class="site-footer__brand">
-        <BrandLogo href="/" dark />
+        <BrandLogo href={localizePath('/', lang)} dark />
         <p class="site-footer__line">
-          Nông nghiệp tuần hoàn<br />từ vùng Bảy Núi, An Giang.
+          {t.line[0]}<br />{t.line[1]}
         </p>
       </div>
 
-      <nav class="site-footer__col site-footer__col--nav" aria-label="Điều hướng chân trang">
-        <p class="site-footer__heading">Khám phá</p>
+      <nav class="site-footer__col site-footer__col--nav" aria-label={t.navLabel}>
+        <p class="site-footer__heading">{t.explore}</p>
         <ul class="site-footer__list">
           {nav.map((item) => (
-            <li><a href={item.href}>{item.label}</a></li>
+            <li><a href={localizePath(item.href, lang)}>{item.label[lang]}</a></li>
           ))}
         </ul>
       </nav>
 
       <div class="site-footer__col site-footer__col--contact">
-        <p class="site-footer__heading">Liên hệ</p>
+        <p class="site-footer__heading">{t.contact}</p>
         <address class="site-footer__list">
-          <span>{contact.addressLines[0]}</span>
-          <span>{contact.addressLines[1]}</span>
+          <span>{contact.addressLines[lang][0]}</span>
+          <span>{contact.addressLines[lang][1]}</span>
           <a href={`mailto:${contact.email}`}>{contact.email}</a>
         </address>
       </div>
       <div class="site-footer__col site-footer__col--social">
-        <p class="site-footer__heading">Social</p>
+        <p class="site-footer__heading">{t.social}</p>
         <ul class="site-footer__list">
           {social.map(item => (
-            <li><span class="site-footer__social" role="link" aria-disabled="true" aria-label={item.label + ' — liên kết chưa được cung cấp'}>
+            <li><span class="site-footer__social" role="link" aria-disabled="true" aria-label={`${item.label} — ${t.noLink}`}>
               <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d={item.path} fill="currentColor" fill-rule="evenodd" /></svg>
               {item.label}
             </span></li>
           ))}
         </ul>
-        <a class="site-footer__mobile-top" href="#top" aria-label="Lên đầu trang"><Arrow direction="up" /></a>
+        <a class="site-footer__mobile-top" href="#top" aria-label={t.top}><Arrow direction="up" /></a>
       </div>
     </div>
 
     <img class="site-footer__mobile-mountains" src="/mountain.png" width="356" height="142" alt="" aria-hidden="true" />
     <div class="site-footer__bottom">
-      <p>© {year} Hiền Nương Farm. Bảo lưu mọi quyền.</p>
+      <p>© {year} Hiền Nương Farm. {t.rights}</p>
       <a class="site-footer__top-link" href="#top">
-        Lên đầu trang <Arrow direction="up" />
+        {t.top} <Arrow direction="up" />
       </a>
     </div>
   </div>

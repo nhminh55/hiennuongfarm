@@ -1,0 +1,245 @@
+---
+import Photo from '../Photo.astro';
+import Eyebrow from '../Eyebrow.astro';
+import { getLocale } from '../../i18n';
+
+const lang = getLocale(Astro.url);
+
+// Verified press coverage: each article names chị Châu Thị Nương and the farm.
+// Headlines and publication months are as published; other languages show
+// a translated headline and say the article is in Vietnamese.
+const articles = [
+  {
+    outlet: { vi: 'VnExpress', en: 'VnExpress', zh: 'VnExpress' },
+    date: '12/2025',
+    headline: {
+      vi: 'Làm giàu từ nấm sạch',
+      en: 'Prospering from clean mushrooms',
+      zh: '靠洁净菌菇致富',
+    },
+    href: 'https://vnexpress.net/lam-giau-tu-nam-sach-4996984.html',
+  },
+  {
+    outlet: { vi: 'Cổng TTĐT tỉnh An Giang', en: 'An Giang Provincial Portal', zh: '安江省电子信息门户' },
+    date: '10/2025',
+    headline: {
+      vi: 'Nữ nông dân xuất sắc vùng Bảy Núi An Giang',
+      en: 'An outstanding woman farmer of An Giang’s Bảy Núi region',
+      zh: '安江省七山地区的优秀女农民',
+    },
+    href: 'https://angiang.gov.vn/vi/nu-nong-dan-xuat-sac-vung-bay-nui-an-giang',
+  },
+  {
+    outlet: { vi: 'Nhân Dân', en: 'Nhân Dân', zh: '人民报' },
+    date: '10/2025',
+    headline: {
+      vi: 'Công bố 95 nông dân Việt Nam xuất sắc và nhà khoa học của nhà nông năm 2025',
+      en: '95 Outstanding Vietnamese Farmers and Scientists of Farmers announced for 2025',
+      zh: '2025 年 95 位越南优秀农民及“农民的科学家”名单公布',
+    },
+    href: 'https://nhandan.vn/cong-bo-95-nong-dan-viet-nam-xuat-sac-va-nha-khoa-hoc-cua-nha-nong-nam-2025-post913741.html',
+  },
+  {
+    outlet: { vi: 'VnExpress', en: 'VnExpress', zh: 'VnExpress' },
+    date: '02/2025',
+    headline: {
+      vi: 'Tăng thu nhập nhờ làm nông lắp thêm điện mặt trời',
+      en: 'Raising farm income by adding solar power',
+      zh: '农业结合太阳能发电，增加收入',
+    },
+    href: 'https://vnexpress.net/tang-thu-nhap-nho-lam-nong-lap-them-dien-mat-troi-4854034.html',
+  },
+].map((a) => ({ ...a, outlet: a.outlet[lang], headline: a.headline[lang] }));
+
+const t = {
+  vi: {
+    eyebrow: 'Dấu ấn',
+    title: 'Những câu chuyện được kể lại.',
+    body: 'Hành trình của Hiền Nương đã được nhiều cơ quan báo chí ghi nhận — như những câu chuyện về nông nghiệp sạch, kinh tế tuần hoàn và con người Bảy Núi.',
+    alt: 'Một người phụ nữ mặc áo hồng, quàng khăn rằn, đeo găng tay đặt tay lên các bịch nấm trên kệ trong nhà trồng',
+    articleLang: '',
+    newTab: '(mở trong thẻ mới)',
+  },
+  en: {
+    eyebrow: 'Press',
+    title: 'Stories, retold.',
+    body: 'Hiền Nương’s journey has been covered by a number of news outlets — as stories of clean farming, the circular economy and the people of Bảy Núi.',
+    alt: 'A woman in a pink shirt and a checked khăn rằn scarf, wearing gloves, resting her hands on mushroom bags on a shelf in a grow house',
+    articleLang: 'In Vietnamese',
+    newTab: '(opens in a new tab)',
+  },
+  zh: {
+    eyebrow: '媒体报道',
+    title: '被讲述的故事。',
+    body: 'Hiền Nương 的历程已获多家媒体报道——讲述清洁农业、循环经济以及七山人的故事。',
+    alt: '一位身穿粉色上衣、围着格子头巾、戴着手套的女士，把手放在种植棚架子上的菌袋上',
+    articleLang: '越南语',
+    newTab: '（在新标签页中打开）',
+  },
+}[lang];
+---
+<section class="section press" id="dau-an" aria-labelledby="press-title">
+  <div class="container press__grid">
+    <div class="press__intro" data-reveal>
+      <Eyebrow num="05">{t.eyebrow}</Eyebrow>
+      <h2 class="h2 press__title" id="press-title">{t.title}</h2>
+      <span class="press__rule" aria-hidden="true"></span>
+      <p class="body press__body">{t.body}</p>
+    </div>
+
+    <!-- Same farm photograph as the Nấm Mối Đen page (people-nha-trong). -->
+    <Photo
+      class="press__photo"
+      src="/images/farm/people-nha-trong.webp"
+      width={720}
+      height={900}
+      alt={t.alt}
+    />
+
+    <ol class="press__list" data-reveal style="--reveal-delay: 100ms">
+      {articles.map((a) => (
+        <li>
+          <a class="press__item" href={a.href} target="_blank" rel="noopener noreferrer">
+            <span class="press__meta">
+              <span class="eyebrow press__outlet">{a.outlet}</span>
+              <span class="small press__date">{a.date}{t.articleLang && ` · ${t.articleLang}`}</span>
+            </span>
+            <span class="press__headline">{a.headline}</span>
+            <svg class="press__ext" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+              <path d="M2 10 10.5 1.5M4 1.5h6.5V8" />
+            </svg>
+            <span class="sr-only">{t.newTab}</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  /* Press notices: a short introduction, one farm photograph, and the
+     articles set as an index — outlet and month, headline, a hairline. */
+  .press { background: var(--color-cream); }
+
+  .press__grid {
+    display: grid;
+    row-gap: var(--space-xl);
+  }
+
+  .press__title { margin-top: var(--space-m); max-width: 14ch; }
+
+  .press__rule {
+    display: block;
+    width: 1.75rem;
+    height: 1px;
+    margin-block: var(--space-l) var(--space-m);
+    background: var(--color-earth);
+    opacity: 0.7;
+  }
+
+  .press__body { max-width: 24rem; }
+
+  .press :global(.press__photo) { --ratio: 5 / 4; --pos: 50% 28%; }
+
+  .press__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .press__list li { border-bottom: 1px solid var(--color-line); }
+
+  .press__item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: var(--space-m);
+    row-gap: var(--space-2xs);
+    padding-block: var(--space-m);
+  }
+
+  .press__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: var(--space-s);
+    row-gap: var(--space-3xs);
+  }
+
+  .press__date {
+    color: var(--color-text-muted);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+  }
+
+  .press__headline {
+    grid-column: 1;
+    font-family: var(--font-display);
+    font-size: var(--type-lead);
+    line-height: 1.4;
+    text-wrap: pretty;
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+    transition: background-size 400ms var(--ease);
+  }
+
+  .press__ext {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: start;
+    width: 0.875rem;
+    height: 0.875rem;
+    margin-top: 0.25rem;
+    color: var(--color-earth);
+    transition: transform 300ms var(--ease);
+  }
+
+  .press__item:hover .press__headline,
+  .press__item:focus-visible .press__headline { background-size: 100% 1px; }
+  .press__item:hover .press__ext { transform: translate(2px, -2px); }
+
+  /* Tablet: introduction beside the photograph, the index below. */
+  @media (min-width: 768px) {
+    .press__grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      column-gap: var(--space-xl);
+      align-items: center;
+    }
+    .press :global(.press__photo) { --ratio: 4 / 5; --pos: 50% 50%; }
+    .press__list { grid-column: 1 / -1; }
+  }
+
+  /* Wide screens: three columns — introduction, photograph, index. */
+  @media (min-width: 1024px) {
+    .press__grid {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 0.85fr) minmax(0, 1.75fr);
+      column-gap: clamp(var(--space-l), 3vw, var(--space-2xl));
+    }
+
+    .press__intro { align-self: center; }
+
+    /* The photograph runs the full height of the index beside it. */
+    .press :global(.press__photo) {
+      --ratio: auto;
+      align-self: stretch;
+      min-height: 24rem;
+    }
+    .press :global(.press__photo img) { position: absolute; inset: 0; }
+
+    .press__list { grid-column: auto; }
+
+    .press__item {
+      grid-template-columns: 9.5rem minmax(0, 1fr) auto;
+      column-gap: var(--space-l);
+      padding-block: var(--space-l);
+    }
+
+    .press__meta {
+      flex-direction: column;
+      align-items: flex-start;
+      row-gap: var(--space-2xs);
+    }
+
+    .press__headline { grid-column: 2; }
+    .press__ext { grid-column: 3; grid-row: 1; }
+  }
+</style>

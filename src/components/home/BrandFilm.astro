@@ -1,7 +1,37 @@
+---
+import { getLocale } from '../../i18n';
+
+const t = {
+  vi: {
+    watch: 'Xem Brand Film',
+    alt: 'Những ô ruộng xanh và hàng thốt nốt tại Bảy Núi nhìn từ trên cao',
+    label: 'Brand Film',
+    title: 'Một vòng tuần hoàn, bắt đầu từ Bảy Núi.',
+    summary: 'Từ Bảy Núi, khám phá câu chuyện Hiền Nương và nông nghiệp tuần hoàn.',
+    cta: 'XEM PHIM · 02:23',
+  },
+  en: {
+    watch: 'Watch the brand film',
+    alt: 'Green rice fields and rows of palmyra palms in Bảy Núi, seen from above',
+    label: 'Brand Film',
+    title: 'A cycle that begins in Bảy Núi.',
+    summary: 'From Bảy Núi, discover the story of Hiền Nương and circular agriculture.',
+    cta: 'WATCH THE FILM · 02:23',
+  },
+  zh: {
+    watch: '观看品牌影片',
+    alt: '从高处俯瞰七山地区的绿色稻田和一排排糖棕树',
+    label: '品牌影片',
+    title: '一个循环，从七山开始。',
+    summary: '从七山出发，了解 Hiền Nương 与循环农业的故事。',
+    cta: '观看影片 · 02:23',
+  },
+}[getLocale(Astro.url)];
+---
 <div class="brand-film">
   <div class="brand-film__media">
-  <button class="brand-film__poster" type="button" aria-label="Xem Brand Film: Một vòng tuần hoàn, bắt đầu từ Bảy Núi.">
-    <img src="/images/farm/bay-nui-canh-dong.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Những ô ruộng xanh và hàng thốt nốt tại Bảy Núi nhìn từ trên cao" />
+  <button class="brand-film__poster" type="button" aria-label={`${t.watch}: ${t.title}`} data-player-title={`Hiền Nương Farm — ${t.title}`}>
+    <img src="/images/farm/bay-nui-canh-dong.webp" width="1672" height="941" loading="lazy" decoding="async" alt={t.alt} />
     <video class="brand-film__preview" data-src="/videos/brand-film-preview.mp4" autoplay muted loop playsinline preload="none" aria-hidden="true"></video>
     <span class="brand-film__play" aria-hidden="true">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 4v16l13-8z" /></svg>
@@ -9,10 +39,10 @@
   </button>
   </div>
   <div class="brand-film__intro">
-    <p class="brand-film__label">Brand Film</p>
-    <h3 class="brand-film__title">Một vòng tuần hoàn, bắt đầu từ Bảy Núi.</h3>
-    <p class="body brand-film__summary">Từ Bảy Núi, khám phá câu chuyện Hiền Nương và nông nghiệp tuần hoàn.</p>
-    <button class="brand-film__cta" type="button">XEM PHIM · 02:23</button>
+    <p class="brand-film__label">{t.label}</p>
+    <h3 class="brand-film__title">{t.title}</h3>
+    <p class="body brand-film__summary">{t.summary}</p>
+    <button class="brand-film__cta" type="button">{t.cta}</button>
   </div>
 </div>
 
@@ -63,7 +93,7 @@
       preview?.load();
       const iframe = document.createElement('iframe');
       iframe.src = 'https://www.youtube-nocookie.com/embed/V-jPu_G8fe8?autoplay=1&playsinline=1&rel=0';
-      iframe.title = 'Hiền Nương Farm — Một vòng tuần hoàn, bắt đầu từ Bảy Núi.';
+      iframe.title = poster.dataset.playerTitle ?? '';
       iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
       iframe.allowFullscreen = true;
       iframe.referrerPolicy = 'strict-origin-when-cross-origin';

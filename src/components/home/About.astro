@@ -3,31 +3,50 @@ import Photo from '../Photo.astro';
 import Arrow from '../Arrow.astro';
 import Eyebrow from '../Eyebrow.astro';
 import BrandFilm from './BrandFilm.astro';
+import { getLocale, localizePath } from '../../i18n';
 
 // 2020 and the co-founders: OWNER-VERIFIED; Bảy Núi / Tà Đảnh and the
 // circular model: VERIFIED (CONTENT_EVIDENCE_BANK.md §1–2). The HTX
 // relationship stays off the page until confirmed (§7).
+// Founding year and co-founders: OWNER-VERIFIED (CONTENT_EVIDENCE_BANK.md §1).
+// Always name them in this order: chị Châu Thị Nương, then anh Trần Phương Hiền.
+// Tà Đảnh and the by-product substrate: VERIFIED (§1–2).
+const lang = getLocale(Astro.url);
+const t = {
+  vi: {
+    eyebrow: 'Về Hiền Nương',
+    title: 'Xuất phát từ tình yêu với đất và những điều giản dị',
+    body: 'Hiền Nương Farm được thành lập năm 2020 bởi chị Châu Thị Nương và anh Trần Phương Hiền. Từ Tà Đảnh, Bảy Núi – An Giang, Hiền Nương phát triển nông nghiệp tuần hoàn, tận dụng phụ phẩm nông nghiệp để tạo nên những giá trị mới.',
+    more: 'Tìm hiểu thêm',
+    alt: 'Chị Châu Thị Nương mặc áo hồng, quàng khăn rằn, đứng giữa hai dãy kệ bịch phôi trong phòng nuôi nấm. Dòng chữ viết tay trên ảnh: “Từ tình yêu với đất, chúng tôi bắt đầu... Hiền Nương Farm.”',
+  },
+  en: {
+    eyebrow: 'About Hiền Nương',
+    title: 'Born of a love for the land and for simple things',
+    body: 'Hiền Nương Farm was founded in 2020 by Ms. Châu Thị Nương and Mr. Trần Phương Hiền. From Tà Đảnh, in the Bảy Núi region of An Giang, Hiền Nương practises circular agriculture, making use of agricultural by-products to create new value.',
+    more: 'Learn more',
+    alt: 'Ms. Châu Thị Nương, in a pink shirt and a checked khăn rằn scarf, standing between two rows of shelves of spawn bags in a mushroom growing room. Handwritten on the photo, in Vietnamese: “From our love for the land, we began... Hiền Nương Farm.”',
+  },
+  zh: {
+    eyebrow: '关于 Hiền Nương',
+    title: '源于对土地与质朴事物的热爱',
+    body: 'Hiền Nương Farm 由 Châu Thị Nương 女士和 Trần Phương Hiền 先生于 2020 年创立。从安江省七山地区的 Tà Đảnh 出发，Hiền Nương 发展循环农业，利用农业副产品创造新的价值。',
+    more: '了解更多',
+    alt: 'Châu Thị Nương 女士身穿粉色上衣，围着格子头巾，站在菇房内两排菌袋架之间。照片上的越南语手写字：“出于对土地的热爱，我们开始了…… Hiền Nương Farm。”',
+  },
+}[lang];
 ---
 <section class="section about" id="ve-hien-nuong" aria-labelledby="about-title">
   <div class="container">
-    <Eyebrow num="01" class="about__eyebrow">Về Hiền Nương</Eyebrow>
+    <Eyebrow num="01" class="about__eyebrow">{t.eyebrow}</Eyebrow>
 
     <div class="grid about__grid">
       <BrandFilm />
       <div class="about__text" data-reveal>
-        <h2 class="h2 about__title" id="about-title">
-          Xuất phát từ tình yêu với đất và những điều giản dị
-        </h2>
-        <!-- Founding year and co-founders: OWNER-VERIFIED (CONTENT_EVIDENCE_BANK.md §1).
-             Always name them in this order: chị Châu Thị Nương, then anh Trần Phương Hiền.
-             Tà Đảnh and the by-product substrate: VERIFIED (§1–2). -->
-        <p class="body about__body">
-          Hiền Nương Farm được thành lập năm 2020 bởi chị Châu Thị Nương và anh Trần Phương Hiền.
-          Từ Tà Đảnh, Bảy Núi – An Giang, Hiền Nương phát triển nông nghiệp tuần hoàn,
-          tận dụng phụ phẩm nông nghiệp để tạo nên những giá trị mới.
-        </p>
+        <h2 class="h2 about__title" id="about-title">{t.title}</h2>
+        <p class="body about__body">{t.body}</p>
         <!-- Temporary section destination until the introduction page exists. -->
-        <a class="link-arrow about__more" href="/#ve-hien-nuong">Tìm hiểu thêm <Arrow /></a>
+        <a class="link-arrow about__more" href={localizePath('/#ve-hien-nuong', lang)}>{t.more} <Arrow /></a>
       </div>
 
       <figure class="about__figure" data-reveal style="--reveal-delay: 120ms">
@@ -42,7 +61,7 @@ import BrandFilm from './BrandFilm.astro';
           height={1086}
           ratio="1 / 1"
           position="0% 50%"
-          alt="Chị Châu Thị Nương mặc áo hồng, quàng khăn rằn, đứng giữa hai dãy kệ bịch phôi trong phòng nuôi nấm. Dòng chữ viết tay trên ảnh: “Từ tình yêu với đất, chúng tôi bắt đầu... Hiền Nương Farm.”"
+          alt={t.alt}
         />
       </figure>
     </div>

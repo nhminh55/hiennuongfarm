@@ -1,0 +1,8 @@
+---
+// English and Chinese homepage (/en/, /zh/): the same page, with copy chosen by the URL.
+import Page from '../index.astro';
+import { langStaticPaths } from '../../i18n';
+
+export const getStaticPaths = langStaticPaths;
+---
+<Page />
