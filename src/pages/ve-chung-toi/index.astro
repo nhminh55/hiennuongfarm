@@ -15,7 +15,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/page/Breadcrumb.astro';
 import Eyebrow from '../../components/Eyebrow.astro';
 import Arrow from '../../components/Arrow.astro';
-import { showDrafts } from '../../data/drafts';
 import { aboutCopy, chapterMedia, peaksSource } from '../../data/about';
 import { getLocale, localizePath, pageHref } from '../../i18n';
 
@@ -23,10 +22,10 @@ const lang = getLocale(Astro.url);
 const t = aboutCopy[lang];
 
 // The circular agriculture page is Vietnamese only for now; other
-// languages go to the homepage section. Contact: the homepage section
-// until the cooperation page is published.
+// languages go to the homepage section. Contact: the cooperation page's
+// contact section (Vietnamese only; the homepage section elsewhere).
 const circularHref = pageHref('/nong-nghiep-tuan-hoan/', lang, '/#tuan-hoan');
-const contactHref = showDrafts && lang === 'vi' ? '/hop-tac/#lien-he' : localizePath('/#hop-tac', lang);
+const contactHref = pageHref('/hop-tac/#lien-he', lang, '/#hop-tac');
 
 const chapters = chapterMedia.map((media, i) => ({ ...media, ...t.chapters[i] }));
 

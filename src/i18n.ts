@@ -32,8 +32,11 @@ export const localizePath = (href: string, locale: Locale) =>
 /** getStaticPaths for the src/pages/[lang]/ routes. */
 export const langStaticPaths = () => prefixedLocales.map((lang) => ({ params: { lang } }));
 
-/** Published pages with Vietnamese copy only: no /en/ or /zh/ route yet. */
-export const viOnlyPaths = ['/hop-tac/'];
+/**
+ * Published pages with Vietnamese copy only: no /en/ or /zh/ route yet.
+ * The /dau-an/ pages are placeholders (src/data/drafts.ts).
+ */
+export const viOnlyPaths = ['/hop-tac/', '/dau-an/', '/dau-an/giai-thuong/', '/dau-an/chung-nhan/', '/dau-an/bao-chi/'];
 
 /** Whether a page (a path without its language prefix) exists in every language. */
 export const isTranslated = (path: string) => !viOnlyPaths.includes(path.replace(/#.*/, ''));

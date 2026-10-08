@@ -1,20 +1,18 @@
 /**
- * Page scaffold for local review (docs/SITEMAP.md §2 and §5).
+ * Placeholder pages for Dấu ấn (docs/SITEMAP.md §2 and §5), built by
+ * src/pages/[...draft].astro, and the header dropdowns (§4).
  *
- * These pages hold placeholders only and must not be published. They are
- * built by src/pages/[...draft].astro, and the header dropdowns that link to
- * them render, only when `showDrafts` is true: under `astro dev`, or a build
- * run with HN_DRAFTS=1 (local QA only). A production build produces neither,
- * so the published site and /sitemap.xml are unchanged.
+ * The placeholder pages are live at the owner's request (2026-10-09) so the
+ * Dấu ấn dropdown has destinations. They hold no company facts, stay out of
+ * search engines (noindex) and /sitemap.xml, and exist in Vietnamese only
+ * (`viOnlyPaths` in src/i18n.ts).
  *
- * Vietnamese only: no translations exist for this structure yet.
- *
- * To publish a page: give it its own file in src/pages/, write approved copy,
- * add the en/zh routes, remove it from `draftPages`, and add it to
- * src/pages/sitemap.xml.ts.
+ * To finish a page: give it its own file in src/pages/, write approved copy,
+ * add the en/zh routes, remove it from `draftPages` and `viOnlyPaths`, and
+ * add it to src/pages/sitemap.xml.ts.
  */
 
-export const showDrafts = import.meta.env.DEV || import.meta.env.HN_DRAFTS === '1';
+import type { Locale } from '../i18n';
 
 /** Marks copy that is still being written. */
 export const pendingCopy = 'Nội dung đang biên soạn';
@@ -162,28 +160,28 @@ export const draftPages: DraftPage[] = [
 
 /**
  * Header dropdowns (docs/SITEMAP.md §4), keyed by the header link's homepage
- * anchor. Shown only with `showDrafts`, on Vietnamese pages.
+ * anchor. Links to Vietnamese-only pages open the Vietnamese page.
  */
-export const navDropdowns: Record<string, DraftLink[]> = {
+export const navDropdowns: Record<string, { label: Record<Locale, string>; href: string }[]> = {
   '/#ve-hien-nuong': [
-    { label: 'Câu chuyện Hiền Nương', href: '/ve-chung-toi/' },
-    { label: 'Người sáng lập', href: '/ve-chung-toi/#cau-chuyen' },
-    { label: 'Vùng Bảy Núi', href: '/ve-chung-toi/#bay-nui' },
+    { label: { vi: 'Câu chuyện Hiền Nương', en: 'The Hiền Nương story', zh: 'Hiền Nương 的故事' }, href: '/ve-chung-toi/' },
+    { label: { vi: 'Người sáng lập', en: 'The founders', zh: '创始人' }, href: '/ve-chung-toi/#cau-chuyen' },
+    { label: { vi: 'Vùng Bảy Núi', en: 'The Bảy Núi region', zh: '七山地区' }, href: '/ve-chung-toi/#bay-nui' },
   ],
   '/#tuan-hoan': [
-    { label: 'Tổng quan mô hình', href: '/nong-nghiep-tuan-hoan/' },
-    { label: 'Vòng tuần hoàn tại farm', href: '/nong-nghiep-tuan-hoan/#vong-tuan-hoan' },
-    { label: 'Năng lượng mặt trời', href: '/nong-nghiep-tuan-hoan/#nang-luong-mat-troi' },
+    { label: { vi: 'Tổng quan mô hình', en: 'Model overview', zh: '模式概览' }, href: '/nong-nghiep-tuan-hoan/' },
+    { label: { vi: 'Vòng tuần hoàn tại farm', en: 'The cycle on the farm', zh: '农场里的循环' }, href: '/nong-nghiep-tuan-hoan/#vong-tuan-hoan' },
+    { label: { vi: 'Năng lượng mặt trời', en: 'Solar energy', zh: '太阳能' }, href: '/nong-nghiep-tuan-hoan/#nang-luong-mat-troi' },
   ],
-  '/#san-vat': [{ label: 'Tất cả sản phẩm', href: '/san-pham/' }],
+  '/#san-vat': [{ label: { vi: 'Tất cả sản phẩm', en: 'All products', zh: '全部产品' }, href: '/san-pham/' }],
   '/#dau-an': [
-    { label: 'Tổng quan Dấu ấn', href: '/dau-an/' },
-    { label: 'Giải thưởng & ghi nhận', href: '/dau-an/giai-thuong/' },
-    { label: 'Chứng nhận sản phẩm', href: '/dau-an/chung-nhan/' },
-    { label: 'Báo chí & Truyền thông', href: '/dau-an/bao-chi/' },
+    { label: { vi: 'Tổng quan Dấu ấn', en: 'Overview', zh: '概览' }, href: '/dau-an/' },
+    { label: { vi: 'Giải thưởng & ghi nhận', en: 'Awards & recognition', zh: '奖项与认可' }, href: '/dau-an/giai-thuong/' },
+    { label: { vi: 'Chứng nhận sản phẩm', en: 'Product certifications', zh: '产品认证' }, href: '/dau-an/chung-nhan/' },
+    { label: { vi: 'Báo chí & Truyền thông', en: 'Press & media', zh: '新闻与媒体' }, href: '/dau-an/bao-chi/' },
   ],
   '/#hop-tac': [
-    { label: 'Thông tin hợp tác', href: '/hop-tac/' },
-    { label: 'Liên hệ', href: '/hop-tac/#lien-he' },
+    { label: { vi: 'Thông tin hợp tác', en: 'Partnership information', zh: '合作信息' }, href: '/hop-tac/' },
+    { label: { vi: 'Liên hệ', en: 'Contact', zh: '联系我们' }, href: '/hop-tac/#lien-he' },
   ],
 };

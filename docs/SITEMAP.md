@@ -21,10 +21,10 @@ Status vocabulary: Needs verification / Planned / In progress / Implemented / Pu
 | 1 | Nông nghiệp tuần hoàn | /nong-nghiep-tuan-hoan/ | Published — VI, EN, ZH (2026-10-08) |
 | 1 | Sản phẩm | /san-pham/ | Published — verified through navbar |
 | 2 | Individual product details | /san-pham/{slug}/ | Planned — check catalogue and existing routes |
-| 1 | Dấu ấn | /dau-an/ | Needs verification |
-| 2 | Giải thưởng & ghi nhận | /dau-an/giai-thuong/ | Needs verification |
-| 2 | Chứng nhận sản phẩm | /dau-an/chung-nhan/ | Needs verification |
-| 2 | Báo chí & truyền hình | /dau-an/bao-chi/ | Needs verification |
+| 1 | Dấu ấn | /dau-an/ | Live placeholder — VI only, noindex (2026-10-09) |
+| 2 | Giải thưởng & ghi nhận | /dau-an/giai-thuong/ | Live placeholder — VI only, noindex (2026-10-09) |
+| 2 | Chứng nhận sản phẩm | /dau-an/chung-nhan/ | Live placeholder — VI only, noindex (2026-10-09) |
+| 2 | Báo chí & truyền hình | /dau-an/bao-chi/ | Live placeholder — VI only, noindex (2026-10-09) |
 | 1 | Hợp tác & liên hệ | /hop-tac/ | Needs verification |
 
 Bảy Núi is a section within About, not a separate page at this stage.
@@ -40,7 +40,7 @@ Preserve homepage content, section order, and existing links unless a separate c
 | --- | --- | --- |
 | Về Hiền Nương | ve-hien-nuong | /#ve-hien-nuong |
 | Nông nghiệp tuần hoàn | tuan-hoan | /#tuan-hoan |
-| Sản phẩm | san-vat | /san-pham/ |
+| Sản phẩm | san-vat | /#san-vat |
 | Dấu ấn | dau-an | /#dau-an |
 | Hợp tác | hop-tac | /#hop-tac |
 
@@ -49,7 +49,7 @@ Additional verified anchors: #top (back to top), #main (skip to main content).
 Vùng Bảy Núi is no longer a navbar item (changed 2026-10-08). The homepage section keeps its position and ID #bay-nui, has no section number, and stays reachable from the hero section navigation. Homepage section numbers: 01 Về Hiền Nương, 02 Nông nghiệp tuần hoàn, 03 Sản phẩm, 04 Dấu ấn, 05 Hợp tác.
 Its “Câu chuyện Hiền Nương” link targets the story's Bảy Núi chapter, /ve-chung-toi/#bay-nui (/en/… and /zh/… in those languages).
 
-The live Sản phẩm navbar link opens /san-pham/, while hero section navigation targets #san-vat. Under the agreed new behavior, the navbar label will target #san-vat; its “Tất cả sản phẩm” dropdown link will open /san-pham/. This is an intentional planned change, not current behavior.
+The Sản phẩm navbar label targets #san-vat, like hero section navigation; its “Tất cả sản phẩm” dropdown link opens /san-pham/ (live 2026-10-09).
 Keep homepage ID #san-vat; do not rename it to #san-pham.
 All child-page anchors below remain proposed and unverified.
 
@@ -84,7 +84,7 @@ Do not rename “Về Hiền Nương” to “Về chúng tôi” or shorten “
 | Hợp tác | Liên hệ | /hop-tac/#lien-he |
 
 - Clicking a navbar label navigates to its homepage anchor. From child pages use the corresponding /#ve-hien-nuong, /#tuan-hoan, /#san-vat, /#dau-an, or /#hop-tac.
-- Until the dropdowns are published, the “Về Hiền Nương” label opens /ve-chung-toi/ directly, in every language.
+- Dropdowns are live in Vietnamese, English and Chinese (2026-10-09; labels in src/data/drafts.ts). Links to Vietnamese-only pages (Hợp tác, Dấu ấn) open the Vietnamese page; the Contact button opens /hop-tac/#lien-he in Vietnamese and the homepage #hop-tac section elsewhere.
 - On desktop with a mouse, hover opens the dropdown.
 - A separate chevron button toggles each dropdown on desktop and mobile. Keep this button separate from the anchor link.
 - On mobile, clicking a label closes navigation and goes to its homepage section; clicking a chevron only toggles its submenu.
@@ -92,7 +92,7 @@ Do not rename “Về Hiền Nương” to “Về chúng tôi” or shorten “
 - Do not add a separate “Khám phá” menu. Bảy Núi appears once, as the About dropdown item “Vùng Bảy Núi”.
 - Dropdowns do not need equal link counts. Products currently only has “Tất cả sản phẩm”.
 - Show a chevron only when at least one dropdown destination is available.
-- Do not enable links to missing pages or anchors, or create empty pages to fill navigation.
+- Do not enable links to missing pages or anchors, or create empty pages to fill navigation. Exception: the owner asked for the Dấu ấn placeholder pages to go live (2026-10-09); they stay noindex and out of /sitemap.xml until their copy is written.
 - Moving the pointer into a dropdown must not close it.
 - Support Tab, Enter/Space on buttons, aria-expanded, aria-controls, Escape, outside-click dismissal, and visible focus.
 - Ordinary navigation link lists are sufficient. Do not use role="menu" without its full keyboard interaction model.
