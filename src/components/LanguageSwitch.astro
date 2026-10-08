@@ -1,6 +1,7 @@
 ---
 // "VI | EN | CH": the current page in each language.
 import { getLocale, languages, locales, localizePath, stripLocale } from '../i18n';
+import { draftPages, showDrafts } from '../data/drafts';
 
 interface Props {
   class?: string;
@@ -10,11 +11,21 @@ const { class: className } = Astro.props;
 const lang = getLocale(Astro.url);
 const path = stripLocale(Astro.url.pathname);
 const label = { vi: 'Ngôn ngữ', en: 'Language', zh: '语言' }[lang];
+// Review scaffold pages (src/data/drafts.ts) exist in Vietnamese only.
+const untranslated = showDrafts && draftPages.some((page) => page.path === path);
 ---
 <nav class:list={['lang-switch', className]} aria-label={label}>
   {locales.map((code, i) => (
     <>
       {i > 0 && <span class="lang-switch__sep" aria-hidden="true">|</span>}
+      {untranslated && code !== lang ? (
+        <span
+          class="lang-switch__link lang-switch__link--off"
+          lang={languages[code].htmlLang}
+          aria-disabled="true"
+          aria-label={`${languages[code].name} — chưa có bản dịch`}
+        >{languages[code].label}</span>
+      ) : (
       <a
         class="lang-switch__link"
         href={localizePath(path, code)}
@@ -23,6 +34,7 @@ const label = { vi: 'Ngôn ngữ', en: 'Language', zh: '语言' }[lang];
         aria-label={languages[code].name}
         aria-current={code === lang ? 'true' : undefined}
       >{languages[code].label}</a>
+      )}
     </>
   ))}
 </nav>
@@ -54,6 +66,9 @@ const label = { vi: 'Ngôn ngữ', en: 'Language', zh: '语言' }[lang];
     text-decoration-thickness: 1px;
     text-underline-offset: 0.35em;
   }
+
+  .lang-switch__link--off { opacity: 0.3; cursor: default; }
+  .lang-switch__link--off:hover { opacity: 0.3; }
 
   .lang-switch__sep { opacity: 0.35; }
 </style>

@@ -1,0 +1,344 @@
+---
+/**
+ * Scaffold page for local review (see src/data/drafts.ts): the shared
+ * secondary-page opening, an in-page section index, and one placeholder
+ * section per planned section in docs/SITEMAP.md. Image slots use the
+ * labelled "Ảnh tạm" placeholder at the intended aspect ratio.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIntro from '../page/PageIntro.astro';
+import Photo from '../Photo.astro';
+import Eyebrow from '../Eyebrow.astro';
+import Arrow from '../Arrow.astro';
+import { contact } from '../../data/site';
+import { pendingCopy, type DraftPage } from '../../data/drafts';
+
+interface Props {
+  page: DraftPage;
+}
+
+const { page } = Astro.props;
+const num = (i: number) => String(i + 1).padStart(2, '0');
+const crumbs = [
+  { label: 'Trang chủ', href: '/' },
+  ...(page.parents ?? []),
+  { label: page.title },
+];
+---
+<BaseLayout title={page.title} description={pendingCopy} noindex>
+  <PageIntro eyebrow={page.eyebrow} title={page.title} crumbs={crumbs}>
+    <p class="tbd">{pendingCopy} — đoạn giới thiệu ngắn.</p>
+
+    <nav slot="foot" aria-label="Các phần trong trang">
+      <ol class="draft-index">
+        {page.sections.map((s, i) => (
+          <li>
+            <a class="draft-index__link" href={`#${s.id}`}>
+              <span class="draft-index__num">{num(i)}</span>
+              <span>{s.title}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  </PageIntro>
+
+  {page.sections.map((s, i) => {
+    const image = s.images?.[0];
+    return (
+      <section
+        class:list={['draft', `draft--${s.layout}`, { 'draft--flip': i % 2 === 1, 'draft--with-image': !!image }]}
+        id={s.id}
+        aria-labelledby={`${s.id}-title`}
+      >
+        <div class="container grid draft__grid">
+          <div class="draft__text" data-reveal>
+            <Eyebrow num={num(i)}>{page.title}</Eyebrow>
+            <h2 class="h2 draft__title" id={`${s.id}-title`}>{s.title}</h2>
+            <p class="tbd draft__pending">{pendingCopy}</p>
+            {s.note && <p class="small draft__note">{s.note}</p>}
+            {s.links && (
+              <ul class="draft__links">
+                {s.links.map((l) => (
+                  <li><a class="link-arrow" href={l.href}>{l.label} <Arrow /></a></li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {(s.layout === 'split' || s.layout === 'wide') && image && (
+            <Photo class="draft__photo" ratio={image.ratio} tone={image.tone} alt={image.brief} brief={image.brief} />
+          )}
+
+          {s.layout === 'gallery' && (
+            <ul class="draft__gallery" style={`--count: ${s.images?.length ?? 1}`}>
+              {s.images?.map((img, k) => (
+                <li data-reveal style={`--reveal-delay: ${k * 100}ms`}>
+                  <Photo ratio={img.ratio} tone={img.tone} alt={img.brief} brief={img.brief} />
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {s.layout === 'records' && (
+            <>
+              {image && <Photo class="draft__photo" ratio={image.ratio} tone={image.tone} alt={image.brief} brief={image.brief} />}
+              <ol class="draft__records">
+                {Array.from({ length: s.count ?? 1 }, (_, k) => (
+                  <li class="record" data-reveal style={`--reveal-delay: ${k * 80}ms`}>
+                    <span class="record__num">{num(k)}</span>
+                    <dl class="record__fields">
+                      {s.fields?.map((f) => (
+                        <div>
+                          <dt>{f}</dt>
+                          <dd class="tbd">—</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </li>
+                ))}
+              </ol>
+            </>
+          )}
+
+          {s.layout === 'entries' && (
+            <ul class="draft__entries">
+              {s.entries?.map((e, k) => (
+                <li data-reveal style={`--reveal-delay: ${k * 100}ms`}>
+                  <a class="entry" href={e.href}>
+                    <Photo ratio={e.image.ratio} tone={e.image.tone} alt={e.image.brief} brief={e.image.brief} />
+                    <span class="entry__label">
+                      <span class="h3">{e.label}</span>
+                      <Arrow />
+                    </span>
+                    <span class="tbd">{pendingCopy}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {s.layout === 'facilities' && (
+            <>
+              {image && <Photo class="draft__photo" ratio={image.ratio} tone={image.tone} alt={image.brief} brief={image.brief} />}
+              <ul class="draft__facilities">
+                {contact.locations.map((loc) => (
+                  <li class="facility" data-reveal>
+                    <h3 class="h3">{loc.name.vi}</h3>
+                    <p class="body">{loc.address.vi}</p>
+                    <p class="tbd">Chức năng cơ sở: {pendingCopy}</p>
+                    <a class="link-arrow" href={loc.mapUrl} target="_blank" rel="noopener">Chỉ đường <Arrow /></a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+
+          {s.layout === 'contact' && (
+            <dl class="draft__contact" data-reveal>
+              <div>
+                <dt>Email</dt>
+                <dd><a href={`mailto:${contact.email}`}>{contact.email}</a></dd>
+              </div>
+              <div>
+                <dt>Điện thoại</dt>
+                <dd>
+                  <a href={`tel:${contact.phone}`}>{contact.phoneDisplay}</a>
+                  <a href={`tel:${contact.phone2}`}>{contact.phone2Display}</a>
+                </dd>
+              </div>
+            </dl>
+          )}
+        </div>
+      </section>
+    );
+  })}
+</BaseLayout>
+
+<style>
+  /* In-page index ------------------------------------------------------- */
+
+  .draft-index {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0 var(--col-gap);
+  }
+
+  .draft-index__link {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    min-height: 2.75rem;
+    padding-block: 0.625rem;
+    font-size: var(--fs-small);
+    transition: color 300ms var(--ease);
+  }
+  .draft-index__link:hover { color: var(--color-earth); }
+
+  .draft-index__num,
+  .record__num {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: var(--color-earth);
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (min-width: 640px) {
+    .draft-index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (min-width: 1024px) {
+    .draft-index { grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); }
+  }
+
+  /* Sections ------------------------------------------------------------ */
+
+  .draft {
+    padding-block: var(--space-3xl);
+    border-top: 1px solid var(--color-line);
+  }
+  .draft:nth-of-type(even) { background: var(--color-cream); }
+
+  .draft__grid { row-gap: var(--space-xl); }
+
+  .draft__grid > :global(*) { grid-column: 1 / -1; }
+
+  .draft__title { margin-top: var(--space-l); max-width: 18ch; }
+  .draft__pending { margin-top: var(--space-m); }
+  .draft__note { margin-top: var(--space-2xs); max-width: 30rem; color: var(--color-text-muted); }
+
+  .draft__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s) var(--space-l);
+    margin-top: var(--space-l);
+  }
+
+  /* Split: text beside one image, sides alternating. */
+  @media (min-width: 1024px) {
+    .draft--split .draft__text { grid-column: 1 / span 5; align-self: center; }
+    .draft--split > .draft__grid > :global(.draft__photo) { grid-column: 7 / span 6; }
+
+    .draft--split.draft--flip .draft__text { grid-column: 8 / span 5; grid-row: 1; }
+    .draft--split.draft--flip > .draft__grid > :global(.draft__photo) { grid-column: 1 / span 6; grid-row: 1; }
+  }
+
+  /* Gallery: a row of images. */
+  .draft__gallery {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--col-gap);
+  }
+  @media (min-width: 768px) {
+    .draft__gallery { grid-template-columns: repeat(var(--count), minmax(0, 1fr)); }
+  }
+
+  /* Records: empty evidence entries, each listing the fields it needs. */
+  .draft__records { border-top: 1px solid var(--color-line); }
+
+  .record {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    gap: var(--space-s);
+    padding-block: var(--space-m);
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .record__fields {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-xs) var(--col-gap);
+    margin: 0;
+  }
+  .record__fields dt {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+  .record__fields dd { margin: 0.125rem 0 0; }
+
+  @media (min-width: 640px) {
+    .record__fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (min-width: 1024px) {
+    .draft--records .draft__text { grid-column: 1 / span 7; }
+    .draft--records.draft--with-image > .draft__grid > :global(.draft__photo) { grid-column: 1 / span 4; align-self: start; }
+    .draft--records.draft--with-image .draft__records { grid-column: 6 / span 7; }
+    .record__fields { grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); }
+  }
+
+  /* Entries: links to child pages. */
+  .draft__entries {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-xl) var(--col-gap);
+  }
+  @media (min-width: 768px) {
+    .draft__entries { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  .entry { display: grid; gap: var(--space-s); }
+  .entry__label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-s);
+    padding-top: var(--space-2xs);
+  }
+  .entry:hover .entry__label { color: var(--color-earth); }
+  .entry:hover :global(.arrow) { transform: translateX(4px); }
+
+  /* Facilities: one map, the two sites beside it. */
+  .draft__facilities { display: grid; gap: var(--space-l); }
+
+  .facility {
+    display: grid;
+    gap: var(--space-2xs);
+    justify-items: start;
+    padding-top: var(--space-m);
+    border-top: 1px solid var(--color-line);
+  }
+  .facility .link-arrow { margin-top: var(--space-s); }
+
+  @media (min-width: 1024px) {
+    .draft--facilities > .draft__grid > :global(.draft__photo) { grid-column: 1 / span 7; }
+    .draft__facilities { grid-column: 9 / span 4; align-content: start; }
+  }
+
+  /* Contact channels. */
+  .draft__contact {
+    display: grid;
+    gap: var(--space-m) var(--col-gap);
+    margin: 0;
+  }
+  .draft__contact dt {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+  .draft__contact dd {
+    display: grid;
+    justify-items: start;
+    margin: 0.25rem 0 0;
+    font-family: var(--font-display);
+    font-size: var(--fs-lead);
+  }
+  .draft__contact a {
+    padding-block: 0.25rem;
+    border-bottom: 1px solid transparent;
+    transition: border-color 300ms var(--ease);
+  }
+  .draft__contact a:hover { border-color: currentColor; }
+
+  @media (min-width: 768px) {
+    .draft__contact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (min-width: 1024px) {
+    .draft--contact .draft__text { grid-column: 1 / span 5; }
+    .draft__contact { grid-column: 7 / span 6; align-self: end; }
+  }
+</style>

@@ -10,10 +10,12 @@ interface Props {
   description?: string;
   /** Transparent header over a full-bleed hero. */
   overlayHeader?: boolean;
+  /** Keep the page out of search engines (unpublished scaffold pages). */
+  noindex?: boolean;
 }
 
 const lang = getLocale(Astro.url);
-const { title, description = site.description[lang], overlayHeader = false } = Astro.props;
+const { title, description = site.description[lang], overlayHeader = false, noindex = false } = Astro.props;
 const pageTitle = title ? `${title} — ${site.name}` : site.name;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 // The same page in every language, for search engines.
@@ -28,9 +30,10 @@ const skipLabel = { vi: 'Bỏ qua đến nội dung chính', en: 'Skip to main c
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonical} />
-    {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
-    <link rel="alternate" hreflang="x-default" href={alternates[0].href} />
+    {!noindex && alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
+    {!noindex && <link rel="alternate" hreflang="x-default" href={alternates[0].href} />}
     <link rel="icon" type="image/png" href="/fav.png" />
     <meta name="theme-color" content="#173D2D" />
 

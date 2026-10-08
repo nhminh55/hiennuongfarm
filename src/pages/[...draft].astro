@@ -1,0 +1,16 @@
+---
+/**
+ * Scaffold pages for local review (src/data/drafts.ts). Generated only when
+ * drafts are shown, so a production build contains none of them.
+ */
+import DraftPage from '../components/draft/DraftPage.astro';
+import { draftPages, showDrafts } from '../data/drafts';
+
+export const getStaticPaths = () =>
+  showDrafts
+    ? draftPages.map((page) => ({ params: { draft: page.path.slice(1, -1) }, props: { page } }))
+    : [];
+
+const { page } = Astro.props;
+---
+<DraftPage page={page} />
