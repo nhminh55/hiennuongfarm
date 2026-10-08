@@ -50,9 +50,12 @@ export const contact = {
     en: ['Khóm Thới Thuận, Phường Thới Sơn', 'An Giang Province, Vietnam'],
     zh: ['Khóm Thới Thuận, Phường Thới Sơn', '越南安江省'],
   } satisfies Record<Locale, string[]>,
+  mapUrl: 'https://maps.app.goo.gl/x9ZQNXxzfZaVnP6X8',
   email: 'contact@hiennuongfarm.vn',
   phone: '+84985799777',
   phoneDisplay: '+84 985 799 777',
+  phone2: '+84988799777',
+  phone2Display: '+84 988 799 777',
 };
 
 // Owner-provided household business registration, shown as-is in every language.

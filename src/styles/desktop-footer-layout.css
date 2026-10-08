@@ -124,3 +124,13 @@
     :root .site-footer.site-footer .site-footer__top { column-gap: var(--col-gap); }
     :root .site-footer.site-footer .site-footer__col--social { grid-column: 1 / -1; }
   }
+
+/* The address is a map link but keeps its two-line block and stays after email and phone. */
+:root .site-footer.site-footer .site-footer__col--contact a.site-footer__address { display: flex; align-items: flex-start; gap: 0.5rem; order: 0; min-height: 0; line-height: 1.5; }
+/* Contact icons: email, phone and the map pin, which is centred on the address's first line (1.5em line box). */
+:root .site-footer.site-footer .site-footer__col--contact address a { gap: 0.5rem; }
+:root .site-footer.site-footer .site-footer__col--contact address svg { flex: none; width: 1em; height: 1em; }
+:root .site-footer.site-footer .site-footer__address svg { margin-top: 0.25em; }
+/* Both phone numbers share one line and one icon, ordered with the other links. */
+:root .site-footer.site-footer .site-footer__phones { display: flex; align-items: center; gap: 0.5rem; order: -1; }
+:root .site-footer.site-footer .site-footer__col--contact .site-footer__phones a { order: 0; }
