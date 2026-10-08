@@ -1,0 +1,26 @@
+---
+import AudioControls from './AudioControls.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/farm-play.css';
+interface Props {title:string; intro:string; activity?:string; duration?:string;}
+const {title,intro,activity,duration} = Astro.props;
+const activities = [{slug:'mot-vong-nong-trai',name:'Một vòng nông trại'},{slug:'hom-nay-an-nam-gi',name:'Hôm nay ăn nấm gì?'},{slug:'ban-hieu-nam-toi-dau',name:'Bạn hiểu nấm tới đâu?'}];
+---
+<BaseLayout title={title} description={intro}>
+ <div class="farm-play">
+  <div class="play-container">
+   <nav class="play-breadcrumb" aria-label="Đường dẫn"><a href="/">Trang chủ</a><span aria-hidden="true">/</span>{activity ? <a href="/choi-cung-nong-trai/">Chơi cùng nông trại</a> : <span>Chơi cùng nông trại</span>}</nav>
+   <header class:list={['play-heading',{'play-heading--collection':!activity}]}>
+    <p class="play-eyebrow">{activity ? 'Chơi cùng nông trại' : 'Một chút chơi, một chút khám phá'}</p>
+    <h1>{title}</h1><p class="play-intro">{intro}</p>
+    {duration && <p class="play-meta">{duration} · Không cần đăng nhập</p>}
+   </header>
+   {activity && <AudioControls />}
+   <slot />
+   <nav class="play-related" aria-label="Các hoạt động khác">
+    <a href="/choi-cung-nong-trai/">Tất cả hoạt động</a>
+    {activities.filter(a=>a.slug!==activity).map(a=><a href={'/choi-cung-nong-trai/'+a.slug+'/'}>{a.name}</a>)}
+   </nav>
+  </div>
+ </div>
+</BaseLayout>

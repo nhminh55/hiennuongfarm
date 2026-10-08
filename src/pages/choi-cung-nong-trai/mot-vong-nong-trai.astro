@@ -1,0 +1,19 @@
+---
+import PlayLayout from '../../components/farm-play/PlayLayout.astro';
+import {cycle} from '../../data/farm-play/cycle.mjs';
+---
+<PlayLayout title="Một vòng nông trại" intro="Ghép những bước nhỏ, tiếp nối một vòng giá trị." activity="mot-vong-nong-trai" duration="Khoảng 2–3 phút">
+ <section class="farm-game" data-farm-game aria-label="Ghép vòng tuần hoàn">
+  <div class="farm-board">
+   <div class="farm-scene"><img src="/images/farm-play/farm.webp" alt="Minh họa năm khu vực của một nông trại: kho phụ phẩm, khu chuẩn bị giá thể, nhà nấm, khu trùn và vườn cây." width="1536" height="1024" fetchpriority="high" />
+    <div class="farm-destinations">{cycle.map((step,i)=><button class={'farm-destination destination-'+i} data-destination={step.id} aria-label={'Bước '+(i+1)+': '+step.place}><span class="destination-number">{i+1}</span><span class="destination-name">{step.place}</span><span class="destination-check" hidden>Đã ghép</span></button>)}</div>
+   </div>
+   <aside class="farm-guide"><p class="play-eyebrow">Năm bước, một vòng</p><h2>Mỗi thứ<br/>đều có ích.</h2><p>Chọn một mảnh bên dưới, rồi chọn khu vực phù hợp. Bạn cũng có thể kéo và thả mảnh ghép.</p><p class="farm-progress" data-progress>0 / 5 bước</p><progress max="5" value="0" aria-label="Số bước đã ghép"></progress><div class="play-actions"><button class="play-button" data-hint disabled>Gợi ý</button><button class="play-button play-button--outline" data-reset disabled>Chơi lại</button></div></aside>
+  </div>
+  <div class="farm-pieces" aria-label="Chọn mảnh ghép">{[cycle[2],cycle[4],cycle[0],cycle[3],cycle[1]].map(step=><button class="farm-piece" data-piece={step.id} draggable="true" aria-pressed="false"><img src={step.image} alt="" width="128" height="128"/><span>{step.name}</span></button>)}</div>
+  <p class="play-feedback" data-feedback role="status" aria-live="polite">Bắt đầu từ một mảnh bạn thích. Mỗi số là một bước trong vòng tuần hoàn.</p>
+  <div class="farm-complete" data-complete hidden><p class="play-eyebrow">Đã ghép đủ 5 bước</p><h2>Một vòng nhỏ, nhiều giá trị.</h2><p>Bạn đã nối phụ phẩm, nấm, trùn quế và cây trồng thành một vòng tuần hoàn.</p><a class="play-link" href="/nong-nghiep-tuan-hoan/">Khám phá câu chuyện thật tại trang trại</a></div>
+  <noscript><p class="play-note">Bật JavaScript để ghép mảnh. Bạn vẫn có thể <a class="play-link" href="/nong-nghiep-tuan-hoan/">đọc năm bước của vòng tuần hoàn</a>.</p></noscript>
+ </section>
+ <script>import '../../scripts/farm-play/farm.js';</script>
+</PlayLayout>
