@@ -1,0 +1,1125 @@
+---
+/**
+ * /nong-nghiep-tuan-hoan/: the farm's circular model.
+ *
+ * Vietnamese only (no /en/ or /zh/ route; see `viOnlyPaths` in src/i18n.ts).
+ * Step copy: owner-approved brief for this page. Solar copy:
+ * docs/HIEN_NUONG_ABOUT_VI.md §04. Product and closing lines reuse the
+ * published /san-pham/ and /ve-chung-toi/ wording.
+ *
+ * The cycle is a wheel of five steps. Choosing a step turns the wheel the
+ * short way round until that step sits at about 2 o'clock, beside its
+ * explanation; the steps travel round the circle but stay upright, and the
+ * arrows between them are redrawn each frame so they never cross a label.
+ * Without script the five explanations are listed in order.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/page/Breadcrumb.astro';
+import CtaBand from '../../components/page/CtaBand.astro';
+import Eyebrow from '../../components/Eyebrow.astro';
+import Arrow from '../../components/Arrow.astro';
+import { showDrafts } from '../../data/drafts';
+
+// The cooperation page is still a review scaffold; published, the link
+// goes to the homepage cooperation section.
+const contactHref = showDrafts ? '/hop-tac/' : '/#hop-tac';
+const productsHref = '/san-pham/';
+
+// Five steps, in order round the wheel (clockwise). `name` keeps the
+// wheel label's line break.
+const steps = [
+  {
+    icon: '01-phu-pham',
+    title: 'Phụ phẩm nông nghiệp',
+    name: 'Phụ phẩm\nnông nghiệp',
+    text: 'Phụ phẩm nông nghiệp được tận dụng làm nguyên liệu chuẩn bị giá thể trồng nấm, tiếp nối giá trị từ những nguồn vật liệu sẵn có.',
+  },
+  {
+    icon: '02.gia-the-trong-nam',
+    title: 'Chuẩn bị giá thể',
+    name: 'Chuẩn bị\ngiá thể',
+    text: 'Nguyên liệu được xử lý, phối trộn và đóng bịch thành giá thể phù hợp cho quá trình nuôi trồng nấm.',
+  },
+  {
+    icon: '03-thu-hoach-nam',
+    title: 'Nuôi trồng & thu hoạch',
+    name: 'Nuôi trồng\n& thu hoạch',
+    text: 'Nấm được chăm sóc và thu hoạch tại trang trại, phục vụ nhu cầu sử dụng nấm tươi và chế biến thành các sản phẩm khác.',
+    // Processing belongs to the products, not to the material cycle.
+    link: { label: 'Xem sản phẩm', href: productsHref },
+  },
+  {
+    icon: '04-gia-the-nuoi-trun-que',
+    title: 'Giá thể nuôi trùn quế',
+    name: 'Giá thể nuôi\ntrùn quế',
+    text: 'Sau thu hoạch, giá thể được tận dụng làm thức ăn cho trùn quế, tiếp tục tạo giá trị thay vì bỏ đi.',
+  },
+  {
+    icon: '05-phan-trun-bon-cay',
+    title: 'Phân trùn bón cây',
+    name: 'Phân trùn\nbón cây',
+    text: 'Phân trùn được sử dụng để bón cây, bổ sung nguồn dinh dưỡng hữu cơ cho đất và tiếp nối vòng tuần hoàn.',
+  },
+];
+
+// Wheel geometry, shared with the script through CSS (--radius, --anchor):
+// node centres sit on a circle of RADIUS % of the wheel's width, and the
+// chosen step turns to ANCHOR degrees clockwise from 12 o'clock.
+const RADIUS = 34;
+const ANCHOR = 60;
+const at = (i: number) => {
+  const a = ((ANCHOR + i * (360 / steps.length)) * Math.PI) / 180;
+  return { x: (RADIUS * Math.sin(a)).toFixed(3), y: (-RADIUS * Math.cos(a)).toFixed(3) };
+};
+
+const num = (i: number) => String(i + 1).padStart(2, '0');
+---
+<BaseLayout
+  title="Nông nghiệp tuần hoàn"
+  description="Nông nghiệp tuần hoàn tại Hiền Nương Farm: từ phụ phẩm nông nghiệp đến nấm, trùn quế và nguồn dinh dưỡng cho cây trồng, cùng nguồn điện mặt trời tại trang trại."
+>
+  <div class="circular-page">
+    <header class="intro">
+      <div class="container intro__inner">
+        <Breadcrumb items={[{ label: 'Trang chủ', href: '/' }, { label: 'Nông nghiệp tuần hoàn' }]} />
+        <div class="intro__head" data-reveal>
+          <Eyebrow>Nông nghiệp tuần hoàn</Eyebrow>
+          <h1 class="intro__title">Tiếp nối giá trị từ phụ phẩm.</h1>
+        </div>
+        <p class="intro__lead" data-reveal style="--reveal-delay: 120ms">
+          Từ phụ phẩm nông nghiệp đến nấm, trùn quế và nguồn dinh dưỡng cho cây&nbsp;trồng.
+        </p>
+      </div>
+    </header>
+
+    <!-- 1 · The wheel ---------------------------------------------------- -->
+    <section class="cycle" id="vong-tuan-hoan" aria-labelledby="cycle-title" data-cycle>
+      <div class="container">
+        <h2 class="eyebrow cycle__title" id="cycle-title">
+          <span class="eyebrow__rule" aria-hidden="true"></span>
+          <span>Vòng tuần hoàn tại trang trại</span>
+        </h2>
+
+        <div class="cycle__grid">
+          <p class="cycle__hint">Chọn một bước để khám phá</p>
+
+          <div class="cycle__wheel" data-reveal style="--reveal-delay: 80ms">
+            <div class="wheel" style={`--radius: ${RADIUS}; --anchor: ${ANCHOR}`} data-wheel>
+              <svg class="wheel__arrows" viewBox="-500 -500 1000 1000" aria-hidden="true" focusable="false">
+                <defs>
+                  <marker id="wheel-arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" markerUnits="strokeWidth" orient="auto">
+                    <path d="M1.5 1.5 L8.5 5 L1.5 8.5" />
+                  </marker>
+                </defs>
+                {steps.map(() => <path class="wheel__arrow" d="" marker-end="url(#wheel-arrow)" data-arrow />)}
+              </svg>
+
+              <p class="wheel__motto">Từ đất,<br />trở về đất.</p>
+
+              <div class="wheel__nodes" role="tablist" aria-label="Năm bước của vòng tuần hoàn">
+                {steps.map((step, i) => (
+                  <button
+                    class:list={['wheel__node', { 'is-selected': i === 0 }]}
+                    type="button"
+                    role="tab"
+                    id={`cycle-tab-${i + 1}`}
+                    aria-controls={`cycle-step-${i + 1}`}
+                    aria-selected={i === 0 ? 'true' : 'false'}
+                    tabindex={i === 0 ? 0 : -1}
+                    style={`--x: ${at(i).x}; --y: ${at(i).y}`}
+                    data-node
+                  >
+                    <span class="wheel__num">{num(i)}</span>
+                    <span class="wheel__img">
+                      <img
+                        src={`/images/circular/${step.icon}.webp`}
+                        alt=""
+                        width="320"
+                        height="320"
+                        decoding="async"
+                      />
+                    </span>
+                    <span class="wheel__label">{step.name}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div class="cycle__detail" data-reveal style="--reveal-delay: 160ms">
+            <div class="cycle__panels">
+              {steps.map((step, i) => (
+                <div
+                  class:list={['step', { 'is-active': i === 0 }]}
+                  id={`cycle-step-${i + 1}`}
+                  role="tabpanel"
+                  aria-labelledby={`cycle-tab-${i + 1}`}
+                  tabindex="0"
+                  data-panel
+                >
+                  <p class="step__kicker" aria-hidden="true">
+                    <span class="step__num">{num(i)}</span>
+                    <span class="step__rule"></span>
+                    <span class="step__of">{num(i)} / {num(steps.length - 1)}</span>
+                  </p>
+                  <h3 class="step__title">{step.title}</h3>
+                  <p class="step__text">{step.text}</p>
+                  {step.link && (
+                    <a class="link-arrow step__link" href={step.link.href}>{step.link.label} <Arrow /></a>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <div class="cycle__controls">
+              <button class="cycle__control cycle__control--prev" type="button" data-prev>
+                <Arrow />
+                <span>Bước trước</span>
+              </button>
+              <button class="cycle__control" type="button" data-next>
+                <span>Bước tiếp theo</span>
+                <Arrow />
+              </button>
+            </div>
+            <p class="sr-only" aria-live="polite" data-live></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · Products ------------------------------------------------------ -->
+    <section class="section produce" aria-labelledby="produce-title">
+      <div class="container produce__grid">
+        <figure class="produce__figure" data-reveal>
+          <div class="produce__photo">
+            <img
+              src="/images/farm/product-nam-bao-ngu.webp"
+              width="1122"
+              height="1402"
+              alt="Chùm nấm bào ngư trắng xám mọc từ bịch phôi trong nhà trồng"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </figure>
+
+        <div class="produce__text" data-reveal style="--reveal-delay: 120ms">
+          <Eyebrow>Sản phẩm</Eyebrow>
+          <h2 class="section-title" id="produce-title">Từ mùa nấm đến những sản phẩm.</h2>
+          <div class="section-body">
+            <p>Nấm thu hoạch tại trang trại phục vụ nhu cầu sử dụng nấm tươi và được chế biến thành các sản phẩm khác.</p>
+            <p>Nấm mối đen, nấm linh chi, đông trùng hạ thảo và nấm bào ngư là bốn dòng nấm chính được nuôi trồng tại trang trại.</p>
+          </div>
+          <a class="link-arrow section-link" href={productsHref}>Xem sản phẩm <Arrow /></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · Solar --------------------------------------------------------- -->
+    <section class="section solar" id="nang-luong-mat-troi" aria-labelledby="solar-title">
+      <div class="container solar__grid">
+        <div class="solar__text" data-reveal>
+          <Eyebrow>Năng lượng mặt trời</Eyebrow>
+          <h2 class="section-title" id="solar-title">Nguồn điện từ mặt trời.</h2>
+          <div class="section-body">
+            <p>Nông trại được xây dựng trên khu đất khai thác điện năng lượng mặt trời. Toàn bộ hệ thống do chị Châu Thị Nương cùng anh Trần Phương Hiền tự xây dựng và phát triển. 100% điện sử dụng cho hoạt động trồng nấm được cung cấp từ nguồn năng lượng mặt trời này.</p>
+            <p>Trên cùng một khu đất, Hiền Nương kết hợp sản xuất điện sạch và trồng nấm, đưa nguồn năng lượng tại chỗ vào công việc hằng ngày.</p>
+          </div>
+          <!-- OWNER-VERIFIED: 100% of the electricity used for growing mushrooms. -->
+          <dl class="solar__fact">
+            <dt class="solar__value">100%</dt>
+            <dd class="solar__label">Điện mặt trời cho hoạt động trồng nấm</dd>
+          </dl>
+        </div>
+
+        <figure class="solar__figure" data-reveal style="--reveal-delay: 120ms">
+          <div class="solar__photo">
+            <img
+              src="/images/about/mai-dien-mat-troi.webp"
+              srcset="/images/about/mai-dien-mat-troi-800.webp 800w, /images/about/mai-dien-mat-troi.webp 1430w"
+              sizes="(min-width: 1024px) 55vw, 100vw"
+              width="1430"
+              height="804"
+              alt="Các dãy nhà mái lợp tấm pin mặt trời giữa cây xanh và hàng thốt nốt, nhìn từ trên cao"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <figcaption class="solar__caption">Phía trên là hệ thống điện mặt trời. Phía dưới là không gian sản xuất nấm.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 4 · Film ---------------------------------------------------------- -->
+    <section class="section film" aria-labelledby="film-title">
+      <div class="container">
+        <div class="film__head" data-reveal>
+          <Eyebrow>Brand Film</Eyebrow>
+          <h2 class="section-title" id="film-title">Một góc nhìn từ trang trại.</h2>
+        </div>
+
+        <!-- The farm's brand film (homepage, About). The player loads only
+             when the reader presses play; nothing plays on its own. -->
+        <div class="film__media" data-reveal style="--reveal-delay: 120ms" data-film>
+          <button
+            class="film__poster"
+            type="button"
+            aria-label="Xem phim: Một góc nhìn từ trang trại (02:23)"
+            data-film-play
+          >
+            <img
+              src="/images/farm/bay-nui-canh-dong.webp"
+              width="1672"
+              height="941"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="film__play" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 4v16l13-8z" /></svg>
+            </span>
+            <span class="film__meta" aria-hidden="true">Xem phim · 02:23</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · Closing ------------------------------------------------------- -->
+    <CtaBand title="Cùng tiếp nối những vòng giá trị." href={contactHref}>
+      Nếu bạn quan tâm đến sản phẩm, muốn tìm hiểu mô hình hoặc trao đổi cơ hội hợp tác, chúng tôi mong được trò chuyện cùng bạn.
+    </CtaBand>
+  </div>
+</BaseLayout>
+
+<script>
+  /**
+   * Cycle wheel. One number, the wheel's rotation, places every step:
+   * step i sits at (rotation + i × 72)° on the circle. Choosing a step
+   * sets a new target rotation the short way round, counted from the
+   * previous target (whole degrees, so repeated turns never drift), and
+   * eases the rotation there; a new choice mid-turn starts from where the
+   * wheel is. Steps move along the circle without turning, so pictures,
+   * numbers and labels stay upright. Each frame the arrows between
+   * neighbours are redrawn along the circle, clear of pictures and labels.
+   */
+  const root = document.querySelector<HTMLElement>('[data-cycle]');
+  const wheel = root?.querySelector<HTMLElement>('[data-wheel]');
+
+  if (root && wheel) {
+    const nodes = [...root.querySelectorAll<HTMLButtonElement>('[data-node]')];
+    const panels = [...root.querySelectorAll<HTMLElement>('[data-panel]')];
+    const arrows = [...root.querySelectorAll<SVGPathElement>('[data-arrow]')];
+    const live = root.querySelector<HTMLElement>('[data-live]');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const N = nodes.length;
+    const STEP = 360 / N;
+    const DURATION = 700;
+    // Selected picture's enlargement (CSS: .wheel__node.is-selected).
+    const SELECTED_SCALE = 1.08;
+
+    const css = (name: string, fallback: number) =>
+      parseFloat(getComputedStyle(wheel).getPropertyValue(name)) || fallback;
+
+    let radius = css('--radius', 34) / 100;
+    let anchor = css('--anchor', 60);
+    let selected = 0;
+    let target = anchor;
+    let rotation = anchor;
+    let frame = 0;
+
+    // Site easing, cubic-bezier(0.22, 0.61, 0.36, 1) (global.css --ease).
+    const bezier = (x1: number, y1: number, x2: number, y2: number) => {
+      const cx = 3 * x1, bx = 3 * (x2 - x1) - cx, ax = 1 - cx - bx;
+      const cy = 3 * y1, by = 3 * (y2 - y1) - cy, ay = 1 - cy - by;
+      const sx = (t: number) => ((ax * t + bx) * t + cx) * t;
+      const sy = (t: number) => ((ay * t + by) * t + cy) * t;
+      const dx = (t: number) => (3 * ax * t + 2 * bx) * t + cx;
+      return (x: number) => {
+        let t = x;
+        for (let i = 0; i < 8; i++) {
+          const d = dx(t);
+          if (Math.abs(d) < 1e-6) break;
+          t -= (sx(t) - x) / d;
+        }
+        return sy(Math.min(1, Math.max(0, t)));
+      };
+    };
+    const ease = bezier(0.22, 0.61, 0.36, 1);
+
+    // --- Obstacles: each step's picture, number and label, measured
+    // relative to its picture's centre, in fractions of the wheel width.
+    interface Box { l: number; t: number; r: number; b: number }
+    let discs: number[] = [];
+    let boxes: Box[][] = [];
+
+    const measure = () => {
+      const width = wheel.clientWidth || 1;
+      radius = css('--radius', 34) / 100;
+      anchor = css('--anchor', 60);
+      pad = width < 480 ? 5 / width : 0.022;
+      discs = [];
+      boxes = [];
+      nodes.forEach((node) => {
+        const box = node.getBoundingClientRect();
+        const cx = box.left + box.width / 2;
+        const cy = box.top + box.height / 2;
+        discs.push(node.offsetWidth / 2 / width);
+        boxes.push(
+          [node.querySelector('.wheel__num'), node.querySelector('.wheel__label')]
+            .filter((el): el is HTMLElement => !!el)
+            .map((el) => {
+              const r = el.getBoundingClientRect();
+              return { l: (r.left - cx) / width, t: (r.top - cy) / width, r: (r.right - cx) / width, b: (r.bottom - cy) / width };
+            }),
+        );
+      });
+    };
+
+    const point = (deg: number, r = radius) => {
+      const a = (deg * Math.PI) / 180;
+      return { x: r * Math.sin(a), y: -r * Math.cos(a) };
+    };
+
+    // Clearance around pictures and text, as a share of the wheel width;
+    // narrow wheels keep a few pixels so their arrows still fit.
+    let pad = 0.022;
+
+    const isFree = (deg: number, centres: { x: number; y: number }[]) => {
+      const p = point(deg);
+      for (let j = 0; j < N; j++) {
+        const c = centres[j];
+        const dx = p.x - c.x;
+        const dy = p.y - c.y;
+        const disc = discs[j] * (j === selected ? SELECTED_SCALE : 1) + pad;
+        if (dx * dx + dy * dy < disc * disc) return false;
+        for (const box of boxes[j]) {
+          if (dx > box.l - pad && dx < box.r + pad && dy > box.t - pad && dy < box.b + pad) return false;
+        }
+      }
+      return true;
+    };
+
+    const toView = (v: number) => (v * 1000).toFixed(1);
+
+    // From each step to the next, clockwise: the longest stretch of the
+    // circle that is clear of every picture and label.
+    const drawArrows = (rot: number) => {
+      const centres = nodes.map((_, i) => point(rot + i * STEP));
+      const SAMPLES = 72;
+      arrows.forEach((arrow, i) => {
+        const from = rot + i * STEP;
+        let best = [0, -1];
+        let run = -1;
+        for (let s = 0; s <= SAMPLES; s++) {
+          const free = isFree(from + (STEP * s) / SAMPLES, centres);
+          if (free && run < 0) run = s;
+          if ((!free || s === SAMPLES) && run >= 0) {
+            const end = free ? s : s - 1;
+            if (end - run > best[1] - best[0]) best = [run, end];
+            run = -1;
+          }
+        }
+        const a0 = from + (STEP * best[0]) / SAMPLES;
+        const a1 = from + (STEP * best[1]) / SAMPLES;
+        // Too short even for an arrowhead: leave it out.
+        if (a1 - a0 < 4) {
+          arrow.setAttribute('d', '');
+          return;
+        }
+        const p0 = point(a0);
+        const p1 = point(a1);
+        const r = toView(radius);
+        arrow.setAttribute('d', `M${toView(p0.x)} ${toView(p0.y)} A${r} ${r} 0 0 1 ${toView(p1.x)} ${toView(p1.y)}`);
+      });
+    };
+
+    const render = (rot: number) => {
+      nodes.forEach((node, i) => {
+        const p = point(rot + i * STEP, radius * 100);
+        node.style.setProperty('--x', p.x.toFixed(3));
+        node.style.setProperty('--y', p.y.toFixed(3));
+      });
+      drawArrows(rot);
+    };
+
+    const animate = () => {
+      cancelAnimationFrame(frame);
+      if (reduce.matches) {
+        rotation = target;
+        render(rotation);
+        return;
+      }
+      const from = rotation;
+      const start = performance.now();
+      const tick = (now: number) => {
+        const t = Math.min(1, (now - start) / DURATION);
+        rotation = t === 1 ? target : from + (target - from) * ease(t);
+        render(rotation);
+        if (t < 1) frame = requestAnimationFrame(tick);
+      };
+      frame = requestAnimationFrame(tick);
+    };
+
+    const select = (index: number, { focus = false, announce = false } = {}) => {
+      index = ((index % N) + N) % N;
+      if (index !== selected) {
+        // Shortest turn from the current target: always a whole multiple
+        // of 72°, between -144° and 144°.
+        const desired = anchor - index * STEP;
+        const delta = ((((desired - target) % 360) + 540) % 360) - 180;
+        target += delta;
+        selected = index;
+      }
+
+      nodes.forEach((node, i) => {
+        const on = i === index;
+        node.classList.toggle('is-selected', on);
+        node.setAttribute('aria-selected', String(on));
+        node.tabIndex = on ? 0 : -1;
+      });
+      panels.forEach((panel, i) => panel.classList.toggle('is-active', i === index));
+
+      if (focus) nodes[index].focus({ preventScroll: true });
+      if (announce && live) {
+        const title = panels[index].querySelector('.step__title')?.textContent ?? '';
+        live.textContent = `Bước ${index + 1} trên ${N}: ${title}`;
+      }
+      animate();
+    };
+
+    nodes.forEach((node, i) => {
+      node.addEventListener('click', () => select(i));
+    });
+
+    // Tabs: arrow keys move round the cycle, Home and End go to its ends.
+    root.querySelector('[role="tablist"]')?.addEventListener('keydown', (event) => {
+      const key = (event as KeyboardEvent).key;
+      const moves: Record<string, number> = {
+        ArrowRight: selected + 1,
+        ArrowDown: selected + 1,
+        ArrowLeft: selected - 1,
+        ArrowUp: selected - 1,
+        Home: 0,
+        End: N - 1,
+      };
+      if (!(key in moves)) return;
+      event.preventDefault();
+      select(moves[key], { focus: true });
+    });
+
+    root.querySelector('[data-prev]')?.addEventListener('click', () => select(selected - 1, { announce: true }));
+    root.querySelector('[data-next]')?.addEventListener('click', () => select(selected + 1, { announce: true }));
+
+    // Re-measure when the wheel resizes (and once the fonts arrive); the
+    // anchor may differ between layouts, so the wheel settles on it again.
+    const relayout = () => {
+      measure();
+      const desired = anchor - selected * STEP;
+      const delta = ((((desired - target) % 360) + 540) % 360) - 180;
+      target += delta;
+      cancelAnimationFrame(frame);
+      rotation = target;
+      render(rotation);
+    };
+
+    new ResizeObserver(relayout).observe(wheel);
+    document.fonts?.ready.then(relayout);
+    root.classList.add('is-ready');
+  }
+
+  // A link to a section (#vong-tuan-hoan, #nang-luong-mat-troi) is followed
+  // before the web fonts arrive, and the opening changes height when they
+  // do; once they have, line the section up again unless the reader has
+  // already moved.
+  const hashTarget = window.location.hash && document.getElementById(window.location.hash.slice(1));
+  if (hashTarget && document.fonts) {
+    let moved = false;
+    const stop = () => { moved = true; };
+    ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach((type) =>
+      window.addEventListener(type, stop, { once: true, passive: true }),
+    );
+    document.fonts.ready.then(() => {
+      if (!moved) hashTarget.scrollIntoView({ behavior: 'instant', block: 'start' });
+    });
+  }
+
+  // Film: the player replaces the poster only when asked to play.
+  const film = document.querySelector<HTMLElement>('[data-film]');
+  film?.querySelector<HTMLButtonElement>('[data-film-play]')?.addEventListener('click', () => {
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube-nocookie.com/embed/V-jPu_G8fe8?autoplay=1&playsinline=1&rel=0';
+    iframe.title = 'Hiền Nương Farm — Một góc nhìn từ trang trại';
+    iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    iframe.allowFullscreen = true;
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    iframe.className = 'film__player';
+    film.replaceChildren(iframe);
+    iframe.focus({ preventScroll: true });
+  }, { once: true });
+</script>
+
+<style>
+  .circular-page {
+    /* Homepage display serif (Lora), as on the homepage and the story page. */
+    --font-display: var(--font-editorial);
+    --section-y: clamp(3.5rem, 2rem + 4.5vw, 6.5rem);
+  }
+
+  /* Shared section type ----------------------------------------------------- */
+
+  .section-title {
+    margin-top: var(--space-m);
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.75rem, 1.4rem + 1.3vw, 2.5rem);
+    line-height: 1.16;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    color: var(--color-deep-green);
+  }
+
+  .section-body {
+    margin-top: var(--space-m);
+    max-width: 34rem;
+    font-size: var(--type-body);
+    line-height: 1.68;
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+  .section-body p + p { margin-top: 0.8em; }
+
+  .section-link { margin-top: var(--space-l); }
+
+  /* The closing button's focus ring: forest green, visible on the cream band. */
+  .circular-page :global(.cta-band__btn:focus-visible) { outline-color: var(--color-forest); }
+
+  /* Closing band: the same title scale as the sections above. */
+  .circular-page :global(.cta-band__title) {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 1.4rem + 1.3vw, 2.5rem);
+    line-height: 1.16;
+    color: var(--color-deep-green);
+  }
+
+  /* Opening ------------------------------------------------------------------ */
+
+  .intro {
+    padding-top: clamp(1.25rem, 0.75rem + 2vw, 2.5rem);
+    padding-bottom: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  }
+
+  .intro__inner {
+    display: grid;
+    row-gap: var(--space-m);
+  }
+
+  .intro__head { margin-top: clamp(1rem, 0.5rem + 2.5vw, 2.5rem); }
+
+  .intro__title {
+    margin-top: var(--space-m);
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.25rem, 1.6rem + 2.6vw, 3.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    color: var(--color-deep-green);
+  }
+
+  .intro__lead {
+    max-width: 30rem;
+    text-wrap: balance;
+    font-family: var(--font-display);
+    font-size: var(--type-lead);
+    line-height: 1.45;
+    color: var(--color-text-muted);
+  }
+
+  @media (min-width: 1024px) {
+    .intro__inner {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      column-gap: var(--col-gap);
+      align-items: end;
+    }
+    .intro__inner > :global(.breadcrumb) { grid-column: 1 / -1; }
+    .intro__lead { justify-self: end; padding-bottom: 0.4rem; }
+  }
+
+  /* Cycle ------------------------------------------------------------------- */
+
+  .cycle {
+    padding-top: var(--space-l);
+    padding-bottom: var(--section-y);
+  }
+
+  .cycle__title {
+    padding-top: var(--space-l);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .cycle__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "hint" "wheel" "detail";
+    margin-top: var(--space-l);
+  }
+
+  .cycle__hint {
+    grid-area: hint;
+    font-size: var(--type-small);
+    line-height: 1.5;
+    color: var(--color-text-muted);
+  }
+
+  .cycle__wheel { grid-area: wheel; margin-top: var(--space-l); }
+  .cycle__detail { grid-area: detail; margin-top: var(--space-l); }
+
+  /* Without script every explanation is listed in order. */
+  :global(html:not(.js)) .cycle__hint,
+  :global(html:not(.js)) .cycle__controls { display: none; }
+
+  /* The wheel ---------------------------------------------------------------
+     All sizes follow the wheel's own width (it is the container), so the
+     composition scales as one; text keeps a readable minimum. */
+
+  .wheel {
+    --d: 19cqi;
+    --wheel-bg: var(--color-paper);
+    position: relative;
+    container-type: inline-size;
+    width: 100%;
+    max-width: 36rem;
+    margin-inline: auto;
+    aspect-ratio: 1;
+  }
+
+  .wheel__arrows {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    fill: none;
+    stroke: rgba(32, 34, 31, 0.5);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+  }
+  .wheel__arrow { vector-effect: non-scaling-stroke; }
+  .wheel__arrows marker path { stroke-width: 1.4; }
+
+  .wheel__motto {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: max(1.125rem, 5.4cqi);
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    color: var(--color-forest);
+    pointer-events: none;
+  }
+
+  /* Each step is centred on its picture; the number hangs above it and
+     the label below, both inside the button. */
+  .wheel__node {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: var(--d);
+    height: var(--d);
+    border-radius: 50%;
+    transform: translate(calc(var(--x) * 1cqi - 50%), calc(var(--y) * 1cqi - 50%));
+    color: var(--color-text);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .wheel__node.is-selected { z-index: 1; }
+  .wheel__node:focus-visible { outline: none; }
+
+  .wheel__num {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 0.3rem);
+    transform: translateX(-50%);
+    font-size: max(0.6875rem, 2.3cqi);
+    line-height: 1;
+    letter-spacing: 0.12em;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-earth);
+    transition: color 300ms var(--ease), transform 300ms var(--ease);
+  }
+
+  .wheel__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--color-cream);
+    transition: transform 300ms var(--ease), box-shadow 300ms var(--ease);
+  }
+  .wheel__img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  .wheel__label {
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 0.45rem);
+    transform: translateX(-50%);
+    width: max-content;
+    font-family: var(--font-display);
+    font-size: clamp(0.8125rem, 2.75cqi, 1.0625rem);
+    line-height: 1.28;
+    white-space: pre-line;
+    text-align: center;
+    transition: color 300ms var(--ease), transform 300ms var(--ease);
+  }
+
+  .wheel__node:hover .wheel__label { color: var(--color-forest); }
+  .wheel__node:not(.is-selected):hover .wheel__img { transform: scale(1.03); }
+
+  /* Chosen step: a thin dark-green ring and a slight enlargement. */
+  .wheel__node.is-selected .wheel__img {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 3px var(--wheel-bg), 0 0 0 4.5px var(--color-forest);
+  }
+  .wheel__node.is-selected .wheel__num {
+    color: var(--color-forest);
+    transform: translate(-50%, calc(var(--d) * -0.04));
+  }
+  .wheel__node.is-selected .wheel__label {
+    color: var(--color-deep-green);
+    transform: translate(-50%, calc(var(--d) * 0.04));
+  }
+
+  /* Keyboard focus: an earth ring outside the selection ring. */
+  .wheel__node:focus-visible .wheel__img {
+    outline: 2px solid var(--color-earth);
+    outline-offset: 5px;
+  }
+  .wheel__node:focus-visible .wheel__num { transform: translate(-50%, calc(var(--d) * -0.09)); }
+  .wheel__node:focus-visible .wheel__label {
+    text-decoration: underline;
+    text-decoration-color: var(--color-earth);
+    text-underline-offset: 0.2em;
+  }
+
+  /* Explanation ------------------------------------------------------------- */
+
+  /* All five explanations share one cell, so the panel keeps the height
+     of the longest and nothing below it moves. */
+  .cycle__panels { display: grid; }
+
+  .step {
+    grid-area: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  :global(html:not(.js)) .step + .step {
+    grid-area: auto;
+    margin-top: var(--space-xl);
+  }
+
+  :global(.js) .step:not(.is-active) {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .step__kicker {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    width: 100%;
+    color: var(--color-earth);
+  }
+
+  .step__num {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 1.5rem + 1vw, 2.25rem);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-earth);
+  }
+
+  .step__rule {
+    width: 2.75rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.7;
+  }
+
+  .step__of {
+    font-size: var(--type-eyebrow);
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text-muted);
+  }
+
+  .step__title {
+    margin-top: var(--space-m);
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    color: var(--color-deep-green);
+  }
+
+  .step__text {
+    margin-top: var(--space-s);
+    max-width: 30rem;
+    font-size: var(--type-body);
+    line-height: 1.68;
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+
+  .step__link {
+    margin-top: var(--space-m);
+    color: var(--color-forest);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    /* The old text leaves quickly; the new one arrives a moment later. */
+    :global(.js) .step {
+      transition: opacity 180ms var(--ease), transform 180ms var(--ease), visibility 0s linear 180ms;
+    }
+    :global(.js) .step:not(.is-active) { transform: translateY(0.375rem); }
+    :global(.js) .step.is-active {
+      transition: opacity 420ms var(--ease) 140ms, transform 420ms var(--ease) 140ms, visibility 0s;
+    }
+  }
+
+  .cycle__controls {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-s);
+    margin-top: var(--space-l);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .cycle__control {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 2.75rem;
+    padding-block: 0.75rem;
+    font-size: var(--type-cta);
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-forest);
+  }
+  .cycle__control--prev :global(.arrow) { rotate: 180deg; }
+  .cycle__control:hover :global(.arrow) { transform: translateX(4px); }
+
+  /* Phones: the wheel reaches half a gutter into each margin and its
+     pictures grow a little, so the five steps stay easy to read and tap. */
+  @media (max-width: 639px) {
+    .wheel {
+      --d: 20cqi;
+      width: calc(100% + var(--gutter));
+      max-width: none;
+      margin-inline: calc(var(--gutter) / -2);
+    }
+    /* The lowest label hangs a little below the wheel's box. */
+    .cycle__detail { margin-top: calc(var(--space-l) + 0.75rem); }
+  }
+
+  @media (min-width: 768px) {
+    .cycle__detail { width: 100%; max-width: 36rem; margin-inline: auto; }
+    .cycle__hint { text-align: center; }
+  }
+
+  /* Desktop: wheel on the left, its explanation on the right. */
+  @media (min-width: 1024px) {
+    .cycle__grid {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      grid-template-rows: 1fr auto auto 1fr;
+      grid-template-areas:
+        "wheel ."
+        "wheel hint"
+        "wheel detail"
+        "wheel .";
+      column-gap: clamp(2rem, 5vw, 6rem);
+    }
+    .cycle__wheel { margin-top: 0; }
+    .cycle__hint { text-align: left; }
+    .cycle__detail { margin: var(--space-m) 0 0; max-width: 30rem; }
+    /* Short laptop screens: the whole wheel, labels included, stays in
+       view below the header when the section is opened from a link. */
+    .wheel { max-width: max(26rem, min(40rem, 100svh - var(--header-h) - 13.5rem)); }
+  }
+
+  /* Products ---------------------------------------------------------------- */
+
+  .produce {
+    background: var(--color-cream);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .produce__grid {
+    display: grid;
+    row-gap: var(--space-xl);
+  }
+
+  .produce__photo {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    max-width: 28rem;
+  }
+  .produce__photo img { width: 100%; height: 100%; object-fit: cover; }
+
+  @media (min-width: 768px) {
+    .produce__grid {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      column-gap: clamp(2rem, 6vw, 7rem);
+      align-items: center;
+    }
+  }
+
+  /* Solar ------------------------------------------------------------------- */
+
+  .solar__grid {
+    display: grid;
+    row-gap: var(--space-xl);
+  }
+
+  .solar__fact {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    margin-top: var(--space-l);
+    padding-top: var(--space-m);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .solar__value {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 2.5rem + 2vw, 4.25rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--color-earth);
+  }
+
+  .solar__label {
+    max-width: 14rem;
+    font-size: var(--type-small);
+    line-height: 1.45;
+    color: var(--color-text);
+  }
+
+  .solar__figure { margin-inline: calc(-1 * var(--gutter)); }
+
+  .solar__photo {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--color-cream);
+  }
+  .solar__photo img { width: 100%; height: 100%; object-fit: cover; }
+
+  .solar__caption {
+    margin-top: var(--space-s);
+    padding-inline: var(--gutter);
+    font-size: var(--type-small);
+    line-height: 1.5;
+    color: var(--color-text-muted);
+  }
+
+  @media (min-width: 768px) {
+    .solar__figure { margin-inline: 0; }
+    .solar__caption { padding-inline: 0; }
+  }
+
+  @media (min-width: 1024px) {
+    .solar__grid {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      column-gap: clamp(2rem, 5vw, 6rem);
+      align-items: center;
+    }
+  }
+
+  /* Film -------------------------------------------------------------------- */
+
+  .film {
+    background: var(--color-cream);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .film__media {
+    position: relative;
+    margin-top: var(--space-xl);
+    aspect-ratio: 16 / 9;
+    background: var(--color-deep-green);
+  }
+
+  .film__poster {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: var(--color-cream);
+  }
+  .film__poster img { width: 100%; height: 100%; object-fit: cover; }
+  .film__poster:focus-visible { outline: 2px solid var(--color-forest); outline-offset: 4px; }
+
+  .film__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    place-items: center;
+    width: clamp(3.5rem, 5vw, 4.5rem);
+    aspect-ratio: 1;
+    border: 1px solid var(--color-cream);
+    border-radius: 50%;
+    background: rgba(16, 43, 33, 0.6);
+    transition: background 200ms var(--ease);
+  }
+  .film__play svg { margin-left: 3px; }
+  .film__poster:hover .film__play,
+  .film__poster:focus-visible .film__play { background: var(--color-deep-green); }
+
+  .film__meta {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0.625rem 1rem;
+    background: var(--color-paper);
+    color: var(--color-text);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  .film__media :global(.film__player) {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  @media (max-width: 767px) {
+    .film__media { margin-inline: calc(-1 * var(--gutter)); }
+    /* Edge to edge: the focus ring sits inside the picture. */
+    .film__poster:focus-visible { outline-color: var(--color-cream); outline-offset: -6px; }
+  }
+</style>

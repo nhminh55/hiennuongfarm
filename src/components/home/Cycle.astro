@@ -2,7 +2,7 @@
 import Photo from '../Photo.astro';
 import Eyebrow from '../Eyebrow.astro';
 import Arrow from '../Arrow.astro';
-import { getLocale, localizePath } from '../../i18n';
+import { getLocale, pageHref } from '../../i18n';
 
 const lang = getLocale(Astro.url);
 const t = {
@@ -80,7 +80,8 @@ const arrows = [
 
       <div class="cycle__copy" data-reveal style="--reveal-delay: 80ms">
         <p class="body">{t.body}</p>
-        <a class="link-arrow cycle__cta" href={localizePath('/#tuan-hoan', lang)}>{t.more} <Arrow /></a>
+        <!-- The circular page is Vietnamese only; other languages stay on this section. -->
+        <a class="link-arrow cycle__cta" href={pageHref('/nong-nghiep-tuan-hoan/', lang, '/#tuan-hoan')}>{t.more} <Arrow /></a>
       </div>
 
       <div class="cycle__diagram" data-reveal style="--reveal-delay: 120ms">

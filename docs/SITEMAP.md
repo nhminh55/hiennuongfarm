@@ -18,7 +18,7 @@ Status vocabulary: Needs verification / Planned / In progress / Implemented / Pu
 | --- | --- | --- | --- |
 | 0 | Homepage | / | Published — verified |
 | 1 | Về Hiền Nương | /ve-chung-toi/ | Published — Vietnamese only (2026-10-08) |
-| 1 | Nông nghiệp tuần hoàn | /nong-nghiep-tuan-hoan/ | Needs verification |
+| 1 | Nông nghiệp tuần hoàn | /nong-nghiep-tuan-hoan/ | Implemented — Vietnamese only (2026-10-08) |
 | 1 | Sản phẩm | /san-pham/ | Published — verified through navbar |
 | 2 | Individual product details | /san-pham/{slug}/ | Planned — check catalogue and existing routes |
 | 1 | Dấu ấn | /dau-an/ | Needs verification |
@@ -120,12 +120,16 @@ Do not create separate pages for each About section at this stage.
 
 Purpose: explain actual operations and relationships between stages.
 
-Planned sections:
+Implemented (Vietnamese only):
 
-- Model overview.
-- Farm circular process: #vong-tuan-hoan.
-- Solar energy: #nang-luong-mat-troi.
-- Real photographs and links to Products and Cooperation.
+- Opening: “Tiếp nối giá trị từ phụ phẩm.”
+- Farm circular process: #vong-tuan-hoan — an interactive wheel of five steps (01 Phụ phẩm nông nghiệp, 02 Chuẩn bị giá thể, 03 Nuôi trồng & thu hoạch, 04 Giá thể nuôi trùn quế, 05 Phân trùn bón cây). Processing is not a cycle step; step 03 links to Products.
+- Products: brief introduction linking to /san-pham/.
+- Solar energy: #nang-luong-mat-troi — copy from docs/HIEN_NUONG_ABOUT_VI.md §04.
+- Brand film (plays only on request).
+- Closing: cooperation link (/#hop-tac until /hop-tac/ is published).
+
+Header, footer, homepage and story-page links open it in Vietnamese; English and Chinese keep /#tuan-hoan.
 
 The user confirmed 100% solar energy use and ownership of the system by chị Nương. Clarify which facility this applies to; do not automatically extend the claim to both.
 Do not invent process stages, environmental metrics, or savings without evidence.

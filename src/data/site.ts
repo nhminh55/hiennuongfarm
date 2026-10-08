@@ -29,7 +29,7 @@ export interface NavItem {
 // Links point to homepage sections until each secondary page is built.
 export const nav: NavItem[] = [
   { label: { vi: 'Về Hiền Nương', en: 'About Hiền Nương', zh: '关于 Hiền Nương' }, href: '/ve-chung-toi/', fallback: '/#ve-hien-nuong' },
-  { label: { vi: 'Nông nghiệp tuần hoàn', en: 'Circular Agriculture', zh: '循环农业' }, href: '/#tuan-hoan' },
+  { label: { vi: 'Nông nghiệp tuần hoàn', en: 'Circular Agriculture', zh: '循环农业' }, href: '/nong-nghiep-tuan-hoan/', fallback: '/#tuan-hoan' },
   { label: { vi: 'Sản vật', en: 'Farm Produce', zh: '农场物产' }, href: '/san-pham/' },
   { label: { vi: 'Vùng Bảy Núi', en: 'Bảy Núi Region', zh: '七山地区' }, href: '/#bay-nui' },
   { label: { vi: 'Dấu ấn', en: 'Press', zh: '媒体报道' }, href: '/#dau-an' },

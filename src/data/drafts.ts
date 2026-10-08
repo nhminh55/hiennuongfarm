@@ -66,48 +66,6 @@ const dauAn = { label: 'Dấu ấn', href: '/dau-an/' };
 
 export const draftPages: DraftPage[] = [
   {
-    path: '/nong-nghiep-tuan-hoan/',
-    title: 'Nông nghiệp tuần hoàn',
-    eyebrow: 'Mô hình tại trang trại',
-    sections: [
-      {
-        id: 'tong-quan',
-        title: 'Tổng quan mô hình',
-        layout: 'wide',
-        note: 'Cách các công đoạn tại trang trại liên kết với nhau.',
-        images: [{ brief: 'Toàn cảnh khu sản xuất của trang trại', ratio: '16 / 9', tone: 'forest' }],
-      },
-      {
-        id: 'vong-tuan-hoan',
-        title: 'Vòng tuần hoàn tại farm',
-        layout: 'split',
-        note: 'Các công đoạn thực tế, theo tư liệu của trang trại.',
-        images: [{ brief: 'Ảnh thực tế một công đoạn trong vòng tuần hoàn', ratio: '4 / 5', tone: 'earth' }],
-      },
-      {
-        id: 'nang-luong-mat-troi',
-        title: 'Năng lượng mặt trời',
-        layout: 'split',
-        note: 'Hệ thống điện mặt trời tại cơ sở áp dụng.',
-        images: [{ brief: 'Hệ thống tấm pin mặt trời tại trang trại', ratio: '3 / 2', tone: 'stone' }],
-      },
-      {
-        id: 'hinh-anh',
-        title: 'Hình ảnh tại trang trại',
-        layout: 'gallery',
-        images: [
-          { brief: 'Nhà trồng nấm', ratio: '4 / 5', tone: 'moss' },
-          { brief: 'Khu nuôi trùn quế', ratio: '4 / 5', tone: 'clay' },
-          { brief: 'Người làm nấm tại trang trại', ratio: '4 / 5', tone: 'deep' },
-        ],
-        links: [
-          { label: 'Sản phẩm', href: '/san-pham/' },
-          { label: 'Hợp tác & liên hệ', href: '/hop-tac/' },
-        ],
-      },
-    ],
-  },
-  {
     path: '/dau-an/',
     title: 'Dấu ấn',
     eyebrow: 'Những cột mốc của Hiền Nương',
