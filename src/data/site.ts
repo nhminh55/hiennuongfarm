@@ -34,7 +34,15 @@ export const nav: NavItem[] = [
   { label: { vi: 'Hợp tác', en: 'Partnership', zh: '合作' }, href: '/#hop-tac' },
 ];
 
-// VERIFY: address and email from the mockup.
+// Footer "Khám phá": a shorter list than the header.
+export const footerNav: NavItem[] = [
+  nav[0],
+  { label: { vi: 'Sản phẩm', en: 'Products', zh: '产品' }, href: '/san-pham/' },
+  nav[1],
+  nav[4],
+];
+
+// VERIFY: address from the mockup. Email and phone are owner-provided.
 // Other languages keep the local place names and add the country.
 export const contact = {
   addressLines: {
@@ -42,5 +50,15 @@ export const contact = {
     en: ['Khóm Thới Thuận, Phường Thới Sơn', 'An Giang Province, Vietnam'],
     zh: ['Khóm Thới Thuận, Phường Thới Sơn', '越南安江省'],
   } satisfies Record<Locale, string[]>,
-  email: 'hiennuongfarm@gmail.com',
+  email: 'contact@hiennuongfarm.vn',
+  phone: '+84985799777',
+  phoneDisplay: '+84 985 799 777',
+};
+
+// Owner-provided household business registration, shown as-is in every language.
+export const business = {
+  name: ['HỘ KINH DOANH TRANG TRẠI', 'NÔNG NGHIỆP HIỀN NƯƠNG'],
+  code: 'Mã số HKD: 8668062400-001',
+  registration: ['Đăng ký HKD số 52H8006524', 'Ngày: 10/04/2024'],
+  issuer: 'Cơ quan cấp: Phòng Tài chính – Kế hoạch huyện Tri Tôn, tỉnh An Giang',
 };
