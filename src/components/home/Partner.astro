@@ -1,4 +1,5 @@
 ---
+import Photo from '../Photo.astro';
 import Eyebrow from '../Eyebrow.astro';
 import Arrow from '../Arrow.astro';
 import { contact } from '../../data/site';
@@ -10,65 +11,63 @@ const t = {
     subject: 'Hợp tác cùng Hiền Nương Farm',
     eyebrow: 'Hợp tác cùng Hiền Nương',
     title: 'Cùng tạo nên những giá trị bền vững từ nông nghiệp.',
-    body: 'Chúng tôi luôn chào đón đối tác, khách hàng và những người cùng chung chí hướng phát triển nông nghiệp bền vững, nâng tầm giá trị nông sản Việt.',
-    cta: 'Liên hệ hợp tác',
-    address: 'Địa chỉ',
-    email: 'Email',
+    body: 'Chúng tôi chào đón những kết nối trong sản xuất, phân phối và chia sẻ kiến thức về nông nghiệp bền vững. Cùng Hiền Nương đưa sản phẩm từ trang trại đến gần hơn với người tiêu dùng, nâng tầm giá trị nông sản Việt. Mỗi sự đồng hành là cơ hội để cùng học hỏi và phát triển lâu dài.',
+    cta: 'Khám phá hợp tác',
+    alt: 'Lễ ký kết hợp tác truyền thông giữa Trang trại Hiền Nương và sinh viên FPT Cần Thơ; chị Châu Thị Nương mặc áo dài đỏ ngồi ký văn bản, xung quanh là các đại biểu chụp ảnh chung',
+    caption: 'Ký kết hợp tác truyền thông với sinh viên FPT Cần Thơ · 26.06.2025',
   },
   en: {
     subject: 'Partnering with Hiền Nương Farm',
     eyebrow: 'Partner with Hiền Nương',
     title: 'Creating lasting value from agriculture, together.',
-    body: 'We welcome partners, customers and like-minded people who share our aim of developing sustainable agriculture and raising the value of Vietnamese farm produce.',
-    cta: 'Discuss a partnership',
-    address: 'Address',
-    email: 'Email',
+    body: 'We welcome connections in production, distribution and the sharing of knowledge about sustainable agriculture. Join Hiền Nương in bringing farm produce closer to consumers and raising the value of Vietnamese agricultural products. Every partnership is a chance to learn together and grow for the long term.',
+    cta: 'Explore a partnership',
+    alt: 'Signing ceremony for a media partnership between Hiền Nương Farm and FPT Cần Thơ students; Châu Thị Nương, in a red áo dài, sits signing the agreement among a group of delegates',
+    caption: 'Media partnership signing with FPT Cần Thơ students · 26.06.2025',
   },
   zh: {
     subject: '与 Hiền Nương Farm 合作',
     eyebrow: '与 Hiền Nương 合作',
     title: '携手从农业中创造可持续的价值。',
-    body: '我们欢迎合作伙伴、客户以及志同道合的朋友，共同发展可持续农业，提升越南农产品的价值。',
-    cta: '洽谈合作',
-    address: '地址',
-    email: '电子邮箱',
+    body: '我们欢迎在生产、分销以及可持续农业知识分享方面的合作。与 Hiền Nương 一起，让农场的产品更贴近消费者，提升越南农产品的价值。每一次同行，都是共同学习、长远发展的机会。',
+    cta: '探索合作',
+    alt: 'Hiền Nương 农场与 FPT 芹苴大学生媒体合作签约仪式；身穿红色奥黛的 Châu Thị Nương 坐着签署文件，周围是合影的代表们',
+    caption: '与 FPT 芹苴大学生签署媒体合作协议 · 2025.06.26',
   },
 }[lang];
 const subject = encodeURIComponent(t.subject);
-const address = contact.addressLines[lang];
 ---
 <section class="section partner" id="hop-tac" aria-labelledby="partner-title">
   <div class="container partner__grid">
-    <div class="partner__heading" data-reveal>
+    <div class="partner__text" data-reveal>
       <Eyebrow num="06">{t.eyebrow}</Eyebrow>
       <h2 class="h2 partner__title" id="partner-title">{t.title}</h2>
-    </div>
-
-    <div class="partner__body" data-reveal style="--reveal-delay: 100ms">
-      <p class="body">{t.body}</p>
+      <p class="body partner__body">{t.body}</p>
       <a class="link-arrow partner__cta" href={`mailto:${contact.email}?subject=${subject}`}>
         {t.cta} <Arrow />
       </a>
     </div>
 
-    <!-- VERIFY: address and email (see src/data/site.ts). -->
-    <dl class="small partner__contact" data-reveal style="--reveal-delay: 180ms">
-      <div>
-        <dt class="eyebrow">{t.address}</dt>
-        <dd>{address[0]},<br />{address[1]}</dd>
-      </div>
-      <div>
-        <dt class="eyebrow">{t.email}</dt>
-        <dd><a href={`mailto:${contact.email}`}>{contact.email}</a></dd>
-      </div>
-    </dl>
+    <!-- Original event photograph (FPT Cần Thơ signing, 26.06.2025), as supplied. -->
+    <figure class="partner__fig" data-reveal style="--reveal-delay: 120ms">
+      <Photo
+        class="partner__photo"
+        src="/images/farm/hop-tac-ky-ket-fpt-800.webp"
+        sizes="(min-width: 1000px) 56vw, 100vw"
+        width={800}
+        height={565}
+        alt={t.alt}
+      />
+      <figcaption class="small partner__cap">{t.caption}</figcaption>
+    </figure>
   </div>
 </section>
 
 <style>
-  /* Quiet close: three columns of type divided by hairlines. */
+  /* Quiet close: an invitation beside one photograph of a partnership in practice. */
   .partner {
     background: var(--color-paper);
+    border-top: 1px solid var(--color-line);
     padding-block: clamp(2.75rem, 1.5rem + 2.5vw, 4.25rem);
   }
 
@@ -78,53 +77,20 @@ const address = contact.addressLines[lang];
   }
 
   .partner__title { margin-top: var(--space-m); max-width: 20ch; }
+  .partner__body { margin-top: var(--space-m); max-width: 28rem; }
+  .partner__cta { margin-top: var(--space-l); }
 
-  .partner__body .body { max-width: 30rem; }
-  .partner__cta { margin-top: var(--space-m); }
-
-  .partner__body,
-  .partner__contact {
-    padding-top: var(--space-l);
-    border-top: 1px solid var(--color-line);
-  }
-
-  .partner__contact {
-    display: grid;
-    gap: var(--space-m);
-  }
-
-  .partner__contact dt { margin-bottom: 0.25rem; }
-
-  .partner__contact a {
-    border-bottom: 1px solid var(--color-line-strong);
-    transition: border-color 300ms var(--ease);
-  }
-  .partner__contact a:hover { border-color: currentColor; }
-
-  @media (min-width: 768px) {
-    .partner__grid {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      column-gap: var(--space-xl);
-    }
-    .partner__heading { grid-column: 1 / -1; }
-    .partner__contact { grid-template-columns: 1fr; }
-  }
+  .partner :global(.partner__photo) { --ratio: 800 / 565; }
+  .partner__cap { margin-top: var(--space-xs); color: var(--color-text-muted); }
 
   @media (min-width: 1000px) {
     .partner__grid {
-      grid-template-columns: 5fr 4fr 3fr;
-      column-gap: 0;
-      align-items: start;
+      grid-template-columns: 5fr 7fr;
+      column-gap: var(--space-xl);
+      align-items: center;
     }
 
-    .partner__heading { grid-column: auto; padding-right: var(--space-xl); }
-
-    .partner__body,
-    .partner__contact {
-      align-self: stretch;
-      padding: var(--space-xs) 0 var(--space-xs) var(--space-xl);
-      border-top: 0;
-      border-left: 1px solid var(--color-line);
-    }
+    /* Photo is about 10% shorter than the Dấu ấn photo cluster above (~423px). */
+    .partner__fig { width: min(100%, 37.35rem); justify-self: end; }
   }
 </style>
