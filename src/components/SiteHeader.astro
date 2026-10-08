@@ -99,6 +99,7 @@ const current = (href: string) => {
       <div class="mobile-menu__foot">
         <p class="mobile-menu__label">{contactLink.label}</p>
         <a href={`mailto:${contact.email}`}>{contact.email}</a>
+        <a href={`tel:${contact.phone}`}>{contact.phoneDisplay}</a>
         <p>{contact.addressLines[lang].join(', ')}</p>
       </div>
     </div>
