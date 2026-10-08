@@ -39,6 +39,8 @@ interface Chapter {
   caption?: string;
   steps?: string[];
   link?: { label: string; href: string };
+  /** Further reading, folded under the copy (native disclosure). */
+  more?: { summary: string; intro: string; items: [string, string][]; source: string };
 }
 
 // Facts: OWNER-VERIFIED (CLAUDE.md, docs/HIEN_NUONG_ABOUT_VI.md). Keep
@@ -58,13 +60,27 @@ const chapters: Chapter[] = [
   {
     id: 'bay-nui',
     label: 'Bảy Núi',
-    title: 'Núi giữa đồng, thốt nốt giữa trời',
+    title: 'Núi giữa trời, thốt nốt giữa đồng',
     body: [
       'Bảy Núi, còn gọi là Thất Sơn, mang một dáng vẻ riêng giữa miền Tây: những ngọn núi nhô lên trên nền đồng ruộng rộng mở, xen cùng hàng thốt nốt vươn cao. Núi, ruộng lúa và những tán lá thốt nốt tạo nên cảnh sắc dễ nhận ra của vùng đất An Giang.',
       'Nơi đây còn mang dấu ấn văn hóa Khmer qua những ngôi chùa, nghề làm đường thốt nốt và hội đua bò Bảy Núi. Cảnh quan thiên nhiên hòa cùng đời sống văn hóa, làm nên bản sắc của vùng đất.',
       'Đó là không gian quê hương bao quanh câu chuyện Hiền Nương — nơi núi và đồng cùng hiện diện trong nhịp sống làm nông.',
     ],
     facts: [],
+    more: {
+      summary: 'Bảy Núi gồm những ngọn nào?',
+      intro: 'Tên Bảy Núi không có nghĩa cả vùng chỉ có bảy ngọn. Thất Sơn được biết đến với bảy ngọn tiêu biểu:',
+      items: [
+        ['Núi Cấm', 'Thiên Cấm Sơn'],
+        ['Núi Cô Tô', 'Phụng Hoàng Sơn'],
+        ['Núi Dài', 'Ngọa Long Sơn'],
+        ['Núi Két', 'Anh Vũ Sơn'],
+        ['Núi Tượng', 'Liên Hoa Sơn'],
+        ['Núi Dài Năm Giếng', 'Ngũ Hồ Sơn'],
+        ['Núi Nước', 'Thủy Đài Sơn'],
+      ],
+      source: 'https://vannghe.angiang.gov.vn/tri-ton-huyen-mien-nui-giua-dong-bang/',
+    },
     // Frame from the farm's own video (original export, unretouched;
     // the letterbox rows are trimmed).
     photo: { src: '/images/about/bay-nui-nui-dong-thot-not.webp', width: 1280, height: 712, position: '50% 50%', alt: 'Cánh đồng lúa xanh điểm hàng thốt nốt, dãy núi vùng Bảy Núi phía xa, nhìn từ trên cao' },
@@ -197,7 +213,10 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
                   <span class="chapter__rule" aria-hidden="true"></span>
                   <span class="chapter__label">{chapter.label}</span>
                 </p>
-                <h2 class="chapter__title" id={`${chapter.id}-title`}>{chapter.title}</h2>
+                <!-- Lines break after a comma, never inside a phrase ("thốt nốt"). -->
+                <h2 class="chapter__title" id={`${chapter.id}-title`}>{chapter.title.split(', ').map((phrase, j, all) => (
+                  <span class="chapter__phrase">{phrase}{j < all.length - 1 && ','}</span>
+                )).flatMap((el, j) => (j > 0 ? [' ', el] : [el]))}</h2>
 
                 <div class="chapter__body">
                   {chapter.body.map((p) => <p>{p}</p>)}
@@ -212,6 +231,27 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
                       </div>
                     ))}
                   </dl>
+                )}
+
+                {chapter.more && (
+                  <details class="more">
+                    <summary class="more__summary">
+                      <svg class="more__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7.25" fill="none" stroke="currentColor" /><path d="M8 7.25v4.25M8 4.6v.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" /></svg>
+                      <span class="more__label">{chapter.more.summary}</span>
+                      <span class="more__sign" aria-hidden="true"></span>
+                    </summary>
+                    <div class="more__body">
+                      <p>{chapter.more.intro}</p>
+                      <ul class="more__list">
+                        {chapter.more.items.map(([name, alt]) => (
+                          <li><span class="more__name">{name}</span> — {alt}</li>
+                        ))}
+                      </ul>
+                      <p class="more__source">
+                        <a href={chapter.more.source} target="_blank" rel="noopener">Nguồn: vannghe.angiang.gov.vn <span aria-hidden="true">↗</span><span class="sr-only"> (mở trong thẻ mới)</span></a>
+                      </p>
+                    </div>
+                  </details>
                 )}
 
                 {chapter.steps && (
@@ -317,11 +357,26 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
       });
     };
 
-    const fits = () =>
-      chapters.every((chapter) => {
-        const text = chapter.querySelector<HTMLElement>('[data-chapter-text]');
-        return text ? text.scrollHeight <= text.clientHeight + 1 : true;
-      });
+    // Each chapter's text must fit beside its photograph; with a
+    // disclosure open, it may run below the photograph but must still fit
+    // the stage above the chapter list.
+    const disclosures = [...story.querySelectorAll<HTMLDetailsElement>('details')];
+    const nav = story.querySelector<HTMLElement>('.story__nav');
+    const contentHeights = () =>
+      chapters.map((chapter) => chapter.querySelector<HTMLElement>('.chapter__content')?.offsetHeight ?? 0);
+    const fits = () => {
+      const wasOpen = disclosures.map((d) => d.open);
+      disclosures.forEach((d) => { d.open = false; });
+      const panel = chapters[0].querySelector<HTMLElement>('[data-chapter-text]')?.clientHeight ?? 0;
+      const closed = contentHeights();
+      disclosures.forEach((d) => { d.open = true; });
+      const open = contentHeights();
+      disclosures.forEach((d, i) => { d.open = wasOpen[i]; });
+      const style = getComputedStyle(stage);
+      const room = stage.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom) - (nav?.offsetHeight ?? 0);
+      // 16px: the open text's bottom padding above the chapter list.
+      return closed.every((h) => h <= panel + 1) && open.every((h) => h + 16 <= room + 1);
+    };
 
     const measure = () => {
       if (!staged) {
@@ -637,6 +692,9 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
     color: var(--color-deep-green);
   }
 
+  /* Keep each phrase of a comma title on one line where it fits. */
+  .chapter__phrase { display: inline-block; }
+
   .chapter__body {
     font-size: var(--type-body);
     line-height: 1.68;
@@ -705,6 +763,95 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
   }
 
   .chapter__link { text-transform: uppercase; }
+
+  /* "Bảy Núi gồm những ngọn nào?": a quiet inline disclosure. */
+  .more { width: 100%; }
+
+  .more__summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.25rem;
+    font-size: var(--type-small);
+    line-height: 1.4;
+    color: var(--color-text);
+    cursor: pointer;
+    list-style: none;
+  }
+  .more__summary::-webkit-details-marker { display: none; }
+
+  .more__icon {
+    width: 1rem;
+    height: 1rem;
+    flex: none;
+    color: var(--color-earth);
+  }
+
+  .more__label {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--color-line-strong);
+    text-underline-offset: 0.3em;
+    transition: text-decoration-color 300ms var(--ease);
+  }
+  .more__summary:hover .more__label { text-decoration-color: currentColor; }
+
+  /* Plus that turns into a minus when open. */
+  .more__sign {
+    position: relative;
+    width: 0.625rem;
+    height: 0.625rem;
+    margin-left: 0.25rem;
+    flex: none;
+    color: var(--color-earth);
+  }
+  .more__sign::before,
+  .more__sign::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+  }
+  .more__sign::after { transform: rotate(90deg); transition: transform 300ms var(--ease); }
+  .more[open] .more__sign::after { transform: rotate(90deg) scaleX(0); }
+
+  .more__body {
+    padding: 0.5rem 0 0 1.5rem;
+    font-size: var(--type-small);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+  }
+
+  .more__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 12.5rem), 1fr));
+    gap: 0.25rem var(--space-m);
+    margin-top: 0.625rem;
+    line-height: 1.5;
+  }
+  .more__name { color: var(--color-text); }
+
+  .more__source {
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+  }
+  .more__source a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--color-line-strong);
+    text-underline-offset: 0.25em;
+  }
+  .more__source a:hover { color: var(--color-text); text-decoration-color: currentColor; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .more[open] .more__body { animation: more-in 350ms var(--ease); }
+  }
+  @keyframes more-in {
+    from { opacity: 0; transform: translateY(-0.25rem); }
+  }
 
   /* Tablets and wider: the chapter list is held under the header. */
   @media (min-width: 768px) {
@@ -845,6 +992,18 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
       overflow: hidden;
       padding-left: var(--text-pad);
     }
+
+    /* An open disclosure may take the text below the photograph: the
+       spread grows into the stage's spare height (the script checks it
+       fits) and the photograph keeps its size. */
+    .story.is-staged .chapter.is-active .chapter__text:has(details[open]) {
+      contain: none;
+      padding-bottom: var(--space-s);
+    }
+    .story.is-staged .chapter__media { align-self: start; }
+    .story.is-staged .more__body { padding-top: 0.25rem; }
+    .story.is-staged .more__list { gap: 0.125rem var(--space-m); margin-top: 0.5rem; line-height: 1.45; }
+    .story.is-staged .more__source { margin-top: 0.5rem; }
 
     .story.is-staged .chapter__content {
       --gap: clamp(0.875rem, 2.2vh, 1.375rem);

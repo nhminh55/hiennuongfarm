@@ -20,13 +20,27 @@ Từ vùng Bảy Núi, An Giang, hai vợ chồng cùng xây dựng nông trại
 
 ## 02 · Bảy Núi
 
-### Núi giữa đồng, thốt nốt giữa trời
+### Núi giữa trời, thốt nốt giữa đồng
 
 Bảy Núi, còn gọi là Thất Sơn, mang một dáng vẻ riêng giữa miền Tây: những ngọn núi nhô lên trên nền đồng ruộng rộng mở, xen cùng hàng thốt nốt vươn cao. Núi, ruộng lúa và những tán lá thốt nốt tạo nên cảnh sắc dễ nhận ra của vùng đất An Giang.
 
 Nơi đây còn mang dấu ấn văn hóa Khmer qua những ngôi chùa, nghề làm đường thốt nốt và hội đua bò Bảy Núi. Cảnh quan thiên nhiên hòa cùng đời sống văn hóa, làm nên bản sắc của vùng đất.
 
 Đó là không gian quê hương bao quanh câu chuyện Hiền Nương — nơi núi và đồng cùng hiện diện trong nhịp sống làm nông.
+
+**Mục mở rộng:** Bảy Núi gồm những ngọn nào?
+
+Tên Bảy Núi không có nghĩa cả vùng chỉ có bảy ngọn. Thất Sơn được biết đến với bảy ngọn tiêu biểu:
+
+- Núi Cấm — Thiên Cấm Sơn
+- Núi Cô Tô — Phụng Hoàng Sơn
+- Núi Dài — Ngọa Long Sơn
+- Núi Két — Anh Vũ Sơn
+- Núi Tượng — Liên Hoa Sơn
+- Núi Dài Năm Giếng — Ngũ Hồ Sơn
+- Núi Nước — Thủy Đài Sơn
+
+**Nguồn:** https://vannghe.angiang.gov.vn/tri-ton-huyen-mien-nui-giua-dong-bang/
 
 ## 03 · Hai cơ sở
 
@@ -101,5 +115,5 @@ Mỗi cuộc gặp là một cơ hội để chia sẻ kinh nghiệm, hiểu th�
 - Tổng diện tích “khoảng 4 ha” là ước tính từ bản đồ đã được chủ dự án đồng ý dùng; giữ chữ “khoảng”. Không tự chia diện tích cho từng cơ sở.
 - Chưa có số liệu sản lượng hiện tại; không suy ra từ diện tích và không tự bổ sung.
 - Giữ phạm vi của thông tin 100% là điện sử dụng cho hoạt động trồng nấm; không mở rộng thành toàn bộ năng lượng hoặc mọi hoạt động doanh nghiệp.
-- Nhãn “Điểm nhấn”, “Liên kết”, “Chú thích ảnh” và “Chuỗi nội dung” hướng dẫn cách sử dụng nội dung, không phải chữ cần hiển thị nguyên văn.
+- Nhãn “Điểm nhấn”, “Liên kết”, “Chú thích ảnh”, “Chuỗi nội dung”, “Mục mở rộng” và “Nguồn” hướng dẫn cách sử dụng nội dung, không phải chữ cần hiển thị nguyên văn.
 - Có thể tách đoạn và đặt số liệu vào bố cục để dễ đọc; giữ đầy đủ ý, không thêm tuyên bố, lời trích dẫn hoặc thông tin liên hệ chưa được cung cấp.
