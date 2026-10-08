@@ -398,24 +398,47 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
     padding-top: 0.75rem;
   }
 
+  /* Submenu colours, shared by the desktop panels and the mobile menu. */
+  .site-header {
+    --menu-bg: #234333;
+    --menu-fg: #FAF8F1;
+    --menu-hover: #3F604D;
+  }
+
+  /* Panel insets (0.5rem) + row insets (0.75rem) = the panel's -1.25rem
+     offset, so row text lines up with the parent label. */
   .site-nav__sub {
     min-width: 15rem;
-    padding: 0.75rem 1.25rem;
-    background: var(--color-paper);
-    border: 1px solid var(--color-line);
-    color: var(--color-charcoal);
+    padding: 0.5rem;
+    background: var(--menu-bg);
+    color: var(--menu-fg);
+    box-shadow: 0 16px 32px -16px rgba(16, 43, 33, 0.45);
   }
 
   .site-nav__sublink {
     display: block;
-    padding-block: 0.5rem;
+    padding: 0.625rem 0.75rem;
     font-size: var(--type-nav);
     line-height: 1.4;
     white-space: nowrap;
-    transition: color 300ms var(--ease);
   }
+
+  /* Submenu rows: an inset, square highlight on hover and keyboard focus. */
+  .site-nav__sublink,
+  .mobile-menu__sub a { transition: background-color 250ms var(--ease); }
   .site-nav__sublink:hover,
-  .site-nav__sublink[aria-current="page"] { color: var(--color-earth); }
+  .site-nav__sublink:focus-visible,
+  .mobile-menu__sub a:hover,
+  .mobile-menu__sub a:focus-visible { background: var(--menu-hover); }
+  .site-nav__sublink:focus-visible,
+  .mobile-menu__sub a:focus-visible { outline-offset: -4px; }
+  .site-nav__sublink[aria-current="page"],
+  .mobile-menu__sub a[aria-current="page"] { font-weight: 500; }
+
+  /* While its dropdown is open, the parent keeps its hover state: number
+     shown, underline drawn. */
+  .site-nav__item.is-open .site-nav__num { opacity: 0.65; }
+  .site-nav__item.is-open .site-nav__link::after { transform: scaleX(1); }
 
   .site-nav__num { margin-right: 0.4rem; font-size: 0.625rem; font-variant-numeric: tabular-nums; opacity: 0.65; letter-spacing: 0; }
   .site-nav__contact .site-nav__link { padding: 0.7rem 1rem; background: var(--color-forest); color: var(--color-cream); opacity: 1; }
@@ -525,17 +548,17 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
 
   .mobile-menu__sub {
     grid-column: 1 / -1;
-    padding: 0 0 0.75rem 2.5rem;
+    padding: 0 0 0.75rem 1.75rem;
   }
+  /* Row padding keeps the text on its 2.5rem line inside the highlight. */
   .mobile-menu__sub a {
     display: flex;
     align-items: center;
     min-height: 2.75rem;
+    padding-inline: 0.75rem;
     font-size: var(--fs-small);
-    color: var(--color-text-inverse-muted);
+    color: var(--menu-fg);
   }
-  .mobile-menu__sub a:hover,
-  .mobile-menu__sub a[aria-current="page"] { color: var(--color-cream); }
 
   .mobile-menu__num {
     flex: none;
