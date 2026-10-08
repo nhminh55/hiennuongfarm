@@ -2,160 +2,138 @@
 import Photo from '../Photo.astro';
 import Arrow from '../Arrow.astro';
 import Eyebrow from '../Eyebrow.astro';
-import { getLocale, localizePath } from '../../i18n';
+import { getLocale } from '../../i18n';
 
 const lang = getLocale(Astro.url);
 
-// Verified press coverage: each article names chị Châu Thị Nương and the farm.
-// Headlines and publication months are as published; other languages show
-// a translated headline and say the article is in Vietnamese.
-const articles = [
+// Dấu ấn is a group of pages, not a page: the three cards open its sections
+// directly. The routes are planned (docs/SITEMAP.md) and Vietnamese only, so
+// every language links to the Vietnamese page.
+const groups = [
   {
-    outlet: { vi: 'VnExpress', en: 'VnExpress', zh: 'VnExpress' },
-    date: '12/2025',
-    headline: {
-      vi: 'Làm giàu từ nấm sạch',
-      en: 'Prospering from clean mushrooms',
-      zh: '靠洁净菌菇致富',
+    href: '/dau-an/bao-chi/',
+    title: { vi: 'Báo chí & Truyền thông', en: 'Press & Media', zh: '媒体报道' },
+    note: {
+      vi: 'Những câu chuyện về Hiền Nương trên báo chí, truyền hình và các kênh truyền thông.',
+      en: 'Stories about Hiền Nương in newspapers, on television and across the media.',
+      zh: '报刊、电视及各类媒体上关于 Hiền Nương 的故事。',
     },
-    href: 'https://vnexpress.net/lam-giau-tu-nam-sach-4996984.html',
+    // Dân Việt feature, 2025; cropped clear of the outlet watermark.
+    photo: {
+      src: '/images/farm/dau-an-bao-chi-dan-viet-1024.webp',
+      srcset: '/images/farm/dau-an-bao-chi-dan-viet-640.webp 640w, /images/farm/dau-an-bao-chi-dan-viet-1024.webp 1024w',
+      width: 1024,
+      height: 768,
+      position: '50% 40%',
+      alt: {
+        vi: 'Chị Châu Thị Nương áo hồng, quàng khăn rằn, đeo găng tay chăm sóc phôi nấm trên kệ trong nhà nuôi',
+        en: 'Châu Thị Nương, in pink with a khăn rằn scarf and gloves, tending mushroom bags on racks in a grow room',
+        zh: 'Châu Thị Nương 身穿粉色上衣、围着格子头巾，戴着手套在菇房的层架间照料菌包',
+      },
+    },
   },
   {
-    outlet: { vi: 'Cổng TTĐT tỉnh An Giang', en: 'An Giang Provincial Portal', zh: '安江省电子信息门户' },
-    date: '10/2025',
-    headline: {
-      vi: 'Nữ nông dân xuất sắc vùng Bảy Núi An Giang',
-      en: 'An outstanding woman farmer of An Giang’s Bảy Núi region',
-      zh: '安江省七山地区的优秀女农民',
+    href: '/dau-an/giai-thuong/',
+    title: { vi: 'Giải thưởng & Ghi nhận', en: 'Awards & Recognition', zh: '奖项与荣誉' },
+    note: {
+      vi: 'Các danh hiệu, chứng nhận và những cột mốc được ghi nhận trên hành trình phát triển.',
+      en: 'Titles, certifications and the milestones recognised along the way.',
+      zh: '发展历程中获得的称号、认证与里程碑。',
     },
-    href: 'https://angiang.gov.vn/vi/nu-nong-dan-xuat-sac-vung-bay-nui-an-giang',
+    photo: {
+      src: '/images/farm/dau-an-cup-chung-nhan-2025-1024.webp',
+      srcset: '/images/farm/dau-an-cup-chung-nhan-2025-640.webp 640w, /images/farm/dau-an-cup-chung-nhan-2025-1024.webp 1024w',
+      width: 1024,
+      height: 768,
+      alt: {
+        vi: 'Cúp pha lê và giấy chứng nhận ghi tên Châu Thị Nương đạt danh hiệu Nông dân Việt Nam xuất sắc 2025',
+        en: 'A crystal trophy and a certificate naming Châu Thị Nương an Outstanding Vietnamese Farmer 2025',
+        zh: '水晶奖杯与证书，证书写明 Châu Thị Nương 获得 2025 年越南优秀农民称号',
+      },
+    },
   },
   {
-    outlet: { vi: 'TTXVN / Báo Tin tức', en: 'VNA / Tin tức', zh: '越通社 / 新闻报' },
-    date: '05/2025',
-    headline: {
-      vi: 'Biến giấc mơ “NetZero” từ trang trại nấm',
-      en: 'Turning a “Net Zero” dream into reality on a mushroom farm',
-      zh: '在菌菇农场实现“净零”梦想',
+    href: '/dau-an/su-kien/',
+    title: { vi: 'Sự kiện & Hoạt động', en: 'Events & Activities', zh: '活动与交流' },
+    note: {
+      vi: 'Những lần tham gia diễn đàn, gặp gỡ, kết nối và chia sẻ cùng cộng đồng.',
+      en: 'Forums, meetings and gatherings: connecting and sharing with the community.',
+      zh: '参与论坛、会面与交流，与社区连接、分享。',
     },
-    href: 'https://baotintuc.vn/bien-giac-mo-netzero-tu-trang-trai-nam-post1379079.html',
-  },
-  {
-    outlet: { vi: 'Nhân Dân', en: 'Nhân Dân', zh: '人民报' },
-    date: '06/2024',
-    headline: {
-      vi: 'Nấm mối nàng Nương',
-      en: 'Nàng Nương’s termite mushrooms',
-      zh: '“Nương 姑娘”的鸡枞菌',
+    photo: {
+      src: '/images/farm/dau-an-chi-nuong-phat-bieu-960.webp',
+      srcset: '/images/farm/dau-an-chi-nuong-phat-bieu-960.webp 960w, /images/farm/dau-an-chi-nuong-phat-bieu-1440.webp 1440w',
+      width: 960,
+      height: 838,
+      position: '50% 30%',
+      alt: {
+        vi: 'Chị Châu Thị Nương mặc áo dài đỏ, quàng khăn rằn, đứng cầm tài liệu phát biểu trước micro tại một buổi lễ',
+        en: 'Châu Thị Nương in a red áo dài and a checked khăn rằn scarf, standing to speak at a microphone with papers in hand at a ceremony',
+        zh: 'Châu Thị Nương 身穿红色奥黛、围着格子头巾，手持文稿在仪式上对着麦克风发言',
+      },
     },
-    href: 'https://nhandan.vn/nam-moi-nang-nuong-post816923.html',
   },
-].map((a) => ({ ...a, outlet: a.outlet[lang], headline: a.headline[lang] }));
+].map((g) => ({
+  ...g,
+  title: g.title[lang],
+  note: g.note[lang],
+  photo: { ...g.photo, alt: g.photo.alt[lang] },
+}));
 
 const t = {
   vi: {
     eyebrow: 'Dấu ấn',
-    title: 'Những câu chuyện được kể lại.',
-    body: 'Hành trình của Hiền Nương đã được nhiều cơ quan báo chí ghi nhận — qua những câu chuyện về nông nghiệp sạch, kinh tế tuần hoàn và con người Bảy Núi. Mỗi bài viết, mỗi thước phim là một dấu ấn đáng nhớ, góp phần lan tỏa khát vọng phát triển nông nghiệp bền vững trên quê hương An Giang.',
-    more: 'Báo chí & truyền thông',
-    altMain: 'Chị Châu Thị Nương mặc áo dài đỏ, quàng khăn rằn, đứng cầm tài liệu phát biểu trước micro tại một buổi lễ',
-    altGroup: 'Ảnh chụp chung các đại biểu nông dân tại Phòng Khánh Tiết; chị Châu Thị Nương mặc áo dài đỏ, quàng khăn rằn, đứng ở phía bên phải',
-    altAward: 'Cúp pha lê và giấy chứng nhận ghi tên Châu Thị Nương đạt danh hiệu Nông dân Việt Nam xuất sắc 2025',
-    capGroup: 'Gặp mặt nông dân tiêu biểu',
-    capAward: 'Nông dân Việt Nam xuất sắc 2025',
-    articleLang: '',
-    newTab: '(mở trong thẻ mới)',
+    title: 'Những chặng đường được ghi nhận',
+    intro: 'Mỗi sự ghi nhận là một dấu mốc đáng nhớ trên hành trình phát triển của Hiền Nương, góp phần lan tỏa những giá trị tốt đẹp từ vùng Bảy Núi.',
+    more: 'Xem chi tiết',
+    moreOf: (title: string) => `Xem chi tiết: ${title}`,
   },
   en: {
     eyebrow: 'Press',
-    title: 'Stories, retold.',
-    body: 'Hiền Nương’s journey has been covered by a number of news outlets — through stories of clean farming, the circular economy and the people of Bảy Núi. Each article and each film is a memorable mark, helping to spread the ambition of developing sustainable agriculture in the farm’s home province of An Giang.',
-    more: 'Press & media',
-    altMain: 'Châu Thị Nương in a red áo dài and a checked khăn rằn scarf, standing to speak at a microphone with papers in hand at a ceremony',
-    altGroup: 'Group photograph of farmer delegates in the State Hall; Châu Thị Nương, in a red áo dài and khăn rằn scarf, stands towards the right',
-    altAward: 'A crystal trophy and a certificate naming Châu Thị Nương an Outstanding Vietnamese Farmer 2025',
-    capGroup: 'Meeting with outstanding farmers',
-    capAward: 'Outstanding Vietnamese Farmer 2025',
-    articleLang: 'In Vietnamese',
-    newTab: '(opens in a new tab)',
+    title: 'Recognised along the way',
+    intro: 'Every recognition is a milestone to remember on Hiền Nương’s journey, helping to carry the good things of the Bảy Núi region further.',
+    more: 'View details',
+    moreOf: (title: string) => `View details: ${title} (in Vietnamese)`,
   },
   zh: {
     eyebrow: '媒体报道',
-    title: '被讲述的故事。',
-    body: 'Hiền Nương 的历程已获多家媒体报道——通过清洁农业、循环经济以及七山人的故事。每一篇报道、每一部影片都是一个值得铭记的印记，助力在家乡安江传播发展可持续农业的志向。',
-    more: '媒体报道',
-    altMain: 'Châu Thị Nương 身穿红色奥黛、围着格子头巾，手持文稿在仪式上对着麦克风发言',
-    altGroup: '农民代表在国宾厅的合影；身穿红色奥黛、围着格子头巾的 Châu Thị Nương 站在右侧',
-    altAward: '水晶奖杯与证书，证书写明 Châu Thị Nương 获得 2025 年越南优秀农民称号',
-    capGroup: '与优秀农民代表会面',
-    capAward: '2025 年越南优秀农民',
-    articleLang: '越南语',
-    newTab: '（在新标签页中打开）',
+    title: '一路走来的认可',
+    intro: '每一次认可，都是 Hiền Nương 发展历程中值得铭记的里程碑，也让七山地区的美好价值传得更远。',
+    more: '查看详情',
+    moreOf: (title: string) => `查看详情：${title}（越南语）`,
   },
 }[lang];
 ---
-<section class="section press" id="dau-an" aria-labelledby="press-title">
-  <div class="container press__grid">
-    <div class="press__intro" data-reveal>
+<section class="section marks" id="dau-an" aria-labelledby="marks-title">
+  <div class="container">
+    <header class="marks__head" data-reveal>
       <Eyebrow num="04">{t.eyebrow}</Eyebrow>
-      <h2 class="h2 press__title" id="press-title">{t.title}</h2>
-      <span class="press__rule" aria-hidden="true"></span>
-      <p class="body press__body">{t.body}</p>
-      <!-- Points at this section until a /bao-chi/ page exists. -->
-      <a class="link-arrow press__more" href={localizePath('/#dau-an', lang)}>{t.more} <Arrow /></a>
-    </div>
+      <h2 class="h2 marks__title" id="marks-title">{t.title}</h2>
+      <p class="body marks__intro">{t.intro}</p>
+    </header>
 
-    <!-- Original event photographs (Nông dân Việt Nam xuất sắc 2025), as supplied. -->
-    <div class="press__photos">
-      <Photo
-        class="press__main"
-        src="/images/farm/dau-an-chi-nuong-phat-bieu-1440.webp"
-        srcset="/images/farm/dau-an-chi-nuong-phat-bieu-960.webp 960w, /images/farm/dau-an-chi-nuong-phat-bieu-1440.webp 1440w"
-        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 46vw, 100vw"
-        width={1440}
-        height={1257}
-        alt={t.altMain}
-      />
-      <figure class="press__fig">
-        <Photo
-          class="press__small press__small--group"
-          src="/images/farm/dau-an-gap-mat-nong-dan-1024.webp"
-          srcset="/images/farm/dau-an-gap-mat-nong-dan-640.webp 640w, /images/farm/dau-an-gap-mat-nong-dan-1024.webp 1024w"
-          sizes="(min-width: 1024px) 17vw, (min-width: 480px) 46vw, 100vw"
-          width={1024}
-          height={683}
-          alt={t.altGroup}
-        />
-        <figcaption class="small press__cap">{t.capGroup}</figcaption>
-      </figure>
-      <figure class="press__fig">
-        <Photo
-          class="press__small press__small--award"
-          src="/images/farm/dau-an-cup-chung-nhan-2025-1024.webp"
-          srcset="/images/farm/dau-an-cup-chung-nhan-2025-640.webp 640w, /images/farm/dau-an-cup-chung-nhan-2025-1024.webp 1024w"
-          sizes="(min-width: 1024px) 17vw, (min-width: 480px) 46vw, 100vw"
-          width={1024}
-          height={768}
-          alt={t.altAward}
-        />
-        <figcaption class="small press__cap">{t.capAward}</figcaption>
-      </figure>
-    </div>
-
-    <ol class="press__list" data-reveal style="--reveal-delay: 100ms">
-      {articles.map((a) => (
-        <li>
-          <a class="press__item" href={a.href} target="_blank" rel="noopener noreferrer">
-            <span class="press__meta">
-              <span class="eyebrow press__outlet">{a.outlet}</span>
-              <span class="small press__date">{a.date}{t.articleLang && ` · ${t.articleLang}`}</span>
-            </span>
-            <span class="press__headline">{a.headline}</span>
-            <svg class="press__ext" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
-              <path d="M2 10 10.5 1.5M4 1.5h6.5V8" />
-            </svg>
-            <span class="sr-only">{t.newTab}</span>
-          </a>
+    <ol class="marks__list">
+      {groups.map((g, i) => (
+        <li class="mark" data-reveal>
+          <Photo
+            class="mark__photo"
+            src={g.photo.src}
+            srcset={g.photo.srcset}
+            sizes="(min-width: 1024px) 31vw, (min-width: 640px) 50vw, 100vw"
+            width={g.photo.width}
+            height={g.photo.height}
+            position={g.photo.position}
+            alt={g.photo.alt}
+          />
+          <span class="eyebrow mark__num">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="mark__title">{g.title}</h3>
+          <p class="small mark__note">{g.note}</p>
+          <a
+            class="link-arrow cta-label mark__more"
+            href={g.href}
+            hreflang={lang === 'vi' ? undefined : 'vi'}
+            aria-label={t.moreOf(g.title)}
+          >{t.more} <Arrow /></a>
         </li>
       ))}
     </ol>
@@ -163,159 +141,115 @@ const t = {
 </section>
 
 <style>
-  /* Press notices: a short introduction, a small cluster of event photographs, and the
-     articles set as an index — outlet and month, headline, a hairline. */
-  .press { background: var(--color-cream); }
+  /* Dấu ấn: a short introduction over three editorial cards, one per page in
+     the group. Each card is a single link (the "Xem chi tiết" link, stretched
+     over the card), as in the Sản vật catalogue. */
+  .marks { background: var(--color-cream); }
 
-  .press__grid {
+  .marks__title { margin-top: var(--space-m); max-width: 16ch; text-wrap: balance; }
+
+  .marks__intro { margin-top: var(--space-m); max-width: 30rem; }
+  .marks__intro::before {
+    content: "";
+    display: block;
+    width: 2.5rem;
+    height: 1px;
+    margin-bottom: var(--space-m);
+    background: var(--color-earth);
+  }
+
+  .marks__list {
     display: grid;
     row-gap: var(--space-xl);
+    margin-top: var(--space-xl);
   }
 
-  .press__title { margin-top: var(--space-m); max-width: 14ch; }
-
-  .press__rule {
-    display: block;
-    width: 1.75rem;
-    height: 1px;
-    margin-block: var(--space-l) var(--space-m);
-    background: var(--color-earth);
-    opacity: 0.7;
-  }
-
-  .press__body { max-width: 24rem; }
-
-  .press .press__more { margin-top: var(--space-l); white-space: nowrap; }
-
-  /* One large photograph above two equal smaller ones. */
-  .press__photos {
+  .mark {
+    position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-s);
+    align-content: start;
+    min-width: 0;
   }
 
-  .press :global(.press__main) { grid-column: 1 / -1; --ratio: 8 / 7; }
-
-  .press__fig { margin: 0; display: grid; gap: var(--space-2xs); align-content: start; }
-
-  .press :global(.press__small) { --ratio: 4 / 3; }
-  /* Keep chị Nương (red áo dài, right of centre) in frame. */
-  .press :global(.press__small--group) { --pos: 72% 50%; }
-  /* Trophy and certificate are shown whole, never cropped. */
-  .press :global(.press__small--award img) { object-fit: contain; }
-
-  .press__cap { color: var(--color-text-muted); }
-
-  @media (min-width: 480px) {
-    .press__photos { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .mark :global(.mark__photo) { --ratio: 4 / 3; margin-bottom: var(--space-m); }
+  .mark :global(.mark__photo img) { transition: transform 900ms var(--ease); }
+  @media (prefers-reduced-motion: no-preference) {
+    .mark:hover :global(.mark__photo img) { transform: scale(1.03); }
   }
 
-  .press__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    border-top: 1px solid var(--color-line);
-  }
+  .mark__num { font-variant-numeric: tabular-nums; }
 
-  .press__list li { border-bottom: 1px solid var(--color-line); }
-
-  .press__item {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    column-gap: var(--space-m);
-    row-gap: var(--space-2xs);
-    padding-block: var(--space-m);
-  }
-
-  .press__meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    column-gap: var(--space-s);
-    row-gap: var(--space-3xs);
-  }
-
-  .press__date {
-    color: var(--color-text-muted);
-    font-variant-numeric: tabular-nums;
-    letter-spacing: 0.04em;
-  }
-
-  .press__headline {
-    grid-column: 1;
+  .mark__title {
+    margin-top: var(--space-2xs);
     font-family: var(--font-display);
-    font-size: var(--type-lead);
-    line-height: 1.4;
+    font-weight: 500;
+    font-size: var(--type-product);
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  .mark__note {
+    margin-top: var(--space-xs);
+    max-width: 34ch;
+    color: var(--color-text-muted);
     text-wrap: pretty;
-    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
-    transition: background-size 400ms var(--ease);
   }
 
-  .press__ext {
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    align-self: start;
-    width: 0.875rem;
-    height: 0.875rem;
-    margin-top: 0.25rem;
-    color: var(--color-earth);
-    transition: transform 300ms var(--ease);
-  }
+  .mark__more { margin-top: var(--space-m); justify-self: start; align-self: end; }
+  .mark__more::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+  .mark__more :global(.arrow) { width: 0.875rem; }
+  /* The whole card answers hover as its link does. */
+  .mark:hover .mark__more { border-color: currentColor; }
+  .mark:hover .mark__more :global(.arrow) { transform: translateX(4px); }
+  .mark__more:focus-visible { outline: none; }
+  .mark:has(.mark__more:focus-visible) { outline: 1px solid currentColor; outline-offset: 6px; }
 
-  .press__item:hover .press__headline,
-  .press__item:focus-visible .press__headline { background-size: 100% 1px; }
-  .press__item:hover .press__ext { transform: translate(2px, -2px); }
-
-  /* Tablet: introduction beside the photograph, the index below. */
-  @media (min-width: 768px) {
-    .press__grid {
+  /* Tablet: each card a row, photograph beside its text. */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .marks__list { row-gap: 0; border-bottom: 1px solid var(--color-line); }
+    .mark {
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      column-gap: var(--space-xl);
-      align-items: center;
-    }
-    .press__list { grid-column: 1 / -1; }
-  }
-
-  /* Wide screens: three columns — introduction, photograph, index. */
-  @media (min-width: 1024px) {
-    .press__grid {
-      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr) minmax(0, 1.5fr);
-      column-gap: clamp(var(--space-l), 3vw, var(--space-2xl));
-    }
-
-    .press__intro { align-self: center; }
-
-    /* The photographs span exactly the height of the index beside them:
-       the main one takes whatever the two smaller ones leave. */
-    .press__photos {
-      align-self: stretch;
-      grid-template-rows: minmax(0, 1fr) auto;
-    }
-    .press :global(.press__main) {
-      --ratio: auto;
-      --pos: 50% 35%;
-      min-height: 14rem;
-    }
-    .press :global(.press__main img) { position: absolute; inset: 0; }
-
-    .press__list { grid-column: auto; }
-  }
-
-  /* Wider still: the index sets outlet and month beside each headline. */
-  @media (min-width: 1400px) {
-    .press__item {
-      grid-template-columns: 9.5rem minmax(0, 1fr) auto;
+      /* The text sits centred beside the photograph. */
+      grid-template-rows: 1fr repeat(4, auto) 1fr;
       column-gap: var(--space-l);
       padding-block: var(--space-l);
+      border-top: 1px solid var(--color-line);
     }
+    .mark :global(.mark__photo) { grid-column: 1; grid-row: 1 / -1; margin-bottom: 0; }
+    .mark__num { grid-column: 2; grid-row: 2; }
+    .mark__title { grid-column: 2; grid-row: 3; }
+    .mark__note { grid-column: 2; grid-row: 4; }
+    .mark__more { grid-column: 2; grid-row: 5; }
+  }
 
-    .press__meta {
-      flex-direction: column;
-      align-items: flex-start;
-      row-gap: var(--space-2xs);
+  /* Wide screens: title beside the introduction, three equal columns below.
+     The cards share rows, so titles, notes and links line up across them. */
+  @media (min-width: 1024px) {
+    .marks__head {
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 4fr);
+      column-gap: var(--space-xl);
+      align-items: end;
     }
+    .marks__head > :global(.eyebrow) { grid-column: 1 / -1; }
+    .marks__title { grid-column: 1; }
+    .marks__intro { grid-column: 2; grid-row: 2; margin-top: 0; }
+    /* The hairline under the heading does the rule's work here. */
+    .marks__intro::before { display: none; }
 
-    .press__headline { grid-column: 2; }
-    .press__ext { grid-column: 3; grid-row: 1; }
+    .marks__list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: repeat(5, auto);
+      row-gap: 0;
+      column-gap: clamp(var(--space-m), 2.5vw, var(--space-xl));
+      margin-top: var(--space-l);
+      padding-top: var(--space-l);
+      border-top: 1px solid var(--color-line);
+    }
+    .mark { grid-template-rows: subgrid; grid-row: span 5; }
+
+    /* Cards enter one after another, as the list comes into view. */
+    .mark:nth-child(2) { --reveal-delay: 100ms; }
+    .mark:nth-child(3) { --reveal-delay: 200ms; }
   }
 </style>
