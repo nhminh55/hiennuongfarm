@@ -66,53 +66,6 @@ const dauAn = { label: 'Dấu ấn', href: '/dau-an/' };
 
 export const draftPages: DraftPage[] = [
   {
-    path: '/ve-chung-toi/',
-    title: 'Về Hiền Nương',
-    eyebrow: 'Câu chuyện Hiền Nương',
-    sections: [
-      {
-        id: 'cau-chuyen',
-        title: 'Câu chuyện Hiền Nương',
-        layout: 'split',
-        note: 'Hành trình hình thành trang trại.',
-        images: [{ brief: 'Ảnh tư liệu những ngày đầu của trang trại', ratio: '4 / 5', tone: 'earth' }],
-      },
-      {
-        id: 'nguoi-sang-lap',
-        title: 'Người sáng lập',
-        layout: 'split',
-        note: 'Chị Châu Thị Nương và anh Trần Phương Hiền.',
-        images: [{ brief: 'Chân dung hai nhà sáng lập tại trang trại', ratio: '5 / 4', tone: 'forest' }],
-      },
-      {
-        id: 'bay-nui',
-        title: 'Vùng Bảy Núi',
-        layout: 'wide',
-        note: 'Vùng đất nơi trang trại hình thành.',
-        images: [{ brief: 'Toàn cảnh vùng Bảy Núi, An Giang', ratio: '21 / 9', tone: 'moss' }],
-      },
-      {
-        id: 'co-so',
-        title: 'Cơ sở Thới Sơn và Tri Tôn',
-        layout: 'gallery',
-        note: 'Giới thiệu ngắn về hai cơ sở; địa chỉ và chỉ đường ở trang Hợp tác & liên hệ.',
-        images: [
-          { brief: 'Cơ sở Thới Sơn', ratio: '4 / 3', tone: 'clay' },
-          { brief: 'Cơ sở Tri Tôn', ratio: '4 / 3', tone: 'stone' },
-        ],
-        links: [{ label: 'Địa chỉ các cơ sở', href: '/hop-tac/#co-so' }],
-      },
-      {
-        id: 'dinh-huong',
-        title: 'Định hướng phát triển',
-        layout: 'split',
-        note: 'Hướng đi tiếp theo của trang trại.',
-        images: [{ brief: 'Ảnh trang trại hiện nay', ratio: '3 / 2', tone: 'deep' }],
-        links: [{ label: 'Nông nghiệp tuần hoàn', href: '/nong-nghiep-tuan-hoan/' }],
-      },
-    ],
-  },
-  {
     path: '/nong-nghiep-tuan-hoan/',
     title: 'Nông nghiệp tuần hoàn',
     eyebrow: 'Mô hình tại trang trại',
@@ -280,7 +233,7 @@ export const draftPages: DraftPage[] = [
 export const navDropdowns: Record<string, DraftLink[]> = {
   '/#ve-hien-nuong': [
     { label: 'Câu chuyện Hiền Nương', href: '/ve-chung-toi/' },
-    { label: 'Người sáng lập', href: '/ve-chung-toi/#nguoi-sang-lap' },
+    { label: 'Người sáng lập', href: '/ve-chung-toi/#cau-chuyen' },
     { label: 'Vùng Bảy Núi', href: '/ve-chung-toi/#bay-nui' },
   ],
   '/#tuan-hoan': [

@@ -7,18 +7,27 @@
  */
 
 import type { APIRoute } from 'astro';
-import { languages, locales, localizePath } from '../i18n';
+import { isTranslated, languages, locales, localizePath } from '../i18n';
 
 const pages: { path: string; lastmod: string }[] = [
   { path: '/', lastmod: '2026-10-08' },
   { path: '/san-pham/', lastmod: '2026-10-07' },
   { path: '/san-pham/nam-moi-den/', lastmod: '2026-10-07' },
+  { path: '/ve-chung-toi/', lastmod: '2026-10-08' },
 ];
 
 export const GET: APIRoute = ({ site }) => {
   const url = (path: string) => new URL(path, site).href;
 
   const entries = pages.flatMap(({ path, lastmod }) => {
+    // Vietnamese-only pages (viOnlyPaths): one entry, no alternates.
+    if (!isTranslated(path)) {
+      return [`  <url>
+    <loc>${url(path)}</loc>
+    <lastmod>${lastmod}</lastmod>
+  </url>`];
+    }
+
     // Same alternates as BaseLayout: every language, x-default → Vietnamese.
     const alternates = [
       ...locales.map((l) => `    <xhtml:link rel="alternate" hreflang="${languages[l].htmlLang}" href="${url(localizePath(path, l))}"/>`),

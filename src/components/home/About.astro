@@ -3,7 +3,7 @@ import Photo from '../Photo.astro';
 import Arrow from '../Arrow.astro';
 import Eyebrow from '../Eyebrow.astro';
 import BrandFilm from './BrandFilm.astro';
-import { getLocale, localizePath } from '../../i18n';
+import { getLocale, pageHref } from '../../i18n';
 
 // 2020 and the co-founders: OWNER-VERIFIED; Bảy Núi / Tà Đảnh and the
 // circular model: VERIFIED (CONTENT_EVIDENCE_BANK.md §1–2). The HTX
@@ -45,8 +45,8 @@ const t = {
       <div class="about__text" data-reveal>
         <h2 class="h2 about__title" id="about-title">{t.title}</h2>
         <p class="body about__body">{t.body}</p>
-        <!-- Temporary section destination until the introduction page exists. -->
-        <a class="link-arrow about__more" href={localizePath('/#ve-hien-nuong', lang)}>{t.more} <Arrow /></a>
+        <!-- The story page is Vietnamese only; other languages stay on this section. -->
+        <a class="link-arrow about__more" href={pageHref('/ve-chung-toi/', lang, '/#ve-hien-nuong')}>{t.more} <Arrow /></a>
       </div>
 
       <figure class="about__figure" data-reveal style="--reveal-delay: 120ms">

@@ -31,3 +31,16 @@ export const localizePath = (href: string, locale: Locale) =>
 
 /** getStaticPaths for the src/pages/[lang]/ routes. */
 export const langStaticPaths = () => prefixedLocales.map((lang) => ({ params: { lang } }));
+
+/** Published pages with Vietnamese copy only: no /en/ or /zh/ route yet. */
+export const viOnlyPaths = ['/ve-chung-toi/'];
+
+/** Whether a page (a path without its language prefix) exists in every language. */
+export const isTranslated = (path: string) => !viOnlyPaths.includes(path.replace(/#.*/, ''));
+
+/**
+ * A link to a page in the given language. Until a Vietnamese-only page is
+ * translated, the other languages link to `fallback` (its homepage section).
+ */
+export const pageHref = (href: string, locale: Locale, fallback?: string) =>
+  localizePath(locale !== 'vi' && fallback && !isTranslated(href) ? fallback : href, locale);

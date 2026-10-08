@@ -1,7 +1,7 @@
 ---
 import { contact } from '../data/site';
 import { navDropdowns, showDrafts } from '../data/drafts';
-import { getLocale, localizePath } from '../i18n';
+import { getLocale, localizePath, pageHref } from '../i18n';
 import '../styles/desktop-header.css';
 import BrandLogo from './BrandLogo.astro';
 import LanguageSwitch from './LanguageSwitch.astro';
@@ -17,22 +17,27 @@ const lang = getLocale(Astro.url);
 // Header navigation. Kept separate from the footer's `nav` (src/data/site.ts):
 // the header says "Sản phẩm"; homepage section headings keep "Sản vật".
 const links = [
-  { label: { vi: 'Về Hiền Nương', en: 'About Hiền Nương', zh: '关于 Hiền Nương' }, href: '/#ve-hien-nuong' },
+  { label: { vi: 'Về Hiền Nương', en: 'About Hiền Nương', zh: '关于 Hiền Nương' }, href: '/ve-chung-toi/', fallback: '/#ve-hien-nuong' },
   { label: { vi: 'Nông nghiệp tuần hoàn', en: 'Circular Agriculture', zh: '循环农业' }, href: '/#tuan-hoan' },
   { label: { vi: 'Sản phẩm', en: 'Products', zh: '产品' }, href: '/san-pham/' },
   { label: { vi: 'Dấu ấn', en: 'Press', zh: '媒体报道' }, href: '/#dau-an' },
   { label: { vi: 'Hợp tác', en: 'Partnership', zh: '合作' }, href: '/#hop-tac' },
-].map((item) => ({ label: item.label[lang], href: localizePath(item.href, lang) }));
+].map((item) => ({
+  label: item.label[lang],
+  href: pageHref(item.href, lang, item.fallback),
+  anchor: item.fallback,
+}));
 // Contact details sit in the Hợp tác section until a contact page exists.
 const contactLink = { label: { vi: 'Liên hệ', en: 'Contact', zh: '联系我们' }[lang], href: localizePath('/#hop-tac', lang) };
 
 // Review only (src/data/drafts.ts): dropdowns to the scaffold pages, on
 // Vietnamese pages. Each label then goes to its homepage section, Sản phẩm
-// included (#san-vat); its "Tất cả sản phẩm" link opens /san-pham/.
+// (#san-vat) and Về Hiền Nương (#ve-hien-nuong) included; their dropdowns
+// open /san-pham/ and /ve-chung-toi/.
 const withDropdowns = showDrafts && lang === 'vi';
 const navItems = links.map((item) => {
   if (!withDropdowns) return { ...item, children: undefined };
-  const href = item.href === '/san-pham/' ? '/#san-vat' : item.href;
+  const href = item.href === '/san-pham/' ? '/#san-vat' : (item.anchor ?? item.href);
   return { ...item, href, children: navDropdowns[href] };
 });
 if (withDropdowns) contactLink.href = '/hop-tac/#lien-he';

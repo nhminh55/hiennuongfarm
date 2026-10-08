@@ -1,0 +1,939 @@
+---
+/**
+ * /ve-chung-toi/: the Hiền Nương story in six chapters.
+ *
+ * Copy: docs/HIEN_NUONG_ABOUT_VI.md (approved, Vietnamese only, so the page
+ * has no /en/ or /zh/ route; see `viOnlyPaths` in src/i18n.ts).
+ * Layout: design-reference/"Hiền Nương Farm chapter showcase.png".
+ *
+ * The chapters are ordinary stacked sections. On wide screens the script
+ * below pins them into one stage (photograph left, text right) and lets
+ * the scroll position choose the chapter, but only after measuring that
+ * every chapter's text fits the screen; otherwise, and without script,
+ * the stacked sections stay.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/page/Breadcrumb.astro';
+import Eyebrow from '../../components/Eyebrow.astro';
+import Arrow from '../../components/Arrow.astro';
+import { showDrafts } from '../../data/drafts';
+
+// Destinations not yet published point to their homepage sections.
+const circularHref = showDrafts ? '/nong-nghiep-tuan-hoan/' : '/#tuan-hoan';
+const contactHref = showDrafts ? '/hop-tac/#lien-he' : '/#hop-tac';
+
+interface Fact {
+  value: string;
+  /** Small word set before the value ("Khoảng 4 ha"). */
+  pre?: string;
+  label: string;
+}
+
+interface Chapter {
+  id: string;
+  label: string;
+  title: string;
+  body: string[];
+  facts: Fact[];
+  photo: { src: string; width: number; height: number; position?: string; alt: string };
+  caption?: string;
+  steps?: string[];
+  link?: { label: string; href: string };
+}
+
+// Facts: OWNER-VERIFIED (CLAUDE.md, docs/HIEN_NUONG_ABOUT_VI.md). Keep
+// "hơn" with 4 ha, and the 100% to electricity for growing mushrooms.
+const chapters: Chapter[] = [
+  {
+    id: 'cau-chuyen',
+    label: 'Câu chuyện',
+    title: 'Hai người, một khởi đầu',
+    body: [
+      'Hiền Nương Farm được chị Châu Thị Nương và anh Trần Phương Hiền cùng sáng lập vào năm 2020. Tên gọi Hiền Nương ghép từ tên của hai người đồng sáng lập.',
+      'Từ vùng Bảy Núi, An Giang, hai vợ chồng cùng xây dựng nông trại, phát triển công việc trồng nấm và từng bước hoàn thiện sản phẩm. Câu chuyện ấy tiếp tục qua từng mùa thu hoạch và những công việc mỗi ngày.',
+    ],
+    facts: [{ value: '2020', label: 'Năm thành lập' }],
+    photo: { src: '/images/about/hai-nguoi-sang-lap.webp', width: 1280, height: 720, position: '34% 50%', alt: 'Chị Châu Thị Nương và anh Trần Phương Hiền vẫy tay bên tảng đá khắc tên Trang trại Nông nghiệp Hiền Nương' },
+  },
+  {
+    id: 'bay-nui',
+    label: 'Bảy Núi',
+    title: 'Núi giữa đồng, thốt nốt giữa trời',
+    body: [
+      'Bảy Núi, còn gọi là Thất Sơn, mang một dáng vẻ riêng giữa miền Tây: những ngọn núi nhô lên trên nền đồng ruộng rộng mở, xen cùng hàng thốt nốt vươn cao. Núi, ruộng lúa và những tán lá thốt nốt tạo nên cảnh sắc dễ nhận ra của vùng đất An Giang.',
+      'Nơi đây còn mang dấu ấn văn hóa Khmer qua những ngôi chùa, nghề làm đường thốt nốt và hội đua bò Bảy Núi. Cảnh quan thiên nhiên hòa cùng đời sống văn hóa, làm nên bản sắc của vùng đất.',
+      'Đó là không gian quê hương bao quanh câu chuyện Hiền Nương — nơi núi và đồng cùng hiện diện trong nhịp sống làm nông.',
+    ],
+    facts: [],
+    // Frame from the farm's own video (original export, unretouched;
+    // the letterbox rows are trimmed).
+    photo: { src: '/images/about/bay-nui-nui-dong-thot-not.webp', width: 1280, height: 712, position: '50% 50%', alt: 'Cánh đồng lúa xanh điểm hàng thốt nốt, dãy núi vùng Bảy Núi phía xa, nhìn từ trên cao' },
+  },
+  {
+    id: 'hai-co-so',
+    label: 'Hai cơ sở',
+    title: 'Từ một nông trại đến hai cơ sở',
+    body: [
+      'Hiền Nương Farm có hai cơ sở trồng nấm tại Thới Sơn và Tà Đảnh, An Giang, với tổng diện tích hơn 4 ha. Cả hai cơ sở đều phục vụ hoạt động trồng nấm của Hiền Nương Farm.',
+    ],
+    facts: [
+      { value: '02', label: 'Cơ sở' },
+      { pre: 'Hơn', value: '4 ha', label: 'Tổng diện tích' },
+    ],
+    photo: { src: '/images/about/trang-trai-giua-dong-lua.webp', width: 1429, height: 901, position: '45% 50%', alt: 'Dãy nhà trồng nấm mái lợp tấm pin mặt trời nằm giữa cánh đồng lúa, nhìn từ trên cao' },
+  },
+  {
+    id: 'nang-luong',
+    label: 'Năng lượng',
+    title: 'Nắng nuôi những mùa nấm',
+    body: [
+      'Phía trên là hệ thống điện mặt trời. Phía dưới là không gian sản xuất nấm.',
+      'Nông trại được xây dựng trên khu đất khai thác điện năng lượng mặt trời. Toàn bộ hệ thống do chị Châu Thị Nương cùng anh Trần Phương Hiền tự xây dựng và phát triển. 100% điện sử dụng cho hoạt động trồng nấm được cung cấp từ nguồn năng lượng mặt trời này.',
+      'Trên cùng một khu đất, Hiền Nương kết hợp sản xuất điện sạch và trồng nấm, đưa nguồn năng lượng tại chỗ vào công việc hằng ngày.',
+    ],
+    facts: [{ value: '100%', label: 'Điện mặt trời cho hoạt động trồng nấm' }],
+    photo: { src: '/images/about/mai-dien-mat-troi.webp', width: 1430, height: 804, position: '50% 50%', alt: 'Các dãy nhà mái lợp tấm pin mặt trời giữa cây xanh và hàng thốt nốt, nhìn từ trên cao' },
+  },
+  {
+    id: 'tuan-hoan',
+    label: 'Tuần hoàn',
+    title: 'Tiếp nối giá trị sau mỗi mùa thu hoạch',
+    body: [
+      'Cách làm tuần hoàn tại Hiền Nương bắt đầu từ việc sử dụng phụ phẩm nông nghiệp để tạo giá thể trồng nấm.',
+      'Sau khi thu hoạch nấm, giá thể tiếp tục được dùng làm thức ăn cho trùn quế. Nguồn nguyên liệu được sử dụng qua nhiều công đoạn, tiếp tục tạo giá trị sau một chu kỳ sản xuất.',
+      'Cùng với năng lượng mặt trời, cách tận dụng phụ phẩm này là một phần trong mô hình nông nghiệp tuần hoàn của Hiền Nương.',
+    ],
+    facts: [],
+    steps: [
+      'Phụ phẩm nông nghiệp',
+      'Giá thể trồng nấm',
+      'Thu hoạch nấm',
+      'Giá thể sau thu hoạch làm thức ăn cho trùn quế',
+      'Phân trùn quế làm phân bón cho cây',
+      'Quay lại chu trình trồng nấm',
+    ],
+    link: { label: 'Tìm hiểu mô hình nông nghiệp tuần hoàn', href: circularHref },
+    photo: { src: '/images/about/nguyen-lieu-gia-the.webp', width: 1280, height: 820, position: '50% 50%', alt: 'Hai người đội mũ rộng vành ngồi bên đống giá thể trong nhà xưởng, phía trước là những khay nấm trong rơm' },
+  },
+  {
+    id: 'con-nguoi',
+    label: 'Con người',
+    title: 'Cùng làm, cùng phát triển',
+    body: [
+      'Hiền Nương Farm tạo việc làm cho hơn 40 lao động địa phương, đặc biệt là phụ nữ tại vùng Thới Sơn và Tri Tôn, An Giang.',
+      'Đằng sau mỗi mùa thu hoạch là công sức của những con người cùng nhau chuẩn bị giá thể, chăm sóc, thu hoạch và hoàn thiện sản phẩm. Sự phát triển của nông trại gắn với việc tạo thêm cơ hội việc làm ngay tại địa phương.',
+      'Bên cạnh sản xuất là những cuộc gặp gỡ, chuyến tham quan và dịp chia sẻ cách làm tại trang trại. Những hình ảnh ấy giúp người xem hiểu thêm về con người và công việc phía sau mỗi sản phẩm Hiền Nương.',
+    ],
+    facts: [{ value: 'Hơn 40', label: 'Lao động địa phương' }],
+    caption: 'Chăm sóc · Thu hoạch · Chia sẻ',
+    photo: { src: '/images/about/chuan-bi-gia-the.webp', width: 1600, height: 1090, position: '50% 55%', alt: 'Những người làm nấm, phần lớn là phụ nữ, ngồi quanh đống giá thể trong xưởng và đóng giá thể vào bịch' },
+  },
+];
+
+const num = (i: number) => String(i + 1).padStart(2, '0');
+---
+<BaseLayout
+  title="Về chúng tôi"
+  description="Câu chuyện Hiền Nương: một hành trình làm nông từ vùng Bảy Núi, An Giang — từ hai người sáng lập năm 2020 đến hai cơ sở trồng nấm, điện mặt trời, cách làm tuần hoàn và những người cùng làm."
+>
+  <div class="about-page">
+    <header class="intro">
+      <div class="container intro__inner">
+        <Breadcrumb items={[{ label: 'Trang chủ', href: '/' }, { label: 'Về chúng tôi' }]} />
+        <div class="intro__head">
+          <Eyebrow>Về chúng tôi</Eyebrow>
+          <h1 class="intro__title">Câu chuyện Hiền Nương</h1>
+        </div>
+        <div class="intro__aside">
+          <p class="intro__lead">Một hành trình làm nông từ vùng Bảy&nbsp;Núi.</p>
+          <p class="intro__cue" aria-hidden="true">Cuộn để tiếp tục</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="story" aria-label="Sáu chương của câu chuyện" data-story>
+      <div class="story__stage" data-story-stage>
+        <nav class="story__nav" aria-label="Các chương">
+          <ol class="story__nav-list">
+            {chapters.map((chapter, i) => (
+              <li>
+                <a class="story__nav-link" href={`#${chapter.id}`} data-chapter-link aria-current={i === 0 ? 'true' : undefined}>
+                  <span class="story__nav-num">{num(i)}</span>
+                  <span class="story__nav-label">{chapter.label}</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+
+        {chapters.map((chapter, i) => (
+          <article
+            class:list={['chapter', { 'is-active': i === 0 }]}
+            id={chapter.id}
+            aria-labelledby={`${chapter.id}-title`}
+            data-chapter
+          >
+            <figure class="chapter__media">
+              <div class="chapter__photo">
+                <img
+                  src={chapter.photo.src}
+                  width={chapter.photo.width}
+                  height={chapter.photo.height}
+                  srcset={`${chapter.photo.src.replace('.webp', '-800.webp')} 800w, ${chapter.photo.src} ${chapter.photo.width}w`}
+                  sizes="(min-width: 1024px) 58vw, (min-width: 768px) 50vw, 100vw"
+                  alt={chapter.photo.alt}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  style={chapter.photo.position ? `--pos: ${chapter.photo.position}` : undefined}
+                />
+              </div>
+              {chapter.caption && <figcaption class="chapter__caption">{chapter.caption}</figcaption>}
+            </figure>
+
+            <div class="chapter__text" data-chapter-text>
+              <div class="chapter__content">
+                <p class="chapter__kicker">
+                  <span class="chapter__num">{num(i)}</span>
+                  <span class="chapter__rule" aria-hidden="true"></span>
+                  <span class="chapter__label">{chapter.label}</span>
+                </p>
+                <h2 class="chapter__title" id={`${chapter.id}-title`}>{chapter.title}</h2>
+
+                <div class="chapter__body">
+                  {chapter.body.map((p) => <p>{p}</p>)}
+                </div>
+
+                {chapter.facts.length > 0 && (
+                  <dl class="chapter__facts">
+                    {chapter.facts.map((fact) => (
+                      <div class="fact">
+                        <dt class="fact__value">{fact.pre && <span class="fact__pre">{fact.pre} </span>}{fact.value}</dt>
+                        <dd class="fact__label">{fact.label}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+
+                {chapter.steps && (
+                  <ol class="chapter__steps">
+                    {chapter.steps.map((step) => <li>{step}</li>)}
+                  </ol>
+                )}
+
+                {chapter.link && (
+                  <a class="link-arrow chapter__link" href={chapter.link.href}>{chapter.link.label} <Arrow /></a>
+                )}
+              </div>
+            </div>
+          </article>
+        ))}
+
+      </div>
+    </section>
+
+    <section class="section closing" aria-labelledby="closing-title">
+      <div class="container closing__grid">
+        <div class="closing__heading" data-reveal>
+          <Eyebrow>Liên hệ</Eyebrow>
+          <h2 class="closing__title" id="closing-title">Kết nối cùng Hiền Nương</h2>
+        </div>
+        <div class="closing__body" data-reveal style="--reveal-delay: 120ms">
+          <p>Nếu bạn quan tâm đến sản phẩm, muốn tìm hiểu mô hình hoặc trao đổi cơ hội hợp tác, chúng tôi mong được trò chuyện cùng bạn.</p>
+          <p>Mỗi cuộc gặp là một cơ hội để chia sẻ kinh nghiệm, hiểu thêm nhu cầu của nhau và tìm hướng đồng hành phù hợp.</p>
+          <a class="btn closing__btn" href={contactHref}>Trao đổi cùng chúng tôi <Arrow /></a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script>
+  /**
+   * Chapter stage. Wide screens pin the chapters into one stage whose
+   * chapter follows the scroll position (no snapping, no autoplay); the
+   * chapter links scroll to the same positions, so both stay in step in
+   * either direction. The stage is used only when every chapter's text
+   * fits it; otherwise the stacked sections stay and the links mark the
+   * chapter being read.
+   */
+  const story = document.querySelector<HTMLElement>('[data-story]');
+  const stage = story?.querySelector<HTMLElement>('[data-story-stage]');
+
+  if (story && stage) {
+    const chapters = [...story.querySelectorAll<HTMLElement>('[data-chapter]')];
+    const links = [...story.querySelectorAll<HTMLAnchorElement>('[data-chapter-link]')];
+    const wide = window.matchMedia('(min-width: 1024px)');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    // Scroll distance per chapter, as a share of the stage height.
+    const STEP = 0.85;
+
+    let staged = false;
+    let measured = false;
+    let active = 0;
+    let start = 0;
+    let step = 1;
+
+    const stickyTop = () => parseFloat(getComputedStyle(stage).top) || 0;
+
+    const setActive = (index: number) => {
+      chapters.forEach((chapter, i) => {
+        if (i !== index && i === active) chapter.classList.add('is-leaving');
+        else if (i === index || index !== active) chapter.classList.remove('is-leaving');
+        chapter.classList.toggle('is-active', i === index);
+      });
+      links.forEach((link, i) => {
+        if (i === index) link.setAttribute('aria-current', 'true');
+        else link.removeAttribute('aria-current');
+      });
+      active = index;
+    };
+
+    // The chapter being read: in the stage, by scroll distance; stacked,
+    // the last chapter whose top has passed the upper third of the screen.
+    const currentIndex = () => {
+      if (staged) {
+        const i = Math.round((window.scrollY - start) / step);
+        return Math.min(chapters.length - 1, Math.max(0, i));
+      }
+      const line = window.innerHeight * 0.35;
+      let index = 0;
+      chapters.forEach((chapter, i) => {
+        if (chapter.getBoundingClientRect().top <= line) index = i;
+      });
+      return index;
+    };
+
+    const positionOf = (index: number) => {
+      if (staged) return start + index * step;
+      const chapter = chapters[index];
+      const margin = parseFloat(getComputedStyle(chapter).scrollMarginTop) || 0;
+      return chapter.getBoundingClientRect().top + window.scrollY - margin;
+    };
+
+    const goTo = (index: number, smooth: boolean) => {
+      window.scrollTo({
+        top: Math.ceil(positionOf(index)),
+        behavior: smooth && !reduce.matches ? 'smooth' : 'instant',
+      });
+    };
+
+    const fits = () =>
+      chapters.every((chapter) => {
+        const text = chapter.querySelector<HTMLElement>('[data-chapter-text]');
+        return text ? text.scrollHeight <= text.clientHeight + 1 : true;
+      });
+
+    const measure = () => {
+      if (!staged) {
+        story.style.height = '';
+        return;
+      }
+      step = Math.round(stage.offsetHeight * STEP);
+      // One stage height, one step per further chapter, and a short dwell
+      // on the last chapter before the stage scrolls away.
+      story.style.height = `${stage.offsetHeight + (chapters.length - 1) * step + Math.round(step * 0.35)}px`;
+      start = story.getBoundingClientRect().top + window.scrollY - stickyTop();
+    };
+
+    const layout = () => {
+      const reading = active;
+      const box = story.getBoundingClientRect();
+      const inView = box.top < window.innerHeight && box.bottom > 0;
+      const was = staged;
+      // Re-measuring resets the story's height, which can pull the scroll
+      // position back while the stage is pinned.
+      const pinned = was && window.scrollY >= start - 1 && box.bottom > window.innerHeight;
+      story.style.height = '';
+      story.classList.remove('is-compact');
+      story.classList.add('is-staged');
+      staged = wide.matches && fits();
+      // Screens a little short for the text try a tighter type step first.
+      if (wide.matches && !staged) {
+        story.classList.add('is-compact');
+        staged = fits();
+        if (!staged) story.classList.remove('is-compact');
+      }
+      story.classList.toggle('is-staged', staged);
+      measure();
+      // Keep the reader on the same chapter when the layout changes.
+      if (measured && (pinned || (staged !== was && inView))) goTo(reading, false);
+      measured = true;
+      setActive(currentIndex());
+    };
+
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        setActive(currentIndex());
+      });
+    };
+
+    links.forEach((link, i) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        goTo(i, true);
+        history.replaceState(null, '', `#${chapters[i].id}`);
+      });
+    });
+
+    // Tabbing into a chapter that is not on screen brings it in.
+    story.addEventListener('focusin', (event) => {
+      if (!staged) return;
+      const chapter = (event.target as HTMLElement).closest<HTMLElement>('[data-chapter]');
+      const index = chapter ? chapters.indexOf(chapter) : -1;
+      if (index >= 0 && index !== active) goTo(index, false);
+    });
+
+    let resizeTimer: number | undefined;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(layout, 150);
+    });
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    layout();
+    story.classList.add('is-ready');
+
+    // A link to a chapter (/ve-chung-toi/#bay-nui) opens on that chapter,
+    // on load or from a link on this page (the header dropdown).
+    const hashIndex = () => chapters.findIndex((chapter) => `#${chapter.id}` === window.location.hash);
+    const target = hashIndex();
+    if (target >= 0) goTo(target, false);
+    window.addEventListener('hashchange', () => {
+      const index = hashIndex();
+      if (index >= 0) goTo(index, false);
+    });
+
+    // Text height depends on the web fonts.
+    document.fonts?.ready.then(() => {
+      layout();
+      if (target >= 0 && staged) goTo(target, false);
+    });
+  }
+</script>
+
+<style>
+  .about-page {
+    /* Homepage display serif (Lora), as on the homepage. */
+    --font-display: var(--font-editorial);
+  }
+
+  /* Opening ---------------------------------------------------------------- */
+
+  .intro {
+    padding-top: clamp(1.25rem, 0.75rem + 2vw, 2.5rem);
+    padding-bottom: clamp(2rem, 1.25rem + 3vw, 3.5rem);
+  }
+
+  .intro__inner {
+    display: grid;
+    row-gap: var(--space-m);
+  }
+
+  /* The pinned stage centres itself, which already leaves space above. */
+  .intro:has(+ .story.is-staged) { padding-bottom: 0; }
+
+  .intro__head { margin-top: clamp(1rem, 0.5rem + 2.5vw, 2.5rem); }
+
+  .intro__title {
+    margin-top: var(--space-m);
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.25rem, 1.6rem + 2.6vw, 3.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    color: var(--color-deep-green);
+  }
+
+  .intro__lead {
+    max-width: 30rem;
+    text-wrap: balance;
+    font-family: var(--font-display);
+    font-size: var(--type-lead);
+    line-height: 1.45;
+    color: var(--color-text-muted);
+  }
+
+  .intro__cue {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    margin-top: var(--space-m);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+  .intro__cue::before {
+    content: "";
+    width: 1px;
+    height: 1.25rem;
+    background: var(--color-earth);
+  }
+
+  @media (min-width: 1024px) {
+    .intro__inner {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      column-gap: var(--col-gap);
+      align-items: end;
+    }
+    .intro__inner > :global(.breadcrumb) { grid-column: 1 / -1; }
+    .intro__aside { justify-self: end; padding-bottom: 0.4rem; }
+  }
+
+  /* Chapters: stacked (phones, tablets, short screens, no script) ---------- */
+
+  .story { --nav-h: 0px; }
+
+  .story__stage {
+    display: flex;
+    flex-direction: column;
+    padding-inline: var(--gutter);
+  }
+
+  .story__nav {
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .story__nav-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  }
+
+  .story__nav-link {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    gap: 0.625rem;
+    min-height: 2.75rem;
+    padding-block: 0.75rem;
+    font-size: var(--type-small);
+    line-height: 1.4;
+    color: var(--color-text-muted);
+    transition: color 300ms var(--ease);
+  }
+  .story__nav-link:hover { color: var(--color-text); }
+
+  .story__nav-num {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--color-text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Active chapter: an earth rule under the label. */
+  .story__nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: var(--color-earth);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 500ms var(--ease);
+  }
+  .story.is-ready .story__nav-link[aria-current]::after { transform: none; }
+  .story.is-ready .story__nav-link[aria-current] { color: var(--color-text); }
+  /* Without script nothing tracks the reading position; on phones the
+     list is not held on screen, so it marks nothing either. */
+  .story:not(.is-ready) .story__nav-link::after { display: none; }
+  @media (max-width: 767px) {
+    .story__nav-link::after { display: none; }
+  }
+
+  .chapter {
+    padding-block: var(--space-2xl);
+    scroll-margin-top: calc(var(--header-h) + var(--nav-h));
+  }
+  .chapter + .chapter { border-top: 1px solid var(--color-line); }
+
+  .chapter__media {
+    position: relative;
+    margin-inline: calc(-1 * var(--gutter));
+  }
+
+  .chapter__photo {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: var(--color-cream);
+  }
+
+  .chapter__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--pos, 50% 50%);
+  }
+
+  .chapter__caption {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0.625rem 1rem;
+    background: var(--color-paper);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.4;
+    color: var(--color-text);
+  }
+
+  .chapter__text { margin-top: var(--space-l); }
+
+  .chapter__content {
+    --gap: var(--space-m);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 36rem;
+  }
+  .chapter__content > * + * { margin-top: var(--gap); }
+
+  .chapter__kicker {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    color: var(--color-earth);
+  }
+
+  .chapter__num {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    line-height: 1;
+    color: var(--color-text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .chapter__rule {
+    width: 2.75rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.7;
+  }
+
+  .chapter__label {
+    font-size: var(--type-eyebrow);
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .chapter__title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.875rem, 1.5rem + 1.6vw, 2.75rem);
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    color: var(--color-deep-green);
+  }
+
+  .chapter__body {
+    font-size: var(--type-body);
+    line-height: 1.68;
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+  .chapter__body p + p { margin-top: 0.8em; }
+
+  .chapter__facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s) var(--space-l);
+  }
+
+  /* Large value with its label underneath, as in the reference. */
+  .fact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .fact__value {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 3rem + 2vw, 5rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--color-earth);
+    white-space: nowrap;
+  }
+
+  .fact__pre {
+    margin-right: 0.15em;
+    font-size: 0.5em;
+    letter-spacing: 0.02em;
+  }
+
+  /* A thin rule keeps each value with its own label. */
+  .fact + .fact {
+    padding-left: var(--space-l);
+    border-left: 1px solid var(--color-line);
+  }
+
+  .fact__label {
+    max-width: 16rem;
+    text-wrap: balance;
+    font-size: var(--type-small);
+    line-height: 1.45;
+    color: var(--color-text);
+  }
+
+  /* By-product → substrate → harvest → worm feed → fertiliser → back to growing. */
+  .chapter__steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0;
+    padding-top: var(--space-s);
+    border-top: 1px solid var(--color-line);
+    font-size: var(--type-small);
+    line-height: 1.6;
+    color: var(--color-text);
+  }
+  .chapter__steps li:not(:last-child)::after {
+    content: "→" / "";
+    margin-inline: 0.625rem;
+    color: var(--color-earth);
+  }
+
+  .chapter__link { text-transform: uppercase; }
+
+  /* Tablets and wider: the chapter list is held under the header. */
+  @media (min-width: 768px) {
+    .story { --nav-h: 3.5rem; }
+
+    .story__nav {
+      position: sticky;
+      top: var(--header-h);
+      z-index: 5;
+      margin-inline: calc(-1 * var(--gutter));
+      padding-inline: var(--gutter);
+      background: var(--color-paper);
+    }
+    /* One row, one equal column per chapter. */
+    .story__nav-list {
+      grid-template-columns: none;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(0, 1fr);
+      column-gap: 0.75rem;
+    }
+    .story__nav-link { min-height: var(--nav-h); align-items: center; padding-block: 0; }
+    .story__nav-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .chapter__media { margin-inline: 0; }
+  }
+
+  /* Tablets: six labels in one row. */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .story__nav-link { gap: 0.375rem; font-size: 0.8125rem; }
+    .story__nav-num { font-size: 0.9375rem; }
+  }
+
+  /* Short desktops: photograph beside the text. */
+  @media (min-width: 1024px) {
+    .chapter {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      column-gap: clamp(2rem, 4vw, 4.5rem);
+      align-items: start;
+    }
+    .chapter__photo { aspect-ratio: 4 / 3; }
+    .chapter__text { margin-top: 0; }
+  }
+
+  /* Chapters: one pinned stage (wide screens, when the text fits) -------- */
+
+  @media (min-width: 1024px) {
+    .story.is-staged {
+      --media: 58%;
+      --text-pad: clamp(2rem, 3.4vw, 4rem);
+      --stage-pad: clamp(0.75rem, 2vh, 1.5rem);
+      --nav-row: clamp(3.25rem, 7vh, 4rem);
+      position: relative;
+    }
+
+    /* Photograph, text and chapter list form one spread, centred in the
+       screen below the header. */
+    .story.is-staged .story__stage {
+      position: sticky;
+      top: var(--header-h);
+      height: calc(100vh - var(--header-h));
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: auto auto;
+      align-content: center;
+      padding-block: var(--stage-pad);
+      /* As in the reference, the spread runs almost edge to edge, with
+         the same narrow margin on both sides. */
+      padding-inline: max(1.25rem, calc((100% - var(--container) - 2 * var(--gutter)) / 2 + 1.25rem));
+    }
+
+    /* Thin rule between photograph and text. */
+    .story.is-staged .story__stage::before {
+      content: "";
+      grid-area: 1 / 1;
+      margin-left: var(--media);
+      border-left: 1px solid var(--color-line);
+      pointer-events: none;
+    }
+
+    .story.is-staged .story__nav {
+      grid-area: 2 / 1;
+      position: static;
+      margin: 0;
+      padding: 0;
+      border-bottom: 0;
+      background: none;
+    }
+
+    .story.is-staged .story__nav-list > li { position: relative; }
+    .story.is-staged .story__nav-list > li + li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      height: 1rem;
+      margin-top: -0.5rem;
+      border-left: 1px solid var(--color-line-strong);
+    }
+    .story.is-staged .story__nav-link {
+      justify-content: center;
+      min-height: var(--nav-row);
+    }
+    /* Active rule just under the label, as in the reference. */
+    .story.is-staged .story__nav-link::after {
+      left: 50%;
+      right: auto;
+      width: 8.5rem;
+      margin-left: -4.25rem;
+      bottom: calc(50% - 1.2rem);
+      transform-origin: center;
+    }
+
+    .story.is-staged .chapter {
+      grid-area: 1 / 1;
+      grid-template-columns: var(--media) minmax(0, 1fr);
+      align-items: stretch;
+      column-gap: 0;
+      padding: 0;
+      border: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .story.is-staged .chapter.is-leaving { z-index: 2; }
+    .story.is-staged .chapter.is-active { z-index: 3; pointer-events: auto; }
+
+    /* Landscape, as in the reference: 4:3 where the screen is tall
+       enough, wider where it is not. The photograph sets the spread's
+       height; the text has to fit beside it (checked by the script). */
+    .story.is-staged .chapter__photo {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      max-height: calc(100vh - var(--header-h) - 2 * var(--stage-pad) - var(--nav-row));
+    }
+
+    .story.is-staged .chapter__text {
+      contain: size;
+      overflow: hidden;
+      padding-left: var(--text-pad);
+    }
+
+    .story.is-staged .chapter__content {
+      --gap: clamp(0.875rem, 2.2vh, 1.375rem);
+      max-width: 30rem;
+    }
+
+    .story.is-staged .chapter__num { font-size: clamp(1.75rem, 3.4vh, 2.25rem); }
+    .story.is-staged .chapter__title { font-size: clamp(2rem, 4.4vh, 3rem); }
+    .story.is-staged .chapter__body p + p { margin-top: 0.7em; }
+    .story.is-staged .fact__value { font-size: clamp(3.5rem, 7.5vh, 5rem); }
+
+    .story.is-compact .chapter__content { --gap: 0.875rem; }
+    .story.is-compact .chapter__num { font-size: 1.75rem; }
+    .story.is-compact .chapter__title { font-size: 2rem; }
+    .story.is-compact .fact__value { font-size: 3.5rem; }
+
+    /* Inactive chapters stay readable to assistive technology; only their
+       visibility on screen changes. */
+    .story.is-staged .chapter:not(.is-active, .is-leaving) .chapter__media,
+    .story.is-staged .chapter:not(.is-active) .chapter__content > * { opacity: 0; }
+  }
+
+  @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+    /* Photographs cross-fade: the new one fades in over the previous,
+       which is removed once covered. */
+    .story.is-staged .chapter__media { transition: opacity 0s linear 900ms; }
+    .story.is-staged .chapter.is-active .chapter__media { transition: opacity 900ms var(--ease); }
+    .story.is-staged .chapter__photo img {
+      transform: scale(1.025);
+      transition: transform 1600ms var(--ease);
+    }
+    .story.is-staged .chapter.is-active .chapter__photo img { transform: none; }
+
+    /* Text leaves quickly and arrives line by line. */
+    .story.is-staged .chapter__content > * {
+      transform: translateY(0.75rem);
+      transition: opacity 240ms var(--ease), transform 240ms var(--ease);
+    }
+    .story.is-staged .chapter.is-active .chapter__content > * {
+      transform: none;
+      transition: opacity 650ms var(--ease), transform 650ms var(--ease);
+      transition-delay: calc(180ms + var(--i, 0) * 70ms);
+    }
+    .story.is-staged .chapter__content > :nth-child(2) { --i: 1; }
+    .story.is-staged .chapter__content > :nth-child(3) { --i: 2; }
+    .story.is-staged .chapter__content > :nth-child(4) { --i: 3; }
+    .story.is-staged .chapter__content > :nth-child(5) { --i: 4; }
+    .story.is-staged .chapter__content > :nth-child(6) { --i: 5; }
+  }
+
+  /* Closing ---------------------------------------------------------------- */
+
+  .closing {
+    background: var(--color-cream);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .closing__grid {
+    display: grid;
+    row-gap: var(--space-xl);
+  }
+
+  .closing__title {
+    margin-top: var(--space-l);
+    max-width: 16ch;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.875rem, 1.5rem + 1.6vw, 2.75rem);
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    color: var(--color-deep-green);
+  }
+
+  .closing__body {
+    max-width: 32rem;
+    font-size: var(--type-body);
+    line-height: 1.68;
+    color: var(--color-text-muted);
+  }
+  .closing__body p + p { margin-top: 0.8em; }
+
+  .closing__btn { margin-top: var(--space-l); }
+
+  @media (min-width: 1024px) {
+    .closing__grid {
+      grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+      column-gap: var(--col-gap);
+      align-items: end;
+    }
+  }
+</style>

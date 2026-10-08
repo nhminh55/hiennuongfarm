@@ -1,6 +1,6 @@
 ---
 import { footerNav, contact, business } from '../data/site';
-import { getLocale, localizePath } from '../i18n';
+import { getLocale, localizePath, pageHref } from '../i18n';
 import BrandLogo from './BrandLogo.astro';
 import Arrow from './Arrow.astro';
 import '../styles/desktop-footer-layout.css';
@@ -70,7 +70,7 @@ const t = {
         <p class="site-footer__heading">{t.explore}</p>
         <ul class="site-footer__list">
           {footerNav.map((item) => (
-            <li><a href={localizePath(item.href, lang)}>{item.label[lang]}</a></li>
+            <li><a href={pageHref(item.href, lang, item.fallback)}>{item.label[lang]}</a></li>
           ))}
         </ul>
       </nav>

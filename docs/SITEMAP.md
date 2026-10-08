@@ -17,7 +17,7 @@ Status vocabulary: Needs verification / Planned / In progress / Implemented / Pu
 | Level | Page | Proposed route | Status |
 | --- | --- | --- | --- |
 | 0 | Homepage | / | Published — verified |
-| 1 | Về Hiền Nương | /ve-chung-toi/ | Needs verification |
+| 1 | Về Hiền Nương | /ve-chung-toi/ | Published — Vietnamese only (2026-10-08) |
 | 1 | Nông nghiệp tuần hoàn | /nong-nghiep-tuan-hoan/ | Needs verification |
 | 1 | Sản phẩm | /san-pham/ | Published — verified through navbar |
 | 2 | Individual product details | /san-pham/{slug}/ | Planned — check catalogue and existing routes |
@@ -47,7 +47,7 @@ Preserve homepage content, section order, and existing links unless a separate c
 Additional verified anchors: #top (back to top), #main (skip to main content).
 
 Vùng Bảy Núi is no longer a navbar item (changed 2026-10-08). The homepage section keeps its position and ID #bay-nui, has no section number, and stays reachable from the hero section navigation. Homepage section numbers: 01 Về Hiền Nương, 02 Nông nghiệp tuần hoàn, 03 Sản phẩm, 04 Dấu ấn, 05 Hợp tác.
-Its “Câu chuyện Hiền Nương” link targets /ve-chung-toi/#bay-nui once that page is published; until then it targets /#ve-hien-nuong.
+Its “Câu chuyện Hiền Nương” link targets the story's Bảy Núi chapter, /ve-chung-toi/#bay-nui; in English and Chinese it targets /#ve-hien-nuong.
 
 The live Sản phẩm navbar link opens /san-pham/, while hero section navigation targets #san-vat. Under the agreed new behavior, the navbar label will target #san-vat; its “Tất cả sản phẩm” dropdown link will open /san-pham/. This is an intentional planned change, not current behavior.
 Keep homepage ID #san-vat; do not rename it to #san-pham.
@@ -70,7 +70,7 @@ Do not rename “Về Hiền Nương” to “Về chúng tôi” or shorten “
 | Navbar item | Dropdown label | Proposed destination |
 | --- | --- | --- |
 | Về Hiền Nương | Câu chuyện Hiền Nương | /ve-chung-toi/ |
-| Về Hiền Nương | Người sáng lập | /ve-chung-toi/#nguoi-sang-lap |
+| Về Hiền Nương | Người sáng lập | /ve-chung-toi/#cau-chuyen |
 | Về Hiền Nương | Vùng Bảy Núi | /ve-chung-toi/#bay-nui |
 | Nông nghiệp tuần hoàn | Tổng quan mô hình | /nong-nghiep-tuan-hoan/ |
 | Nông nghiệp tuần hoàn | Vòng tuần hoàn tại farm | /nong-nghiep-tuan-hoan/#vong-tuan-hoan |
@@ -84,6 +84,7 @@ Do not rename “Về Hiền Nương” to “Về chúng tôi” or shorten “
 | Hợp tác | Liên hệ | /hop-tac/#lien-he |
 
 - Clicking a navbar label navigates to its homepage anchor. From child pages use the corresponding /#ve-hien-nuong, /#tuan-hoan, /#san-vat, /#dau-an, or /#hop-tac.
+- Until the dropdowns are published, the Vietnamese “Về Hiền Nương” label opens /ve-chung-toi/ directly (English and Chinese: /#ve-hien-nuong).
 - On desktop with a mouse, hover opens the dropdown.
 - A separate chevron button toggles each dropdown on desktop and mobile. Keep this button separate from the anchor link.
 - On mobile, clicking a label closes navigation and goes to its homepage section; clicking a chevron only toggles its submenu.
@@ -102,13 +103,15 @@ Do not rename “Về Hiền Nương” to “Về chúng tôi” or shorten “
 
 Purpose: brand origin, founders, and the region.
 
-Planned sections:
+Published (Vietnamese only; copy: docs/HIEN_NUONG_ABOUT_VI.md). Six chapters, one sticky stage on wide screens:
 
-- Founding story.
-- Founders: #nguoi-sang-lap.
-- Bảy Núi region: #bay-nui.
-- Thới Sơn and Tri Tôn facilities: #co-so; brief introductions linking to location details on Cooperation.
-- Future direction, linking to Circular Agriculture.
+- 01 Câu chuyện: #cau-chuyen — founders, 2020.
+- 02 Bảy Núi: #bay-nui — the region: mountains, rice fields, palmyra palms, Khmer culture.
+- 03 Hai cơ sở: #hai-co-so — Thới Sơn and Tà Đảnh, more than 4 ha.
+- 04 Năng lượng: #nang-luong — solar electricity for mushroom growing.
+- 05 Tuần hoàn: #tuan-hoan — by-products, substrate, earthworm feed; links to Circular Agriculture.
+- 06 Con người: #con-nguoi — local workers.
+- Closing: contact link (/#hop-tac until /hop-tac/ is published).
 
 User-confirmed facts: established in 2020; chị Châu Thị Nương và anh Trần Phương Hiền are married and co-founded the farm. Preserve this preferred name order and Vietnamese wording.
 Do not create separate pages for each About section at this stage.

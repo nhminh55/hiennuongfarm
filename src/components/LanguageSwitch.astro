@@ -1,6 +1,6 @@
 ---
 // "VI | EN | CH": the current page in each language.
-import { getLocale, languages, locales, localizePath, stripLocale } from '../i18n';
+import { getLocale, isTranslated, languages, locales, localizePath, stripLocale } from '../i18n';
 import { draftPages, showDrafts } from '../data/drafts';
 
 interface Props {
@@ -11,8 +11,9 @@ const { class: className } = Astro.props;
 const lang = getLocale(Astro.url);
 const path = stripLocale(Astro.url.pathname);
 const label = { vi: 'Ngôn ngữ', en: 'Language', zh: '语言' }[lang];
-// Review scaffold pages (src/data/drafts.ts) exist in Vietnamese only.
-const untranslated = showDrafts && draftPages.some((page) => page.path === path);
+// Review scaffold pages (src/data/drafts.ts) and some published pages
+// (viOnlyPaths) exist in Vietnamese only.
+const untranslated = !isTranslated(path) || (showDrafts && draftPages.some((page) => page.path === path));
 ---
 <nav class:list={['lang-switch', className]} aria-label={label}>
   {locales.map((code, i) => (

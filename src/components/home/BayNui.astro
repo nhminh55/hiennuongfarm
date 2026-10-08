@@ -2,8 +2,7 @@
 import Photo from '../Photo.astro';
 import Eyebrow from '../Eyebrow.astro';
 import Arrow from '../Arrow.astro';
-import { getLocale, localizePath } from '../../i18n';
-import { showDrafts } from '../../data/drafts';
+import { getLocale, pageHref } from '../../i18n';
 
 const lang = getLocale(Astro.url);
 const t = {
@@ -30,9 +29,9 @@ const t = {
   },
 }[lang];
 
-// The story's Bảy Núi section once /ve-chung-toi/ is published (it exists
-// only in the review scaffold, Vietnamese); until then the homepage About.
-const storyHref = showDrafts && lang === 'vi' ? '/ve-chung-toi/#bay-nui' : localizePath('/#ve-hien-nuong', lang);
+// The story's Bảy Núi chapter. The page is Vietnamese only; other
+// languages go to the homepage About.
+const storyHref = pageHref('/ve-chung-toi/#bay-nui', lang, '/#ve-hien-nuong');
 ---
 <section class="baynui" id="bay-nui" aria-labelledby="baynui-title">
   <!-- Video frame 00:00.5 (opening aerial, no subtitle). -->
