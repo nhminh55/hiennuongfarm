@@ -1,11 +1,13 @@
 ---
 /**
- * /nong-nghiep-tuan-hoan/: the farm's circular model.
+ * /nong-nghiep-tuan-hoan/ (and /en/, /zh/ through src/pages/[lang]/): the
+ * farm's circular model.
  *
- * Vietnamese only (no /en/ or /zh/ route; see `viOnlyPaths` in src/i18n.ts).
- * Step copy: owner-approved brief for this page. Solar copy:
- * docs/HIEN_NUONG_ABOUT_VI.md §04. Product and closing lines reuse the
- * published /san-pham/ and /ve-chung-toi/ wording.
+ * Vietnamese copy: owner-approved step brief for this page; solar copy from
+ * docs/HIEN_NUONG_ABOUT_VI.md §04; product and closing lines reuse the
+ * published /san-pham/ and /ve-chung-toi/ wording. English and Chinese are
+ * translations of the same copy, with the step names, motto, product names
+ * and film labels already used on the homepage and /san-pham/.
  *
  * The cycle is a wheel of five steps. Choosing a step turns the wheel the
  * short way round until that step sits at about 2 o'clock, beside its
@@ -18,49 +20,164 @@ import Breadcrumb from '../../components/page/Breadcrumb.astro';
 import CtaBand from '../../components/page/CtaBand.astro';
 import Eyebrow from '../../components/Eyebrow.astro';
 import Arrow from '../../components/Arrow.astro';
-import { showDrafts } from '../../data/drafts';
+import { getLocale, localizePath, pageHref } from '../../i18n';
 
-// The cooperation page is still a review scaffold; published, the link
-// goes to the homepage cooperation section.
-const contactHref = showDrafts ? '/hop-tac/' : '/#hop-tac';
-const productsHref = '/san-pham/';
+const lang = getLocale(Astro.url);
 
-// Five steps, in order round the wheel (clockwise). `name` keeps the
-// wheel label's line break.
-const steps = [
-  {
-    icon: '01-phu-pham',
-    title: 'Phụ phẩm nông nghiệp',
-    name: 'Phụ phẩm\nnông nghiệp',
-    text: 'Phụ phẩm nông nghiệp được tận dụng làm nguyên liệu chuẩn bị giá thể trồng nấm, tiếp nối giá trị từ những nguồn vật liệu sẵn có.',
+// The cooperation page is Vietnamese only; other languages go to the
+// homepage cooperation section.
+const contactHref = pageHref('/hop-tac/', lang, '/#hop-tac');
+const productsHref = localizePath('/san-pham/', lang);
+
+interface Step {
+  title: string;
+  /** Wheel label, with its line break. */
+  name: string;
+  text: string;
+}
+
+// Facts: OWNER-VERIFIED. Keep the 100% to the electricity used for growing
+// mushrooms, and the founders' names in this order.
+const t = {
+  vi: {
+    pageTitle: 'Nông nghiệp tuần hoàn',
+    description: 'Nông nghiệp tuần hoàn tại Hiền Nương Farm: từ phụ phẩm nông nghiệp đến nấm, trùn quế và nguồn dinh dưỡng cho cây trồng, cùng nguồn điện mặt trời tại trang trại.',
+    home: 'Trang chủ',
+    title: 'Tiếp nối giá trị từ phụ phẩm.',
+    lead: 'Từ phụ phẩm nông nghiệp đến nấm, trùn quế và nguồn dinh dưỡng cho cây trồng.',
+    cycleTitle: 'Vòng tuần hoàn tại trang trại',
+    hint: 'Chọn một bước để khám phá',
+    stepsLabel: 'Năm bước của vòng tuần hoàn',
+    motto: ['Từ đất,', 'trở về đất.'],
+    steps: [
+      { title: 'Phụ phẩm nông nghiệp', name: 'Phụ phẩm\nnông nghiệp', text: 'Phụ phẩm nông nghiệp được tận dụng làm nguyên liệu chuẩn bị giá thể trồng nấm, tiếp nối giá trị từ những nguồn vật liệu sẵn có.' },
+      { title: 'Chuẩn bị giá thể', name: 'Chuẩn bị\ngiá thể', text: 'Nguyên liệu được xử lý, phối trộn và đóng bịch thành giá thể phù hợp cho quá trình nuôi trồng nấm.' },
+      { title: 'Nuôi trồng & thu hoạch', name: 'Nuôi trồng\n& thu hoạch', text: 'Nấm được chăm sóc và thu hoạch tại trang trại, phục vụ nhu cầu sử dụng nấm tươi và chế biến thành các sản phẩm khác.' },
+      { title: 'Giá thể nuôi trùn quế', name: 'Giá thể nuôi\ntrùn quế', text: 'Sau thu hoạch, giá thể được tận dụng làm thức ăn cho trùn quế, tiếp tục tạo giá trị thay vì bỏ đi.' },
+      { title: 'Phân trùn bón cây', name: 'Phân trùn\nbón cây', text: 'Phân trùn được sử dụng để bón cây, bổ sung nguồn dinh dưỡng hữu cơ cho đất và tiếp nối vòng tuần hoàn.' },
+    ] as Step[],
+    products: 'Xem sản phẩm',
+    prev: 'Bước trước',
+    next: 'Bước tiếp theo',
+    live: 'Bước {n} trên {total}: {title}',
+    produceEyebrow: 'Sản phẩm',
+    produceTitle: 'Từ mùa nấm đến những sản phẩm.',
+    produceBody: [
+      'Nấm thu hoạch tại trang trại phục vụ nhu cầu sử dụng nấm tươi và được chế biến thành các sản phẩm khác.',
+      'Nấm mối đen, nấm linh chi, đông trùng hạ thảo và nấm bào ngư là bốn dòng nấm chính được nuôi trồng tại trang trại.',
+    ],
+    produceAlt: 'Chùm nấm bào ngư trắng xám mọc từ bịch phôi trong nhà trồng',
+    solarEyebrow: 'Năng lượng mặt trời',
+    solarTitle: 'Nguồn điện từ mặt trời.',
+    solarBody: [
+      'Nông trại được xây dựng trên khu đất khai thác điện năng lượng mặt trời. Toàn bộ hệ thống do chị Châu Thị Nương cùng anh Trần Phương Hiền tự xây dựng và phát triển. 100% điện sử dụng cho hoạt động trồng nấm được cung cấp từ nguồn năng lượng mặt trời này.',
+      'Trên cùng một khu đất, Hiền Nương kết hợp sản xuất điện sạch và trồng nấm, đưa nguồn năng lượng tại chỗ vào công việc hằng ngày.',
+    ],
+    solarFact: 'Điện mặt trời cho hoạt động trồng nấm',
+    solarAlt: 'Các dãy nhà mái lợp tấm pin mặt trời giữa cây xanh và hàng thốt nốt, nhìn từ trên cao',
+    solarCaption: 'Phía trên là hệ thống điện mặt trời. Phía dưới là không gian sản xuất nấm.',
+    filmEyebrow: 'Brand Film',
+    filmTitle: 'Một góc nhìn từ trang trại.',
+    watch: 'Xem phim',
+    closingTitle: 'Cùng tiếp nối những vòng giá trị.',
+    closingBody: 'Nếu bạn quan tâm đến sản phẩm, muốn tìm hiểu mô hình hoặc trao đổi cơ hội hợp tác, chúng tôi mong được trò chuyện cùng bạn.',
   },
-  {
-    icon: '02.gia-the-trong-nam',
-    title: 'Chuẩn bị giá thể',
-    name: 'Chuẩn bị\ngiá thể',
-    text: 'Nguyên liệu được xử lý, phối trộn và đóng bịch thành giá thể phù hợp cho quá trình nuôi trồng nấm.',
+  en: {
+    pageTitle: 'Circular Agriculture',
+    description: 'Circular agriculture at Hiền Nương Farm: from agricultural by-products to mushrooms, red worms and nourishment for crops, alongside solar power generated on the farm.',
+    home: 'Home',
+    title: 'Carrying on the value of by-products.',
+    lead: 'From agricultural by-products to mushrooms, red worms and nourishment for crops.',
+    cycleTitle: 'The cycle on the farm',
+    hint: 'Choose a step to explore',
+    stepsLabel: 'The five steps of the cycle',
+    motto: ['From the soil,', 'back to the soil.'],
+    steps: [
+      { title: 'Agricultural by-products', name: 'Agricultural\nby-products', text: 'Agricultural by-products are put to use as material for preparing the mushroom-growing substrate, carrying on the value of materials already at hand.' },
+      { title: 'Preparing the substrate', name: 'Preparing\nthe substrate', text: 'The materials are treated, mixed and bagged into a substrate suited to growing mushrooms.' },
+      { title: 'Growing & harvesting', name: 'Growing\n& harvesting', text: 'The mushrooms are tended and harvested on the farm, to be enjoyed fresh and processed into other products.' },
+      { title: 'Substrate for red worms', name: 'Substrate for\nred worms', text: 'After the harvest, the substrate becomes feed for red worms, going on to create value instead of being thrown away.' },
+      { title: 'Worm castings for crops', name: 'Worm castings\nfor crops', text: 'The worm castings are used to fertilise crops, adding organic nourishment to the soil and carrying the cycle on.' },
+    ] as Step[],
+    products: 'View products',
+    prev: 'Previous step',
+    next: 'Next step',
+    live: 'Step {n} of {total}: {title}',
+    produceEyebrow: 'Products',
+    produceTitle: 'From seasons of mushrooms to the products.',
+    produceBody: [
+      'Mushrooms harvested on the farm are enjoyed fresh and processed into other products.',
+      'Black termite mushroom, lingzhi, cordyceps and oyster mushroom are the four main mushroom lines grown on the farm.',
+    ],
+    produceAlt: 'A cluster of greyish-white oyster mushrooms growing from a spawn bag in a grow house',
+    solarEyebrow: 'Solar energy',
+    solarTitle: 'Power from the sun.',
+    solarBody: [
+      'The farm is built on land that generates solar power. The whole system was built and developed by Ms. Châu Thị Nương and Mr. Trần Phương Hiền themselves. 100% of the electricity used for growing mushrooms comes from this solar power.',
+      'On the same land, Hiền Nương combines clean power generation with mushroom growing, bringing energy made on site into everyday work.',
+    ],
+    solarFact: 'Solar electricity for growing mushrooms',
+    solarAlt: 'Rows of buildings roofed with solar panels among green trees and palmyra palms, seen from above',
+    solarCaption: 'Above, the solar power system. Below, the space where the mushrooms are grown.',
+    filmEyebrow: 'Brand Film',
+    filmTitle: 'A view from the farm.',
+    watch: 'Watch the film',
+    closingTitle: 'Carrying the cycles of value forward, together.',
+    closingBody: 'If you are interested in our products, would like to learn about the model or discuss working together, we would be glad to talk with you.',
   },
-  {
-    icon: '03-thu-hoach-nam',
-    title: 'Nuôi trồng & thu hoạch',
-    name: 'Nuôi trồng\n& thu hoạch',
-    text: 'Nấm được chăm sóc và thu hoạch tại trang trại, phục vụ nhu cầu sử dụng nấm tươi và chế biến thành các sản phẩm khác.',
-    // Processing belongs to the products, not to the material cycle.
-    link: { label: 'Xem sản phẩm', href: productsHref },
+  zh: {
+    pageTitle: '循环农业',
+    description: 'Hiền Nương Farm 的循环农业：从农业副产品到菌菇、红蚯蚓和作物养分，以及农场自产的太阳能电力。',
+    home: '首页',
+    title: '延续副产品的价值。',
+    lead: '从农业副产品到菌菇、红蚯蚓，再到作物的养分。',
+    cycleTitle: '农场里的循环',
+    hint: '选择一个步骤进行了解',
+    stepsLabel: '循环的五个步骤',
+    motto: ['源于土地，', '回归土地。'],
+    steps: [
+      { title: '农业副产品', name: '农业\n副产品', text: '农业副产品被用作制备种菇基质的原料，让手边现有材料的价值得以延续。' },
+      { title: '制备基质', name: '制备\n基质', text: '原料经过处理、混合并装袋，制成适合种植菌菇的基质。' },
+      { title: '种植与采收', name: '种植\n与采收', text: '菌菇在农场里精心照料和采收，既供应鲜菇，也加工成其他产品。' },
+      { title: '养殖红蚯蚓基质', name: '养殖红蚯蚓\n基质', text: '采收之后，基质被用作红蚯蚓的饲料，继续创造价值，而不是被丢弃。' },
+      { title: '蚯蚓粪施肥', name: '蚯蚓粪\n施肥', text: '蚯蚓粪用于给作物施肥，为土壤补充有机养分，让循环得以延续。' },
+    ] as Step[],
+    products: '查看产品',
+    prev: '上一步',
+    next: '下一步',
+    live: '第 {n} 步，共 {total} 步：{title}',
+    produceEyebrow: '产品',
+    produceTitle: '从一季季菌菇到各类产品。',
+    produceBody: [
+      '农场采收的菌菇既供应鲜食，也被加工成其他产品。',
+      '黑皮鸡枞菌、灵芝、蛹虫草和平菇是农场种植的四类主要菌菇。',
+    ],
+    produceAlt: '一簇灰白色平菇从种植棚内的菌袋中长出',
+    solarEyebrow: '太阳能',
+    solarTitle: '来自太阳的电力。',
+    solarBody: [
+      '农场建在一片利用太阳能发电的土地上。整套系统由 Châu Thị Nương 女士和 Trần Phương Hiền 先生亲手建设和发展。种植菌菇所用的电力 100% 来自这一太阳能电源。',
+      '在同一片土地上，Hiền Nương 将清洁发电与种植菌菇相结合，把就地产生的能源用于日常工作。',
+    ],
+    solarFact: '种植菌菇用电来自太阳能',
+    solarAlt: '从高处俯瞰，一排排铺着太阳能板的屋顶掩映在绿树和糖棕树之间',
+    solarCaption: '上方是太阳能发电系统，下方是菌菇生产空间。',
+    filmEyebrow: '品牌影片',
+    filmTitle: '农场一隅。',
+    watch: '观看影片',
+    closingTitle: '一起延续价值的循环。',
+    closingBody: '如果您对我们的产品感兴趣，希望了解这一模式或洽谈合作，我们期待与您交流。',
   },
-  {
-    icon: '04-gia-the-nuoi-trun-que',
-    title: 'Giá thể nuôi trùn quế',
-    name: 'Giá thể nuôi\ntrùn quế',
-    text: 'Sau thu hoạch, giá thể được tận dụng làm thức ăn cho trùn quế, tiếp tục tạo giá trị thay vì bỏ đi.',
-  },
-  {
-    icon: '05-phan-trun-bon-cay',
-    title: 'Phân trùn bón cây',
-    name: 'Phân trùn\nbón cây',
-    text: 'Phân trùn được sử dụng để bón cây, bổ sung nguồn dinh dưỡng hữu cơ cho đất và tiếp nối vòng tuần hoàn.',
-  },
-];
+}[lang];
+
+// Five steps, in order round the wheel (clockwise). Step 03 links to the
+// products: processing belongs to them, not to the material cycle.
+const icons = ['01-phu-pham', '02.gia-the-trong-nam', '03-thu-hoach-nam', '04-gia-the-nuoi-trun-que', '05-phan-trun-bon-cay'];
+const steps = t.steps.map((step, i) => ({
+  ...step,
+  icon: icons[i],
+  link: i === 2 ? { label: t.products, href: productsHref } : undefined,
+}));
 
 // Wheel geometry, shared with the script through CSS (--radius, --anchor):
 // node centres sit on a circle of RADIUS % of the wheel's width, and the
@@ -73,35 +190,34 @@ const at = (i: number) => {
 };
 
 const num = (i: number) => String(i + 1).padStart(2, '0');
+// A longer motto (English) is set a size smaller, clear of the labels.
+const longMotto = Math.max(...t.motto.map((line) => line.length)) > 12;
+// The film's name without its closing full stop, for its button and player.
+const filmName = t.filmTitle.replace(/[.。]$/, '');
 ---
-<BaseLayout
-  title="Nông nghiệp tuần hoàn"
-  description="Nông nghiệp tuần hoàn tại Hiền Nương Farm: từ phụ phẩm nông nghiệp đến nấm, trùn quế và nguồn dinh dưỡng cho cây trồng, cùng nguồn điện mặt trời tại trang trại."
->
+<BaseLayout title={t.pageTitle} description={t.description}>
   <div class="circular-page">
     <header class="intro">
       <div class="container intro__inner">
-        <Breadcrumb items={[{ label: 'Trang chủ', href: '/' }, { label: 'Nông nghiệp tuần hoàn' }]} />
+        <Breadcrumb items={[{ label: t.home, href: localizePath('/', lang) }, { label: t.pageTitle }]} />
         <div class="intro__head" data-reveal>
-          <Eyebrow>Nông nghiệp tuần hoàn</Eyebrow>
-          <h1 class="intro__title">Tiếp nối giá trị từ phụ phẩm.</h1>
+          <Eyebrow>{t.pageTitle}</Eyebrow>
+          <h1 class="intro__title">{t.title}</h1>
         </div>
-        <p class="intro__lead" data-reveal style="--reveal-delay: 120ms">
-          Từ phụ phẩm nông nghiệp đến nấm, trùn quế và nguồn dinh dưỡng cho cây&nbsp;trồng.
-        </p>
+        <p class="intro__lead" data-reveal style="--reveal-delay: 120ms">{t.lead}</p>
       </div>
     </header>
 
     <!-- 1 · The wheel ---------------------------------------------------- -->
-    <section class="cycle" id="vong-tuan-hoan" aria-labelledby="cycle-title" data-cycle>
+    <section class="cycle" id="vong-tuan-hoan" aria-labelledby="cycle-title" data-cycle data-live-template={t.live}>
       <div class="container">
         <h2 class="eyebrow cycle__title" id="cycle-title">
           <span class="eyebrow__rule" aria-hidden="true"></span>
-          <span>Vòng tuần hoàn tại trang trại</span>
+          <span>{t.cycleTitle}</span>
         </h2>
 
         <div class="cycle__grid">
-          <p class="cycle__hint">Chọn một bước để khám phá</p>
+          <p class="cycle__hint">{t.hint}</p>
 
           <div class="cycle__wheel" data-reveal style="--reveal-delay: 80ms">
             <div class="wheel" style={`--radius: ${RADIUS}; --anchor: ${ANCHOR}`} data-wheel>
@@ -114,9 +230,9 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
                 {steps.map(() => <path class="wheel__arrow" d="" marker-end="url(#wheel-arrow)" data-arrow />)}
               </svg>
 
-              <p class="wheel__motto">Từ đất,<br />trở về đất.</p>
+              <p class:list={['wheel__motto', { 'wheel__motto--long': longMotto }]}>{t.motto[0]}<br />{t.motto[1]}</p>
 
-              <div class="wheel__nodes" role="tablist" aria-label="Năm bước của vòng tuần hoàn">
+              <div class="wheel__nodes" role="tablist" aria-label={t.stepsLabel}>
                 {steps.map((step, i) => (
                   <button
                     class:list={['wheel__node', { 'is-selected': i === 0 }]}
@@ -139,7 +255,9 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
                         decoding="async"
                       />
                     </span>
-                    <span class="wheel__label">{step.name}</span>
+                    <!-- The label breaks onto two lines; the tab's name is the step's title. -->
+                    <span class="wheel__label" aria-hidden="true">{step.name}</span>
+                    <span class="sr-only">{step.title}</span>
                   </button>
                 ))}
               </div>
@@ -174,10 +292,10 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
             <div class="cycle__controls">
               <button class="cycle__control cycle__control--prev" type="button" data-prev>
                 <Arrow />
-                <span>Bước trước</span>
+                <span>{t.prev}</span>
               </button>
               <button class="cycle__control" type="button" data-next>
-                <span>Bước tiếp theo</span>
+                <span>{t.next}</span>
                 <Arrow />
               </button>
             </div>
@@ -196,7 +314,7 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
               src="/images/farm/product-nam-bao-ngu.webp"
               width="1122"
               height="1402"
-              alt="Chùm nấm bào ngư trắng xám mọc từ bịch phôi trong nhà trồng"
+              alt={t.produceAlt}
               loading="lazy"
               decoding="async"
             />
@@ -204,13 +322,12 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
         </figure>
 
         <div class="produce__text" data-reveal style="--reveal-delay: 120ms">
-          <Eyebrow>Sản phẩm</Eyebrow>
-          <h2 class="section-title" id="produce-title">Từ mùa nấm đến những sản phẩm.</h2>
+          <Eyebrow>{t.produceEyebrow}</Eyebrow>
+          <h2 class="section-title" id="produce-title">{t.produceTitle}</h2>
           <div class="section-body">
-            <p>Nấm thu hoạch tại trang trại phục vụ nhu cầu sử dụng nấm tươi và được chế biến thành các sản phẩm khác.</p>
-            <p>Nấm mối đen, nấm linh chi, đông trùng hạ thảo và nấm bào ngư là bốn dòng nấm chính được nuôi trồng tại trang trại.</p>
+            {t.produceBody.map((p) => <p>{p}</p>)}
           </div>
-          <a class="link-arrow section-link" href={productsHref}>Xem sản phẩm <Arrow /></a>
+          <a class="link-arrow section-link" href={productsHref}>{t.products} <Arrow /></a>
         </div>
       </div>
     </section>
@@ -219,16 +336,15 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
     <section class="section solar" id="nang-luong-mat-troi" aria-labelledby="solar-title">
       <div class="container solar__grid">
         <div class="solar__text" data-reveal>
-          <Eyebrow>Năng lượng mặt trời</Eyebrow>
-          <h2 class="section-title" id="solar-title">Nguồn điện từ mặt trời.</h2>
+          <Eyebrow>{t.solarEyebrow}</Eyebrow>
+          <h2 class="section-title" id="solar-title">{t.solarTitle}</h2>
           <div class="section-body">
-            <p>Nông trại được xây dựng trên khu đất khai thác điện năng lượng mặt trời. Toàn bộ hệ thống do chị Châu Thị Nương cùng anh Trần Phương Hiền tự xây dựng và phát triển. 100% điện sử dụng cho hoạt động trồng nấm được cung cấp từ nguồn năng lượng mặt trời này.</p>
-            <p>Trên cùng một khu đất, Hiền Nương kết hợp sản xuất điện sạch và trồng nấm, đưa nguồn năng lượng tại chỗ vào công việc hằng ngày.</p>
+            {t.solarBody.map((p) => <p>{p}</p>)}
           </div>
           <!-- OWNER-VERIFIED: 100% of the electricity used for growing mushrooms. -->
           <dl class="solar__fact">
             <dt class="solar__value">100%</dt>
-            <dd class="solar__label">Điện mặt trời cho hoạt động trồng nấm</dd>
+            <dd class="solar__label">{t.solarFact}</dd>
           </dl>
         </div>
 
@@ -240,12 +356,12 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
               sizes="(min-width: 1024px) 55vw, 100vw"
               width="1430"
               height="804"
-              alt="Các dãy nhà mái lợp tấm pin mặt trời giữa cây xanh và hàng thốt nốt, nhìn từ trên cao"
+              alt={t.solarAlt}
               loading="lazy"
               decoding="async"
             />
           </div>
-          <figcaption class="solar__caption">Phía trên là hệ thống điện mặt trời. Phía dưới là không gian sản xuất nấm.</figcaption>
+          <figcaption class="solar__caption">{t.solarCaption}</figcaption>
         </figure>
       </div>
     </section>
@@ -254,8 +370,8 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
     <section class="section film" aria-labelledby="film-title">
       <div class="container">
         <div class="film__head" data-reveal>
-          <Eyebrow>Brand Film</Eyebrow>
-          <h2 class="section-title" id="film-title">Một góc nhìn từ trang trại.</h2>
+          <Eyebrow>{t.filmEyebrow}</Eyebrow>
+          <h2 class="section-title" id="film-title">{t.filmTitle}</h2>
         </div>
 
         <!-- The farm's brand film (homepage, About). The player loads only
@@ -264,7 +380,8 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
           <button
             class="film__poster"
             type="button"
-            aria-label="Xem phim: Một góc nhìn từ trang trại (02:23)"
+            aria-label={`${t.watch}: ${filmName} (02:23)`}
+            data-player-title={`Hiền Nương Farm — ${filmName}`}
             data-film-play
           >
             <img
@@ -278,16 +395,14 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
             <span class="film__play" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 4v16l13-8z" /></svg>
             </span>
-            <span class="film__meta" aria-hidden="true">Xem phim · 02:23</span>
+            <span class="film__meta" aria-hidden="true">{t.watch} · 02:23</span>
           </button>
         </div>
       </div>
     </section>
 
     <!-- 5 · Closing ------------------------------------------------------- -->
-    <CtaBand title="Cùng tiếp nối những vòng giá trị." href={contactHref}>
-      Nếu bạn quan tâm đến sản phẩm, muốn tìm hiểu mô hình hoặc trao đổi cơ hội hợp tác, chúng tôi mong được trò chuyện cùng bạn.
-    </CtaBand>
+    <CtaBand title={t.closingTitle} href={contactHref}>{t.closingBody}</CtaBand>
   </div>
 </BaseLayout>
 
@@ -483,7 +598,10 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
       if (focus) nodes[index].focus({ preventScroll: true });
       if (announce && live) {
         const title = panels[index].querySelector('.step__title')?.textContent ?? '';
-        live.textContent = `Bước ${index + 1} trên ${N}: ${title}`;
+        live.textContent = (root.dataset.liveTemplate ?? '{n} / {total}: {title}')
+          .replace('{n}', String(index + 1))
+          .replace('{total}', String(N))
+          .replace('{title}', title);
       }
       animate();
     };
@@ -546,10 +664,11 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
 
   // Film: the player replaces the poster only when asked to play.
   const film = document.querySelector<HTMLElement>('[data-film]');
-  film?.querySelector<HTMLButtonElement>('[data-film-play]')?.addEventListener('click', () => {
+  const filmPlay = film?.querySelector<HTMLButtonElement>('[data-film-play]');
+  filmPlay?.addEventListener('click', () => {
     const iframe = document.createElement('iframe');
     iframe.src = 'https://www.youtube-nocookie.com/embed/V-jPu_G8fe8?autoplay=1&playsinline=1&rel=0';
-    iframe.title = 'Hiền Nương Farm — Một góc nhìn từ trang trại';
+    iframe.title = filmPlay.dataset.playerTitle ?? '';
     iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
     iframe.allowFullscreen = true;
     iframe.referrerPolicy = 'strict-origin-when-cross-origin';
@@ -724,6 +843,7 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
     color: var(--color-forest);
     pointer-events: none;
   }
+  .wheel__motto--long { font-size: max(0.9375rem, 4.6cqi); }
 
   /* Each step is centred on its picture; the number hangs above it and
      the label below, both inside the button. */
