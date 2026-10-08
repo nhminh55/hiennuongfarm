@@ -7,7 +7,7 @@ import { getLocale, localizePath } from '../../i18n';
 const lang = getLocale(Astro.url);
 const t = {
   vi: {
-    steps: ['Phụ phẩm\nnông nghiệp', 'Giá thể\ntrồng nấm', 'Thu hoạch\nnấm', 'Chế biến', 'Trở về đất'],
+    steps: ['Phụ phẩm\nnông nghiệp', 'Giá thể\ntrồng nấm', 'Thu hoạch\nnấm', 'Giá thể nuôi\ntrùn quế', 'Phân trùn\nbón cây'],
     eyebrow: 'Nông nghiệp tuần hoàn',
     title: 'Hướng đi bền vững cùng thiên nhiên',
     body: 'Chúng tôi tận dụng rơm, trấu, cám và mùn cưa địa phương làm giá thể trồng nấm, rồi tái sử dụng giá thể sau thu hoạch trong sản xuất nông nghiệp, giảm lãng phí và tiếp nối vòng tuần hoàn từ đất — trở về với đất.',
@@ -17,7 +17,7 @@ const t = {
     alt: 'Chùm nấm bào ngư mọc từ bịch phôi trên kệ sắt trong nhà nuôi nấm. Dòng chữ trên ảnh: “Nông nghiệp tuần hoàn là cách chúng tôi trả lại sự cân bằng cho đất.”',
   },
   en: {
-    steps: ['Agricultural\nby-products', 'Mushroom\nsubstrate', 'Mushroom\nharvest', 'Processing', 'Back to\nthe soil'],
+    steps: ['Agricultural\nby-products', 'Mushroom\nsubstrate', 'Mushroom\nharvest', 'Substrate for\nred worms', 'Worm castings\nfor crops'],
     eyebrow: 'Circular Agriculture',
     title: 'A sustainable path, working with nature',
     body: 'We use local rice straw, husks, bran and sawdust as a substrate for growing mushrooms, then reuse the substrate after harvest in farming — reducing waste and continuing the cycle from the soil, back to the soil.',
@@ -27,7 +27,7 @@ const t = {
     alt: 'A cluster of oyster mushrooms growing from a spawn bag on a steel shelf in a mushroom house. Text on the photo, in Vietnamese: “Circular agriculture is how we give balance back to the soil.”',
   },
   zh: {
-    steps: ['农业\n副产品', '种菇\n基质', '菌菇\n采收', '加工', '回归土地'],
+    steps: ['农业\n副产品', '种菇\n基质', '菌菇\n采收', '养殖红蚯蚓\n基质', '蚯蚓粪\n施肥'],
     eyebrow: '循环农业',
     title: '与自然同行的可持续之路',
     body: '我们利用当地的稻草、稻壳、米糠和木屑作为种菇基质，采收后再将基质用于农业生产，减少浪费，让循环延续——源于土地，回归土地。',
@@ -38,17 +38,17 @@ const t = {
   },
 }[lang];
 
-// By-products → substrate → mushrooms → organic fertiliser → soil:
-// CONTENT_EVIDENCE_BANK.md §2 (VERIFIED). Inputs: rơm (§2); trấu, cám,
+// By-products → mushroom substrate → harvest → spent substrate for red
+// worms (trùn quế) → worm castings for the crops: five steps set by the
+// owner. Inputs: rơm (CONTENT_EVIDENCE_BANK.md §2); trấu, cám,
 // mùn cưa (Hiền Nương video, 00:41).
-// Icons are illustrations (design-reference/source), not farm photographs.
 // x / y place each icon's centre in the diagram, after the section mockup.
 const steps = [
-  { icon: 'phu-pham', x: 50, y: 14.1 },
-  { icon: 'gia-the', x: 84.14, y: 38.91 },
-  { icon: 'thu-hoach', x: 71.1, y: 79.04 },
-  { icon: 'u-phan', x: 28.9, y: 79.04 },
-  { icon: 'tro-ve-dat', x: 15.86, y: 38.91 },
+  { icon: '01-phu-pham', x: 50, y: 14.1 },
+  { icon: '02.gia-the-trong-nam', x: 84.14, y: 38.91 },
+  { icon: '03-thu-hoach-nam', x: 71.1, y: 79.04 },
+  { icon: '04-gia-the-nuoi-trun-que', x: 28.9, y: 79.04 },
+  { icon: '05-phan-trun-bon-cay', x: 15.86, y: 38.91 },
 ].map((step, i) => ({ ...step, name: t.steps[i] }));
 
 // Clockwise arrows between the stages, drawn in a square around
@@ -105,7 +105,7 @@ const arrows = [
                 <span class="ring__num">{String(i + 1).padStart(2, '0')}</span>
                 <img
                   class="ring__icon"
-                  src={`/images/farm/circular-icon-${step.icon}.webp`}
+                  src={`/images/circular/${step.icon}.webp`}
                   alt=""
                   width="320"
                   height="320"
@@ -261,7 +261,6 @@ const arrows = [
     width: var(--icon);
     height: var(--icon);
     border-radius: 50%;
-    border: 1px solid rgba(120, 130, 103, 0.5);
   }
 
   .ring__name {
