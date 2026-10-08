@@ -33,7 +33,7 @@ export const localizePath = (href: string, locale: Locale) =>
 export const langStaticPaths = () => prefixedLocales.map((lang) => ({ params: { lang } }));
 
 /** Published pages with Vietnamese copy only: no /en/ or /zh/ route yet. */
-export const viOnlyPaths = ['/ve-chung-toi/', '/hop-tac/'];
+export const viOnlyPaths = ['/hop-tac/'];
 
 /** Whether a page (a path without its language prefix) exists in every language. */
 export const isTranslated = (path: string) => !viOnlyPaths.includes(path.replace(/#.*/, ''));

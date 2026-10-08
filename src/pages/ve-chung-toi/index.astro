@@ -1,9 +1,8 @@
 ---
 /**
- * /ve-chung-toi/: the Hiền Nương story in six chapters.
+ * /ve-chung-toi/ (and /en/, /zh/): the Hiền Nương story in six chapters.
  *
- * Copy: docs/HIEN_NUONG_ABOUT_VI.md (approved, Vietnamese only, so the page
- * has no /en/ or /zh/ route; see `viOnlyPaths` in src/i18n.ts).
+ * Copy: src/data/about.ts (Vietnamese from docs/HIEN_NUONG_ABOUT_VI.md).
  * Layout: design-reference/"Hiền Nương Farm chapter showcase.png".
  *
  * The chapters are ordinary stacked sections. On wide screens the script
@@ -17,159 +16,45 @@ import Breadcrumb from '../../components/page/Breadcrumb.astro';
 import Eyebrow from '../../components/Eyebrow.astro';
 import Arrow from '../../components/Arrow.astro';
 import { showDrafts } from '../../data/drafts';
+import { aboutCopy, chapterMedia, peaksSource } from '../../data/about';
+import { getLocale, localizePath, pageHref } from '../../i18n';
 
-// Destinations not yet published point to their homepage sections.
-const circularHref = '/nong-nghiep-tuan-hoan/';
-const contactHref = showDrafts ? '/hop-tac/#lien-he' : '/#hop-tac';
+const lang = getLocale(Astro.url);
+const t = aboutCopy[lang];
 
-interface Fact {
-  value: string;
-  /** Small word set before the value ("Khoảng 4 ha"). */
-  pre?: string;
-  label: string;
-}
+// The circular agriculture page is Vietnamese only for now; other
+// languages go to the homepage section. Contact: the homepage section
+// until the cooperation page is published.
+const circularHref = pageHref('/nong-nghiep-tuan-hoan/', lang, '/#tuan-hoan');
+const contactHref = showDrafts && lang === 'vi' ? '/hop-tac/#lien-he' : localizePath('/#hop-tac', lang);
 
-interface Chapter {
-  id: string;
-  label: string;
-  title: string;
-  body: string[];
-  facts: Fact[];
-  photo: { src: string; width: number; height: number; position?: string; alt: string };
-  caption?: string;
-  steps?: string[];
-  link?: { label: string; href: string };
-  /** Further reading, folded under the copy (native disclosure). */
-  more?: { summary: string; intro: string; items: [string, string][]; source: string };
-}
+const chapters = chapterMedia.map((media, i) => ({ ...media, ...t.chapters[i] }));
 
-// Facts: OWNER-VERIFIED (CLAUDE.md, docs/HIEN_NUONG_ABOUT_VI.md). Keep
-// "hơn" with 4 ha, and the 100% to electricity for growing mushrooms.
-const chapters: Chapter[] = [
-  {
-    id: 'cau-chuyen',
-    label: 'Câu chuyện',
-    title: 'Hai người, một khởi đầu',
-    body: [
-      'Hiền Nương Farm được chị Châu Thị Nương và anh Trần Phương Hiền cùng sáng lập vào năm 2020. Tên gọi Hiền Nương ghép từ tên của hai người đồng sáng lập.',
-      'Từ vùng Bảy Núi, An Giang, hai vợ chồng cùng xây dựng nông trại, phát triển công việc trồng nấm và từng bước hoàn thiện sản phẩm. Câu chuyện ấy tiếp tục qua từng mùa thu hoạch và những công việc mỗi ngày.',
-    ],
-    facts: [{ value: '2020', label: 'Năm thành lập' }],
-    photo: { src: '/images/about/hai-nguoi-sang-lap.webp', width: 1280, height: 720, position: '34% 50%', alt: 'Chị Châu Thị Nương và anh Trần Phương Hiền vẫy tay bên tảng đá khắc tên Trang trại Nông nghiệp Hiền Nương' },
-  },
-  {
-    id: 'bay-nui',
-    label: 'Bảy Núi',
-    title: 'Núi giữa trời, thốt nốt giữa đồng',
-    body: [
-      'Bảy Núi, còn gọi là Thất Sơn, mang một dáng vẻ riêng giữa miền Tây: những ngọn núi nhô lên trên nền đồng ruộng rộng mở, xen cùng hàng thốt nốt vươn cao. Núi, ruộng lúa và những tán lá thốt nốt tạo nên cảnh sắc dễ nhận ra của vùng đất An Giang.',
-      'Nơi đây còn mang dấu ấn văn hóa Khmer qua những ngôi chùa, nghề làm đường thốt nốt và hội đua bò Bảy Núi. Cảnh quan thiên nhiên hòa cùng đời sống văn hóa, làm nên bản sắc của vùng đất.',
-      'Đó là không gian quê hương bao quanh câu chuyện Hiền Nương — nơi núi và đồng cùng hiện diện trong nhịp sống làm nông.',
-    ],
-    facts: [],
-    more: {
-      summary: 'Bảy Núi gồm những ngọn nào?',
-      intro: 'Tên Bảy Núi không có nghĩa cả vùng chỉ có bảy ngọn. Thất Sơn được biết đến với bảy ngọn tiêu biểu:',
-      items: [
-        ['Núi Cấm', 'Thiên Cấm Sơn'],
-        ['Núi Cô Tô', 'Phụng Hoàng Sơn'],
-        ['Núi Dài', 'Ngọa Long Sơn'],
-        ['Núi Két', 'Anh Vũ Sơn'],
-        ['Núi Tượng', 'Liên Hoa Sơn'],
-        ['Núi Dài Năm Giếng', 'Ngũ Hồ Sơn'],
-        ['Núi Nước', 'Thủy Đài Sơn'],
-      ],
-      source: 'https://vannghe.angiang.gov.vn/tri-ton-huyen-mien-nui-giua-dong-bang/',
-    },
-    // Frame from the farm's own video (original export, unretouched;
-    // the letterbox rows are trimmed).
-    photo: { src: '/images/about/bay-nui-nui-dong-thot-not.webp', width: 1280, height: 712, position: '50% 50%', alt: 'Cánh đồng lúa xanh điểm hàng thốt nốt, dãy núi vùng Bảy Núi phía xa, nhìn từ trên cao' },
-  },
-  {
-    id: 'hai-co-so',
-    label: 'Hai cơ sở',
-    title: 'Từ một nông trại đến hai cơ sở',
-    body: [
-      'Hiền Nương Farm có hai cơ sở trồng nấm tại Thới Sơn và Tà Đảnh, An Giang, với tổng diện tích hơn 4 ha. Cả hai cơ sở đều phục vụ hoạt động trồng nấm của Hiền Nương Farm.',
-    ],
-    facts: [
-      { value: '02', label: 'Cơ sở' },
-      { pre: 'Hơn', value: '4 ha', label: 'Tổng diện tích' },
-    ],
-    photo: { src: '/images/about/trang-trai-giua-dong-lua.webp', width: 1429, height: 901, position: '45% 50%', alt: 'Dãy nhà trồng nấm mái lợp tấm pin mặt trời nằm giữa cánh đồng lúa, nhìn từ trên cao' },
-  },
-  {
-    id: 'nang-luong',
-    label: 'Năng lượng',
-    title: 'Nắng nuôi những mùa nấm',
-    body: [
-      'Phía trên là hệ thống điện mặt trời. Phía dưới là không gian sản xuất nấm.',
-      'Nông trại được xây dựng trên khu đất khai thác điện năng lượng mặt trời. Toàn bộ hệ thống do chị Châu Thị Nương cùng anh Trần Phương Hiền tự xây dựng và phát triển. 100% điện sử dụng cho hoạt động trồng nấm được cung cấp từ nguồn năng lượng mặt trời này.',
-      'Trên cùng một khu đất, Hiền Nương kết hợp sản xuất điện sạch và trồng nấm, đưa nguồn năng lượng tại chỗ vào công việc hằng ngày.',
-    ],
-    facts: [{ value: '100%', label: 'Điện mặt trời cho hoạt động trồng nấm' }],
-    photo: { src: '/images/about/mai-dien-mat-troi.webp', width: 1430, height: 804, position: '50% 50%', alt: 'Các dãy nhà mái lợp tấm pin mặt trời giữa cây xanh và hàng thốt nốt, nhìn từ trên cao' },
-  },
-  {
-    id: 'tuan-hoan',
-    label: 'Tuần hoàn',
-    title: 'Tiếp nối giá trị sau mỗi mùa thu hoạch',
-    body: [
-      'Cách làm tuần hoàn tại Hiền Nương bắt đầu từ việc sử dụng phụ phẩm nông nghiệp để tạo giá thể trồng nấm.',
-      'Sau khi thu hoạch nấm, giá thể tiếp tục được dùng làm thức ăn cho trùn quế. Nguồn nguyên liệu được sử dụng qua nhiều công đoạn, tiếp tục tạo giá trị sau một chu kỳ sản xuất.',
-      'Cùng với năng lượng mặt trời, cách tận dụng phụ phẩm này là một phần trong mô hình nông nghiệp tuần hoàn của Hiền Nương.',
-    ],
-    facts: [],
-    steps: [
-      'Phụ phẩm nông nghiệp',
-      'Giá thể trồng nấm',
-      'Thu hoạch nấm',
-      'Giá thể sau thu hoạch làm thức ăn cho trùn quế',
-      'Phân trùn quế làm phân bón cho cây',
-      'Quay lại chu trình trồng nấm',
-    ],
-    link: { label: 'Tìm hiểu mô hình nông nghiệp tuần hoàn', href: circularHref },
-    photo: { src: '/images/about/nguyen-lieu-gia-the.webp', width: 1280, height: 820, position: '50% 50%', alt: 'Hai người đội mũ rộng vành ngồi bên đống giá thể trong nhà xưởng, phía trước là những khay nấm trong rơm' },
-  },
-  {
-    id: 'con-nguoi',
-    label: 'Con người',
-    title: 'Cùng làm, cùng phát triển',
-    body: [
-      'Hiền Nương Farm tạo việc làm cho hơn 40 lao động địa phương, đặc biệt là phụ nữ tại vùng Thới Sơn và Tri Tôn, An Giang.',
-      'Đằng sau mỗi mùa thu hoạch là công sức của những con người cùng nhau chuẩn bị giá thể, chăm sóc, thu hoạch và hoàn thiện sản phẩm. Sự phát triển của nông trại gắn với việc tạo thêm cơ hội việc làm ngay tại địa phương.',
-      'Bên cạnh sản xuất là những cuộc gặp gỡ, chuyến tham quan và dịp chia sẻ cách làm tại trang trại. Những hình ảnh ấy giúp người xem hiểu thêm về con người và công việc phía sau mỗi sản phẩm Hiền Nương.',
-    ],
-    facts: [{ value: 'Hơn 40', label: 'Lao động địa phương' }],
-    caption: 'Chăm sóc · Thu hoạch · Chia sẻ',
-    photo: { src: '/images/about/chuan-bi-gia-the.webp', width: 1600, height: 1090, position: '50% 55%', alt: 'Những người làm nấm, phần lớn là phụ nữ, ngồi quanh đống giá thể trong xưởng và đóng giá thể vào bịch' },
-  },
-];
+// Title phrases, split after a comma ("," or "，") so that a line never
+// breaks inside a phrase ("thốt nốt").
+const phrases = (title: string) => title.split(/(?<=[,，])\s*/);
 
 const num = (i: number) => String(i + 1).padStart(2, '0');
 ---
-<BaseLayout
-  title="Về chúng tôi"
-  description="Câu chuyện Hiền Nương: một hành trình làm nông từ vùng Bảy Núi, An Giang — từ hai người sáng lập năm 2020 đến hai cơ sở trồng nấm, điện mặt trời, cách làm tuần hoàn và những người cùng làm."
->
+<BaseLayout title={t.pageTitle} description={t.description}>
   <div class="about-page">
     <header class="intro">
       <div class="container intro__inner">
-        <Breadcrumb items={[{ label: 'Trang chủ', href: '/' }, { label: 'Về chúng tôi' }]} />
+        <Breadcrumb items={[{ label: t.home, href: localizePath('/', lang) }, { label: t.pageTitle }]} />
         <div class="intro__head">
-          <Eyebrow>Về chúng tôi</Eyebrow>
-          <h1 class="intro__title">Câu chuyện Hiền Nương</h1>
+          <Eyebrow>{t.eyebrow}</Eyebrow>
+          <h1 class="intro__title">{t.title}</h1>
         </div>
         <div class="intro__aside">
-          <p class="intro__lead">Một hành trình làm nông từ vùng Bảy&nbsp;Núi.</p>
-          <p class="intro__cue" aria-hidden="true">Cuộn để tiếp tục</p>
+          <p class="intro__lead">{t.lead}</p>
+          <p class="intro__cue" aria-hidden="true">{t.cue}</p>
         </div>
       </div>
     </header>
 
-    <section class="story" aria-label="Sáu chương của câu chuyện" data-story>
+    <section class="story" aria-label={t.storyLabel} data-story>
       <div class="story__stage" data-story-stage>
-        <nav class="story__nav" aria-label="Các chương">
+        <nav class="story__nav" aria-label={t.navLabel}>
           <ol class="story__nav-list">
             {chapters.map((chapter, i) => (
               <li>
@@ -197,7 +82,7 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
                   height={chapter.photo.height}
                   srcset={`${chapter.photo.src.replace('.webp', '-800.webp')} 800w, ${chapter.photo.src} ${chapter.photo.width}w`}
                   sizes="(min-width: 1024px) 58vw, (min-width: 768px) 50vw, 100vw"
-                  alt={chapter.photo.alt}
+                  alt={chapter.alt}
                   loading={i === 0 ? 'eager' : 'lazy'}
                   decoding="async"
                   style={chapter.photo.position ? `--pos: ${chapter.photo.position}` : undefined}
@@ -213,10 +98,9 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
                   <span class="chapter__rule" aria-hidden="true"></span>
                   <span class="chapter__label">{chapter.label}</span>
                 </p>
-                <!-- Lines break after a comma, never inside a phrase ("thốt nốt"). -->
-                <h2 class="chapter__title" id={`${chapter.id}-title`}>{chapter.title.split(', ').map((phrase, j, all) => (
-                  <span class="chapter__phrase">{phrase}{j < all.length - 1 && ','}</span>
-                )).flatMap((el, j) => (j > 0 ? [' ', el] : [el]))}</h2>
+                <h2 class="chapter__title" id={`${chapter.id}-title`}>{phrases(chapter.title).map((phrase, j, all) => (
+                  <>{j > 0 && !all[j - 1].endsWith('，') && ' '}<span class="chapter__phrase">{phrase}</span></>
+                ))}</h2>
 
                 <div class="chapter__body">
                   {chapter.body.map((p) => <p>{p}</p>)}
@@ -248,7 +132,7 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
                         ))}
                       </ul>
                       <p class="more__source">
-                        <a href={chapter.more.source} target="_blank" rel="noopener">Nguồn: vannghe.angiang.gov.vn <span aria-hidden="true">↗</span><span class="sr-only"> (mở trong thẻ mới)</span></a>
+                        <a href={peaksSource} target="_blank" rel="noopener">{t.sourceLabel}: vannghe.angiang.gov.vn <span aria-hidden="true">↗</span><span class="sr-only"> ({t.newTab})</span></a>
                       </p>
                     </div>
                   </details>
@@ -260,8 +144,8 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
                   </ol>
                 )}
 
-                {chapter.link && (
-                  <a class="link-arrow chapter__link" href={chapter.link.href}>{chapter.link.label} <Arrow /></a>
+                {chapter.linkLabel && (
+                  <a class="link-arrow chapter__link" href={circularHref}>{chapter.linkLabel} <Arrow /></a>
                 )}
               </div>
             </div>
@@ -274,13 +158,12 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
     <section class="section closing" aria-labelledby="closing-title">
       <div class="container closing__grid">
         <div class="closing__heading" data-reveal>
-          <Eyebrow>Liên hệ</Eyebrow>
-          <h2 class="closing__title" id="closing-title">Kết nối cùng Hiền Nương</h2>
+          <Eyebrow>{t.closing.eyebrow}</Eyebrow>
+          <h2 class="closing__title" id="closing-title">{t.closing.title}</h2>
         </div>
         <div class="closing__body" data-reveal style="--reveal-delay: 120ms">
-          <p>Nếu bạn quan tâm đến sản phẩm, muốn tìm hiểu mô hình hoặc trao đổi cơ hội hợp tác, chúng tôi mong được trò chuyện cùng bạn.</p>
-          <p>Mỗi cuộc gặp là một cơ hội để chia sẻ kinh nghiệm, hiểu thêm nhu cầu của nhau và tìm hướng đồng hành phù hợp.</p>
-          <a class="btn closing__btn" href={contactHref}>Trao đổi cùng chúng tôi <Arrow /></a>
+          {t.closing.body.map((p) => <p>{p}</p>)}
+          <a class="btn closing__btn" href={contactHref}>{t.closing.button} <Arrow /></a>
         </div>
       </div>
     </section>
