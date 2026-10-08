@@ -3,7 +3,7 @@ import Photo from '../Photo.astro';
 import Eyebrow from '../Eyebrow.astro';
 import Arrow from '../Arrow.astro';
 import { contact } from '../../data/site';
-import { getLocale } from '../../i18n';
+import { getLocale, pageHref } from '../../i18n';
 
 const lang = getLocale(Astro.url);
 const t = {
@@ -36,6 +36,8 @@ const t = {
   },
 }[lang];
 const subject = encodeURIComponent(t.subject);
+// Vietnamese links to /hop-tac/; other languages keep the email until it is translated.
+const ctaHref = pageHref('/hop-tac/', lang, `mailto:${contact.email}?subject=${subject}`);
 ---
 <section class="section partner" id="hop-tac" aria-labelledby="partner-title">
   <div class="container partner__grid">
@@ -43,7 +45,7 @@ const subject = encodeURIComponent(t.subject);
       <Eyebrow num="05">{t.eyebrow}</Eyebrow>
       <h2 class="h2 partner__title" id="partner-title">{t.title}</h2>
       <p class="body partner__body">{t.body}</p>
-      <a class="link-arrow partner__cta" href={`mailto:${contact.email}?subject=${subject}`}>
+      <a class="link-arrow partner__cta" href={ctaHref}>
         {t.cta} <Arrow />
       </a>
     </div>
