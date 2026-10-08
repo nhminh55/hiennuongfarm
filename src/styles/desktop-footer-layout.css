@@ -134,3 +134,6 @@
 /* Both phone numbers share one line and one icon, ordered with the other links. */
 :root .site-footer.site-footer .site-footer__phones { display: flex; align-items: center; gap: 0.5rem; order: -1; }
 :root .site-footer.site-footer .site-footer__col--contact .site-footer__phones a { order: 0; }
+/* Each location: pin, bold site name with its address, then an external-link ↗. */
+:root .site-footer.site-footer .site-footer__address strong { font-weight: 600; color: var(--color-cream); }
+:root .site-footer.site-footer .site-footer__address .site-footer__external { width: 0.75em; height: 0.75em; margin-top: 0.4em; }

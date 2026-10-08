@@ -51,6 +51,27 @@ export const contact = {
     zh: ['Khóm Thới Thuận, Phường Thới Sơn', '越南安江省'],
   } satisfies Record<Locale, string[]>,
   mapUrl: 'https://maps.app.goo.gl/x9ZQNXxzfZaVnP6X8',
+  // Owner-provided farm locations, listed in the footer.
+  locations: [
+    {
+      name: { vi: 'Cơ sở Thới Sơn', en: 'Thới Sơn site', zh: 'Thới Sơn 基地' },
+      address: {
+        vi: 'Khóm Thới Thuận, Phường Thới Sơn, Tỉnh An Giang',
+        en: 'Khóm Thới Thuận, Phường Thới Sơn, An Giang Province, Vietnam',
+        zh: 'Khóm Thới Thuận, Phường Thới Sơn, 越南安江省',
+      },
+      mapUrl: 'https://maps.app.goo.gl/x9ZQNXxzfZaVnP6X8',
+    },
+    {
+      name: { vi: 'Cơ sở Tri Tôn', en: 'Tri Tôn site', zh: 'Tri Tôn 基地' },
+      address: {
+        vi: 'Cầu 15, Xã Tri Tôn, Tỉnh An Giang',
+        en: 'Cầu 15, Xã Tri Tôn, An Giang Province, Vietnam',
+        zh: 'Cầu 15, Xã Tri Tôn, 越南安江省',
+      },
+      mapUrl: 'https://maps.app.goo.gl/kF66YB8ddwbSqQTe8',
+    },
+  ] satisfies { name: Record<Locale, string>; address: Record<Locale, string>; mapUrl: string }[],
   email: 'contact@hiennuongfarm.vn',
   phone: '+84985799777',
   phoneDisplay: '+84 985 799 777',
