@@ -30,6 +30,7 @@ export const nav: NavItem[] = [
   { label: { vi: 'Nông nghiệp tuần hoàn', en: 'Circular Agriculture', zh: '循环农业' }, href: '/#tuan-hoan' },
   { label: { vi: 'Sản vật', en: 'Farm Produce', zh: '农场物产' }, href: '/san-pham/' },
   { label: { vi: 'Vùng Bảy Núi', en: 'Bảy Núi Region', zh: '七山地区' }, href: '/#bay-nui' },
+  { label: { vi: 'Dấu ấn', en: 'Press', zh: '媒体报道' }, href: '/#dau-an' },
   { label: { vi: 'Hợp tác', en: 'Partnership', zh: '合作' }, href: '/#hop-tac' },
 ];
 
