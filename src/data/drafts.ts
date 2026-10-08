@@ -158,30 +158,6 @@ export const draftPages: DraftPage[] = [
       },
     ],
   },
-  {
-    path: '/hop-tac/',
-    title: 'Hợp tác & liên hệ',
-    eyebrow: 'Hợp tác cùng Hiền Nương',
-    sections: [
-      {
-        id: 'thong-tin-hop-tac',
-        title: 'Thông tin hợp tác',
-        layout: 'split',
-        images: [{ brief: 'Ảnh làm việc cùng đối tác tại trang trại', ratio: '4 / 5', tone: 'forest' }],
-      },
-      {
-        id: 'co-so',
-        title: 'Các cơ sở',
-        layout: 'facilities',
-        images: [{ brief: 'Bản đồ hai cơ sở', ratio: '16 / 9', tone: 'stone' }],
-      },
-      {
-        id: 'lien-he',
-        title: 'Liên hệ',
-        layout: 'contact',
-      },
-    ],
-  },
 ];
 
 /**

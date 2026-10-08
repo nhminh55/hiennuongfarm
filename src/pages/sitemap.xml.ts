@@ -15,6 +15,7 @@ const pages: { path: string; lastmod: string }[] = [
   { path: '/san-pham/nam-moi-den/', lastmod: '2026-10-07' },
   { path: '/ve-chung-toi/', lastmod: '2026-10-08' },
   { path: '/nong-nghiep-tuan-hoan/', lastmod: '2026-10-08' },
+  { path: '/hop-tac/', lastmod: '2026-10-08' },
 ];
 
 export const GET: APIRoute = ({ site }) => {
