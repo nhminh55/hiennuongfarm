@@ -103,7 +103,6 @@ export const navDropdowns: Record<string, { label: Record<Locale, string>; href:
     { label: { vi: 'Báo chí & Truyền thông', en: 'Press & media', zh: '新闻与媒体' }, href: '/dau-an/bao-chi/' },
     { label: { vi: 'Giải thưởng & Ghi nhận', en: 'Awards & recognition', zh: '奖项与认可' }, href: '/dau-an/giai-thuong/' },
     { label: { vi: 'Sự kiện & Hoạt động', en: 'Events & activities', zh: '活动与交流' }, href: '/dau-an/su-kien/' },
-    { label: { vi: 'Chứng nhận sản phẩm', en: 'Product certifications', zh: '产品认证' }, href: '/dau-an/chung-nhan/' },
   ],
   '/#hop-tac': [
     { label: { vi: 'Thông tin hợp tác', en: 'Partnership information', zh: '合作信息' }, href: '/hop-tac/' },
