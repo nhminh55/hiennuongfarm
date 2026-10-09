@@ -503,7 +503,7 @@ const layers = [
   }
 
   .showroom__head {
-    --title-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+    --title-size: var(--type-h2);
     grid-row: 1;
     grid-column: 1;
     min-height: calc(var(--title-size) * 2.16 + 2.75rem);
@@ -519,10 +519,10 @@ const layers = [
     margin-top: var(--space-xs);
     color: var(--color-forest);
     font-family: var(--font-display);
-    font-weight: 400;
+    font-weight: 500;
     font-size: var(--title-size);
     line-height: 1.08;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.005em;
     text-wrap: pretty;
     overflow-wrap: break-word;
   }
@@ -620,7 +620,7 @@ const layers = [
       pointer-events: none;
     }
     .showroom__eyebrow { font-size: clamp(0.6875rem, 1.3cqi, 0.75rem); }
-    .showroom__name { font-size: clamp(1.375rem, 3.1cqi, 2.25rem); }
+    .showroom__name { font-size: clamp(1.375rem, 3.1cqi, var(--type-h2)); }
     .showroom__summary { font-size: clamp(0.875rem, 1.7cqi, 1rem); line-height: 1.45; color: var(--color-forest); }
   }
 

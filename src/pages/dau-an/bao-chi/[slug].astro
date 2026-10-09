@@ -170,21 +170,21 @@ const href = (p: FeaturedPress) => `/dau-an/bao-chi/${p.slug}/`;
     margin-top: var(--space-s);
     max-width: 26ch;
     font-family: var(--font-display);
-    font-weight: 400;
-    font-size: clamp(1.875rem, 1.3rem + 2.2vw, 3.125rem);
-    line-height: var(--lh-display);
-    letter-spacing: -0.012em;
+    font-weight: 500;
+    font-size: var(--type-title);
+    line-height: 1.1;
+    letter-spacing: -0.005em;
     text-wrap: balance;
   }
 
-  .report__title--long { font-size: clamp(1.625rem, 1.2rem + 1.5vw, 2.375rem); line-height: 1.15; }
+  .report__title--long { font-size: var(--type-h2); line-height: 1.12; }
 
   .report__meta {
     display: flex;
     flex-wrap: wrap;
     gap: 0.25rem 1.25rem;
     margin-top: var(--space-s);
-    font-size: var(--fs-small);
+    font-size: var(--type-small);
     color: var(--color-text-muted);
     font-variant-numeric: tabular-nums;
   }
@@ -220,11 +220,11 @@ const href = (p: FeaturedPress) => `/dau-an/bao-chi/${p.slug}/`;
   .report__clipping-title {
     max-width: 22ch;
     font-family: var(--font-display);
-    font-size: clamp(1.625rem, 1.2rem + 1.6vw, 2.5rem);
-    line-height: 1.15;
+    font-size: var(--type-h2);
+    line-height: 1.12;
     text-wrap: balance;
   }
-  .report__clipping-date { font-size: var(--fs-small); color: var(--color-text-muted); }
+  .report__clipping-date { font-size: var(--type-small); color: var(--color-text-muted); }
 
   .report__thumbs {
     display: grid;
@@ -238,7 +238,7 @@ const href = (p: FeaturedPress) => `/dau-an/bao-chi/${p.slug}/`;
 
   .report__intro {
     font-family: var(--font-display);
-    font-size: var(--fs-lead);
+    font-size: var(--type-lead);
     line-height: 1.45;
     text-wrap: pretty;
   }
@@ -252,8 +252,8 @@ const href = (p: FeaturedPress) => `/dau-an/bao-chi/${p.slug}/`;
   .report__lede p { color: var(--color-text-muted); text-wrap: pretty; }
   .report__quote p {
     font-family: var(--font-display);
-    font-size: 1.25rem;
-    line-height: 1.4;
+    font-size: var(--type-lead);
+    line-height: 1.45;
     text-wrap: pretty;
   }
   .report__lede figcaption,
@@ -343,7 +343,7 @@ const href = (p: FeaturedPress) => `/dau-an/bao-chi/${p.slug}/`;
   .pager__link:hover .pager__title { text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
   .pager__all {
     justify-self: start;
-    font-size: var(--fs-small);
+    font-size: var(--type-small);
     border-bottom: 1px solid var(--color-line-strong);
   }
   .pager__all:hover { border-color: currentColor; }

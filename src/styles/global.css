@@ -23,8 +23,8 @@
   --color-text-inverse-muted: rgba(243, 240, 231, 0.74);
 
   /* Type */
-  --font-display: "Noto Serif Display", "Lora", Georgia, "Times New Roman", serif;
-  /* Editorial serif of the homepage (Lora); also the footer line. */
+  /* Lora is the display serif on every page, as on the homepage. */
+  --font-display: "Lora", Georgia, "Times New Roman", serif;
   --font-editorial: "Lora", Georgia, "Times New Roman", serif;
   --font-body: "Be Vietnam Pro", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
@@ -36,10 +36,13 @@
   --fs-small: 0.875rem;
   --fs-eyebrow: 0.75rem;
 
-  /* Type roles (homepage). Fixed steps, no vw: phone, tablet ≥768,
-     compact desktop 1024–1279, desktop ≥1280. Line height, weight and
-     tracking per role are set where the role is applied (index.astro). */
+  /* Type roles (homepage), shared by every page. Fixed steps, no vw:
+     phone, tablet ≥768, compact desktop 1024–1279, desktop ≥1280. Line
+     height, weight and tracking per role are set in the Typography rules
+     below. --type-title is an inner page's h1: the homepage hero headline
+     as it renders, without the photograph behind it. */
   --type-hero: 1.75rem;
+  --type-title: 1.75rem;
   --type-h2: 1.5rem;
   --type-lead: 1.125rem;
   --type-product: 1.375rem;
@@ -62,8 +65,9 @@
   --space-l: 2rem;
   --space-xl: 3rem;
   --space-2xl: clamp(3rem, 2.25rem + 3vw, 5rem);
-  --space-3xl: clamp(4.5rem, 3rem + 5vw, 7.5rem);
-  --section-y: clamp(4rem, 2.6rem + 7vw, 10rem);
+  --space-3xl: clamp(3.5rem, 2.5rem + 3vw, 5.5rem);
+  /* Section rhythm of the homepage. */
+  --section-y: clamp(3rem, 1.5rem + 4vw, 5.5rem);
 
   /* Layout */
   --container: 1360px;
@@ -92,6 +96,7 @@
 @media (min-width: 768px) {
   :root {
     --type-hero: 2.25rem;
+    --type-title: 2rem;
     --type-h2: 1.75rem;
     --type-lead: 1.25rem;
   }
@@ -100,6 +105,7 @@
 @media (min-width: 1024px) {
   :root {
     --type-hero: 2.375rem;      /* 38px */
+    --type-title: 2.125rem;     /* 34px */
     --type-h2: 1.75rem;         /* 28px */
     --type-lead: 1.1875rem;     /* 19px */
     --type-product: 1.25rem;    /* 20px */
@@ -114,6 +120,7 @@
 @media (min-width: 1280px) {
   :root {
     --type-hero: 2.625rem;      /* 42px */
+    --type-title: 2.25rem;      /* 36px */
     --type-h2: 1.875rem;        /* 30px */
     --type-lead: 1.25rem;       /* 20px */
     --type-product: 1.3125rem;  /* 21px */
@@ -127,7 +134,10 @@
 
 /* Desktop: gutters widen to the mockup's margin. */
 @media (min-width: 1024px) {
-  :root { --gutter: clamp(3.5rem, 6vw, 7rem); }
+  :root {
+    --gutter: clamp(3.5rem, 6vw, 7rem);
+    --section-y: clamp(3rem, 1rem + 3vw, 4.5rem);
+  }
 }
 
 /* Reset ------------------------------------------------------------------ */
@@ -186,29 +196,42 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   text-wrap: balance;
 }
 
-.display {
-  font-size: var(--fs-hero);
-  line-height: var(--lh-display);
+/* Page text: the homepage's body role. The homepage keeps the body
+   defaults below and sets each role itself (index.astro). */
+main {
+  font-size: var(--type-body);
   font-weight: 400;
-  text-transform: uppercase;
+  line-height: 1.65;
+}
+
+.display {
+  font-size: var(--type-title);
+  line-height: 1.1;
+  font-weight: 500;
   letter-spacing: -0.005em;
 }
 
-.h2 { font-size: var(--fs-h2); line-height: var(--lh-heading); }
-.h3 { font-size: var(--fs-h3); line-height: 1.25; }
+.h2 { font-size: var(--type-h2); line-height: 1.12; font-weight: 500; }
+.h3 { font-size: var(--type-product); line-height: 1.15; font-weight: 500; }
 
 .lead {
   font-family: var(--font-display);
-  font-size: var(--fs-lead);
-  line-height: 1.5;
+  font-size: var(--type-lead);
+  line-height: 1.45;
   font-weight: 400;
   text-wrap: pretty;
 }
 
-.body { color: var(--color-text-muted); text-wrap: pretty; }
+.body {
+  color: var(--color-text-muted);
+  font-size: var(--type-body);
+  line-height: 1.65;
+  font-weight: 400;
+  text-wrap: pretty;
+}
 .body + .body { margin-top: 1em; }
 
-.small { font-size: var(--fs-small); line-height: 1.6; }
+.small { font-size: var(--type-small); line-height: 1.55; font-weight: 400; }
 
 em, .italic { font-style: italic; }
 
@@ -218,12 +241,12 @@ em, .italic { font-style: italic; }
   align-items: center;
   gap: 0.875rem;
   font-family: var(--font-body);
-  font-size: var(--fs-eyebrow);
-  font-weight: 500;
+  font-size: var(--type-eyebrow);
+  font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-earth);
-  line-height: 1.4;
+  line-height: 1.3;
 }
 .eyebrow__num { font-variant-numeric: tabular-nums; }
 @media (max-width: 479px) {
@@ -312,9 +335,9 @@ em, .italic { font-style: italic; }
   color: var(--btn-fg);
   border: 1px solid var(--btn-bg);
   font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  font-size: var(--type-cta);
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   line-height: 1.3;
   transition: background-color 300ms var(--ease), border-color 300ms var(--ease), color 300ms var(--ease);
@@ -346,11 +369,11 @@ em, .italic { font-style: italic; }
   gap: 0.875rem;
   padding-block: 0.5rem;
   border-bottom: 1px solid var(--color-line-strong);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  font-size: var(--type-cta);
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  line-height: 1.4;
+  line-height: 1.3;
   transition: border-color 300ms var(--ease);
 }
 .link-arrow:hover { border-color: currentColor; }

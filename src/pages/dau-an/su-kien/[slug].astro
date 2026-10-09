@@ -122,13 +122,13 @@ const href = (x: Activity) => `/dau-an/su-kien/${x.slug}/`;
     margin-top: var(--space-s);
     max-width: 24ch;
     font-family: var(--font-display);
-    font-weight: 400;
-    font-size: clamp(1.875rem, 1.3rem + 2.2vw, 3.125rem);
-    line-height: var(--lh-display);
-    letter-spacing: -0.012em;
+    font-weight: 500;
+    font-size: var(--type-title);
+    line-height: 1.1;
+    letter-spacing: -0.005em;
     text-wrap: balance;
   }
-  .album__place { margin-top: var(--space-s); font-size: var(--fs-small); }
+  .album__place { margin-top: var(--space-s); font-size: var(--type-small); }
 
   .album__story { display: grid; gap: var(--space-s); align-content: start; max-width: 38rem; }
   .album__story > p:not(.album__sources) { color: var(--color-text-muted); text-wrap: pretty; }
@@ -206,7 +206,7 @@ const href = (x: Activity) => `/dau-an/su-kien/${x.slug}/`;
   .pager__link:first-child .pager__label :global(.arrow) { rotate: 180deg; }
   .pager__title { font-family: var(--font-display); font-weight: 400; font-size: 1.125rem; line-height: 1.3; text-wrap: balance; }
   .pager__link:hover .pager__title { text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
-  .pager__all { justify-self: start; font-size: var(--fs-small); border-bottom: 1px solid var(--color-line-strong); }
+  .pager__all { justify-self: start; font-size: var(--type-small); border-bottom: 1px solid var(--color-line-strong); }
   .pager__all:hover { border-color: currentColor; }
 
   @media (min-width: 768px) {

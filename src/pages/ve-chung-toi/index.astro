@@ -383,10 +383,10 @@ const half = '(min-width: 1200px) 45vw, 100vw';
   .hero__title {
     margin-top: var(--space-s);
     font-family: var(--font-display);
-    font-weight: 400;
-    font-size: clamp(2.25rem, 1.6rem + 2.6vw, 3.75rem);
+    font-weight: 500;
+    font-size: var(--type-title);
     line-height: 1.1;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.005em;
     text-wrap: balance;
     color: var(--color-deep-green);
   }
@@ -493,7 +493,7 @@ const half = '(min-width: 1200px) 45vw, 100vw';
   /* Chapters: shared ------------------------------------------------------ */
 
   .story .chapter {
-    padding-block: clamp(3.5rem, 2rem + 5vw, 6.5rem);
+    padding-block: var(--section-y);
     scroll-margin-top: calc(var(--header-h) + var(--nav-h));
   }
   /* A thin rule, the width of the text, between chapters that do not
@@ -547,10 +547,10 @@ const half = '(min-width: 1200px) 45vw, 100vw';
     margin-top: var(--space-m);
     max-width: 20ch;
     font-family: var(--font-display);
-    font-weight: 400;
-    font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
-    line-height: 1.16;
-    letter-spacing: -0.01em;
+    font-weight: 500;
+    font-size: var(--type-h2);
+    line-height: 1.12;
+    letter-spacing: -0.005em;
     text-wrap: balance;
     color: var(--color-deep-green);
   }
@@ -563,8 +563,8 @@ const half = '(min-width: 1200px) 45vw, 100vw';
   /* Long-form reading: one left-aligned column of about 55–75 characters. */
   .prose {
     max-width: 36rem;
-    font-size: var(--fs-body);
-    line-height: var(--lh-body);
+    font-size: var(--type-body);
+    line-height: 1.65;
     color: var(--color-text-muted);
     text-wrap: pretty;
   }
@@ -586,8 +586,8 @@ const half = '(min-width: 1200px) 45vw, 100vw';
     border-left: 1px solid var(--color-earth);
     font-family: var(--font-display);
     font-style: italic;
-    font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);
-    line-height: 1.4;
+    font-size: var(--type-lead);
+    line-height: 1.45;
     color: var(--color-deep-green);
     text-wrap: balance;
   }
@@ -835,10 +835,10 @@ const half = '(min-width: 1200px) 45vw, 100vw';
     margin-top: var(--space-l);
     max-width: 22ch;
     font-family: var(--font-display);
-    font-weight: 400;
-    font-size: clamp(1.875rem, 1.5rem + 1.6vw, 2.75rem);
-    line-height: 1.14;
-    letter-spacing: -0.01em;
+    font-weight: 500;
+    font-size: var(--type-h2);
+    line-height: 1.12;
+    letter-spacing: -0.005em;
     text-wrap: balance;
     color: var(--color-deep-green);
   }
@@ -929,10 +929,10 @@ const half = '(min-width: 1200px) 45vw, 100vw';
     margin-top: var(--space-l);
     max-width: 16ch;
     font-family: var(--font-display);
-    font-weight: 400;
-    font-size: clamp(1.875rem, 1.5rem + 1.6vw, 2.75rem);
-    line-height: 1.14;
-    letter-spacing: -0.01em;
+    font-weight: 500;
+    font-size: var(--type-h2);
+    line-height: 1.12;
+    letter-spacing: -0.005em;
     text-wrap: balance;
     color: var(--color-deep-green);
   }
