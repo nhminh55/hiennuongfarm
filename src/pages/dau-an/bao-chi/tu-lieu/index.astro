@@ -5,8 +5,8 @@
  * Every entry of pressArchive (src/data/dau-an.ts), newest first, entries
  * without a date last. Each headline opens the original in a new tab.
  * Search (headline and outlet, without diacritics or case) and the year
- * and outlet filters run in the page and combine; without JavaScript the
- * whole list is still there.
+ * and outlet filters run in the page and combine; the matches are then shown
+ * ten to a page. Without JavaScript the whole list is still there.
  */
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import DauAnHead from '../../../../components/dau-an/DauAnHead.astro';
@@ -31,7 +31,7 @@ const undated = entries.some((e) => !e.date);
     <div class="container">
       <header class="archive__intro">
         <h1 class="archive__title" id="archive-title">Kho tư liệu báo chí</h1>
-        <p class="archive__lede">Các bài viết và phóng sự đã được tổng hợp. Mỗi tiêu đề mở bài gốc trên trang của cơ quan báo chí, trong thẻ mới. Bài gắn nhãn “Nhắc đến” chỉ nhắc ngắn đến Hiền Nương hoặc dẫn lời chị Châu Thị Nương trong một câu chuyện rộng hơn.</p>
+        <p class="archive__lede">Các bài viết và phóng sự đã được tổng hợp. Mỗi tiêu đề mở bài gốc trên trang của cơ quan báo chí, trong thẻ mới.</p>
         <a class="archive__back" href="/dau-an/bao-chi/"><span aria-hidden="true">←</span> Báo chí & Truyền thông</a>
       </header>
 
@@ -77,11 +77,10 @@ const undated = entries.some((e) => !e.date);
                 {e.date ? <time datetime={e.date}>{formatDate(e.date)}</time> : 'Chưa rõ ngày'}
               </td>
               <td class="list__title">
-                {(e.kind !== 'article' || e.mention) && (
+                {e.kind !== 'article' && (
                   <span class="list__tags">
                     {e.kind === 'video' && <span class="list__kind">Phóng sự truyền hình</span>}
                     {e.kind === 'audio' && <span class="list__kind">Phát thanh</span>}
-                    {e.mention && <span class="list__mention">Nhắc đến</span>}
                   </span>
                 )}
                 <a href={e.url} target="_blank" rel="noopener noreferrer">
@@ -93,6 +92,12 @@ const undated = entries.some((e) => !e.date);
           ))}
         </tbody>
       </table>
+
+      <nav class="pager" aria-label="Chọn trang" hidden data-pager>
+        <button class="pager__step" type="button" data-step="-1"><span aria-hidden="true">←</span> Trước</button>
+        <ol class="pager__pages" data-pages></ol>
+        <button class="pager__step" type="button" data-step="1">Sau <span aria-hidden="true">→</span></button>
+      </nav>
 
       <p class="empty" hidden data-empty>
         Không có bài nào khớp với tìm kiếm và bộ lọc đã chọn.
@@ -109,32 +114,74 @@ const undated = entries.some((e) => !e.date);
   const list = document.querySelector<HTMLTableElement>('[data-list]');
   const empty = document.querySelector<HTMLElement>('[data-empty]');
   const count = document.querySelector<HTMLElement>('[data-count]');
+  const pager = document.querySelector<HTMLElement>('[data-pager]');
+  const PAGE_SIZE = 10;
 
-  if (form && list && empty && count) {
+  if (form && list && empty && count && pager) {
+    const pages = pager.querySelector<HTMLOListElement>('[data-pages]')!;
+    const [prev, next] = pager.querySelectorAll<HTMLButtonElement>('[data-step]');
     const q = form.elements.namedItem('q') as HTMLInputElement;
     const year = form.elements.namedItem('year') as HTMLSelectElement;
     const outlet = form.elements.namedItem('outlet') as HTMLSelectElement;
     const rows = [...list.tBodies[0].rows];
     const resets = [...document.querySelectorAll<HTMLButtonElement>('[data-reset]')];
     const total = rows.length;
+    let matches: HTMLTableRowElement[] = rows;
+    let page = 0;
+
+    // Show one page of the current matches and redraw the page numbers.
+    const show = (to: number) => {
+      const last = Math.max(0, Math.ceil(matches.length / PAGE_SIZE) - 1);
+      page = Math.min(Math.max(to, 0), last);
+      for (const row of rows) row.hidden = true;
+      for (const row of matches.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)) row.hidden = false;
+
+      pager.hidden = last === 0;
+      prev.disabled = page === 0;
+      next.disabled = page === last;
+      pages.replaceChildren(
+        ...Array.from({ length: last + 1 }, (_, i) => {
+          const item = document.createElement('li');
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.textContent = String(i + 1);
+          button.dataset.page = String(i);
+          button.setAttribute('aria-label', `Trang ${i + 1}`);
+          if (i === page) button.setAttribute('aria-current', 'page');
+          item.append(button);
+          return item;
+        }),
+      );
+    };
 
     const apply = () => {
       const terms = fold(q.value).split(' ').filter(Boolean);
-      let shown = 0;
-      for (const row of rows) {
-        const match =
+      matches = rows.filter(
+        (row) =>
           terms.every((t) => row.dataset.search!.includes(t)) &&
           (!year.value || row.dataset.year === year.value) &&
-          (!outlet.value || row.dataset.outlet === outlet.value);
-        row.hidden = !match;
-        if (match) shown++;
-      }
+          (!outlet.value || row.dataset.outlet === outlet.value),
+      );
+      const shown = matches.length;
       const active = Boolean(q.value.trim() || year.value || outlet.value);
       count.textContent = active ? `Tìm thấy ${shown} trong ${total} bài` : `${total} bài viết và phóng sự`;
       resets[0].disabled = !active;
       list.hidden = shown === 0;
       empty.hidden = shown !== 0;
+      show(0);
     };
+
+    // Turning the page brings the top of the list back into view.
+    const turn = (to: number) => {
+      show(to);
+      list.scrollIntoView({ block: 'start' });
+    };
+    pager.addEventListener('click', (event) => {
+      const button = (event.target as Element).closest<HTMLButtonElement>('button');
+      if (!button) return;
+      if (button.dataset.page) turn(Number(button.dataset.page));
+      else if (button.dataset.step) turn(page + Number(button.dataset.step));
+    });
 
     form.addEventListener('input', apply);
     form.addEventListener('submit', (event) => event.preventDefault());
@@ -258,6 +305,7 @@ const undated = entries.some((e) => !e.date);
   .list {
     width: 100%;
     border-collapse: collapse;
+    scroll-margin-top: calc(var(--header-h) + var(--space-s));
   }
   .list thead th {
     padding-block: var(--space-xs);
@@ -271,7 +319,7 @@ const undated = entries.some((e) => !e.date);
     border-bottom: 1px solid var(--color-line-strong);
   }
   .list td {
-    padding-block: var(--space-m);
+    padding-block: var(--space-xs);
     vertical-align: baseline;
     border-bottom: 1px solid var(--color-line);
   }
@@ -287,7 +335,7 @@ const undated = entries.some((e) => !e.date);
     font-family: var(--font-display);
     font-weight: 500;
     font-size: var(--type-product);
-    line-height: 1.25;
+    line-height: 1.2;
     text-wrap: pretty;
     background-image: linear-gradient(currentColor, currentColor);
     background-size: 0 1px;
@@ -302,7 +350,7 @@ const undated = entries.some((e) => !e.date);
     display: flex;
     flex-wrap: wrap;
     gap: 0.25rem 0.75rem;
-    margin-bottom: 0.375rem;
+    margin-bottom: 0.25rem;
     font-size: 0.6875rem;
     font-weight: 500;
     letter-spacing: 0.16em;
@@ -310,13 +358,47 @@ const undated = entries.some((e) => !e.date);
     line-height: 1.4;
   }
   .list__kind { color: var(--color-earth); }
-  .list__mention { color: var(--color-text-muted); }
 
   .list__outlet {
     font-size: var(--type-small);
     line-height: 1.5;
     color: var(--color-text-muted);
   }
+
+  /* Pages: previous, numbers, next. */
+  .pager {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2xs) var(--space-s);
+    padding-top: var(--space-m);
+    font-size: var(--type-small);
+  }
+  .pager[hidden] { display: none; }
+  .pager__pages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .pager button,
+  .pager__pages :global(button) {
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0 0.5rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text-muted);
+    border-bottom: 1px solid transparent;
+    transition: color 300ms var(--ease), border-color 300ms var(--ease), opacity 300ms var(--ease);
+  }
+  .pager button:hover:not(:disabled),
+  .pager__pages :global(button:hover) { color: var(--color-text); border-color: var(--color-line-strong); }
+  .pager__pages :global(button[aria-current]) { color: var(--color-text); border-color: currentColor; font-weight: 500; }
+  .pager button:disabled { opacity: 0.35; cursor: default; }
+  .pager__step { padding-inline: 0; }
 
   .empty {
     padding-block: var(--space-l);
@@ -335,13 +417,14 @@ const undated = entries.some((e) => !e.date);
     .list tr {
       display: flex;
       flex-direction: column;
-      padding-block: var(--space-m);
+      padding-block: var(--space-s);
       border-bottom: 1px solid var(--color-line);
     }
     .list[hidden],
     .list tr[hidden] { display: none; }
     .list td { padding: 0; border: 0; }
-    .list__title { order: 1; margin-bottom: 0.5rem; }
+    .list__title { order: 1; margin-bottom: 0.25rem; }
+    .pager__pages { order: -1; flex-basis: 100%; justify-content: center; }
     .list__outlet { order: 2; }
     .list__date { order: 3; margin-top: 0.125rem; }
   }
