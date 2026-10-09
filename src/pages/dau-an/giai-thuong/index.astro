@@ -18,7 +18,7 @@ import { activities, awards, type Pic } from '../../../data/dau-an';
 
 const captionOf = (p: Pic) => `${p.caption ?? p.alt} Ảnh: ${p.credit}.`;
 // A document photographed flat is shown whole, at its own size.
-const isDocument = (p: Pic) => p.width < 600;
+const isDocument = (p: Pic) => p.document ?? p.width < 600;
 ---
 <BaseLayout
   title="Giải thưởng & Ghi nhận"
@@ -49,7 +49,7 @@ const isDocument = (p: Pic) => p.width < 600;
                 <img
                   src={a.photo.src}
                   srcset={a.photo.srcset}
-                  sizes={doc ? `${a.photo.width}px` : '(min-width: 1024px) 56vw, 100vw'}
+                  sizes={doc ? `(min-width: 1024px) min(40vw, ${a.photo.width}px), 100vw` : '(min-width: 1024px) 56vw, 100vw'}
                   width={a.photo.width}
                   height={a.photo.height}
                   alt={a.photo.alt}

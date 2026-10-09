@@ -50,6 +50,8 @@ export interface Pic {
   origin: string;
   /** object-position for cropped slots. */
   position?: string;
+  /** A certificate or trophy: shown whole, never cropped. */
+  document?: boolean;
 }
 
 const dir = '/images/dau-an/';
@@ -994,11 +996,12 @@ export const awards: Award[] = [
     by: 'Sáng kiến ESG Việt Nam 2023 · Bộ Kế hoạch và Đầu tư phối hợp với USAID',
     recipient: 'Hợp tác xã Nông nghiệp Tà Đảnh',
     significance: 'Hợp tác xã Nông nghiệp Tà Đảnh là một trong mười doanh nghiệp vào vòng chung kết Sáng kiến ESG Việt Nam 2023, thuyết trình trước hội đồng đánh giá ngày 07.09.2023.',
-    photo: pic('esg-chung-nhan', [[481, 384]], {
+    photo: pic('esg-chung-nhan', [[640, 511], [1280, 1021], [1404, 1120]], {
       alt: 'Giấy chứng nhận khung vàng có logo USAID, trao tặng Hợp tác xã Nông nghiệp Tà Đảnh, thuộc Top 10 doanh nghiệp xuất sắc nhất Sáng kiến ESG Việt Nam 2023',
       caption: 'Giấy chứng nhận trao tặng Hợp tác xã Nông nghiệp Tà Đảnh: Thuộc Top 10 doanh nghiệp xuất sắc nhất Sáng kiến ESG Việt Nam 2023.',
       credit: 'Trang trại Hiền Nương',
-      origin: 'L08__netid.vn/L08__9e0982__r012.jpg, góc dưới bên phải',
+      origin: 'design-reference/chung nhan/chung-nhan-esg-top-10-2023.webp',
+      document: true,
     }),
     evidence: [],
     sources: [
@@ -1024,11 +1027,19 @@ export const awards: Award[] = [
       position: '50% 55%',
     }),
     evidence: [
-      pic('ox-cup-giai-nhat', [[481, 384]], {
+      pic('ox-giay-chung-nhan', [[640, 477], [1280, 955], [1452, 1083]], {
+        alt: 'Giấy chứng nhận khung vàng có logo Sverige và Oxfam, chứng nhận Hợp tác xã Nông nghiệp Tà Đảnh đã đạt Giải Nhất cuộc thi Tìm kiếm sáng kiến tăng quyền năng kinh tế phụ nữ trong chuỗi lúa gạo, An Giang, ngày 29 tháng 7 năm 2022',
+        caption: 'Giấy chứng nhận Giải Nhất trao cho Hợp tác xã Nông nghiệp Tà Đảnh, An Giang, 29.07.2022.',
+        credit: 'Trang trại Hiền Nương',
+        origin: 'design-reference/chung nhan/giay-chung-nhan-graisea-2-2022.webp',
+        document: true,
+      }),
+      pic('ox-cup-giai-nhat', [[480, 640], [1086, 1448]], {
         alt: 'Cúp pha lê có logo Sverige và Oxfam, khắc dòng chữ Đạt Giải Nhất cuộc thi Tìm kiếm sáng kiến tăng quyền năng kinh tế phụ nữ trong nông nghiệp, Dự án GRAISEA 2',
         caption: 'Cúp Giải Nhất của cuộc thi, Dự án GRAISEA 2.',
         credit: 'Trang trại Hiền Nương',
-        origin: 'L08__netid.vn/L08__9e0982__r012.jpg, góc trên bên phải',
+        origin: 'design-reference/chung nhan/cup-giai-nhat-graisea-2-2022.webp',
+        document: true,
       }),
       pic('ox-thuyet-trinh', [[640, 457], [704, 503]], {
         alt: 'Người thuyết trình đứng trên sân khấu trước màn hình ghi Tận dụng rơm rạ sản xuất phôi nấm mối đen, BCV: Châu Thị Nương; hội đồng giám khảo ngồi phía trước',
