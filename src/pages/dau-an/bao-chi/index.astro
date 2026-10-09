@@ -1,0 +1,386 @@
+---
+/**
+ * /dau-an/bao-chi/: Báo chí & Truyền thông, "bức tường báo chí".
+ *
+ * Vietnamese only (viOnlyPrefixes in src/i18n.ts). Content and provenance:
+ * src/data/dau-an.ts. Every piece shows its outlet, original headline and
+ * publication date, and opens its own page with the link to the original.
+ *
+ * 1 · Lead: one report across two thirds, two stacked beside it.
+ * 2 · The wall: the other reports, newest first, as photographs, headline
+ *     cards (pieces without a usable photograph) and two short quotations,
+ *     on a 12-column grid with varied spans and a staggered top edge.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import DauAnHead from '../../../components/dau-an/DauAnHead.astro';
+import Arrow from '../../../components/Arrow.astro';
+import { formatDate, press, pressBySlug, type PressItem } from '../../../data/dau-an';
+
+const [featured, ...rest] = press;
+const side = rest.slice(0, 2);
+const href = (p: PressItem) => `/dau-an/bao-chi/${p.slug}/`;
+
+type Tile =
+  | { type: 'item'; item: PressItem; span: number; ratio?: string; offset?: boolean }
+  | { type: 'quote'; item: PressItem; span: number; offset?: boolean };
+
+const item = (slug: string, span: number, ratio?: string, offset?: boolean): Tile => ({
+  type: 'item', item: pressBySlug(slug)!, span, ratio, offset,
+});
+const quote = (slug: string, span: number, offset?: boolean): Tile => ({
+  type: 'quote', item: pressBySlug(slug)!, span, offset,
+});
+
+// Rows of 12 columns. Pieces without a photograph become headline cards.
+const tiles: Tile[] = [
+  item('co-giao-tieng-anh-trong-nam-ocop', 5, '4 / 3'),
+  item('bien-rom-ra-thanh-vang', 4, '4 / 5', true),
+  quote('chau-thi-nuong-mo-loi-di-xanh-tu-nam-huu-co', 3),
+
+  item('chu-tich-hoi-nong-dan-tham-mo-hinh-trong-nam', 4, '3 / 2'),
+  item('lam-giau-tu-nam-sach', 4),
+  item('nu-nong-dan-xuat-sac-vung-bay-nui', 4, '4 / 5', true),
+
+  item('tu-trai-nam-nho-den-danh-hieu-nong-dan-viet-nam-xuat-sac-2025', 3),
+  item('mo-huong-moi-nong-nghiep-xanh-o-long-bay-nui', 5, '3 / 2'),
+  item('chau-thi-nuong-mo-loi-di-xanh-tu-nam-huu-co', 4, '4 / 3', true),
+
+  quote('nu-nong-dan-xuat-sac-vung-bay-nui', 4),
+  item('re-huong-trong-nam-nguoi-phu-nu-mien-tay', 4, '1 / 1'),
+  item('khat-vong-mua-vang-tap-92', 4),
+
+  item('tang-thu-nhap-nho-lam-nong-lap-them-dien-mat-troi', 3),
+  item('nam-moi-nang-nuong', 5, '16 / 9'),
+  item('nong-nghiep-tuan-hoan-tu-duoc-lieu-tu-nhien', 4, '4 / 3', true),
+];
+
+const meta = (p: PressItem) => `${p.outlet} · ${formatDate(p.date)}`;
+const sizes = (span: number) => `(min-width: 1024px) ${Math.round((span / 12) * 92)}vw, (min-width: 640px) 50vw, 100vw`;
+---
+<BaseLayout
+  title="Báo chí & Truyền thông"
+  description="Những bài báo, phóng sự về Hiền Nương Farm và chị Châu Thị Nương: tên báo, tiêu đề gốc, ngày đăng và liên kết đến bài gốc."
+>
+  <DauAnHead current="/dau-an/bao-chi/" />
+
+  <section class="press-lead" aria-label="Bài nổi bật">
+    <div class="container press-feature__grid">
+      <article class="feature">
+        <a class="feature__media" href={href(featured)} tabindex="-1" aria-hidden="true">
+          <img
+            src={featured.photo!.src}
+            srcset={featured.photo!.srcset}
+            sizes="(min-width: 1024px) 62vw, 100vw"
+            width={featured.photo!.width}
+            height={featured.photo!.height}
+            alt={featured.photo!.alt}
+            style={featured.photo!.position ? `object-position: ${featured.photo!.position}` : undefined}
+            fetchpriority="high"
+          />
+        </a>
+        <p class="eyebrow feature__meta">{meta(featured)}</p>
+        <h2 class="feature__title"><a href={href(featured)}>{featured.headline}</a></h2>
+        <p class="feature__intro">{featured.intro}</p>
+        <a class="link-arrow feature__more" href={href(featured)} aria-label={`Xem bài: ${featured.headline}`}>Xem bài <Arrow /></a>
+      </article>
+
+      <div class="press-feature__side">
+        {side.map((p) => (
+          <article class="side">
+            <a class="side__media" href={href(p)} tabindex="-1" aria-hidden="true">
+              <img
+                src={p.photo!.src}
+                srcset={p.photo!.srcset}
+                sizes="(min-width: 1024px) 30vw, 100vw"
+                width={p.photo!.width}
+                height={p.photo!.height}
+                alt={p.photo!.alt}
+                style={p.photo!.position ? `object-position: ${p.photo!.position}` : undefined}
+              />
+            </a>
+            <p class="eyebrow side__meta">{meta(p)}</p>
+            <h2 class="side__title"><a class="stretch" href={href(p)}>{p.headline}</a></h2>
+            <p class="side__intro">{p.intro}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="wall" aria-labelledby="wall-title">
+    <div class="container">
+      <h2 class="eyebrow wall__head" id="wall-title">Những bài viết khác</h2>
+      <ol class="wall__grid">
+        {tiles.map((t) =>
+          t.type === 'quote' ? (
+            <li class:list={['tile', 'tile--quote', { 'tile--offset': t.offset }]} style={`--span: ${t.span}`} data-reveal>
+              <figure>
+                <blockquote class="tile__quote">
+                  <p>“{t.item.quote}”</p>
+                </blockquote>
+                <figcaption class="tile__attr">
+                  Chị Châu Thị Nương, trong bài <a href={href(t.item)}>{t.item.headline}</a> · {t.item.outlet}, {formatDate(t.item.date)}
+                </figcaption>
+              </figure>
+            </li>
+          ) : (
+            <li
+              class:list={['tile', t.item.photo ? 'tile--photo' : t.item.kind === 'video' ? 'tile--video' : 'tile--text', { 'tile--offset': t.offset }]}
+              style={`--span: ${t.span}${t.ratio ? `; --ratio: ${t.ratio}` : ''}`}
+              data-reveal
+            >
+              <article>
+                {t.item.photo && (
+                  <div class="tile__media">
+                    <img
+                      src={t.item.photo.src}
+                      srcset={t.item.photo.srcset}
+                      sizes={sizes(t.span)}
+                      width={t.item.photo.width}
+                      height={t.item.photo.height}
+                      alt={t.item.photo.alt}
+                      style={t.item.photo.position ? `object-position: ${t.item.photo.position}` : undefined}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                )}
+                <p class="eyebrow tile__meta">{t.item.kind === 'video' ? `Phóng sự truyền hình · ${t.item.outlet}` : t.item.outlet}</p>
+                <h3 class="tile__title"><a class="stretch" href={href(t.item)}>{t.item.headline}</a></h3>
+                <p class="tile__date">{t.item.kind === 'video' ? `Đăng tải ${formatDate(t.item.date)}` : formatDate(t.item.date)}</p>
+                {!t.item.photo && <p class="tile__intro">{t.item.intro}</p>}
+                {t.item.kind === 'video' && <p class="tile__cue" aria-hidden="true"><span class="tile__play"></span>Xem phóng sự</p>}
+              </article>
+            </li>
+          ),
+        )}
+      </ol>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Lead --------------------------------------------------------------- */
+  .press-lead { padding-bottom: var(--space-2xl); }
+
+  .press-feature__grid { display: grid; gap: var(--space-xl); }
+
+  .feature { position: relative; display: grid; align-content: start; }
+
+  .feature__media,
+  .side__media,
+  .tile__media {
+    display: block;
+    overflow: hidden;
+    background: var(--color-cream);
+  }
+  .feature__media img,
+  .side__media img,
+  .tile__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 900ms var(--ease);
+  }
+  .feature__media { aspect-ratio: 3 / 2; }
+
+  .feature__meta { margin-top: var(--space-m); }
+
+  .feature__title {
+    margin-top: var(--space-s);
+    max-width: 20ch;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.75rem, 1.2rem + 2.2vw, 3rem);
+    line-height: var(--lh-display);
+    letter-spacing: -0.012em;
+    text-wrap: balance;
+  }
+
+  .feature__intro {
+    margin-top: var(--space-s);
+    max-width: 38rem;
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+
+  .feature__more { margin-top: var(--space-m); justify-self: start; }
+  .feature__more :global(.arrow) { width: 0.875rem; }
+
+  .press-feature__side { display: grid; gap: var(--space-xl); align-content: start; }
+
+  .side { position: relative; display: grid; align-content: start; }
+  .side__media { aspect-ratio: 16 / 10; }
+  .side__meta { margin-top: var(--space-s); }
+  .side__title {
+    margin-top: var(--space-2xs);
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: var(--fs-h3);
+    line-height: 1.22;
+    text-wrap: balance;
+  }
+  .side__intro {
+    margin-top: var(--space-2xs);
+    font-size: var(--fs-small);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+
+  /* Whole card is the link; the headline holds it. */
+  .stretch::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+  .stretch:focus-visible { outline: none; }
+  .side:has(.stretch:focus-visible),
+  .tile:has(.stretch:focus-visible) { outline: 1px solid currentColor; outline-offset: 6px; }
+
+  .feature__title a,
+  .side__title a,
+  .tile__title a {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 500ms var(--ease);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .feature:hover .feature__media img,
+    .side:hover .side__media img,
+    .tile:hover .tile__media img { transform: scale(1.03); }
+  }
+  .feature:hover .feature__title a,
+  .side:hover .side__title a,
+  .tile:hover .tile__title a { background-size: 100% 1px; }
+
+  @media (min-width: 1024px) {
+    .press-feature__grid {
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+      column-gap: clamp(var(--space-l), 3vw, var(--space-2xl));
+    }
+    .feature__title { font-size: clamp(2.25rem, 1.2rem + 1.6vw, 3rem); }
+  }
+
+  /* Wall --------------------------------------------------------------- */
+  .wall { padding-bottom: var(--section-y); }
+
+  .wall__head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    padding-top: var(--space-m);
+    border-top: 1px solid var(--color-line-strong);
+  }
+
+  .wall__grid {
+    display: grid;
+    gap: var(--space-xl) var(--col-gap);
+    margin-top: var(--space-l);
+  }
+
+  .tile { position: relative; min-width: 0; }
+  .tile article { display: grid; align-content: start; }
+
+  .tile__media { aspect-ratio: var(--ratio, 4 / 3); margin-bottom: var(--space-s); }
+
+  .tile__meta { font-size: 0.6875rem; }
+
+  .tile__title {
+    margin-top: var(--space-2xs);
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.1875rem, 1.1rem + 0.35vw, 1.375rem);
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+
+  .tile__date {
+    margin-top: var(--space-2xs);
+    font-size: 0.8125rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text-muted);
+  }
+
+  .tile__intro {
+    margin-top: var(--space-s);
+    font-size: var(--fs-small);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+
+  /* Headline cards: a typeset clipping on a cream field, no photograph. */
+  .tile--text article,
+  .tile--video article {
+    padding: var(--space-m) var(--space-m) var(--space-l);
+    background: var(--color-cream);
+    border-top: 2px solid var(--color-forest);
+  }
+  .tile--text .tile__title,
+  .tile--video .tile__title { font-size: clamp(1.375rem, 1.2rem + 0.6vw, 1.75rem); line-height: 1.2; }
+
+  .tile--video article {
+    background: var(--color-deep-green);
+    color: var(--color-cream);
+    border-top-color: var(--color-earth);
+  }
+  .tile--video .tile__meta { color: #C9B48F; }
+  .tile--video .tile__date,
+  .tile--video .tile__intro { color: var(--color-text-inverse-muted); }
+  .tile__cue {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: var(--space-m);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .tile__play {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0.4rem 0 0.4rem 0.65rem;
+    border-color: transparent transparent transparent currentColor;
+  }
+
+  /* Quotations: the farmer's own words, set large, with their source. */
+  .tile--quote figure { padding-top: var(--space-xs); }
+  .tile__quote p {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.375rem, 1.15rem + 0.9vw, 1.875rem);
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    text-wrap: pretty;
+  }
+  .tile__attr {
+    margin-top: var(--space-m);
+    padding-top: var(--space-s);
+    border-top: 1px solid var(--color-line);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+  }
+  .tile__attr a { color: var(--color-text); border-bottom: 1px solid var(--color-line-strong); }
+  .tile__attr a:hover { border-color: currentColor; }
+
+  /* Tablet: two columns; quotations across both. */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .wall__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+    .tile--quote { grid-column: 1 / -1; max-width: 40rem; }
+  }
+
+  /* Desktop: each tile spans its share of 12 columns; some start lower. */
+  @media (min-width: 1024px) {
+    .wall__grid {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      align-items: start;
+      row-gap: var(--space-2xl);
+    }
+    .tile { grid-column: span var(--span, 4); }
+    .tile--offset { margin-top: var(--space-2xl); }
+    .tile--quote { padding-right: var(--space-m); }
+  }
+</style>

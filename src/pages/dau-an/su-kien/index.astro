@@ -1,0 +1,273 @@
+---
+/**
+ * /dau-an/su-kien/: Sự kiện & Hoạt động, "nhật ký bằng ảnh".
+ *
+ * Opens on a photograph from the newest activity, then a chronological
+ * photobook, newest first: a date column and fine spine on wide screens,
+ * one group per activity (date, title, place, short caption, a few
+ * photographs). Each group opens its album page. Album counts are the
+ * photographs actually held. An activity with no photograph stays a short
+ * text entry. Dates are the ones the sources give; a year alone where only
+ * the year is documented. Data and provenance: src/data/dau-an.ts.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import DauAnHead from '../../../components/dau-an/DauAnHead.astro';
+import Arrow from '../../../components/Arrow.astro';
+import { activities, formatDate, type Activity } from '../../../data/dau-an';
+
+const opening = activities[0];
+const cover = opening.photos[1] ?? opening.photos[0];
+const href = (a: Activity) => `/dau-an/su-kien/${a.slug}/`;
+
+// Day and month above the year: "05.03" / "2026".
+const dateParts = (iso: string) => {
+  const [y, m, d] = iso.split('-');
+  return { top: d ? `${d}.${m}` : undefined, year: y };
+};
+
+// Photographs shown in the list: the opening photograph is not repeated.
+const shown = (a: Activity) => (a === opening ? a.photos.filter((p) => p !== cover) : a.photos).slice(0, 3);
+// Every other three-photo group mirrors its layout.
+const mirrored = new Set(activities.filter((a) => shown(a).length >= 3).filter((_, i) => i % 2 === 1));
+---
+<BaseLayout
+  title="Sự kiện & Hoạt động"
+  description="Nhật ký bằng ảnh các sự kiện và hoạt động của Hiền Nương Farm và chị Châu Thị Nương, sắp xếp theo thời gian, kèm nguồn."
+>
+  <DauAnHead current="/dau-an/su-kien/" />
+
+  <figure class="opening">
+    <div class="opening__photo">
+      <img
+        src={cover.src}
+        srcset={cover.srcset}
+        sizes="100vw"
+        width={cover.width}
+        height={cover.height}
+        alt={cover.alt}
+        fetchpriority="high"
+      />
+    </div>
+    <figcaption class="container opening__caption">
+      <span class="opening__date">{formatDate(opening.date)}</span>
+      <span>{opening.title}. Ảnh: {cover.credit}</span>
+    </figcaption>
+  </figure>
+
+  <section class="diary" aria-label="Các hoạt động, mới nhất trước">
+    <ol class="container diary__list">
+      {activities.map((a) => {
+        const d = dateParts(a.date);
+        const photos = shown(a);
+        const layout = photos.length >= 3 ? 'trio' : photos.length === 2 ? 'pair' : photos.length === 1 ? 'single' : 'none';
+        return (
+          <li class:list={['entry', `entry--${layout}`, { 'entry--alt': mirrored.has(a) }]}>
+            <p class="entry__date">
+              <time datetime={a.date}>
+                {d.top && <span class="entry__day">{d.top}</span>}
+                <span class="entry__year">{d.year}</span>
+              </time>
+            </p>
+
+            <div class="entry__body">
+              <header class="entry__head" data-reveal>
+                <h2 class="entry__title"><a href={href(a)}>{a.title}</a></h2>
+                {a.place && <p class="entry__place">{a.place}</p>}
+                <p class="entry__summary">{a.summary}</p>
+              </header>
+
+              {photos.length > 0 && (
+                <div class="entry__photos" data-reveal>
+                  {photos.map((p, j) => (
+                    <a class="entry__photo" href={href(a)} tabindex="-1" aria-hidden="true">
+                      <img
+                        src={p.src}
+                        srcset={p.srcset}
+                        sizes={j === 0 ? '(min-width: 1024px) 50vw, 100vw' : '(min-width: 1024px) 25vw, 50vw'}
+                        width={p.width}
+                        height={p.height}
+                        alt={p.alt}
+                        style={p.position ? `object-position: ${p.position}` : undefined}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </a>
+                  ))}
+                </div>
+              )}
+
+              <a class="link-arrow entry__more" href={href(a)} aria-label={`${a.photos.length > 0 ? 'Mở bộ ảnh' : 'Xem chi tiết'}: ${a.title}`}>
+                {a.photos.length > 0 ? `Mở bộ ảnh · ${a.photos.length} ảnh` : 'Xem chi tiết'} <Arrow />
+              </a>
+            </div>
+          </li>
+        );
+      })}
+    </ol>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Opening photograph -------------------------------------------------- */
+  .opening__photo {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--color-cream);
+  }
+  .opening__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+
+  .opening__caption {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    margin-top: var(--space-xs);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+  }
+  .opening__date { color: var(--color-text); font-variant-numeric: tabular-nums; }
+
+  @media (min-width: 768px) {
+    .opening__photo { aspect-ratio: 21 / 9; }
+  }
+
+  /* Diary --------------------------------------------------------------- */
+  .diary { padding-top: var(--space-2xl); padding-bottom: var(--section-y); }
+
+  .entry {
+    display: grid;
+    gap: var(--space-s);
+  }
+  .entry + .entry { margin-top: var(--space-2xl); }
+
+  .entry__date {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--color-earth);
+    font-variant-numeric: tabular-nums;
+  }
+  .entry__date time { display: flex; gap: 0.5rem; }
+
+  .entry__title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.5rem, 1.15rem + 1.4vw, 2.375rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    max-width: 30ch;
+  }
+  .entry__title a {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 500ms var(--ease);
+  }
+  .entry__title a:hover { background-size: 100% 1px; }
+
+  .entry__place {
+    margin-top: var(--space-2xs);
+    font-size: var(--fs-small);
+    color: var(--color-text);
+  }
+  .entry__summary {
+    margin-top: var(--space-2xs);
+    max-width: 40rem;
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+
+  .entry__photos {
+    display: grid;
+    gap: var(--space-2xs);
+    margin-top: var(--space-m);
+  }
+  .entry__photo { display: block; overflow: hidden; background: var(--color-cream); }
+  .entry__photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 900ms var(--ease); }
+  @media (prefers-reduced-motion: no-preference) {
+    .entry__photo:hover img { transform: scale(1.03); }
+  }
+
+  /* Phone: the first photograph wide, the others two side by side. */
+  .entry--trio .entry__photos,
+  .entry--pair .entry__photos { grid-template-columns: 1fr 1fr; }
+  .entry--trio .entry__photo:first-child { grid-column: 1 / -1; aspect-ratio: 3 / 2; }
+  .entry--trio .entry__photo:not(:first-child),
+  .entry--pair .entry__photo { aspect-ratio: 1 / 1; }
+  .entry--single .entry__photo { aspect-ratio: 3 / 2; }
+
+  .entry__more { margin-top: var(--space-m); }
+  .entry__more :global(.arrow) { width: 0.875rem; }
+
+  .entry--none .entry__body {
+    padding: var(--space-m) 0;
+    border-block: 1px solid var(--color-line);
+  }
+
+  /* Wide screens: date column, a fine spine, varied photograph rhythm. */
+  @media (min-width: 1024px) {
+    .diary__list { position: relative; }
+    .entry {
+      grid-template-columns: 7.5rem minmax(0, 1fr);
+      column-gap: var(--space-xl);
+      position: relative;
+    }
+    .entry + .entry { margin-top: 0; padding-top: var(--space-3xl); }
+    /* The spine: a hairline between the dates and the photographs. */
+    .entry::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: calc(7.5rem + var(--space-xl) / 2);
+      width: 1px;
+      background: var(--color-line);
+    }
+    .entry:first-child::before { top: 0.6rem; }
+    .entry:last-child::before { bottom: auto; height: calc(var(--space-3xl) + 0.6rem); }
+    .entry:first-child:last-child::before { display: none; }
+
+    .entry__date {
+      position: relative;
+      padding-top: 0.5rem;
+    }
+    .entry__date time { display: grid; gap: 0.125rem; }
+    .entry__day { font-size: 0.875rem; color: var(--color-text); letter-spacing: 0.1em; }
+    /* A small mark on the spine at each date. */
+    .entry__date::after {
+      content: "";
+      position: absolute;
+      top: 0.85rem;
+      right: calc(var(--space-xl) / -2 - 3.5px);
+      width: 7px;
+      height: 7px;
+      border: 1px solid var(--color-earth);
+      border-radius: 50%;
+      background: var(--color-paper);
+    }
+
+    .entry__photos { margin-top: var(--space-l); gap: var(--space-xs); }
+
+    /* Trio: one wide scene with two pictures stacked beside it; the next
+       trio mirrors it. */
+    .entry--trio .entry__photos {
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+      grid-template-rows: 1fr 1fr;
+    }
+    .entry--trio .entry__photo:first-child { grid-column: 1; grid-row: 1 / span 2; aspect-ratio: 4 / 3; }
+    .entry--trio .entry__photo:not(:first-child) { aspect-ratio: auto; }
+    .entry--trio.entry--alt .entry__photos { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+    .entry--trio.entry--alt .entry__photo:first-child { grid-column: 2; }
+    .entry--trio.entry--alt .entry__photo:not(:first-child) { grid-column: 1; }
+
+    .entry--pair .entry__photos { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+    .entry--pair .entry__photo { aspect-ratio: auto; height: 26rem; }
+
+    .entry--single .entry__photos { grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); }
+    .entry--single .entry__photo { aspect-ratio: 800 / 565; }
+
+    .entry--none .entry__body { max-width: 52rem; }
+  }
+</style>

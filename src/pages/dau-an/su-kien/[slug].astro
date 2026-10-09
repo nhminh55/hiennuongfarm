@@ -1,0 +1,215 @@
+---
+/**
+ * /dau-an/su-kien/<slug>/: one activity. Date, title, place, a short
+ * account from the sources, the album (every photograph opens in the
+ * photo viewer) and the sources. Data: src/data/dau-an.ts.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import DauAnHead from '../../../components/dau-an/DauAnHead.astro';
+import Lightbox from '../../../components/dau-an/Lightbox.astro';
+import Arrow from '../../../components/Arrow.astro';
+import { activities, awards, formatDate, type Activity } from '../../../data/dau-an';
+
+export const getStaticPaths = () =>
+  activities.map((activity, i) => ({
+    params: { slug: activity.slug },
+    props: { activity, newer: activities[i - 1], older: activities[i + 1] },
+  }));
+
+interface Props {
+  activity: Activity;
+  newer?: Activity;
+  older?: Activity;
+}
+
+const { activity: a, newer, older } = Astro.props;
+const award = a.award ? awards.find((x) => x.id === a.award) : undefined;
+const credits = [...new Set(a.photos.map((p) => p.credit))];
+const href = (x: Activity) => `/dau-an/su-kien/${x.slug}/`;
+---
+<BaseLayout title={a.title} description={`${formatDate(a.date)}: ${a.summary}`}>
+  <DauAnHead current="/dau-an/su-kien/" title={a.title} as="p" />
+
+  <article class="album" aria-labelledby="album-title">
+    <div class="container album__grid">
+      <header class="album__head">
+        <p class="eyebrow"><time datetime={a.date}>{formatDate(a.date)}</time></p>
+        <h1 class="album__title" id="album-title">{a.title}</h1>
+        {a.place && <p class="album__place">{a.place}</p>}
+      </header>
+
+      <div class="album__story">
+        {a.story.map((s) => <p>{s}</p>)}
+        <p class="album__sources">
+          Nguồn:{' '}
+          {a.sources.map((s, j) => (
+            <>
+              {j > 0 && ' · '}
+              <a href={s.href} target="_blank" rel="noopener">{s.label}<span class="sr-only"> (mở trong thẻ mới)</span></a>
+            </>
+          ))}
+        </p>
+        {award && (
+          <a class="link-arrow album__award" href={`/dau-an/giai-thuong/#${award.id}`}>
+            {award.name} <Arrow />
+          </a>
+        )}
+      </div>
+    </div>
+
+    {a.photos.length > 0 && (
+      <section class="container album__photos" aria-label={`Bộ ảnh · ${a.photos.length} ảnh`}>
+        <p class="album__count">{a.photos.length} ảnh · Ảnh: {credits.join(', ')}</p>
+        <ul class="album__grid-photos">
+          {a.photos.map((p, i) => (
+            <li class:list={['album__item', { 'album__item--wide': i === 0 }]}>
+              <a
+                href={p.full}
+                data-lightbox="album"
+                data-caption={`${p.caption ?? p.alt} Ảnh: ${p.credit}.`}
+                data-width={p.width}
+                data-height={p.height}
+              >
+                <img
+                  src={p.src}
+                  srcset={p.srcset}
+                  sizes={i === 0 ? '(min-width: 1024px) 66vw, 100vw' : '(min-width: 1024px) 33vw, 50vw'}
+                  width={p.width}
+                  height={p.height}
+                  alt={p.alt}
+                  style={p.position ? `object-position: ${p.position}` : undefined}
+                  loading={i < 2 ? 'eager' : 'lazy'}
+                  decoding="async"
+                />
+              </a>
+              {p.caption && <p class="album__caption">{p.caption}</p>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+  </article>
+
+  <nav class="pager container" aria-label="Hoạt động khác">
+    <div class="pager__inner">
+      {newer ? (
+        <a class="pager__link" href={href(newer)} rel="prev">
+          <span class="pager__label"><Arrow /> Mới hơn · {formatDate(newer.date)}</span>
+          <span class="pager__title">{newer.title}</span>
+        </a>
+      ) : <span />}
+      <a class="pager__all" href="/dau-an/su-kien/">Tất cả hoạt động</a>
+      {older ? (
+        <a class="pager__link pager__link--next" href={href(older)} rel="next">
+          <span class="pager__label">Trước đó · {formatDate(older.date)} <Arrow /></span>
+          <span class="pager__title">{older.title}</span>
+        </a>
+      ) : <span />}
+    </div>
+  </nav>
+
+  {a.photos.length > 0 && <Lightbox />}
+</BaseLayout>
+
+<style>
+  .album { padding-bottom: var(--space-2xl); }
+
+  .album__grid { display: grid; gap: var(--space-l); }
+
+  .album__title {
+    margin-top: var(--space-s);
+    max-width: 24ch;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.875rem, 1.3rem + 2.2vw, 3.125rem);
+    line-height: var(--lh-display);
+    letter-spacing: -0.012em;
+    text-wrap: balance;
+  }
+  .album__place { margin-top: var(--space-s); font-size: var(--fs-small); }
+
+  .album__story { display: grid; gap: var(--space-s); align-content: start; max-width: 38rem; }
+  .album__story > p:not(.album__sources) { color: var(--color-text-muted); text-wrap: pretty; }
+
+  .album__sources {
+    margin-top: var(--space-xs);
+    padding-top: var(--space-s);
+    border-top: 1px solid var(--color-line);
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+  }
+  .album__sources a { color: var(--color-text); border-bottom: 1px solid var(--color-line-strong); }
+  .album__sources a:hover { border-color: currentColor; }
+  .album__award { justify-self: start; }
+  .album__award :global(.arrow) { width: 0.875rem; }
+
+  .album__photos { margin-top: var(--space-2xl); }
+  .album__count {
+    padding-bottom: var(--space-s);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .album__grid-photos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-m) var(--space-xs);
+    margin-top: var(--space-m);
+  }
+  .album__item { min-width: 0; }
+  .album__item--wide { grid-column: 1 / -1; }
+  .album__item a { display: block; aspect-ratio: 3 / 2; overflow: hidden; cursor: zoom-in; background: var(--color-cream); }
+  .album__item img { width: 100%; height: 100%; object-fit: cover; transition: opacity 300ms var(--ease); }
+  .album__item a:hover img { opacity: 0.88; }
+  .album__caption {
+    margin-top: var(--space-2xs);
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+
+  @media (min-width: 1024px) {
+    .album__grid {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      column-gap: clamp(var(--space-l), 4vw, var(--space-3xl));
+      align-items: end;
+    }
+    .album__grid-photos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .album__item--wide a { aspect-ratio: 2 / 1; }
+  }
+
+  /* Previous / next (as on the press pages). */
+  .pager { padding-bottom: var(--section-y); }
+  .pager__inner {
+    display: grid;
+    gap: var(--space-m);
+    padding-top: var(--space-m);
+    border-top: 1px solid var(--color-line-strong);
+  }
+  .pager__link { display: grid; gap: var(--space-2xs); }
+  .pager__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-earth);
+  }
+  .pager__label :global(.arrow) { width: 0.875rem; }
+  .pager__link:first-child .pager__label :global(.arrow) { rotate: 180deg; }
+  .pager__title { font-family: var(--font-display); font-weight: 400; font-size: 1.125rem; line-height: 1.3; text-wrap: balance; }
+  .pager__link:hover .pager__title { text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+  .pager__all { justify-self: start; font-size: var(--fs-small); border-bottom: 1px solid var(--color-line-strong); }
+  .pager__all:hover { border-color: currentColor; }
+
+  @media (min-width: 768px) {
+    .pager__inner { grid-template-columns: 1fr auto 1fr; align-items: start; column-gap: var(--space-xl); }
+    .pager__all { justify-self: center; align-self: center; }
+    .pager__link--next { text-align: right; justify-items: end; }
+  }
+</style>

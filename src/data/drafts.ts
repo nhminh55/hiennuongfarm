@@ -1,6 +1,10 @@
 /**
- * Placeholder pages for Dấu ấn (docs/SITEMAP.md §2 and §5), built by
+ * Placeholder pages (docs/SITEMAP.md §2 and §5), built by
  * src/pages/[...draft].astro, and the header dropdowns (§4).
+ *
+ * Dấu ấn has no landing page: Báo chí, Giải thưởng and Sự kiện are
+ * published pages (src/pages/dau-an/, data in src/data/dau-an.ts); only
+ * Chứng nhận sản phẩm is still a placeholder.
  *
  * The placeholder pages are live at the owner's request (2026-10-09) so the
  * Dấu ấn dropdown has destinations. They hold no company facts, stay out of
@@ -60,68 +64,11 @@ export interface DraftPage {
   sections: DraftSection[];
 }
 
-const dauAn = { label: 'Dấu ấn', href: '/dau-an/' };
-
 export const draftPages: DraftPage[] = [
-  {
-    path: '/dau-an/',
-    title: 'Dấu ấn',
-    eyebrow: 'Những cột mốc của Hiền Nương',
-    sections: [
-      {
-        id: 'noi-bat',
-        title: 'Cột mốc nổi bật',
-        layout: 'split',
-        images: [{ brief: 'Ảnh tư liệu của cột mốc nổi bật', ratio: '3 / 2', tone: 'earth' }],
-      },
-      {
-        id: 'cot-moc',
-        title: 'Các cột mốc tiêu biểu',
-        layout: 'records',
-        fields: ['Năm', 'Cột mốc', 'Nguồn'],
-        count: 3,
-      },
-      {
-        id: 'kham-pha',
-        title: 'Khám phá Dấu ấn',
-        layout: 'entries',
-        entries: [
-          { label: 'Giải thưởng & ghi nhận', href: '/dau-an/giai-thuong/', image: { brief: 'Ảnh giải thưởng', ratio: '4 / 5', tone: 'forest' } },
-          { label: 'Chứng nhận sản phẩm', href: '/dau-an/chung-nhan/', image: { brief: 'Ảnh giấy chứng nhận', ratio: '4 / 5', tone: 'stone' } },
-          { label: 'Báo chí & Truyền thông', href: '/dau-an/bao-chi/', image: { brief: 'Ảnh từ phóng sự', ratio: '4 / 5', tone: 'deep' } },
-        ],
-      },
-    ],
-  },
-  {
-    path: '/dau-an/giai-thuong/',
-    title: 'Giải thưởng & ghi nhận',
-    eyebrow: 'Dấu ấn',
-    parents: [dauAn],
-    sections: [
-      {
-        id: 'trang-trai',
-        title: 'Ghi nhận dành cho trang trại',
-        layout: 'records',
-        fields: ['Tên ghi nhận', 'Năm', 'Đơn vị trao tặng', 'Nguồn'],
-        count: 2,
-        images: [{ brief: 'Ảnh giải thưởng hoặc bằng khen', ratio: '4 / 3', tone: 'earth' }],
-      },
-      {
-        id: 'ca-nhan',
-        title: 'Ghi nhận dành cho cá nhân',
-        layout: 'records',
-        fields: ['Tên ghi nhận', 'Người nhận', 'Năm', 'Đơn vị trao tặng', 'Nguồn'],
-        count: 2,
-        images: [{ brief: 'Ảnh trao giải', ratio: '4 / 3', tone: 'forest' }],
-      },
-    ],
-  },
   {
     path: '/dau-an/chung-nhan/',
     title: 'Chứng nhận sản phẩm',
     eyebrow: 'Dấu ấn',
-    parents: [dauAn],
     sections: [
       {
         id: 'danh-sach',
@@ -131,28 +78,6 @@ export const draftPages: DraftPage[] = [
         fields: ['Tên chứng nhận', 'Sản phẩm áp dụng', 'Đơn vị cấp', 'Hiệu lực'],
         count: 3,
         images: [{ brief: 'Ảnh giấy chứng nhận', ratio: '3 / 4', tone: 'stone' }],
-      },
-    ],
-  },
-  {
-    path: '/dau-an/bao-chi/',
-    title: 'Báo chí & Truyền thông',
-    eyebrow: 'Dấu ấn',
-    parents: [dauAn],
-    sections: [
-      {
-        id: 'phong-su-noi-bat',
-        title: 'Phóng sự nổi bật',
-        layout: 'wide',
-        images: [{ brief: 'Khung hình video phóng sự', ratio: '16 / 9', tone: 'deep' }],
-      },
-      {
-        id: 'bai-viet',
-        title: 'Bài viết & phóng sự',
-        layout: 'records',
-        fields: ['Tiêu đề', 'Đơn vị đăng tải', 'Ngày đăng', 'Liên kết gốc'],
-        count: 3,
-        images: [{ brief: 'Ảnh minh họa bài viết', ratio: '3 / 2', tone: 'moss' }],
       },
     ],
   },
@@ -175,10 +100,10 @@ export const navDropdowns: Record<string, { label: Record<Locale, string>; href:
   ],
   '/#san-vat': [{ label: { vi: 'Tất cả sản phẩm', en: 'All products', zh: '全部产品' }, href: '/san-pham/' }],
   '/#dau-an': [
-    { label: { vi: 'Tổng quan Dấu ấn', en: 'Overview', zh: '概览' }, href: '/dau-an/' },
-    { label: { vi: 'Giải thưởng & ghi nhận', en: 'Awards & recognition', zh: '奖项与认可' }, href: '/dau-an/giai-thuong/' },
-    { label: { vi: 'Chứng nhận sản phẩm', en: 'Product certifications', zh: '产品认证' }, href: '/dau-an/chung-nhan/' },
     { label: { vi: 'Báo chí & Truyền thông', en: 'Press & media', zh: '新闻与媒体' }, href: '/dau-an/bao-chi/' },
+    { label: { vi: 'Giải thưởng & Ghi nhận', en: 'Awards & recognition', zh: '奖项与认可' }, href: '/dau-an/giai-thuong/' },
+    { label: { vi: 'Sự kiện & Hoạt động', en: 'Events & activities', zh: '活动与交流' }, href: '/dau-an/su-kien/' },
+    { label: { vi: 'Chứng nhận sản phẩm', en: 'Product certifications', zh: '产品认证' }, href: '/dau-an/chung-nhan/' },
   ],
   '/#hop-tac': [
     { label: { vi: 'Thông tin hợp tác', en: 'Partnership information', zh: '合作信息' }, href: '/hop-tac/' },

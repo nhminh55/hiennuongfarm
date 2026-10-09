@@ -1,0 +1,268 @@
+---
+/**
+ * Photo viewer for the Dấu ấn pages.
+ *
+ * Any link marked `data-lightbox="<group>"` opens its photograph (the link's
+ * href) at a readable size, with the caption in `data-caption`. Links of
+ * one group page through together. Without script, the link opens the
+ * image file itself.
+ *
+ * The viewer is a modal <dialog>: focus stays inside it, Escape closes it
+ * and focus returns to the link that opened it. Opening adds
+ * "#anh-<group>-<n>" to the address, so the view can be shared and the
+ * browser's Back button closes it; the page does not scroll.
+ */
+const label = 'Xem ảnh';
+---
+<dialog class="lightbox" aria-label={label} data-lightbox-dialog>
+  <div class="lightbox__frame">
+    <figure class="lightbox__figure">
+      <img class="lightbox__img" alt="" data-lightbox-img />
+      <figcaption class="lightbox__caption">
+        <span class="lightbox__count" data-lightbox-count></span>
+        <span data-lightbox-caption></span>
+      </figcaption>
+    </figure>
+    <div class="lightbox__controls">
+      <button class="lightbox__btn" type="button" data-lightbox-prev aria-label="Ảnh trước">
+        <svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M18 5H1M5.5 0.5 1 5l4.5 4.5" /></svg>
+      </button>
+      <button class="lightbox__btn" type="button" data-lightbox-next aria-label="Ảnh sau">
+        <svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M0 5h17M12.5 0.5 17 5l-4.5 4.5" /></svg>
+      </button>
+    </div>
+    <button class="lightbox__close" type="button" data-lightbox-close>
+      Đóng
+      <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M1 1l10 10M11 1 1 11" /></svg>
+    </button>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('[data-lightbox-dialog]');
+  if (dialog && typeof dialog.showModal === 'function') {
+    const img = dialog.querySelector<HTMLImageElement>('[data-lightbox-img]')!;
+    const caption = dialog.querySelector<HTMLElement>('[data-lightbox-caption]')!;
+    const count = dialog.querySelector<HTMLElement>('[data-lightbox-count]')!;
+    const prev = dialog.querySelector<HTMLButtonElement>('[data-lightbox-prev]')!;
+    const next = dialog.querySelector<HTMLButtonElement>('[data-lightbox-next]')!;
+    const close = dialog.querySelector<HTMLButtonElement>('[data-lightbox-close]')!;
+
+    const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('a[data-lightbox]'));
+    const group = (name: string) => links.filter((a) => a.dataset.lightbox === name);
+    const hashFor = (a: HTMLAnchorElement) => `#anh-${a.dataset.lightbox}-${group(a.dataset.lightbox!).indexOf(a) + 1}`;
+    const fromHash = (hash: string) => links.find((a) => hashFor(a) === hash);
+
+    let current: HTMLAnchorElement | undefined;
+    let opener: HTMLElement | null = null;
+    // Whether this viewer added the history entry it is showing.
+    let pushed = false;
+
+    const show = (a: HTMLAnchorElement) => {
+      current = a;
+      const items = group(a.dataset.lightbox!);
+      const i = items.indexOf(a);
+      const thumb = a.querySelector('img');
+      img.src = a.href;
+      img.alt = thumb?.alt ?? '';
+      if (a.dataset.width && a.dataset.height) {
+        img.width = Number(a.dataset.width);
+        img.height = Number(a.dataset.height);
+      }
+      caption.textContent = a.dataset.caption ?? '';
+      count.textContent = items.length > 1 ? `${i + 1} / ${items.length}` : '';
+      prev.hidden = next.hidden = items.length < 2;
+    };
+
+    const open = (a: HTMLAnchorElement, push: boolean) => {
+      opener = document.activeElement as HTMLElement | null;
+      show(a);
+      if (push) {
+        history.pushState({ lightbox: true }, '', hashFor(a));
+        pushed = true;
+      }
+      document.documentElement.classList.add('has-lightbox');
+      dialog.showModal();
+      close.focus();
+    };
+
+    const hide = () => {
+      if (!dialog.open) return;
+      dialog.close();
+      document.documentElement.classList.remove('has-lightbox');
+      (opener && document.contains(opener) ? opener : current)?.focus({ preventScroll: true });
+      current = undefined;
+    };
+
+    // Closing goes back through history when the viewer added an entry,
+    // so Back and the close button leave the same history behind.
+    const requestClose = () => {
+      if (pushed) {
+        history.back();
+      } else {
+        history.replaceState(history.state, '', location.pathname + location.search);
+        hide();
+      }
+    };
+
+    const step = (by: number) => {
+      if (!current) return;
+      const items = group(current.dataset.lightbox!);
+      const a = items[(items.indexOf(current) + by + items.length) % items.length];
+      show(a);
+      history.replaceState(history.state, '', hashFor(a));
+    };
+
+    links.forEach((a) =>
+      a.addEventListener('click', (event) => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
+        event.preventDefault();
+        open(a, true);
+      }),
+    );
+
+    window.addEventListener('popstate', () => {
+      const a = fromHash(location.hash);
+      if (a) {
+        // Forward onto an entry this viewer added: closing goes back again.
+        pushed = Boolean(history.state?.lightbox);
+        if (dialog.open) show(a);
+        else open(a, false);
+      } else {
+        pushed = false;
+        hide();
+      }
+    });
+
+    prev.addEventListener('click', () => step(-1));
+    next.addEventListener('click', () => step(1));
+    close.addEventListener('click', requestClose);
+    // Escape: close the same way as the button.
+    dialog.addEventListener('cancel', (event) => {
+      event.preventDefault();
+      requestClose();
+    });
+    // A click on the backdrop (outside the photograph and controls) closes.
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog || (event.target as HTMLElement).classList.contains('lightbox__frame')) requestClose();
+    });
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') step(-1);
+      if (event.key === 'ArrowRight') step(1);
+    });
+
+    // Swipe left or right on touch screens.
+    let startX = 0;
+    let startY = 0;
+    img.addEventListener('pointerdown', (event) => {
+      startX = event.clientX;
+      startY = event.clientY;
+    });
+    img.addEventListener('pointerup', (event) => {
+      const dx = event.clientX - startX;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(event.clientY - startY)) step(dx < 0 ? 1 : -1);
+    });
+
+    // A shared address opens its photograph.
+    const linked = fromHash(location.hash);
+    if (linked) open(linked, false);
+  }
+</script>
+
+<style>
+  :global(html.has-lightbox) { overflow: hidden; }
+
+  .lightbox {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-cream);
+  }
+  .lightbox::backdrop { background: rgba(16, 24, 19, 0.94); }
+
+  .lightbox__frame {
+    position: relative;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    height: 100%;
+    padding: 4rem var(--gutter) 1.25rem;
+  }
+
+  .lightbox__figure {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    justify-items: center;
+    gap: 1rem;
+    min-height: 0;
+  }
+
+  .lightbox__img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    align-self: center;
+    object-fit: contain;
+    touch-action: pan-y;
+    user-select: none;
+  }
+
+  .lightbox__caption {
+    display: flex;
+    gap: 1rem;
+    max-width: 52rem;
+    font-size: var(--fs-small);
+    line-height: 1.6;
+    color: var(--color-text-inverse-muted);
+    text-wrap: pretty;
+  }
+  .lightbox__count {
+    flex: none;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-cream);
+  }
+  .lightbox__count:empty { display: none; }
+
+  .lightbox__controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+  }
+
+  .lightbox__btn,
+  .lightbox__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    color: var(--color-cream);
+    border: 1px solid var(--color-line-inverse);
+    transition: border-color 300ms var(--ease);
+  }
+  .lightbox__btn:hover,
+  .lightbox__close:hover { border-color: var(--color-cream); }
+  .lightbox__btn svg { width: 1.125rem; }
+  .lightbox__btn[hidden] { display: none; }
+
+  .lightbox__close {
+    position: absolute;
+    top: 0.75rem;
+    right: var(--gutter);
+    gap: 0.625rem;
+    padding-inline: 0.875rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .lightbox__close svg { width: 0.75rem; }
+
+  .lightbox :focus-visible { outline: 1px solid var(--color-cream); outline-offset: 3px; }
+</style>

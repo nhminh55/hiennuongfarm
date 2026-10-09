@@ -34,12 +34,18 @@ export const langStaticPaths = () => prefixedLocales.map((lang) => ({ params: { 
 
 /**
  * Published pages with Vietnamese copy only: no /en/ or /zh/ route yet.
- * The /dau-an/ pages are placeholders (src/data/drafts.ts).
+ * Everything under a `viOnlyPrefixes` path is Vietnamese only too: the
+ * Dấu ấn pages and their report and album pages (src/data/dau-an.ts),
+ * whose headlines are the outlets' own Vietnamese.
  */
-export const viOnlyPaths = ['/hop-tac/', '/dau-an/', '/dau-an/giai-thuong/', '/dau-an/chung-nhan/', '/dau-an/bao-chi/', '/choi-cung-nong-trai/', '/choi-cung-nong-trai/mot-vong-nong-trai/', '/choi-cung-nong-trai/hom-nay-an-nam-gi/', '/choi-cung-nong-trai/ban-hieu-nam-toi-dau/'];
+export const viOnlyPrefixes = ['/dau-an/'];
+export const viOnlyPaths = ['/hop-tac/', '/choi-cung-nong-trai/', '/choi-cung-nong-trai/mot-vong-nong-trai/', '/choi-cung-nong-trai/hom-nay-an-nam-gi/', '/choi-cung-nong-trai/ban-hieu-nam-toi-dau/'];
 
 /** Whether a page (a path without its language prefix) exists in every language. */
-export const isTranslated = (path: string) => !viOnlyPaths.includes(path.replace(/#.*/, ''));
+export const isTranslated = (path: string) => {
+  const p = path.replace(/#.*/, '');
+  return !viOnlyPaths.includes(p) && !viOnlyPrefixes.some((prefix) => p.startsWith(prefix));
+};
 
 /**
  * A link to a page in the given language. Until a Vietnamese-only page is

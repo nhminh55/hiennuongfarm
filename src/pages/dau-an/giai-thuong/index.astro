@@ -1,0 +1,233 @@
+---
+/**
+ * /dau-an/giai-thuong/: Giải thưởng & Ghi nhận, "một dấu mốc, một câu
+ * chuyện". Only recognitions with a source and a certificate, trophy or
+ * ceremony photograph: press mentions and attendance are not awards.
+ * Newest first; photograph and text change sides from one to the next.
+ * Each recognition has an anchor (#id) to share; its evidence opens in
+ * the photo viewer. Data and provenance: src/data/dau-an.ts.
+ *
+ * Product certifications (OCOP) belong to the planned Chứng nhận sản phẩm
+ * page and are not listed here.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import DauAnHead from '../../../components/dau-an/DauAnHead.astro';
+import Lightbox from '../../../components/dau-an/Lightbox.astro';
+import Arrow from '../../../components/Arrow.astro';
+import { activities, awards, type Pic } from '../../../data/dau-an';
+
+const captionOf = (p: Pic) => `${p.caption ?? p.alt} Ảnh: ${p.credit}.`;
+// A document photographed flat is shown whole, at its own size.
+const isDocument = (p: Pic) => p.width < 600;
+---
+<BaseLayout
+  title="Giải thưởng & Ghi nhận"
+  description="Các danh hiệu và giải thưởng của chị Châu Thị Nương và HTX Nông nghiệp Tà Đảnh, kèm giấy chứng nhận và nguồn xác minh."
+>
+  <DauAnHead current="/dau-an/giai-thuong/" />
+
+  <div class="awards">
+    {awards.map((a, i) => {
+      const related = activities.find((act) => act.award === a.id);
+      const doc = isDocument(a.photo);
+      return (
+        <article
+          class:list={['award', { 'award--flip': i % 2 === 1, 'award--document': doc }]}
+          id={a.id}
+          aria-labelledby={`${a.id}-title`}
+        >
+          <div class="container award__grid">
+            <figure class="award__figure" data-reveal>
+              <a
+                class="award__photo"
+                href={a.photo.full}
+                data-lightbox={a.id}
+                data-caption={captionOf(a.photo)}
+                data-width={a.photo.width}
+                data-height={a.photo.height}
+              >
+                <img
+                  src={a.photo.src}
+                  srcset={a.photo.srcset}
+                  sizes={doc ? `${a.photo.width}px` : '(min-width: 1024px) 56vw, 100vw'}
+                  width={a.photo.width}
+                  height={a.photo.height}
+                  alt={a.photo.alt}
+                  style={a.photo.position ? `object-position: ${a.photo.position}` : undefined}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  fetchpriority={i === 0 ? 'high' : undefined}
+                />
+              </a>
+              <figcaption class="award__caption">{a.photo.caption} <span class="award__credit">Ảnh: {a.photo.credit}</span></figcaption>
+            </figure>
+
+            <div class="award__text" data-reveal>
+              <p class="award__year">{a.year}</p>
+              <p class="eyebrow award__by">{a.by}</p>
+              <h2 class="award__name" id={`${a.id}-title`}>{a.name}</h2>
+              <p class="award__recipient">{a.recipient}</p>
+              <p class="award__significance">{a.significance}</p>
+
+              {a.evidence.length > 0 && (
+                <ul class="award__evidence" aria-label="Giấy chứng nhận và tư liệu">
+                  {a.evidence.map((e) => (
+                    <li>
+                      <a
+                        href={e.full}
+                        data-lightbox={a.id}
+                        data-caption={captionOf(e)}
+                        data-width={e.width}
+                        data-height={e.height}
+                      >
+                        <img src={e.srcset.split(' ')[0]} width={e.width} height={e.height} alt={e.alt} loading="lazy" decoding="async" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              <div class="award__links">
+                <p class="award__sources">
+                  Nguồn:{' '}
+                  {a.sources.map((s, j) => (
+                    <>
+                      {j > 0 && ' · '}
+                      <a href={s.href} target="_blank" rel="noopener">{s.label}<span class="sr-only"> (mở trong thẻ mới)</span></a>
+                    </>
+                  ))}
+                </p>
+                {related && (
+                  <a class="link-arrow award__related" href={`/dau-an/su-kien/${related.slug}/`}>
+                    Xem hoạt động <Arrow />
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        </article>
+      );
+    })}
+  </div>
+
+  <Lightbox />
+</BaseLayout>
+
+<style>
+  .awards { padding-bottom: var(--section-y); }
+
+  .award + .award .award__grid {
+    padding-top: var(--space-2xl);
+    border-top: 1px solid var(--color-line);
+  }
+  .award + .award { margin-top: var(--space-2xl); }
+
+  .award__grid {
+    display: grid;
+    gap: var(--space-l);
+    align-items: start;
+  }
+
+  .award__photo { display: block; overflow: hidden; cursor: zoom-in; background: var(--color-cream); }
+  .award__photo img { width: 100%; height: 100%; object-fit: cover; }
+  .award:not(.award--document) .award__photo { aspect-ratio: 3 / 2; }
+
+  /* A certificate stands whole on a cream ground, at its own size. */
+  .award--document .award__photo {
+    display: grid;
+    place-items: center;
+    padding: clamp(var(--space-m), 4vw, var(--space-2xl));
+  }
+  .award--document .award__photo img { width: auto; max-width: 100%; height: auto; box-shadow: 0 1px 0 var(--color-line); }
+
+  .award__caption {
+    margin-top: var(--space-xs);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+  .award__credit { white-space: nowrap; }
+
+  .award__year {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.5rem, 1.8rem + 2.6vw, 4rem);
+    line-height: 1;
+    font-variant-numeric: lining-nums;
+  }
+  .award__year::after {
+    content: "";
+    display: block;
+    width: 2.5rem;
+    height: 1px;
+    margin-top: var(--space-m);
+    background: var(--color-earth);
+  }
+
+  .award__by { margin-top: var(--space-m); line-height: 1.6; }
+
+  .award__name {
+    margin-top: var(--space-s);
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.625rem, 1.25rem + 1.5vw, 2.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  .award__recipient {
+    margin-top: var(--space-s);
+    font-weight: 400;
+    color: var(--color-text);
+  }
+
+  .award__significance {
+    margin-top: var(--space-s);
+    max-width: 34rem;
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+
+  .award__evidence {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-top: var(--space-l);
+  }
+  .award__evidence a {
+    display: block;
+    height: 6.5rem;
+    overflow: hidden;
+    cursor: zoom-in;
+    background: var(--color-cream);
+    outline-offset: 3px;
+  }
+  .award__evidence img { width: auto; height: 100%; object-fit: cover; transition: opacity 300ms var(--ease); }
+  .award__evidence a:hover img { opacity: 0.85; }
+
+  .award__links {
+    display: grid;
+    gap: var(--space-s);
+    justify-items: start;
+    margin-top: var(--space-l);
+    padding-top: var(--space-s);
+    border-top: 1px solid var(--color-line);
+  }
+  .award__sources { font-size: 0.8125rem; line-height: 1.7; color: var(--color-text-muted); }
+  .award__sources a { color: var(--color-text); border-bottom: 1px solid var(--color-line-strong); }
+  .award__sources a:hover { border-color: currentColor; }
+  .award__related :global(.arrow) { width: 0.875rem; }
+
+  @media (min-width: 1024px) {
+    .award__grid {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      column-gap: clamp(var(--space-l), 4vw, var(--space-3xl));
+    }
+    .award--flip .award__figure { order: 2; }
+    .award--document:not(.award--flip) .award__grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+    .award--document.award--flip .award__grid { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
+    .award--document .award__text { align-self: center; }
+    .award__evidence a { height: 7.5rem; }
+  }
+</style>

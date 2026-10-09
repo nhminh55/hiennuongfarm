@@ -8,6 +8,7 @@
 
 import type { APIRoute } from 'astro';
 import { isTranslated, languages, locales, localizePath } from '../i18n';
+import { activities, press } from '../data/dau-an';
 
 const pages: { path: string; lastmod: string }[] = [
   { path: '/', lastmod: '2026-10-09' },
@@ -16,6 +17,11 @@ const pages: { path: string; lastmod: string }[] = [
   { path: '/ve-chung-toi/', lastmod: '2026-10-08' },
   { path: '/nong-nghiep-tuan-hoan/', lastmod: '2026-10-08' },
   { path: '/hop-tac/', lastmod: '2026-10-08' },
+  { path: '/dau-an/bao-chi/', lastmod: '2026-10-09' },
+  { path: '/dau-an/giai-thuong/', lastmod: '2026-10-09' },
+  { path: '/dau-an/su-kien/', lastmod: '2026-10-09' },
+  ...press.map((p) => ({ path: `/dau-an/bao-chi/${p.slug}/`, lastmod: '2026-10-09' })),
+  ...activities.map((a) => ({ path: `/dau-an/su-kien/${a.slug}/`, lastmod: '2026-10-09' })),
 ];
 
 export const GET: APIRoute = ({ site }) => {

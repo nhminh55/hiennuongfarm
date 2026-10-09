@@ -7,8 +7,8 @@ import { getLocale } from '../../i18n';
 const lang = getLocale(Astro.url);
 
 // Dấu ấn is a group of pages, not a page: the three cards open its sections
-// directly. The routes are planned (docs/SITEMAP.md) and Vietnamese only, so
-// every language links to the Vietnamese page.
+// directly. The pages are Vietnamese only, so every language links to the
+// Vietnamese page.
 const groups = [
   {
     href: '/dau-an/bao-chi/',
