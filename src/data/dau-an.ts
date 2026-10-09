@@ -72,10 +72,10 @@ const pic = (
   };
 };
 
-/** 18.05.2025 from 2025-05-18; a year alone stays a year. */
+/** 18.05.2025 from 2025-05-18; Tháng 8/2026 from 2026-08; a year alone stays a year. */
 export const formatDate = (iso: string) => {
   const [y, m, d] = iso.split('-');
-  return d ? `${d}.${m}.${y}` : m ? `${m}.${y}` : y;
+  return d ? `${d}.${m}.${y}` : m ? `Tháng ${Number(m)}/${y}` : y;
 };
 
 // ---------------------------------------------------------------------------
@@ -1050,7 +1050,7 @@ export const awards: Award[] = [
 
 export interface Activity {
   slug: string;
-  /** ISO date, or a year where only the year is documented. */
+  /** ISO date; year-month or a year alone where only that is documented. */
   date: string;
   title: string;
   place?: string;
@@ -1065,6 +1065,41 @@ export interface Activity {
 }
 
 export const activities: Activity[] = [
+  {
+    // Owner-provided photographs and participation details (09.10.2026).
+    // The invitation gives the opening, 06.08.2026, not the day of chị
+    // Nương's visit, so the date stays at the month.
+    slug: 'vietfood-beverage-propack-vietnam-2026',
+    date: '2026-08',
+    title: 'Hiền Nương tại Vietfood & Beverage – ProPack Vietnam 2026',
+    place: 'SECC, TP.HCM',
+    summary: 'Hiền Nương giới thiệu các sản phẩm nấm của trang trại trong không gian trưng bày chung cùng các đơn vị sản xuất.',
+    story: [
+      'Tháng 8/2026, Hiền Nương tham gia Vietfood & Beverage – ProPack Vietnam tại SECC, TP.HCM, giới thiệu các sản phẩm nấm của trang trại trong không gian trưng bày chung cùng các đơn vị sản xuất.',
+    ],
+    photos: [
+      pic('vf26-chan-dung', [[640, 427], [1280, 854], [1800, 1201]], {
+        alt: 'Chị Châu Thị Nương mặc áo dài xanh, quàng khăn rằn, đội nón lá, đeo thẻ triển lãm, đứng tại gian trưng bày bên giỏ mây xếp các hũ sản phẩm',
+        caption: 'Sản phẩm Hiền Nương trong không gian triển lãm.',
+        credit: 'Trang trại Hiền Nương',
+        origin: 'HIEN_NUONG_PHOTO_COLLECTION/events-8-2026/01.jpg',
+      }),
+      pic('vf26-linh-chi', [[640, 427], [1280, 854], [1800, 1201]], {
+        alt: 'Chị Châu Thị Nương trong áo dài xanh và khăn rằn nghiêng người chỉnh một chậu nấm linh chi trên kệ trưng bày, phía sau là các hộp thiếc in hình nấm linh chi xếp chồng',
+        caption: 'Giới thiệu nấm linh chi tại gian trưng bày.',
+        credit: 'Trang trại Hiền Nương',
+        origin: 'HIEN_NUONG_PHOTO_COLLECTION/events-8-2026/03.jpg',
+        position: '30% 35%',
+      }),
+      pic('vf26-trung-bay', [[640, 427], [1280, 854], [1800, 1201]], {
+        alt: 'Kệ trưng bày với bốn chậu nấm linh chi ở hàng trước, phía sau xếp các hộp thiếc xanh in hình nấm linh chi, hộp rượu và chai sản phẩm; phông nền ghi Hợp tác xã Nông nghiệp Tà Đảnh',
+        caption: 'Góc trưng bày nấm và các sản phẩm chế biến.',
+        credit: 'Trang trại Hiền Nương',
+        origin: 'HIEN_NUONG_PHOTO_COLLECTION/events-8-2026/04.jpg',
+      }),
+    ],
+    sources: [],
+  },
   {
     slug: 'chu-tich-hoi-nong-dan-tham-nuong-farm',
     date: '2026-03-05',

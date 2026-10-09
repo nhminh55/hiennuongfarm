@@ -40,15 +40,17 @@ const href = (x: Activity) => `/dau-an/su-kien/${x.slug}/`;
 
       <div class="album__story">
         {a.story.map((s) => <p>{s}</p>)}
-        <p class="album__sources">
-          Nguồn:{' '}
-          {a.sources.map((s, j) => (
-            <>
-              {j > 0 && ' · '}
-              <a href={s.href} target="_blank" rel="noopener">{s.label}<span class="sr-only"> (mở trong thẻ mới)</span></a>
-            </>
-          ))}
-        </p>
+        {a.sources.length > 0 && (
+          <p class="album__sources">
+            Nguồn:{' '}
+            {a.sources.map((s, j) => (
+              <>
+                {j > 0 && ' · '}
+                <a href={s.href} target="_blank" rel="noopener">{s.label}<span class="sr-only"> (mở trong thẻ mới)</span></a>
+              </>
+            ))}
+          </p>
+        )}
         {award && (
           <a class="link-arrow album__award" href={`/dau-an/giai-thuong/#${award.id}`}>
             {award.name} <Arrow />

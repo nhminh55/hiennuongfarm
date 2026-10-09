@@ -19,10 +19,10 @@ const opening = activities[0];
 const cover = opening.photos[1] ?? opening.photos[0];
 const href = (a: Activity) => `/dau-an/su-kien/${a.slug}/`;
 
-// Day and month above the year: "05.03" / "2026".
+// Day and month above the year: "05.03" / "2026"; a month alone: "Tháng 8" / "2026".
 const dateParts = (iso: string) => {
   const [y, m, d] = iso.split('-');
-  return { top: d ? `${d}.${m}` : undefined, year: y };
+  return { top: d ? `${d}.${m}` : m ? `Tháng ${Number(m)}` : undefined, year: y };
 };
 
 // Photographs shown in the list: the opening photograph is not repeated.
@@ -45,6 +45,7 @@ const mirrored = new Set(activities.filter((a) => shown(a).length >= 3).filter((
         width={cover.width}
         height={cover.height}
         alt={cover.alt}
+        style={cover.position ? `object-position: ${cover.position}` : undefined}
         fetchpriority="high"
       />
     </div>
