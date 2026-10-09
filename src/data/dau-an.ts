@@ -597,20 +597,20 @@ export const pressArchive: PressItem[] = [
   },
   {
     slug: 'nong-nghiep-mien-tay-no-luc-chuyen-doi-xanh',
-    outlet: 'Báo Phụ Nữ',
+    outlet: 'Báo Tuổi Trẻ',
     headline: 'Nông nghiệp miền Tây nỗ lực chuyển đổi xanh',
     date: '2026-06-15',
     url: 'https://tuoitre.vn/phunuonline/nong-nghiep-mien-tay-no-luc-chuyen-doi-xanh-1101585014.htm',
-    alternates: [{ outlet: 'Báo Phụ Nữ (địa chỉ cũ)', url: 'https://www.phunuonline.com.vn/nong-nghiep-mien-tay-no-luc-chuyen-doi-xanh-a1585014.html' }],
+    alternates: [{ outlet: 'Báo Phụ Nữ TP.HCM (địa chỉ cũ)', url: 'https://www.phunuonline.com.vn/nong-nghiep-mien-tay-no-luc-chuyen-doi-xanh-a1585014.html' }],
     kind: 'article',
   },
   {
     slug: 'thoi-quen-dot-dong-o-mien-tay',
-    outlet: 'Báo Phụ Nữ',
+    outlet: 'Báo Tuổi Trẻ',
     headline: 'Thói quen đốt đồng ở miền Tây gây lãng phí tài nguyên và ô nhiễm',
     date: '2026-06-01',
     url: 'https://tuoitre.vn/phunuonline/thoi-quen-dot-dong-o-mien-tay-gay-lang-phi-tai-nguyen-va-o-nhiem-1101583890.htm',
-    alternates: [{ outlet: 'Báo Phụ Nữ (địa chỉ cũ)', url: 'https://www.phunuonline.com.vn/thoi-quen-dot-dong-o-mien-tay-gay-lang-phi-tai-nguyen-va-o-nhiem-a1583890.html' }],
+    alternates: [{ outlet: 'Báo Phụ Nữ TP.HCM (địa chỉ cũ)', url: 'https://www.phunuonline.com.vn/thoi-quen-dot-dong-o-mien-tay-gay-lang-phi-tai-nguyen-va-o-nhiem-a1583890.html' }],
     kind: 'article',
   },
   {
@@ -824,11 +824,11 @@ export const pressArchive: PressItem[] = [
   },
   {
     slug: 'tao-viec-lam-cho-phu-nu-nong-thon-bang-nghe-trong-nam',
-    outlet: 'Báo Phụ Nữ',
+    outlet: 'Báo Tuổi Trẻ',
     headline: 'Tạo việc làm cho phụ nữ nông thôn bằng nghề trồng nấm',
     date: '2024-08-15',
     url: 'https://tuoitre.vn/phunuonline/tao-viec-lam-cho-phu-nu-nong-thon-bang-nghe-trong-nam-1101525754.htm',
-    alternates: [{ outlet: 'Báo Phụ Nữ (địa chỉ cũ)', url: 'https://www.phunuonline.com.vn/tao-viec-lam-cho-phu-nu-nong-thon-bang-nghe-trong-nam-a1525754.html' }],
+    alternates: [{ outlet: 'Báo Phụ Nữ TP.HCM (địa chỉ cũ)', url: 'https://www.phunuonline.com.vn/tao-viec-lam-cho-phu-nu-nong-thon-bang-nghe-trong-nam-a1525754.html' }],
     kind: 'article',
   },
   {

@@ -245,8 +245,20 @@ const games = [
     text-underline-offset: 0.3em;
   }
 
+  /* Phone and small tablet: the tab is the icon alone; the label stays for
+     screen readers. */
+  @media (max-width: 767px) {
+    .play-widget__tab { padding: 0.75rem 0.6rem; }
+    .play-widget__tab-label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+    }
+  }
+
   @media (max-width: 479px) {
-    .play-widget__tab { padding: 0.75rem 0.45rem; }
     .play-widget__panel { width: 88vw; }
   }
 
