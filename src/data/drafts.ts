@@ -2,9 +2,9 @@
  * Placeholder pages (docs/SITEMAP.md §2 and §5), built by
  * src/pages/[...draft].astro, and the header dropdowns (§4).
  *
- * Dấu ấn has no landing page: Báo chí, Giải thưởng and Sự kiện are
- * published pages (src/pages/dau-an/, data in src/data/dau-an.ts); only
- * Chứng nhận sản phẩm is still a placeholder.
+ * Dấu ấn has no landing page: Báo chí, Giải thưởng, Sự kiện and Chứng nhận
+ * sản phẩm are published pages (src/pages/dau-an/, data in
+ * src/data/dau-an.ts). No placeholder page is left.
  *
  * The placeholder pages are live at the owner's request (2026-10-09) so the
  * Dấu ấn dropdown has destinations. They hold no company facts, stay out of
@@ -64,24 +64,7 @@ export interface DraftPage {
   sections: DraftSection[];
 }
 
-export const draftPages: DraftPage[] = [
-  {
-    path: '/dau-an/chung-nhan/',
-    title: 'Chứng nhận sản phẩm',
-    eyebrow: 'Dấu ấn',
-    sections: [
-      {
-        id: 'danh-sach',
-        title: 'Danh sách chứng nhận',
-        layout: 'records',
-        note: 'Mỗi chứng nhận ghi rõ sản phẩm áp dụng.',
-        fields: ['Tên chứng nhận', 'Sản phẩm áp dụng', 'Đơn vị cấp', 'Hiệu lực'],
-        count: 3,
-        images: [{ brief: 'Ảnh giấy chứng nhận', ratio: '3 / 4', tone: 'stone' }],
-      },
-    ],
-  },
-];
+export const draftPages: DraftPage[] = [];
 
 /**
  * Header dropdowns (docs/SITEMAP.md §4), keyed by the header link's homepage
@@ -102,6 +85,7 @@ export const navDropdowns: Record<string, { label: Record<Locale, string>; href:
     { label: { vi: 'Báo chí & Truyền thông', en: 'Press & media', zh: '新闻与媒体' }, href: '/dau-an/bao-chi/' },
     { label: { vi: 'Giải thưởng & Ghi nhận', en: 'Awards & recognition', zh: '奖项与认可' }, href: '/dau-an/giai-thuong/' },
     { label: { vi: 'Sự kiện & Hoạt động', en: 'Events & activities', zh: '活动与交流' }, href: '/dau-an/su-kien/' },
+    { label: { vi: 'Chứng nhận sản phẩm', en: 'Product certifications', zh: '产品认证' }, href: '/dau-an/chung-nhan/' },
   ],
   '/#hop-tac': [
     { label: { vi: 'Thông tin hợp tác', en: 'Partnership information', zh: '合作信息' }, href: '/hop-tac/' },

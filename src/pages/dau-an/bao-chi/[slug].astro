@@ -111,6 +111,16 @@ const href = (p: PressItem) => `/dau-an/bao-chi/${p.slug}/`;
           </figure>
         )}
 
+        {item.points && (
+          <div class="report__points">
+            <h2 class="eyebrow">Những điểm chính trong bài</h2>
+            <ul>
+              {item.points.map((p) => <li>{p}</li>)}
+            </ul>
+            <p class="report__points-note">Theo {item.outlet}, {formatDate(item.date)}.</p>
+          </div>
+        )}
+
         <div class="report__source">
           <a class="btn report__cta" href={item.url} target="_blank" rel="noopener">
             {action}
@@ -249,6 +259,34 @@ const href = (p: PressItem) => `/dau-an/bao-chi/${p.slug}/`;
   .report__lede figcaption,
   .report__quote figcaption {
     margin-top: var(--space-2xs);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+  }
+
+  .report__points { margin-top: var(--space-xl); }
+  .report__points ul {
+    display: grid;
+    gap: var(--space-xs);
+    margin-top: var(--space-s);
+  }
+  .report__points li {
+    position: relative;
+    padding-left: var(--space-m);
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+  .report__points li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.8em;
+    width: 0.625rem;
+    height: 1px;
+    background: var(--color-earth);
+  }
+  .report__points-note {
+    margin-top: var(--space-s);
     font-size: 0.75rem;
     letter-spacing: 0.06em;
     color: var(--color-text-muted);

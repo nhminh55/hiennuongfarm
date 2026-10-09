@@ -68,6 +68,15 @@ Purpose: source bank for the future `/bao-chi/` page and website fact-checking.
   https://baoangiang.com.vn/nong-dan-an-giang-ung-dung-cong-nghe-cao-vao-san-xuat-a470518.html
 - Nữ nông dân xuất sắc vùng Bảy Núi An Giang
   https://baoangiang.com.vn/nu-nong-dan-xuat-sac-vung-bay-nui-an-giang-a465150.html
+  Mỹ Hạnh, 26.10.2025. Facts used on the site (checked 2026-10-09):
+  - Chị Nương is the daughter of ông Châu Thành Phú, “vua trị phèn” of the Tứ giác Long Xuyên, creator of the TP rice variety (1990s). Owner approved naming him.
+  - Began researching mushrooms in 2019 (COVID-19); the owner-verified founding year stays 2020. Owner-supplied wording: “Năm 2019, … Năm 2020 thì chính thức đưa vào vận hành trang trại nấm.”
+  - Now isolates own strains, makes spawn, transfers technique to other farms. Humidity control and harvest timing are the hard part (her experience).
+  - Spent black termite mushroom substrate → straw mushrooms → earthworms (organic fertiliser); cordyceps base (purple and organic rice) → free-range chickens.
+  - 3 OCOP products, brand Nàng Nương: nấm linh chi tai to, nấm đông trùng hạ thảo, nấm mối tươi. No star rating or year given.
+  - HTX Tà Đảnh has 8 members. 30 regular women workers, ~60 at peak, 6–9 triệu/tháng (dated to this article; kept apart from “hơn 40 lao động”).
+  - Quote: “Sống ở đồng bằng sông Cửu Long, … tôi mạnh dạn rẽ hướng từ giáo viên sang làm nông”, chị Nương kể.
+  Not used: the article's name “Nương Farm”, 4 ha (the site keeps “hơn 4 ha”), >10 tấn/năm, 12 tỷ đồng/năm, “sau 4 năm … thành lập HTX” (conflicts with the HTX's 2022 award), agritourism plans (owner undecided).
 
 ### Dân Việt
 - Chủ tịch T.Ư Hội Nông dân Việt Nam Lương Quốc Đoàn thăm mô hình của nông dân sản xuất giỏi tại An Giang

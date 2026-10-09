@@ -1,8 +1,9 @@
 /**
  * Dấu ấn: press coverage, recognitions and activities.
  *
- * Three pages, no landing page: /dau-an/bao-chi/, /dau-an/giai-thuong/,
- * /dau-an/su-kien/ (the homepage section #dau-an lists them).
+ * Four pages, no landing page: /dau-an/bao-chi/, /dau-an/giai-thuong/,
+ * /dau-an/su-kien/ (the homepage section #dau-an lists these three) and
+ * /dau-an/chung-nhan/.
  *
  * Every entry records where it comes from. Headlines are the outlets'
  * own, as published. Dates are the dates the sources show (publication
@@ -30,6 +31,7 @@ export const dauAnPages: DauAnPage[] = [
   { href: '/dau-an/bao-chi/', title: 'Báo chí & Truyền thông' },
   { href: '/dau-an/giai-thuong/', title: 'Giải thưởng & Ghi nhận' },
   { href: '/dau-an/su-kien/', title: 'Sự kiện & Hoạt động' },
+  { href: '/dau-an/chung-nhan/', title: 'Chứng nhận sản phẩm' },
 ];
 
 export interface Pic {
@@ -100,6 +102,8 @@ export interface PressItem {
   youtube?: string;
   /** Short verbatim quotation of chị Nương in this article. */
   quote?: string;
+  /** Key points the article reports, in its own terms and dated by it. */
+  points?: string[];
 }
 
 export const press: PressItem[] = [
@@ -280,7 +284,15 @@ export const press: PressItem[] = [
     byline: 'Mỹ Hạnh',
     intro: 'Từ rơm rạ sau mỗi vụ lúa đến mô hình trồng nấm tuần hoàn khép kín ở vùng Bảy Núi.',
     lede: 'Khởi nghiệp tại quê nhà, tận dụng phụ phẩm nông nghiệp để trồng nấm, chị Châu Thị Nương (xã Cô Tô, tỉnh An Giang) đã thực hiện mô hình tuần hoàn khép kín hướng đến nông nghiệp xanh, bền vững.',
-    quote: 'Sống ở đồng bằng sông Cửu Long, đồng lúa bạt ngàn, mỗi vụ có rất nhiều rơm sau thu hoạch, nông dân chỉ bán giá rẻ hoặc đốt.',
+    quote: 'Sống ở đồng bằng sông Cửu Long, đồng lúa bạt ngàn, mỗi vụ có rất nhiều rơm sau thu hoạch, nông dân chỉ bán giá rẻ hoặc đốt. Vùng Bảy Núi lại có khí trời mát mẻ, rất hợp để trồng nấm.',
+    // Revenue and output figures in the article are left out (see header).
+    points: [
+      'Chị Nương là con gái ông Châu Thành Phú, lão nông được biết đến là “vua trị phèn” ở vùng Tứ giác Long Xuyên, người tạo ra giống lúa TP những năm 1990.',
+      'Từ buổi đầu phải mua meo giống, chị đã tự phân lập giống, làm meo và chuyển giao kỹ thuật cho các trại nấm khác.',
+      'Giá thể nấm mối đen sau vụ được phối trộn thêm nguyên liệu mới để trồng nấm rơm, hết vụ dùng nuôi trùn quế; chân nấm đông trùng hạ thảo làm thức ăn nuôi gà thả vườn.',
+      'Ba sản phẩm đạt OCOP mang thương hiệu Nàng Nương: nấm linh chi tai to, nấm đông trùng hạ thảo và nấm mối tươi.',
+      'Hợp tác xã Tà Đảnh có 8 thành viên; mô hình giải quyết việc làm thường xuyên cho 30 lao động nữ, cao điểm mùa vụ khoảng 60 lao động.',
+    ],
     photo: pic('bag-xuat-sac', [[640, 457], [1280, 914]], {
       alt: 'Chị Châu Thị Nương áo hoa cầm hộp quà sản phẩm nấm linh chi trong phòng trưng bày',
       caption: 'Chị Châu Thị Nương tại cơ sở trưng bày sản phẩm nấm (xã Cô Tô).',
@@ -775,3 +787,32 @@ export const activities: Activity[] = [
 ];
 
 export const activityBySlug = (slug: string) => activities.find((a) => a.slug === slug);
+
+// ---------------------------------------------------------------------------
+// Chứng nhận sản phẩm
+// ---------------------------------------------------------------------------
+
+/**
+ * OCOP products as Báo An Giang names them (26.10.2025, a465150). The
+ * article gives no star rating, certificate year or issuing body: add them
+ * only from the certificates themselves. Images are the products' studio
+ * photographs from the showroom (src/data/showroom.ts).
+ */
+export interface OcopProduct {
+  /** Showroom slug: /san-pham/#slug and /images/products/studio/<slug>-*.webp. */
+  slug: string;
+  /** Name as the article gives it. */
+  name: string;
+  alt: string;
+}
+
+export const ocopProducts: OcopProduct[] = [
+  { slug: 'nam-linh-chi', name: 'Nấm linh chi tai to', alt: 'Một tai nấm linh chi lớn màu nâu với nhiều lớp vân tròn, đặt trên nền sáng' },
+  { slug: 'dong-trung-ha-thao', name: 'Nấm đông trùng hạ thảo', alt: 'Một khối đông trùng hạ thảo với những sợi màu cam mọc dày từ lớp giá thể' },
+  { slug: 'nam-moi-den', name: 'Nấm mối tươi', alt: 'Một nhóm nấm mối đen tươi, mũ nâu sẫm, thân trắng ngà, xếp chồng trên nền sáng' },
+];
+
+export const ocopSource: Source = {
+  label: 'Báo An Giang, 26.10.2025',
+  href: 'https://baoangiang.com.vn/nu-nong-dan-xuat-sac-vung-bay-nui-an-giang-a465150.html',
+};

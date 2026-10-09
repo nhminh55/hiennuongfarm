@@ -1,0 +1,140 @@
+---
+/**
+ * /dau-an/chung-nhan/: Chứng nhận sản phẩm. The three OCOP products as
+ * Báo An Giang names them (26.10.2025). No star rating, certificate year
+ * or issuing body until the certificates themselves are in hand. Each
+ * product opens in the showroom. Data: ocopProducts in src/data/dau-an.ts.
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import DauAnHead from '../../../components/dau-an/DauAnHead.astro';
+import Arrow from '../../../components/Arrow.astro';
+import { ocopProducts, ocopSource } from '../../../data/dau-an';
+
+const img = (slug: string, w: number) => `/images/products/studio/${slug}-${w}.webp`;
+---
+<BaseLayout
+  title="Chứng nhận sản phẩm"
+  description="Ba sản phẩm nấm mang thương hiệu Nàng Nương đạt OCOP: nấm linh chi tai to, nấm đông trùng hạ thảo và nấm mối tươi."
+>
+  <DauAnHead current="/dau-an/chung-nhan/" />
+
+  <section class="ocop" aria-labelledby="ocop-title">
+    <div class="container">
+      <div class="ocop__intro">
+        <p class="eyebrow">OCOP · Mỗi xã một sản phẩm</p>
+        <h2 class="ocop__title" id="ocop-title">Ba sản phẩm đạt OCOP</h2>
+        <p class="ocop__lead">Trong các dòng nấm của trang trại, ba sản phẩm mang thương hiệu Nàng Nương đã đạt OCOP.</p>
+      </div>
+
+      <ul class="ocop__list">
+        {ocopProducts.map((p, i) => (
+          <li class="ocop__item" data-reveal style={`--reveal-delay: ${i * 90}ms`}>
+            <a class="ocop__link" href={`/san-pham/#${p.slug}`}>
+              <span class="ocop__photo">
+                <img
+                  src={img(p.slug, 640)}
+                  srcset={`${img(p.slug, 640)} 640w, ${img(p.slug, 1254)} 1254w`}
+                  sizes="(min-width: 768px) 30vw, 100vw"
+                  width="640"
+                  height="640"
+                  alt={p.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+              <span class="ocop__badge">OCOP</span>
+              <span class="ocop__name">{p.name}</span>
+              <span class="ocop__brand">Thương hiệu Nàng Nương</span>
+              <span class="ocop__more">Xem sản phẩm <Arrow /></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <p class="ocop__source">
+        Nguồn:{' '}
+        <a href={ocopSource.href} target="_blank" rel="noopener">{ocopSource.label}<span class="sr-only"> (mở trong thẻ mới)</span></a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .ocop { padding-bottom: var(--section-y); }
+
+  .ocop__intro { max-width: 40rem; }
+  .ocop__title {
+    margin-top: var(--space-s);
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.625rem, 1.25rem + 1.5vw, 2.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .ocop__lead {
+    margin-top: var(--space-s);
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+
+  .ocop__list {
+    display: grid;
+    gap: var(--space-xl) var(--space-l);
+    margin-top: var(--space-xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .ocop__link { display: grid; justify-items: start; }
+  .ocop__photo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: var(--color-cream);
+  }
+  .ocop__photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms var(--ease); }
+  .ocop__link:hover .ocop__photo img { transform: scale(1.03); }
+
+  .ocop__badge {
+    margin-top: var(--space-m);
+    padding: 0.125rem 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: var(--color-earth);
+    border: 1px solid currentColor;
+  }
+  .ocop__name {
+    margin-top: var(--space-s);
+    font-family: var(--font-display);
+    font-size: clamp(1.375rem, 1.2rem + 0.6vw, 1.75rem);
+    line-height: 1.2;
+  }
+  .ocop__brand { margin-top: var(--space-2xs); font-size: var(--fs-small); color: var(--color-text-muted); }
+  .ocop__more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: var(--space-s);
+    font-size: var(--fs-small);
+    border-bottom: 1px solid var(--color-line-strong);
+  }
+  .ocop__more :global(.arrow) { width: 0.875rem; }
+  .ocop__link:hover .ocop__more { border-color: currentColor; }
+
+  .ocop__source {
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-s);
+    border-top: 1px solid var(--color-line);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+  }
+  .ocop__source a { color: var(--color-text); border-bottom: 1px solid var(--color-line-strong); }
+  .ocop__source a:hover { border-color: currentColor; }
+
+  @media (min-width: 768px) {
+    .ocop__list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+</style>
