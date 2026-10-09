@@ -451,6 +451,18 @@ const raw: RawProduct[] = [
         source: `design-reference/NƯƠNG FARM/KIỂM NGHIỆM NẤM LINH CHI.pdf p.7–8. Received 28/09/2024, issued 03/10/2024. ${SAMPLE_NOTE}`,
       },
     ],
+    reviews: [
+      {
+        quote: { vi: 'Từ ngày dùng Nấm linh chi tai to Hiền Nương Farm, tôi cảm thấy sức khỏe cải thiện rõ rệt. Sản phẩm sạch hữu cơ, an toàn, tiện lợi, phù hợp để làm quà biếu cho người thân.', en: 'Since using Hiền Nương Farm large-cap lingzhi, I feel my health has improved noticeably. The product is clean, organic, safe and convenient, and makes a suitable gift for family members.', zh: '自从使用 Hiền Nương Farm 大朵灵芝，我感觉健康状况有了明显改善。产品干净、有机、安全、方便，也适合作为礼物送给亲人。' },
+        author: 'Chị Vân (Cần Thơ)',
+        source: 'docs/products/02. Nam linh chi tai to.md',
+      },
+      {
+        quote: { vi: 'Gia đình mình thích sử dụng tai nấm linh chi nguyên bản hơn là các dạng trà chiết xuất, vì có thể kết hợp với nhiều bài thuốc khác', en: 'My family prefers whole lingzhi caps to extracted teas because they can be combined with various other traditional remedies.', zh: '我们家更喜欢使用原朵灵芝而不是提取茶，因为可以与其他多种传统配方搭配。' },
+        author: 'Anh Huy (TP. HCM)',
+        source: 'docs/products/02. Nam linh chi tai to.md',
+      },
+    ],
   },
   {
     slug: 'dong-trung-ha-thao',
@@ -747,6 +759,18 @@ const raw: RawProduct[] = [
         href: TCB_02_URL,
         linkLabel: { vi: 'Xem bản tự công bố (PDF)', en: 'View the declaration (PDF)', zh: '查看自我公布书（PDF）' },
         source: `${TCB_02}. Linked from the Mekong Sen catalogue page https://mekongsen.vn/B41h9bA7AbAc3cC (“Xem hồ sơ tự công bố sản phẩm số 02/TADANH/2024”). Annexes 1–2 show the Nấm Mối Đen Sấy Thăng Hoa label.`,
+      },
+    ],
+    reviews: [
+      {
+        quote: { vi: 'Lúc trước phải đợi mùa mưa đến mới được ăn nấm mối, giờ có thể ăn nấm mối quanh năm mà hương vị vẫn không thay đổi', en: 'I used to have to wait for the rainy season to eat termite mushrooms. Now I can enjoy them all year round with the same flavour.', zh: '以前要等到雨季才能吃到鸡枞菌，现在一年四季都能吃到，味道还是一样。' },
+        author: 'Chị Hoa (Cần Thơ)',
+        source: 'docs/products/05.Nam moi den say thang hoa.md',
+      },
+      {
+        quote: { vi: 'Nấm mối ngâm ra như nấm tươi, chế biến xào hay kho đều rất ngon, cả nhà mình đều thích', en: 'Once soaked, the mushrooms are like fresh ones. They taste great stir-fried or braised, and everyone in my family likes them.', zh: '鸡枞菌泡发后就像新鲜的一样，炒或焖都很好吃，我们全家都喜欢。' },
+        author: 'Chị Hiền (TP. HCM)',
+        source: 'docs/products/05.Nam moi den say thang hoa.md',
       },
     ],
   },
@@ -1330,18 +1354,91 @@ const raw: RawProduct[] = [
       plate: false,
     },
     intro: {
+      paragraphs: [
+        {
+          text: { vi: 'Trà Hòa Tan Linh Chi Trùng Thảo Hiền Nương Farm kết hợp chiết xuất nấm linh chi và đông trùng hạ thảo. Nguyên liệu được nuôi trồng theo mô hình nông nghiệp hữu cơ tuần hoàn.', en: 'Hiền Nương Farm Instant Lingzhi & Cordyceps Tea combines lingzhi and cordyceps extracts. The ingredients are grown using an organic circular farming model.', zh: 'Hiền Nương Farm 灵芝虫草速溶茶结合灵芝和蛹虫草提取物，原料采用有机循环农业模式种植。' },
+          source: 'docs/products/10. Tra hoa tan linh chi trung thao.md',
+        },
+        {
+          text: { vi: 'Công nghệ chiết xuất tạo nên trà dạng bột hòa tan, thơm dịu, vị thanh nhã, dễ uống và không đắng gắt. Sản phẩm tiện pha chế trong nhịp sống bận rộn.', en: 'Extraction produces an instant tea powder with a gentle aroma and a mild taste without harsh bitterness. It is convenient to prepare during busy daily routines.', zh: '提取工艺制成速溶茶粉，香气柔和、口味清雅、容易入口，没有强烈苦味，方便忙碌的日常冲泡。' },
+          source: 'docs/products/10. Tra hoa tan linh chi trung thao.md',
+        },
+      ],
       facts: [
         {
-          label: RAW_MATERIAL,
-          value: {
-            vi: 'Linh chi và đông trùng hạ thảo nuôi trồng tại trang trại',
-            en: 'Lingzhi and cordyceps grown on the farm',
-            zh: '农场种植的灵芝和蛹虫草',
-          },
-          source: `${HOME_INTRO}; ${OWNER_HOME}`,
+          label: { vi: 'Thương hiệu', en: 'Brand', zh: '品牌' },
+          value: { vi: 'Hiền Nương Farm', en: 'Hiền Nương Farm', zh: 'Hiền Nương Farm' },
+          source: 'docs/products/10. Tra hoa tan linh chi trung thao.md',
+        },
+        {
+          label: { vi: 'Đơn vị sản xuất', en: 'Producer', zh: '生产单位' },
+          value: { vi: 'Hợp tác xã Tà Đảnh', en: 'Tà Đảnh Cooperative', zh: 'Tà Đảnh 合作社' },
+          source: 'docs/products/10. Tra hoa tan linh chi trung thao.md',
+        },
+        {
+          label: { vi: 'Xuất xứ', en: 'Country of origin', zh: '原产国' },
+          value: { vi: 'Việt Nam', en: 'Vietnam', zh: '越南' },
+          source: 'docs/products/10. Tra hoa tan linh chi trung thao.md',
         },
       ],
     },
+    composition: {
+      ingredients: {
+        text: { vi: 'Chiết xuất nấm linh chi, chiết xuất nấm đông trùng hạ thảo.', en: 'Lingzhi mushroom extract, cordyceps extract.', zh: '灵芝提取物、蛹虫草提取物。' },
+        source: 'docs/products/10. Tra hoa tan linh chi trung thao.md',
+      },
+      facts: [
+        {
+          label: { vi: 'Khối lượng tịnh', en: 'Net weight', zh: '净含量' },
+          value: { vi: '200 g', en: '200 g', zh: '200 克' },
+          source: 'docs/products/10. Tra hoa tan linh chi trung thao.md',
+        },
+        {
+          label: { vi: 'Quy cách đóng gói', en: 'Packaging', zh: '包装' },
+          value: { vi: '1 hộp', en: '1 box', zh: '1 盒' },
+          source: 'docs/products/10. Tra hoa tan linh chi trung thao.md',
+        },
+        {
+          label: { vi: 'Hạn sử dụng', en: 'Shelf life', zh: '保质期' },
+          value: { vi: '3 năm kể từ ngày sản xuất', en: '3 years from the date of manufacture', zh: '自生产日期起 3 年' },
+          source: 'docs/products/10. Tra hoa tan linh chi trung thao.md',
+        },
+      ],
+    },
+    usage: {
+      preparation: [
+        {
+          text: { vi: 'Pha 1–2 muỗng cà phê trà với 150–200 ml nước nóng (80–100°C), khuấy đều và thưởng thức.', en: 'Mix 1–2 teaspoons of tea with 150–200 ml of hot water (80–100°C), stir well and enjoy.', zh: '将 1–2 茶匙茶加入 150–200 毫升热水（80–100°C），搅拌均匀后饮用。' },
+          source: 'docs/products/10. Tra hoa tan linh chi trung thao.md',
+        },
+        {
+          text: { vi: 'Có thể thêm mật ong hoặc lát chanh tươi để tăng hương vị.', en: 'Add honey or a slice of fresh lemon for additional flavour.', zh: '可加入蜂蜜或新鲜柠檬片增添风味。' },
+          source: 'docs/products/10. Tra hoa tan linh chi trung thao.md',
+        },
+      ],
+      storage: [
+        {
+          text: { vi: 'Bảo quản nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp. Đậy kín hộp sau khi mở.', en: 'Store in a dry, cool, well-ventilated place away from direct sunlight. Close the box tightly after opening.', zh: '存放于干燥、阴凉通风处，避免阳光直射。开封后请密封盒盖。' },
+          source: 'docs/products/10. Tra hoa tan linh chi trung thao.md',
+        },
+        {
+          text: { vi: 'Hạn sử dụng: 3 năm kể từ ngày sản xuất.', en: 'Shelf life: 3 years from the date of manufacture.', zh: '保质期：自生产日期起 3 年。' },
+          source: 'docs/products/10. Tra hoa tan linh chi trung thao.md',
+        },
+      ],
+    },
+    reviews: [
+      {
+        quote: { vi: 'Trà có vị thanh, dễ uống, rất thích hợp để thư giãn sau giờ làm việc.', en: 'The tea has a mild taste and is easy to drink, making it lovely for relaxing after work.', zh: '茶味清淡，容易入口，很适合下班后放松时饮用。' },
+        author: 'Chị Mai (An Giang)',
+        source: 'docs/products/10. Tra hoa tan linh chi trung thao.md',
+      },
+      {
+        quote: { vi: 'Tôi hay dùng vào buổi sáng, cảm giác tỉnh táo hơn, cơ thể nhẹ nhõm.', en: 'I often have it in the morning and feel more alert and lighter.', zh: '我经常早上喝，感觉更清醒，身体也更轻松。' },
+        author: 'Anh Hoàng (TP. HCM)',
+        source: 'docs/products/10. Tra hoa tan linh chi trung thao.md',
+      },
+    ],
   },
   {
     slug: 'bao-tu-nam-linh-chi',
@@ -1365,14 +1462,86 @@ const raw: RawProduct[] = [
       plate: false,
     },
     intro: {
+      paragraphs: [
+        {
+          text: { vi: 'Bào tử nấm linh chi là lớp phấn mịn được giải phóng từ tai nấm linh chi khi trưởng thành. Sản phẩm được thu hoạch từ nấm linh chi hữu cơ nuôi trồng tại vùng Bảy Núi, An Giang.', en: 'Lingzhi spores are the fine powder released by mature lingzhi caps. The product is harvested from organic lingzhi grown in Bảy Núi, An Giang.', zh: '灵芝孢子是成熟灵芝菌盖释放的细粉。本产品采自安江省七山地区种植的有机灵芝。' },
+          source: 'docs/products/11. Bao tu nam linh chi.md',
+        },
+        {
+          text: { vi: 'Sản phẩm gồm bào tử linh chi đỏ nguyên chất, không pha trộn, có thể pha với nước nóng, hãm trà hoặc kết hợp cùng mật ong.', en: 'The product contains pure red lingzhi spores without blending and can be mixed with hot water, brewed as tea or combined with honey.', zh: '产品采用纯赤灵芝孢子，不掺混，可用热水冲调、泡茶或搭配蜂蜜。' },
+          source: 'docs/products/11. Bao tu nam linh chi.md',
+        },
+      ],
       facts: [
         {
-          label: RAW_MATERIAL,
-          value: { vi: 'Bào tử của nấm linh chi tại Hiền Nương', en: 'Spores of Hiền Nương’s lingzhi', zh: 'Hiền Nương 灵芝的孢子' },
-          source: OWNER_HOME,
+          label: { vi: 'Nguồn gốc nguyên liệu', en: 'Ingredient origin', zh: '原料来源' },
+          value: { vi: 'Nấm linh chi hữu cơ tại vùng Bảy Núi, An Giang', en: 'Organic lingzhi grown in Bảy Núi, An Giang', zh: '安江省七山地区的有机灵芝' },
+          source: 'docs/products/11. Bao tu nam linh chi.md',
+        },
+        {
+          label: { vi: 'Đơn vị sản xuất', en: 'Producer', zh: '生产单位' },
+          value: { vi: 'Hợp tác xã Tà Đảnh', en: 'Tà Đảnh Cooperative', zh: 'Tà Đảnh 合作社' },
+          source: 'docs/products/11. Bao tu nam linh chi.md',
+        },
+        {
+          label: { vi: 'Xuất xứ', en: 'Country of origin', zh: '原产国' },
+          value: { vi: 'Việt Nam', en: 'Vietnam', zh: '越南' },
+          source: 'docs/products/11. Bao tu nam linh chi.md',
         },
       ],
     },
+    composition: {
+      ingredients: {
+        text: { vi: '100% bào tử nấm linh chi nguyên chất.', en: '100% pure lingzhi mushroom spores.', zh: '100% 纯灵芝孢子。' },
+        source: 'docs/products/11. Bao tu nam linh chi.md',
+      },
+      facts: [
+        {
+          label: { vi: 'Khối lượng tịnh', en: 'Net weight', zh: '净含量' },
+          value: { vi: '50 g/lọ', en: '50 g per jar', zh: '每罐 50 克' },
+          source: 'docs/products/11. Bao tu nam linh chi.md',
+        },
+        {
+          label: { vi: 'Hạn sử dụng', en: 'Shelf life', zh: '保质期' },
+          value: { vi: '3 năm kể từ ngày sản xuất', en: '3 years from the date of manufacture', zh: '自生产日期起 3 年' },
+          source: 'docs/products/11. Bao tu nam linh chi.md',
+        },
+      ],
+    },
+    usage: {
+      preparation: [
+        {
+          text: { vi: 'Pha 1–2 g bào tử nấm linh chi với nước nóng, khuấy đều và uống hằng ngày.', en: 'Mix 1–2 g of lingzhi spores with hot water, stir well and drink daily.', zh: '将 1–2 克灵芝孢子加入热水，搅拌均匀，每日饮用。' },
+          source: 'docs/products/11. Bao tu nam linh chi.md',
+        },
+        {
+          text: { vi: 'Có thể dùng để hãm trà hoặc kết hợp cùng mật ong để tăng hương vị, dễ uống hơn.', en: 'Brew as tea or combine with honey for additional flavour and a milder taste.', zh: '可用于泡茶或搭配蜂蜜，增添风味，更易入口。' },
+          source: 'docs/products/11. Bao tu nam linh chi.md',
+        },
+      ],
+      storage: [
+        {
+          text: { vi: 'Để nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp. Đậy kín nắp lọ sau khi sử dụng.', en: 'Store in a dry, cool, well-ventilated place away from direct sunlight. Close the jar tightly after use.', zh: '存放于干燥、阴凉通风处，避免阳光直射。使用后盖紧罐盖。' },
+          source: 'docs/products/11. Bao tu nam linh chi.md',
+        },
+        {
+          text: { vi: 'Hạn sử dụng: 3 năm kể từ ngày sản xuất.', en: 'Shelf life: 3 years from the date of manufacture.', zh: '保质期：自生产日期起 3 年。' },
+          source: 'docs/products/11. Bao tu nam linh chi.md',
+        },
+      ],
+    },
+    reviews: [
+      {
+        quote: { vi: 'Bào tử linh chi rất dễ uống, dùng một thời gian thấy da sáng và ngủ ngon hơn.', en: 'Lingzhi spores are very easy to drink. After using them for a while, I feel my skin looks brighter and I sleep better.', zh: '灵芝孢子很容易喝，使用一段时间后感觉皮肤更亮，也睡得更好了。' },
+        author: 'Chị Thu (TP. HCM)',
+        source: 'docs/products/11. Bao tu nam linh chi.md',
+      },
+      {
+        quote: { vi: 'Tôi mua cho ba mẹ dùng, thấy huyết áp ổn định hơn, sức khỏe cải thiện rõ.', en: 'I bought it for my parents. I have noticed their blood pressure is more stable and their health has clearly improved.', zh: '我买给父母用，感觉他们的血压更稳定，健康状况也明显改善了。' },
+        author: 'Anh Khải (Hà Nội)',
+        source: 'docs/products/11. Bao tu nam linh chi.md',
+      },
+    ],
   },
   {
     slug: 'dong-trung-ha-thao-ngam-mat-ong',
@@ -1396,18 +1565,100 @@ const raw: RawProduct[] = [
       plate: false,
     },
     intro: {
+      paragraphs: [
+        {
+          text: { vi: 'Đông Trùng Hạ Thảo Ngâm Mật Ong Hiền Nương Farm kết hợp đông trùng hạ thảo tươi hữu cơ nuôi trồng tại trang trại với mật ong rừng nguyên chất.', en: 'Hiền Nương Farm Cordyceps in Honey combines fresh organic cordyceps cultivated on the farm with pure forest honey.', zh: 'Hiền Nương Farm 蜂蜜浸蛹虫草结合农场培育的新鲜有机蛹虫草与纯森林蜂蜜。' },
+          source: 'docs/products/12. Dong trung ha thao ngam mat ong.md',
+        },
+        {
+          text: { vi: 'Sản phẩm có thành phần tự nhiên, không chất bảo quản hay hương liệu. Có thể dùng trực tiếp hoặc pha cùng nước ấm, nước chanh hay trà thảo mộc.', en: 'Made with natural ingredients, without preservatives or flavourings. Enjoy directly or mix with warm water, lemon water or herbal tea.', zh: '产品采用天然成分，不添加防腐剂或香料。可直接食用，或搭配温水、柠檬水、草本茶。' },
+          source: 'docs/products/12. Dong trung ha thao ngam mat ong.md',
+        },
+      ],
       facts: [
         {
-          label: RAW_MATERIAL,
-          value: {
-            vi: 'Đông trùng hạ thảo nuôi cấy tại trang trại, mật ong',
-            en: 'Cordyceps cultivated on the farm; honey',
-            zh: '农场培育的蛹虫草；蜂蜜',
-          },
-          source: `${HOME_INTRO}; ${OWNER_HOME}. Honey origin not sourced — not stated.`,
+          label: { vi: 'Nguồn gốc nguyên liệu', en: 'Ingredient origin', zh: '原料来源' },
+          value: { vi: 'Nuôi trồng và khai thác tại vùng Bảy Núi, An Giang', en: 'Cultivated and sourced in Bảy Núi, An Giang', zh: '在安江省七山地区培育和采集' },
+          source: 'docs/products/12. Dong trung ha thao ngam mat ong.md',
+        },
+        {
+          label: { vi: 'Đơn vị sản xuất', en: 'Producer', zh: '生产单位' },
+          value: { vi: 'Hợp tác xã Tà Đảnh', en: 'Tà Đảnh Cooperative', zh: 'Tà Đảnh 合作社' },
+          source: 'docs/products/12. Dong trung ha thao ngam mat ong.md',
+        },
+        {
+          label: { vi: 'Thương hiệu', en: 'Brand', zh: '品牌' },
+          value: { vi: 'Hiền Nương Farm', en: 'Hiền Nương Farm', zh: 'Hiền Nương Farm' },
+          source: 'docs/products/12. Dong trung ha thao ngam mat ong.md',
+        },
+        {
+          label: { vi: 'Xuất xứ', en: 'Country of origin', zh: '原产国' },
+          value: { vi: 'Việt Nam', en: 'Vietnam', zh: '越南' },
+          source: 'docs/products/12. Dong trung ha thao ngam mat ong.md',
         },
       ],
     },
+    composition: {
+      ingredients: {
+        text: { vi: 'Đông trùng hạ thảo tươi hữu cơ và mật ong rừng nguyên chất.', en: 'Fresh organic cordyceps and pure forest honey.', zh: '新鲜有机蛹虫草和纯森林蜂蜜。' },
+        source: 'docs/products/12. Dong trung ha thao ngam mat ong.md',
+      },
+      facts: [
+        {
+          label: { vi: 'Dung tích', en: 'Volume', zh: '容量' },
+          value: { vi: '200 ml', en: '200 ml', zh: '200 毫升' },
+          source: 'docs/products/12. Dong trung ha thao ngam mat ong.md',
+        },
+        {
+          label: { vi: 'Quy cách đóng gói', en: 'Packaging', zh: '包装' },
+          value: { vi: '1 hũ thủy tinh', en: '1 glass jar', zh: '1 个玻璃罐' },
+          source: 'docs/products/12. Dong trung ha thao ngam mat ong.md',
+        },
+        {
+          label: { vi: 'Hạn sử dụng', en: 'Shelf life', zh: '保质期' },
+          value: { vi: '12 tháng kể từ ngày sản xuất', en: '12 months from the date of manufacture', zh: '自生产日期起 12 个月' },
+          source: 'docs/products/12. Dong trung ha thao ngam mat ong.md',
+        },
+      ],
+    },
+    usage: {
+      preparation: [
+        {
+          text: { vi: 'Dùng trực tiếp 1–2 thìa nhỏ vào buổi sáng và tối, trước bữa ăn theo hướng dẫn sản phẩm.', en: 'The product instructions specify 1–2 small spoonfuls directly in the morning and evening, before meals.', zh: '按产品使用说明，早晚餐前直接食用 1–2 小勺。' },
+          source: 'docs/products/12. Dong trung ha thao ngam mat ong.md',
+        },
+        {
+          text: { vi: 'Có thể pha với nước ấm hoặc dùng kèm nước chanh, trà thảo mộc để tăng hương vị.', en: 'Mix with warm water, lemon water or herbal tea for additional flavour.', zh: '可搭配温水、柠檬水或草本茶增添风味。' },
+          source: 'docs/products/12. Dong trung ha thao ngam mat ong.md',
+        },
+      ],
+      storage: [
+        {
+          text: { vi: 'Để nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp. Đậy kín nắp lọ sau khi sử dụng.', en: 'Store in a dry, cool, well-ventilated place away from direct sunlight. Close the jar tightly after use.', zh: '存放于干燥、阴凉通风处，避免阳光直射。使用后盖紧罐盖。' },
+          source: 'docs/products/12. Dong trung ha thao ngam mat ong.md',
+        },
+        {
+          text: { vi: 'Hạn sử dụng: 12 tháng kể từ ngày sản xuất.', en: 'Shelf life: 12 months from the date of manufacture.', zh: '保质期：自生产日期起 12 个月。' },
+          source: 'docs/products/12. Dong trung ha thao ngam mat ong.md',
+        },
+        {
+          text: { vi: 'Không dùng sản phẩm đã hết hạn hoặc có dấu hiệu bất thường.', en: 'Do not use if the product is past its expiry date or shows unusual signs.', zh: '产品如已过保质期或出现异常，请勿食用。' },
+          source: 'docs/products/12. Dong trung ha thao ngam mat ong.md',
+        },
+      ],
+    },
+    reviews: [
+      {
+        quote: { vi: 'Mình và gia đình uống mỗi ngày, sáng uống 1 ly nước ấm pha mật ong đông trùng, rất ngon và sức khỏe cải thiện.', en: 'My family and I drink it every day. In the morning, we have a glass of warm water mixed with cordyceps honey. It tastes very good, and we feel our health has improved.', zh: '我和家人每天都喝，早上喝一杯温水冲调的虫草蜂蜜，味道很好，也感觉健康有所改善。' },
+        author: 'Anh Hòa (TP. HCM)',
+        source: 'docs/products/12. Dong trung ha thao ngam mat ong.md',
+      },
+      {
+        quote: { vi: 'Đúng chuẩn mật ong rừng, sử dụng sản phẩm của Hiền Nương Farm mình yên tâm lắm!', en: 'It tastes just like forest honey should. I feel very reassured using Hiền Nương Farm products!', zh: '确实是森林蜂蜜的味道，使用 Hiền Nương Farm 的产品让我很放心！' },
+        author: 'Chị Phương (An Giang)',
+        source: 'docs/products/12. Dong trung ha thao ngam mat ong.md',
+      },
+    ],
   },
 ];
 
