@@ -229,15 +229,6 @@ const half = '(min-width: 1200px) 45vw, 100vw';
       </section>
     </div>
 
-    <section class="section outlook" id="dinh-huong" aria-labelledby="outlook-title">
-      <div class="container outlook__grid">
-        <h2 class="outlook__title" id="outlook-title" data-reveal>{t.outlook.title}</h2>
-        <div class="outlook__body" data-reveal style="--reveal-delay: 120ms">
-          {t.outlook.body.map((p) => <p>{p}</p>)}
-        </div>
-      </div>
-    </section>
-
     <!-- Intro film (header dropdown: Video giới thiệu). The player loads
          only when the reader presses play; nothing plays on its own. -->
     <section class="section film" aria-labelledby="film-title">
@@ -834,41 +825,6 @@ const half = '(min-width: 1200px) 45vw, 100vw';
   }
   @keyframes more-in {
     from { opacity: 0; transform: translateY(-0.25rem); }
-  }
-
-  /* Outlook (#dinh-huong) -------------------------------------------------- */
-
-  .outlook { border-top: 1px solid var(--color-line); }
-
-  .outlook__grid {
-    display: grid;
-    row-gap: var(--space-l);
-  }
-
-  .outlook__title {
-    max-width: 16ch;
-    font-family: var(--font-display);
-    font-weight: 400;
-    font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
-    line-height: 1.16;
-    letter-spacing: -0.01em;
-    text-wrap: balance;
-    color: var(--color-deep-green);
-  }
-
-  .outlook__body {
-    max-width: 36rem;
-    font-size: var(--fs-body);
-    line-height: var(--lh-body);
-    color: var(--color-text-muted);
-  }
-  .outlook__body p + p { margin-top: 1.1em; }
-
-  @media (min-width: 1024px) {
-    .outlook__grid {
-      grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
-      column-gap: var(--split-gap);
-    }
   }
 
   /* Film (as on /nong-nghiep-tuan-hoan/) ----------------------------------- */

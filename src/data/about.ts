@@ -5,7 +5,7 @@
  * (approved copy, one file per chapter, read in filename order). Each is
  * rendered whole: "## 01 · Label", "### Title", paragraphs, and an
  * optional "#### Question" disclosure with its intro paragraph and table.
- * The opening line, #dinh-huong and the closing come from
+ * The opening line and the closing come from
  * docs/HIEN_NUONG_ABOUT_VI.md.
  *
  * English and Chinese translate the earlier, shorter Vietnamese copy
@@ -103,8 +103,6 @@ export interface AboutCopy {
   chapters?: { label: string; title: string; paragraphs: string[]; more?: StoryChapter['more'] }[];
   /** Intro film block (#video-gioi-thieu); the title is the homepage brand film line. */
   film: { eyebrow: string; title: string; watch: string };
-  /** #dinh-huong, after the six chapters. */
-  outlook: { title: string; body: string[] };
   closing: { eyebrow: string; title: string; body: string[]; button: string };
 }
 
@@ -195,13 +193,6 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
       harvest: { alt: 'Hai người đội nón bê rổ nấm linh chi vừa thu hoạch giữa những hàng phôi trên nền rơm', caption: 'Thu hoạch nấm' },
     },
     film: { eyebrow: 'Video giới thiệu', title: 'Một vòng tuần hoàn, bắt đầu từ Bảy Núi.', watch: 'Xem phim' },
-    outlook: {
-      title: 'Định hướng phát triển',
-      body: [
-        'Hiền Nương hướng đến việc tiếp tục hoàn thiện chất lượng sản phẩm, phát triển cách làm nông kết hợp năng lượng mặt trời và tận dụng phụ phẩm nông nghiệp.',
-        'Trong hành trình ấy, chúng tôi mong tạo thêm cơ hội việc làm cho người dân địa phương, mở rộng kết nối với các đối tác và đưa sản phẩm của nông trại đến gần hơn với người tiêu dùng.',
-      ],
-    },
     closing: {
       eyebrow: 'Liên hệ',
       title: 'Kết nối cùng Hiền Nương',
@@ -307,13 +298,6 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
       },
     ],
     film: { eyebrow: 'Introduction video', title: 'A cycle that begins in Bảy Núi.', watch: 'Watch the film' },
-    outlook: {
-      title: 'Looking ahead',
-      body: [
-        'Hiền Nương aims to keep improving the quality of its products and to develop a way of farming that combines solar power with the use of agricultural by-products.',
-        'Along the way, we hope to create more jobs for local people, widen our connections with partners and bring the farm’s products closer to consumers.',
-      ],
-    },
     closing: {
       eyebrow: 'Contact',
       title: 'Connect with Hiền Nương',
@@ -419,13 +403,6 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
       },
     ],
     film: { eyebrow: '介绍视频', title: '一个循环，从七山开始。', watch: '观看影片' },
-    outlook: {
-      title: '发展方向',
-      body: [
-        'Hiền Nương 致力于继续提升产品质量，发展结合太阳能与农业副产品利用的务农方式。',
-        '在这段旅程中，我们希望为当地人创造更多就业机会，扩大与合作伙伴的联系，让农场的产品更贴近消费者。',
-      ],
-    },
     closing: {
       eyebrow: '联系我们',
       title: '与 Hiền Nương 联系',

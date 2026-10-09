@@ -73,6 +73,11 @@ export const draftPages: DraftPage[] = [];
 export const navDropdowns: Record<string, { label: Record<Locale, string>; href: string }[]> = {
   '/#ve-hien-nuong': [
     { label: { vi: 'Câu chuyện Hiền Nương', en: 'The Hiền Nương story', zh: 'Hiền Nương 的故事' }, href: '/ve-chung-toi/#cau-chuyen' },
+    { label: { vi: 'Vùng Bảy Núi', en: 'The Bảy Núi region', zh: '七山地区' }, href: '/ve-chung-toi/#bay-nui' },
+    { label: { vi: 'Cơ sở Thới Sơn & Tà Đảnh', en: 'Thới Sơn & Tà Đảnh sites', zh: 'Thới Sơn 与 Tà Đảnh 基地' }, href: '/ve-chung-toi/#co-so' },
+    { label: { vi: 'Năng lượng mặt trời', en: 'Solar energy', zh: '太阳能' }, href: '/ve-chung-toi/#nang-luong' },
+    { label: { vi: 'Sau mùa thu hoạch', en: 'After the harvest', zh: '收获之后' }, href: '/ve-chung-toi/#tuan-hoan' },
+    { label: { vi: 'Con người', en: 'People', zh: '人们' }, href: '/ve-chung-toi/#con-nguoi' },
     { label: { vi: 'Video giới thiệu', en: 'Introduction video', zh: '介绍视频' }, href: '/ve-chung-toi/#video-gioi-thieu' },
   ],
   '/#tuan-hoan': [
