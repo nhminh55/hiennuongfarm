@@ -773,14 +773,91 @@ const raw: RawProduct[] = [
       plate: false,
     },
     intro: {
+      paragraphs: [
+        {
+          text: { vi: 'Snack Nấm Mối Đen Hiền Nương Farm được chế biến từ nấm mối tươi hữu cơ của vùng Bảy Núi, An Giang. Nấm được tuyển chọn kỹ lưỡng và sấy giòn, giữ hương vị thơm ngon tự nhiên.', en: 'Hiền Nương Farm Black Termite Mushroom Snack is made from fresh organic termite mushrooms from Bảy Núi, An Giang. Carefully selected mushrooms are dried until crisp, retaining their natural flavour.', zh: 'Hiền Nương Farm 黑皮鸡枞菌零食采用安江省七山地区的新鲜有机鸡枞菌，经过精心挑选并干燥至酥脆，保留天然风味。' },
+          source: 'docs/products/06. Snack nam moi den.md',
+        },
+        {
+          text: { vi: 'Sản phẩm tiện mang theo trong các chuyến đi chơi, dã ngoại hoặc làm quà tặng cho bạn bè, người thân.', en: 'Convenient to take on trips and picnics, or give as a gift to friends and family.', zh: '方便旅行、野餐时携带，也可赠送给亲友。' },
+          source: 'docs/products/06. Snack nam moi den.md',
+        },
+      ],
       facts: [
         {
-          label: RAW_MATERIAL,
-          value: { vi: 'Nấm mối đen của Hiền Nương', en: 'Hiền Nương’s black termite mushrooms', zh: 'Hiền Nương 的黑皮鸡枞菌' },
-          source: OWNER_HOME,
+          label: { vi: 'Thương hiệu', en: 'Brand', zh: '品牌' },
+          value: { vi: 'Hiền Nương Farm', en: 'Hiền Nương Farm', zh: 'Hiền Nương Farm' },
+          source: 'docs/products/06. Snack nam moi den.md',
+        },
+        {
+          label: { vi: 'Sản xuất tại', en: 'Produced at', zh: '生产单位' },
+          value: { vi: 'Hợp tác xã Tà Đảnh, vùng Bảy Núi, An Giang', en: 'Tà Đảnh Cooperative, Bảy Núi, An Giang', zh: 'Tà Đảnh 合作社，安江省七山' },
+          source: 'docs/products/06. Snack nam moi den.md',
+        },
+        {
+          label: { vi: 'Xuất xứ', en: 'Country of origin', zh: '原产国' },
+          value: { vi: 'Việt Nam', en: 'Vietnam', zh: '越南' },
+          source: 'docs/products/06. Snack nam moi den.md',
         },
       ],
     },
+    composition: {
+      ingredients: {
+        text: { vi: 'Nấm mối tươi hữu cơ, dầu thực vật.', en: 'Fresh organic termite mushrooms, vegetable oil.', zh: '新鲜有机鸡枞菌、植物油。' },
+        source: 'docs/products/06. Snack nam moi den.md',
+      },
+      facts: [
+        {
+          label: { vi: 'Khối lượng tịnh', en: 'Net weight', zh: '净含量' },
+          value: { vi: '50 g', en: '50 g', zh: '50 克' },
+          source: 'docs/products/06. Snack nam moi den.md',
+        },
+        {
+          label: { vi: 'Quy cách đóng gói', en: 'Packaging', zh: '包装' },
+          value: { vi: '1 hộp × 50 g', en: '1 box × 50 g', zh: '1 盒 × 50 克' },
+          source: 'docs/products/06. Snack nam moi den.md',
+        },
+        {
+          label: { vi: 'Hạn sử dụng', en: 'Shelf life', zh: '保质期' },
+          value: { vi: '6 tháng kể từ ngày sản xuất', en: '6 months from the date of manufacture', zh: '自生产日期起 6 个月' },
+          source: 'docs/products/06. Snack nam moi den.md',
+        },
+      ],
+    },
+    usage: {
+      preparation: [
+        {
+          text: { vi: 'Dùng trực tiếp ngay sau khi mở bao bì.', en: 'Ready to eat immediately after opening.', zh: '开封后可直接食用。' },
+          source: 'docs/products/06. Snack nam moi den.md',
+        },
+        {
+          text: { vi: 'Có thể dùng kèm trà, cà phê hoặc làm món ăn nhẹ trong các buổi tiệc.', en: 'Enjoy with tea or coffee, or serve as a snack at parties.', zh: '可搭配茶、咖啡，或作为聚会小食。' },
+          source: 'docs/products/06. Snack nam moi den.md',
+        },
+      ],
+      storage: [
+        {
+          text: { vi: 'Bảo quản nơi khô ráo, thoáng mát. Đậy kín hoặc buộc chặt miệng túi/hộp sau khi mở để giữ độ giòn.', en: 'Store in a dry, cool, well-ventilated place. Close or tie the bag or box tightly after opening to retain crispness.', zh: '存放于干燥、阴凉通风处。开封后请密封或扎紧袋口、盒口，以保持酥脆。' },
+          source: 'docs/products/06. Snack nam moi den.md',
+        },
+        {
+          text: { vi: 'Hạn sử dụng: 6 tháng kể từ ngày sản xuất.', en: 'Shelf life: 6 months from the date of manufacture.', zh: '保质期：自生产日期起 6 个月。' },
+          source: 'docs/products/06. Snack nam moi den.md',
+        },
+      ],
+    },
+    reviews: [
+      {
+        quote: { vi: 'Snack giòn tan, vị vừa ăn, ăn hoài không ngán.', en: 'The snack is crisp, the flavour is just right, and I never get tired of eating it.', zh: '零食酥脆，味道刚刚好，怎么吃都不腻。' },
+        author: 'Chị Lan (TP. HCM)',
+        source: 'docs/products/06. Snack nam moi den.md',
+      },
+      {
+        quote: { vi: 'Mang đi làm món ăn vặt, đồng nghiệp ai cũng khen lạ và ngon.', en: 'I take it to work as a snack, and all my colleagues say it is unusual and delicious.', zh: '带去上班当零食，同事们都说新奇又好吃。' },
+        author: 'Anh Phúc (Cần Thơ)',
+        source: 'docs/products/06. Snack nam moi den.md',
+      },
+    ],
   },
   {
     slug: 'snack-nam-bao-ngu',
@@ -805,14 +882,99 @@ const raw: RawProduct[] = [
       plate: false,
     },
     intro: {
+      paragraphs: [
+        {
+          text: { vi: 'Snack Nấm Bào Ngư Hiền Nương Farm được làm từ nấm bào ngư tươi, trồng và thu hoạch mới mỗi ngày tại trang trại.', en: 'Hiền Nương Farm Oyster Mushroom Snack is made from fresh oyster mushrooms grown and harvested daily on the farm.', zh: 'Hiền Nương Farm 平菇零食采用农场种植并每日新鲜采收的平菇。' },
+          source: 'docs/products/07. Snack nam bao ngu.md',
+        },
+        {
+          text: { vi: 'Nấm được sấy giòn để giữ hương thơm và vị ngọt tự nhiên. Sản phẩm không sử dụng phụ gia, phẩm màu hay chất bảo quản.', en: 'The mushrooms are dried until crisp to retain their natural aroma and sweetness. The product contains no additives, colouring or preservatives.', zh: '菌菇干燥至酥脆，保留天然香气和甜味。产品不添加添加剂、色素或防腐剂。' },
+          source: 'docs/products/07. Snack nam bao ngu.md',
+        },
+      ],
       facts: [
         {
-          label: RAW_MATERIAL,
-          value: { vi: 'Nấm bào ngư của Hiền Nương', en: 'Hiền Nương’s oyster mushrooms', zh: 'Hiền Nương 的平菇' },
-          source: OWNER_HOME,
+          label: { vi: 'Nguồn gốc nguyên liệu', en: 'Ingredient origin', zh: '原料来源' },
+          value: { vi: 'Trồng và thu hoạch mới mỗi ngày tại Hiền Nương Farm', en: 'Grown and harvested daily at Hiền Nương Farm', zh: '由 Hiền Nương Farm 种植并每日新鲜采收' },
+          source: 'docs/products/07. Snack nam bao ngu.md',
+        },
+        {
+          label: { vi: 'Đơn vị sản xuất', en: 'Producer', zh: '生产单位' },
+          value: { vi: 'Hợp tác xã Nông nghiệp Tà Đảnh', en: 'Tà Đảnh Agricultural Cooperative', zh: 'Tà Đảnh 农业合作社' },
+          source: 'docs/products/07. Snack nam bao ngu.md',
+        },
+        {
+          label: { vi: 'Xuất xứ', en: 'Country of origin', zh: '原产国' },
+          value: { vi: 'Việt Nam', en: 'Vietnam', zh: '越南' },
+          source: 'docs/products/07. Snack nam bao ngu.md',
         },
       ],
     },
+    composition: {
+      ingredients: {
+        text: { vi: '100% nấm bào ngư tươi.', en: '100% fresh oyster mushrooms.', zh: '100% 新鲜平菇。' },
+        source: 'docs/products/07. Snack nam bao ngu.md',
+      },
+      facts: [
+        {
+          label: { vi: 'Khối lượng tịnh', en: 'Net weight', zh: '净含量' },
+          value: { vi: '50 g', en: '50 g', zh: '50 克' },
+          source: 'docs/products/07. Snack nam bao ngu.md',
+        },
+        {
+          label: { vi: 'Quy cách đóng gói', en: 'Packaging', zh: '包装' },
+          value: { vi: '1 hũ', en: '1 jar', zh: '1 罐' },
+          source: 'docs/products/07. Snack nam bao ngu.md',
+        },
+        {
+          label: { vi: 'Hạn sử dụng', en: 'Shelf life', zh: '保质期' },
+          value: { vi: '6 tháng kể từ ngày sản xuất', en: '6 months from the date of manufacture', zh: '自生产日期起 6 个月' },
+          source: 'docs/products/07. Snack nam bao ngu.md',
+        },
+      ],
+    },
+    usage: {
+      preparation: [
+        {
+          text: { vi: 'Ăn trực tiếp như món ăn vặt.', en: 'Ready to eat as a snack.', zh: '可直接作为零食食用。' },
+          source: 'docs/products/07. Snack nam bao ngu.md',
+        },
+        {
+          text: { vi: 'Có thể dùng kèm salad, cơm trộn hoặc các món ăn nhẹ tùy thích.', en: 'Enjoy with salads, mixed rice or other light dishes.', zh: '可搭配沙拉、拌饭或其他小食。' },
+          source: 'docs/products/07. Snack nam bao ngu.md',
+        },
+        {
+          text: { vi: 'Không dùng cho người dị ứng với nấm.', en: 'Not suitable for people with mushroom allergies.', zh: '对菌菇过敏者请勿食用。' },
+          source: 'docs/products/07. Snack nam bao ngu.md',
+        },
+      ],
+      storage: [
+        {
+          text: { vi: 'Để nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp. Đóng kín nắp hộp sau khi sử dụng để giữ độ giòn.', en: 'Store in a dry, cool, well-ventilated place away from direct sunlight. Close the lid tightly after use to retain crispness.', zh: '存放于干燥、阴凉通风处，避免阳光直射。使用后盖紧盖子，以保持酥脆。' },
+          source: 'docs/products/07. Snack nam bao ngu.md',
+        },
+        {
+          text: { vi: 'Hạn sử dụng: 6 tháng kể từ ngày sản xuất.', en: 'Shelf life: 6 months from the date of manufacture.', zh: '保质期：自生产日期起 6 个月。' },
+          source: 'docs/products/07. Snack nam bao ngu.md',
+        },
+        {
+          text: { vi: 'Không sử dụng sản phẩm đã hết hạn hoặc có dấu hiệu ẩm mốc.', en: 'Do not use if the product is past its expiry date or shows signs of mould.', zh: '产品如已过保质期或有受潮发霉迹象，请勿食用。' },
+          source: 'docs/products/07. Snack nam bao ngu.md',
+        },
+      ],
+    },
+    reviews: [
+      {
+        quote: { vi: 'Con mình rất thích ăn vặt, nhất là các loại snack, tuy nhiên mình không yên tâm cho con sử dụng nhiều vì nhiều loại snack có quá nhiều phụ gia và chất bảo quản, không rõ nguồn gốc. Từ lúc mua snack bào ngư này cho con, con mình rất thích mà mình cũng yên tâm cho con ăn mà không lo sợ.', en: 'My child loves snacks, especially packaged snacks, but I do not feel comfortable letting them have too much because many contain lots of additives and preservatives and their origins are unclear. Since buying this oyster mushroom snack, my child has loved it, and I feel comfortable letting them eat it without worrying.', zh: '我的孩子很喜欢吃零食，尤其是各种脆片，但很多零食添加剂和防腐剂太多，来源也不清楚，所以我不放心让孩子多吃。自从买了这款平菇零食，孩子很喜欢，我也放心让孩子吃，不再担心。' },
+        author: 'Chị Nhi (TP. HCM)',
+        source: 'docs/products/07. Snack nam bao ngu.md',
+      },
+      {
+        quote: { vi: 'Lần đầu tiên mình thấy nấm mà làm thành "sì nách" để ăn vặt, rất lạ miệng mà sử dụng cũng cảm thấy yên tâm vì làm từ nấm tươi mà.', en: 'It is the first time I have seen mushrooms made into a “snack” for nibbling. The taste is quite novel, and I feel comfortable eating it because it is made from fresh mushrooms.', zh: '这是我第一次看到菌菇做成“零食”，口味很新奇，因为是用新鲜菌菇做的，吃起来也觉得放心。' },
+        author: 'Anh Thanh (Hậu Giang)',
+        source: 'docs/products/07. Snack nam bao ngu.md',
+      },
+    ],
   },
   {
     slug: 'dong-trung-ha-thao-say-thang-hoa',
@@ -1055,14 +1217,95 @@ const raw: RawProduct[] = [
       plate: false,
     },
     intro: {
+      paragraphs: [
+        {
+          text: { vi: 'Trà Hòa Tan Linh Chi Hiền Nương Farm được chiết xuất từ nấm linh chi hữu cơ nuôi trồng tại trang trại. Công nghệ hòa tan giúp pha trà nhanh chóng, tiện dùng trong nhịp sống bận rộn.', en: 'Hiền Nương Farm Instant Lingzhi Tea is extracted from organic lingzhi grown on the farm. Its instant format makes preparation quick and convenient for busy daily routines.', zh: 'Hiền Nương Farm 灵芝速溶茶提取自农场种植的有机灵芝。速溶形式冲泡快捷，方便忙碌的日常生活。' },
+          source: 'docs/products/09. Tra hoa tan linh chi.md',
+        },
+        {
+          text: { vi: 'Trà có hương thơm nhẹ, dễ uống và có thể thưởng thức nóng hoặc lạnh tùy sở thích.', en: 'The tea has a light aroma and a mild taste, and can be enjoyed hot or cold.', zh: '茶香清淡，口感柔和，可根据喜好热饮或冷饮。' },
+          source: 'docs/products/09. Tra hoa tan linh chi.md',
+        },
+      ],
       facts: [
         {
-          label: RAW_MATERIAL,
-          value: { vi: 'Nấm linh chi nuôi trồng tại trang trại', en: 'Lingzhi grown on the farm', zh: '农场种植的灵芝' },
-          source: `${HOME_INTRO}; ${OWNER_HOME}`,
+          label: { vi: 'Nguồn gốc nguyên liệu', en: 'Ingredient origin', zh: '原料来源' },
+          value: { vi: 'Nấm linh chi nuôi trồng tại Hiền Nương Farm', en: 'Lingzhi grown at Hiền Nương Farm', zh: '由 Hiền Nương Farm 种植的灵芝' },
+          source: 'docs/products/09. Tra hoa tan linh chi.md',
+        },
+        {
+          label: { vi: 'Đơn vị sản xuất', en: 'Producer', zh: '生产单位' },
+          value: { vi: 'Hợp tác xã Nông nghiệp Tà Đảnh', en: 'Tà Đảnh Agricultural Cooperative', zh: 'Tà Đảnh 农业合作社' },
+          source: 'docs/products/09. Tra hoa tan linh chi.md',
+        },
+        {
+          label: { vi: 'Xuất xứ', en: 'Country of origin', zh: '原产国' },
+          value: { vi: 'Việt Nam', en: 'Vietnam', zh: '越南' },
+          source: 'docs/products/09. Tra hoa tan linh chi.md',
         },
       ],
     },
+    composition: {
+      ingredients: {
+        text: { vi: '100% chiết xuất nấm linh chi.', en: '100% lingzhi mushroom extract.', zh: '100% 灵芝提取物。' },
+        source: 'docs/products/09. Tra hoa tan linh chi.md',
+      },
+      facts: [
+        {
+          label: { vi: 'Quy cách 50 g', en: '50 g format', zh: '50 克规格' },
+          value: { vi: 'Hộp giấy, gồm 10 gói × 5 g', en: 'Paper box containing 10 sachets × 5 g', zh: '纸盒，内含 10 包 × 5 克' },
+          source: 'docs/products/09. Tra hoa tan linh chi.md',
+        },
+        {
+          label: { vi: 'Quy cách 200 g', en: '200 g format', zh: '200 克规格' },
+          value: { vi: 'Hũ thiếc hoặc hũ nhựa cao cấp', en: 'Tin or premium plastic jar', zh: '铁罐或优质塑料罐' },
+          source: 'docs/products/09. Tra hoa tan linh chi.md',
+        },
+        {
+          label: { vi: 'Hạn sử dụng', en: 'Shelf life', zh: '保质期' },
+          value: { vi: '3 năm kể từ ngày sản xuất', en: '3 years from the date of manufacture', zh: '自生产日期起 3 年' },
+          source: 'docs/products/09. Tra hoa tan linh chi.md',
+        },
+      ],
+    },
+    usage: {
+      preparation: [
+        {
+          text: { vi: 'Loại hộp 50 g (dạng gói): Pha 1 gói trà với 150–200 ml nước nóng, khuấy đều và thưởng thức.', en: '50 g box (sachets): Mix 1 sachet with 150–200 ml of hot water, stir well and enjoy.', zh: '50 克盒装（袋装）：将 1 包茶加入 150–200 毫升热水，搅拌均匀后饮用。' },
+          source: 'docs/products/09. Tra hoa tan linh chi.md',
+        },
+        {
+          text: { vi: 'Loại hũ 200 g: Pha 2 muỗng cà phê trà với 150–200 ml nước nóng, khuấy đều và thưởng thức.', en: '200 g jar: Mix 2 teaspoons of tea with 150–200 ml of hot water, stir well and enjoy.', zh: '200 克罐装：将 2 茶匙茶加入 150–200 毫升热水，搅拌均匀后饮用。' },
+          source: 'docs/products/09. Tra hoa tan linh chi.md',
+        },
+        {
+          text: { vi: 'Có thể dùng nóng hoặc lạnh tùy sở thích.', en: 'Enjoy hot or cold, according to preference.', zh: '可根据喜好热饮或冷饮。' },
+          source: 'docs/products/09. Tra hoa tan linh chi.md',
+        },
+      ],
+      storage: [
+        {
+          text: { vi: 'Để nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp và môi trường ẩm thấp. Đóng kín nắp hộp hoặc bọc kín sau khi mở.', en: 'Store in a dry, cool, well-ventilated place away from direct sunlight and humidity. Close the lid or seal the packaging after opening.', zh: '存放于干燥、阴凉通风处，避免阳光直射和潮湿环境。开封后请盖紧盖子或密封包装。' },
+          source: 'docs/products/09. Tra hoa tan linh chi.md',
+        },
+        {
+          text: { vi: 'Hạn sử dụng: 3 năm kể từ ngày sản xuất.', en: 'Shelf life: 3 years from the date of manufacture.', zh: '保质期：自生产日期起 3 年。' },
+          source: 'docs/products/09. Tra hoa tan linh chi.md',
+        },
+      ],
+    },
+    reviews: [
+      {
+        quote: { vi: 'Trà có vị thanh nhẹ dễ uống, cả nhà mình ai cũng dùng.', en: 'The tea has a light, mild taste and is easy to drink. Everyone in my family enjoys it.', zh: '茶味清淡，容易入口，我们全家都喝。' },
+        author: 'Chị Thảo (An Giang)',
+        source: 'docs/products/09. Tra hoa tan linh chi.md',
+      },
+      {
+        quote: { vi: 'Sản phẩm này phù hợp với người bận rộn như mình, đi làm cả ngày từ sáng tới chiều tối không có thời gian xắt uống.', en: 'This product suits busy people like me. I work all day, from morning until evening, and have no time to slice mushrooms to prepare a drink.', zh: '这款产品适合像我这样忙碌的人。我从早到晚都在上班，没有时间切灵芝来煮水喝。' },
+        author: 'Anh Dũng (Cần Thơ)',
+        source: 'docs/products/09. Tra hoa tan linh chi.md',
+      },
+    ],
   },
   {
     slug: 'tra-hoa-tan-linh-chi-trung-thao',
