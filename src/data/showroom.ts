@@ -172,32 +172,92 @@ const raw: RawProduct[] = [
     intro: {
       paragraphs: [
         {
-          text: {
-            vi: 'Bên cạnh nấm linh chi, đông trùng hạ thảo và nấm bào ngư, nấm mối đen là một trong bốn dòng nấm chính mà Hiền Nương nuôi trồng tại vùng Bảy Núi, An Giang.',
-            en: 'Alongside lingzhi, cordyceps and oyster mushroom, black termite mushroom is one of the four main mushroom lines Hiền Nương grows in the Bảy Núi region of An Giang.',
-            zh: '除灵芝、蛹虫草和平菇外，黑皮鸡枞菌也是 Hiền Nương 在安江省七山地区种植的四类主要菌菇之一。',
-          },
-          source: `${MOI_DEN_PAGE}:47 (en :86, zh :125)`,
+          text: { vi: 'Nấm mối đen Hiền Nương được nuôi trồng tại vùng Bảy Núi, An Giang theo mô hình hữu cơ tuần hoàn khép kín, sử dụng các nguyên liệu tự nhiên như rơm, rạ và cám gạo.', en: 'Hiền Nương black termite mushrooms are grown in Bảy Núi, An Giang using a closed-loop organic circular farming model and natural materials such as straw, rice stubble and rice bran.', zh: 'Hiền Nương 黑皮鸡枞菌在安江省七山地区采用闭环有机循环农业模式种植，使用稻草、稻茬和米糠等天然原料。' },
+          source: 'docs/products/01. Nam moi den.md',
         },
         {
-          text: {
-            vi: 'Nấm mối đen mọc lên từ bịch giá thể, được nuôi trồng tại trang trại.',
-            en: 'Black termite mushrooms growing from substrate bags, cultivated on the farm.',
-            zh: '从基质袋中长出的黑皮鸡枞菌，在农场培育。',
-          },
-          source: `${PRODUCT_NOTES}:33 (en :89, zh :111)`,
+          text: { vi: 'Trang trại có dây chuyền sản xuất phôi nấm khép kín từ khâu làm meo, hấp đến phòng lạnh chạy tơ. Nấm có thịt chắc, giòn, vị ngọt thanh tự nhiên và mùi thơm đặc trưng.', en: 'The farm has an integrated mushroom spawn production line covering culture preparation, steaming and mycelium growth in cold rooms. The mushrooms have firm, crisp flesh, a mild natural sweetness and a distinctive aroma.', zh: '农场的菌包生产流程涵盖制种、蒸汽处理和冷房菌丝培养。菌肉紧实爽脆，带有天然清甜味和独特香气。' },
+          source: 'docs/products/01. Nam moi den.md',
         },
       ],
       facts: [
-        MAIN_LINE,
-        GROWING_REGION,
+        {
+          label: { vi: 'Vùng nuôi trồng', en: 'Growing region', zh: '种植地区' },
+          value: { vi: 'Bảy Núi, An Giang', en: 'Bảy Núi, An Giang', zh: '安江省七山' },
+          source: 'docs/products/01. Nam moi den.md',
+        },
         {
           label: { vi: 'Mô hình', en: 'Model', zh: '模式' },
-          value: { vi: 'Nông nghiệp tuần hoàn', en: 'Circular agriculture', zh: '循环农业' },
-          source: `${MOI_DEN_PAGE}:50`,
+          value: { vi: 'Nông nghiệp hữu cơ tuần hoàn khép kín', en: 'Closed-loop organic circular agriculture', zh: '闭环有机循环农业' },
+          source: 'docs/products/01. Nam moi den.md',
+        },
+        {
+          label: { vi: 'Thương hiệu', en: 'Brand', zh: '品牌' },
+          value: { vi: 'Trang trại nông nghiệp Hiền Nương (Hiền Nương Farm)', en: 'Hiền Nương Agricultural Farm (Hiền Nương Farm)', zh: 'Hiền Nương 农业农场（Hiền Nương Farm）' },
+          source: 'docs/products/01. Nam moi den.md',
+        },
+        {
+          label: { vi: 'Xuất xứ', en: 'Country of origin', zh: '原产国' },
+          value: { vi: 'Việt Nam', en: 'Vietnam', zh: '越南' },
+          source: 'docs/products/01. Nam moi den.md',
         },
       ],
     },
+    composition: {
+      ingredients: {
+        text: { vi: '100% nấm mối đen tươi nuôi trồng hữu cơ.', en: '100% fresh, organically grown black termite mushrooms.', zh: '100% 有机种植的新鲜黑皮鸡枞菌。' },
+        source: 'docs/products/01. Nam moi den.md',
+      },
+      facts: [
+        {
+          label: { vi: 'Quy cách đóng gói', en: 'Packaging', zh: '包装' },
+          value: { vi: 'Nấm tươi được thu hoạch, tuyển chọn, đóng khay và hút chân không', en: 'Fresh mushrooms are harvested, selected, tray-packed and vacuum-sealed', zh: '鲜菌采收、精选后装盘并真空密封' },
+          source: 'docs/products/01. Nam moi den.md',
+        },
+      ],
+    },
+    usage: {
+      preparation: [
+        {
+          text: { vi: 'Xào cùng rau củ hoặc xào tiêu.', en: 'Stir-fry with vegetables or pepper.', zh: '可与蔬菜一起炒，或用胡椒炒制。' },
+          source: 'docs/products/01. Nam moi den.md',
+        },
+        {
+          text: { vi: 'Kho tiêu hoặc chế biến món kho chay.', en: 'Braise with pepper or use in vegetarian braised dishes.', zh: '可用胡椒焖煮或制作素食焖菜。' },
+          source: 'docs/products/01. Nam moi den.md',
+        },
+        {
+          text: { vi: 'Dùng để nấu lẩu, canh hoặc cháo.', en: 'Use in hotpots, soups or congee.', zh: '可用于火锅、汤品或粥。' },
+          source: 'docs/products/01. Nam moi den.md',
+        },
+        {
+          text: { vi: 'Làm topping cho pizza nấm.', en: 'Use as a topping for mushroom pizza.', zh: '可作为菌菇披萨配料。' },
+          source: 'docs/products/01. Nam moi den.md',
+        },
+      ],
+      storage: [
+        {
+          text: { vi: 'Bảo quản khay nấm hút chân không trong ngăn mát tủ lạnh ở 3–5°C.', en: 'Store the vacuum-sealed mushroom tray in the refrigerator at 3–5°C.', zh: '将真空密封的菌菇盘存放于冰箱冷藏室，温度为 3–5°C。' },
+          source: 'docs/products/01. Nam moi den.md',
+        },
+        {
+          text: { vi: 'Nên chế biến trong vòng 5–7 ngày kể từ ngày đóng gói để thưởng thức hương vị ngon nhất.', en: 'For the best flavour, cook within 5–7 days of the packing date.', zh: '为享受最佳风味，建议在包装日期起 5–7 天内烹饪。' },
+          source: 'docs/products/01. Nam moi den.md',
+        },
+      ],
+    },
+    reviews: [
+      {
+        quote: { vi: 'Mình mua nấm đóng khay hút chân không của Farm về để tủ lạnh cả tuần lấy ra xào vẫn giòn sần sật. Nấm sạch, ngọt nước, ăn lẩu hay kho tiêu đều tốn cơm.', en: 'I buy the Farm’s vacuum-packed mushroom trays and keep them in the fridge for a week. They are still wonderfully crisp when I stir-fry them. The mushrooms are clean and sweet, and taste great in hotpot or braised with pepper.', zh: '我买了农场的真空包装菌菇盘，放在冰箱一周后拿出来炒，还是非常爽脆。菌菇干净、鲜甜，吃火锅或用胡椒焖煮都特别下饭。' },
+        author: 'Chị Trâm (TP. HCM)',
+        source: 'docs/products/01. Nam moi den.md',
+      },
+      {
+        quote: { vi: 'Thấy Farm trồng hữu cơ khép kín 100% bằng rơm rạ tự nhiên nên rất yên tâm mua cho gia đình. Các bé nhà mình bình thường lười ăn rau nhưng mẹ làm pizza nấm mối đen thì lại ăn rất nhiệt tình.', en: 'Seeing that the Farm grows them in a fully closed-loop organic system using natural straw makes me feel very comfortable buying them for my family. My children usually avoid vegetables, but they eagerly eat the black termite mushroom pizza their mother makes.', zh: '看到农场用天然稻草进行完全闭环的有机种植，我很放心买给家人吃。家里的孩子平时不爱吃蔬菜，但妈妈做黑皮鸡枞菌披萨时，他们吃得很起劲。' },
+        author: 'Anh Phát (Cần Thơ)',
+        source: 'docs/products/01. Nam moi den.md',
+      },
+    ],
     records: [
       {
         title: { vi: 'Báo cáo thử nghiệm mẫu nấm mối', en: 'Test report: termite mushroom sample', zh: '鸡枞菌样品检测报告' },
@@ -488,15 +548,72 @@ const raw: RawProduct[] = [
     intro: {
       paragraphs: [
         {
-          text: {
-            vi: 'Những sợi đông trùng hạ thảo được nuôi cấy và thu hái tại trang trại.',
-            en: 'Cordyceps strands cultivated and harvested on the farm.',
-            zh: '在农场培育和采收的蛹虫草。',
-          },
-          source: `${PRODUCT_NOTES}:56 (en :99, zh :121)`,
+          text: { vi: 'Đông trùng hạ thảo tươi Nương Farm được nuôi trồng theo mô hình hữu cơ tuần hoàn khép kín tại vùng Bảy Núi, An Giang. Nấm được thu hoạch và đóng gói trực tiếp tại trang trại, không qua xử lý nhiệt hay sấy khô.', en: 'Nương Farm fresh cordyceps is cultivated using a closed-loop organic circular farming model in Bảy Núi, An Giang. The mushrooms are harvested and packed directly on the farm without heat treatment or drying.', zh: 'Nương Farm 鲜蛹虫草在安江省七山地区以闭环有机循环农业模式培育，在农场直接采收和包装，不经过热处理或干燥。' },
+          source: 'docs/products/03. Dong trung ha thao.md',
+        },
+        {
+          text: { vi: 'Sợi nấm tươi mọng nước, có màu vàng cam, vị ngọt thanh và hương thơm nấm đặc trưng, dễ kết hợp vào bữa ăn hằng ngày.', en: 'The fresh strands are juicy, with an orange-yellow colour, a mild sweetness and a distinctive mushroom aroma, and are easy to add to everyday meals.', zh: '新鲜虫草饱满多汁，呈橙黄色，带有清甜味和独特菌菇香气，易于搭配日常菜肴。' },
+          source: 'docs/products/03. Dong trung ha thao.md',
         },
       ],
-      facts: [MAIN_LINE, GROWING_REGION],
+      facts: [
+        {
+          label: { vi: 'Vùng nuôi trồng', en: 'Growing region', zh: '种植地区' },
+          value: { vi: 'Bảy Núi, An Giang', en: 'Bảy Núi, An Giang', zh: '安江省七山' },
+          source: 'docs/products/03. Dong trung ha thao.md',
+        },
+        {
+          label: { vi: 'Mô hình', en: 'Model', zh: '模式' },
+          value: { vi: 'Nông nghiệp hữu cơ tuần hoàn khép kín', en: 'Closed-loop organic circular agriculture', zh: '闭环有机循环农业' },
+          source: 'docs/products/03. Dong trung ha thao.md',
+        },
+        {
+          label: { vi: 'Thương hiệu', en: 'Brand', zh: '品牌' },
+          value: { vi: 'Nương Farm (Hiền Nương Farm)', en: 'Nương Farm (Hiền Nương Farm)', zh: 'Nương Farm（Hiền Nương Farm）' },
+          source: 'docs/products/03. Dong trung ha thao.md',
+        },
+        {
+          label: { vi: 'Xuất xứ', en: 'Country of origin', zh: '原产国' },
+          value: { vi: 'Việt Nam', en: 'Vietnam', zh: '越南' },
+          source: 'docs/products/03. Dong trung ha thao.md',
+        },
+      ],
+    },
+    composition: {
+      ingredients: {
+        text: { vi: '100% đông trùng hạ thảo tươi hữu cơ. Không chất bảo quản.', en: '100% fresh organic cordyceps. No preservatives.', zh: '100% 新鲜有机蛹虫草。不含防腐剂。' },
+        source: 'docs/products/03. Dong trung ha thao.md',
+      },
+    },
+    usage: {
+      preparation: [
+        {
+          text: { vi: 'Pha trà: Hãm một ít sợi nấm tươi với nước nóng khoảng 80°C trong 10–15 phút. Có thể ăn cả sợi nấm sau khi uống trà.', en: 'Tea: Steep a small amount of fresh strands in hot water at about 80°C for 10–15 minutes. The strands can be eaten after drinking the tea.', zh: '泡茶：取少量新鲜虫草，用约 80°C 的热水浸泡 10–15 分钟。饮茶后可食用虫草。' },
+          source: 'docs/products/03. Dong trung ha thao.md',
+        },
+        {
+          text: { vi: 'Dùng để chưng cùng tổ yến, hầm gà, chim bồ câu, nấu canh hoặc cháo.', en: 'Steam with edible bird’s nest, stew with chicken or pigeon, or add to soups or congee.', zh: '可与燕窝同炖，搭配鸡肉、鸽肉炖煮，或加入汤品和粥。' },
+          source: 'docs/products/03. Dong trung ha thao.md',
+        },
+        {
+          text: { vi: 'Cho nấm tươi vào khi món ăn sắp hoàn thành, đun thêm khoảng 3–5 phút để nấm không bị nhừ.', en: 'Add the fresh mushrooms near the end of cooking, then cook for about 3–5 minutes to avoid over-softening them.', zh: '在菜肴快完成时加入鲜虫草，再煮约 3–5 分钟，避免煮得过软。' },
+          source: 'docs/products/03. Dong trung ha thao.md',
+        },
+        {
+          text: { vi: 'Có thể ngâm trực tiếp với mật ong nguyên chất hoặc rượu nếp.', en: 'The fresh mushrooms can be steeped directly in pure honey or glutinous rice wine.', zh: '鲜虫草可直接浸泡于纯蜂蜜或糯米酒中。' },
+          source: 'docs/products/03. Dong trung ha thao.md',
+        },
+      ],
+      storage: [
+        {
+          text: { vi: 'Đậy kín nắp hộp và bảo quản trong ngăn mát tủ lạnh ở 3–5°C.', en: 'Close the container tightly and store in the refrigerator at 3–5°C.', zh: '盖紧容器盖，存放于冰箱冷藏室，温度为 3–5°C。' },
+          source: 'docs/products/03. Dong trung ha thao.md',
+        },
+        {
+          text: { vi: 'Hạn sử dụng: 10–15 ngày kể từ ngày thu hoạch. Khuyên dùng trong tuần đầu tiên để thưởng thức chất lượng tốt nhất.', en: 'Shelf life: 10–15 days from harvest. Use within the first week for the best quality.', zh: '保质期：自采收日期起 10–15 天。建议在第一周内食用，以享受最佳品质。' },
+          source: 'docs/products/03. Dong trung ha thao.md',
+        },
+      ],
     },
     records: [
       {
@@ -535,16 +652,101 @@ const raw: RawProduct[] = [
     intro: {
       paragraphs: [
         {
-          text: {
-            vi: 'Chùm nấm bào ngư mọc từ bịch phôi xếp trên kệ trong nhà trồng.',
-            en: 'A cluster of oyster mushrooms growing from a spawn bag on a shelf in the grow house.',
-            zh: '一簇平菇从种植棚架子上的菌袋中长出。',
-          },
-          source: `${PRODUCT_NOTES}:67 (en :104, zh :126)`,
+          text: { vi: 'Nấm bào ngư, còn gọi là nấm dai, là một trong những dòng nấm chủ lực tại Hiền Nương Farm, được nuôi trồng tại vùng Bảy Núi, An Giang theo mô hình nông nghiệp hữu cơ tuần hoàn.', en: 'Oyster mushroom, also known locally as “nấm dai”, is one of Hiền Nương Farm’s main mushroom lines, grown in Bảy Núi, An Giang using an organic circular farming model.', zh: '平菇在当地也称为“nấm dai”，是 Hiền Nương Farm 的主要菌菇产品之一，在安江省七山地区采用有机循环农业模式种植。' },
+          source: 'docs/products/04. Nam bao ngu.md',
+        },
+        {
+          text: { vi: 'Nấm được nuôi trồng trong nhà lưới khép kín với nhiệt độ và độ ẩm được kiểm soát. Tai nấm to, dày, có màu sắc tự nhiên, độ dai giòn và vị ngọt thanh đặc trưng.', en: 'The mushrooms are grown in enclosed net houses with controlled temperature and humidity. They have large, thick caps, natural colour, a firm, crisp texture and a distinctive mild sweetness.', zh: '菌菇在温湿度受控的封闭网棚中种植。菌盖大而厚，色泽自然，口感韧脆，带有独特清甜味。' },
+          source: 'docs/products/04. Nam bao ngu.md',
         },
       ],
-      facts: [MAIN_LINE, GROWING_REGION],
+      facts: [
+        {
+          label: { vi: 'Vùng nuôi trồng', en: 'Growing region', zh: '种植地区' },
+          value: { vi: 'Bảy Núi, An Giang', en: 'Bảy Núi, An Giang', zh: '安江省七山' },
+          source: 'docs/products/04. Nam bao ngu.md',
+        },
+        {
+          label: { vi: 'Thương hiệu', en: 'Brand', zh: '品牌' },
+          value: { vi: 'Hiền Nương Farm (Hợp tác xã Tà Đảnh)', en: 'Hiền Nương Farm (Tà Đảnh Cooperative)', zh: 'Hiền Nương Farm（Tà Đảnh 合作社）' },
+          source: 'docs/products/04. Nam bao ngu.md',
+        },
+        {
+          label: { vi: 'Mô hình canh tác', en: 'Farming model', zh: '种植模式' },
+          value: { vi: 'Nông nghiệp hữu cơ tuần hoàn', en: 'Organic circular agriculture', zh: '有机循环农业' },
+          source: 'docs/products/04. Nam bao ngu.md',
+        },
+        {
+          label: { vi: 'Xuất xứ', en: 'Country of origin', zh: '原产国' },
+          value: { vi: 'Việt Nam', en: 'Vietnam', zh: '越南' },
+          source: 'docs/products/04. Nam bao ngu.md',
+        },
+      ],
     },
+    composition: {
+      ingredients: {
+        text: { vi: '100% nấm bào ngư tươi.', en: '100% fresh oyster mushrooms.', zh: '100% 新鲜平菇。' },
+        source: 'docs/products/04. Nam bao ngu.md',
+      },
+      facts: [
+        {
+          label: { vi: 'Khối lượng tịnh', en: 'Net weight', zh: '净含量' },
+          value: { vi: '250 g / 500 g / 1 kg', en: '250 g / 500 g / 1 kg', zh: '250 克 / 500 克 / 1 千克' },
+          source: 'docs/products/04. Nam bao ngu.md',
+        },
+        {
+          label: { vi: 'Quy cách đóng gói', en: 'Packaging', zh: '包装' },
+          value: { vi: 'Khay hoặc túi đục lỗ thoáng khí', en: 'Tray or perforated, breathable bag', zh: '托盘或透气打孔袋' },
+          source: 'docs/products/04. Nam bao ngu.md',
+        },
+      ],
+    },
+    usage: {
+      preparation: [
+        {
+          text: { vi: 'Cắt bỏ phần chân nấm già dính phôi nếu có. Ngâm trong nước muối pha loãng khoảng 3–5 phút, rửa lại bằng nước sạch và vắt nhẹ cho ráo nước. Tước dọc theo thân hoặc để nguyên tai nấm tùy món ăn.', en: 'Trim any tough stem ends with attached substrate. Soak in lightly salted water for about 3–5 minutes, rinse with clean water and gently squeeze out excess water. Tear lengthwise or leave the caps whole to suit the dish.', zh: '如有带基质的老菌根，请先切除。放入淡盐水浸泡约 3–5 分钟，再用清水洗净，轻轻挤去多余水分。可沿菌柄撕开，或根据菜肴保留完整菌盖。' },
+          source: 'docs/products/04. Nam bao ngu.md',
+        },
+        {
+          text: { vi: 'Xào sả ớt, xào tỏi hoặc xào cùng thịt bò.', en: 'Stir-fry with lemongrass and chilli, garlic or beef.', zh: '可用香茅辣椒、蒜或牛肉炒制。' },
+          source: 'docs/products/04. Nam bao ngu.md',
+        },
+        {
+          text: { vi: 'Nấu canh thịt bằm hoặc dùng trong lẩu chua cay.', en: 'Add to minced-meat soup or a spicy, sour hotpot.', zh: '可加入肉末汤或酸辣火锅。' },
+          source: 'docs/products/04. Nam bao ngu.md',
+        },
+        {
+          text: { vi: 'Tẩm bột chiên giòn để làm món ăn vặt.', en: 'Coat in batter and deep-fry until crisp for a snack.', zh: '可裹糊炸至酥脆，作为小食。' },
+          source: 'docs/products/04. Nam bao ngu.md',
+        },
+        {
+          text: { vi: 'Xé sợi làm chà bông nấm để dùng cùng cơm nóng hoặc cháo trắng.', en: 'Shred to make mushroom floss to serve with hot rice or plain congee.', zh: '可撕成丝制作菌菇松，搭配热米饭或白粥。' },
+          source: 'docs/products/04. Nam bao ngu.md',
+        },
+      ],
+      storage: [
+        {
+          text: { vi: 'Giữ trong bao bì ban đầu hoặc bọc lót bằng giấy báo và bảo quản trong ngăn mát tủ lạnh ở 3–5°C. Tránh để nấm dính nước hoặc bị vật nặng đè dập khi chưa sử dụng.', en: 'Keep in the original packaging or wrap with newspaper and refrigerate at 3–5°C. Keep the mushrooms dry and avoid crushing them under heavy items before use.', zh: '保留原包装或用报纸包衬，存放于冰箱冷藏室，温度为 3–5°C。使用前避免沾水或被重物压坏。' },
+          source: 'docs/products/04. Nam bao ngu.md',
+        },
+        {
+          text: { vi: 'Sử dụng tốt nhất trong vòng 5–7 ngày kể từ ngày thu hoạch.', en: 'Best used within 5–7 days of harvest.', zh: '建议在采收日期起 5–7 天内食用，以享受最佳品质。' },
+          source: 'docs/products/04. Nam bao ngu.md',
+        },
+      ],
+    },
+    reviews: [
+      {
+        quote: { vi: 'Nấm bào ngư của Farm tai to, dày thịt, đem xào sả ớt ăn dai dai giòn giòn y như thịt gà vậy, cả nhà ai cũng khen.', en: 'The Farm’s oyster mushrooms have large, thick caps. Stir-fried with lemongrass and chilli, they are firm and crisp, just like chicken. Everyone in my family praises them.', zh: '农场的平菇菌盖大、菌肉厚，用香茅辣椒炒后韧脆得像鸡肉一样，全家都说好吃。' },
+        author: 'Chị Thảo (An Giang)',
+        source: 'docs/products/04. Nam bao ngu.md',
+      },
+      {
+        quote: { vi: 'Mua nấm tươi về nấu lẩu ngọt nước lắm. Hàng chuẩn hữu cơ tuần hoàn nên mình ăn rất yên tâm, không sợ ngâm tẩm hóa chất hay thuốc bảo vệ thực vật.', en: 'Fresh mushrooms make the hotpot broth wonderfully sweet. Knowing they come from organic circular farming makes me feel reassured, without worrying about chemical soaking or pesticides.', zh: '买鲜菌煮火锅，汤特别鲜甜。知道是有机循环种植，我吃得很放心，不担心化学浸泡或农药。' },
+        author: 'Anh Hùng (TP. HCM)',
+        source: 'docs/products/04. Nam bao ngu.md',
+      },
+    ],
   },
   {
     slug: 'nam-moi-den-say-thang-hoa',
