@@ -89,9 +89,8 @@ export const draftPages: DraftPage[] = [
  */
 export const navDropdowns: Record<string, { label: Record<Locale, string>; href: string }[]> = {
   '/#ve-hien-nuong': [
-    { label: { vi: 'Câu chuyện Hiền Nương', en: 'The Hiền Nương story', zh: 'Hiền Nương 的故事' }, href: '/ve-chung-toi/' },
-    { label: { vi: 'Người sáng lập', en: 'The founders', zh: '创始人' }, href: '/ve-chung-toi/#cau-chuyen' },
-    { label: { vi: 'Vùng Bảy Núi', en: 'The Bảy Núi region', zh: '七山地区' }, href: '/ve-chung-toi/#bay-nui' },
+    { label: { vi: 'Câu chuyện Hiền Nương', en: 'The Hiền Nương story', zh: 'Hiền Nương 的故事' }, href: '/ve-chung-toi/#cau-chuyen' },
+    { label: { vi: 'Video giới thiệu', en: 'Introduction video', zh: '介绍视频' }, href: '/ve-chung-toi/#video-gioi-thieu' },
   ],
   '/#tuan-hoan': [
     { label: { vi: 'Tổng quan mô hình', en: 'Model overview', zh: '模式概览' }, href: '/nong-nghiep-tuan-hoan/' },

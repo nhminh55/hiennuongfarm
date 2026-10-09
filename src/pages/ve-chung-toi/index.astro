@@ -34,6 +34,9 @@ const chapters = chapterMedia.map((media, i) => ({ ...media, ...t.chapters[i] })
 const phrases = (title: string) => title.split(/(?<=[,，])\s*/);
 
 const num = (i: number) => String(i + 1).padStart(2, '0');
+
+// The film's name without its closing full stop, for its button and player.
+const filmName = t.film.title.replace(/[.。]$/, '');
 ---
 <BaseLayout title={t.pageTitle} description={t.description}>
   <div class="about-page">
@@ -151,6 +154,44 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
           </article>
         ))}
 
+      </div>
+    </section>
+
+    <!-- Intro film (header dropdown: Video giới thiệu). The player loads
+         only when the reader presses play; nothing plays on its own. -->
+    <section class="section film" aria-labelledby="film-title">
+      <div class="container">
+        <div class="film__head" data-reveal>
+          <Eyebrow>{t.film.eyebrow}</Eyebrow>
+          <h2 class="film__title" id="film-title">{t.film.title}</h2>
+        </div>
+
+        <!-- The anchor sits outside the reveal, whose slide would move the
+             landing point. -->
+        <div class="film__anchor" id="video-gioi-thieu">
+          <div class="film__media" data-reveal style="--reveal-delay: 120ms" data-film>
+            <button
+              class="film__poster"
+              type="button"
+              aria-label={`${t.film.watch}: ${filmName} (02:23)`}
+              data-player-title={`Hiền Nương Farm — ${filmName}`}
+              data-film-play
+            >
+              <img
+                src="/images/farm/bay-nui-canh-dong.webp"
+                width="1672"
+                height="941"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="film__play" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 4v16l13-8z" /></svg>
+              </span>
+              <span class="film__meta" aria-hidden="true">{t.film.watch} · 02:23</span>
+            </button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -337,7 +378,14 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
     // on load or from a link on this page (the header dropdown).
     const hashIndex = () => chapters.findIndex((chapter) => `#${chapter.id}` === window.location.hash);
     const target = hashIndex();
+    // A link to a section after the story (#video-gioi-thieu) lands before
+    // the stage has its height; bring it back once the height is set.
+    const after = target < 0 && window.location.hash
+      ? document.getElementById(decodeURIComponent(window.location.hash.slice(1)))
+      : null;
+    const toAfter = () => after?.scrollIntoView({ behavior: 'instant', block: 'start' });
     if (target >= 0) goTo(target, false);
+    toAfter();
     window.addEventListener('hashchange', () => {
       const index = hashIndex();
       if (index >= 0) goTo(index, false);
@@ -347,8 +395,24 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
     document.fonts?.ready.then(() => {
       layout();
       if (target >= 0 && staged) goTo(target, false);
+      toAfter();
     });
   }
+
+  // Film: the player replaces the poster only when asked to play.
+  const film = document.querySelector<HTMLElement>('[data-film]');
+  const filmPlay = film?.querySelector<HTMLButtonElement>('[data-film-play]');
+  filmPlay?.addEventListener('click', () => {
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube-nocookie.com/embed/V-jPu_G8fe8?autoplay=1&playsinline=1&rel=0';
+    iframe.title = filmPlay.dataset.playerTitle ?? '';
+    iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    iframe.allowFullscreen = true;
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    iframe.className = 'film__player';
+    film!.replaceChildren(iframe);
+    iframe.focus({ preventScroll: true });
+  }, { once: true });
 </script>
 
 <style>
@@ -934,6 +998,92 @@ const num = (i: number) => String(i + 1).padStart(2, '0');
     .story.is-staged .chapter__content > :nth-child(4) { --i: 3; }
     .story.is-staged .chapter__content > :nth-child(5) { --i: 4; }
     .story.is-staged .chapter__content > :nth-child(6) { --i: 5; }
+  }
+
+  /* Film (as on /nong-nghiep-tuan-hoan/) ----------------------------------- */
+
+  .film { border-top: 1px solid var(--color-line); }
+
+  .film__title {
+    margin-top: var(--space-l);
+    max-width: 22ch;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.875rem, 1.5rem + 1.6vw, 2.75rem);
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    color: var(--color-deep-green);
+  }
+
+  /* The dropdown link lands on the video, just under the header. */
+  .film__anchor {
+    margin-top: var(--space-xl);
+    scroll-margin-top: calc(var(--header-h) + var(--space-m));
+  }
+
+  .film__media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: var(--color-deep-green);
+  }
+
+  .film__poster {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: var(--color-cream);
+  }
+  .film__poster img { width: 100%; height: 100%; object-fit: cover; }
+  .film__poster:focus-visible { outline: 2px solid var(--color-forest); outline-offset: 4px; }
+
+  .film__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    place-items: center;
+    width: clamp(3.5rem, 5vw, 4.5rem);
+    aspect-ratio: 1;
+    border: 1px solid var(--color-cream);
+    border-radius: 50%;
+    background: rgba(16, 43, 33, 0.6);
+    transition: background 200ms var(--ease);
+  }
+  .film__play svg { margin-left: 3px; }
+  .film__poster:hover .film__play,
+  .film__poster:focus-visible .film__play { background: var(--color-deep-green); }
+
+  .film__meta {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0.625rem 1rem;
+    background: var(--color-paper);
+    color: var(--color-text);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  .film__media :global(.film__player) {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  @media (max-width: 767px) {
+    .film__media { margin-inline: calc(-1 * var(--gutter)); }
+    /* Edge to edge: the focus ring sits inside the picture. */
+    .film__poster:focus-visible { outline-color: var(--color-cream); outline-offset: -6px; }
   }
 
   /* Closing ---------------------------------------------------------------- */

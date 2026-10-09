@@ -57,6 +57,8 @@ export interface AboutCopy {
   sourceLabel: string;
   newTab: string;
   chapters: ChapterCopy[];
+  /** Intro film block (#video-gioi-thieu); the title is the homepage brand film line. */
+  film: { eyebrow: string; title: string; watch: string };
   closing: { eyebrow: string; title: string; body: string[]; button: string };
 }
 
@@ -170,6 +172,7 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
         alt: 'Những người làm nấm, phần lớn là phụ nữ, ngồi quanh đống giá thể trong xưởng và đóng giá thể vào bịch',
       },
     ],
+    film: { eyebrow: 'Video giới thiệu', title: 'Một vòng tuần hoàn, bắt đầu từ Bảy Núi.', watch: 'Xem phim' },
     closing: {
       eyebrow: 'Liên hệ',
       title: 'Kết nối cùng Hiền Nương',
@@ -276,6 +279,7 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
         alt: 'Mushroom workers, most of them women, sitting around a pile of substrate in the shed and packing it into bags',
       },
     ],
+    film: { eyebrow: 'Introduction video', title: 'A cycle that begins in Bảy Núi.', watch: 'Watch the film' },
     closing: {
       eyebrow: 'Contact',
       title: 'Connect with Hiền Nương',
@@ -382,6 +386,7 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
         alt: '一群种菇工人（大多为女性）围坐在菇房的基质堆旁，把基质装进菌袋',
       },
     ],
+    film: { eyebrow: '介绍视频', title: '一个循环，从七山开始。', watch: '观看影片' },
     closing: {
       eyebrow: '联系我们',
       title: '与 Hiền Nương 联系',
