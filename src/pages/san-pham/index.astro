@@ -1,370 +1,101 @@
 ---
+/**
+ * Sản phẩm — the showroom of the 12 products (src/data/showroom.ts).
+ * One page; a product is selected by its slug in the URL hash
+ * (/san-pham/#snack-nam-bao-ngu), so every product has a shareable link.
+ */
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageIntro from '../../components/page/PageIntro.astro';
-import CtaBand from '../../components/page/CtaBand.astro';
-import Photo from '../../components/Photo.astro';
+import Breadcrumb from '../../components/page/Breadcrumb.astro';
 import Eyebrow from '../../components/Eyebrow.astro';
-import Arrow from '../../components/Arrow.astro';
-import { localizedProducts } from '../../data/products';
+import Showroom from '../../components/showroom/Showroom.astro';
+import ShowroomDetails from '../../components/showroom/ShowroomDetails.astro';
+import { showroomProducts } from '../../data/showroom';
 import { getLocale, localizePath } from '../../i18n';
 
 const lang = getLocale(Astro.url);
-const products = localizedProducts(lang);
-const total = String(products.length).padStart(2, '0');
-const num = (i: number) => String(i + 1).padStart(2, '0');
+const products = showroomProducts(lang);
 
-// The first line is the lead spread (5:4); the others are portraits.
-const ratio = (i: number) => (i === 0 ? '5 / 4' : '4 / 5');
-
-// Copy follows CONTENT_EVIDENCE_BANK.md §2–3 and §8 (safe wording).
+// The lead is the approved homepage catalogue introduction (src/components/home/Products.astro).
 const t = {
   vi: {
-    principles: [
-      {
-        title: 'Nguyên liệu từ địa phương',
-        text: 'Rơm và các phụ phẩm nông nghiệp tại địa phương được tận dụng để tạo giá thể trồng nấm.',
-      },
-      {
-        title: 'Tái sử dụng sau thu hoạch',
-        text: 'Sau mỗi vòng trồng nấm, giá thể tiếp tục được tận dụng trong các công đoạn nông nghiệp khác, như nuôi trùn quế và tạo phân hữu cơ.',
-      },
-      {
-        title: 'Kiểm nghiệm theo mẫu',
-        text: 'Các mẫu sản phẩm được gửi kiểm nghiệm theo từng nhóm chỉ tiêu phù hợp.',
-        linkLabel: 'Kết quả mẫu nấm mối',
-      },
-    ],
     pageTitle: 'Sản phẩm',
-    description: 'Bốn dòng nấm chính của Hiền Nương Farm: nấm mối đen, nấm linh chi, đông trùng hạ thảo và nấm bào ngư, nuôi trồng tại vùng Bảy Núi, An Giang.',
-    eyebrow: 'Sản vật từ trang trại',
-    title: 'Bốn dòng nấm từ vùng Bảy Núi',
     home: 'Trang chủ',
-    lead: 'Nấm mối đen, nấm linh chi, đông trùng hạ thảo và nấm bào ngư — bốn dòng nấm chính được nuôi trồng tại trang trại.',
-    body: 'Trang trại phát triển mô hình trồng nấm gắn với nguồn nguyên liệu nông nghiệp tại địa phương — từ nấm tươi đến các sản phẩm chế biến sâu.',
-    indexLabel: 'Các dòng nấm',
-    linesLabel: 'Bốn dòng nấm chính',
-    of: 'trên',
-    details: 'Xem chi tiết sản phẩm',
-    tbd: 'Trang giới thiệu chi tiết đang được chuẩn bị.',
-    approachEyebrow: 'Cách trang trại làm nấm',
-    approachTitle: 'Từ phụ phẩm nông nghiệp đến những mùa nấm.',
-    ctaTitle: 'Trao đổi về sản phẩm và hợp tác.',
-    ctaBody: 'Hiền Nương chào đón các đối tác quan tâm đến phân phối, thu mua và cùng phát triển sản phẩm từ những dòng nấm của trang trại.',
+    eyebrow: 'Sản vật từ trang trại',
+    lead: 'Bốn dòng nấm chính được nuôi trồng tại trang trại — nấm mối đen, nấm linh chi, đông trùng hạ thảo và nấm bào ngư — cùng tám sản phẩm chế biến từ chúng: nấm sấy thăng hoa, snack nấm, trà hòa tan, bào tử linh chi và đông trùng hạ thảo ngâm mật ong.',
+    description: 'Mười hai sản phẩm của Hiền Nương Farm: bốn dòng nấm chính nuôi trồng tại vùng Bảy Núi, An Giang, cùng các sản phẩm chế biến từ chúng.',
   },
   en: {
-    principles: [
-      {
-        title: 'Local materials',
-        text: 'Rice straw and other local agricultural by-products are used to make the substrate for growing mushrooms.',
-      },
-      {
-        title: 'Reused after harvest',
-        text: 'After each growing cycle, the substrate goes on to be used in other farm work, such as raising earthworms and making organic fertiliser.',
-      },
-      {
-        title: 'Tested by sample',
-        text: 'Product samples are sent for testing against the relevant groups of parameters.',
-        linkLabel: 'Black termite mushroom sample results',
-      },
-    ],
     pageTitle: 'Products',
-    description: 'The four main mushroom lines of Hiền Nương Farm: black termite mushroom, lingzhi, cordyceps and oyster mushroom, grown in the Bảy Núi region of An Giang, Vietnam.',
-    eyebrow: 'Produce from the Farm',
-    title: 'Four mushroom lines from the Bảy Núi region',
     home: 'Home',
-    lead: 'Black termite mushroom, lingzhi, cordyceps and oyster mushroom — the four main mushroom lines grown on the farm.',
-    body: 'The farm has developed a way of growing mushrooms tied to local agricultural materials — from fresh mushrooms to further-processed products.',
-    indexLabel: 'Mushroom lines',
-    linesLabel: 'Four main mushroom lines',
-    of: 'of',
-    details: 'View product details',
-    tbd: 'A detailed product page is being prepared.',
-    approachEyebrow: 'How the farm grows mushrooms',
-    approachTitle: 'From agricultural by-products to seasons of mushrooms.',
-    ctaTitle: 'Talk with us about products and partnership.',
-    ctaBody: 'Hiền Nương welcomes partners interested in distribution, purchasing and developing products together from the farm’s mushroom lines.',
+    eyebrow: 'Produce from the Farm',
+    lead: 'Four main mushroom lines are grown on the farm — black termite mushroom, lingzhi, cordyceps and oyster mushroom — alongside eight products made from them: freeze-dried mushrooms, mushroom snacks, instant teas, lingzhi spores and cordyceps in honey.',
+    description: 'The twelve products of Hiền Nương Farm: four main mushroom lines grown in the Bảy Núi region of An Giang, Vietnam, and the products made from them.',
   },
   zh: {
-    principles: [
-      {
-        title: '就地取材',
-        text: '利用当地的稻草和其他农业副产品制作种菇基质。',
-      },
-      {
-        title: '采收后再利用',
-        text: '每一季种菇结束后，基质继续用于其他农业环节，如养殖蚯蚓和制作有机肥。',
-      },
-      {
-        title: '按样品送检',
-        text: '产品样品按相应的检测项目类别送检。',
-        linkLabel: '黑皮鸡枞菌样品检测结果',
-      },
-    ],
     pageTitle: '产品',
-    description: 'Hiền Nương Farm 的四类主要菌菇：黑皮鸡枞菌、灵芝、蛹虫草和平菇，种植于越南安江省七山地区。',
-    eyebrow: '农场物产',
-    title: '来自七山地区的四类菌菇',
     home: '首页',
-    lead: '黑皮鸡枞菌、灵芝、蛹虫草和平菇——农场种植的四类主要菌菇。',
-    body: '农场发展了与当地农业原料相结合的种菇模式——从鲜菇到深加工产品。',
-    indexLabel: '菌菇品类',
-    linesLabel: '四类主要菌菇',
-    of: '，共',
-    details: '查看产品详情',
-    tbd: '详细介绍页面正在准备中。',
-    approachEyebrow: '农场如何种菇',
-    approachTitle: '从农业副产品到一季季菌菇。',
-    ctaTitle: '洽谈产品与合作。',
-    ctaBody: 'Hiền Nương 欢迎有意于分销、采购以及共同开发农场菌菇产品的合作伙伴。',
+    eyebrow: '农场物产',
+    lead: '农场主要种植四类菌菇——黑皮鸡枞菌、灵芝、蛹虫草和平菇，并以此制成八款产品：冻干菌菇、菌菇零食、速溶茶、灵芝孢子和蜂蜜浸蛹虫草。',
+    description: 'Hiền Nương Farm 的十二款产品：种植于越南安江省七山地区的四类主要菌菇，以及由它们制成的产品。',
   },
 }[lang];
-const principles = t.principles.map((item) => ({
-  title: item.title,
-  text: item.text,
-  link: 'linkLabel' in item && item.linkLabel
-    ? { href: localizePath('/san-pham/nam-moi-den/#kiem-nghiem', lang), label: item.linkLabel }
-    : undefined,
-}));
 ---
-<BaseLayout
-  title={t.pageTitle}
-  description={t.description}
->
-  <PageIntro
-    eyebrow={t.eyebrow}
-    title={t.title}
-    crumbs={[{ label: t.home, href: localizePath('/', lang) }, { label: t.pageTitle }]}
-  >
-    <p class="lead">{t.lead}</p>
-    <p class="body intro__body">{t.body}</p>
-
-    <nav slot="foot" aria-label={t.indexLabel}>
-      <ol class="index">
-        {products.map((p, i) => (
-          <li>
-            <a class="index__link" href={`#${p.slug}`}>
-              <span class="index__num">{num(i)}</span>
-              <span>{p.name}</span>
-            </a>
-          </li>
-        ))}
-      </ol>
-    </nav>
-  </PageIntro>
-
-  <section class="lines" aria-label={t.linesLabel}>
-    <div class="container">
-      {products.map((p, i) => (
-        <article class:list={['line', `line--${i + 1}`]} id={p.slug} aria-labelledby={`${p.slug}-name`}>
-          <Photo
-            class="line__photo"
-            src={p.image.src}
-            width={p.image.width}
-            height={p.image.height}
-            ratio={ratio(i)}
-            alt={p.image.alt}
-            loading={i === 0 ? 'eager' : 'lazy'}
-          />
-          <div class="line__text" data-reveal>
-            <p class="line__num">{num(i)} <span aria-hidden="true">/</span><span class="sr-only">{t.of}</span> {total}</p>
-            <h2 class="line__name" id={`${p.slug}-name`}>{p.name}</h2>
-            <p class="body line__note">{p.note}</p>
-            {p.detail ? (
-              <a class="link-arrow line__link" href={p.detail}>
-                {t.details} <Arrow />
-              </a>
-            ) : (
-              <p class="tbd line__tbd">{t.tbd}</p>
-            )}
-          </div>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="section approach" aria-labelledby="approach-title">
-    <div class="container grid approach__grid">
-      <div class="approach__head" data-reveal>
-        <Eyebrow>{t.approachEyebrow}</Eyebrow>
-        <h2 class="h2 approach__title" id="approach-title">{t.approachTitle}</h2>
+<BaseLayout title={t.pageTitle} description={t.description}>
+  <header class="intro">
+    <div class="container intro__grid">
+      <Breadcrumb class="intro__crumbs" items={[{ label: t.home, href: localizePath('/', lang) }, { label: t.pageTitle }]} />
+      <div class="intro__head">
+        <Eyebrow>{t.eyebrow}</Eyebrow>
+        <h1 class="intro__title" id="page-title">{t.pageTitle}</h1>
       </div>
-
-      <ol class="approach__list">
-        {principles.map((item, i) => (
-          <li class="principle" data-reveal style={`--reveal-delay: ${i * 100}ms`}>
-            <span class="principle__num">{num(i)}</span>
-            <h3 class="h3 principle__title">{item.title}</h3>
-            <p class="body principle__text">{item.text}</p>
-            {item.link && (
-              <a class="link-arrow principle__link" href={item.link.href}>
-                {item.link.label} <Arrow />
-              </a>
-            )}
-          </li>
-        ))}
-      </ol>
+      <p class="intro__lead">{t.lead}</p>
     </div>
-  </section>
+  </header>
 
-  <CtaBand title={t.ctaTitle}>{t.ctaBody}</CtaBand>
+  <Showroom products={products}>
+    <ShowroomDetails products={products} />
+  </Showroom>
 </BaseLayout>
 
 <style>
-  /* Intro --------------------------------------------------------------- */
+  .intro {
+    padding-top: clamp(1.25rem, 0.75rem + 1.5vw, 2.25rem);
+    padding-bottom: clamp(1rem, 0.75rem + 1vw, 1.75rem);
+  }
 
-  .intro__body { margin-top: var(--space-m); }
-
-  .index {
+  .intro__grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-2xs) var(--col-gap);
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--space-s);
   }
 
-  .index__link {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 0.75rem;
-    min-height: 2.75rem;
-    padding-block: 0.625rem;
-    font-size: var(--fs-small);
-    transition: color 300ms var(--ease);
-  }
-  .index__link:hover { color: var(--color-earth); }
+  .intro__head { margin-top: var(--space-2xs); }
 
-  .index__num {
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    color: var(--color-earth);
-    font-variant-numeric: tabular-nums;
-  }
-
-  @media (min-width: 768px) {
-    .index { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  }
-
-  /* Product lines ------------------------------------------------------- */
-
-  .lines { padding-block: var(--space-xl) var(--section-y); }
-
-  .line {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: var(--col-gap);
-    row-gap: var(--space-m);
-  }
-  .line + .line { margin-top: var(--space-3xl); }
-
-  .line > :global(.line__photo),
-  .line__text { grid-column: 1 / -1; }
-
-  /* Phones: portraits step in from alternate sides. */
-  .line--2 > :global(.line__photo),
-  .line--4 > :global(.line__photo) { grid-column: 3 / -1; }
-  .line--3 > :global(.line__photo) { grid-column: 1 / span 10; }
-
-  .line__num {
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    color: var(--color-earth);
-    font-variant-numeric: tabular-nums;
-  }
-
-  .line__name {
-    margin-top: 0.75rem;
+  .intro__title {
+    margin-top: var(--space-s);
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(1.875rem, 1.3rem + 2.2vw, 3.5rem);
-    line-height: 1.12;
+    font-size: clamp(2.25rem, 1.75rem + 1.8vw, 3.25rem);
+    line-height: var(--lh-display);
     letter-spacing: -0.015em;
-    text-wrap: balance;
   }
 
-  .line__note { margin-top: var(--space-s); max-width: 26rem; }
-  .line__link { margin-top: var(--space-l); }
-  .line__tbd { margin-top: var(--space-m); }
-
-  /* Tablet: image and text side by side, alternating. */
-  @media (min-width: 768px) {
-    .line { align-items: end; }
-
-    .line > :global(.line__photo) { grid-row: 1; }
-    .line__text { grid-row: 1; padding-bottom: var(--space-s); }
-
-    .line--1 > :global(.line__photo) { grid-column: 1 / span 7; }
-    .line--1 .line__text { grid-column: 8 / span 5; }
-
-    .line--2 > :global(.line__photo) { grid-column: 7 / span 6; }
-    .line--2 .line__text { grid-column: 1 / span 5; }
-
-    .line--3 > :global(.line__photo) { grid-column: 1 / span 6; }
-    .line--3 .line__text { grid-column: 8 / span 5; }
-
-    .line--4 > :global(.line__photo) { grid-column: 7 / span 6; }
-    .line--4 .line__text { grid-column: 1 / span 5; }
+  .intro__lead {
+    max-width: 40rem;
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+    color: var(--color-text-muted);
+    text-wrap: pretty;
   }
 
-  /* Desktop: a sequence of spreads on shifting column lines. The lead
-     photograph bleeds off the left edge; the others sit on the grid at
-     different widths so no two lines read as the same card. */
-  @media (min-width: 1024px) {
-    .line--1 > :global(.line__photo) {
-      grid-column: 1 / span 7;
-      margin-left: calc(-1 * max(var(--gutter), (100vw - var(--container)) / 2));
-    }
-    .line--1 .line__text { grid-column: 9 / span 4; }
-
-    .line--2 > :global(.line__photo) { grid-column: 8 / span 4; }
-    .line--2 .line__text { grid-column: 2 / span 5; align-self: center; }
-
-    .line--3 > :global(.line__photo) { grid-column: 2 / span 4; }
-    .line--3 .line__text { grid-column: 7 / span 5; }
-
-    .line--4 > :global(.line__photo) { grid-column: 7 / span 5; }
-    .line--4 .line__text { grid-column: 1 / span 5; align-self: start; padding-top: var(--space-2xl); }
-  }
-
-  /* Approach ------------------------------------------------------------ */
-
-  .approach {
-    background: var(--color-paper);
-    border-top: 1px solid var(--color-line);
-  }
-
-  .approach__grid { row-gap: var(--space-xl); }
-
-  .approach__head,
-  .approach__list { grid-column: 1 / -1; }
-
-  .approach__title { margin-top: var(--space-l); max-width: 17ch; }
-
-  .principle {
-    padding-block: var(--space-m) var(--space-l);
-    border-top: 1px solid var(--color-line);
-  }
-
-  .principle__num {
-    display: block;
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    color: var(--color-earth);
-    font-variant-numeric: tabular-nums;
-  }
-
-  .principle__title { margin-top: var(--space-s); }
-  .principle__text { margin-top: var(--space-s); max-width: 30rem; }
-  .principle__link { margin-top: var(--space-m); }
-
-  @media (min-width: 768px) {
-    .approach__list {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+  @media (min-width: 1280px) {
+    .intro__grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
       column-gap: var(--col-gap);
+      align-items: end;
     }
-    .principle { padding-right: var(--space-s); }
-  }
-
-  @media (min-width: 1024px) {
-    .approach__head { grid-column: 1 / span 7; }
-    .approach__list { margin-top: var(--space-xl); }
+    .intro__grid > :global(.intro__crumbs) { grid-column: 1 / -1; }
+    .intro__head { margin-top: var(--space-xs); }
+    .intro__lead { padding-bottom: 0.5rem; }
   }
 </style>

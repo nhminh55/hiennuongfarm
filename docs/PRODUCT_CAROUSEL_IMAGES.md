@@ -3,8 +3,8 @@
 The first four products retain the approved farm photographs. Products 05–12
 use newly generated, unbranded illustrations, visibly labelled “Ảnh minh họa”.
 They do not represent verified packaging or product claims. Product names were
-provided by the owner. These entries link to the existing contact section until
-individual product pages are available.
+provided by the owner. Since 2026-10-09 every homepage card links to its selection
+in the /san-pham/ showroom (/san-pham/#{slug}).
 
 Generated with the built-in imagegen tool; originals remain in its generated
 images directory. Website assets are 720 × 1080 WebP, quality 88, stored under

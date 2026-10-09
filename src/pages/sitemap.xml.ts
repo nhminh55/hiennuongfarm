@@ -10,8 +10,8 @@ import type { APIRoute } from 'astro';
 import { isTranslated, languages, locales, localizePath } from '../i18n';
 
 const pages: { path: string; lastmod: string }[] = [
-  { path: '/', lastmod: '2026-10-08' },
-  { path: '/san-pham/', lastmod: '2026-10-07' },
+  { path: '/', lastmod: '2026-10-09' },
+  { path: '/san-pham/', lastmod: '2026-10-09' },
   { path: '/san-pham/nam-moi-den/', lastmod: '2026-10-07' },
   { path: '/ve-chung-toi/', lastmod: '2026-10-08' },
   { path: '/nong-nghiep-tuan-hoan/', lastmod: '2026-10-08' },

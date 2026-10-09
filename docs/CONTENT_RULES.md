@@ -7,7 +7,7 @@ Read only for content creation, editing, validation, or restructuring.
 Never invent company facts, dates, founders, certifications, statistics, partners, testimonials, contact details, product claims, or health claims.
 
 Primary researched source:
-`design-reference/CONTENT_EVIDENCE_BANK.md`
+`docs/HIEN_NUONG_PRESS_EVIDENCE_BANK.md`
 
 Unsupported information stays `VERIFY`.
 

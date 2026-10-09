@@ -21,7 +21,7 @@ Owner-verified:
 - When naming both: **chị Châu Thị Nương và anh Trần Phương Hiền**.
 
 Content sources:
-`design-reference/CONTENT_EVIDENCE_BANK.md` and `docs/CONTENT_RULES.md`.
+`docs/HIEN_NUONG_PRESS_EVIDENCE_BANK.md` and `docs/CONTENT_RULES.md`.
 
 Owner-verified facts override mere omissions in the Evidence Bank.
 

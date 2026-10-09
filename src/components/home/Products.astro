@@ -2,7 +2,8 @@
 import Photo from '../Photo.astro';
 import Eyebrow from '../Eyebrow.astro';
 import Arrow from '../Arrow.astro';
-import { localizedProducts, localizedProductHref } from '../../data/products';
+import { localizedProducts } from '../../data/products';
+import { showroomHref } from '../../data/showroom';
 import { getLocale, localizePath } from '../../i18n';
 
 const lang = getLocale(Astro.url);
@@ -144,10 +145,10 @@ const descriptions = t.descriptions;
 const items = [
   ...localizedProducts(lang).map((p) => {
     const name = p.slug === 'nam-linh-chi' ? t.linhChi : p.name;
-    return { ...p, name, href: localizedProductHref(p, lang), photo: { ...studio(p.slug), alt: name } };
+    return { ...p, name, href: showroomHref(p.slug, lang), photo: { ...studio(p.slug), alt: name } };
   }),
   ...additional.map(([slug, name]) => ({
-    slug, name, note: name, detail: undefined, href: '#hop-tac',
+    slug, name, note: name, detail: undefined, href: showroomHref(slug, lang),
     photo: { ...studio(slug), alt: name },
   })),
 ];
