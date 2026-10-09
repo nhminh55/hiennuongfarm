@@ -103,14 +103,14 @@ Do not rename “Về Hiền Nương” to “Về chúng tôi” or shorten “
 
 Purpose: brand origin, founders, and the region.
 
-Published in Vietnamese, English and Chinese (/ve-chung-toi/, /en/ve-chung-toi/, /zh/ve-chung-toi/; copy: src/data/about.ts, Vietnamese from docs/HIEN_NUONG_ABOUT_VI.md). Six chapters, one sticky stage on wide screens; a chapter's text turns in pages there (whole paragraphs, “← Trang trước · 01 / 02 · Đọc tiếp →”), and is read straight through when stacked:
+Published in Vietnamese, English and Chinese (/ve-chung-toi/, /en/ve-chung-toi/, /zh/ve-chung-toi/). Vietnamese chapter copy: the six Markdown files in src/content/about/ (one per chapter, read in filename order by src/data/about.ts and rendered whole); the opening line, Định hướng phát triển and the closing come from docs/HIEN_NUONG_ABOUT_VI.md; English and Chinese are in src/data/about.ts. One continuous page in normal document scroll (no pinned stage, no page turning), with a compact chapter bar held under the header that marks the chapter being read:
 
-- 01 Câu chuyện: #cau-chuyen — founders, 2020, ông Tư Phú (Báo An Giang), learning to make spawn.
+- 01 Câu chuyện: #cau-chuyen — founders, 2020, ông Tư Phú right after the founders, learning to make spawn; one pulled quotation.
 - 02 Bảy Núi: #bay-nui — the region: mountains, rice fields, palmyra palms, Khmer culture; the seven peaks in a disclosure.
 - 03 Hai cơ sở: #co-so — Thới Sơn (first, larger) and Tà Đảnh (later, nearer the founders' home), more than 4 ha.
 - 04 Năng lượng: #nang-luong — solar electricity for mushroom growing (system owned by chị Nương).
 - 05 Tuần hoàn: #tuan-hoan — by-products, substrate, earthworm feed, worm castings for plants; links to Circular Agriculture.
-- 06 Con người: #con-nguoi — local workers, visits and sharing.
+- 06 Con người: #con-nguoi — local workers, chị Quách Thị Hồng Liên's story (Báo Phụ Nữ; photographs are not captioned as her), sharing know-how, visits.
 - Định hướng phát triển: #dinh-huong — after the chapters.
 - Video giới thiệu: #video-gioi-thieu.
 - Closing: contact link (/#hop-tac until /hop-tac/ is published).

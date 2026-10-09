@@ -1,25 +1,29 @@
 ---
 /**
- * /ve-chung-toi/ (and /en/, /zh/): the Hiền Nương story in six chapters.
+ * /ve-chung-toi/ (and /en/, /zh/): the Hiền Nương story, one continuous
+ * page in six chapters.
  *
- * Copy: src/data/about.ts (Vietnamese from docs/HIEN_NUONG_ABOUT_VI.md).
- * Layout: design-reference/"Hiền Nương Farm chapter showcase.png".
+ * Copy: the six Markdown files in src/content/about/ (Vietnamese), read by
+ * src/data/about.ts; every paragraph is rendered once, in order.
+ * Layout: design-reference/About/"Hiền Nương Farm_ From Soil to Community.png"
+ * (editorial direction only; its text and photographs are placeholders).
  *
- * The chapters are ordinary stacked sections. On wide screens the script
- * below pins them into one stage (photograph left, text right) and lets
- * the scroll position choose the chapter, but only after measuring that
- * every chapter's text fits the screen; otherwise, and without script,
- * the stacked sections stay.
+ * The page scrolls as a normal document. A chapter bar under the header
+ * links to the chapters (#cau-chuyen … #con-nguoi) with ordinary anchors,
+ * so direct links and Back/Forward work as usual; the script only marks
+ * the chapter being read.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/page/Breadcrumb.astro';
 import Eyebrow from '../../components/Eyebrow.astro';
 import Arrow from '../../components/Arrow.astro';
-import { aboutCopy, chapterMedia } from '../../data/about';
+import AboutPhoto from '../../components/about/AboutPhoto.astro';
+import { aboutCopy, photos, storyChapters } from '../../data/about';
 import { getLocale, localizePath, pageHref } from '../../i18n';
 
 const lang = getLocale(Astro.url);
 const t = aboutCopy[lang];
+const m = t.media;
 
 // The circular agriculture page is Vietnamese only for now; other
 // languages go to the homepage section. Contact: the cooperation page's
@@ -27,157 +31,203 @@ const t = aboutCopy[lang];
 const circularHref = pageHref('/nong-nghiep-tuan-hoan/', lang, '/#tuan-hoan');
 const contactHref = pageHref('/hop-tac/#lien-he', lang, '/#hop-tac');
 
-const chapters = chapterMedia.map((media, i) => ({ ...media, ...t.chapters[i] }));
+const [story, region, sites, energy, cycle, people] = storyChapters(lang);
+
+// 01: the founders and ông Tư Phú open beside the photograph; the rest of
+// the chapter continues below. The quotation is lifted beside its paragraph.
+const storyOpen = story.paragraphs.slice(0, 2);
+const storyRest = story.paragraphs.slice(2);
+const quoteAt = t.quote ? storyRest.findIndex((p) => p.includes(t.quote!)) : -1;
+if (t.quote && quoteAt < 0) throw new Error('about: the 01 quotation is not in the chapter text');
+
+// 03: the two sites open beside their photographs.
+const sitesOpen = sites.paragraphs.slice(0, 2);
+const sitesRest = sites.paragraphs.slice(2);
+
+// 06 (Vietnamese): chị Quách Thị Hồng Liên's story, paragraphs 3–4 of the
+// file, is set apart from the paragraphs around it.
+const feature = lang === 'vi' ? [2, 4] : null;
+if (feature && !people.paragraphs[feature[0]].includes('Quách Thị Hồng Liên')) {
+  throw new Error('about: 06 no longer has chị Liên’s story at paragraph 3; update `feature`');
+}
+const peopleBefore = feature ? people.paragraphs.slice(0, feature[0]) : people.paragraphs;
+const peopleFeature = feature ? people.paragraphs.slice(feature[0], feature[1]) : [];
+const peopleAfter = feature ? people.paragraphs.slice(feature[1]) : [];
 
 // Title phrases, split after a comma ("," or "，") so that a line never
 // breaks inside a phrase ("thốt nốt").
 const phrases = (title: string) => title.split(/(?<=[,，])\s*/);
 
-const num = (i: number) => String(i + 1).padStart(2, '0');
-
 // The film's name without its closing full stop, for its button and player.
 const filmName = t.film.title.replace(/[.。]$/, '');
+
+const half = '(min-width: 1200px) 45vw, 100vw';
 ---
 <BaseLayout title={t.pageTitle} description={t.description}>
   <div class="about-page">
-    <header class="intro">
-      <div class="container intro__inner">
+    <header class="hero">
+      <div class="hero__text">
         <Breadcrumb items={[{ label: t.home, href: localizePath('/', lang) }, { label: t.pageTitle }]} />
-        <div class="intro__head">
+        <div class="hero__head">
           <Eyebrow>{t.eyebrow}</Eyebrow>
-          <h1 class="intro__title">{t.title}</h1>
-        </div>
-        <div class="intro__aside">
-          <p class="intro__lead">{t.lead}</p>
-          <p class="intro__cue" aria-hidden="true">{t.cue}</p>
+          <h1 class="hero__title">{t.title}</h1>
+          <p class="hero__lead">{t.lead}</p>
         </div>
       </div>
+      <AboutPhoto class="hero__photo" photo={photos.hero} alt={t.heroAlt} ratio="auto" sizes="(min-width: 768px) 60vw, 100vw" eager />
     </header>
 
-    <section class="story" aria-label={t.storyLabel} data-story>
-      <div class="story__stage" data-story-stage>
-        <nav class="story__nav" aria-label={t.navLabel}>
-          <ol class="story__nav-list">
-            {chapters.map((chapter, i) => (
-              <li>
-                <a class="story__nav-link" href={`#${chapter.id}`} data-chapter-link aria-current={i === 0 ? 'true' : undefined}>
-                  <span class="story__nav-num">{num(i)}</span>
-                  <span class="story__nav-label">{chapter.label}</span>
-                </a>
-              </li>
-            ))}
-          </ol>
-        </nav>
+    <div class="story">
+      <nav class="chapter-nav" aria-label={t.navLabel} data-chapter-nav>
+        <ol class="chapter-nav__list" data-chapter-list>
+          {[story, region, sites, energy, cycle, people].map((chapter, i) => (
+            <li>
+              <a class="chapter-nav__link" href={`#${chapter.id}`} data-chapter-link>
+                <span class="chapter-nav__num">{chapter.num}</span>
+                <span class="chapter-nav__label">{t.nav[i]}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
 
-        {chapters.map((chapter, i) => (
-          <article
-            class:list={['chapter', { 'is-active': i === 0 }]}
-            id={chapter.id}
-            aria-labelledby={`${chapter.id}-title`}
-            data-chapter
-          >
-            <figure class="chapter__media">
-              <div class="chapter__photo">
-                <img
-                  src={chapter.photo.src}
-                  width={chapter.photo.width}
-                  height={chapter.photo.height}
-                  srcset={`${chapter.photo.src.replace('.webp', '-800.webp')} 800w, ${chapter.photo.src} ${chapter.photo.width}w`}
-                  sizes="(min-width: 1024px) 58vw, (min-width: 768px) 50vw, 100vw"
-                  alt={chapter.alt}
-                  loading={i === 0 ? 'eager' : 'lazy'}
-                  decoding="async"
-                  style={chapter.photo.position ? `--pos: ${chapter.photo.position}` : undefined}
-                />
+      <!-- 01 · Câu chuyện: photograph beside the opening, narrative below. -->
+      <section class="chapter chapter--story" id={story.id} aria-labelledby={`${story.id}-title`} data-chapter>
+        <div class="container chapter__grid">
+          <AboutPhoto class="chapter__media" photo={photos.founders} alt={m.founders.alt} ratio="4 / 3" sizes={half} />
+          <div class="chapter__head">
+            <p class="chapter__kicker"><span class="chapter__num">{story.num}</span><span class="chapter__rule" aria-hidden="true"></span><span class="chapter__label">{story.label}</span></p>
+            <h2 class="chapter__title" id={`${story.id}-title`}>{story.title}</h2>
+            <div class="prose">{storyOpen.map((p) => <p>{p}</p>)}</div>
+          </div>
+          <div class="chapter__body prose">
+            {storyRest.map((p, i) => i === quoteAt ? (
+              <div class="quoted">
+                <blockquote class="pullquote" aria-hidden="true"><p>{t.quote}</p></blockquote>
+                <p>{p}</p>
               </div>
-              {chapter.caption && <figcaption class="chapter__caption">{chapter.caption}</figcaption>}
-            </figure>
+            ) : <p>{p}</p>)}
+          </div>
+        </div>
+      </section>
 
-            <div class="chapter__text" data-chapter-text>
-              <div class="chapter__content">
-                <p class="chapter__kicker">
-                  <span class="chapter__num">{num(i)}</span>
-                  <span class="chapter__rule" aria-hidden="true"></span>
-                  <span class="chapter__label">{chapter.label}</span>
-                </p>
-                <h2 class="chapter__title" id={`${chapter.id}-title`}>{phrases(chapter.title).map((phrase, j, all) => (
-                  <>{j > 0 && !all[j - 1].endsWith('，') && ' '}<span class="chapter__phrase">{phrase}</span></>
-                ))}</h2>
-
-                <!-- The approved page breaks (data-part). In the stage the
-                     script deals the blocks into pages that fit; stacked,
-                     everything follows in order. -->
-                <div class="chapter__pages" id={`${chapter.id}-trang`} data-pages>
-                {chapter.pages.map((page) => (
-                <div class="chapter__part" data-part>
-                  {page.body.map((p) => typeof p === 'string' ? (
-                    <div class="chapter__para" data-block><p>{p}</p></div>
-                  ) : (
-                    <div class="chapter__para" data-block data-keep><p>{p.text}</p></div>
-                  ))}
-
-                  {page.facts && (
-                    <dl class="chapter__facts" data-block>
-                      {page.facts.map((fact) => (
-                        <div class="fact">
-                          <dt class="fact__value">{fact.pre && <span class="fact__pre">{fact.pre} </span>}{fact.value}</dt>
-                          <dd class="fact__label">{fact.label}</dd>
-                        </div>
+      <!-- 02 · Bảy Núi: the landscape first, then the region and its peaks. -->
+      <section class="chapter chapter--region" id={region.id} aria-labelledby={`${region.id}-title`} data-chapter>
+        <AboutPhoto class="chapter__panorama" photo={photos.bayNui} alt={m.bayNui.alt} ratio="auto" sizes="100vw" />
+        <div class="container chapter__grid">
+          <div class="chapter__head">
+            <p class="chapter__kicker"><span class="chapter__num">{region.num}</span><span class="chapter__rule" aria-hidden="true"></span><span class="chapter__label">{region.label}</span></p>
+            <h2 class="chapter__title" id={`${region.id}-title`}>{phrases(region.title).map((phrase, j, all) => (
+              <>{j > 0 && !all[j - 1].endsWith('，') && ' '}<span class="chapter__phrase">{phrase}</span></>
+            ))}</h2>
+          </div>
+          <div class="chapter__body">
+            <div class="prose">{region.paragraphs.map((p) => <p>{p}</p>)}</div>
+            {region.more && (
+              <details class="more">
+                <summary class="more__summary">
+                  <svg class="more__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7.25" fill="none" stroke="currentColor" /><path d="M8 7.25v4.25M8 4.6v.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" /></svg>
+                  <span class="more__label">{region.more.summary}</span>
+                  <span class="more__sign" aria-hidden="true"></span>
+                </summary>
+                <div class="more__body">
+                  <p>{region.more.intro}</p>
+                  <table class="more__table">
+                    {region.more.head && (
+                      <thead><tr><th scope="col">{region.more.head[0]}</th><th scope="col">{region.more.head[1]}</th></tr></thead>
+                    )}
+                    <tbody>
+                      {region.more.rows.map(([name, alt]) => (
+                        <tr><th scope="row">{name}</th><td>{alt}</td></tr>
                       ))}
-                    </dl>
-                  )}
-
-                  {page.more && (
-                    <details class="more" data-block>
-                      <summary class="more__summary">
-                        <svg class="more__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7.25" fill="none" stroke="currentColor" /><path d="M8 7.25v4.25M8 4.6v.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" /></svg>
-                        <span class="more__label">{page.more.summary}</span>
-                        <span class="more__sign" aria-hidden="true"></span>
-                      </summary>
-                      <div class="more__body">
-                        <p>{page.more.intro}</p>
-                        <ul class="more__list">
-                          {page.more.items.map(([name, alt]) => (
-                            <li><span class="more__name">{name}</span> — {alt}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    </details>
-                  )}
-
-                  {page.steps && (
-                    <ol class="chapter__steps" data-block>
-                      {page.steps.map((step) => <li>{step}</li>)}
-                    </ol>
-                  )}
-
-                  {page.linkLabel && (
-                    <a class="link-arrow chapter__link" href={circularHref} data-block>{page.linkLabel} <Arrow /></a>
-                  )}
+                    </tbody>
+                  </table>
                 </div>
-                ))}
-                </div>
+              </details>
+            )}
+          </div>
+        </div>
+      </section>
 
-                <!-- Page turner: only in the stage, for a chapter dealt into
-                     more than one page (script). -->
-                <div class="pager" data-pager hidden>
-                  <button class="pager__btn pager__btn--prev" type="button" aria-controls={`${chapter.id}-trang`} data-pager-prev>
-                    <Arrow /> {t.pager.prev}
-                  </button>
-                  <p class="pager__status" aria-live="polite">
-                    <span class="sr-only">{t.pager.page} </span><span data-pager-status>01</span> / <span data-pager-total>01</span>
-                  </p>
-                  <button class="pager__btn" type="button" aria-controls={`${chapter.id}-trang`} data-pager-next>
-                    {t.pager.next} <Arrow />
-                  </button>
-                </div>
-              </div>
+      <!-- 03 · Hai cơ sở: text beside the two sites' photographs. -->
+      <section class="chapter chapter--sites" id={sites.id} aria-labelledby={`${sites.id}-title`} data-chapter>
+        <div class="container chapter__grid">
+          <div class="chapter__head">
+            <p class="chapter__kicker"><span class="chapter__num">{sites.num}</span><span class="chapter__rule" aria-hidden="true"></span><span class="chapter__label">{sites.label}</span></p>
+            <h2 class="chapter__title" id={`${sites.id}-title`}>{sites.title}</h2>
+            <div class="prose">{sitesOpen.map((p) => <p>{p}</p>)}</div>
+          </div>
+          <div class="chapter__media">
+            <div class="chapter__media-hold sites-photos">
+              <AboutPhoto photo={photos.thoiSon} alt={m.thoiSon.alt} caption={m.thoiSon.caption} ratio="4 / 5" sizes="(min-width: 1200px) 22vw, (min-width: 560px) 50vw, 100vw" />
+              <AboutPhoto photo={photos.taDanh} alt={m.taDanh.alt} caption={m.taDanh.caption} ratio="4 / 5" sizes="(min-width: 1200px) 22vw, (min-width: 560px) 50vw, 100vw" />
             </div>
-          </article>
-        ))}
+          </div>
+          <div class="chapter__body prose">{sitesRest.map((p) => <p>{p}</p>)}</div>
+        </div>
+      </section>
 
-      </div>
-    </section>
+      <!-- 04 · Năng lượng: the solar roofs, to the edge of the screen. -->
+      <section class="chapter chapter--energy" id={energy.id} aria-labelledby={`${energy.id}-title`} data-chapter>
+        <div class="container chapter__grid">
+          <div class="chapter__media">
+            <div class="chapter__media-hold">
+              <AboutPhoto photo={photos.solar} alt={m.solar.alt} ratio="4 / 3" sizes={half} />
+            </div>
+          </div>
+          <div class="chapter__head">
+            <p class="chapter__kicker"><span class="chapter__num">{energy.num}</span><span class="chapter__rule" aria-hidden="true"></span><span class="chapter__label">{energy.label}</span></p>
+            <h2 class="chapter__title" id={`${energy.id}-title`}>{energy.title}</h2>
+            <div class="prose">{energy.paragraphs.map((p) => <p>{p}</p>)}</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05 · Tuần hoàn: narrative beside the substrate photographs. -->
+      <section class="chapter chapter--cycle" id={cycle.id} aria-labelledby={`${cycle.id}-title`} data-chapter>
+        <div class="container chapter__grid">
+          <div class="chapter__head">
+            <p class="chapter__kicker"><span class="chapter__num">{cycle.num}</span><span class="chapter__rule" aria-hidden="true"></span><span class="chapter__label">{cycle.label}</span></p>
+            <h2 class="chapter__title" id={`${cycle.id}-title`}>{phrases(cycle.title).map((phrase, j, all) => (
+              <>{j > 0 && !all[j - 1].endsWith('，') && ' '}<span class="chapter__phrase">{phrase}</span></>
+            ))}</h2>
+            <div class="prose">{cycle.paragraphs.map((p) => <p>{p}</p>)}</div>
+            <a class="link-arrow chapter__link" href={circularHref}>{t.circularLink} <Arrow /></a>
+          </div>
+          <div class="chapter__media">
+            <div class="chapter__media-hold cycle-photos">
+              <AboutPhoto photo={photos.substrate} alt={m.substrate.alt} caption={m.substrate.caption} ratio="3 / 2" sizes={half} />
+              <AboutPhoto class="cycle-photos__detail" photo={photos.bags} alt={m.bags.alt} caption={m.bags.caption} ratio="4 / 3" sizes="(min-width: 1200px) 25vw, 60vw" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 06 · Con người: the people at work, then their story. -->
+      <section class="chapter chapter--people" id={people.id} aria-labelledby={`${people.id}-title`} data-chapter>
+        <div class="container">
+          <div class="people-photos">
+            <AboutPhoto photo={photos.team} alt={m.team.alt} caption={m.team.caption} ratio="3 / 2" sizes="(min-width: 768px) 58vw, 100vw" />
+            <AboutPhoto photo={photos.harvest} alt={m.harvest.alt} caption={m.harvest.caption} ratio="auto" sizes="(min-width: 768px) 42vw, 100vw" />
+          </div>
+        </div>
+        <div class="container chapter__grid">
+          <div class="chapter__head">
+            <p class="chapter__kicker"><span class="chapter__num">{people.num}</span><span class="chapter__rule" aria-hidden="true"></span><span class="chapter__label">{people.label}</span></p>
+            <h2 class="chapter__title" id={`${people.id}-title`}>{phrases(people.title).map((phrase, j, all) => (
+              <>{j > 0 && !all[j - 1].endsWith('，') && ' '}<span class="chapter__phrase">{phrase}</span></>
+            ))}</h2>
+          </div>
+          <div class="chapter__body">
+            <div class="prose">{peopleBefore.map((p) => <p>{p}</p>)}</div>
+            {peopleFeature.length > 0 && (
+              <div class="prose chapter__feature">{peopleFeature.map((p) => <p>{p}</p>)}</div>
+            )}
+            {peopleAfter.length > 0 && <div class="prose">{peopleAfter.map((p) => <p>{p}</p>)}</div>}
+          </div>
+        </div>
+      </section>
+    </div>
 
     <section class="section outlook" id="dinh-huong" aria-labelledby="outlook-title">
       <div class="container outlook__grid">
@@ -243,317 +293,57 @@ const filmName = t.film.title.replace(/[.。]$/, '');
 
 <script>
   /**
-   * Chapter stage. Wide screens pin the chapters into one stage whose
-   * chapter follows the scroll position (no snapping, no autoplay); the
-   * chapter links scroll to the same positions, so both stay in step in
-   * either direction. The stage is used only when every chapter's text
-   * fits it; otherwise the stacked sections stay and the links mark the
-   * chapter being read.
+   * Chapter bar: marks the chapter being read (aria-current) as the page
+   * scrolls. Links are plain anchors, so the browser handles direct
+   * links, history and focus; nothing here moves the page.
    */
-  const story = document.querySelector<HTMLElement>('[data-story]');
-  const stage = story?.querySelector<HTMLElement>('[data-story-stage]');
+  const nav = document.querySelector<HTMLElement>('[data-chapter-nav]');
+  const list = nav?.querySelector<HTMLElement>('[data-chapter-list]');
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-chapter-link]')];
+  const chapters = [...document.querySelectorAll<HTMLElement>('[data-chapter]')];
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  if (story && stage) {
-    const chapters = [...story.querySelectorAll<HTMLElement>('[data-chapter]')];
-    const links = [...story.querySelectorAll<HTMLAnchorElement>('[data-chapter-link]')];
-    const wide = window.matchMedia('(min-width: 1024px)');
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-    // Scroll distance per chapter, as a share of the stage height.
-    const STEP = 0.85;
+  if (nav && list && chapters.length === links.length) {
+    let active = -2;
 
-    let staged = false;
-    let measured = false;
-    let active = 0;
-    let start = 0;
-    let step = 1;
-
-    const stickyTop = () => parseFloat(getComputedStyle(stage).top) || 0;
-
-    /*
-     * Pages. In the stage a chapter's blocks (whole paragraphs, figures,
-     * the disclosure…) are dealt into pages that fit beside the
-     * photograph: the approved breaks always start a new page, a further
-     * break comes only where the text would not fit, and a block marked
-     * data-keep stays with the one before. One page shows at a time; the
-     * pager turns pages within its chapter only. A chapter keeps its page
-     * while the reader is elsewhere; a fresh load starts on page one.
-     */
-    const pad2 = (n: number) => String(n).padStart(2, '0');
-    const books = chapters.map((chapter) => {
-      const parts = [...chapter.querySelectorAll<HTMLElement>('[data-part]')];
-      const pager = chapter.querySelector<HTMLElement>('[data-pager]')!;
-      return {
-        content: chapter.querySelector<HTMLElement>('.chapter__content')!,
-        sheet: chapter.querySelector<HTMLElement>('[data-pages]')!,
-        blocks: parts.flatMap((part, p) =>
-          [...part.querySelectorAll<HTMLElement>(':scope > [data-block]')].map((el) => ({
-            el,
-            part: p,
-            keep: el.hasAttribute('data-keep'),
-          })),
-        ),
-        pager,
-        prev: pager.querySelector<HTMLButtonElement>('[data-pager-prev]')!,
-        next: pager.querySelector<HTMLButtonElement>('[data-pager-next]')!,
-        status: pager.querySelector<HTMLElement>('[data-pager-status]')!,
-        total: pager.querySelector<HTMLElement>('[data-pager-total]')!,
-        pages: [] as number[][],
-        /** Pages with the disclosure closed, and with it open. */
-        closedPages: [] as number[][],
-        openPages: [] as number[][],
-        details: chapter.querySelector<HTMLDetailsElement>('details'),
-        current: 0,
-      };
-    });
-    type Book = (typeof books)[number];
-
-    const show = (book: Book, k: number, from?: HTMLButtonElement) => {
-      const count = book.pages.length;
-      book.current = Math.min(Math.max(0, k), Math.max(0, count - 1));
-      const on = new Set(staged && count > 1 ? book.pages[book.current] : book.blocks.map((_, j) => j));
-      book.blocks.forEach((block, j) => block.el.classList.toggle('is-off', !on.has(j)));
-      book.pager.hidden = !staged || count < 2;
-      book.prev.disabled = book.current === 0;
-      book.next.disabled = book.current >= count - 1;
-      book.status.textContent = pad2(book.current + 1);
-      book.total.textContent = pad2(Math.max(1, count));
-      // A button that has just been disabled would drop the keyboard
-      // focus; hand it to the other one.
-      if (from?.disabled) (from === book.next ? book.prev : book.next).focus({ preventScroll: true });
+    // On narrow screens the bar scrolls sideways: keep the marked link in it.
+    const reveal = (link: HTMLElement) => {
+      if (list.scrollWidth <= list.clientWidth) return;
+      const left = link.offsetLeft - (list.clientWidth - link.offsetWidth) / 2;
+      list.scrollTo({ left: Math.max(0, left), behavior: reduce.matches ? 'auto' : 'smooth' });
     };
 
-    books.forEach((book) => {
-      const turn = (by: number, from: HTMLButtonElement) => {
-        show(book, book.current + by, from);
-        if (!reduce.matches) {
-          book.sheet.classList.remove('is-turning');
-          void book.sheet.offsetWidth;
-          book.sheet.classList.add('is-turning');
-        }
-      };
-      book.prev.addEventListener('click', () => turn(-1, book.prev));
-      book.next.addEventListener('click', () => turn(1, book.next));
-      // The open list may need a page of its own; keep the reader on the
-      // page that holds it, open or closed.
-      book.details?.addEventListener('toggle', () => {
-        if (!staged) return;
-        book.pages = book.details!.open ? book.openPages : book.closedPages;
-        const j = book.blocks.findIndex((block) => block.el === book.details);
-        show(book, book.pages.findIndex((page) => page.includes(j)));
-      });
-    });
-
-    // Deals a chapter's blocks into pages no taller than `room` px with
-    // the disclosure closed and `roomOpen` px with it open, or null if a
-    // block (with any block kept to it) cannot fit a page on its own.
-    const deal = (book: Book, closed: number[], opened: number[], gap: number, room: number, roomOpen: number) => {
-      const sum = (page: number[], heights: number[]) => page.reduce((total, j, n) => total + heights[j] + (n ? gap : 0), 0);
-      const fit = (page: number[]) => sum(page, closed) <= room + 1 && sum(page, opened) <= roomOpen + 1;
-      const pages: number[][] = [];
-      let page: number[] = [];
-      let j = 0;
-      while (j < book.blocks.length) {
-        // A unit: this block and any following blocks kept to it.
-        const unit = [j];
-        while (book.blocks[unit[unit.length - 1] + 1]?.keep) unit.push(unit[unit.length - 1] + 1);
-        if (!fit(unit)) return null;
-        const newPart = page.length > 0 && book.blocks[j].part !== book.blocks[page[page.length - 1]].part;
-        if (page.length && (newPart || !fit([...page, ...unit]))) {
-          pages.push(page);
-          page = [];
-        }
-        page.push(...unit);
-        j = unit[unit.length - 1] + 1;
-      }
-      if (page.length) pages.push(page);
-      return pages;
-    };
-
-    const setActive = (index: number) => {
-      chapters.forEach((chapter, i) => {
-        if (i !== index && i === active) chapter.classList.add('is-leaving');
-        else if (i === index || index !== active) chapter.classList.remove('is-leaving');
-        chapter.classList.toggle('is-active', i === index);
-      });
-      links.forEach((link, i) => {
-        if (i === index) link.setAttribute('aria-current', 'true');
-        else link.removeAttribute('aria-current');
-      });
-      active = index;
-    };
-
-    // The chapter being read: in the stage, by scroll distance; stacked,
-    // the last chapter whose top has passed the upper third of the screen.
-    const currentIndex = () => {
-      if (staged) {
-        const i = Math.round((window.scrollY - start) / step);
-        return Math.min(chapters.length - 1, Math.max(0, i));
-      }
-      const line = window.innerHeight * 0.35;
-      let index = 0;
+    // The chapter whose top has passed a line a quarter of the way down
+    // the screen below the bar; none above the first chapter.
+    const update = () => {
+      const line = nav.getBoundingClientRect().bottom + (window.innerHeight - nav.getBoundingClientRect().bottom) * 0.25;
+      let index = -1;
       chapters.forEach((chapter, i) => {
         if (chapter.getBoundingClientRect().top <= line) index = i;
       });
-      return index;
-    };
-
-    const positionOf = (index: number) => {
-      if (staged) return start + index * step;
-      const chapter = chapters[index];
-      const margin = parseFloat(getComputedStyle(chapter).scrollMarginTop) || 0;
-      return chapter.getBoundingClientRect().top + window.scrollY - margin;
-    };
-
-    const goTo = (index: number, smooth: boolean) => {
-      window.scrollTo({
-        top: Math.ceil(positionOf(index)),
-        behavior: smooth && !reduce.matches ? 'smooth' : 'instant',
+      if (index === active) return;
+      active = index;
+      links.forEach((link, i) => {
+        if (i === index) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
       });
-    };
-
-    // Every chapter has to be dealt into pages that fit beside its
-    // photograph; with the disclosure open, a page may run below the
-    // photograph but must still fit the stage above the chapter list (it
-    // may take a page of its own). `split` allows breaks beyond the
-    // approved ones. Measured with the stage's styles applied; sets each
-    // chapter's pages.
-    const nav = story.querySelector<HTMLElement>('.story__nav');
-    const fits = (split: boolean) => {
-      const panel = chapters[0].querySelector<HTMLElement>('[data-chapter-text]')?.clientHeight ?? 0;
-      const style = getComputedStyle(stage);
-      // 16px: the open text's bottom padding above the chapter list.
-      const room = stage.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom) - (nav?.offsetHeight ?? 0) - 16;
-      const plans = books.map((book) => {
-        book.blocks.forEach((block) => block.el.classList.remove('is-off'));
-        book.pager.hidden = false;
-        const details = book.blocks.map((block) => block.el instanceof HTMLDetailsElement ? block.el : null);
-        const wasOpen = details.map((d) => d?.open);
-        details.forEach((d) => { if (d) d.open = false; });
-        const heights = book.blocks.map((block) => block.el.getBoundingClientRect().height);
-        details.forEach((d) => { if (d) d.open = true; });
-        const opened = book.blocks.map((block) => block.el.getBoundingClientRect().height);
-        details.forEach((d, j) => { if (d) d.open = !!wasOpen[j]; });
-        const gap = parseFloat(getComputedStyle(book.sheet).rowGap) || 0;
-        const head = book.sheet.getBoundingClientRect().top - book.content.getBoundingClientRect().top;
-        const turner = book.pager.getBoundingClientRect().height + gap;
-        const parts = book.blocks[book.blocks.length - 1].part + 1;
-        // One page without the pager if everything fits, else pages with it.
-        const dealt = (open: number[], openRoom: number) => {
-          const single = deal(book, heights, open, gap, panel - head, openRoom - head);
-          return single?.length === 1 ? single : deal(book, heights, open, gap, panel - head - turner, openRoom - head - turner);
-        };
-        const closedPages = dealt(heights, panel);
-        const openPages = dealt(opened, room);
-        if (!closedPages || !openPages || (!split && closedPages.length > parts)) return null;
-        return { closedPages, openPages };
-      });
-      const ok = plans.every(Boolean);
-      if (ok) books.forEach((book, i) => {
-        Object.assign(book, plans[i]);
-        book.pages = book.details?.open ? book.openPages : book.closedPages;
-      });
-      return ok;
-    };
-
-    const measure = () => {
-      if (!staged) {
-        story.style.height = '';
-        return;
-      }
-      step = Math.round(stage.offsetHeight * STEP);
-      // One stage height, one step per further chapter, and a short dwell
-      // on the last chapter before the stage scrolls away.
-      story.style.height = `${stage.offsetHeight + (chapters.length - 1) * step + Math.round(step * 0.35)}px`;
-      start = story.getBoundingClientRect().top + window.scrollY - stickyTop();
-    };
-
-    const layout = () => {
-      const reading = active;
-      const box = story.getBoundingClientRect();
-      const inView = box.top < window.innerHeight && box.bottom > 0;
-      const was = staged;
-      // Re-measuring resets the story's height, which can pull the scroll
-      // position back while the stage is pinned.
-      const pinned = was && window.scrollY >= start - 1 && box.bottom > window.innerHeight;
-      story.style.height = '';
-      story.classList.add('is-staged');
-      // The approved pages whole first, in the usual type step and then a
-      // tighter one; only then further breaks; else the stacked sections.
-      staged = false;
-      if (wide.matches) {
-        for (const [compact, split] of [[false, false], [true, false], [false, true], [true, true]]) {
-          story.classList.toggle('is-compact', compact);
-          if ((staged = fits(split))) break;
-        }
-      }
-      if (!staged) story.classList.remove('is-compact');
-      story.classList.toggle('is-staged', staged);
-      books.forEach((book) => show(book, book.current));
-      measure();
-      // Keep the reader on the same chapter when the layout changes.
-      if (measured && (pinned || (staged !== was && inView))) goTo(reading, false);
-      measured = true;
-      setActive(currentIndex());
+      if (index >= 0) reveal(links[index]);
     };
 
     let frame = 0;
-    const onScroll = () => {
+    const schedule = () => {
       if (frame) return;
       frame = requestAnimationFrame(() => {
         frame = 0;
-        setActive(currentIndex());
+        update();
       });
     };
 
-    links.forEach((link, i) => {
-      link.addEventListener('click', (event) => {
-        event.preventDefault();
-        goTo(i, true);
-        history.replaceState(null, '', `#${chapters[i].id}`);
-      });
-    });
-
-    // Tabbing into a chapter that is not on screen brings it in.
-    story.addEventListener('focusin', (event) => {
-      if (!staged) return;
-      const chapter = (event.target as HTMLElement).closest<HTMLElement>('[data-chapter]');
-      const index = chapter ? chapters.indexOf(chapter) : -1;
-      if (index >= 0 && index !== active) goTo(index, false);
-    });
-
-    let resizeTimer: number | undefined;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = window.setTimeout(layout, 150);
-    });
-    window.addEventListener('scroll', onScroll, { passive: true });
-
-    layout();
-    story.classList.add('is-ready');
-
-    // A link to a chapter (/ve-chung-toi/#bay-nui) opens on that chapter,
-    // on load or from a link on this page (the header dropdown).
-    const hashIndex = () => chapters.findIndex((chapter) => `#${chapter.id}` === window.location.hash);
-    const target = hashIndex();
-    // A link to a section after the story (#video-gioi-thieu) lands before
-    // the stage has its height; bring it back once the height is set.
-    const after = target < 0 && window.location.hash
-      ? document.getElementById(decodeURIComponent(window.location.hash.slice(1)))
-      : null;
-    const toAfter = () => after?.scrollIntoView({ behavior: 'instant', block: 'start' });
-    if (target >= 0) goTo(target, false);
-    toAfter();
-    window.addEventListener('hashchange', () => {
-      const index = hashIndex();
-      if (index >= 0) goTo(index, false);
-    });
-
-    // Text height depends on the web fonts.
-    document.fonts?.ready.then(() => {
-      layout();
-      if (target >= 0 && staged) goTo(target, false);
-      toAfter();
-    });
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    window.addEventListener('hashchange', schedule);
+    update();
+    nav.classList.add('is-ready');
   }
 
   // Film: the player replaces the poster only when asked to play.
@@ -576,27 +366,31 @@ const filmName = t.film.title.replace(/[.。]$/, '');
   .about-page {
     /* Homepage display serif (Lora), as on the homepage. */
     --font-display: var(--font-editorial);
+    /* Chapter bar height; chapters land just below it. */
+    --nav-h: 2.75rem;
+    /* Space between the text and photograph columns. */
+    --split-gap: clamp(3.5rem, 5vw, 5.5rem);
+  }
+  @media (min-width: 1024px) {
+    .about-page { --nav-h: 3.25rem; }
   }
 
-  /* Opening ---------------------------------------------------------------- */
+  /* Opening: compact landscape --------------------------------------------- */
 
-  .intro {
-    padding-top: clamp(1.25rem, 0.75rem + 2vw, 2.5rem);
-    padding-bottom: clamp(2rem, 1.25rem + 3vw, 3.5rem);
-  }
-
-  .intro__inner {
+  .hero {
     display: grid;
-    row-gap: var(--space-m);
+    border-bottom: 1px solid var(--color-line);
   }
 
-  /* The pinned stage centres itself, which already leaves space above. */
-  .intro:has(+ .story.is-staged) { padding-bottom: 0; }
+  .hero__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-l);
+    padding: clamp(1.25rem, 0.75rem + 2vw, 2.5rem) var(--gutter) var(--space-xl);
+  }
 
-  .intro__head { margin-top: clamp(1rem, 0.5rem + 2.5vw, 2.5rem); }
-
-  .intro__title {
-    margin-top: var(--space-m);
+  .hero__title {
+    margin-top: var(--space-s);
     font-family: var(--font-display);
     font-weight: 400;
     font-size: clamp(2.25rem, 1.6rem + 2.6vw, 3.75rem);
@@ -606,8 +400,9 @@ const filmName = t.film.title.replace(/[.。]$/, '');
     color: var(--color-deep-green);
   }
 
-  .intro__lead {
-    max-width: 30rem;
+  .hero__lead {
+    margin-top: var(--space-s);
+    max-width: 26rem;
     text-wrap: balance;
     font-family: var(--font-display);
     font-size: var(--type-lead);
@@ -615,193 +410,116 @@ const filmName = t.film.title.replace(/[.。]$/, '');
     color: var(--color-text-muted);
   }
 
-  .intro__cue {
-    display: flex;
-    align-items: center;
-    gap: 0.875rem;
-    margin-top: var(--space-m);
-    font-size: 0.6875rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--color-text-muted);
-  }
-  .intro__cue::before {
-    content: "";
-    width: 1px;
-    height: 1.25rem;
-    background: var(--color-earth);
-  }
+  .hero :global(.hero__photo .about-photo__frame) { aspect-ratio: 16 / 9; }
 
-  @media (min-width: 1024px) {
-    .intro__inner {
-      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-      column-gap: var(--col-gap);
-      align-items: end;
+  @media (min-width: 768px) {
+    /* Text on the left within the page margin; the photograph runs to
+       the right edge of the screen. */
+    .hero {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      min-height: clamp(20rem, 34vw, 30rem);
     }
-    .intro__inner > :global(.breadcrumb) { grid-column: 1 / -1; }
-    .intro__aside { justify-self: end; padding-bottom: 0.4rem; }
+    .hero__text {
+      justify-content: space-between;
+      padding-left: max(var(--gutter), calc((100% - var(--container)) / 2));
+      padding-right: var(--space-l);
+      padding-bottom: var(--space-l);
+    }
+    .hero :global(.hero__photo),
+    .hero :global(.hero__photo .about-photo__frame) { height: 100%; }
+    .hero :global(.hero__photo .about-photo__frame) { aspect-ratio: auto; }
   }
 
-  /* Chapters: stacked (phones, tablets, short screens, no script) ---------- */
+  /* Chapter bar --------------------------------------------------------- */
 
-  .story { --nav-h: 0px; }
-
-  .story__stage {
-    display: flex;
-    flex-direction: column;
-    padding-inline: var(--gutter);
-  }
-
-  .story__nav {
-    border-top: 1px solid var(--color-line);
+  .chapter-nav {
+    position: sticky;
+    top: var(--header-h);
+    z-index: 20;
+    background: var(--color-paper);
     border-bottom: 1px solid var(--color-line);
   }
 
-  .story__nav-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
-  }
-
-  .story__nav-link {
+  .chapter-nav__list {
     position: relative;
     display: flex;
-    align-items: baseline;
-    gap: 0.625rem;
-    min-height: 2.75rem;
-    padding-block: 0.75rem;
+    max-width: calc(var(--container) + 2 * var(--gutter));
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .chapter-nav__list::-webkit-scrollbar { display: none; }
+
+  .chapter-nav__list > li { flex: none; }
+
+  .chapter-nav__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: var(--nav-h);
+    padding-inline: 0.75rem;
+    white-space: nowrap;
     font-size: var(--type-small);
-    line-height: 1.4;
     color: var(--color-text-muted);
     transition: color 300ms var(--ease);
   }
-  .story__nav-link:hover { color: var(--color-text); }
+  .chapter-nav__list > li:first-child .chapter-nav__link { padding-left: 0; }
+  .chapter-nav__link:hover { color: var(--color-text); }
+  .chapter-nav__link:focus-visible { outline: 2px solid var(--color-forest); outline-offset: -2px; }
 
-  .story__nav-num {
+  .chapter-nav__num {
     font-family: var(--font-display);
-    font-size: 1rem;
-    color: var(--color-text);
     font-variant-numeric: tabular-nums;
+    color: var(--color-earth);
   }
 
-  /* Active chapter: an earth rule under the label. */
-  .story__nav-link::after {
+  /* The chapter being read: an earth rule along the bar's lower edge. */
+  .chapter-nav__link::after {
     content: "";
     position: absolute;
-    left: 0;
-    right: 0;
+    left: 0.75rem;
+    right: 0.75rem;
     bottom: -1px;
     height: 2px;
     background: var(--color-earth);
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 500ms var(--ease);
+    transition: transform 400ms var(--ease);
   }
-  .story.is-ready .story__nav-link[aria-current]::after { transform: none; }
-  .story.is-ready .story__nav-link[aria-current] { color: var(--color-text); }
-  /* Without script nothing tracks the reading position; on phones the
-     list is not held on screen, so it marks nothing either. */
-  .story:not(.is-ready) .story__nav-link::after { display: none; }
-  @media (max-width: 767px) {
-    .story__nav-link::after { display: none; }
+  .chapter-nav__list > li:first-child .chapter-nav__link::after { left: 0; }
+  .chapter-nav__link[aria-current] { color: var(--color-text); }
+  .chapter-nav__link[aria-current]::after { transform: none; }
+
+  @media (min-width: 1024px) {
+    /* Six equal places across the page. */
+    .chapter-nav__list { justify-content: space-between; }
+    .chapter-nav__link { padding-inline: 0.25rem; }
+    .chapter-nav__link::after { left: 0.25rem; right: 0.25rem; }
   }
 
-  .chapter {
-    padding-block: var(--space-2xl);
+  /* Chapters: shared ------------------------------------------------------ */
+
+  .story .chapter {
+    padding-block: clamp(3.5rem, 2rem + 5vw, 6.5rem);
     scroll-margin-top: calc(var(--header-h) + var(--nav-h));
   }
-  .chapter + .chapter { border-top: 1px solid var(--color-line); }
-
-  .chapter__media {
-    position: relative;
-    margin-inline: calc(-1 * var(--gutter));
+  /* A thin rule, the width of the text, between chapters that do not
+     open on a full-width photograph. */
+  .story .chapter:not(.chapter--story, .chapter--region)::before {
+    content: "";
+    display: block;
+    width: min(100% - 2 * var(--gutter), var(--container));
+    height: 1px;
+    margin: calc(-1 * clamp(3.5rem, 2rem + 5vw, 6.5rem)) auto clamp(3.5rem, 2rem + 5vw, 6.5rem);
+    background: var(--color-line);
   }
 
-  .chapter__photo {
-    aspect-ratio: 3 / 2;
-    overflow: hidden;
-    background: var(--color-cream);
-  }
-
-  .chapter__photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: var(--pos, 50% 50%);
-  }
-
-  .chapter__caption {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    padding: 0.625rem 1rem;
-    background: var(--color-paper);
-    font-size: 0.6875rem;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    line-height: 1.4;
-    color: var(--color-text);
-  }
-
-  .chapter__text { margin-top: var(--space-l); }
-
-  .chapter__content {
-    --gap: var(--space-m);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    max-width: 36rem;
-  }
-  .chapter__content > * + * { margin-top: var(--gap); }
-
-  /* The blocks of every page in one column; stacked, the pages simply
-     follow each other. */
-  .chapter__pages {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--gap);
-    width: 100%;
-  }
-  .chapter__part { display: contents; }
-
-  .chapter__para {
-    align-self: stretch;
-    font-size: var(--type-body);
-    line-height: 1.68;
-    color: var(--color-text-muted);
-    text-wrap: pretty;
-  }
-
-
-  /* "← Trang trước · 01 / 02 · Đọc tiếp →", only in the pinned stage. */
-  .pager { display: none; }
-
-  .pager__btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    min-height: 2.75rem;
-    font-size: var(--type-small);
-    font-weight: 500;
-    color: var(--color-text);
-    cursor: pointer;
-    transition: color 200ms var(--ease), opacity 200ms var(--ease);
-  }
-  .pager__btn :global(.arrow) { transition: transform 300ms var(--ease); }
-  .pager__btn--prev :global(.arrow) { rotate: 180deg; }
-  .pager__btn:hover:not(:disabled) { color: var(--color-deep-green); }
-  /* The previous arrow is turned, so the same nudge points it back. */
-  .pager__btn:hover:not(:disabled) :global(.arrow) { transform: translateX(4px); }
-  .pager__btn:disabled { opacity: 0.35; cursor: default; }
-  .pager__btn:focus-visible { outline: 2px solid var(--color-forest); outline-offset: 4px; }
-
-  .pager__status {
-    font-family: var(--font-display);
-    font-size: 0.9375rem;
-    color: var(--color-text-muted);
-    font-variant-numeric: tabular-nums;
+  .chapter__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--space-xl);
   }
 
   .chapter__kicker {
@@ -835,10 +553,12 @@ const filmName = t.film.title.replace(/[.。]$/, '');
   }
 
   .chapter__title {
+    margin-top: var(--space-m);
+    max-width: 20ch;
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(1.875rem, 1.5rem + 1.6vw, 2.75rem);
-    line-height: 1.14;
+    font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
+    line-height: 1.16;
     letter-spacing: -0.01em;
     text-wrap: balance;
     color: var(--color-deep-green);
@@ -847,82 +567,199 @@ const filmName = t.film.title.replace(/[.。]$/, '');
   /* Keep each phrase of a comma title on one line where it fits. */
   .chapter__phrase { display: inline-block; }
 
-  .chapter__facts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-s) var(--space-l);
-  }
+  .chapter__head > .prose { margin-top: var(--space-l); }
 
-  /* Large value with its label underneath, as in the reference. */
-  .fact {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  /* Long-form reading: one left-aligned column of about 55–75 characters. */
+  .prose {
+    max-width: 36rem;
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+    color: var(--color-text-muted);
+    text-wrap: pretty;
   }
+  .prose > * + *,
+  .prose + .prose { margin-top: 1.1em; }
 
-  .fact__value {
+  .chapter__body:not(.prose) > * + * { margin-top: var(--space-l); }
+
+  .chapter__link { margin-top: var(--space-l); }
+
+  /* Pulled quotation (01). On phones it follows its paragraph. */
+  .quoted {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .pullquote {
+    margin: var(--space-l) 0 var(--space-s);
+    padding-left: var(--space-m);
+    border-left: 1px solid var(--color-earth);
     font-family: var(--font-display);
-    font-size: clamp(3.5rem, 3rem + 2vw, 5rem);
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-    color: var(--color-earth);
-    white-space: nowrap;
-  }
-
-  .fact__pre {
-    margin-right: 0.15em;
-    font-size: 0.5em;
-    letter-spacing: 0.02em;
-  }
-
-  /* A thin rule keeps each value with its own label. */
-  .fact + .fact {
-    padding-left: var(--space-l);
-    border-left: 1px solid var(--color-line);
-  }
-
-  .fact__label {
-    max-width: 16rem;
+    font-style: italic;
+    font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);
+    line-height: 1.4;
+    color: var(--color-deep-green);
     text-wrap: balance;
-    font-size: var(--type-small);
-    line-height: 1.45;
-    color: var(--color-text);
+  }
+  .pullquote p::before { content: "“"; }
+  .pullquote p::after { content: "”"; }
+
+  /* A worker's own story (06), set apart by a rule. */
+  .chapter__feature {
+    padding-left: var(--space-m);
+    border-left: 1px solid var(--color-earth);
   }
 
-  /* By-product → substrate → harvest → worm feed → fertiliser → back to growing. */
-  .chapter__steps {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem 0;
-    padding-top: var(--space-s);
-    border-top: 1px solid var(--color-line);
-    font-size: var(--type-small);
-    line-height: 1.6;
-    color: var(--color-text);
-  }
-  .chapter__steps li:not(:last-child)::after {
-    content: "→" / "";
-    margin-inline: 0.625rem;
-    color: var(--color-earth);
+  /* Photographs on phones run to the screen edge. */
+  @media (max-width: 767px) {
+    .chapter__grid > :global(.chapter__media),
+    .chapter__grid > .chapter__media,
+    .people-photos { margin-inline: calc(-1 * var(--gutter)); }
+    .chapter :global(.about-photo__caption) { padding-inline: var(--gutter); }
   }
 
-  .chapter__link { text-transform: uppercase; }
+  /* 02: panorama */
+  .chapter--region { padding-top: 0; }
+  .chapter--region :global(.chapter__panorama) { margin-bottom: clamp(2.5rem, 1.5rem + 4vw, 5rem); }
+  .chapter--region :global(.chapter__panorama .about-photo__frame) {
+    aspect-ratio: 16 / 9;
+    max-height: 36rem;
+    width: 100%;
+  }
+  @media (min-width: 768px) {
+    .chapter--region :global(.chapter__panorama .about-photo__frame) { aspect-ratio: 21 / 8; }
+  }
+
+  /* 03: the two sites' photographs side by side where there is room. */
+  .sites-photos {
+    display: grid;
+    gap: var(--space-l) var(--space-m);
+  }
+  @media (max-width: 559px) {
+    .sites-photos :global(.about-photo__frame) { aspect-ratio: 3 / 2; }
+  }
+  @media (min-width: 560px) {
+    .sites-photos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  /* 05: a detail beside the caption of the main photograph. */
+  .cycle-photos {
+    display: grid;
+    gap: var(--space-m);
+  }
+  .cycle-photos :global(.cycle-photos__detail) {
+    width: 60%;
+    justify-self: end;
+  }
+  @media (max-width: 767px) {
+    .cycle-photos :global(.cycle-photos__detail) { width: 70%; margin-right: var(--gutter); }
+    .cycle-photos :global(.cycle-photos__detail .about-photo__caption) { padding-inline: 0; }
+  }
+
+  /* 06: two photographs of the work. */
+  .people-photos {
+    display: grid;
+    gap: var(--space-l) var(--space-m);
+    margin-bottom: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+  }
+  .people-photos :global(.about-photo:last-child .about-photo__frame) { aspect-ratio: 2 / 1; }
+  @media (min-width: 768px) {
+    .people-photos {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      align-items: end;
+    }
+    /* Same height as the 3:2 photograph beside it (7 : 5 widths). */
+    .people-photos :global(.about-photo:last-child .about-photo__frame) { aspect-ratio: 15 / 14; }
+  }
+
+  /* 01: the narrative runs on from the opening paragraphs. */
+  .chapter--story .chapter__grid { row-gap: 0; }
+  .chapter--story .chapter__grid > :global(.chapter__media) { margin-bottom: var(--space-xl); }
+  .chapter--story .chapter__body { margin-top: 1.1em; }
+
+  /* Desktops: two columns ------------------------------------------------- */
+
+  @media (min-width: 1200px) {
+    /* Side by side only where the text column keeps about 55–75
+       characters; narrower screens read the chapters stacked. */
+    .chapter__grid {
+      column-gap: var(--split-gap);
+      grid-template-rows: auto 1fr;
+      align-items: start;
+    }
+    .chapter--story .chapter__grid,
+    .chapter--energy .chapter__grid,
+    .chapter--region .chapter__grid,
+    .chapter--people .chapter__grid { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
+    .chapter--sites .chapter__grid,
+    .chapter--cycle .chapter__grid { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
+
+    .chapter--story .chapter__grid { grid-template-areas: "media head" "media body"; }
+    .chapter--story .chapter__grid > :global(.chapter__media) { margin-bottom: 0; }
+    /* 03, 05: the text runs on from the opening paragraphs. */
+    .chapter--sites .chapter__grid,
+    .chapter--cycle .chapter__grid { row-gap: 0; }
+    .chapter--sites .chapter__body { margin-top: 1.1em; }
+    .chapter--energy .chapter__grid { grid-template-areas: "media head" "media ."; }
+    .chapter--sites .chapter__grid,
+    .chapter--cycle .chapter__grid { grid-template-areas: "head media" "body media"; }
+    .chapter--region .chapter__grid,
+    .chapter--people .chapter__grid { grid-template-areas: "head body"; grid-template-rows: auto; }
+
+    .chapter__head { grid-area: head; }
+    .chapter__body { grid-area: body; }
+    .chapter__grid > :global(.chapter__media),
+    .chapter__grid > .chapter__media { grid-area: media; align-self: stretch; }
+
+    /* Photographs stay in view while a longer text beside them is read. */
+    .chapter__media-hold {
+      position: sticky;
+      top: calc(var(--header-h) + var(--nav-h) + var(--space-l));
+    }
+
+    /* 01: the quotation hangs in the margin left of its paragraph, below
+       the photograph. */
+    .quoted { display: block; }
+    .pullquote {
+      --quote-w: min(22rem, 30vw);
+      float: left;
+      clear: left;
+      width: var(--quote-w);
+      margin: 0.2rem 0 0 calc(-1 * (var(--quote-w) + var(--split-gap)));
+    }
+
+    /* 04: the solar roofs run to the left edge of the screen. */
+    .chapter--energy .chapter__media {
+      margin-left: calc(-1 * max(var(--gutter), (100vw - var(--container)) / 2));
+    }
+
+    /* 02, 06: the heading stays beside the text it introduces. */
+    .chapter--region .chapter__head,
+    .chapter--people .chapter__head {
+      position: sticky;
+      top: calc(var(--header-h) + var(--nav-h) + var(--space-l));
+    }
+  }
 
   /* "Bảy Núi gồm những ngọn nào?": a quiet inline disclosure. */
-  .more { width: 100%; }
+  .more {
+    max-width: 36rem;
+    padding-top: var(--space-s);
+    border-top: 1px solid var(--color-line);
+  }
 
   .more__summary {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    min-height: 2.25rem;
+    min-height: 2.75rem;
     font-size: var(--type-small);
     line-height: 1.4;
-    color: var(--color-text);
+    color: var(--color-deep-green);
     cursor: pointer;
     list-style: none;
   }
   .more__summary::-webkit-details-marker { display: none; }
+  .more__summary:focus-visible { outline: 2px solid var(--color-forest); outline-offset: 4px; }
 
   .more__icon {
     width: 1rem;
@@ -932,6 +769,7 @@ const filmName = t.film.title.replace(/[.。]$/, '');
   }
 
   .more__label {
+    font-weight: 500;
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-decoration-color: var(--color-line-strong);
@@ -963,246 +801,39 @@ const filmName = t.film.title.replace(/[.。]$/, '');
   .more[open] .more__sign::after { transform: rotate(90deg) scaleX(0); }
 
   .more__body {
-    padding: 0.5rem 0 0 1.5rem;
+    padding: 0.5rem 0 0.25rem 1.5rem;
     font-size: var(--type-small);
     line-height: 1.6;
     color: var(--color-text-muted);
   }
 
-  .more__list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 12.5rem), 1fr));
-    gap: 0.25rem var(--space-m);
-    margin-top: 0.625rem;
-    line-height: 1.5;
+  .more__table {
+    width: 100%;
+    margin-top: var(--space-s);
+    border-collapse: collapse;
+    text-align: left;
   }
-  .more__name { color: var(--color-text); }
+  .more__table th,
+  .more__table td {
+    padding: 0.5rem 1rem 0.5rem 0;
+    border-bottom: 1px solid var(--color-line);
+    vertical-align: top;
+    font-weight: 400;
+  }
+  .more__table thead th {
+    font-size: var(--type-eyebrow);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-earth);
+  }
+  .more__table tbody th { color: var(--color-text); }
 
   @media (prefers-reduced-motion: no-preference) {
     .more[open] .more__body { animation: more-in 350ms var(--ease); }
   }
   @keyframes more-in {
     from { opacity: 0; transform: translateY(-0.25rem); }
-  }
-
-  /* Tablets and wider: the chapter list is held under the header. */
-  @media (min-width: 768px) {
-    .story { --nav-h: 3.5rem; }
-
-    .story__nav {
-      position: sticky;
-      top: var(--header-h);
-      z-index: 5;
-      margin-inline: calc(-1 * var(--gutter));
-      padding-inline: var(--gutter);
-      background: var(--color-paper);
-    }
-    /* One row, one equal column per chapter. */
-    .story__nav-list {
-      grid-template-columns: none;
-      grid-auto-flow: column;
-      grid-auto-columns: minmax(0, 1fr);
-      column-gap: 0.75rem;
-    }
-    .story__nav-link { min-height: var(--nav-h); align-items: center; padding-block: 0; }
-    .story__nav-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-    .chapter__media { margin-inline: 0; }
-  }
-
-  /* Tablets: six labels in one row. */
-  @media (min-width: 768px) and (max-width: 1023px) {
-    .story__nav-link { gap: 0.375rem; font-size: 0.8125rem; }
-    .story__nav-num { font-size: 0.9375rem; }
-  }
-
-  /* Short desktops: photograph beside the text. */
-  @media (min-width: 1024px) {
-    .chapter {
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      column-gap: clamp(2rem, 4vw, 4.5rem);
-      align-items: start;
-    }
-    .chapter__photo { aspect-ratio: 4 / 3; }
-    .chapter__text { margin-top: 0; }
-  }
-
-  /* Chapters: one pinned stage (wide screens, when the text fits) -------- */
-
-  @media (min-width: 1024px) {
-    .story.is-staged {
-      --media: 58%;
-      --text-pad: clamp(2rem, 3.4vw, 4rem);
-      --stage-pad: clamp(0.75rem, 2vh, 1.5rem);
-      --nav-row: clamp(3.25rem, 7vh, 4rem);
-      position: relative;
-    }
-
-    /* Photograph, text and chapter list form one spread, centred in the
-       screen below the header. */
-    .story.is-staged .story__stage {
-      position: sticky;
-      top: var(--header-h);
-      height: calc(100vh - var(--header-h));
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      grid-template-rows: auto auto;
-      align-content: center;
-      padding-block: var(--stage-pad);
-      /* As in the reference, the spread runs almost edge to edge, with
-         the same narrow margin on both sides. */
-      padding-inline: max(1.25rem, calc((100% - var(--container) - 2 * var(--gutter)) / 2 + 1.25rem));
-    }
-
-    /* Thin rule between photograph and text. */
-    .story.is-staged .story__stage::before {
-      content: "";
-      grid-area: 1 / 1;
-      margin-left: var(--media);
-      border-left: 1px solid var(--color-line);
-      pointer-events: none;
-    }
-
-    .story.is-staged .story__nav {
-      grid-area: 2 / 1;
-      position: static;
-      margin: 0;
-      padding: 0;
-      border-bottom: 0;
-      background: none;
-    }
-
-    .story.is-staged .story__nav-list > li { position: relative; }
-    .story.is-staged .story__nav-list > li + li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 50%;
-      height: 1rem;
-      margin-top: -0.5rem;
-      border-left: 1px solid var(--color-line-strong);
-    }
-    .story.is-staged .story__nav-link {
-      justify-content: center;
-      min-height: var(--nav-row);
-    }
-    /* Active rule just under the label, as in the reference. */
-    .story.is-staged .story__nav-link::after {
-      left: 50%;
-      right: auto;
-      width: 8.5rem;
-      margin-left: -4.25rem;
-      bottom: calc(50% - 1.2rem);
-      transform-origin: center;
-    }
-
-    .story.is-staged .chapter {
-      grid-area: 1 / 1;
-      grid-template-columns: var(--media) minmax(0, 1fr);
-      align-items: stretch;
-      column-gap: 0;
-      padding: 0;
-      border: 0;
-      z-index: 1;
-      pointer-events: none;
-    }
-    .story.is-staged .chapter.is-leaving { z-index: 2; }
-    .story.is-staged .chapter.is-active { z-index: 3; pointer-events: auto; }
-
-    /* Landscape, as in the reference: 4:3 where the screen is tall
-       enough, wider where it is not. The photograph sets the spread's
-       height; the text has to fit beside it (checked by the script). */
-    .story.is-staged .chapter__photo {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      max-height: calc(100vh - var(--header-h) - 2 * var(--stage-pad) - var(--nav-row));
-    }
-
-    .story.is-staged .chapter__text {
-      contain: size;
-      overflow: hidden;
-      padding-left: var(--text-pad);
-    }
-
-    /* An open disclosure may take the text below the photograph: the
-       spread grows into the stage's spare height (the script checks it
-       fits) and the photograph keeps its size. */
-    .story.is-staged .chapter.is-active .chapter__text:has(details[open]) {
-      contain: none;
-      padding-bottom: var(--space-s);
-    }
-    .story.is-staged .chapter__media { align-self: start; }
-    .story.is-staged .more__body { padding-top: 0.25rem; }
-    .story.is-staged .more__list { gap: 0.125rem var(--space-m); margin-top: 0.5rem; line-height: 1.45; }
-
-    .story.is-staged .chapter__content {
-      --gap: clamp(0.875rem, 2.2vh, 1.375rem);
-      max-width: 30rem;
-    }
-
-    /* One page at a time (the script deals the blocks); a block on
-       another page is not shown and leaves nothing to focus. The pager
-       keeps its place at the foot of the text, whatever the page. */
-    .story.is-staged .chapter__content { min-height: 100%; }
-    .story.is-staged [data-block].is-off { display: none; }
-    .story.is-staged .pager:not([hidden]) {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-m);
-      width: 100%;
-      margin-top: auto;
-      border-top: 1px solid var(--color-line);
-    }
-
-    .story.is-staged .chapter__num { font-size: clamp(1.75rem, 3.4vh, 2.25rem); }
-    .story.is-staged .chapter__title { font-size: clamp(2rem, 4.4vh, 3rem); }
-    .story.is-staged .fact__value { font-size: clamp(3.5rem, 7.5vh, 5rem); }
-
-    .story.is-compact .chapter__content { --gap: 0.875rem; }
-    .story.is-compact .chapter__num { font-size: 1.75rem; }
-    .story.is-compact .chapter__title { font-size: 2rem; }
-    .story.is-compact .fact__value { font-size: 3.5rem; }
-
-    /* Inactive chapters stay readable to assistive technology; only their
-       visibility on screen changes. */
-    .story.is-staged .chapter:not(.is-active, .is-leaving) .chapter__media,
-    .story.is-staged .chapter:not(.is-active) .chapter__content > * { opacity: 0; }
-  }
-
-  @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
-    /* Photographs cross-fade: the new one fades in over the previous,
-       which is removed once covered. */
-    .story.is-staged .chapter__media { transition: opacity 0s linear 900ms; }
-    .story.is-staged .chapter.is-active .chapter__media { transition: opacity 900ms var(--ease); }
-    .story.is-staged .chapter__photo img {
-      transform: scale(1.025);
-      transition: transform 1600ms var(--ease);
-    }
-    .story.is-staged .chapter.is-active .chapter__photo img { transform: none; }
-
-    /* Text leaves quickly and arrives line by line. */
-    .story.is-staged .chapter__content > * {
-      transform: translateY(0.75rem);
-      transition: opacity 240ms var(--ease), transform 240ms var(--ease);
-    }
-    .story.is-staged .chapter.is-active .chapter__content > * {
-      transform: none;
-      transition: opacity 650ms var(--ease), transform 650ms var(--ease);
-      transition-delay: calc(180ms + var(--i, 0) * 70ms);
-    }
-    .story.is-staged .chapter__content > :nth-child(2) { --i: 1; }
-    .story.is-staged .chapter__content > :nth-child(3) { --i: 2; }
-    .story.is-staged .chapter__content > :nth-child(4) { --i: 3; }
-    .story.is-staged .chapter__content > :nth-child(5) { --i: 4; }
-    .story.is-staged .chapter__content > :nth-child(6) { --i: 5; }
-
-    /* Turning a page: the new page settles in. */
-    .story.is-staged .chapter__pages.is-turning { animation: page-in 450ms var(--ease); }
-  }
-  @keyframes page-in {
-    from { opacity: 0; transform: translateY(0.375rem); }
   }
 
   /* Outlook (#dinh-huong) -------------------------------------------------- */
@@ -1218,8 +849,8 @@ const filmName = t.film.title.replace(/[.。]$/, '');
     max-width: 16ch;
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(1.875rem, 1.5rem + 1.6vw, 2.75rem);
-    line-height: 1.14;
+    font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
+    line-height: 1.16;
     letter-spacing: -0.01em;
     text-wrap: balance;
     color: var(--color-deep-green);
@@ -1227,16 +858,16 @@ const filmName = t.film.title.replace(/[.。]$/, '');
 
   .outlook__body {
     max-width: 36rem;
-    font-size: var(--type-body);
-    line-height: 1.68;
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
     color: var(--color-text-muted);
   }
-  .outlook__body p + p { margin-top: 0.8em; }
+  .outlook__body p + p { margin-top: 1.1em; }
 
   @media (min-width: 1024px) {
     .outlook__grid {
       grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
-      column-gap: var(--col-gap);
+      column-gap: var(--split-gap);
     }
   }
 

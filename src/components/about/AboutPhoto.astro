@@ -1,0 +1,63 @@
+---
+/**
+ * A photograph on /ve-chung-toi/: square edges, a fixed crop (`ratio`,
+ * object-position from the photo), and an optional caption underneath.
+ */
+import type { Photo } from '../../data/about';
+
+interface Props {
+  photo: Photo;
+  alt: string;
+  caption?: string;
+  /** CSS aspect-ratio of the crop, e.g. "4 / 3". */
+  ratio: string;
+  sizes: string;
+  eager?: boolean;
+  class?: string;
+}
+
+const { photo, alt, caption, ratio, sizes, eager = false, class: className } = Astro.props;
+const srcset = photo.small ? `${photo.small.src} ${photo.small.width}w, ${photo.src} ${photo.width}w` : undefined;
+---
+<figure class:list={['about-photo', className]}>
+  <div class="about-photo__frame" style={`--ratio: ${ratio}`}>
+    <img
+      src={photo.src}
+      srcset={srcset}
+      sizes={srcset ? sizes : undefined}
+      width={photo.width}
+      height={photo.height}
+      alt={alt}
+      loading={eager ? 'eager' : 'lazy'}
+      fetchpriority={eager ? 'high' : undefined}
+      decoding="async"
+      style={photo.position ? `--pos: ${photo.position}` : undefined}
+    />
+  </div>
+  {caption && <figcaption class="about-photo__caption">{caption}</figcaption>}
+</figure>
+
+<style>
+  .about-photo { margin: 0; }
+
+  .about-photo__frame {
+    aspect-ratio: var(--ratio);
+    overflow: hidden;
+    background: var(--color-cream);
+  }
+
+  .about-photo__frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--pos, 50% 50%);
+  }
+
+  .about-photo__caption {
+    margin-top: 0.625rem;
+    font-size: var(--type-small);
+    line-height: 1.45;
+    color: var(--color-text-muted);
+  }
+</style>
