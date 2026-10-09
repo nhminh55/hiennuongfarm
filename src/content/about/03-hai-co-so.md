@@ -1,17 +1,15 @@
 ## 03 · Hai cơ sở
 
-### Từ một nông trại đến hai cơ sở
+### Từ một nông trại đến hai cơ sở: Mở rộng những mầm xanh
 
-Hiền Nương Farm có hai cơ sở trồng nấm tại Thới Sơn và Tà Đảnh, An Giang, với tổng diện tích hơn 4 ha. Hai địa điểm đánh dấu những bước phát triển của nông trại, từ nơi bắt đầu đến không gian được mở rộng về sau.
+Hành trình của Hiền Nương Farm được bồi đắp và mở rộng trên hơn 4 hecta đất quê hương, trải dài qua hai cơ sở: Thới Sơn và Tà Đảnh (An Giang). Đó không đơn thuần là hai dấu mốc địa lý trên bản đồ sản xuất, mà là hai chặng đường ghi dấu sự bền bỉ, từ những ngày đầu đặt nền móng gian nan cho đến khi ước mơ lớn dần và vươn xa.
 
-Thới Sơn là cơ sở đầu tiên, có quy mô lớn hơn và là nơi đặt nền móng cho hoạt động trồng nấm của Hiền Nương. Cơ sở Tà Đảnh được xây dựng sau, tiếp nối quá trình phát triển của hai vợ chồng.
+Thới Sơn là cái nôi đầu tiên, nơi lưu giữ những ngày tháng chập chững khởi nghiệp, nơi từng góc trại thân thuộc đã chứng kiến bao giọt mồ hôi và những mẻ nấm thử nghiệm đầu đời. Tiếp nối mạch nguồn ấy, cơ sở Tà Đảnh ra đời như một sự khẳng định cho bước chuyển mình vững chãi, đưa hoạt động nuôi trồng của trang trại bước sang một quy mô mới, bài bản và chuyên nghiệp hơn.
 
-Mỗi nơi có vị trí và câu chuyện hình thành riêng, cùng phục vụ hoạt động trồng nấm của Hiền Nương Farm. Từ một cơ sở đến hai cơ sở, hành trình ấy được nối tiếp bằng công việc chuẩn bị giá thể, chăm sóc và thu hoạch — những việc làm nên nhịp sản xuất mỗi ngày.
+Để có được những tai nấm căng tròn, ngọt lành đến tay người dùng, công việc thực chất đã âm thầm bắt đầu từ rất lâu trước ngày nấm trổ mầm. Từng bịch phôi phải trải qua chuỗi ngày chăm chút kỹ lưỡng: từ khâu làm meo giống, hấp khử trùng, ủ tơ đến dưỡng tơ. Đằng sau lớp mùn cưa và giá thể tối màu là cả sự kiên nhẫn đợi chờ, nín thở dõi theo từng sợi tơ nấm trắng mịn dần len lỏi, dệt nên sự sống.
 
-Một mùa nấm bắt đầu từ trước khi những tai nấm xuất hiện. Trong quy trình được Nhân Dân ghi nhận, phôi đi qua các công đoạn làm meo, hấp, chạy tơ và dưỡng tơ trước khi chuyển vào nhà trồng. Đằng sau mỗi bịch phôi là cả một quá trình chuẩn bị, theo dõi và chờ nấm phát triển.
+Bước vào nhà trồng mát rượi, nhịp điệu lao động lại càng thêm phần cẩn trọng. Từ việc đón luồng gió thoảng, cân chỉnh ánh sáng dịu nhẹ đến giữ trọn độ ẩm lý tưởng trong từng mét vuông, mọi yếu tố đều được nâng niu. Chị Nương thường ví von bằng hình ảnh mộc mạc mà thấm thía: “Trồng nấm như nuôi con nhỏ, phải chăm từng li từng tí”. Có thấu hiểu cái tỉ mỉ ấy mới cảm nhận được tấm lòng của người làm nông: chăm nấm bằng tất cả sự dịu dàng, nhẫn nại như người mẹ coi sóc giấc ngủ của con thơ.
 
-Khi vào nhà trồng, công việc tiếp tục với việc chăm sóc và theo dõi điều kiện nuôi. Ánh sáng, thông gió, độ ẩm và thời điểm thu hái đều là những điều người trồng cần quan tâm. Chị Nương ví công việc ấy bằng một câu rất đời thường: “Trồng nấm như nuôi con nhỏ, phải chăm từng li từng tí”.
+Sự tận tụy từ bàn tay con người đã kết nối từng công đoạn nhỏ thành mùa thu hoạch trọn vẹn: từ chuẩn bị giá thể, nuôi dưỡng mầm non, đến giờ phút thu hái, sơ chế và nâng niu từng sản phẩm hoàn thiện.
 
-Sự chăm chút ấy nối những công đoạn thành một mùa thu hoạch. Giá thể được chuẩn bị, nấm được nuôi và chăm sóc, rồi đến lúc thu hái, sơ chế và hoàn thiện sản phẩm. Công việc của đội ngũ ở hai cơ sở nằm trong từng phần của hành trình đó.
-
-Thới Sơn và Tà Đảnh vì thế không chỉ là hai địa điểm trên bản đồ. Đó còn là những nơi hai người sáng lập và người lao động địa phương cùng góp sức, để những kiến thức tích lũy trong quá trình làm nghề được tiếp tục qua công việc mỗi ngày.
+Thới Sơn và Tà Đảnh, vì lẽ đó, không chỉ là nơi đặt trại nấm. Đó là mái nhà chung thấm đượm tình đất, tình người, nơi hai người sáng lập cùng những lao động địa phương gửi gắm niềm tin, biến tri thức và lòng yêu nghề thành những vụ mùa đong đầy vị ngọt tự nhiên.

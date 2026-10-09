@@ -182,7 +182,6 @@ export const aboutCopy: Record<Locale, AboutCopy> = {
     heroAlt: 'Cánh đồng lúa xanh vùng Bảy Núi điểm những cây thốt nốt, nhìn từ trên cao',
     navLabel: 'Các chương',
     nav: ['Câu chuyện', 'Bảy Núi', 'Hai cơ sở', 'Năng lượng', 'Tuần hoàn', 'Con người'],
-    quote: 'Trước hết là sử dụng cho gia đình, rồi sẽ lan tỏa đến mọi người.',
     circularLink: 'Khám phá vòng tuần hoàn',
     media: {
       founders: { alt: 'Chị Châu Thị Nương và anh Trần Phương Hiền vẫy tay bên tảng đá khắc tên Trang trại Nông nghiệp Hiền Nương' },
