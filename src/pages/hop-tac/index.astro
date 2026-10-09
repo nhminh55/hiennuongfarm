@@ -105,10 +105,9 @@ const corner = ['top', 'left', 'right'];
     </header>
 
     <!-- 1 · Three directions ---------------------------------------------- -->
-    <section class="ways" id="thong-tin-hop-tac" aria-labelledby="ways-title" data-ways>
+    <section class="ways" id="thong-tin-hop-tac" aria-label="Ba hướng hợp tác" data-ways>
       <div class="container">
         <div class="ways__head" data-reveal>
-          <h2 class="ways__title" id="ways-title">Bạn muốn đồng hành theo cách nào?</h2>
           <p class="ways__hint">Chọn một hướng để tìm hiểu.</p>
         </div>
 
@@ -415,18 +414,7 @@ const corner = ['top', 'left', 'right'];
     border-top: 1px solid var(--color-line);
   }
 
-  .ways__title {
-    font-family: var(--font-display);
-    font-weight: 400;
-    font-size: clamp(1.75rem, 1.4rem + 1.3vw, 2.5rem);
-    line-height: 1.16;
-    letter-spacing: -0.01em;
-    text-wrap: balance;
-    color: var(--color-deep-green);
-  }
-
   .ways__hint {
-    margin-top: var(--space-xs);
     font-size: var(--type-small);
     line-height: 1.5;
     color: var(--color-text-muted);
