@@ -2,8 +2,8 @@
  * The 12 products shown in the /san-pham/ showroom.
  *
  * Names and summaries are owner-supplied (the homepage catalogue). Images are
- * the studio illustrations already used on the homepage
- * (design-reference/HIEN_NUONG_12_STUDIO_WEBP); they are visual assets, not
+ * the final showroom scenes supplied in design-reference/12-san-pham-showroom-final;
+ * they are visual assets, not
  * evidence. Every other field must come from an original label, document or
  * approved source, cited in its `source`. Leave a field out rather than
  * filling it: empty tabs and sections are hidden. The audit, gaps and
@@ -79,12 +79,9 @@ interface RawProduct {
   /** Short summary under the stage. */
   summary: SourcedText;
   image: {
-    /** Approved transparent WebP under /images/products/showroom/. */
+    /** Approved complete WebP scene under /images/products/showroom/final/. */
     file: string;
     alt: Text;
-    /** Full-image width (% of stage), visible-subject centre and surface (%). */
-    placement: { width: number; x: number; surface: number; bounds: [number, number, number, number] };
-    plate: boolean;
   };
   /** A dedicated product page, when one exists (Vietnamese path). */
   detail?: string;
@@ -165,8 +162,6 @@ const raw: RawProduct[] = [
         en: 'A pile of fresh black termite mushrooms with dark brown caps and ivory stems on a light background',
         zh: '一堆新鲜的黑皮鸡枞菌，深褐色菌盖、象牙白菌柄，置于浅色背景上',
       },
-      placement: { width: 51, x: 55, surface: 66, bounds: [12, 248, 1245, 1028] },
-      plate: true,
     },
     detail: '/san-pham/nam-moi-den/',
     intro: {
@@ -246,18 +241,6 @@ const raw: RawProduct[] = [
         },
       ],
     },
-    reviews: [
-      {
-        quote: { vi: 'Mình mua nấm đóng khay hút chân không của Farm về để tủ lạnh cả tuần lấy ra xào vẫn giòn sần sật. Nấm sạch, ngọt nước, ăn lẩu hay kho tiêu đều tốn cơm.', en: 'I buy the Farm’s vacuum-packed mushroom trays and keep them in the fridge for a week. They are still wonderfully crisp when I stir-fry them. The mushrooms are clean and sweet, and taste great in hotpot or braised with pepper.', zh: '我买了农场的真空包装菌菇盘，放在冰箱一周后拿出来炒，还是非常爽脆。菌菇干净、鲜甜，吃火锅或用胡椒焖煮都特别下饭。' },
-        author: 'Chị Trâm (TP. HCM)',
-        source: 'docs/products/01. Nam moi den.md',
-      },
-      {
-        quote: { vi: 'Thấy Farm trồng hữu cơ khép kín 100% bằng rơm rạ tự nhiên nên rất yên tâm mua cho gia đình. Các bé nhà mình bình thường lười ăn rau nhưng mẹ làm pizza nấm mối đen thì lại ăn rất nhiệt tình.', en: 'Seeing that the Farm grows them in a fully closed-loop organic system using natural straw makes me feel very comfortable buying them for my family. My children usually avoid vegetables, but they eagerly eat the black termite mushroom pizza their mother makes.', zh: '看到农场用天然稻草进行完全闭环的有机种植，我很放心买给家人吃。家里的孩子平时不爱吃蔬菜，但妈妈做黑皮鸡枞菌披萨时，他们吃得很起劲。' },
-        author: 'Anh Phát (Cần Thơ)',
-        source: 'docs/products/01. Nam moi den.md',
-      },
-    ],
     records: [
       {
         title: { vi: 'Báo cáo thử nghiệm mẫu nấm mối', en: 'Test report: termite mushroom sample', zh: '鸡枞菌样品检测报告' },
@@ -289,6 +272,18 @@ const raw: RawProduct[] = [
         source: `design-reference/NƯƠNG FARM/KIỂM NGHIỆM NẤM MỐI.pdf p.5–10. Received 28/09/2024, issued 03/10/2024. ${SAMPLE_NOTE}`,
       },
     ],
+    reviews: [
+      {
+        quote: { vi: 'Mình mua nấm đóng khay hút chân không của Farm về để tủ lạnh cả tuần lấy ra xào vẫn giòn sần sật. Nấm sạch, ngọt nước, ăn lẩu hay kho tiêu đều tốn cơm.', en: 'I buy the Farm’s vacuum-packed mushroom trays and keep them in the fridge for a week. They are still wonderfully crisp when I stir-fry them. The mushrooms are clean and sweet, and taste great in hotpot or braised with pepper.', zh: '我买了农场的真空包装菌菇盘，放在冰箱一周后拿出来炒，还是非常爽脆。菌菇干净、鲜甜，吃火锅或用胡椒焖煮都特别下饭。' },
+        author: 'Chị Trâm (TP. HCM)',
+        source: 'docs/products/01. Nam moi den.md',
+      },
+      {
+        quote: { vi: 'Thấy Farm trồng hữu cơ khép kín 100% bằng rơm rạ tự nhiên nên rất yên tâm mua cho gia đình. Các bé nhà mình bình thường lười ăn rau nhưng mẹ làm pizza nấm mối đen thì lại ăn rất nhiệt tình.', en: 'Seeing that the Farm grows them in a fully closed-loop organic system using natural straw makes me feel very comfortable buying them for my family. My children usually avoid vegetables, but they eagerly eat the black termite mushroom pizza their mother makes.', zh: '看到农场用天然稻草进行完全闭环的有机种植，我很放心买给家人吃。家里的孩子平时不爱吃蔬菜，但妈妈做黑皮鸡枞菌披萨时，他们吃得很起劲。' },
+        author: 'Anh Phát (Cần Thơ)',
+        source: 'docs/products/01. Nam moi den.md',
+      },
+    ],
   },
   {
     slug: 'nam-linh-chi',
@@ -308,8 +303,6 @@ const raw: RawProduct[] = [
         en: 'A large brown lingzhi cap with layered concentric rings on a light background',
         zh: '一朵带有层层环纹的大朵褐色灵芝，置于浅色背景上',
       },
-      placement: { width: 48, x: 56, surface: 66, bounds: [2, 156, 1253, 1116] },
-      plate: true,
     },
     intro: {
       paragraphs: [
@@ -542,8 +535,6 @@ const raw: RawProduct[] = [
         en: 'A clump of cordyceps with dense orange strands rising from a base of substrate',
         zh: '一簇蛹虫草，橙色子实体从基质上密集长出',
       },
-      placement: { width: 44, x: 58, surface: 66, bounds: [6, 117, 1250, 1163] },
-      plate: true,
     },
     intro: {
       paragraphs: [
@@ -646,8 +637,6 @@ const raw: RawProduct[] = [
         en: 'A cluster of white oyster mushrooms with layered caps',
         zh: '一簇白色平菇，菌盖层层叠叠',
       },
-      placement: { width: 48, x: 57, surface: 66, bounds: [20, 176, 1232, 1202] },
-      plate: true,
     },
     intro: {
       paragraphs: [
@@ -767,8 +756,6 @@ const raw: RawProduct[] = [
         en: 'A paper box of freeze-dried black termite mushroom with a window panel, beside a few dried mushrooms',
         zh: '带透明窗的冻干黑皮鸡枞菌纸盒，旁边放着几朵干菌',
       },
-      placement: { width: 44, x: 58, surface: 76, bounds: [347, 67, 1220, 1221] },
-      plate: false,
     },
     intro: {
       paragraphs: [
@@ -995,8 +982,6 @@ const raw: RawProduct[] = [
         en: 'A clear jar with an aluminium lid holding black termite mushroom snack, with a few pieces beside it',
         zh: '铝盖透明罐装的黑皮鸡枞菌零食，旁边放着几块',
       },
-      placement: { width: 48, x: 57, surface: 76, bounds: [211, 167, 1243, 1163] },
-      plate: false,
     },
     intro: {
       paragraphs: [
@@ -1104,8 +1089,6 @@ const raw: RawProduct[] = [
         en: 'A clear jar with an aluminium lid and green label holding oyster mushroom snack, with a few golden pieces beside it',
         zh: '铝盖绿标透明罐装的平菇零食，旁边放着几块金黄色零食',
       },
-      placement: { width: 47, x: 57, surface: 76, bounds: [198, 145, 1243, 1181] },
-      plate: false,
     },
     intro: {
       paragraphs: [
@@ -1221,8 +1204,6 @@ const raw: RawProduct[] = [
         en: 'A square glass jar with a black lid holding freeze-dried cordyceps, with a few strands beside it',
         zh: '黑盖方形玻璃罐装的冻干蛹虫草，旁边放着几根虫草',
       },
-      placement: { width: 46, x: 58, surface: 76, bounds: [242, 113, 1241, 1181] },
-      plate: false,
     },
     intro: {
       paragraphs: [
@@ -1439,8 +1420,6 @@ const raw: RawProduct[] = [
         en: 'A green tin of instant lingzhi tea beside a glass cup of tea',
         zh: '绿色灵芝速溶茶铁罐，旁边是一杯茶',
       },
-      placement: { width: 47, x: 57, surface: 76, bounds: [218, 127, 1138, 1165] },
-      plate: false,
     },
     intro: {
       paragraphs: [
@@ -1552,8 +1531,6 @@ const raw: RawProduct[] = [
         en: 'A tin of instant lingzhi and cordyceps tea illustrated with lingzhi and cordyceps, beside a glass cup of tea',
         zh: '绘有灵芝和虫草图案的灵芝虫草速溶茶铁罐，旁边是一杯茶',
       },
-      placement: { width: 47, x: 57, surface: 76, bounds: [197, 153, 1170, 1183] },
-      plate: false,
     },
     intro: {
       paragraphs: [
@@ -1660,8 +1637,6 @@ const raw: RawProduct[] = [
         en: 'A square glass jar with a black lid holding reddish-brown lingzhi spore powder, beside a small dish of the powder',
         zh: '黑盖方形玻璃罐装的红褐色灵芝孢子粉，旁边是一小碟孢子粉',
       },
-      placement: { width: 47, x: 57, surface: 76, bounds: [210, 168, 1201, 1197] },
-      plate: false,
     },
     intro: {
       paragraphs: [
@@ -1763,8 +1738,6 @@ const raw: RawProduct[] = [
         en: 'A glass bottle with a gold lid holding cordyceps steeped in honey, beside a small glass bowl',
         zh: '金色瓶盖的玻璃瓶装蜂蜜浸蛹虫草，旁边是一个小玻璃碗',
       },
-      placement: { width: 48, x: 58, surface: 76, bounds: [358, 114, 1172, 1171] },
-      plate: false,
     },
     intro: {
       paragraphs: [
@@ -1915,9 +1888,6 @@ export interface ShowroomItem {
     width: number;
     height: number;
     alt: string;
-    /** Full-image scale and visible-subject alignment, measured against the 3:2 stage. */
-    placement: { width: number; x: number; surface: number; bounds: [number, number, number, number] };
-    plate: boolean;
   };
   /** Localized link to a dedicated product page. */
   detail?: string;
@@ -1940,7 +1910,7 @@ const localizeHref = (href: string, lang: Locale) => (href.startsWith('/') ? loc
 /** The showroom products in a language. */
 export const showroomProducts = (lang: Locale): ShowroomItem[] =>
   raw.map((p) => {
-    const src = `/images/products/showroom/${p.image.file}`;
+    const src = `/images/products/showroom/final/${p.image.file}`;
     const composition = p.composition && (p.composition.ingredients || p.composition.facts?.length)
       ? { ingredients: p.composition.ingredients?.text[lang], facts: facts(p.composition.facts, lang) }
       : undefined;
@@ -1989,11 +1959,9 @@ export const showroomProducts = (lang: Locale): ShowroomItem[] =>
       image: {
         src,
         thumb: `/images/products/studio/${p.slug}-160.webp`,
-        width: 1254,
-        height: 1254,
+        width: 1536,
+        height: 864,
         alt: p.image.alt[lang],
-        placement: p.image.placement,
-        plate: p.image.plate,
       },
       detail: p.detail && localizePath(p.detail, lang),
       intro: { paragraphs: texts(p.intro?.paragraphs, lang), facts: facts(p.intro?.facts, lang) },

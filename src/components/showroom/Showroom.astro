@@ -3,9 +3,7 @@
  * The /san-pham/ showroom: a list of the 12 products and a stage that shows
  * the selected one. The selection lives in the URL hash (/san-pham/#slug).
  *
- * Stage: two stationary photographic backgrounds and decoded product cutouts.
- * Placement is measured from each image's visible alpha bounds. Selection
- * changes fade out the old product before the next one settles onto the surface.
+ * Stage: complete final showroom scenes, decoded before a gentle opacity reveal.
  *
  * Contract with ShowroomDetails (the default slot): the root carries
  * data-current="{slug}"; on every change (including the initial selection
@@ -29,18 +27,24 @@ const t = {
     count: (n: number) => `${n} sản phẩm`,
     ask: 'Liên hệ tư vấn',
     call: 'Gọi điện',
+    previous: 'Sản phẩm trước',
+    next: 'Sản phẩm tiếp theo',
     subject: (name: string) => `Tư vấn sản phẩm: ${name} — Hiền Nương Farm`,
   },
   en: {
     count: (n: number) => `${n} products`,
     ask: 'Ask for advice',
     call: 'Call us',
+    previous: 'Previous product',
+    next: 'Next product',
     subject: (name: string) => `Product enquiry: ${name} — Hiền Nương Farm`,
   },
   zh: {
     count: (n: number) => `${n} 款产品`,
     ask: '咨询',
     call: '致电',
+    previous: '上一款产品',
+    next: '下一款产品',
     subject: (name: string) => `产品咨询：${name} — Hiền Nương Farm`,
   },
 }[lang];
@@ -48,14 +52,6 @@ const t = {
 const total = products.length;
 const pad = (n: number) => String(n).padStart(2, '0');
 const mail = (name: string) => `mailto:${contact.email}?subject=${encodeURIComponent(t.subject(name))}`;
-
-const stageVars = (image: ShowroomItem['image']) => {
-  const { width, x, surface, bounds } = image.placement;
-  const center = (bounds[0] + bounds[2]) / 2 / image.width;
-  const bottom = (bounds[3] + 1) / image.height;
-  return `--product-width: ${width}%; --product-left: ${x - center * width}%; --product-top: ${surface - bottom * width * 1.5}%`;
-};
-const backgroundDir = '/images/products/showroom';
 
 const data = products.map((p, i) => ({
   slug: p.slug,
@@ -65,8 +61,6 @@ const data = products.map((p, i) => ({
   summary: p.summary,
   src: p.image.src,
   alt: p.image.alt,
-  vars: stageVars(p.image),
-  plate: p.image.plate,
   mail: mail(p.name),
 }));
 const json = JSON.stringify({ items: data }).replace(/</g, '\\u003c');
@@ -91,9 +85,10 @@ const layers = [
               data-slug={p.slug}
               aria-current={i === 0 ? 'true' : undefined}
             >
-              <span class="showroom__num" aria-hidden="true">{pad(i + 1)}</span>
               <img class="showroom__thumb" src={p.image.thumb} width="160" height="160" alt="" decoding="async" />
+              <span class="showroom__num" aria-hidden="true">{pad(i + 1)}</span>
               <span class="showroom__label">{p.name}</span>
+              <svg class="showroom__row-chevron" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 3 4 5-4 5" /></svg>
             </a>
           </li>
         ))}
@@ -109,21 +104,25 @@ const layers = [
             </span>
           </p>
           <h2 class="showroom__name" id="showroom-name" data-showroom-name>{first.name}</h2>
+          <p class="showroom__summary" data-showroom-summary>{first.summary}</p>
         </div>
 
         <div class="showroom__stage" data-showroom-stage>
-          <img class="showroom__background" src={`${backgroundDir}/showroom-co-dia-cay-mo.webp`} width="1536" height="1024" alt="" aria-hidden="true" decoding="async" data-showroom-background="plate" />
-          <img class="showroom__background" src={`${backgroundDir}/showroom-khong-dia-cay-mo.webp`} width="1536" height="1024" alt="" aria-hidden="true" decoding="async" data-showroom-background="wood" hidden />
           {layers.map((l, i) => (
-            <div class:list={['showroom__layer', { 'is-current': l.current }]} style={stageVars(l.image)} aria-hidden={l.current ? undefined : 'true'} data-showroom-layer>
+            <div class:list={['showroom__layer', { 'is-current': l.current }]} aria-hidden={l.current ? undefined : 'true'} data-showroom-layer>
               <img class="showroom__photo" src={l.src} width={l.image.width} height={l.image.height} alt={l.alt} fetchpriority={i === 0 ? 'high' : undefined} decoding="async" />
             </div>
           ))}
+          <button class="showroom__step showroom__step--previous" type="button" aria-label={t.previous} data-showroom-step="-1" hidden>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6" /></svg>
+          </button>
+          <button class="showroom__step showroom__step--next" type="button" aria-label={t.next} data-showroom-step="1" hidden>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 6 6 6-6 6" /></svg>
+          </button>
           <span class="showroom__counter" data-showroom-index-text>{pad(1)} / {pad(total)}</span>
         </div>
 
         <div class="showroom__info">
-          <p class="showroom__summary" data-showroom-summary>{first.summary}</p>
           <div class="showroom__actions">
             <a class="btn" href={mail(first.name)} data-showroom-mail>{t.ask} <Arrow /></a>
             <a class="link-arrow showroom__call" href={`tel:${contact.phone}`}>
@@ -163,7 +162,6 @@ const layers = [
             let front = layers[0];
             let token = 0;
             let fade = null;
-            const backgrounds = [...root.querySelectorAll('[data-showroom-background]')];
             const preloaded = new Map();
 
             const photoOf = (layer) => layer.querySelector('.showroom__photo');
@@ -209,7 +207,6 @@ const layers = [
             };
 
             const fill = (layer, p) => {
-              layer.style.cssText = p.vars;
               const img = photoOf(layer);
               img.src = p.src;
               img.alt = p.alt;
@@ -239,40 +236,24 @@ const layers = [
               layer.classList.remove('is-current');
               layer.setAttribute('aria-hidden', 'true');
             };
-            const backgroundFor = async (p) => {
-              const bg = backgrounds.find((b) => b.dataset.showroomBackground === (p.plate ? 'plate' : 'wood'));
-              await bg.decode();
-              return bg;
-            };
             const show = async (p, animate) => {
               const my = ++token;
-              const opacity = getComputedStyle(front).opacity;
               cancelFade();
               stage.setAttribute('aria-busy', 'true');
-              const moving = animate && !still.matches && !!front.animate;
-              const old = front;
-              const outgoing = moving && old.classList.contains('is-current')
-                ? (fade = old.animate([{ opacity }, { opacity: 0 }], { duration: 120, easing: 'ease-out' })).finished.catch(() => {})
-                : Promise.resolve();
-              if (!moving) layers.forEach(hide);
-              // Hide the previous product before swapping the stationary plate.
-              outgoing.then(() => { if (my === token) layers.forEach(hide); });
               try {
-                const [, bg] = await Promise.all([preload(p), backgroundFor(p), outgoing]);
+                await preload(p);
                 if (my !== token) return;
-                cancelFade();
-                layers.forEach(hide);
-                backgrounds.forEach((b) => { b.hidden = b !== bg; });
-                const next = layers.find((l) => l !== old);
+                const next = layers.find((l) => l !== front);
                 fill(next, p);
                 await photoOf(next).decode();
                 if (my !== token) return;
+                layers.forEach(hide);
                 front = next;
                 next.classList.add('is-current');
                 next.removeAttribute('aria-hidden');
                 stage.removeAttribute('aria-busy');
-                if (moving && !still.matches) {
-                  fade = next.animate([{ opacity: 0, transform: 'translateY(-24px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 450, easing: 'cubic-bezier(0.22, 0.61, 0.36, 1)' });
+                if (animate && !still.matches && next.animate) {
+                  fade = next.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 400, easing: 'ease-out' });
                 }
               } catch {
                 if (my !== token) return;
@@ -323,8 +304,8 @@ const layers = [
             }
             const start = bySlug.get(bySlug.has(initial) ? initial : items[0].slug);
             update(start);
-            if (start !== items[0]) show(start, false);
-            else preload(start).catch(() => {});
+            layers.forEach(hide);
+            show(start, true);
             // Details may load after this script: it reads data-current, and the event is repeated once the page is parsed.
             if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fire, { once: true });
             else fire();
@@ -341,6 +322,32 @@ const layers = [
             // restores the scroll position.
             const manual = () => { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; };
             window.addEventListener('pagehide', () => { if ('scrollRestoration' in history) history.scrollRestoration = 'auto'; });
+
+            // Stage controls share selection/history with the list, but only
+            // reveal the selected row inside its scroller; the page stays put.
+            const step = (direction) => {
+              const i = items.findIndex((p) => p.slug === current);
+              const p = items[(i + direction + items.length) % items.length];
+              manual();
+              history.pushState(null, '', `#${p.slug}`);
+              select(p.slug, true);
+            };
+            stage.querySelectorAll('[data-showroom-step]').forEach((button) => {
+              button.hidden = false;
+              button.addEventListener('click', () => step(Number(button.dataset.showroomStep)));
+            });
+
+            // Left/Right select products only in product navigation. Detail tabs,
+            // editable fields and modified shortcuts retain their own behavior.
+            root.addEventListener('keydown', (e) => {
+              if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey || !['ArrowLeft', 'ArrowRight'].includes(e.key)) return;
+              if (e.target.closest('input, textarea, select, [contenteditable], [role="tab"]')) return;
+              const row = e.target.closest('[data-showroom-list] [data-slug]');
+              if (!row && !e.target.closest('[data-showroom-step]')) return;
+              e.preventDefault();
+              step(e.key === 'ArrowLeft' ? -1 : 1);
+              if (row) rows.find((r) => r.dataset.slug === current).focus({ preventScroll: true });
+            });
 
             list.addEventListener('click', (e) => {
               const row = e.target.closest('[data-slug]');
@@ -370,11 +377,11 @@ const layers = [
             window.addEventListener('popstate', sync);
             window.addEventListener('hashchange', sync);
 
-            // Keyboard: arrows move between rows (both orientations), Home/End to the ends.
+            // Up/Down move focus between rows; Home/End go to the ends.
             list.addEventListener('keydown', (e) => {
               const i = rows.indexOf(document.activeElement);
               if (i < 0) return;
-              const keys = { ArrowDown: i + 1, ArrowRight: i + 1, ArrowUp: i - 1, ArrowLeft: i - 1, Home: 0, End: rows.length - 1 };
+              const keys = { ArrowDown: i + 1, ArrowUp: i - 1, Home: 0, End: rows.length - 1 };
               if (!(e.key in keys) || e.altKey || e.ctrlKey || e.metaKey) return;
               e.preventDefault();
               const next = rows[Math.max(0, Math.min(rows.length - 1, keys[e.key]))];
@@ -448,7 +455,7 @@ const layers = [
   /* Phones and tablets: compact horizontal choices above the stage. */
   .showroom__row {
     display: grid;
-    grid-template-columns: 2.5rem minmax(0, 1fr);
+    grid-template-columns: 2.5rem minmax(0, 1fr) 0.875rem;
     align-items: center;
     gap: 0.625rem;
     height: 100%;
@@ -467,6 +474,7 @@ const layers = [
   .showroom__row[aria-current='true'] .showroom__thumb { outline: none; }
 
   .showroom__num { display: none; }
+  .showroom__row-chevron { justify-self: end; opacity: 0.7; }
 
   .showroom__thumb {
     width: 100%;
@@ -522,23 +530,39 @@ const layers = [
   .showroom__stage {
     position: relative;
     isolation: isolate;
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     background: var(--color-cream);
   }
-  .showroom__background { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .showroom__background[hidden] { display: none; }
   .showroom__layer { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
   .showroom__layer.is-current { opacity: 1; }
   .showroom__photo {
-    position: absolute;
-    width: var(--product-width);
-    height: auto;
-    max-width: none;
-    left: var(--product-left);
-    top: var(--product-top);
-    filter: drop-shadow(0 3px 3px rgba(52, 40, 28, 0.12));
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
+  /* Inset controls stay at the scene edges, clear of the title above. */
+  .showroom__step {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(23, 61, 45, 0.12);
+    border-radius: 50%;
+    background: rgba(243, 240, 231, 0.78);
+    color: var(--color-forest);
+    transition: background-color 200ms var(--ease);
+  }
+  .showroom__step[hidden] { display: none; }
+  .showroom__step--previous { left: 16px; }
+  .showroom__step--next { right: 16px; }
+  .showroom__step:hover { background: rgba(243, 240, 231, 0.95); }
+  .showroom__step:focus-visible { outline: 2px solid var(--color-forest); outline-offset: 3px; }
+
   .showroom__counter {
     position: absolute;
     left: 50%;
@@ -563,6 +587,7 @@ const layers = [
 
   .showroom__summary {
     max-width: 40rem;
+    margin-top: var(--space-xs);
     color: var(--color-text-muted);
     text-wrap: pretty;
   }
@@ -579,24 +604,26 @@ const layers = [
 
   .showroom__details { margin-top: var(--space-l); }
 
-  /* On smaller stages the title stays above the image, leaving the full
-     display surface available and long Vietnamese names readable. */
-  @container showroom (min-width: 560px) {
+  /* Match the mockup's upper-left text block on a wide scene; small
+     screens retain readable text above the uncropped photograph. */
+  @container showroom (min-width: 680px) {
     .showroom__stage { grid-row: 1; }
     .showroom__head {
       position: relative;
-      z-index: 2;
+      z-index: 1;
       align-self: start;
       width: 30cqi;
       min-height: 0;
       margin: 0;
       padding-top: 4cqi;
       margin-left: 4.5cqi;
-      text-shadow: 0 0 12px rgba(255, 251, 243, 0.6);
+      pointer-events: none;
     }
-    .showroom__eyebrow { font-size: clamp(0.625rem, 1.3cqi, 0.75rem); }
-    .showroom__name { font-size: clamp(1.5rem, 4.4cqi, 2.75rem); }
+    .showroom__eyebrow { font-size: clamp(0.6875rem, 1.3cqi, 0.75rem); }
+    .showroom__name { font-size: clamp(1.375rem, 3.1cqi, 2.25rem); }
+    .showroom__summary { font-size: clamp(0.875rem, 1.7cqi, 1rem); line-height: 1.45; color: var(--color-forest); }
   }
+
   @container showroom (min-width: 900px) {
     .showroom__info {
       grid-template-columns: minmax(0, 1fr) auto;
@@ -647,7 +674,7 @@ const layers = [
 
     .showroom__row {
       display: grid;
-      grid-template-columns: 1.5rem 2.75rem minmax(0, 1fr);
+      grid-template-columns: 2.75rem 1.5rem minmax(0, 1fr) 0.875rem;
       align-items: center;
       column-gap: var(--space-xs);
       padding: 0.375rem var(--space-xs) 0.375rem 0.625rem;
@@ -674,6 +701,6 @@ const layers = [
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .showroom__row { transition: none; }
+    .showroom__row, .showroom__step { transition: none; }
   }
 </style>
