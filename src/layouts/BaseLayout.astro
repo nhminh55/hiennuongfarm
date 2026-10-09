@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import PlayWidget from '../components/farm-play/PlayWidget.astro';
 import { site } from '../data/site';
 import { getLocale, isTranslated, languages, locales, localizePath, stripLocale } from '../i18n';
 
@@ -83,6 +84,7 @@ const skipLabel = { vi: 'Bỏ qua đến nội dung chính', en: 'Skip to main c
       <slot />
     </main>
     <SiteFooter />
+    <PlayWidget />
 
     <script>
       // Reveal-on-scroll for elements marked with [data-reveal].

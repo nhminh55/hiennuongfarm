@@ -1,0 +1,258 @@
+---
+/**
+ * "Chơi cùng nông trại" tab on the right edge of the viewport. The tab opens
+ * a panel listing the three farm-play activities; the X button, Escape or a
+ * click outside closes it. Vietnamese only (the activities are), and not
+ * shown on the activity pages themselves.
+ */
+import { getLocale } from '../../i18n';
+
+const lang = getLocale(Astro.url);
+const show = lang === 'vi' && !Astro.url.pathname.startsWith('/choi-cung-nong-trai/');
+
+const games = [
+  { slug: 'mot-vong-nong-trai', title: 'Một vòng nông trại', text: 'Từ phụ phẩm đến vườn cây. Ghép năm mảnh nhỏ để khám phá cách những giá trị được tiếp nối.', image: '/images/farm-play/farm.webp' },
+  { slug: 'hom-nay-an-nam-gi', title: 'Hôm nay ăn nấm gì?', text: 'Bếp đang có gì, bạn thích vị nào? Tìm một gợi ý món nấm vừa với thời gian của mình.', image: '/images/farm-play/soup.webp' },
+  { slug: 'ban-hieu-nam-toi-dau', title: 'Bạn hiểu nấm tới đâu?', text: 'Năm câu hỏi nhẹ nhàng về nấm và vòng tuần hoàn tại trang trại.', image: '/images/farm-play/quiz.webp' },
+];
+---
+{show && (
+  <div class="play-widget" data-play-widget>
+    <button class="play-widget__tab" type="button" aria-expanded="false" aria-controls="play-widget-panel" data-play-open>
+      <svg class="play-widget__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="7" width="19" height="11" rx="5.5" /><path d="M7.5 10.5v4M5.5 12.5h4" stroke-linecap="round" /><circle cx="15.5" cy="11.5" r="0.9" fill="currentColor" stroke="none" /><circle cx="17.5" cy="13.8" r="0.9" fill="currentColor" stroke="none" /></svg>
+      <span class="play-widget__tab-label">Ghé chơi một chút?</span>
+    </button>
+
+    <aside class="play-widget__panel" id="play-widget-panel" aria-labelledby="play-widget-title" inert data-play-panel>
+      <div class="play-widget__head">
+        <p class="play-widget__title" id="play-widget-title">Ghé chơi một chút?</p>
+        <button class="play-widget__close" type="button" aria-label="Đóng" data-play-close>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </button>
+      </div>
+
+      <ul class="play-widget__list" role="list">
+        {games.map((g) => (
+          <li>
+            <a class="play-widget__game" href={`/choi-cung-nong-trai/${g.slug}/`}>
+              <img src={g.image} alt="" width="720" height="480" loading="lazy" decoding="async" />
+              <span class="play-widget__copy">
+                <span class="play-widget__name">{g.title}</span>
+                <span class="play-widget__text">{g.text}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <a class="play-widget__all" href="/choi-cung-nong-trai/">Xem tất cả hoạt động</a>
+    </aside>
+  </div>
+)}
+
+<script>
+  const widget = document.querySelector<HTMLElement>('[data-play-widget]');
+  if (widget) {
+    const tab = widget.querySelector<HTMLButtonElement>('[data-play-open]')!;
+    const panel = widget.querySelector<HTMLElement>('[data-play-panel]')!;
+    const close = widget.querySelector<HTMLButtonElement>('[data-play-close]')!;
+
+    const setOpen = (open: boolean, returnFocus = false) => {
+      widget.classList.toggle('is-open', open);
+      tab.setAttribute('aria-expanded', String(open));
+      panel.inert = !open;
+      if (open) close.focus({ preventScroll: true });
+      else if (returnFocus) tab.focus({ preventScroll: true });
+    };
+
+    tab.addEventListener('click', () => setOpen(!widget.classList.contains('is-open')));
+    close.addEventListener('click', () => setOpen(false, true));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && widget.classList.contains('is-open')) setOpen(false, true);
+    });
+    // Click outside the panel closes it.
+    document.addEventListener('pointerdown', (e) => {
+      if (widget.classList.contains('is-open') && !panel.contains(e.target as Node) && !tab.contains(e.target as Node)) setOpen(false);
+    });
+  }
+</script>
+
+<style>
+  .play-widget {
+    --pw-bg: var(--color-cream);
+    --pw-fg: var(--color-forest);
+    --pw-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Collapsed: a narrow tab on the right edge, text reading bottom to top. */
+  .play-widget__tab {
+    position: fixed;
+    right: 0;
+    bottom: clamp(1.5rem, 8vh, 4rem);
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 0.55rem;
+    background: var(--pw-fg);
+    color: var(--pw-bg);
+    border: 0;
+    border-radius: 6px 0 0 6px;
+    box-shadow: 0 6px 20px rgba(16, 43, 33, 0.18);
+    cursor: pointer;
+    transform: none;
+    transition: transform 0.35s var(--pw-ease), opacity 0.25s ease;
+  }
+
+
+  .play-widget__tab-label {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .play-widget__tab:hover { transform: translateX(-3px); }
+  .play-widget__tab:focus-visible { outline: 2px solid var(--pw-fg); outline-offset: 3px; }
+
+  .play-widget.is-open .play-widget__tab {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+  }
+
+  /* Expanded: a panel sliding in from the right edge. */
+  .play-widget__panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 61;
+    display: flex;
+    flex-direction: column;
+    width: min(26rem, 88vw);
+    padding: var(--space-m) var(--space-m) var(--space-l);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: var(--pw-bg);
+    color: var(--pw-fg);
+    border-left: 1px solid var(--color-line);
+    box-shadow: -12px 0 40px rgba(16, 43, 33, 0.16);
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.45s var(--pw-ease), visibility 0s linear 0.45s;
+  }
+
+  .play-widget.is-open .play-widget__panel {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform 0.45s var(--pw-ease), visibility 0s;
+  }
+
+  .play-widget__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-s);
+    padding-bottom: var(--space-s);
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .play-widget__title {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .play-widget__close {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: -0.5rem;
+    background: none;
+    border: 0;
+    border-radius: 50%;
+    color: inherit;
+    cursor: pointer;
+  }
+  .play-widget__close:hover { background: rgba(23, 61, 45, 0.08); }
+  .play-widget__close:focus-visible { outline: 2px solid var(--pw-fg); outline-offset: 2px; }
+
+  .play-widget__list {
+    display: grid;
+    gap: var(--space-xs);
+    margin-top: var(--space-s);
+    padding: 0;
+    list-style: none;
+  }
+
+  .play-widget__game {
+    display: grid;
+    grid-template-columns: 5rem minmax(0, 1fr);
+    gap: var(--space-s);
+    align-items: center;
+    padding: var(--space-xs);
+    margin-inline: calc(var(--space-xs) * -1);
+    border-radius: 6px;
+    color: inherit;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+  }
+  .play-widget__game:hover { background: rgba(23, 61, 45, 0.06); }
+  .play-widget__game:focus-visible { outline: 2px solid var(--pw-fg); outline-offset: 0; }
+
+  .play-widget__game img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  .play-widget__copy { display: grid; gap: 0.25rem; }
+
+  .play-widget__name {
+    font-family: var(--font-editorial, var(--font-display));
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .play-widget__text {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--pw-fg);
+    opacity: 0.78;
+  }
+
+  .play-widget__all {
+    align-self: flex-start;
+    margin-top: var(--space-m);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+
+  @media (max-width: 479px) {
+    .play-widget__tab { padding: 0.75rem 0.45rem; }
+    .play-widget__panel { width: 88vw; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .play-widget__tab,
+    .play-widget__panel,
+    .play-widget.is-open .play-widget__panel { transition-duration: 0s; }
+  }
+</style>
