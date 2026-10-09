@@ -1,0 +1,265 @@
+---
+/**
+ * /tim-kiem/?q=…: site search results.
+ *
+ * Vietnamese only. The index is built by Pagefind after `astro build`
+ * (see the build script and `data-pagefind-body` in BaseLayout), so
+ * results appear on a built site, not under `astro dev`. Each result shows
+ * its category, its page title and Pagefind's excerpt around the match;
+ * nothing is written for a result that the page itself does not say.
+ * The page is kept out of search engines and out of the sitemap.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/page/Breadcrumb.astro';
+---
+<BaseLayout title="Tìm kiếm" description="Tìm trên trang Hiền Nương Farm." noindex>
+  <section class="search-page container" aria-labelledby="search-title">
+    <Breadcrumb items={[{ label: 'Trang chủ', href: '/' }, { label: 'Tìm kiếm' }]} />
+
+    <h1 class="search-page__title" id="search-title">Kết quả tìm kiếm</h1>
+
+    <form class="search-page__form" action="/tim-kiem/" method="get" role="search">
+      <label class="sr-only" for="search-q">Từ khóa</label>
+      <input class="search-page__input" id="search-q" type="search" name="q" autocomplete="off" required data-search-input />
+      <button class="search-page__submit" type="submit">Tìm kiếm</button>
+    </form>
+
+    <p class="search-page__status" role="status" aria-live="polite" data-search-status></p>
+    <ol class="search-page__results" data-search-results></ol>
+
+    <div class="search-page__empty" data-search-empty hidden>
+      <p>Bạn có thể bắt đầu từ:</p>
+      <ul>
+        <li><a href="/san-pham/">Sản phẩm</a></li>
+        <li><a href="/nong-nghiep-tuan-hoan/">Nông nghiệp tuần hoàn</a></li>
+        <li><a href="/dau-an/bao-chi/">Báo chí & truyền thông</a></li>
+      </ul>
+    </div>
+
+    <noscript><p class="search-page__status">Cần bật JavaScript để xem kết quả tìm kiếm.</p></noscript>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+  (async () => {
+    const input = document.querySelector('[data-search-input]');
+    const status = document.querySelector('[data-search-status]');
+    const list = document.querySelector('[data-search-results]');
+    const empty = document.querySelector('[data-search-empty]');
+    const query = (new URLSearchParams(location.search).get('q') || '').trim();
+    input.value = query;
+    if (!query) {
+      input.focus();
+      return;
+    }
+
+    const escape = (text) => text.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+    // One character in, one character out, so positions in the folded
+    // text are positions in the original.
+    const fold = (text) => [...text].map((c) => c.normalize('NFD').replace(/\p{M}/gu, '').replace(/[đĐ]/, 'd').toLowerCase()[0] ?? c).join('');
+    // A word typed with its diacritics matches only that spelling ("nấm"
+    // is not "Nam"); a word typed without them matches any spelling.
+    let words = [];
+    const setWords = (text) => {
+      words = text.toLowerCase().split(/\s+/).filter(Boolean).map((word) => ({ word, loose: fold(word) === word }));
+    };
+    const isLetter = (c) => /[\p{L}\p{N}]/u.test(c ?? '');
+    // Marks the query words in a title or excerpt; neighbouring marked
+    // words share one mark.
+    const highlight = (text) => {
+      const chars = [...text];
+      const exact = chars.map((c) => c.toLowerCase()[0] ?? c).join('');
+      const folded = fold(text);
+      const marked = new Array(chars.length).fill(false);
+      for (const { word, loose } of words) {
+        const hay = loose ? folded : exact;
+        const len = [...word].length;
+        const plain = [...hay];
+        for (let at = 0; at + len <= plain.length; at++) {
+          if (plain.slice(at, at + len).join('') !== word) continue;
+          if (isLetter(plain[at - 1]) || isLetter(plain[at + len])) continue;
+          for (let i = at; i < at + len; i++) marked[i] = true;
+        }
+      }
+      chars.forEach((c, i) => {
+        if (c === ' ' && marked[i - 1] && marked[i + 1]) marked[i] = true;
+      });
+      let html = '';
+      chars.forEach((c, i) => {
+        if (marked[i] && !marked[i - 1]) html += '<mark>';
+        html += escape(c);
+        if (marked[i] && !marked[i + 1]) html += '</mark>';
+      });
+      return html;
+    };
+    // Pagefind's excerpt as plain text, highlighted by the same rule.
+    const plainText = (html) => new DOMParser().parseFromString(html, 'text/html').body.textContent ?? '';
+
+    // A query typed entirely without diacritics gets them back from the
+    // site's own words (tu-dien.json, built by scripts/search-dictionary.mjs):
+    // each word takes the spelling that best fits its neighbours, else its
+    // most frequent one. Done silently; the field keeps what was typed.
+    const restore = async (text) => {
+      if (fold(text) !== text.toLowerCase()) return text;
+      try {
+        const { words: spellings, pairs } = await (await fetch('/tim-kiem/tu-dien.json')).json();
+        const tokens = text.toLowerCase().split(/\s+/).filter(Boolean);
+        // Best path through every word's spellings: pairs seen together on
+        // the site score up, less frequent spellings score down.
+        let paths = [{ words: [], score: 0 }];
+        for (const token of tokens) {
+          const options = spellings[token] ?? [token];
+          paths = options.map((word, rank) => {
+            const best = paths
+              .map((path) => {
+                const prev = path.words[path.words.length - 1];
+                return { path, score: path.score + 3 * Math.log1p(pairs[`${prev} ${word}`] ?? 0) - 0.5 * rank };
+              })
+              .sort((a, b) => b.score - a.score)[0];
+            return { words: [...best.path.words, word], score: best.score };
+          });
+        }
+        return paths.sort((a, b) => b.score - a.score)[0].words.join(' ');
+      } catch {
+        return text;
+      }
+    };
+
+    status.textContent = 'Đang tìm…';
+    try {
+      const pagefind = await import('/pagefind/pagefind.js');
+      await pagefind.options({ excerptLength: 26 });
+      const run = async (text) => {
+        const search = await pagefind.search(text);
+        return Promise.all(search.results.slice(0, 30).map((r) => r.data()));
+      };
+      // The restored query first; the query as typed if it finds nothing.
+      const restored = await restore(query);
+      let results = await run(restored);
+      setWords(restored);
+      if (!results.length && restored !== query) {
+        results = await run(query);
+        setWords(query);
+      }
+
+      status.textContent = results.length
+        ? `${results.length} kết quả cho “${query}”`
+        : `Không tìm thấy kết quả cho “${query}”.`;
+      empty.hidden = results.length > 0;
+      list.innerHTML = results
+        .map((r) => `
+          <li class="search-result">
+            <p class="search-result__category">${escape(r.meta.category ?? '')}</p>
+            <h2 class="search-result__title"><a href="${escape(r.url)}">${highlight(r.meta.title ?? r.url)}</a></h2>
+            <p class="search-result__excerpt">${highlight(plainText(r.excerpt))}</p>
+          </li>`)
+        .join('');
+    } catch {
+      status.textContent = 'Chưa tải được bộ tìm kiếm. Vui lòng thử lại sau.';
+    }
+  })();
+</script>
+
+<style>
+  .search-page {
+    max-width: calc(48rem + 2 * var(--gutter));
+    padding-top: clamp(2rem, 1.25rem + 3vw, 4rem);
+    padding-bottom: var(--section-y);
+  }
+
+  .search-page__title {
+    margin-top: var(--space-l);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--type-title);
+    line-height: 1.1;
+    letter-spacing: -0.005em;
+  }
+
+  .search-page__form {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: var(--space-l);
+  }
+
+  .search-page__input {
+    flex: 1;
+    min-width: 0;
+    height: 3rem;
+    padding-inline: 1rem;
+    border: 1px solid var(--color-line-strong);
+    background: #fff;
+    font: inherit;
+    font-size: 1rem;
+    color: var(--color-text);
+  }
+  .search-page__input:focus-visible { outline: 2px solid var(--color-forest); outline-offset: -1px; }
+
+  .search-page__submit {
+    flex: none;
+    height: 3rem;
+    padding-inline: 1.5rem;
+    background: var(--color-forest);
+    color: var(--color-cream);
+    font-size: var(--type-small);
+    font-weight: 500;
+    transition: background-color 300ms var(--ease);
+  }
+  .search-page__submit:hover { background: var(--color-deep-green); }
+
+  .search-page__status {
+    margin-top: var(--space-m);
+    font-size: var(--type-small);
+    color: var(--color-text-muted);
+  }
+
+  .search-page__results { margin-top: var(--space-m); }
+
+  .search-page__empty {
+    margin-top: var(--space-m);
+    font-size: var(--type-small);
+    color: var(--color-text-muted);
+  }
+  .search-page__empty ul { margin-top: var(--space-2xs); display: grid; gap: 0.25rem; }
+  .search-page__empty a { color: var(--color-text); border-bottom: 1px solid var(--color-line-strong); }
+
+  .search-page :global(.search-result) {
+    padding-block: var(--space-m);
+    border-top: 1px solid var(--color-line);
+  }
+  .search-page :global(.search-result:last-child) { border-bottom: 1px solid var(--color-line); }
+
+  .search-page :global(.search-result__category) {
+    font-size: var(--type-eyebrow);
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .search-page :global(.search-result__title) {
+    margin-top: var(--space-2xs);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--type-product);
+    line-height: var(--lh-heading);
+  }
+  .search-page :global(.search-result__title a) {
+    border-bottom: 1px solid transparent;
+    transition: border-color 300ms var(--ease);
+  }
+  .search-page :global(.search-result__title a:hover) { border-color: currentColor; }
+
+  .search-page :global(.search-result__excerpt) {
+    margin-top: var(--space-2xs);
+    font-size: var(--type-small);
+    line-height: 1.65;
+    color: var(--color-text-muted);
+  }
+
+  .search-page :global(mark) {
+    background: #F1E2B3;
+    color: inherit;
+    padding-inline: 0.1em;
+  }
+</style>

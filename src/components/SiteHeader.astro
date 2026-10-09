@@ -37,6 +37,9 @@ const navItems = links.map((item) => ({
 // section in languages without that page.
 const contactLink = { label: { vi: 'Liên hệ', en: 'Contact', zh: '联系我们' }[lang], href: pageHref('/hop-tac/#lien-he', lang, '/#hop-tac') };
 
+// Search covers the Vietnamese pages only (see src/pages/tim-kiem/).
+const searchable = lang === 'vi';
+
 const t = {
   vi: { mainNav: 'Điều hướng chính', menuNav: 'Điều hướng', menu: 'Menu', close: 'Đóng', submenu: 'Menu con' },
   en: { mainNav: 'Main navigation', menuNav: 'Navigation', menu: 'Menu', close: 'Close', submenu: 'Submenu' },
@@ -90,6 +93,12 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
 
       <LanguageSwitch class="site-header__lang" />
 
+      {searchable && (
+        <button class="search-toggle" type="button" aria-expanded="false" aria-controls="site-search" aria-label="Tìm kiếm" data-search-toggle>
+          <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="5.75" fill="none" stroke="currentColor" stroke-width="1.4" /><path d="M13 13l4.5 4.5" stroke="currentColor" stroke-width="1.4" /></svg>
+        </button>
+      )}
+
       <a class="desktop-contact" href={contactLink.href}><span class="desktop-contact__sizer" aria-hidden="true">{contactLink.label}</span><span class="desktop-contact__label">{contactLink.label} <span aria-hidden="true">→</span></span></a>
 
       <button
@@ -106,6 +115,18 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
       </button>
     </div>
   </div>
+
+  {searchable && (
+    <div class="site-search" id="site-search" data-search hidden>
+      <form class="container site-search__form" action="/tim-kiem/" method="get" role="search">
+        <label class="sr-only" for="site-search-input">Tìm trên Hiền Nương Farm</label>
+        <input class="site-search__input" id="site-search-input" type="search" name="q" placeholder="Tìm sản phẩm, bài báo, sự kiện…" autocomplete="off" required />
+        <button class="site-search__submit" type="submit" aria-label="Tìm">
+          <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="8.5" cy="8.5" r="5.75" fill="none" stroke="currentColor" stroke-width="1.4" /><path d="M13 13l4.5 4.5" stroke="currentColor" stroke-width="1.4" /></svg>
+        </button>
+      </form>
+    </div>
+  )}
 
   <div class="mobile-menu" id="mobile-menu" data-menu hidden>
     <div class="container mobile-menu__inner">
@@ -148,6 +169,27 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
 </header>
 
 <script>
+  // Search panel: a single row under the bar, opened by the magnifier.
+  const searchToggle = document.querySelector<HTMLButtonElement>('[data-search-toggle]');
+  const searchPanel = document.querySelector<HTMLElement>('[data-search]');
+  if (searchToggle && searchPanel) {
+    const setSearch = (open: boolean) => {
+      searchToggle.setAttribute('aria-expanded', String(open));
+      searchPanel.hidden = !open;
+      if (open) searchPanel.querySelector<HTMLInputElement>('input')?.focus();
+    };
+    searchToggle.addEventListener('click', () => setSearch(searchPanel.hidden));
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || searchPanel.hidden) return;
+      setSearch(false);
+      searchToggle.focus();
+    });
+    document.addEventListener('click', (event) => {
+      const target = event.target as Node;
+      if (!searchPanel.hidden && !searchPanel.contains(target) && !searchToggle.contains(target)) setSearch(false);
+    });
+  }
+
   const header = document.querySelector<HTMLElement>('[data-header]');
   const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
   const label = document.querySelector<HTMLElement>('[data-menu-label]');
@@ -449,6 +491,65 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
      panel below that. */
   .site-header__inner :global(.site-header__lang) { display: none; }
 
+  /* Search ---------------------------------------------------------------
+     A magnifier in the bar; the field opens as one quiet row beneath it. */
+  .search-toggle {
+    flex: none;
+    margin-left: auto;
+    display: inline-grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    opacity: 0.86;
+    transition: opacity 300ms var(--ease);
+  }
+  .search-toggle:hover,
+  .search-toggle[aria-expanded="true"] { opacity: 1; }
+  .search-toggle svg,
+  .site-search__submit svg { width: 1.125rem; height: 1.125rem; }
+  .search-toggle + .desktop-contact + .menu-toggle { margin-left: 0; }
+  .is-menu-open .search-toggle { visibility: hidden; }
+
+  .site-search {
+    position: relative;
+    z-index: 2;
+    background: var(--color-paper);
+    border-bottom: 1px solid var(--color-line);
+    color: var(--color-charcoal);
+  }
+
+  .site-search__form {
+    display: flex;
+    gap: 0.5rem;
+    padding-block: var(--space-s);
+    padding-inline: max(var(--gutter), 1.5rem);
+  }
+
+  .site-search__input {
+    flex: 1;
+    min-width: 0;
+    height: 2.75rem;
+    padding-inline: 1rem;
+    border: 1px solid var(--color-line-strong);
+    background: #fff;
+    font: inherit;
+    font-size: 1rem;
+    color: var(--color-text);
+  }
+  .site-search__input:focus-visible { outline: 2px solid var(--color-forest); outline-offset: -1px; }
+
+  .site-search__submit {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    background: var(--color-forest);
+    color: var(--color-cream);
+    transition: background-color 300ms var(--ease);
+  }
+  .site-search__submit:hover { background: var(--color-deep-green); }
+
   /* Menu toggle (below desktop) */
   .menu-toggle {
     margin-left: auto;
@@ -659,6 +760,9 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
     .site-nav { display: block; }
     /* Set close to Liên hệ. */
     .site-header__inner :global(.site-header__lang) { display: flex; margin-right: calc(1rem - var(--space-l)); }
+    .search-toggle { margin-left: 0; margin-right: calc(0.5rem - var(--space-l)); }
+    .site-search__form { justify-content: flex-end; }
+    .site-search__input { flex: 0 1 28rem; }
     .menu-toggle,
     .mobile-menu { display: none; }
   }

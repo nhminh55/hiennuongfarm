@@ -24,6 +24,22 @@ const basePath = stripLocale(Astro.url.pathname);
 // Vietnamese-only pages list no alternates.
 const translated = isTranslated(basePath);
 const alternates = locales.map((l) => ({ hreflang: languages[l].htmlLang, href: new URL(localizePath(basePath, l), Astro.site) }));
+// Site search (Pagefind, run after the build): Vietnamese, published pages
+// only, page content without header and footer. The category is the
+// small label above each result on /tim-kiem/.
+const indexed = lang === 'vi' && !noindex && !basePath.startsWith('/tim-kiem/');
+const categories: [string, string][] = [
+  ['/san-pham/', 'Sản phẩm'],
+  ['/nong-nghiep-tuan-hoan/', 'Nông nghiệp tuần hoàn'],
+  ['/ve-chung-toi/', 'Về Hiền Nương'],
+  ['/dau-an/bao-chi/', 'Báo chí & truyền thông'],
+  ['/dau-an/su-kien/', 'Sự kiện'],
+  ['/dau-an/giai-thuong/', 'Giải thưởng'],
+  ['/dau-an/chung-nhan/', 'Chứng nhận'],
+  ['/hop-tac/', 'Hợp tác'],
+  ['/choi-cung-nong-trai/', 'Chơi cùng nông trại'],
+];
+const category = categories.find(([prefix]) => basePath.startsWith(prefix))?.[1] ?? 'Trang chủ';
 const skipLabel = { vi: 'Bỏ qua đến nội dung chính', en: 'Skip to main content', zh: '跳到主要内容' }[lang];
 ---
 <!doctype html>
@@ -80,7 +96,13 @@ const skipLabel = { vi: 'Bỏ qua đến nội dung chính', en: 'Skip to main c
   <body>
     <a class="skip-link" href="#main">{skipLabel}</a>
     <SiteHeader overlay={overlayHeader} />
-    <main id="main" class:list={[{ 'main--offset': !overlayHeader }]}>
+    <main
+      id="main"
+      class:list={[{ 'main--offset': !overlayHeader }]}
+      data-pagefind-body={indexed ? '' : undefined}
+    >
+      {indexed && <span hidden data-pagefind-meta={`title:${title ?? site.name}`} />}
+      {indexed && <span hidden data-pagefind-meta={`category:${category}`} />}
       <slot />
     </main>
     <SiteFooter />
