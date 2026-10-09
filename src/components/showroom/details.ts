@@ -138,7 +138,8 @@ export function initShowroomDetails(el: HTMLElement) {
 
   list.addEventListener('keydown', (event) => {
     const shown = visible();
-    const index = shown.indexOf(active);
+    const focused = (event.target as HTMLElement).closest<HTMLButtonElement>('[role="tab"]');
+    const index = shown.indexOf(focused ?? active);
     let next: HTMLButtonElement | undefined;
     if (event.key === 'ArrowRight') next = shown[(index + 1) % shown.length];
     else if (event.key === 'ArrowLeft') next = shown[(index - 1 + shown.length) % shown.length];

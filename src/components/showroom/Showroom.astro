@@ -3,17 +3,9 @@
  * The /san-pham/ showroom: a list of the 12 products and a stage that shows
  * the selected one. The selection lives in the URL hash (/san-pham/#slug).
  *
- * Stage: a wall and a stationary pedestal (top surface, lit front edge,
- * front face, a soft cast shadow). The square product photo is placed so the
- * product's base (image.base) lands on the pedestal's top surface; the
- * photo's own tabletop becomes that surface, and its bottom edge is hidden
- * behind the front face. Either side of the photo, a thin band of its own
- * outer pixel columns is stretched sideways so its wall and tabletop run on
- * without a seam: above the pedestal into the wall (fading into the photo's
- * edge colours, image.tone), on the pedestal out to its ends. All geometry
- * is a multiple of the photo size (--s), so the per-product colours below
- * hold at every breakpoint. Two layers crossfade on change; a new image is
- * shown only once decoded, and only the latest selection is ever displayed.
+ * Stage: two stationary photographic backgrounds and decoded product cutouts.
+ * Placement is measured from each image's visible alpha bounds. Selection
+ * changes fade out the old product before the next one settles onto the surface.
  *
  * Contract with ShowroomDetails (the default slot): the root carries
  * data-current="{slug}"; on every change (including the initial selection
@@ -57,62 +49,33 @@ const total = products.length;
 const pad = (n: number) => String(n).padStart(2, '0');
 const mail = (name: string) => `mailto:${contact.email}?subject=${encodeURIComponent(t.subject(name))}`;
 
-// Stage geometry, in photo sizes (--s): the product's base line and the
-// pedestal's back edge, measured from the top of the scene (see CSS).
-const BASE_Y = 0.9;
-const BACK_Y = 0.714;
-
-const rgb = (hex: string) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
-const hex = (c: number[]) => `#${c.map((v) => Math.round(v).toString(16).padStart(2, '0')).join('')}`;
-
-/** The photo's edge colour at a height (fraction of the photo), between band centres. */
-const toneAt = (tone: string[], f: number) => {
-  const x = Math.min(Math.max(f * tone.length - 0.5, 0), tone.length - 1);
-  const i = Math.min(Math.floor(x), tone.length - 2);
-  const a = rgb(tone[i]);
-  const b = rgb(tone[i + 1]);
-  return hex(a.map((v, k) => v + (b[k] - v) * (x - i)));
-};
-
-/**
- * Per-product stage colours. --wall runs the photo's edge colours down to
- * just above the pedestal's back edge, then holds that colour (--c), so the
- * wall beside the pedestal stays a wall.
- */
 const stageVars = (image: ShowroomItem['image']) => {
-  const { tone, base } = image;
-  const back = base - (BASE_Y - BACK_Y) - 0.02;
-  const c = toneAt(tone, back);
-  const stops = tone
-    .map((col, i) => [col, (i + 0.5) / tone.length] as const)
-    .filter(([, f]) => f < back)
-    .map(([col, f]) => `${col} ${(f * 100).toFixed(1)}%`);
-  const wall = `linear-gradient(to bottom, ${[`${tone[0]} 0%`, ...stops, `${c} ${(back * 100).toFixed(1)}%`, `${c} 100%`].join(', ')})`;
-  return `--b: ${base}; --t0: ${tone[0]}; --c: ${c}; --t9: ${tone[tone.length - 1]}; --wall: ${wall}`;
+  const { width, x, surface, bounds } = image.placement;
+  const center = (bounds[0] + bounds[2]) / 2 / image.width;
+  const bottom = (bounds[3] + 1) / image.height;
+  return `--product-width: ${width}%; --product-left: ${x - center * width}%; --product-top: ${surface - bottom * width * 1.5}%`;
 };
-
-// The photo's rendered width (= --s below).
-const sizes = '(min-width: 1024px) min(25vw, 400px), (min-width: 640px) 44vw, 62vw';
+const backgroundDir = '/images/products/showroom';
 
 const data = products.map((p, i) => ({
   slug: p.slug,
   index: pad(i + 1),
   name: p.name,
-  category: p.category ?? '',
+  category: p.category ?? ({ vi: 'Sản phẩm', en: 'Product', zh: '产品' }[lang]),
   summary: p.summary,
   src: p.image.src,
-  srcset: p.image.srcset,
   alt: p.image.alt,
   vars: stageVars(p.image),
+  plate: p.image.plate,
   mail: mail(p.name),
 }));
-const json = JSON.stringify({ sizes, items: data }).replace(/</g, '\\u003c');
+const json = JSON.stringify({ items: data }).replace(/</g, '\\u003c');
 
 const first = products[0];
 const blank = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
 const layers = [
-  { image: first.image, src: first.image.src, srcset: first.image.srcset, alt: first.image.alt, current: true },
-  { image: first.image, src: blank, srcset: undefined, alt: '', current: false },
+  { image: first.image, src: first.image.src, alt: first.image.alt, current: true },
+  { image: first.image, src: blank, alt: '', current: false },
 ];
 ---
 <section class="showroom" data-showroom data-current={first.slug} aria-labelledby="showroom-name">
@@ -141,61 +104,22 @@ const layers = [
       <div class="showroom__body">
         <div class="showroom__head">
           <p class="eyebrow showroom__eyebrow">
-            <span class="eyebrow__num" data-showroom-index-text>{pad(1)} / {pad(total)}</span>
-            <span class="showroom__category" data-showroom-category-group hidden={!first.category}>
-              <span class="eyebrow__rule" aria-hidden="true"></span>
-              <span data-showroom-category>{first.category}</span>
+            <span class="showroom__category" data-showroom-category-group>
+              <span data-showroom-category>{data[0].category}</span>
             </span>
           </p>
           <h2 class="showroom__name" id="showroom-name" data-showroom-name>{first.name}</h2>
         </div>
 
         <div class="showroom__stage" data-showroom-stage>
-          <div class="showroom__scene">
-            {layers.map((l, i) => (
-              <div
-                class:list={['showroom__layer', { 'is-current is-top': l.current }]}
-                style={stageVars(l.image)}
-                aria-hidden={l.current ? undefined : 'true'}
-                data-showroom-layer
-              >
-                <div class="showroom__wall"></div>
-                <span class="showroom__side showroom__side--l showroom__side--wall" aria-hidden="true">
-                  <img src={l.src} srcset={l.srcset} sizes={sizes} width={l.image.width} height={l.image.height} alt="" decoding="async" />
-                </span>
-                <span class="showroom__side showroom__side--r showroom__side--wall" aria-hidden="true">
-                  <img src={l.src} srcset={l.srcset} sizes={sizes} width={l.image.width} height={l.image.height} alt="" decoding="async" />
-                </span>
-                <div class="showroom__top">
-                  <span class="showroom__side showroom__side--l" aria-hidden="true">
-                    <img src={l.src} srcset={l.srcset} sizes={sizes} width={l.image.width} height={l.image.height} alt="" decoding="async" />
-                  </span>
-                  <span class="showroom__side showroom__side--r" aria-hidden="true">
-                    <img src={l.src} srcset={l.srcset} sizes={sizes} width={l.image.width} height={l.image.height} alt="" decoding="async" />
-                  </span>
-                </div>
-                <img
-                  class="showroom__photo"
-                  src={l.src}
-                  srcset={l.srcset}
-                  sizes={sizes}
-                  width={l.image.width}
-                  height={l.image.height}
-                  alt={l.alt}
-                  fetchpriority={i === 0 ? 'high' : undefined}
-                  decoding="async"
-                />
-                <span class="showroom__contact" aria-hidden="true"></span>
-              </div>
-            ))}
-            <div class="showroom__pedestal" aria-hidden="true">
-              <span class="showroom__surface"></span>
-              <span class="showroom__front"></span>
-              <span class="showroom__cast"></span>
+          <img class="showroom__background" src={`${backgroundDir}/showroom-co-dia-cay-mo.webp`} width="1536" height="1024" alt="" aria-hidden="true" decoding="async" data-showroom-background="plate" />
+          <img class="showroom__background" src={`${backgroundDir}/showroom-khong-dia-cay-mo.webp`} width="1536" height="1024" alt="" aria-hidden="true" decoding="async" data-showroom-background="wood" hidden />
+          {layers.map((l, i) => (
+            <div class:list={['showroom__layer', { 'is-current': l.current }]} style={stageVars(l.image)} aria-hidden={l.current ? undefined : 'true'} data-showroom-layer>
+              <img class="showroom__photo" src={l.src} width={l.image.width} height={l.image.height} alt={l.alt} fetchpriority={i === 0 ? 'high' : undefined} decoding="async" />
             </div>
-            <div class="showroom__light" aria-hidden="true"></div>
-          </div>
-          <div class="showroom__floor" aria-hidden="true"></div>
+          ))}
+          <span class="showroom__counter" data-showroom-index-text>{pad(1)} / {pad(total)}</span>
         </div>
 
         <div class="showroom__info">
@@ -215,7 +139,7 @@ const layers = [
           (() => {
             const root = document.currentScript.closest('[data-showroom]');
             if (!root) return;
-            const { sizes, items } = JSON.parse(root.querySelector('[data-showroom-data]').textContent);
+            const { items } = JSON.parse(root.querySelector('[data-showroom-data]').textContent);
             const bySlug = new Map(items.map((p) => [p.slug, p]));
             const $ = (s) => root.querySelector(s);
             const index = $('[data-showroom-index]');
@@ -239,7 +163,8 @@ const layers = [
             let front = layers[0];
             let token = 0;
             let fade = null;
-            let dim = 0;
+            const backgrounds = [...root.querySelectorAll('[data-showroom-background]')];
+            const preloaded = new Map();
 
             const photoOf = (layer) => layer.querySelector('.showroom__photo');
 
@@ -285,55 +210,79 @@ const layers = [
 
             const fill = (layer, p) => {
               layer.style.cssText = p.vars;
-              layer.querySelectorAll('img').forEach((img) => {
-                img.sizes = sizes;
-                img.srcset = p.srcset;
-                img.src = p.src;
-              });
-              photoOf(layer).alt = p.alt;
+              const img = photoOf(layer);
+              img.src = p.src;
+              img.alt = p.alt;
               layer.dataset.slug = p.slug;
             };
 
-            const finishFade = () => {
-              if (fade) { const f = fade; fade = null; f.forEach((a) => a.finish()); }
+            // Cache decoding promises, rather than reusing an image with pending
+            // load listeners. Rapid selections can never reveal a stale product.
+            const preload = (p) => {
+              if (!preloaded.has(p.slug)) {
+                const img = new Image();
+                const ready = new Promise((resolve, reject) => {
+                  img.onload = resolve;
+                  img.onerror = reject;
+                  img.src = p.src;
+                }).then(() => img.decode());
+                preloaded.set(p.slug, ready);
+                ready.catch(() => preloaded.delete(p.slug));
+              }
+              return preloaded.get(p.slug);
             };
 
-            // Swap the photo once it is decoded; a newer selection cancels this
-            // one. While a slow image loads, the previous product stays on the
-            // stage, dimmed, so the stage is never empty.
-            const show = (p, animate) => {
-              const my = ++token;
-              finishFade();
-              clearTimeout(dim);
-              if (front.dataset.slug === p.slug) { stage.classList.remove('is-loading'); return; }
-              const back = layers.find((l) => l !== front);
-              fill(back, p);
-              const img = photoOf(back);
-              dim = setTimeout(() => { if (my === token) stage.classList.add('is-loading'); }, 200);
-              const loaded = (i) => (i.complete && i.naturalWidth ? Promise.resolve() : new Promise((r) => {
-                i.addEventListener('load', r, { once: true });
-                i.addEventListener('error', r, { once: true });
-              })).then(() => (i.decode ? i.decode().catch(() => {}) : null));
-              Promise.all([...back.querySelectorAll('img')].map(loaded)).then(() => {
-                if (my !== token) return;
-                clearTimeout(dim);
-                stage.classList.remove('is-loading');
-                finishFade();
-                const old = front;
-                front = back;
-                old.classList.remove('is-top');
-                old.setAttribute('aria-hidden', 'true');
-                back.classList.add('is-current', 'is-top');
-                back.removeAttribute('aria-hidden');
-                const done = () => { if (front !== old) old.classList.remove('is-current'); };
-                if (!animate || still.matches || !back.animate) { done(); return; }
-                const ease = 'cubic-bezier(0.22, 0.61, 0.36, 1)';
-                const a = back.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, easing: ease });
-                const b = img.animate([{ transform: 'translateY(6px)' }, { transform: 'none' }], { duration: 300, easing: ease });
-                fade = [a, b];
-                a.addEventListener('finish', done);
-              });
+            const cancelFade = () => {
+              if (fade) { fade.cancel(); fade = null; }
             };
+            const hide = (layer) => {
+              layer.classList.remove('is-current');
+              layer.setAttribute('aria-hidden', 'true');
+            };
+            const backgroundFor = async (p) => {
+              const bg = backgrounds.find((b) => b.dataset.showroomBackground === (p.plate ? 'plate' : 'wood'));
+              await bg.decode();
+              return bg;
+            };
+            const show = async (p, animate) => {
+              const my = ++token;
+              const opacity = getComputedStyle(front).opacity;
+              cancelFade();
+              stage.setAttribute('aria-busy', 'true');
+              const moving = animate && !still.matches && !!front.animate;
+              const old = front;
+              const outgoing = moving && old.classList.contains('is-current')
+                ? (fade = old.animate([{ opacity }, { opacity: 0 }], { duration: 120, easing: 'ease-out' })).finished.catch(() => {})
+                : Promise.resolve();
+              if (!moving) layers.forEach(hide);
+              // Hide the previous product before swapping the stationary plate.
+              outgoing.then(() => { if (my === token) layers.forEach(hide); });
+              try {
+                const [, bg] = await Promise.all([preload(p), backgroundFor(p), outgoing]);
+                if (my !== token) return;
+                cancelFade();
+                layers.forEach(hide);
+                backgrounds.forEach((b) => { b.hidden = b !== bg; });
+                const next = layers.find((l) => l !== old);
+                fill(next, p);
+                await photoOf(next).decode();
+                if (my !== token) return;
+                front = next;
+                next.classList.add('is-current');
+                next.removeAttribute('aria-hidden');
+                stage.removeAttribute('aria-busy');
+                if (moving && !still.matches) {
+                  fade = next.animate([{ opacity: 0, transform: 'translateY(-24px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 450, easing: 'cubic-bezier(0.22, 0.61, 0.36, 1)' });
+                }
+              } catch {
+                if (my !== token) return;
+                cancelFade();
+                layers.forEach(hide);
+                stage.removeAttribute('aria-busy');
+                liveEl.textContent = p.name + ' — ' + ({ vi: 'Không thể tải ảnh. Vui lòng thử lại.', en: 'Image unavailable. Please try again.', zh: '图片无法加载，请重试。' }[document.documentElement.lang] || 'Image unavailable. Please try again.');
+              }
+            };
+            still.addEventListener('change', () => { if (still.matches) cancelFade(); });
 
             const titleFor = (p) => (bySlug.has(slugFromHash()) ? `${p.name} — ${baseTitle}` : baseTitle);
 
@@ -374,14 +323,17 @@ const layers = [
             }
             const start = bySlug.get(bySlug.has(initial) ? initial : items[0].slug);
             update(start);
-            if (start !== items[0]) fill(layers[0], start);
+            if (start !== items[0]) show(start, false);
+            else preload(start).catch(() => {});
             // Details may load after this script: it reads data-current, and the event is repeated once the page is parsed.
             if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fire, { once: true });
             else fire();
-            requestAnimationFrame(() => {
+            const revealCurrent = () => {
               const row = rows.find((r) => r.dataset.slug === current);
               if (row) reveal(row);
-            });
+            };
+            requestAnimationFrame(revealCurrent);
+            window.addEventListener('resize', () => requestAnimationFrame(revealCurrent), { passive: true });
 
             // A product hash is a selection, not a scroll target: in-page
             // history entries keep the reader where they are. Restored to
@@ -396,7 +348,10 @@ const layers = [
               e.preventDefault();
               row.focus({ preventScroll: true });
               const slug = row.dataset.slug;
-              if (slug === current) return;
+              if (slug === current) {
+                if (!stage.hasAttribute('aria-busy') && !layers.some((l) => l.classList.contains('is-current') && l.dataset.slug === slug)) show(bySlug.get(slug), true);
+                return;
+              }
               manual();
               history.pushState(null, '', `#${slug}`);
               select(slug, true);
@@ -433,16 +388,10 @@ const layers = [
             });
 
             // Warm the cache for a product the reader is about to choose.
-            const warmed = new Set();
             const warm = (e) => {
               const row = e.target.closest && e.target.closest('[data-slug]');
               const p = row && bySlug.get(row.dataset.slug);
-              if (!p || warmed.has(p.slug)) return;
-              warmed.add(p.slug);
-              const img = new Image();
-              img.sizes = sizes;
-              img.srcset = p.srcset;
-              img.src = p.src;
+              if (p) preload(p).catch(() => {});
             };
             list.addEventListener('pointerover', warm);
             list.addEventListener('focusin', warm);
@@ -485,7 +434,6 @@ const layers = [
     gap: var(--space-2xs);
     overflow-x: auto;
     overscroll-behavior-x: contain;
-    scroll-snap-type: x proximity;
     scroll-padding-inline: var(--space-2xs);
     scrollbar-width: thin;
     scrollbar-color: var(--color-line-strong) transparent;
@@ -494,40 +442,41 @@ const layers = [
 
   .showroom__item {
     flex: none;
-    width: 6rem;
-    scroll-snap-align: start;
+    width: 11.5rem;
   }
 
-  /* Phones and tablets: a strip of tiles; the selected one has a forest
-     frame around its thumbnail and its name in forest green. */
+  /* Phones and tablets: compact horizontal choices above the stage. */
   .showroom__row {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2xs);
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    align-items: center;
+    gap: 0.625rem;
     height: 100%;
-    padding: var(--space-2xs) var(--space-2xs) 0.625rem;
+    min-height: 3.75rem;
+    padding: 0.625rem;
     color: var(--color-text-muted);
     transition: background-color 250ms var(--ease), color 250ms var(--ease);
   }
   .showroom__row:hover { background: rgba(23, 61, 45, 0.06); color: var(--color-text); }
   .showroom__row:focus-visible { outline: 1px solid currentColor; outline-offset: -4px; }
   .showroom__row[aria-current='true'] {
-    color: var(--color-forest);
-    font-weight: 500;
+    background: var(--color-forest);
+    color: var(--color-cream);
+    font-weight: 400;
   }
-  .showroom__row[aria-current='true'] .showroom__thumb { outline: 2px solid var(--color-forest); outline-offset: -2px; }
+  .showroom__row[aria-current='true'] .showroom__thumb { outline: none; }
 
   .showroom__num { display: none; }
 
   .showroom__thumb {
     width: 100%;
     aspect-ratio: 1;
-    object-fit: cover;
-    background: var(--color-cream);
+    object-fit: contain;
+    background: transparent;
   }
 
   .showroom__label {
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     line-height: 1.35;
     text-wrap: pretty;
     overflow-wrap: break-word;
@@ -545,236 +494,63 @@ const layers = [
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .showroom__stage { grid-row: 1; grid-column: 1; }
-  .showroom__head { grid-row: 2; grid-column: 1; margin-top: var(--space-l); }
+  .showroom__head {
+    --title-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+    grid-row: 1;
+    grid-column: 1;
+    min-height: calc(var(--title-size) * 2.16 + 2.75rem);
+    margin-bottom: var(--space-s);
+  }
+  .showroom__stage { grid-row: 2; grid-column: 1; }
   .showroom__info { grid-row: 3; grid-column: 1; }
   .showroom__details { grid-row: 4; grid-column: 1; min-width: 0; }
 
-  .showroom__eyebrow { gap: 0.25rem 0.75rem; flex-wrap: wrap; }
-  .showroom__eyebrow > * { white-space: nowrap; }
-  /* The rule travels with its category when the line wraps. */
-  .showroom__category { display: inline-flex; align-items: center; gap: inherit; }
-  .showroom__eyebrow [hidden] { display: none; }
-
+  .showroom__category { display: inline-block; color: var(--color-forest); }
+  .showroom__category::after { content: ''; display: block; width: 1.5rem; height: 1px; background: currentColor; margin-top: 0.35rem; opacity: 0.6; }
   .showroom__name {
-    margin-top: var(--space-2xs);
+    margin-top: var(--space-xs);
+    color: var(--color-forest);
     font-family: var(--font-display);
     font-weight: 400;
-    font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
-    line-height: var(--lh-display);
-    letter-spacing: -0.01em;
-    text-wrap: balance;
+    font-size: var(--title-size);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    text-wrap: pretty;
     overflow-wrap: break-word;
   }
 
-  /* Stage ------------------------------------------------------------------
-     Everything is measured in photo sizes (--s), from the top of the scene:
-     product base 0.9, pedestal back edge 0.714 (BASE_Y, BACK_Y in the
-     script above), front edge 1.014, floor 1.144. The pedestal is 1.25
-     photos wide at the front, 1.18 at the back, centred at --cx. */
   .showroom__stage {
-    --s: 62cqi;
-    --cx: 50cqi;
-    --yb: calc(var(--s) * 0.9);
-    --pt: calc(var(--s) * 0.714);
-    --pf: calc(var(--s) * 1.014);
-    --pwf: calc(var(--s) * 1.25);
-    --pwb: calc(var(--s) * 1.18);
-    --photo-l: calc(var(--cx) - var(--s) / 2);
-    --photo-r: calc(100cqi - var(--cx) - var(--s) / 2);
-    --feather: calc(var(--s) * 0.015);
-    /* How far the stretched wall reaches before the wall colours take over. */
-    --reach: 22cqi;
     position: relative;
     isolation: isolate;
-  }
-
-  .showroom__scene {
-    position: relative;
-    height: calc(var(--s) * 1.144);
+    aspect-ratio: 3 / 2;
     overflow: hidden;
     background: var(--color-cream);
   }
-
-  .showroom__layer {
-    /* Top of the photo: its product base sits on the base line. */
-    --ptop: calc(var(--yb) - var(--b, 0.88) * var(--s));
-    --from-top: linear-gradient(to bottom, transparent 0, #000 4%);
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-  }
+  .showroom__background { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .showroom__background[hidden] { display: none; }
+  .showroom__layer { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
   .showroom__layer.is-current { opacity: 1; }
-  .showroom__layer.is-top { z-index: 1; }
-
-  .showroom__stage.is-loading .showroom__layer.is-top {
-    opacity: 0.4;
-    transition: opacity 250ms var(--ease);
-  }
-
-  /* Wall: the photo's edge colours aligned with the photo, the top colour
-     above it and the colour just above the pedestal below. */
-  .showroom__wall {
-    position: absolute;
-    inset: 0;
-    background:
-      var(--wall) 0 var(--ptop) / 100% var(--s) no-repeat,
-      linear-gradient(to bottom, var(--t0) calc(var(--ptop) + var(--s) / 2), var(--c) 0);
-  }
-
   .showroom__photo {
     position: absolute;
-    top: var(--ptop);
-    left: var(--photo-l);
-    width: var(--s);
-    height: var(--s);
+    width: var(--product-width);
+    height: auto;
     max-width: none;
-    object-fit: contain;
-    /* Sides and top feathered into the wall; the bottom is behind the pedestal's front. */
-    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 var(--feather), #000 calc(100% - var(--feather)), transparent 100%), var(--from-top);
-    mask-image: linear-gradient(to right, transparent 0, #000 var(--feather), #000 calc(100% - var(--feather)), transparent 100%), var(--from-top);
-    -webkit-mask-composite: source-in;
-    mask-composite: intersect;
+    left: var(--product-left);
+    top: var(--product-top);
+    filter: drop-shadow(0 3px 3px rgba(52, 40, 28, 0.12));
   }
-
-  /* Either side of the photo, its own outer pixel columns stretched
-     sideways. On the wall they fade into the wall colours within --reach
-     and stop at the pedestal's back edge; on the pedestal they run on to
-     its ends, so the photo's tabletop becomes the pedestal's top. */
-  .showroom__side {
+  .showroom__counter {
     position: absolute;
-    top: var(--ptop);
-    height: var(--s);
-    overflow: hidden;
-    /* Softens thin highlights that touch the photo's edge. */
-    filter: blur(3px);
-  }
-  .showroom__side--l { left: 0; width: calc(var(--photo-l) + var(--feather) * 2); }
-  .showroom__side--r { right: 0; width: calc(var(--photo-r) + var(--feather) * 2); }
-  /* On the wall the stretch stops at the pedestal's back edge (at b − 0.186
-     of the photo). Above the pedestal it keeps full strength out to the
-     pedestal's ends (--near), so the photo's own tabletop and the wall meet
-     the back edge in one line; further out it also fades away over the last
-     0.12 photo above that edge (--down), so the wall beside the pedestal
-     stays a wall. Mask: near ∪ (reach ∩ down). */
-  .showroom__side--wall {
-    --near-w: calc(var(--feather) * 2 + (var(--pwb) - var(--s)) / 2);
-    --down: linear-gradient(to bottom, transparent 0, #000 4%, #000 calc(var(--s) * (var(--b, 0.88) - 0.306)), transparent calc(var(--s) * (var(--b, 0.88) - 0.186)));
-    filter: blur(5px);
-    clip-path: inset(0 0 calc(var(--s) * (1.186 - var(--b, 0.88))) 0);
-    -webkit-mask-composite: source-over, source-in;
-    mask-composite: add, intersect;
-  }
-  .showroom__side--wall.showroom__side--l {
-    --near: linear-gradient(to left, #000 var(--near-w), transparent calc(var(--near-w) + var(--s) * 0.05));
-    -webkit-mask-image: var(--near), linear-gradient(to left, #000 calc(var(--feather) * 2), transparent calc(var(--feather) * 2 + var(--reach))), var(--down);
-    mask-image: var(--near), linear-gradient(to left, #000 calc(var(--feather) * 2), transparent calc(var(--feather) * 2 + var(--reach))), var(--down);
-  }
-  .showroom__side--wall.showroom__side--r {
-    --near: linear-gradient(to right, #000 var(--near-w), transparent calc(var(--near-w) + var(--s) * 0.05));
-    -webkit-mask-image: var(--near), linear-gradient(to right, #000 calc(var(--feather) * 2), transparent calc(var(--feather) * 2 + var(--reach))), var(--down);
-    mask-image: var(--near), linear-gradient(to right, #000 calc(var(--feather) * 2), transparent calc(var(--feather) * 2 + var(--reach))), var(--down);
-  }
-  .showroom__side img {
-    position: absolute;
-    top: 0;
-    width: var(--s);
-    height: var(--s);
-    max-width: none;
-  }
-  /* ×60, skipping the outermost 0.4% of the photo (its edge pixels are
-     resampling artefacts): 0.004 × 60 = 0.24 of the photo's width. The
-     visible stretch then samples only ~0.4–0.9% in from the photo's edge. */
-  .showroom__side--l img { left: 0; transform-origin: 0 0; transform: translateX(calc(var(--s) * -0.24)) scaleX(60); }
-  .showroom__side--r img { right: 0; transform-origin: 100% 0; transform: translateX(calc(var(--s) * 0.24)) scaleX(60); }
-
-  /* The pedestal's top surface: a trapezoid, slightly narrower at the back. */
-  .showroom__top,
-  .showroom__surface {
-    position: absolute;
-    inset: 0;
-    clip-path: polygon(
-      calc(var(--cx) - var(--pwb) / 2) var(--pt),
-      calc(var(--cx) + var(--pwb) / 2) var(--pt),
-      calc(var(--cx) + var(--pwf) / 2) var(--pf),
-      calc(var(--cx) - var(--pwf) / 2) var(--pf)
-    );
-  }
-  .showroom__top { background: var(--t9); }
-  .showroom__top .showroom__side { filter: blur(2px); }
-
-  /* A soft contact shadow under the product. */
-  .showroom__contact {
-    position: absolute;
-    left: calc(var(--cx) - var(--s) * 0.36);
-    width: calc(var(--s) * 0.72);
-    top: calc(var(--yb) - var(--s) * 0.022);
-    height: calc(var(--s) * 0.06);
-    background: radial-gradient(closest-side, rgba(52, 40, 28, 0.2), rgba(52, 40, 28, 0.08) 55%, rgba(52, 40, 28, 0));
-    mix-blend-mode: multiply;
-    pointer-events: none;
-  }
-
-  /* Stationary pedestal: shading on the top surface (darker towards the
-     back and the ends), the lit front edge and face, and its shadow on the
-     wall to the right (light from the upper left). */
-  .showroom__pedestal {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-  }
-  .showroom__surface {
-    background:
-      linear-gradient(to bottom, rgba(52, 40, 28, 0.07), rgba(52, 40, 28, 0) 45%),
-      linear-gradient(to right, rgba(52, 40, 28, 0.06), rgba(52, 40, 28, 0) 7%, rgba(52, 40, 28, 0) 90%, rgba(52, 40, 28, 0.08));
-  }
-  .showroom__front {
-    position: absolute;
-    left: calc(var(--cx) - var(--pwf) / 2);
-    width: var(--pwf);
-    top: var(--pf);
-    bottom: 0;
-    background:
-      linear-gradient(to bottom, rgba(255, 251, 243, 0.9) 0, rgba(255, 251, 243, 0.9) 1px, rgba(255, 251, 243, 0) 3px),
-      linear-gradient(to right, rgba(255, 251, 243, 0.14), rgba(255, 251, 243, 0) 45%, rgba(52, 40, 28, 0.1)),
-      linear-gradient(to bottom, #c9b9a2, #b9a68c 75%, #ab977c);
-  }
-  .showroom__cast {
-    position: absolute;
-    left: calc(var(--cx) + var(--pwf) / 2);
-    width: calc(var(--s) * 0.22);
-    top: var(--pt);
-    bottom: 0;
-    background: linear-gradient(to right, rgba(52, 40, 28, 0.1), rgba(52, 40, 28, 0));
-    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 45%);
-    mask-image: linear-gradient(to bottom, transparent, #000 45%);
-  }
-
-  /* Window light from the upper left and a very light vignette. */
-  .showroom__light {
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    pointer-events: none;
-    background:
-      radial-gradient(110% 85% at 8% 0%, rgba(255, 251, 243, 0.34) 0%, rgba(255, 251, 243, 0) 60%),
-      radial-gradient(130% 110% at 55% 45%, rgba(32, 34, 31, 0) 62%, rgba(32, 34, 31, 0.07) 100%);
-  }
-
-  /* The scene stands on the page: a soft shadow under the pedestal. */
-  .showroom__floor {
-    position: relative;
-    height: clamp(0.75rem, 0.5rem + 1vw, 1.25rem);
-  }
-  .showroom__floor::before {
-    content: '';
-    position: absolute;
-    left: calc(var(--cx) - var(--pwf) / 2 - var(--s) * 0.04);
-    width: calc(var(--pwf) + var(--s) * 0.08);
-    top: 0;
-    height: 100%;
-    background: radial-gradient(50% 100% at 50% 0%, rgba(32, 34, 31, 0.16), rgba(32, 34, 31, 0));
+    left: 50%;
+    bottom: 2.5%;
+    transform: translateX(-50%);
+    color: var(--color-cream);
+    font-family: var(--font-display);
+    font-size: clamp(0.75rem, 1.6cqi, 0.9375rem);
+    line-height: 1;
+    letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 1px 3px rgba(32, 34, 31, 0.8);
   }
 
   .showroom__info {
@@ -803,35 +579,25 @@ const layers = [
 
   .showroom__details { margin-top: var(--space-l); }
 
+  /* On smaller stages the title stays above the image, leaving the full
+     display surface available and long Vietnamese names readable. */
   @container showroom (min-width: 560px) {
-    .showroom__stage { --s: 44cqi; }
-  }
-
-  /* Wide stage: the name sits on the wall at the top left, clear of the
-     pedestal (its left end is at --cx − 0.625 × --s ≈ 40cqi). */
-  @container showroom (min-width: 640px) {
-    .showroom__stage { --s: 36cqi; --cx: 62cqi; }
+    .showroom__stage { grid-row: 1; }
     .showroom__head {
-      grid-row: 1;
       position: relative;
-      z-index: 4;
+      z-index: 2;
       align-self: start;
-      margin-top: 0;
-      padding: clamp(1.5rem, 3cqi, 2.5rem) 0 0 clamp(1.5rem, 3cqi, 2.5rem);
-      max-width: 36cqi;
+      width: 30cqi;
+      min-height: 0;
+      margin: 0;
+      padding-top: 4cqi;
+      margin-left: 4.5cqi;
+      text-shadow: 0 0 12px rgba(255, 251, 243, 0.6);
     }
-    .showroom__name { font-size: clamp(1.75rem, 0.9rem + 2.2cqi, 2.5rem); }
-    .showroom__eyebrow { color: color-mix(in srgb, var(--color-earth) 62%, var(--color-charcoal)); }
-    .showroom__eyebrow .eyebrow__num { color: var(--color-charcoal); }
-    .showroom__info {
-      margin-top: var(--space-m);
-      padding-bottom: var(--space-m);
-    }
+    .showroom__eyebrow { font-size: clamp(0.625rem, 1.3cqi, 0.75rem); }
+    .showroom__name { font-size: clamp(1.5rem, 4.4cqi, 2.75rem); }
   }
-
-  /* Wide: summary and actions side by side. */
   @container showroom (min-width: 900px) {
-    .showroom__stage { --s: 33cqi; --cx: 63cqi; }
     .showroom__info {
       grid-template-columns: minmax(0, 1fr) auto;
       align-items: center;
@@ -909,6 +675,5 @@ const layers = [
 
   @media (prefers-reduced-motion: reduce) {
     .showroom__row { transition: none; }
-    .showroom__stage.is-loading .showroom__layer.is-top { transition: none; }
   }
 </style>

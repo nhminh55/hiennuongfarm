@@ -79,16 +79,12 @@ interface RawProduct {
   /** Short summary under the stage. */
   summary: SourcedText;
   image: {
-    /** File stem under /images/products/studio/ (-160, -640, -1254 .webp). */
+    /** Approved transparent WebP under /images/products/showroom/. */
     file: string;
     alt: Text;
-    /** Edge colours of the photo, top to bottom (10 bands); the stage
-        backdrop uses them so the photo blends into it. */
-    tone: string[];
-    /** Stage placement (layout only): where the product and its contact
-        shadow meet the tabletop, as a fraction of the photo's height,
-        measured from the photo. */
-    base?: number;
+    /** Full-image width (% of stage), visible-subject centre and surface (%). */
+    placement: { width: number; x: number; surface: number; bounds: [number, number, number, number] };
+    plate: boolean;
   };
   /** A dedicated product page, when one exists (Vietnamese path). */
   detail?: string;
@@ -163,14 +159,14 @@ const raw: RawProduct[] = [
       source: OWNER_HOME,
     },
     image: {
-      file: 'nam-moi-den',
+      file: '01-nam-moi-den.webp',
       alt: {
         vi: 'Một nhóm nấm mối đen tươi, mũ nâu sẫm, thân trắng ngà, xếp chồng trên nền sáng',
         en: 'A pile of fresh black termite mushrooms with dark brown caps and ivory stems on a light background',
         zh: '一堆新鲜的黑皮鸡枞菌，深褐色菌盖、象牙白菌柄，置于浅色背景上',
       },
-      tone: ['#d1c9c3', '#d1cac3', '#d0c9c2', '#d3ccc5', '#d9d2cc', '#ddd6d0', '#e0d9d3', '#e7e1dc', '#e6e1dc', '#e1dbd6'],
-      base: 0.78,
+      placement: { width: 51, x: 55, surface: 66, bounds: [12, 248, 1245, 1028] },
+      plate: true,
     },
     detail: '/san-pham/nam-moi-den/',
     intro: {
@@ -246,14 +242,14 @@ const raw: RawProduct[] = [
       source: OWNER_HOME,
     },
     image: {
-      file: 'nam-linh-chi',
+      file: '02-nam-linh-chi-tai-to.webp',
       alt: {
         vi: 'Một tai nấm linh chi lớn màu nâu với nhiều lớp vân tròn, đặt trên nền sáng',
         en: 'A large brown lingzhi cap with layered concentric rings on a light background',
         zh: '一朵带有层层环纹的大朵褐色灵芝，置于浅色背景上',
       },
-      tone: ['#bfbab2', '#beb8b1', '#bcb6af', '#b9b3ac', '#b7b1a9', '#bab5ad', '#dad7d1', '#dcd8d1', '#e5e1dc', '#dfdbd6'],
-      base: 0.85,
+      placement: { width: 48, x: 56, surface: 66, bounds: [2, 156, 1253, 1116] },
+      plate: true,
     },
     intro: {
       paragraphs: [
@@ -310,14 +306,14 @@ const raw: RawProduct[] = [
       source: OWNER_HOME,
     },
     image: {
-      file: 'dong-trung-ha-thao',
+      file: '03-dong-trung-ha-thao.webp',
       alt: {
         vi: 'Một khối đông trùng hạ thảo với những sợi màu cam mọc dày từ lớp giá thể',
         en: 'A clump of cordyceps with dense orange strands rising from a base of substrate',
         zh: '一簇蛹虫草，橙色子实体从基质上密集长出',
       },
-      tone: ['#b5afa6', '#b4aea5', '#b3ada4', '#afa9a0', '#aca69d', '#b0aba3', '#cac7c1', '#d0cac5', '#dcd7d1', '#d4d1cc'],
-      base: 0.83,
+      placement: { width: 44, x: 58, surface: 66, bounds: [6, 117, 1250, 1163] },
+      plate: true,
     },
     intro: {
       paragraphs: [
@@ -357,14 +353,14 @@ const raw: RawProduct[] = [
       source: OWNER_HOME,
     },
     image: {
-      file: 'nam-bao-ngu',
+      file: '04-nam-bao-ngu.webp',
       alt: {
         vi: 'Một chùm nấm bào ngư trắng với nhiều tai nấm xếp tầng',
         en: 'A cluster of white oyster mushrooms with layered caps',
         zh: '一簇白色平菇，菌盖层层叠叠',
       },
-      tone: ['#cec6be', '#ccc4bd', '#cbc2ba', '#cbc2bb', '#cec6bf', '#d4ccc6', '#d9d2cb', '#d7cec7', '#e0d8d2', '#e2dad4'],
-      base: 0.9,
+      placement: { width: 48, x: 57, surface: 66, bounds: [20, 176, 1232, 1202] },
+      plate: true,
     },
     intro: {
       paragraphs: [
@@ -393,14 +389,14 @@ const raw: RawProduct[] = [
       source: OWNER_HOME,
     },
     image: {
-      file: 'nam-moi-den-say-thang-hoa',
+      file: '05-nam-moi-den-say-thang-hoa.webp',
       alt: {
         vi: 'Hộp giấy nấm mối đen sấy thăng hoa có ô cửa sổ, bên cạnh vài cây nấm sấy',
         en: 'A paper box of freeze-dried black termite mushroom with a window panel, beside a few dried mushrooms',
         zh: '带透明窗的冻干黑皮鸡枞菌纸盒，旁边放着几朵干菌',
       },
-      tone: ['#c6b8ab', '#bbada0', '#b7aa9d', '#b7a99d', '#b6a89c', '#b5a79b', '#beafa2', '#d0c1b3', '#d8cabd', '#e1d4c7'],
-      base: 0.92,
+      placement: { width: 44, x: 58, surface: 76, bounds: [347, 67, 1220, 1221] },
+      plate: false,
     },
     intro: {
       facts: [
@@ -501,14 +497,14 @@ const raw: RawProduct[] = [
       source: OWNER_HOME,
     },
     image: {
-      file: 'snack-nam-moi-den',
+      file: '06-snack-nam-moi-den.webp',
       alt: {
         vi: 'Hũ nhựa trong nắp nhôm đựng snack nấm mối đen, bên cạnh vài miếng snack',
         en: 'A clear jar with an aluminium lid holding black termite mushroom snack, with a few pieces beside it',
         zh: '铝盖透明罐装的黑皮鸡枞菌零食，旁边放着几块',
       },
-      tone: ['#c2b8ae', '#bfb4aa', '#bdb4a9', '#b9afa6', '#b7ada3', '#cabfb5', '#dfd4ca', '#e2d8ce', '#e4dad1', '#ddd2c9'],
-      base: 0.86,
+      placement: { width: 48, x: 57, surface: 76, bounds: [211, 167, 1243, 1163] },
+      plate: false,
     },
     intro: {
       facts: [
@@ -533,14 +529,14 @@ const raw: RawProduct[] = [
       source: OWNER_HOME,
     },
     image: {
-      file: 'snack-nam-bao-ngu',
+      file: '07-snack-nam-bao-ngu.webp',
       alt: {
         vi: 'Hũ nhựa trong nắp nhôm, nhãn xanh lá, đựng snack nấm bào ngư, bên cạnh vài miếng snack vàng nâu',
         en: 'A clear jar with an aluminium lid and green label holding oyster mushroom snack, with a few golden pieces beside it',
         zh: '铝盖绿标透明罐装的平菇零食，旁边放着几块金黄色零食',
       },
-      tone: ['#cec2b7', '#d0c4b9', '#d1c6bb', '#d1c6ba', '#cfc4b8', '#d1c6ba', '#d8ccbf', '#ded3c7', '#eae0d5', '#e6dcd0'],
-      base: 0.91,
+      placement: { width: 47, x: 57, surface: 76, bounds: [198, 145, 1243, 1181] },
+      plate: false,
     },
     intro: {
       facts: [
@@ -565,14 +561,14 @@ const raw: RawProduct[] = [
       source: OWNER_HOME,
     },
     image: {
-      file: 'dong-trung-ha-thao-say-thang-hoa',
+      file: '08-dong-trung-ha-thao-say-thang-hoa.webp',
       alt: {
         vi: 'Hũ thủy tinh vuông nắp đen đựng đông trùng hạ thảo sấy thăng hoa, bên cạnh vài sợi đông trùng',
         en: 'A square glass jar with a black lid holding freeze-dried cordyceps, with a few strands beside it',
         zh: '黑盖方形玻璃罐装的冻干蛹虫草，旁边放着几根虫草',
       },
-      tone: ['#dbd0c4', '#d4c8bc', '#cec2b6', '#c8bcb0', '#c3b7ab', '#bdb1a5', '#c8bcae', '#d5c7b9', '#e5d7ca', '#e3d6c9'],
-      base: 0.895,
+      placement: { width: 46, x: 58, surface: 76, bounds: [242, 113, 1241, 1181] },
+      plate: false,
     },
     intro: {
       facts: [
@@ -598,14 +594,14 @@ const raw: RawProduct[] = [
       source: OWNER_HOME,
     },
     image: {
-      file: 'tra-hoa-tan-linh-chi',
+      file: '09-tra-hoa-tan-linh-chi-200g.webp',
       alt: {
         vi: 'Hộp thiếc trà hòa tan linh chi màu xanh lá, bên cạnh một chén trà thủy tinh',
         en: 'A green tin of instant lingzhi tea beside a glass cup of tea',
         zh: '绿色灵芝速溶茶铁罐，旁边是一杯茶',
       },
-      tone: ['#cec2b8', '#ccc1b7', '#ccc0b7', '#c9beb4', '#c6bab1', '#c2b7ac', '#d4c6ba', '#ddd0c4', '#dccec1', '#e6dacf'],
-      base: 0.87,
+      placement: { width: 47, x: 57, surface: 76, bounds: [218, 127, 1138, 1165] },
+      plate: false,
     },
     intro: {
       facts: [
@@ -630,14 +626,14 @@ const raw: RawProduct[] = [
       source: OWNER_HOME,
     },
     image: {
-      file: 'tra-hoa-tan-linh-chi-trung-thao',
+      file: '10-tra-linh-chi-trung-thao.webp',
       alt: {
         vi: 'Hộp thiếc trà hòa tan linh chi trùng thảo với hình vẽ linh chi và đông trùng hạ thảo, bên cạnh một chén trà thủy tinh',
         en: 'A tin of instant lingzhi and cordyceps tea illustrated with lingzhi and cordyceps, beside a glass cup of tea',
         zh: '绘有灵芝和虫草图案的灵芝虫草速溶茶铁罐，旁边是一杯茶',
       },
-      tone: ['#d2c5b8', '#c9bbb0', '#bcafa4', '#b3a69c', '#a99d93', '#beaea1', '#cfbfb1', '#dac9bb', '#d3bfaf', '#decfc1'],
-      base: 0.9,
+      placement: { width: 47, x: 57, surface: 76, bounds: [197, 153, 1170, 1183] },
+      plate: false,
     },
     intro: {
       facts: [
@@ -665,14 +661,14 @@ const raw: RawProduct[] = [
       source: OWNER_HOME,
     },
     image: {
-      file: 'bao-tu-nam-linh-chi',
+      file: '11-bao-tu-nam-linh-chi.webp',
       alt: {
         vi: 'Hũ thủy tinh vuông nắp đen đựng bột bào tử linh chi màu nâu đỏ, bên cạnh một chén nhỏ đựng bột',
         en: 'A square glass jar with a black lid holding reddish-brown lingzhi spore powder, beside a small dish of the powder',
         zh: '黑盖方形玻璃罐装的红褐色灵芝孢子粉，旁边是一小碟孢子粉',
       },
-      tone: ['#c9c2b9', '#c9c2b9', '#c7c1b8', '#c6c0b6', '#c3bcb4', '#bfb7ae', '#c6bcb2', '#cec5ba', '#ddd4ca', '#dfd7ce'],
-      base: 0.91,
+      placement: { width: 47, x: 57, surface: 76, bounds: [210, 168, 1201, 1197] },
+      plate: false,
     },
     intro: {
       facts: [
@@ -696,14 +692,14 @@ const raw: RawProduct[] = [
       source: OWNER_HOME,
     },
     image: {
-      file: 'dong-trung-ha-thao-ngam-mat-ong',
+      file: '12-dong-trung-ha-thao-ngam-mat-ong.webp',
       alt: {
         vi: 'Chai thủy tinh nắp vàng đựng đông trùng hạ thảo ngâm mật ong, bên cạnh một chén thủy tinh nhỏ',
         en: 'A glass bottle with a gold lid holding cordyceps steeped in honey, beside a small glass bowl',
         zh: '金色瓶盖的玻璃瓶装蜂蜜浸蛹虫草，旁边是一个小玻璃碗',
       },
-      tone: ['#d8cfc5', '#d7cfc5', '#d8cfc5', '#d8cfc6', '#d8cfc5', '#d8cfc6', '#dad1c8', '#dbcfc4', '#e2d7cc', '#e1d6ca'],
-      base: 0.935,
+      placement: { width: 48, x: 58, surface: 76, bounds: [358, 114, 1172, 1171] },
+      plate: false,
     },
     intro: {
       facts: [
@@ -768,13 +764,13 @@ export interface ShowroomItem {
   summary: string;
   image: {
     src: string;
-    srcset: string;
     thumb: string;
     width: number;
     height: number;
     alt: string;
-    tone: string[];
-    base: number;
+    /** Full-image scale and visible-subject alignment, measured against the 3:2 stage. */
+    placement: { width: number; x: number; surface: number; bounds: [number, number, number, number] };
+    plate: boolean;
   };
   /** Localized link to a dedicated product page. */
   detail?: string;
@@ -797,7 +793,7 @@ const localizeHref = (href: string, lang: Locale) => (href.startsWith('/') ? loc
 /** The showroom products in a language. */
 export const showroomProducts = (lang: Locale): ShowroomItem[] =>
   raw.map((p) => {
-    const dir = '/images/products/studio';
+    const src = `/images/products/showroom/${p.image.file}`;
     const composition = p.composition && (p.composition.ingredients || p.composition.facts?.length)
       ? { ingredients: p.composition.ingredients?.text[lang], facts: facts(p.composition.facts, lang) }
       : undefined;
@@ -840,18 +836,17 @@ export const showroomProducts = (lang: Locale): ShowroomItem[] =>
 
     return {
       slug: p.slug,
-      name: p.name[lang],
+      name: lang === 'vi' ? p.name.vi.charAt(0) + p.name.vi.slice(1).toLocaleLowerCase('vi') : p.name[lang],
       category: p.category?.text[lang],
       summary: p.summary.text[lang],
       image: {
-        src: `${dir}/${p.image.file}-1254.webp`,
-        srcset: `${dir}/${p.image.file}-640.webp 640w, ${dir}/${p.image.file}-1254.webp 1254w`,
-        thumb: `${dir}/${p.image.file}-160.webp`,
+        src,
+        thumb: `/images/products/studio/${p.slug}-160.webp`,
         width: 1254,
         height: 1254,
         alt: p.image.alt[lang],
-        tone: p.image.tone,
-        base: p.image.base ?? 0.88,
+        placement: p.image.placement,
+        plate: p.image.plate,
       },
       detail: p.detail && localizePath(p.detail, lang),
       intro: { paragraphs: texts(p.intro?.paragraphs, lang), facts: facts(p.intro?.facts, lang) },
