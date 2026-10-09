@@ -1079,23 +1079,44 @@ export const activities: Activity[] = [
     ],
     photos: [
       pic('vf26-chan-dung', [[640, 427], [1280, 854], [1800, 1201]], {
-        alt: 'Chị Châu Thị Nương mặc áo dài xanh, quàng khăn rằn, đội nón lá, đeo thẻ triển lãm, đứng tại gian trưng bày bên giỏ mây xếp các hũ sản phẩm',
+        alt: 'Một phụ nữ mặc áo dài xanh, quàng khăn rằn, đội nón lá, đeo thẻ triển lãm, đứng tại gian trưng bày bên giỏ mây xếp các hũ sản phẩm',
         caption: 'Sản phẩm Hiền Nương trong không gian triển lãm.',
         credit: 'Trang trại Hiền Nương',
         origin: 'HIEN_NUONG_PHOTO_COLLECTION/events-8-2026/01.jpg',
       }),
       pic('vf26-linh-chi', [[640, 427], [1280, 854], [1800, 1201]], {
-        alt: 'Chị Châu Thị Nương trong áo dài xanh và khăn rằn nghiêng người chỉnh một chậu nấm linh chi trên kệ trưng bày, phía sau là các hộp thiếc in hình nấm linh chi xếp chồng',
+        alt: 'Một phụ nữ mặc áo dài xanh, quàng khăn rằn, nghiêng người chỉnh chậu nấm linh chi trên kệ trưng bày; phía sau là các hộp thiếc in hình nấm linh chi xếp chồng',
         caption: 'Giới thiệu nấm linh chi tại gian trưng bày.',
         credit: 'Trang trại Hiền Nương',
         origin: 'HIEN_NUONG_PHOTO_COLLECTION/events-8-2026/03.jpg',
         position: '30% 35%',
+      }),
+      pic('vf26-khach-tham-quan', [[640, 480], [1280, 960], [1800, 1350]], {
+        alt: 'Một phụ nữ mặc áo dài xanh, quàng khăn rằn, trao đổi với khách tham quan đang xem tờ giới thiệu, bên giỏ mây xếp hũ sản phẩm và các hộp thiếc in hình nấm linh chi',
+        credit: 'Trang trại Hiền Nương',
+        origin: 'HIEN_NUONG_PHOTO_COLLECTION/events-8-2026/07.jpg',
+        position: '70% 50%',
       }),
       pic('vf26-trung-bay', [[640, 427], [1280, 854], [1800, 1201]], {
         alt: 'Kệ trưng bày với bốn chậu nấm linh chi ở hàng trước, phía sau xếp các hộp thiếc xanh in hình nấm linh chi, hộp rượu và chai sản phẩm; phông nền ghi Hợp tác xã Nông nghiệp Tà Đảnh',
         caption: 'Góc trưng bày nấm và các sản phẩm chế biến.',
         credit: 'Trang trại Hiền Nương',
         origin: 'HIEN_NUONG_PHOTO_COLLECTION/events-8-2026/04.jpg',
+      }),
+      pic('vf26-anh-chung', [[640, 299], [1280, 598], [1800, 840]], {
+        alt: 'Sáu người đeo thẻ triển lãm đứng chụp ảnh chung trên thảm xanh trước dãy gian hàng, trong đó có một phụ nữ mặc áo dài xanh quàng khăn rằn; phía sau là kệ chậu nấm linh chi',
+        credit: 'Trang trại Hiền Nương',
+        origin: 'HIEN_NUONG_PHOTO_COLLECTION/events-8-2026/05.jpg',
+      }),
+      pic('vf26-loi-di', [[640, 480], [1280, 960], [1800, 1350]], {
+        alt: 'Hai phụ nữ quàng khăn rằn, một người áo đỏ và một người áo dài xanh lá, trò chuyện với một vị khách đang cầm xem gói sản phẩm; phía sau là các gian hàng khác của triển lãm',
+        credit: 'Trang trại Hiền Nương',
+        origin: 'HIEN_NUONG_PHOTO_COLLECTION/events-8-2026/06.jpg',
+      }),
+      pic('vf26-chau-linh-chi', [[640, 427], [1280, 854], [1800, 1201]], {
+        alt: 'Bốn chậu nấm linh chi bày trên kệ trước các chồng hộp thiếc in hình nấm linh chi; bên phải là hộp quà, giỏ mây xếp hũ sản phẩm và các túi nấm',
+        credit: 'Trang trại Hiền Nương',
+        origin: 'HIEN_NUONG_PHOTO_COLLECTION/events-8-2026/02.jpg',
       }),
     ],
     sources: [],
