@@ -7,17 +7,30 @@
  * conversation and promises nothing further: no training, technology
  * transfer, supply guarantees or distributor terms.
  *
- * Three directions sit at the corners of an implied triangle. Choosing one
- * shows its photograph, explanation and contact link beside it; the three
- * explanations share one place, so nothing below them moves. Three short
- * strokes along the triangle's sides are measured and drawn by the script
- * so they never touch a photograph or a label. Without script the three
- * explanations are listed in order.
+ * 1 · Three directions, as three photographic prints on a cream tabletop
+ * at the corners of an implied triangle. Unchosen prints lie slightly
+ * askew; the chosen one straightens, lifts and takes a thin gold edge.
+ * Its photograph, explanation and contact link show beside the table; the
+ * three explanations share one place, so nothing below them moves. Three
+ * short strokes along the triangle's sides are measured and drawn by the
+ * script so they never touch a print or a label. Without script the
+ * three explanations are listed in order.
+ *
+ * 2 · Partners & connections: six names in a static grid. Choosing one
+ * shows its documented connection in one shared place below the names,
+ * with the source to read. Each description says only what its source
+ * says; students and lecturers are named as people, not as their
+ * institutions, and programmes are named as programmes.
+ *
+ * 3 · Closing: the same three directions as compact choices, kept in step
+ * with the tabletop. The choice goes into the prepared email's subject;
+ * nothing is sent until the visitor sends it.
  *
  * Photographs: 01 Báo Nhân Dân (2025; cropped from the left, which leaves
  * out the outlet's mark), 02 Báo An Giang, 03 the original signing
- * photograph (kyket.webp, uncropped). Press photographs are cleared for
- * use by the owner.
+ * photograph (kyket.webp, uncropped). Partner photographs come from the
+ * sources they illustrate. Press photographs are cleared for use by the
+ * owner.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/page/Breadcrumb.astro';
@@ -32,6 +45,7 @@ const zalo = `https://zalo.me/${contact.phone.replace(/^\+84/, '0')}`;
 const directions = [
   {
     name: 'Phân phối sản phẩm',
+    short: 'Phân phối',
     title: 'Đưa sản phẩm đến gần hơn.',
     text: 'Hiền Nương mong kết nối với những đối tác quan tâm đến sản phẩm từ trang trại. Cùng trao đổi về nhu cầu, nhóm sản phẩm và cách phối hợp phù hợp để đưa nông sản Việt đến gần hơn với người tiêu dùng.',
     cta: 'Trao đổi về phân phối',
@@ -48,6 +62,7 @@ const directions = [
   },
   {
     name: 'Hợp tác sản xuất',
+    short: 'Sản xuất',
     title: 'Kết nối từ công việc làm nông.',
     text: 'Từ hoạt động trồng nấm và tận dụng phụ phẩm nông nghiệp, Hiền Nương mong mở rộng những kết nối trong sản xuất. Chúng tôi sẵn sàng lắng nghe ý tưởng, trao đổi kinh nghiệm và cùng tìm hướng phối hợp phù hợp với điều kiện thực tế của mỗi bên.',
     cta: 'Trao đổi về sản xuất',
@@ -64,6 +79,7 @@ const directions = [
   },
   {
     name: 'Học tập & truyền thông',
+    short: 'Học tập & truyền thông',
     title: 'Chia sẻ kiến thức, lan tỏa câu chuyện.',
     text: 'Những câu chuyện từ trang trại mở ra cơ hội trao đổi kiến thức và kết nối cộng đồng. Hiền Nương chào đón các đề xuất học tập và truyền thông để cùng chia sẻ góc nhìn thực tế về công việc trồng nấm và nông nghiệp tuần hoàn.',
     cta: 'Trao đổi về học tập & truyền thông',
@@ -85,12 +101,106 @@ const directions = [
 const initial = 2;
 const num = (i: number) => String(i + 1).padStart(2, '0');
 const corner = ['top', 'left', 'right'];
+
+interface Partner {
+  name: string;
+  /** What kind of connection, and when: a short line above the name. */
+  kind: string;
+  text: string;
+  source: { href: string; label: string };
+  photo?: { src: string; srcset?: string; width: number; height: number; alt: string; caption: string };
+}
+
+// Sources, checked 2026-10-09:
+// FPT: daihoc.fpt.edu.vn (02.07.2025, from Báo Cần Thơ): signed by the
+//   student group, as a graduation project, not by the university.
+// Lecturers, LHPN: vwu.vn (Hội LHPN Việt Nam, 10.10.2022). The lecturers
+//   are people chị Nương learned from, in her own account; no agreement
+//   with either university is documented.
+// Oxfam: vietnam.oxfam.org image story, tagged GRAISEA 2; the year (2022)
+//   from vwu.vn (11.08.2023).
+// Hội Nông dân: nhandan.vn (08.10.2025) for the 2025 title;
+//   hoinongdan.org.vn (06.03.2026) for the visit. Photo: Dân Việt, whose
+//   caption it follows.
+const fptPhoto = directions[2].image;
+const vwu = 'https://vwu.vn/web/guest/tin-chi-tiet/-/chi-tiet/an-giang-mo-hinh-nam-moi-nang-nuong-mang-thuc-pham-sach-toi-nguoi-tieu-dung-50818-9.html';
+
+// Order of the grid, row by row. Each text says only what its source says.
+const partners: Partner[] = [
+  {
+    name: 'Nhóm sinh viên Đại học FPT Cần Thơ',
+    kind: 'Đồ án tốt nghiệp của sinh viên · 2025',
+    text: 'Nhóm sinh viên chuyên ngành Truyền thông Đa phương tiện, Trường Đại học FPT phân hiệu Cần Thơ, ký kết hợp tác thực hiện truyền thông cho Trang trại Hiền Nương trong đồ án tốt nghiệp của mình. Chiến dịch kéo dài hai tháng, gồm bộ nhận diện thương hiệu, tài liệu truyền thông, nội dung mạng xã hội và video giới thiệu, với sự cố vấn của giảng viên nhà trường.',
+    source: {
+      href: 'https://daihoc.fpt.edu.vn/trai-nghiem-sinh-vien/hoat-dong-sinh-vien/sinh-vien-truong-dai-hoc-fpt-phan-hieu-can-tho-ky-ket-hop-tac-thuc-hien-truyen-thong-voi-doanh-nghiep/',
+      label: 'Trường Đại học FPT',
+    },
+    photo: {
+      src: fptPhoto.src,
+      width: fptPhoto.width,
+      height: fptPhoto.height,
+      alt: fptPhoto.alt,
+      caption: directions[2].caption,
+    },
+  },
+  {
+    name: 'Giảng viên Đại học Cần Thơ',
+    kind: 'Học hỏi chuyên môn',
+    text: 'Trước khi đầu tư dây chuyền sản xuất phôi nấm mối đen, chị Châu Thị Nương tự nghiên cứu và học hỏi từ giảng viên chuyên ngành nông nghiệp tại Trường Đại học Cần Thơ. Đây là kết nối học hỏi với các giảng viên, theo lời chị kể với Hội LHPN Việt Nam năm 2022.',
+    source: { href: vwu, label: 'Hội LHPN Việt Nam · 10.10.2022' },
+  },
+  {
+    name: 'Giảng viên Đại học An Giang',
+    kind: 'Học hỏi chuyên môn',
+    text: 'Cùng với giảng viên Đại học Cần Thơ, chị Châu Thị Nương học hỏi từ giảng viên chuyên ngành nông nghiệp tại Trường Đại học An Giang trước khi đầu tư dây chuyền sản xuất phôi nấm mối đen. Đây là kết nối học hỏi với các giảng viên, theo lời chị kể với Hội LHPN Việt Nam năm 2022.',
+    source: { href: vwu, label: 'Hội LHPN Việt Nam · 10.10.2022' },
+  },
+  {
+    name: 'Hội LHPN tỉnh An Giang',
+    kind: 'Giới thiệu & quảng bá sản phẩm',
+    text: 'Hội Liên hiệp Phụ nữ tỉnh An Giang hỗ trợ, giới thiệu sản phẩm nấm mối đen của chị Châu Thị Nương tham gia các cuộc thi, trưng bày và quảng bá tại các sự kiện. Hội cũng giới thiệu chị đến chia sẻ ý tưởng tại sự kiện thúc đẩy quyền năng kinh tế phụ nữ trong chuỗi giá trị lúa gạo, và Phó Chủ tịch Hội đã đến thăm trang trại.',
+    source: { href: vwu, label: 'Hội LHPN Việt Nam · 10.10.2022' },
+  },
+  {
+    name: 'Oxfam tại Việt Nam · GRAISEA 2',
+    kind: 'Cuộc thi sáng kiến sinh kế · 2022',
+    text: 'Sáng kiến “Tận dụng rơm rạ sản xuất phôi nấm mối đen”, do chị Châu Thị Nương trình bày với tư cách đại diện HTX Tà Đảnh, đạt giải nhất cuộc thi “Tìm kiếm sáng kiến sinh kế nông nghiệp” do Oxfam tại Việt Nam và các đối tác tổ chức. Cuộc thi thuộc dự án GRAISEA 2 về bình đẳng giới và đầu tư kinh doanh nông nghiệp có trách nhiệm ở Đông Nam Á, do Đại sứ quán Thụy Điển tài trợ.',
+    source: {
+      href: 'https://vietnam.oxfam.org/vi/latest/image-story/using-rice-straw-produce-black-termite-mushroom-embryos',
+      label: 'Oxfam tại Việt Nam',
+    },
+    photo: {
+      src: '/images/hop-tac/doi-tac-oxfam-graisea.webp',
+      width: 704,
+      height: 503,
+      alt: 'Phần trình bày sáng kiến “Tận dụng rơm rạ sản xuất phôi nấm mối đen” của chị Châu Thị Nương trên sân khấu, trước bàn ban giám khảo',
+      caption: 'Phần trình bày sáng kiến tại vòng chung kết · Ảnh: Oxfam tại Việt Nam',
+    },
+  },
+  {
+    name: 'Hội Nông dân Việt Nam / An Giang',
+    kind: 'Ghi nhận & thăm mô hình · 2025–2026',
+    text: 'Chị Châu Thị Nương là Nông dân Việt Nam xuất sắc năm 2025, trong chương trình “Tự hào Nông dân Việt Nam” do Trung ương Hội Nông dân Việt Nam chủ trì. Ngày 5.3.2026, Chủ tịch Trung ương Hội Lương Quốc Đoàn thăm mô hình của chị tại xã Thới Sơn và đề nghị Hội Nông dân tỉnh An Giang tìm phương án hỗ trợ vốn để HTX Tà Đảnh đầu tư dây chuyền sản xuất khép kín.',
+    source: {
+      href: 'https://www.hoinongdan.org.vn/trung-uong-hoi/chu-tich-t-u-hoi-nong-dan-viet-nam-luong-quoc-doan-tham-mo-hinh-cua-nong-dan-san-xuat-gioi-tai-an-giang-380436',
+      label: 'Trung ương Hội Nông dân Việt Nam',
+    },
+    photo: {
+      src: '/images/hop-tac/doi-tac-hoi-nong-dan-1280.webp',
+      srcset: '/images/hop-tac/doi-tac-hoi-nong-dan-640.webp 640w, /images/hop-tac/doi-tac-hoi-nong-dan-1280.webp 1280w',
+      width: 1280,
+      height: 851,
+      alt: 'Chị Châu Thị Nương giới thiệu quy trình làm phôi nấm với Chủ tịch Trung ương Hội Nông dân Việt Nam Lương Quốc Đoàn và đoàn công tác; một người cầm bịch phôi nấm',
+      caption: 'Chị Nương giới thiệu quy trình làm phôi nấm với Chủ tịch Trung ương Hội Nông dân Việt Nam · Ảnh: Dân Việt',
+    },
+  },
+];
 ---
 <BaseLayout
   title="Hợp tác"
   description="Hợp tác cùng Hiền Nương Farm: phân phối sản phẩm, hợp tác sản xuất, học tập và truyền thông. Bắt đầu từ một cuộc trò chuyện."
 >
-  <div class="partner-page">
+  <div class="partner-page" data-partner-page>
     <header class="intro">
       <div class="container intro__inner">
         <Breadcrumb items={[{ label: 'Trang chủ', href: '/' }, { label: 'Hợp tác' }]} />
@@ -106,30 +216,30 @@ const corner = ['top', 'left', 'right'];
 
     <!-- 1 · Three directions ---------------------------------------------- -->
     <section class="ways" id="thong-tin-hop-tac" aria-label="Ba hướng hợp tác" data-ways>
-      <div class="container">
-        <div class="ways__head" data-reveal>
-          <p class="ways__hint">Chọn một hướng để tìm hiểu.</p>
-        </div>
+      <div class="container ways__grid">
+        <div class="ways__picker">
+          <p class="ways__hint" data-reveal>Chọn một hướng để tìm hiểu.</p>
 
-        <div class="ways__grid">
-          <div class="ways__picker" data-reveal style="--reveal-delay: 80ms">
-            <div class="tri" role="tablist" aria-label="Ba hướng hợp tác" data-tri>
-              <svg class="tri__lines" aria-hidden="true" focusable="false" data-lines>
-                <line data-line /><line data-line /><line data-line />
-              </svg>
+          <div class="tri" role="tablist" aria-label="Ba hướng hợp tác" data-tri data-reveal style="--reveal-delay: 80ms">
+            <svg class="tri__lines" aria-hidden="true" focusable="false" data-lines>
+              <line data-line /><line data-line /><line data-line />
+            </svg>
 
-              {directions.map((d, i) => (
-                <button
-                  class:list={['tri__item', `tri__item--${corner[i]}`, { 'is-selected': i === initial }]}
-                  type="button"
-                  role="tab"
-                  id={`ways-tab-${i + 1}`}
-                  aria-controls={`ways-panel-${i + 1}`}
-                  aria-selected={i === initial ? 'true' : 'false'}
-                  tabindex={i === initial ? 0 : -1}
-                  data-tab
-                >
-                  <span class="tri__frame" data-frame>
+            {directions.map((d, i) => (
+              <button
+                class:list={['tri__item', `tri__item--${corner[i]}`, { 'is-selected': i === initial }]}
+                type="button"
+                role="tab"
+                id={`ways-tab-${i + 1}`}
+                aria-controls={`ways-panel-${i + 1}`}
+                aria-selected={i === initial ? 'true' : 'false'}
+                tabindex={i === initial ? 0 : -1}
+                data-tab
+              >
+                <!-- The frame keeps the print's place untilted, for measuring;
+                     the print inside it is the paper that tilts and lifts. -->
+                <span class="tri__frame" data-frame>
+                  <span class="tri__print">
                     <img
                       src={d.image.thumb}
                       alt=""
@@ -138,72 +248,161 @@ const corner = ['top', 'left', 'right'];
                       decoding="async"
                     />
                   </span>
-                  <span class="tri__label" data-label>
-                    <span class="tri__num">{num(i)}</span>
-                    <span class="tri__name">{d.name}</span>
-                  </span>
-                </button>
-              ))}
+                </span>
+                <span class="tri__label" data-label>
+                  <span class="tri__num">{num(i)}</span>
+                  <span class="tri__name">{d.name}</span>
+                </span>
+              </button>
+            ))}
 
-              <p class="tri__centre" aria-hidden="true" data-centre>
-                <span class="tri__with">Cùng</span>
-                <span class="tri__brand">Hiền Nương</span>
-              </p>
-            </div>
+            <p class="tri__centre" aria-hidden="true" data-centre>
+              <span class="tri__with">Cùng</span>
+              <span class="tri__brand">Hiền Nương</span>
+            </p>
           </div>
+        </div>
 
-          <div class="ways__detail" data-reveal style="--reveal-delay: 160ms">
-            <div class="ways__panels">
-              {directions.map((d, i) => (
-                <div
-                  class:list={['way', { 'is-active': i === initial }]}
-                  id={`ways-panel-${i + 1}`}
-                  role="tabpanel"
-                  aria-labelledby={`ways-tab-${i + 1}`}
-                  data-panel
-                >
-                  <div class="way__photo">
-                    <img
-                      src={d.image.src}
-                      srcset={d.image.srcset}
-                      sizes={d.image.srcset ? '(min-width: 1024px) 38vw, (min-width: 768px) 36rem, 100vw' : undefined}
-                      width={d.image.width}
-                      height={d.image.height}
-                      alt={d.image.alt}
-                      decoding="async"
-                    />
-                  </div>
-                  <p class="way__caption">{d.caption}</p>
-
-                  <div class="way__body">
-                    <p class="way__kicker">
-                      <span class="way__num">{num(i)}</span>
-                      <span class="way__rule" aria-hidden="true"></span>
-                      <span>{d.name}</span>
-                    </p>
-                    <h3 class="way__title">{d.title}</h3>
-                    <p class="way__text">{d.text}</p>
-                    <a class="btn way__cta" href={mail(d.subject)}>{d.cta} <Arrow /></a>
-                  </div>
+        <div class="ways__detail" data-reveal style="--reveal-delay: 160ms">
+          <div class="ways__panels">
+            {directions.map((d, i) => (
+              <div
+                class:list={['way', { 'is-active': i === initial }]}
+                id={`ways-panel-${i + 1}`}
+                role="tabpanel"
+                aria-labelledby={`ways-tab-${i + 1}`}
+                data-panel
+              >
+                <div class="way__photo">
+                  <img
+                    src={d.image.src}
+                    srcset={d.image.srcset}
+                    sizes={d.image.srcset ? '(min-width: 1024px) 38vw, (min-width: 768px) 36rem, 100vw' : undefined}
+                    width={d.image.width}
+                    height={d.image.height}
+                    alt={d.image.alt}
+                    decoding="async"
+                  />
                 </div>
-              ))}
-            </div>
+                <p class="way__caption">{d.caption}</p>
+
+                <div class="way__body">
+                  <p class="way__kicker">
+                    <span class="way__num">{num(i)}</span>
+                    <span class="way__rule" aria-hidden="true"></span>
+                    <span>{d.name}</span>
+                  </p>
+                  <h3 class="way__title">{d.title}</h3>
+                  <p class="way__text">{d.text}</p>
+                  <a class="btn way__cta" href={mail(d.subject)}>{d.cta} <Arrow /></a>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 2 · Invitation ------------------------------------------------------ -->
+    <!-- 2 · Partners & connections ------------------------------------------ -->
+    <section class="section links" id="doi-tac" aria-labelledby="links-title" data-links>
+      <div class="container">
+        <div class="links__head" data-reveal>
+          <div>
+            <Eyebrow>Hợp tác &amp; cộng đồng</Eyebrow>
+            <h2 class="links__title" id="links-title">Đối tác &amp; kết nối</h2>
+          </div>
+          <p class="links__lead">Những kết nối đã được ghi lại qua dự án, chương trình và bài viết. Chọn một tên để xem tư liệu.</p>
+        </div>
+
+        <div class="links__names" role="tablist" aria-label="Đối tác & kết nối" data-reveal style="--reveal-delay: 80ms" data-names>
+          {partners.map((p, i) => (
+            <button
+              class:list={['links__name', { 'is-selected': i === 0 }]}
+              type="button"
+              role="tab"
+              id={`links-tab-${i + 1}`}
+              aria-controls={`links-panel-${i + 1}`}
+              aria-selected={i === 0 ? 'true' : 'false'}
+              tabindex={i === 0 ? 0 : -1}
+              data-tab
+            >
+              <span>{p.name}</span>
+            </button>
+          ))}
+        </div>
+
+        <div class="links__panels" data-reveal style="--reveal-delay: 140ms">
+          {partners.map((p, i) => (
+            <div
+              class:list={['link', { 'is-active': i === 0, 'link--text': !p.photo }]}
+              id={`links-panel-${i + 1}`}
+              role="tabpanel"
+              aria-labelledby={`links-tab-${i + 1}`}
+              data-panel
+            >
+              {p.photo && (
+                <figure class="link__photo">
+                  <img
+                    src={p.photo.src}
+                    srcset={p.photo.srcset}
+                    sizes={p.photo.srcset ? '(min-width: 1024px) 34vw, (min-width: 768px) 40vw, 100vw' : undefined}
+                    width={p.photo.width}
+                    height={p.photo.height}
+                    alt={p.photo.alt}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>{p.photo.caption}</figcaption>
+                </figure>
+              )}
+              <div class="link__body">
+                <p class="link__kind">{p.kind}</p>
+                <h3 class="link__name">{p.name}</h3>
+                <p class="link__text">{p.text}</p>
+                <p class="link__source">
+                  <a class="link-arrow" href={p.source.href} target="_blank" rel="noopener">
+                    Xem tư liệu <span class="sr-only">về {p.name}, {p.source.label} (mở thẻ mới)</span><Arrow direction="up-right" />
+                  </a>
+                  <span class="link__outlet" aria-hidden="true">{p.source.label}</span>
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · Invitation ------------------------------------------------------ -->
     <section class="section invite" id="lien-he" aria-labelledby="invite-title">
       <div class="container grid invite__grid">
         <div class="invite__heading" data-reveal>
           <Eyebrow>Liên hệ</Eyebrow>
-          <h2 class="invite__title" id="invite-title">Bắt đầu từ một cuộc trò chuyện.</h2>
+          <h2 class="invite__title" id="invite-title">Bạn mang đến ý tưởng gì?</h2>
+          <p class="invite__text">Hãy chia sẻ ý tưởng và nhu cầu của bạn. Hiền Nương mong được cùng bạn tìm ra hướng hợp tác phù hợp.</p>
         </div>
 
         <div class="invite__body" data-reveal style="--reveal-delay: 120ms">
-          <p class="invite__text">Hãy chia sẻ ý tưởng và nhu cầu của bạn. Hiền Nương mong được cùng bạn tìm ra hướng hợp tác phù hợp.</p>
-          <a class="btn invite__cta" href={mail('Hợp tác cùng Hiền Nương Farm')}>Liên hệ Hiền Nương <Arrow /></a>
+          <!-- The same three directions as the tabletop, kept in step with it. -->
+          <div class="choices" role="group" aria-labelledby="choices-label" data-choices>
+            <p class="choices__label" id="choices-label">Chọn hướng trao đổi</p>
+            <div class="choices__row">
+              {directions.map((d, i) => (
+                <button
+                  class="choices__item"
+                  type="button"
+                  aria-pressed={i === initial ? 'true' : 'false'}
+                  data-choice
+                  data-href={mail(d.subject)}
+                  data-subject={d.subject}
+                >{d.short}</button>
+              ))}
+            </div>
+          </div>
+
+          <a class="btn invite__cta" href={mail(directions[initial].subject)} data-invite-cta>Liên hệ Hiền Nương <Arrow /></a>
+          <p class="invite__note">
+            Thư được soạn sẵn với tiêu đề <span class="invite__subject" data-invite-subject>{directions[initial].subject}</span>. Bạn xem lại và tự gửi.
+          </p>
 
           <!-- The site's existing contact channels (src/data/site.ts). -->
           <dl class="channels">
@@ -231,40 +430,41 @@ const corner = ['top', 'left', 'right'];
 
 <script>
   /**
-   * Three directions as tabs. Choosing one swaps the explanation (the
-   * fade lives in CSS); arrow keys move between the three and Home/End go
+   * Two sets of tabs share one behaviour: choosing a tab shows its panel
+   * (the fades live in CSS); arrow keys move between tabs and Home/End go
    * to the first and last.
    *
-   * The strokes: each side of the triangle runs between two photographs'
-   * centres. Along it, find the longest stretch clear of every photograph,
+   * The three directions also drive the closing choices, and the closing
+   * choices drive them: one selected direction for the whole page.
+   *
+   * The strokes: each side of the triangle runs between two prints'
+   * centres. Along it, find the longest stretch clear of every print,
    * label and the centre words (with a margin), and draw a short piece
    * from its middle. A side with too little room gets no stroke.
    */
-  const root = document.querySelector<HTMLElement>('[data-ways]');
-  const tri = root?.querySelector<HTMLElement>('[data-tri]');
+  const tabs = (list: HTMLElement, onSelect?: (index: number) => void) => {
+    const buttons = [...list.querySelectorAll<HTMLButtonElement>('[data-tab]')];
+    const panels = buttons.map((b) => document.getElementById(b.getAttribute('aria-controls') ?? ''));
+    const N = buttons.length;
+    let selected = Math.max(0, buttons.findIndex((b) => b.getAttribute('aria-selected') === 'true'));
 
-  if (root && tri) {
-    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[data-tab]')];
-    const panels = [...root.querySelectorAll<HTMLElement>('[data-panel]')];
-    const N = tabs.length;
-    let selected = tabs.findIndex((tab) => tab.getAttribute('aria-selected') === 'true');
-
-    const select = (index: number, { focus = false } = {}) => {
+    const select = (index: number, { focus = false, notify = true } = {}) => {
       index = ((index % N) + N) % N;
       selected = index;
-      tabs.forEach((tab, i) => {
+      buttons.forEach((b, i) => {
         const on = i === index;
-        tab.classList.toggle('is-selected', on);
-        tab.setAttribute('aria-selected', String(on));
-        tab.tabIndex = on ? 0 : -1;
+        b.classList.toggle('is-selected', on);
+        b.setAttribute('aria-selected', String(on));
+        b.tabIndex = on ? 0 : -1;
       });
-      panels.forEach((panel, i) => panel.classList.toggle('is-active', i === index));
-      if (focus) tabs[index].focus({ preventScroll: true });
+      panels.forEach((panel, i) => panel?.classList.toggle('is-active', i === index));
+      if (focus) buttons[index].focus({ preventScroll: true });
+      if (notify) onSelect?.(index);
     };
 
-    tabs.forEach((tab, i) => tab.addEventListener('click', () => select(i)));
+    buttons.forEach((b, i) => b.addEventListener('click', () => select(i)));
 
-    tri.addEventListener('keydown', (event) => {
+    list.addEventListener('keydown', (event) => {
       const moves: Record<string, number> = {
         ArrowRight: selected + 1,
         ArrowDown: selected + 1,
@@ -277,6 +477,32 @@ const corner = ['top', 'left', 'right'];
       event.preventDefault();
       select(moves[event.key], { focus: true });
     });
+
+    return select;
+  };
+
+  // --- Directions and the closing choices --------------------------------
+  const tri = document.querySelector<HTMLElement>('[data-ways] [data-tri]');
+  const choices = [...document.querySelectorAll<HTMLButtonElement>('[data-choice]')];
+  const cta = document.querySelector<HTMLAnchorElement>('[data-invite-cta]');
+  const subject = document.querySelector<HTMLElement>('[data-invite-subject]');
+
+  const showChoice = (index: number) => {
+    choices.forEach((c, i) => c.setAttribute('aria-pressed', String(i === index)));
+    const choice = choices[index];
+    if (!choice) return;
+    if (cta && choice.dataset.href) cta.href = choice.dataset.href;
+    if (subject) subject.textContent = choice.dataset.subject ?? '';
+  };
+
+  if (tri) {
+    const selectDirection = tabs(tri, showChoice);
+    choices.forEach((c, i) =>
+      c.addEventListener('click', () => {
+        selectDirection(i, { notify: false });
+        showChoice(i);
+      }),
+    );
 
     // --- Strokes ---------------------------------------------------------
     const svg = tri.querySelector<SVGSVGElement>('[data-lines]');
@@ -303,8 +529,9 @@ const corner = ['top', 'left', 'right'];
       };
       const boxes = [...frames, ...labels, ...(centre ? [...centre.children] : [])].map(rel);
       const centres = frames.map(rel).map((b) => ({ x: (b.l + b.r) / 2, y: (b.t + b.b) / 2 }));
-      // Clearance from photographs and text.
-      const pad = Math.max(8, width * 0.025);
+      // Clearance from prints (which tilt and cast a shadow past their
+      // frame) and text.
+      const pad = Math.max(12, width * 0.04);
       const free = (x: number, y: number) =>
         boxes.every((b) => x < b.l - pad || x > b.r + pad || y < b.t - pad || y > b.b + pad);
 
@@ -350,6 +577,10 @@ const corner = ['top', 'left', 'right'];
     document.fonts?.ready.then(draw);
     draw();
   }
+
+  // --- Partners & connections ---------------------------------------------
+  const names = document.querySelector<HTMLElement>('[data-links] [data-names]');
+  if (names) tabs(names);
 </script>
 
 <style>
@@ -357,13 +588,18 @@ const corner = ['top', 'left', 'right'];
     /* Homepage display serif (Lora), as on the other secondary pages. */
     --font-display: var(--font-editorial);
     --section-y: clamp(3.5rem, 2rem + 4.5vw, 6.5rem);
+    /* The table the prints lie on: a shade warmer than the page. */
+    --tabletop: #EEE8DB;
+    --print-paper: #FCFAF5;
+    --print-shadow: 0 1px 2px rgba(32, 34, 31, 0.1), 0 10px 18px -10px rgba(32, 34, 31, 0.32);
+    --print-shadow-lift: 0 2px 4px rgba(32, 34, 31, 0.08), 0 22px 30px -14px rgba(32, 34, 31, 0.36);
   }
 
   /* Opening ------------------------------------------------------------------ */
 
   .intro {
     padding-top: clamp(1.25rem, 0.75rem + 2vw, 2.5rem);
-    padding-bottom: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+    padding-bottom: clamp(2rem, 1rem + 3vw, 3.5rem);
   }
 
   .intro__inner {
@@ -404,37 +640,46 @@ const corner = ['top', 'left', 'right'];
 
   /* Directions -------------------------------------------------------------- */
 
+  /* The tabletop runs edge to edge between two hairlines; the section
+     clips its overhang so the page never scrolls sideways. */
   .ways {
-    padding-top: var(--space-l);
-    padding-bottom: var(--section-y);
+    border-block: 1px solid var(--color-line);
+    overflow-x: clip;
   }
-
-  .ways__head {
-    padding-top: var(--space-xl);
-    border-top: 1px solid var(--color-line);
-  }
-
-  .ways__hint {
-    font-size: var(--type-small);
-    line-height: 1.5;
-    color: var(--color-text-muted);
-  }
-
-  :global(html:not(.js)) .ways__hint { display: none; }
 
   .ways__grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    row-gap: var(--space-xl);
-    margin-top: var(--space-xl);
   }
 
-  /* The triangle -------------------------------------------------------------
-     A three-row grid: the top photograph centred, the centre words, then
-     the two lower photographs at the outer edges. Photograph widths follow
-     the selector's own width (--w, a share of it). */
+  .ways__picker {
+    position: relative;
+    isolation: isolate;
+    container-type: inline-size;
+    padding-block: clamp(2rem, 1.25rem + 3vw, 4.5rem) clamp(2.25rem, 1.5rem + 3vw, 4.5rem);
+  }
+  .ways__picker::before {
+    content: "";
+    position: absolute;
+    inset: 0 -100vw;
+    z-index: -1;
+    background: var(--tabletop);
+  }
 
-  .ways__picker { container-type: inline-size; }
+  .ways__hint {
+    text-align: center;
+    font-size: var(--type-small);
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    margin-bottom: clamp(1.25rem, 5cqi, 2.5rem);
+  }
+
+  :global(html:not(.js)) .ways__hint { display: none; }
+
+  /* The triangle -------------------------------------------------------------
+     A three-row grid: the top print centred, the centre words, then the
+     two lower prints at the outer edges. Print widths follow the
+     selector's own width (--w, a share of it). */
 
   .tri {
     --w: 42cqi;
@@ -461,35 +706,42 @@ const corner = ['top', 'left', 'right'];
     stroke-linecap: round;
   }
 
+  /* The whole print and its label are one button. */
   .tri__item {
     position: relative;
     z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 0.625rem;
-    text-align: left;
+    gap: clamp(0.75rem, 3.5cqi, 1.25rem);
+    text-align: center;
     -webkit-tap-highlight-color: transparent;
   }
   .tri__item--top {
     grid-area: top;
-    /* The top photograph has the lower ones' width, centred. */
+    /* The top print has the lower ones' width, centred. */
     width: var(--w);
     justify-self: center;
+    --tilt: 2deg;
   }
-  .tri__item--left { grid-area: left; }
-  .tri__item--right { grid-area: right; }
+  .tri__item--left { grid-area: left; --tilt: -2.75deg; }
+  .tri__item--right { grid-area: right; --tilt: 2.5deg; }
   .tri__item:focus-visible { outline: none; }
+  .tri__item.is-selected { z-index: 2; }
 
-  /* The frame keeps its padding and border at all times, so selecting a
-     photograph changes only the border colour. */
-  .tri__frame {
+  .tri__frame { display: block; }
+
+  /* The print: photograph on a paper mat with a hairline edge. Every
+     print has the same proportions, whatever its photograph's. */
+  .tri__print {
     display: block;
-    padding: 4px;
-    border: 1px solid transparent;
-    transition: border-color 300ms var(--ease);
+    padding: clamp(4px, 1.6cqi, 9px);
+    background: var(--print-paper);
+    border: 1px solid rgba(32, 34, 31, 0.08);
+    box-shadow: var(--print-shadow);
+    transform: rotate(var(--tilt, 0deg));
   }
-  .tri__frame img {
+  .tri__print img {
     width: 100%;
     aspect-ratio: 800 / 565;
     object-fit: cover;
@@ -498,16 +750,15 @@ const corner = ['top', 'left', 'right'];
 
   .tri__label {
     display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    padding-inline: 4px;
-    min-height: 2.75rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding-inline: 2px;
   }
 
   .tri__num {
-    flex: none;
     font-family: var(--font-display);
-    font-size: clamp(1.5rem, 6.5cqi, 2.375rem);
+    font-size: clamp(1.125rem, 4.4cqi, 1.75rem);
     line-height: 1;
     font-variant-numeric: tabular-nums;
     color: var(--color-earth);
@@ -523,16 +774,21 @@ const corner = ['top', 'left', 'right'];
   }
 
   .tri__item:hover .tri__name { color: var(--color-forest); }
-  .tri__item:not(.is-selected):hover .tri__frame { border-color: var(--color-line-strong); }
+  .tri__item:not(.is-selected):hover .tri__print { border-color: var(--color-line-strong); }
 
-  /* Chosen direction: a thin muted-gold frame and a gold label. */
-  .tri__item.is-selected .tri__frame { border-color: var(--color-earth); }
+  /* Chosen direction: the print straightens and lifts, with a thin
+     muted-gold edge and a gold label. */
+  .tri__item.is-selected .tri__print {
+    border-color: var(--color-earth);
+    box-shadow: var(--print-shadow-lift);
+    transform: translateY(-6px);
+  }
   .tri__item.is-selected .tri__name { color: var(--color-earth); }
 
-  /* Keyboard focus: a forest ring outside the frame, and an underline. */
-  .tri__item:focus-visible .tri__frame {
+  /* Keyboard focus: a forest ring outside the print, and an underline. */
+  .tri__item:focus-visible .tri__print {
     outline: 2px solid var(--color-forest);
-    outline-offset: 3px;
+    outline-offset: 4px;
   }
   .tri__item:focus-visible .tri__name {
     text-decoration: underline;
@@ -567,6 +823,10 @@ const corner = ['top', 'left', 'right'];
   }
 
   /* Explanation -------------------------------------------------------------- */
+
+  .ways__detail {
+    padding-block: var(--space-xl) var(--section-y);
+  }
 
   /* All three explanations share one place, so the panel keeps the
      height of the longest and nothing below it moves. Their rows (photo,
@@ -663,10 +923,22 @@ const corner = ['top', 'left', 'right'];
   .way__cta:focus-visible { outline-color: var(--color-forest); }
 
   /* Motion (the site's easing and timings, as on the circular-agriculture
-     wheel): the new photograph fades in over the old one, which stays
-     until it is covered; the old words leave quickly and the new ones
-     arrive a moment later. A new choice mid-fade starts from where it is. */
+     wheel): a print straightens and lifts as it is chosen while the last
+     one settles back. The new photograph fades in over the old one, which
+     stays until it is covered; the old words leave quickly and the new
+     ones arrive a moment later. A new choice mid-fade starts from where it
+     is. */
   @media (prefers-reduced-motion: no-preference) {
+    .tri__print {
+      transition:
+        transform 520ms var(--ease),
+        box-shadow 520ms var(--ease),
+        border-color 300ms var(--ease);
+    }
+    .tri__item:not(.is-selected):hover .tri__print {
+      transform: rotate(var(--tilt, 0deg)) translateY(-2px);
+    }
+
     :global(.js) .way {
       transition: visibility 0s linear 600ms;
     }
@@ -692,41 +964,296 @@ const corner = ['top', 'left', 'right'];
     }
   }
 
-  /* Phones: the triangle reaches half a gutter into each margin so the
-     photographs and labels stay large enough to read and tap. */
+  /* Phones: the prints lie square with lighter shadows, and the triangle
+     reaches half a gutter into each margin so the prints and labels stay
+     large enough to read and tap. */
+  @media (max-width: 767px) {
+    .partner-page {
+      --print-shadow: 0 1px 2px rgba(32, 34, 31, 0.1), 0 4px 8px -4px rgba(32, 34, 31, 0.22);
+      --print-shadow-lift: 0 1px 3px rgba(32, 34, 31, 0.1), 0 8px 14px -8px rgba(32, 34, 31, 0.28);
+    }
+    .tri__item { --tilt: 0deg; }
+    .tri__item.is-selected .tri__print { transform: translateY(-3px); }
+  }
   @media (max-width: 639px) {
-    .ways__picker {
+    .tri {
       width: calc(100% + var(--gutter));
       margin-inline: calc(var(--gutter) / -2);
     }
   }
 
   @media (min-width: 768px) {
-    .ways__head { text-align: center; }
-    .ways__picker,
+    .ways__picker .tri,
     .ways__detail { width: 100%; max-width: 36rem; margin-inline: auto; }
   }
 
-  /* Desktop: triangle on the left, the chosen direction on the right,
-     divided by a hairline. */
+  /* Desktop: the table on the left, reaching to the window's edge, and
+     the chosen direction on the right. */
   @media (min-width: 1024px) {
     .ways__grid {
       grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
-      column-gap: 0;
       align-items: center;
     }
     .ways__picker {
-      max-width: 44rem;
-      margin: 0;
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       padding-right: clamp(2rem, 4vw, 4.5rem);
     }
+    .ways__picker::before { inset: 0 0 0 -100vw; }
+    .ways__picker .tri { max-width: 40rem; }
     .ways__detail {
       max-width: none;
       margin: 0;
-      padding-left: clamp(2rem, 4vw, 4.5rem);
-      border-left: 1px solid var(--color-line);
+      padding-block: clamp(2.5rem, 4vw, 4.5rem);
+      padding-left: clamp(2rem, 4.5vw, 5rem);
     }
     .tri { --w: 40cqi; }
+  }
+
+  /* Partners & connections ------------------------------------------------- */
+
+  .links__head {
+    display: grid;
+    row-gap: var(--space-m);
+  }
+
+  .links__title {
+    margin-top: var(--space-m);
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2rem, 1.5rem + 2vw, 3.25rem);
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    color: var(--color-deep-green);
+  }
+
+  .links__lead {
+    max-width: 28rem;
+    font-size: var(--type-body);
+    line-height: 1.68;
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+
+  :global(html:not(.js)) .links__lead { display: none; }
+
+  @media (min-width: 1024px) {
+    .links__head {
+      grid-template-columns: minmax(0, 1fr) auto;
+      column-gap: var(--col-gap);
+      align-items: end;
+    }
+    .links__lead { text-align: right; padding-bottom: 0.4rem; }
+  }
+
+  /* The names: one column on phones, two on tablets, three by two on
+     desktop. Every name sits on a hairline; on desktop thin uprights
+     divide the columns. */
+  .links__names {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: var(--space-xl);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .links__name {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 3.5rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-line);
+    text-align: left;
+    font-family: var(--font-display);
+    font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+    line-height: 1.3;
+    color: var(--color-text);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .links__name span {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: transparent;
+    text-underline-offset: 0.3em;
+    transition: color 300ms var(--ease), text-decoration-color 300ms var(--ease);
+  }
+  /* A short gold mark on the hairline under the chosen name. */
+  .links__name::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 2.5rem;
+    height: 2px;
+    background: var(--color-earth);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 360ms var(--ease);
+  }
+
+  .links__name:hover span {
+    color: var(--color-forest);
+    text-decoration-color: var(--color-line-strong);
+  }
+  .links__name.is-selected span {
+    color: var(--color-earth);
+    text-decoration-color: currentColor;
+  }
+  .links__name.is-selected::after { transform: none; }
+
+  .links__name:focus-visible { outline: none; }
+  .links__name:focus-visible span {
+    outline: 2px solid var(--color-forest);
+    outline-offset: 6px;
+  }
+
+  @media (min-width: 640px) {
+    .links__names { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--col-gap); }
+  }
+
+  @media (min-width: 1024px) {
+    .links__names { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 0; }
+    .links__name {
+      justify-content: center;
+      min-height: 4.5rem;
+      padding-inline: var(--space-m);
+      text-align: center;
+    }
+    .links__name::after { left: 50%; translate: -50% 0; transform-origin: center; }
+    /* Uprights between columns, inset from the hairlines. */
+    .links__name:not(:nth-child(3n + 1))::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 1.125rem;
+      bottom: 1.125rem;
+      width: 1px;
+      background: var(--color-line);
+    }
+  }
+
+  /* The chosen connection: every entry shares one place, so the space
+     keeps the height of the tallest and nothing below it moves. */
+  .links__panels {
+    display: grid;
+    margin-top: var(--space-xl);
+  }
+
+  .link {
+    grid-area: 1 / 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--space-l);
+    align-content: start;
+  }
+
+  :global(html:not(.js)) .links__panels { display: block; }
+  :global(html:not(.js)) .link + .link {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--color-line);
+  }
+
+  :global(.js) .link:not(.is-active) {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+  /* Phones: entries with and without a photograph differ too much in
+     height to share one place, so only the chosen one takes room. It
+     sits below the names, so only what follows it moves. */
+  @media (max-width: 767px) {
+    :global(.js) .link:not(.is-active) { display: none; }
+  }
+
+  .link__photo img {
+    width: 100%;
+    height: auto;
+    background: var(--color-cream);
+  }
+  .link__photo figcaption {
+    margin-top: var(--space-xs);
+    font-size: var(--type-small);
+    line-height: 1.5;
+    color: var(--color-text-muted);
+  }
+
+  .link__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .link__kind {
+    font-size: var(--type-eyebrow);
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.5;
+    color: var(--color-earth);
+  }
+
+  .link__name {
+    margin-top: var(--space-s);
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    color: var(--color-deep-green);
+  }
+
+  .link__text {
+    margin-top: var(--space-s);
+    max-width: 36rem;
+    font-size: var(--type-body);
+    line-height: 1.68;
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+
+  .link__source {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: var(--space-s);
+    row-gap: 0.25rem;
+    margin-top: var(--space-m);
+  }
+  .link__source .link-arrow {
+    min-height: 2.75rem;
+    color: var(--color-deep-green);
+  }
+  .link__source .link-arrow:focus-visible { outline: 2px solid var(--color-forest); outline-offset: 4px; }
+  .link__outlet {
+    font-size: var(--type-small);
+    color: var(--color-text-muted);
+  }
+
+  @media (min-width: 768px) {
+    .link {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      column-gap: var(--space-xl);
+      align-items: start;
+    }
+    /* Without a photograph the words start where the others' do. */
+    .link--text .link__body { grid-column: 2; }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    :global(.js) .link {
+      transition: opacity 180ms var(--ease), visibility 0s linear 180ms;
+    }
+    :global(.js) .link.is-active {
+      transition: opacity 420ms var(--ease) 120ms, visibility 0s;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .links__name::after,
+    .links__name span { transition: none; }
   }
 
   /* Invitation --------------------------------------------------------------- */
@@ -754,6 +1281,7 @@ const corner = ['top', 'left', 'right'];
   }
 
   .invite__text {
+    margin-top: var(--space-m);
     max-width: 30rem;
     font-size: var(--type-body);
     line-height: 1.68;
@@ -761,8 +1289,57 @@ const corner = ['top', 'left', 'right'];
     text-wrap: pretty;
   }
 
+  /* Three compact choices: hairline boxes; the chosen one is filled. */
+  .choices__label {
+    font-size: var(--type-eyebrow);
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.5;
+    color: var(--color-earth);
+  }
+
+  .choices__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: var(--space-xs);
+  }
+
+  .choices__item {
+    min-height: 2.75rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-line-strong);
+    background: transparent;
+    font-size: var(--type-small);
+    line-height: 1.3;
+    color: var(--color-text);
+    transition: background-color 300ms var(--ease), border-color 300ms var(--ease), color 300ms var(--ease);
+  }
+  .choices__item:hover { border-color: var(--color-forest); color: var(--color-forest); }
+  .choices__item[aria-pressed="true"] {
+    background: var(--color-forest);
+    border-color: var(--color-forest);
+    color: var(--color-cream);
+  }
+  .choices__item:focus-visible { outline: 2px solid var(--color-forest); outline-offset: 3px; }
+
+  /* Without script the choices can't change the email; the button still
+     opens one. */
+  :global(html:not(.js)) .choices,
+  :global(html:not(.js)) .invite__note { display: none; }
+
   .invite__cta { margin-top: var(--space-l); }
   .invite__cta:focus-visible { outline-color: var(--color-forest); }
+
+  .invite__note {
+    margin-top: var(--space-xs);
+    max-width: 30rem;
+    font-size: var(--type-small);
+    line-height: 1.5;
+    color: var(--color-text-muted);
+  }
+  .invite__subject { color: var(--color-text); }
 
   .channels {
     margin-top: var(--space-xl);
@@ -814,7 +1391,7 @@ const corner = ['top', 'left', 'right'];
   }
 
   @media (min-width: 1024px) {
-    .invite__heading { grid-column: 1 / span 6; }
-    .invite__body { grid-column: 8 / span 5; align-self: end; }
+    .invite__heading { grid-column: 1 / span 5; }
+    .invite__body { grid-column: 7 / span 6; }
   }
 </style>

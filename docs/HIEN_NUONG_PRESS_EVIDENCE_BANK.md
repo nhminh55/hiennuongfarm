@@ -103,6 +103,14 @@ https://www.hoinongdan.org.vn/trung-uong-hoi/chu-tich-t-u-hoi-nong-dan-viet-nam-
 - Từ trại nấm nhỏ đến danh hiệu Nông dân Việt Nam xuất sắc 2025
   https://nongnghiephuuco.vn/tu-trai-nam-nho-den-danh-hieu-nong-dan-viet-nam-xuat-sac-2025-12542.html
 
+## /hop-tac/ connections — checked 2026-10-09
+- FPT Cần Thơ: signed by a Multimedia Communication student group (khóa 17) as a graduation project, not by the university. Vietnamese source:
+  https://daihoc.fpt.edu.vn/trai-nghiem-sinh-vien/hoat-dong-sinh-vien/sinh-vien-truong-dai-hoc-fpt-phan-hieu-can-tho-ky-ket-hop-tac-thuc-hien-truyen-thong-voi-doanh-nghiep/
+- Giảng viên ĐH Cần Thơ / ĐH An Giang: only chị Nương's own account of learning from their agricultural lecturers (vwu.vn, 10.10.2022, the Hội LHPN Việt Nam link above). No agreement with either university is documented.
+- Hội LHPN tỉnh An Giang: promotion and contest/event referrals, plus a visit by its vice-chair (same vwu.vn article). No signed programme is documented.
+- Oxfam: the image story is tagged GRAISEA 2. It records a first prize in "Tìm kiếm sáng kiến sinh kế nông nghiệp" for "Tận dụng rơm rạ sản xuất phôi nấm mối đen", entered on behalf of HTX Tà Đảnh. The year 2022 comes from vwu.vn (11.08.2023). This was a contest prize, not a commercial partnership.
+- Hội Nông dân: the Nông dân Việt Nam xuất sắc 2025 title (Nhân Dân, 08.10.2025), and a visit on 5.3.2026 by the Chairman of the Central Committee, Lương Quốc Đoàn (hoinongdan.org.vn, 06.03.2026).
+
 ## Video / broadcast leads
 - Hiền Nương Farm introduction film:
   https://www.youtube.com/watch?v=V-jPu_G8fe8
