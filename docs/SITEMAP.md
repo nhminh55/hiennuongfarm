@@ -103,14 +103,16 @@ Do not rename “Về Hiền Nương” to “Về chúng tôi” or shorten “
 
 Purpose: brand origin, founders, and the region.
 
-Published in Vietnamese, English and Chinese (/ve-chung-toi/, /en/ve-chung-toi/, /zh/ve-chung-toi/; copy: src/data/about.ts, Vietnamese from docs/HIEN_NUONG_ABOUT_VI.md). Six chapters, one sticky stage on wide screens:
+Published in Vietnamese, English and Chinese (/ve-chung-toi/, /en/ve-chung-toi/, /zh/ve-chung-toi/; copy: src/data/about.ts, Vietnamese from docs/HIEN_NUONG_ABOUT_VI.md). Six chapters, one sticky stage on wide screens; a chapter's text turns in pages there (whole paragraphs, “← Trang trước · 01 / 02 · Đọc tiếp →”), and is read straight through when stacked:
 
-- 01 Câu chuyện: #cau-chuyen — founders, 2020.
-- 02 Bảy Núi: #bay-nui — the region: mountains, rice fields, palmyra palms, Khmer culture.
-- 03 Hai cơ sở: #hai-co-so — Thới Sơn and Tà Đảnh, more than 4 ha.
-- 04 Năng lượng: #nang-luong — solar electricity for mushroom growing.
-- 05 Tuần hoàn: #tuan-hoan — by-products, substrate, earthworm feed; links to Circular Agriculture.
-- 06 Con người: #con-nguoi — local workers.
+- 01 Câu chuyện: #cau-chuyen — founders, 2020, ông Tư Phú (Báo An Giang), learning to make spawn.
+- 02 Bảy Núi: #bay-nui — the region: mountains, rice fields, palmyra palms, Khmer culture; the seven peaks in a disclosure.
+- 03 Hai cơ sở: #co-so — Thới Sơn (first, larger) and Tà Đảnh (later, nearer the founders' home), more than 4 ha.
+- 04 Năng lượng: #nang-luong — solar electricity for mushroom growing (system owned by chị Nương).
+- 05 Tuần hoàn: #tuan-hoan — by-products, substrate, earthworm feed, worm castings for plants; links to Circular Agriculture.
+- 06 Con người: #con-nguoi — local workers, visits and sharing.
+- Định hướng phát triển: #dinh-huong — after the chapters.
+- Video giới thiệu: #video-gioi-thieu.
 - Closing: contact link (/#hop-tac until /hop-tac/ is published).
 
 User-confirmed facts: established in 2020; chị Châu Thị Nương và anh Trần Phương Hiền are married and co-founded the farm. Preserve this preferred name order and Vietnamese wording.

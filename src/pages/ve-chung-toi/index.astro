@@ -15,7 +15,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/page/Breadcrumb.astro';
 import Eyebrow from '../../components/Eyebrow.astro';
 import Arrow from '../../components/Arrow.astro';
-import { aboutCopy, chapterMedia, peaksSource } from '../../data/about';
+import { aboutCopy, chapterMedia } from '../../data/about';
 import { getLocale, localizePath, pageHref } from '../../i18n';
 
 const lang = getLocale(Astro.url);
@@ -104,56 +104,87 @@ const filmName = t.film.title.replace(/[.。]$/, '');
                   <>{j > 0 && !all[j - 1].endsWith('，') && ' '}<span class="chapter__phrase">{phrase}</span></>
                 ))}</h2>
 
-                <div class="chapter__body">
-                  {chapter.body.map((p) => <p>{p}</p>)}
+                <!-- The approved page breaks (data-part). In the stage the
+                     script deals the blocks into pages that fit; stacked,
+                     everything follows in order. -->
+                <div class="chapter__pages" id={`${chapter.id}-trang`} data-pages>
+                {chapter.pages.map((page) => (
+                <div class="chapter__part" data-part>
+                  {page.body.map((p) => typeof p === 'string' ? (
+                    <div class="chapter__para" data-block><p>{p}</p></div>
+                  ) : (
+                    <div class="chapter__para" data-block data-keep><p>{p.text}</p></div>
+                  ))}
+
+                  {page.facts && (
+                    <dl class="chapter__facts" data-block>
+                      {page.facts.map((fact) => (
+                        <div class="fact">
+                          <dt class="fact__value">{fact.pre && <span class="fact__pre">{fact.pre} </span>}{fact.value}</dt>
+                          <dd class="fact__label">{fact.label}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  )}
+
+                  {page.more && (
+                    <details class="more" data-block>
+                      <summary class="more__summary">
+                        <svg class="more__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7.25" fill="none" stroke="currentColor" /><path d="M8 7.25v4.25M8 4.6v.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" /></svg>
+                        <span class="more__label">{page.more.summary}</span>
+                        <span class="more__sign" aria-hidden="true"></span>
+                      </summary>
+                      <div class="more__body">
+                        <p>{page.more.intro}</p>
+                        <ul class="more__list">
+                          {page.more.items.map(([name, alt]) => (
+                            <li><span class="more__name">{name}</span> — {alt}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </details>
+                  )}
+
+                  {page.steps && (
+                    <ol class="chapter__steps" data-block>
+                      {page.steps.map((step) => <li>{step}</li>)}
+                    </ol>
+                  )}
+
+                  {page.linkLabel && (
+                    <a class="link-arrow chapter__link" href={circularHref} data-block>{page.linkLabel} <Arrow /></a>
+                  )}
+                </div>
+                ))}
                 </div>
 
-                {chapter.facts.length > 0 && (
-                  <dl class="chapter__facts">
-                    {chapter.facts.map((fact) => (
-                      <div class="fact">
-                        <dt class="fact__value">{fact.pre && <span class="fact__pre">{fact.pre} </span>}{fact.value}</dt>
-                        <dd class="fact__label">{fact.label}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                )}
-
-                {chapter.more && (
-                  <details class="more">
-                    <summary class="more__summary">
-                      <svg class="more__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="7.25" fill="none" stroke="currentColor" /><path d="M8 7.25v4.25M8 4.6v.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" /></svg>
-                      <span class="more__label">{chapter.more.summary}</span>
-                      <span class="more__sign" aria-hidden="true"></span>
-                    </summary>
-                    <div class="more__body">
-                      <p>{chapter.more.intro}</p>
-                      <ul class="more__list">
-                        {chapter.more.items.map(([name, alt]) => (
-                          <li><span class="more__name">{name}</span> — {alt}</li>
-                        ))}
-                      </ul>
-                      <p class="more__source">
-                        <a href={peaksSource} target="_blank" rel="noopener">{t.sourceLabel}: vannghe.angiang.gov.vn <span aria-hidden="true">↗</span><span class="sr-only"> ({t.newTab})</span></a>
-                      </p>
-                    </div>
-                  </details>
-                )}
-
-                {chapter.steps && (
-                  <ol class="chapter__steps">
-                    {chapter.steps.map((step) => <li>{step}</li>)}
-                  </ol>
-                )}
-
-                {chapter.linkLabel && (
-                  <a class="link-arrow chapter__link" href={circularHref}>{chapter.linkLabel} <Arrow /></a>
-                )}
+                <!-- Page turner: only in the stage, for a chapter dealt into
+                     more than one page (script). -->
+                <div class="pager" data-pager hidden>
+                  <button class="pager__btn pager__btn--prev" type="button" aria-controls={`${chapter.id}-trang`} data-pager-prev>
+                    <Arrow /> {t.pager.prev}
+                  </button>
+                  <p class="pager__status" aria-live="polite">
+                    <span class="sr-only">{t.pager.page} </span><span data-pager-status>01</span> / <span data-pager-total>01</span>
+                  </p>
+                  <button class="pager__btn" type="button" aria-controls={`${chapter.id}-trang`} data-pager-next>
+                    {t.pager.next} <Arrow />
+                  </button>
+                </div>
               </div>
             </div>
           </article>
         ))}
 
+      </div>
+    </section>
+
+    <section class="section outlook" id="dinh-huong" aria-labelledby="outlook-title">
+      <div class="container outlook__grid">
+        <h2 class="outlook__title" id="outlook-title" data-reveal>{t.outlook.title}</h2>
+        <div class="outlook__body" data-reveal style="--reveal-delay: 120ms">
+          {t.outlook.body.map((p) => <p>{p}</p>)}
+        </div>
       </div>
     </section>
 
@@ -238,6 +269,106 @@ const filmName = t.film.title.replace(/[.。]$/, '');
 
     const stickyTop = () => parseFloat(getComputedStyle(stage).top) || 0;
 
+    /*
+     * Pages. In the stage a chapter's blocks (whole paragraphs, figures,
+     * the disclosure…) are dealt into pages that fit beside the
+     * photograph: the approved breaks always start a new page, a further
+     * break comes only where the text would not fit, and a block marked
+     * data-keep stays with the one before. One page shows at a time; the
+     * pager turns pages within its chapter only. A chapter keeps its page
+     * while the reader is elsewhere; a fresh load starts on page one.
+     */
+    const pad2 = (n: number) => String(n).padStart(2, '0');
+    const books = chapters.map((chapter) => {
+      const parts = [...chapter.querySelectorAll<HTMLElement>('[data-part]')];
+      const pager = chapter.querySelector<HTMLElement>('[data-pager]')!;
+      return {
+        content: chapter.querySelector<HTMLElement>('.chapter__content')!,
+        sheet: chapter.querySelector<HTMLElement>('[data-pages]')!,
+        blocks: parts.flatMap((part, p) =>
+          [...part.querySelectorAll<HTMLElement>(':scope > [data-block]')].map((el) => ({
+            el,
+            part: p,
+            keep: el.hasAttribute('data-keep'),
+          })),
+        ),
+        pager,
+        prev: pager.querySelector<HTMLButtonElement>('[data-pager-prev]')!,
+        next: pager.querySelector<HTMLButtonElement>('[data-pager-next]')!,
+        status: pager.querySelector<HTMLElement>('[data-pager-status]')!,
+        total: pager.querySelector<HTMLElement>('[data-pager-total]')!,
+        pages: [] as number[][],
+        /** Pages with the disclosure closed, and with it open. */
+        closedPages: [] as number[][],
+        openPages: [] as number[][],
+        details: chapter.querySelector<HTMLDetailsElement>('details'),
+        current: 0,
+      };
+    });
+    type Book = (typeof books)[number];
+
+    const show = (book: Book, k: number, from?: HTMLButtonElement) => {
+      const count = book.pages.length;
+      book.current = Math.min(Math.max(0, k), Math.max(0, count - 1));
+      const on = new Set(staged && count > 1 ? book.pages[book.current] : book.blocks.map((_, j) => j));
+      book.blocks.forEach((block, j) => block.el.classList.toggle('is-off', !on.has(j)));
+      book.pager.hidden = !staged || count < 2;
+      book.prev.disabled = book.current === 0;
+      book.next.disabled = book.current >= count - 1;
+      book.status.textContent = pad2(book.current + 1);
+      book.total.textContent = pad2(Math.max(1, count));
+      // A button that has just been disabled would drop the keyboard
+      // focus; hand it to the other one.
+      if (from?.disabled) (from === book.next ? book.prev : book.next).focus({ preventScroll: true });
+    };
+
+    books.forEach((book) => {
+      const turn = (by: number, from: HTMLButtonElement) => {
+        show(book, book.current + by, from);
+        if (!reduce.matches) {
+          book.sheet.classList.remove('is-turning');
+          void book.sheet.offsetWidth;
+          book.sheet.classList.add('is-turning');
+        }
+      };
+      book.prev.addEventListener('click', () => turn(-1, book.prev));
+      book.next.addEventListener('click', () => turn(1, book.next));
+      // The open list may need a page of its own; keep the reader on the
+      // page that holds it, open or closed.
+      book.details?.addEventListener('toggle', () => {
+        if (!staged) return;
+        book.pages = book.details!.open ? book.openPages : book.closedPages;
+        const j = book.blocks.findIndex((block) => block.el === book.details);
+        show(book, book.pages.findIndex((page) => page.includes(j)));
+      });
+    });
+
+    // Deals a chapter's blocks into pages no taller than `room` px with
+    // the disclosure closed and `roomOpen` px with it open, or null if a
+    // block (with any block kept to it) cannot fit a page on its own.
+    const deal = (book: Book, closed: number[], opened: number[], gap: number, room: number, roomOpen: number) => {
+      const sum = (page: number[], heights: number[]) => page.reduce((total, j, n) => total + heights[j] + (n ? gap : 0), 0);
+      const fit = (page: number[]) => sum(page, closed) <= room + 1 && sum(page, opened) <= roomOpen + 1;
+      const pages: number[][] = [];
+      let page: number[] = [];
+      let j = 0;
+      while (j < book.blocks.length) {
+        // A unit: this block and any following blocks kept to it.
+        const unit = [j];
+        while (book.blocks[unit[unit.length - 1] + 1]?.keep) unit.push(unit[unit.length - 1] + 1);
+        if (!fit(unit)) return null;
+        const newPart = page.length > 0 && book.blocks[j].part !== book.blocks[page[page.length - 1]].part;
+        if (page.length && (newPart || !fit([...page, ...unit]))) {
+          pages.push(page);
+          page = [];
+        }
+        page.push(...unit);
+        j = unit[unit.length - 1] + 1;
+      }
+      if (page.length) pages.push(page);
+      return pages;
+    };
+
     const setActive = (index: number) => {
       chapters.forEach((chapter, i) => {
         if (i !== index && i === active) chapter.classList.add('is-leaving');
@@ -280,25 +411,48 @@ const filmName = t.film.title.replace(/[.。]$/, '');
       });
     };
 
-    // Each chapter's text must fit beside its photograph; with a
-    // disclosure open, it may run below the photograph but must still fit
-    // the stage above the chapter list.
-    const disclosures = [...story.querySelectorAll<HTMLDetailsElement>('details')];
+    // Every chapter has to be dealt into pages that fit beside its
+    // photograph; with the disclosure open, a page may run below the
+    // photograph but must still fit the stage above the chapter list (it
+    // may take a page of its own). `split` allows breaks beyond the
+    // approved ones. Measured with the stage's styles applied; sets each
+    // chapter's pages.
     const nav = story.querySelector<HTMLElement>('.story__nav');
-    const contentHeights = () =>
-      chapters.map((chapter) => chapter.querySelector<HTMLElement>('.chapter__content')?.offsetHeight ?? 0);
-    const fits = () => {
-      const wasOpen = disclosures.map((d) => d.open);
-      disclosures.forEach((d) => { d.open = false; });
+    const fits = (split: boolean) => {
       const panel = chapters[0].querySelector<HTMLElement>('[data-chapter-text]')?.clientHeight ?? 0;
-      const closed = contentHeights();
-      disclosures.forEach((d) => { d.open = true; });
-      const open = contentHeights();
-      disclosures.forEach((d, i) => { d.open = wasOpen[i]; });
       const style = getComputedStyle(stage);
-      const room = stage.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom) - (nav?.offsetHeight ?? 0);
       // 16px: the open text's bottom padding above the chapter list.
-      return closed.every((h) => h <= panel + 1) && open.every((h) => h + 16 <= room + 1);
+      const room = stage.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom) - (nav?.offsetHeight ?? 0) - 16;
+      const plans = books.map((book) => {
+        book.blocks.forEach((block) => block.el.classList.remove('is-off'));
+        book.pager.hidden = false;
+        const details = book.blocks.map((block) => block.el instanceof HTMLDetailsElement ? block.el : null);
+        const wasOpen = details.map((d) => d?.open);
+        details.forEach((d) => { if (d) d.open = false; });
+        const heights = book.blocks.map((block) => block.el.getBoundingClientRect().height);
+        details.forEach((d) => { if (d) d.open = true; });
+        const opened = book.blocks.map((block) => block.el.getBoundingClientRect().height);
+        details.forEach((d, j) => { if (d) d.open = !!wasOpen[j]; });
+        const gap = parseFloat(getComputedStyle(book.sheet).rowGap) || 0;
+        const head = book.sheet.getBoundingClientRect().top - book.content.getBoundingClientRect().top;
+        const turner = book.pager.getBoundingClientRect().height + gap;
+        const parts = book.blocks[book.blocks.length - 1].part + 1;
+        // One page without the pager if everything fits, else pages with it.
+        const dealt = (open: number[], openRoom: number) => {
+          const single = deal(book, heights, open, gap, panel - head, openRoom - head);
+          return single?.length === 1 ? single : deal(book, heights, open, gap, panel - head - turner, openRoom - head - turner);
+        };
+        const closedPages = dealt(heights, panel);
+        const openPages = dealt(opened, room);
+        if (!closedPages || !openPages || (!split && closedPages.length > parts)) return null;
+        return { closedPages, openPages };
+      });
+      const ok = plans.every(Boolean);
+      if (ok) books.forEach((book, i) => {
+        Object.assign(book, plans[i]);
+        book.pages = book.details?.open ? book.openPages : book.closedPages;
+      });
+      return ok;
     };
 
     const measure = () => {
@@ -322,16 +476,19 @@ const filmName = t.film.title.replace(/[.。]$/, '');
       // position back while the stage is pinned.
       const pinned = was && window.scrollY >= start - 1 && box.bottom > window.innerHeight;
       story.style.height = '';
-      story.classList.remove('is-compact');
       story.classList.add('is-staged');
-      staged = wide.matches && fits();
-      // Screens a little short for the text try a tighter type step first.
-      if (wide.matches && !staged) {
-        story.classList.add('is-compact');
-        staged = fits();
-        if (!staged) story.classList.remove('is-compact');
+      // The approved pages whole first, in the usual type step and then a
+      // tighter one; only then further breaks; else the stacked sections.
+      staged = false;
+      if (wide.matches) {
+        for (const [compact, split] of [[false, false], [true, false], [false, true], [true, true]]) {
+          story.classList.toggle('is-compact', compact);
+          if ((staged = fits(split))) break;
+        }
       }
+      if (!staged) story.classList.remove('is-compact');
       story.classList.toggle('is-staged', staged);
+      books.forEach((book) => show(book, book.current));
       measure();
       // Keep the reader on the same chapter when the layout changes.
       if (measured && (pinned || (staged !== was && inView))) goTo(reading, false);
@@ -598,6 +755,55 @@ const filmName = t.film.title.replace(/[.。]$/, '');
   }
   .chapter__content > * + * { margin-top: var(--gap); }
 
+  /* The blocks of every page in one column; stacked, the pages simply
+     follow each other. */
+  .chapter__pages {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--gap);
+    width: 100%;
+  }
+  .chapter__part { display: contents; }
+
+  .chapter__para {
+    align-self: stretch;
+    font-size: var(--type-body);
+    line-height: 1.68;
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+
+
+  /* "← Trang trước · 01 / 02 · Đọc tiếp →", only in the pinned stage. */
+  .pager { display: none; }
+
+  .pager__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    font-size: var(--type-small);
+    font-weight: 500;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: color 200ms var(--ease), opacity 200ms var(--ease);
+  }
+  .pager__btn :global(.arrow) { transition: transform 300ms var(--ease); }
+  .pager__btn--prev :global(.arrow) { rotate: 180deg; }
+  .pager__btn:hover:not(:disabled) { color: var(--color-deep-green); }
+  /* The previous arrow is turned, so the same nudge points it back. */
+  .pager__btn:hover:not(:disabled) :global(.arrow) { transform: translateX(4px); }
+  .pager__btn:disabled { opacity: 0.35; cursor: default; }
+  .pager__btn:focus-visible { outline: 2px solid var(--color-forest); outline-offset: 4px; }
+
+  .pager__status {
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
   .chapter__kicker {
     display: flex;
     align-items: center;
@@ -640,14 +846,6 @@ const filmName = t.film.title.replace(/[.。]$/, '');
 
   /* Keep each phrase of a comma title on one line where it fits. */
   .chapter__phrase { display: inline-block; }
-
-  .chapter__body {
-    font-size: var(--type-body);
-    line-height: 1.68;
-    color: var(--color-text-muted);
-    text-wrap: pretty;
-  }
-  .chapter__body p + p { margin-top: 0.8em; }
 
   .chapter__facts {
     display: flex;
@@ -779,18 +977,6 @@ const filmName = t.film.title.replace(/[.。]$/, '');
     line-height: 1.5;
   }
   .more__name { color: var(--color-text); }
-
-  .more__source {
-    margin-top: 0.75rem;
-    font-size: 0.75rem;
-  }
-  .more__source a {
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-decoration-color: var(--color-line-strong);
-    text-underline-offset: 0.25em;
-  }
-  .more__source a:hover { color: var(--color-text); text-decoration-color: currentColor; }
 
   @media (prefers-reduced-motion: no-preference) {
     .more[open] .more__body { animation: more-in 350ms var(--ease); }
@@ -949,16 +1135,29 @@ const filmName = t.film.title.replace(/[.。]$/, '');
     .story.is-staged .chapter__media { align-self: start; }
     .story.is-staged .more__body { padding-top: 0.25rem; }
     .story.is-staged .more__list { gap: 0.125rem var(--space-m); margin-top: 0.5rem; line-height: 1.45; }
-    .story.is-staged .more__source { margin-top: 0.5rem; }
 
     .story.is-staged .chapter__content {
       --gap: clamp(0.875rem, 2.2vh, 1.375rem);
       max-width: 30rem;
     }
 
+    /* One page at a time (the script deals the blocks); a block on
+       another page is not shown and leaves nothing to focus. The pager
+       keeps its place at the foot of the text, whatever the page. */
+    .story.is-staged .chapter__content { min-height: 100%; }
+    .story.is-staged [data-block].is-off { display: none; }
+    .story.is-staged .pager:not([hidden]) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-m);
+      width: 100%;
+      margin-top: auto;
+      border-top: 1px solid var(--color-line);
+    }
+
     .story.is-staged .chapter__num { font-size: clamp(1.75rem, 3.4vh, 2.25rem); }
     .story.is-staged .chapter__title { font-size: clamp(2rem, 4.4vh, 3rem); }
-    .story.is-staged .chapter__body p + p { margin-top: 0.7em; }
     .story.is-staged .fact__value { font-size: clamp(3.5rem, 7.5vh, 5rem); }
 
     .story.is-compact .chapter__content { --gap: 0.875rem; }
@@ -998,6 +1197,47 @@ const filmName = t.film.title.replace(/[.。]$/, '');
     .story.is-staged .chapter__content > :nth-child(4) { --i: 3; }
     .story.is-staged .chapter__content > :nth-child(5) { --i: 4; }
     .story.is-staged .chapter__content > :nth-child(6) { --i: 5; }
+
+    /* Turning a page: the new page settles in. */
+    .story.is-staged .chapter__pages.is-turning { animation: page-in 450ms var(--ease); }
+  }
+  @keyframes page-in {
+    from { opacity: 0; transform: translateY(0.375rem); }
+  }
+
+  /* Outlook (#dinh-huong) -------------------------------------------------- */
+
+  .outlook { border-top: 1px solid var(--color-line); }
+
+  .outlook__grid {
+    display: grid;
+    row-gap: var(--space-l);
+  }
+
+  .outlook__title {
+    max-width: 16ch;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.875rem, 1.5rem + 1.6vw, 2.75rem);
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    color: var(--color-deep-green);
+  }
+
+  .outlook__body {
+    max-width: 36rem;
+    font-size: var(--type-body);
+    line-height: 1.68;
+    color: var(--color-text-muted);
+  }
+  .outlook__body p + p { margin-top: 0.8em; }
+
+  @media (min-width: 1024px) {
+    .outlook__grid {
+      grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+      column-gap: var(--col-gap);
+    }
   }
 
   /* Film (as on /nong-nghiep-tuan-hoan/) ----------------------------------- */
