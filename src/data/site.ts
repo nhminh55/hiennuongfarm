@@ -42,6 +42,8 @@ export const footerNav: NavItem[] = [
   { label: { vi: 'Sản phẩm', en: 'Products', zh: '产品' }, href: '/san-pham/' },
   nav[1],
   nav[4],
+  // Vietnamese only (viOnlyPaths); hidden in other languages.
+  { label: { vi: 'Chơi cùng nông trại', en: 'Play with the farm', zh: '农场小游戏' }, href: '/choi-cung-nong-trai/' },
 ];
 
 // VERIFY: address from the mockup. Email and phone are owner-provided.

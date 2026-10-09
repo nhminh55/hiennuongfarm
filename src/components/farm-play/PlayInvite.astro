@@ -1,0 +1,61 @@
+---
+/**
+ * A quiet invitation to one farm-play activity, placed beside the content it
+ * plays with. The activities are Vietnamese only, so it renders nothing in
+ * other languages.
+ */
+import Arrow from '../Arrow.astro';
+import { getLocale } from '../../i18n';
+
+interface Props {
+  title: string;
+  line: string;
+  /** Activity slug under /choi-cung-nong-trai/. */
+  slug: string;
+  label?: string;
+}
+
+const lang = getLocale(Astro.url);
+const { title, line, slug, label = 'Ghé chơi' } = Astro.props;
+---
+{lang === 'vi' && (
+  <aside class="play-invite" aria-label={title}>
+    <div class="container">
+      <div class="play-invite__inner" data-reveal>
+        <p class="play-invite__title">{title}</p>
+        <p class="play-invite__line">{line}</p>
+        <a class="link-arrow play-invite__link" href={`/choi-cung-nong-trai/${slug}/`}>{label} <Arrow /></a>
+      </div>
+    </div>
+  </aside>
+)}
+
+<style>
+  .play-invite { padding-block: var(--space-l); }
+
+  .play-invite__inner {
+    display: grid;
+    gap: var(--space-2xs) var(--space-l);
+    padding-block: var(--space-m);
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .play-invite__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+    line-height: 1.3;
+  }
+
+  .play-invite__line { color: var(--color-text-muted); }
+
+  .play-invite__link { margin-top: var(--space-xs); justify-self: start; }
+
+  @media (min-width: 768px) {
+    .play-invite__inner {
+      grid-template-columns: auto 1fr auto;
+      align-items: baseline;
+    }
+    .play-invite__link { margin-top: 0; }
+  }
+</style>

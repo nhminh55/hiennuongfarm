@@ -7,6 +7,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/page/Breadcrumb.astro';
 import Eyebrow from '../../components/Eyebrow.astro';
+import Arrow from '../../components/Arrow.astro';
 import Showroom from '../../components/showroom/Showroom.astro';
 import ShowroomDetails from '../../components/showroom/ShowroomDetails.astro';
 import { showroomProducts } from '../../data/showroom';
@@ -48,7 +49,12 @@ const t = {
         <Eyebrow>{t.eyebrow}</Eyebrow>
         <h1 class="intro__title" id="page-title">{t.pageTitle}</h1>
       </div>
-      <p class="intro__lead">{t.lead}</p>
+      <div class="intro__text">
+        <p class="intro__lead">{t.lead}</p>
+        {lang === 'vi' && (
+          <a class="link-arrow intro__play" href="/choi-cung-nong-trai/hom-nay-an-nam-gi/">Hôm nay ăn nấm gì? <Arrow /></a>
+        )}
+      </div>
     </div>
   </header>
 
@@ -88,6 +94,8 @@ const t = {
     text-wrap: pretty;
   }
 
+  .intro__play { margin-top: var(--space-s); }
+
   @media (min-width: 1280px) {
     .intro__grid {
       grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
@@ -96,6 +104,6 @@ const t = {
     }
     .intro__grid > :global(.intro__crumbs) { grid-column: 1 / -1; }
     .intro__head { margin-top: var(--space-xs); }
-    .intro__lead { padding-bottom: 0.5rem; }
+    .intro__text { padding-bottom: 0.5rem; }
   }
 </style>

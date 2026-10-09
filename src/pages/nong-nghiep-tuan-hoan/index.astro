@@ -20,6 +20,7 @@ import Breadcrumb from '../../components/page/Breadcrumb.astro';
 import CtaBand from '../../components/page/CtaBand.astro';
 import Eyebrow from '../../components/Eyebrow.astro';
 import Arrow from '../../components/Arrow.astro';
+import PlayInvite from '../../components/farm-play/PlayInvite.astro';
 import { getLocale, localizePath, pageHref } from '../../i18n';
 
 const lang = getLocale(Astro.url);
@@ -305,6 +306,8 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
       </div>
     </section>
 
+    <PlayInvite title="Một vòng nông trại" line="Bạn thử ghép lại vòng tuần hoàn nhé?" slug="mot-vong-nong-trai" />
+
     <!-- 2 · Products ------------------------------------------------------ -->
     <section class="section produce" aria-labelledby="produce-title">
       <div class="container produce__grid">
@@ -400,6 +403,8 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
         </div>
       </div>
     </section>
+
+    <PlayInvite title="Bạn hiểu nấm tới đâu?" line="5 câu hỏi nhỏ trước khi bạn đi tiếp." slug="ban-hieu-nam-toi-dau" />
 
     <!-- 5 · Closing ------------------------------------------------------- -->
     <CtaBand title={t.closingTitle} href={contactHref}>{t.closingBody}</CtaBand>
