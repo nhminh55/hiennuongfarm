@@ -1,0 +1,365 @@
+---
+/**
+ * /dau-an/bao-chi/tu-lieu/: Kho tư liệu báo chí.
+ *
+ * Every entry of pressArchive (src/data/dau-an.ts), newest first, entries
+ * without a date last. Each headline opens the original in a new tab.
+ * Search (headline and outlet, without diacritics or case) and the year
+ * and outlet filters run in the page and combine; without JavaScript the
+ * whole list is still there.
+ */
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import DauAnHead from '../../../../components/dau-an/DauAnHead.astro';
+import { formatDate, pressArchive } from '../../../../data/dau-an';
+import { fold } from '../../../../scripts/fold';
+
+const entries = [...pressArchive].sort((a, b) =>
+  a.date && b.date ? b.date.localeCompare(a.date) : a.date ? -1 : b.date ? 1 : a.headline.localeCompare(b.headline, 'vi'),
+);
+const year = (date?: string) => date?.slice(0, 4) ?? 'none';
+const years = [...new Set(entries.flatMap((e) => (e.date ? [year(e.date)] : [])))].sort().reverse();
+const outlets = [...new Set(entries.map((e) => e.outlet))].sort((a, b) => a.localeCompare(b, 'vi'));
+const undated = entries.some((e) => !e.date);
+---
+<BaseLayout
+  title="Kho tư liệu báo chí"
+  description="Các bài viết và phóng sự đã được tổng hợp về Hiền Nương Farm và chị Châu Thị Nương: tiêu đề gốc, nguồn, ngày đăng và liên kết đến bài gốc."
+>
+  <DauAnHead current="/dau-an/bao-chi/" title="Kho tư liệu báo chí" as="p" />
+
+  <section class="archive" aria-labelledby="archive-title">
+    <div class="container">
+      <header class="archive__intro">
+        <h1 class="archive__title" id="archive-title">Kho tư liệu báo chí</h1>
+        <p class="archive__lede">Các bài viết và phóng sự đã được tổng hợp. Mỗi tiêu đề mở bài gốc trên trang của cơ quan báo chí, trong thẻ mới. Bài gắn nhãn “Nhắc đến” chỉ nhắc ngắn đến Hiền Nương hoặc dẫn lời chị Châu Thị Nương trong một câu chuyện rộng hơn.</p>
+        <a class="archive__back" href="/dau-an/bao-chi/"><span aria-hidden="true">←</span> Báo chí & Truyền thông</a>
+      </header>
+
+      <form class="filters" role="search" aria-label="Tìm trong kho tư liệu" data-filters>
+        <div class="filters__field filters__field--q">
+          <label for="f-q">Tìm kiếm</label>
+          <input id="f-q" name="q" type="search" placeholder="Tiêu đề hoặc tên báo" autocomplete="off" spellcheck="false" />
+        </div>
+        <div class="filters__field">
+          <label for="f-year">Năm</label>
+          <select id="f-year" name="year">
+            <option value="">Tất cả các năm</option>
+            {years.map((y) => <option value={y}>{y}</option>)}
+            {undated && <option value="none">Chưa rõ ngày</option>}
+          </select>
+        </div>
+        <div class="filters__field">
+          <label for="f-outlet">Nguồn</label>
+          <select id="f-outlet" name="outlet">
+            <option value="">Tất cả các nguồn</option>
+            {outlets.map((o) => <option value={o}>{o}</option>)}
+          </select>
+        </div>
+        <div class="filters__status">
+          <p class="filters__count" role="status" data-count>{entries.length} bài viết và phóng sự</p>
+          <button class="filters__reset" type="button" data-reset disabled>Xóa bộ lọc</button>
+        </div>
+      </form>
+
+      <table class="list" data-list>
+        <caption class="sr-only">Các bài viết và phóng sự, mới nhất trước</caption>
+        <thead>
+          <tr>
+            <th scope="col">Ngày đăng</th>
+            <th scope="col">Bài viết / Phóng sự</th>
+            <th scope="col">Nguồn</th>
+          </tr>
+        </thead>
+        <tbody>
+          {entries.map((e) => (
+            <tr data-search={fold(`${e.headline} ${e.outlet}`)} data-year={year(e.date)} data-outlet={e.outlet}>
+              <td class="list__date">
+                {e.date ? <time datetime={e.date}>{formatDate(e.date)}</time> : 'Chưa rõ ngày'}
+              </td>
+              <td class="list__title">
+                {(e.kind !== 'article' || e.mention) && (
+                  <span class="list__tags">
+                    {e.kind === 'video' && <span class="list__kind">Phóng sự truyền hình</span>}
+                    {e.kind === 'audio' && <span class="list__kind">Phát thanh</span>}
+                    {e.mention && <span class="list__mention">Nhắc đến</span>}
+                  </span>
+                )}
+                <a href={e.url} target="_blank" rel="noopener noreferrer">
+                  {e.headline}<span class="sr-only"> (mở trong thẻ mới)</span>
+                </a>
+              </td>
+              <td class="list__outlet">{e.outlet}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <p class="empty" hidden data-empty>
+        Không có bài nào khớp với tìm kiếm và bộ lọc đã chọn.
+        <button type="button" data-reset>Xóa bộ lọc</button>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import { fold } from '../../../../scripts/fold';
+
+  const form = document.querySelector<HTMLFormElement>('[data-filters]');
+  const list = document.querySelector<HTMLTableElement>('[data-list]');
+  const empty = document.querySelector<HTMLElement>('[data-empty]');
+  const count = document.querySelector<HTMLElement>('[data-count]');
+
+  if (form && list && empty && count) {
+    const q = form.elements.namedItem('q') as HTMLInputElement;
+    const year = form.elements.namedItem('year') as HTMLSelectElement;
+    const outlet = form.elements.namedItem('outlet') as HTMLSelectElement;
+    const rows = [...list.tBodies[0].rows];
+    const resets = [...document.querySelectorAll<HTMLButtonElement>('[data-reset]')];
+    const total = rows.length;
+
+    const apply = () => {
+      const terms = fold(q.value).split(' ').filter(Boolean);
+      let shown = 0;
+      for (const row of rows) {
+        const match =
+          terms.every((t) => row.dataset.search!.includes(t)) &&
+          (!year.value || row.dataset.year === year.value) &&
+          (!outlet.value || row.dataset.outlet === outlet.value);
+        row.hidden = !match;
+        if (match) shown++;
+      }
+      const active = Boolean(q.value.trim() || year.value || outlet.value);
+      count.textContent = active ? `Tìm thấy ${shown} trong ${total} bài` : `${total} bài viết và phóng sự`;
+      resets[0].disabled = !active;
+      list.hidden = shown === 0;
+      empty.hidden = shown !== 0;
+    };
+
+    form.addEventListener('input', apply);
+    form.addEventListener('submit', (event) => event.preventDefault());
+    for (const button of resets) {
+      button.addEventListener('click', () => {
+        form.reset();
+        apply();
+        q.focus();
+      });
+    }
+    // A restored page (back/forward) keeps its field values.
+    apply();
+  }
+</script>
+
+<style>
+  .archive { padding-bottom: var(--section-y); }
+
+  /* Opening: title, one line, the way back. */
+  .archive__intro {
+    display: grid;
+    gap: var(--space-s);
+    max-width: 46rem;
+  }
+  .archive__title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2rem, 1.5rem + 2vw, 3.25rem);
+    line-height: var(--lh-display);
+    letter-spacing: -0.015em;
+  }
+  .archive__lede { color: var(--color-text-muted); text-wrap: pretty; }
+  .archive__back {
+    justify-self: start;
+    display: inline-flex;
+    gap: 0.5rem;
+    padding-block: 0.375rem;
+    font-size: var(--fs-small);
+    border-bottom: 1px solid var(--color-line-strong);
+    transition: border-color 300ms var(--ease);
+  }
+  .archive__back:hover { border-color: currentColor; }
+
+  /* Search and filters ------------------------------------------------- */
+  .filters {
+    display: grid;
+    gap: var(--space-s) var(--col-gap);
+    margin-top: var(--space-l);
+    padding-block: var(--space-m);
+    border-top: 1px solid var(--color-line-strong);
+  }
+
+  .filters__field { display: grid; gap: 0.375rem; min-width: 0; }
+  .filters__field label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .filters input,
+  .filters select {
+    width: 100%;
+    min-height: 2.75rem;
+    padding: 0.5rem 0;
+    font: inherit;
+    font-size: 1rem;
+    color: var(--color-text);
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--color-line-strong);
+    border-radius: 0;
+    transition: border-color 300ms var(--ease);
+  }
+  .filters select {
+    appearance: none;
+    padding-right: 1.5rem;
+    background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+    background-position: calc(100% - 0.6rem) 55%, calc(100% - 0.25rem) 55%;
+    background-size: 0.35rem 0.35rem;
+    background-repeat: no-repeat;
+    text-overflow: ellipsis;
+    cursor: pointer;
+  }
+  .filters input::placeholder { color: var(--color-text-muted); opacity: 0.8; }
+  .filters input:hover,
+  .filters select:hover { border-color: var(--color-text); }
+  .filters input:focus-visible,
+  .filters select:focus-visible {
+    outline: none;
+    border-bottom-color: var(--color-forest);
+    box-shadow: 0 1px 0 0 var(--color-forest);
+  }
+
+  .filters__status {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2xs) var(--space-m);
+  }
+  .filters__count {
+    font-size: var(--fs-small);
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text-muted);
+  }
+
+  .filters__reset,
+  .empty button {
+    padding-block: 0.375rem;
+    font-size: var(--fs-small);
+    border-bottom: 1px solid var(--color-line-strong);
+    transition: border-color 300ms var(--ease), opacity 300ms var(--ease);
+  }
+  .filters__reset:hover:not(:disabled),
+  .empty button:hover { border-color: currentColor; }
+  .filters__reset:disabled { opacity: 0.4; cursor: default; }
+
+  /* The list ----------------------------------------------------------- */
+  .list {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .list thead th {
+    padding-block: var(--space-xs);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-align: left;
+    color: var(--color-text-muted);
+    border-top: 1px solid var(--color-line-strong);
+    border-bottom: 1px solid var(--color-line-strong);
+  }
+  .list td {
+    padding-block: var(--space-m);
+    vertical-align: baseline;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .list__date {
+    font-size: var(--fs-small);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    color: var(--color-text-muted);
+  }
+
+  .list__title a {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.125rem, 1.05rem + 0.3vw, 1.3125rem);
+    line-height: 1.3;
+    text-wrap: pretty;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 500ms var(--ease);
+  }
+  .list__title a:hover,
+  .list__title a:focus-visible { background-size: 100% 1px; }
+
+  .list__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+    margin-bottom: 0.375rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+  .list__kind { color: var(--color-earth); }
+  .list__mention { color: var(--color-text-muted); }
+
+  .list__outlet {
+    font-size: var(--fs-small);
+    line-height: 1.5;
+    color: var(--color-text-muted);
+  }
+
+  .empty {
+    padding-block: var(--space-l);
+    border-top: 1px solid var(--color-line-strong);
+    color: var(--color-text-muted);
+  }
+  .empty button { margin-left: 0.5rem; color: var(--color-text); }
+
+  /* Phone and small tablet: each entry stacks headline, outlet, date,
+     one to a line. */
+  @media (max-width: 767px) {
+    .list thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    .list,
+    .list tbody { display: block; }
+    .list tbody { border-top: 1px solid var(--color-line-strong); }
+    .list tr {
+      display: flex;
+      flex-direction: column;
+      padding-block: var(--space-m);
+      border-bottom: 1px solid var(--color-line);
+    }
+    .list[hidden],
+    .list tr[hidden] { display: none; }
+    .list td { padding: 0; border: 0; }
+    .list__title { order: 1; margin-bottom: 0.5rem; }
+    .list__outlet { order: 2; }
+    .list__date { order: 3; margin-top: 0.125rem; }
+  }
+
+  @media (min-width: 768px) {
+    .filters {
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1.4fr);
+      align-items: end;
+    }
+    .filters__status { grid-column: 1 / -1; }
+    .filters { padding-bottom: var(--space-s); }
+
+    .list__date { width: 8.5rem; padding-right: var(--col-gap); }
+    .list__title { padding-right: var(--col-gap); }
+    .list__outlet { width: 30%; }
+  }
+
+  @media (min-width: 1024px) {
+    .list__outlet { width: 22rem; }
+  }
+</style>

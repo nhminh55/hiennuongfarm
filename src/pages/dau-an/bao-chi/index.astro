@@ -14,15 +14,15 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import DauAnHead from '../../../components/dau-an/DauAnHead.astro';
 import Arrow from '../../../components/Arrow.astro';
-import { formatDate, press, pressBySlug, type PressItem } from '../../../data/dau-an';
+import { formatDate, press, pressBySlug, type FeaturedPress } from '../../../data/dau-an';
 
 const [featured, ...rest] = press;
 const side = rest.slice(0, 2);
-const href = (p: PressItem) => `/dau-an/bao-chi/${p.slug}/`;
+const href = (p: FeaturedPress) => `/dau-an/bao-chi/${p.slug}/`;
 
 type Tile =
-  | { type: 'item'; item: PressItem; span: number; ratio?: string; offset?: boolean }
-  | { type: 'quote'; item: PressItem; span: number; offset?: boolean };
+  | { type: 'item'; item: FeaturedPress; span: number; ratio?: string; offset?: boolean }
+  | { type: 'quote'; item: FeaturedPress; span: number; offset?: boolean };
 
 const item = (slug: string, span: number, ratio?: string, offset?: boolean): Tile => ({
   type: 'item', item: pressBySlug(slug)!, span, ratio, offset,
@@ -54,7 +54,7 @@ const tiles: Tile[] = [
   item('nong-nghiep-tuan-hoan-tu-duoc-lieu-tu-nhien', 4, '4 / 3', true),
 ];
 
-const meta = (p: PressItem) => `${p.outlet} · ${formatDate(p.date)}`;
+const meta = (p: FeaturedPress) => `${p.outlet} · ${formatDate(p.date)}`;
 const sizes = (span: number) => `(min-width: 1024px) ${Math.round((span / 12) * 92)}vw, (min-width: 640px) 50vw, 100vw`;
 ---
 <BaseLayout
@@ -155,6 +155,11 @@ const sizes = (span: number) => `(min-width: 1024px) ${Math.round((span / 12) * 
           ),
         )}
       </ol>
+
+      <p class="wall__archive">
+        <a class="link-arrow" href="/dau-an/bao-chi/tu-lieu/">Xem toàn bộ bài báo <Arrow /></a>
+        <span>Tra cứu các bài viết và phóng sự có nhắc đến Hiền Nương.</span>
+      </p>
     </div>
   </section>
 </BaseLayout>
@@ -365,6 +370,21 @@ const sizes = (span: number) => `(min-width: 1024px) ${Math.round((span / 12) * 
   }
   .tile__attr a { color: var(--color-text); border-bottom: 1px solid var(--color-line-strong); }
   .tile__attr a:hover { border-color: currentColor; }
+
+  /* The way into the full archive: a quiet line under the wall. */
+  .wall__archive {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2xs) var(--space-m);
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-m);
+    border-top: 1px solid var(--color-line);
+  }
+  .wall__archive span {
+    font-size: var(--fs-small);
+    color: var(--color-text-muted);
+  }
 
   /* Tablet: two columns; quotations across both. */
   @media (min-width: 640px) and (max-width: 1023px) {

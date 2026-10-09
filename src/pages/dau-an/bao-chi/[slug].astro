@@ -9,7 +9,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import DauAnHead from '../../../components/dau-an/DauAnHead.astro';
 import Lightbox from '../../../components/dau-an/Lightbox.astro';
 import Arrow from '../../../components/Arrow.astro';
-import { formatDate, press, type PressItem } from '../../../data/dau-an';
+import { formatDate, press, type FeaturedPress } from '../../../data/dau-an';
 
 export const getStaticPaths = () =>
   press.map((item, i) => ({
@@ -18,9 +18,9 @@ export const getStaticPaths = () =>
   }));
 
 interface Props {
-  item: PressItem;
-  prev?: PressItem;
-  next?: PressItem;
+  item: FeaturedPress;
+  prev?: FeaturedPress;
+  next?: FeaturedPress;
 }
 
 const { item, prev, next } = Astro.props;
@@ -28,7 +28,7 @@ const photos = [item.photo, ...(item.gallery ?? [])].filter((p) => p !== undefin
 const domain = new URL(item.url).hostname.replace(/^www\./, '');
 const isVideo = item.kind === 'video';
 const action = isVideo ? 'Xem phóng sự' : 'Đọc bài gốc';
-const href = (p: PressItem) => `/dau-an/bao-chi/${p.slug}/`;
+const href = (p: FeaturedPress) => `/dau-an/bao-chi/${p.slug}/`;
 ---
 <BaseLayout title={item.headline} description={`${item.outlet}, ${formatDate(item.date)}: ${item.intro}`}>
   <DauAnHead current="/dau-an/bao-chi/" title={item.headline} as="p" />
