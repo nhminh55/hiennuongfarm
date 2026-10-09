@@ -255,14 +255,172 @@ const raw: RawProduct[] = [
       paragraphs: [
         {
           text: {
-            vi: 'Tai nấm linh chi phát triển từ bịch phôi đặt trên lớp rơm.',
-            en: 'A lingzhi cap growing from a spawn bag set on a layer of straw.',
-            zh: '灵芝从铺在稻草上的菌袋中长出。',
+            vi: 'Nấm Linh Chi Tai To Nương Farm được nuôi trồng và thu hoạch theo mô hình hữu cơ tuần hoàn khép kín tại vùng Bảy Núi, An Giang.',
+            en: 'Nương Farm large-cap lingzhi is grown and harvested using a closed-loop organic circular farming model in Bảy Núi, An Giang.',
+            zh: 'Nương Farm 大朵灵芝在安江省七山地区以闭环有机循环农业模式种植并采收。',
           },
-          source: `${PRODUCT_NOTES}:45 (en :94, zh :116)`,
+          source: 'docs/products/02. Nam linh chi tai to.md',
+        },
+        {
+          text: {
+            vi: 'Sản phẩm giữ nguyên tai nấm lớn, nguyên vẹn, có màu sắc và hương thơm tự nhiên, không chứa chất bảo quản.',
+            en: 'The product retains its large, whole mushroom cap, natural colour and aroma, and contains no preservatives.',
+            zh: '产品保留完整的大朵菌盖、天然色泽和香气，不含防腐剂。',
+          },
+          source: 'docs/products/02. Nam linh chi tai to.md',
         },
       ],
-      facts: [MAIN_LINE, GROWING_REGION],
+      facts: [
+        {
+          label: {
+            vi: 'Nguồn gốc nguyên liệu',
+            en: 'Ingredient origin',
+            zh: '原料来源',
+          },
+          value: {
+            vi: 'Nương Farm, vùng Bảy Núi, An Giang',
+            en: 'Nương Farm, Bảy Núi, An Giang',
+            zh: 'Nương Farm，安江省七山',
+          },
+          source: 'docs/products/02. Nam linh chi tai to.md',
+        },
+        {
+          label: {
+            vi: 'Xuất xứ',
+            en: 'Country of origin',
+            zh: '原产国',
+          },
+          value: {
+            vi: 'Việt Nam',
+            en: 'Vietnam',
+            zh: '越南',
+          },
+          source: 'docs/products/02. Nam linh chi tai to.md',
+        },
+        {
+          label: {
+            vi: 'Chứng nhận',
+            en: 'Certification',
+            zh: '认证',
+          },
+          value: {
+            vi: 'OCOP 3 sao',
+            en: '3-star OCOP',
+            zh: 'OCOP 三星',
+          },
+          source: 'docs/products/02. Nam linh chi tai to.md',
+        },
+      ],
+    },
+    composition: {
+      ingredients: {
+        text: {
+          vi: '100% nấm linh chi đỏ nguyên bản, nguyên tai (Ganoderma Australe). Không chất bảo quản.',
+          en: '100% whole red lingzhi mushroom caps (Ganoderma Australe). No preservatives.',
+          zh: '100% 完整原朵赤灵芝（Ganoderma Australe）。不含防腐剂。',
+        },
+        source: 'docs/products/02. Nam linh chi tai to.md',
+      },
+      facts: [
+        {
+          label: {
+            vi: 'Khối lượng tịnh',
+            en: 'Net weight',
+            zh: '净含量',
+          },
+          value: {
+            vi: '200 g',
+            en: '200 g',
+            zh: '200 克',
+          },
+          source: 'docs/products/02. Nam linh chi tai to.md',
+        },
+        {
+          label: {
+            vi: 'Quy cách khác',
+            en: 'Other sizes',
+            zh: '其他规格',
+          },
+          value: {
+            vi: '100 g, 250 g, 500 g hoặc đóng gói theo yêu cầu',
+            en: '100 g, 250 g, 500 g or packaging on request',
+            zh: '100 克、250 克、500 克，或按需包装',
+          },
+          source: 'docs/products/02. Nam linh chi tai to.md',
+        },
+        {
+          label: {
+            vi: 'Đơn vị tính',
+            en: 'Unit',
+            zh: '计量单位',
+          },
+          value: {
+            vi: '1 nguyên tai nấm',
+            en: '1 whole mushroom cap',
+            zh: '1 朵完整菌盖',
+          },
+          source: 'docs/products/02. Nam linh chi tai to.md',
+        },
+        {
+          label: {
+            vi: 'Hạn sử dụng',
+            en: 'Shelf life',
+            zh: '保质期',
+          },
+          value: {
+            vi: '1 năm kể từ ngày sản xuất',
+            en: '1 year from the date of manufacture',
+            zh: '自生产日期起 1 年',
+          },
+          source: 'docs/products/02. Nam linh chi tai to.md',
+        },
+      ],
+    },
+    usage: {
+      preparation: [
+        {
+          text: {
+            vi: 'Thái lát mỏng để hãm trà hoặc nấu nước. Lượng dùng theo hướng dẫn sản phẩm: khoảng 20 g mỗi ngày.',
+            en: 'Slice thinly to brew as tea or boil in water. The product instructions specify about 20 g per day.',
+            zh: '切成薄片后泡茶或煮水。产品使用说明建议每日约 20 克。',
+          },
+          source: 'docs/products/02. Nam linh chi tai to.md',
+        },
+        {
+          text: {
+            vi: 'Nấu hoặc ủ 20 g nấm với 1,5–2 lít nước. Để nước sôi khoảng 5 phút rồi chắt lấy nước uống trong ngày.',
+            en: 'Boil or steep 20 g of mushrooms in 1.5–2 litres of water. Boil for about 5 minutes, then strain and drink during the day.',
+            zh: '用 1.5–2 升水煮或焖泡 20 克灵芝。煮沸约 5 分钟后滤出，当日饮用。',
+          },
+          source: 'docs/products/02. Nam linh chi tai to.md',
+        },
+        {
+          text: {
+            vi: 'Có thể kết hợp thêm táo đỏ, cam thảo hoặc các loại thảo mộc khác để tăng hương vị.',
+            en: 'Combine with red dates, liquorice or other herbs for additional flavour.',
+            zh: '可搭配红枣、甘草或其他草本植物增添风味。',
+          },
+          source: 'docs/products/02. Nam linh chi tai to.md',
+        },
+      ],
+      storage: [
+        {
+          text: {
+            vi: 'Để nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp và môi trường ẩm thấp. Đậy kín nắp hoặc buộc chặt miệng bao bì sau khi sử dụng.',
+            en: 'Store in a dry, cool, well-ventilated place away from direct sunlight and humidity. Close the lid or tie the packaging tightly after use.',
+            zh: '存放于干燥、阴凉通风处，避免阳光直射和潮湿环境。使用后盖紧盖子或扎紧包装袋口。',
+          },
+          source: 'docs/products/02. Nam linh chi tai to.md',
+        },
+        {
+          text: {
+            vi: 'Hạn sử dụng: 1 năm kể từ ngày sản xuất.',
+            en: 'Shelf life: 1 year from the date of manufacture.',
+            zh: '保质期：自生产日期起 1 年。',
+          },
+          source: 'docs/products/02. Nam linh chi tai to.md',
+        },
+      ],
     },
     records: [
       {
@@ -399,17 +557,76 @@ const raw: RawProduct[] = [
       plate: false,
     },
     intro: {
+      paragraphs: [
+        {
+          text: {
+            vi: 'Nấm mối đen được nuôi trồng và thu hoạch trực tiếp tại Hiền Nương Farm theo mô hình hữu cơ tuần hoàn khép kín. Sản phẩm được chế biến bằng công nghệ sấy thăng hoa, không sử dụng chất bảo quản hay phẩm màu.',
+            en: 'Black termite mushrooms are grown and harvested directly at Hiền Nương Farm using a closed-loop organic circular farming model. The product is freeze-dried without preservatives or colouring.',
+            zh: '黑皮鸡枞菌由 Hiền Nương Farm 以闭环有机循环农业模式种植并直接采收，采用冷冻干燥工艺加工，不添加防腐剂或色素。',
+          },
+          source: 'docs/products/05.Nam moi den say thang hoa.md',
+        },
+        {
+          text: {
+            vi: 'Nấm tự nhiên được chọn lọc kỹ lưỡng trước khi sấy thăng hoa để giữ màu sắc, hình dáng và hương vị.',
+            en: 'Carefully selected natural mushrooms are freeze-dried to preserve their colour, shape and flavour.',
+            zh: '精心挑选的天然菌菇经过冷冻干燥，保留其色泽、形态和风味。',
+          },
+          source: 'docs/products/05.Nam moi den say thang hoa.md',
+        },
+      ],
       facts: [
         {
-          label: RAW_MATERIAL,
-          value: { vi: 'Nấm mối đen nuôi trồng tại trang trại', en: 'Black termite mushroom grown on the farm', zh: '农场种植的黑皮鸡枞菌' },
-          source: `${HOME_INTRO}; ${OWNER_HOME}`,
+          label: {
+            vi: 'Nguồn gốc nguyên liệu',
+            en: 'Ingredient origin',
+            zh: '原料来源',
+          },
+          value: {
+            vi: 'Trồng và thu hoạch trực tiếp tại Hiền Nương Farm',
+            en: 'Grown and harvested directly at Hiền Nương Farm',
+            zh: '由 Hiền Nương Farm 种植并直接采收',
+          },
+          source: 'docs/products/05.Nam moi den say thang hoa.md',
         },
-        { label: PROCESS, value: FREEZE_DRIED, source: `${OWNER_HOME} (product name and summary)` },
         {
-          label: { vi: 'Đơn vị sản xuất', en: 'Producer', zh: '生产单位' },
-          value: { vi: 'Hợp tác xã Nông nghiệp Tà Đảnh', en: 'Tà Đảnh Agricultural Cooperative (Hợp tác xã Nông nghiệp Tà Đảnh)', zh: 'Tà Đảnh 农业合作社（Hợp tác xã Nông nghiệp Tà Đảnh）' },
-          source: `${TCB_02}, mục I và II.5 (p.2–3); Phụ lục 2 (p.6)`,
+          label: {
+            vi: 'Phương pháp chế biến',
+            en: 'Processing',
+            zh: '加工方式',
+          },
+          value: {
+            vi: 'Sấy thăng hoa',
+            en: 'Freeze-drying',
+            zh: '冷冻干燥',
+          },
+          source: 'docs/products/05.Nam moi den say thang hoa.md',
+        },
+        {
+          label: {
+            vi: 'Đơn vị sản xuất',
+            en: 'Producer',
+            zh: '生产单位',
+          },
+          value: {
+            vi: 'Hợp tác xã Nông nghiệp Tà Đảnh',
+            en: 'Tà Đảnh Agricultural Cooperative',
+            zh: 'Tà Đảnh 农业合作社',
+          },
+          source: 'docs/products/05.Nam moi den say thang hoa.md',
+        },
+        {
+          label: {
+            vi: 'Xuất xứ',
+            en: 'Country of origin',
+            zh: '原产国',
+          },
+          value: {
+            vi: 'Việt Nam',
+            en: 'Vietnam',
+            zh: '越南',
+          },
+          source: 'docs/products/05.Nam moi den say thang hoa.md',
         },
         {
           label: { vi: 'Nơi sản xuất', en: 'Place of production', zh: '生产地址' },
@@ -425,40 +642,89 @@ const raw: RawProduct[] = [
     composition: {
       ingredients: {
         text: {
-          vi: 'Nấm mối đen sấy thăng hoa (100%)',
-          en: 'Freeze-dried black termite mushroom (100%)',
-          zh: '冻干黑皮鸡枞菌（100%）',
+          vi: '100% nấm mối đen tươi nguyên chất. Không pha tạp, không hóa chất.',
+          en: '100% pure fresh black termite mushrooms. No adulterants or chemicals.',
+          zh: '100% 纯鲜黑皮鸡枞菌。不掺杂，不添加化学物质。',
         },
-        source: `${TCB_02}, Phụ lục 2 – Mẫu nội dung ghi nhãn (p.6)`,
+        source: 'docs/products/05.Nam moi den say thang hoa.md',
       },
+      facts: [
+        {
+          label: {
+            vi: 'Khối lượng tịnh',
+            en: 'Net weight',
+            zh: '净含量',
+          },
+          value: {
+            vi: '45 g',
+            en: '45 g',
+            zh: '45 克',
+          },
+          source: 'docs/products/05.Nam moi den say thang hoa.md',
+        },
+        {
+          label: {
+            vi: 'Quy cách đóng gói',
+            en: 'Packaging',
+            zh: '包装',
+          },
+          value: {
+            vi: '1 hộp giấy',
+            en: '1 paper box',
+            zh: '1 个纸盒',
+          },
+          source: 'docs/products/05.Nam moi den say thang hoa.md',
+        },
+        {
+          label: {
+            vi: 'Hạn sử dụng',
+            en: 'Shelf life',
+            zh: '保质期',
+          },
+          value: {
+            vi: '1 năm kể từ ngày sản xuất',
+            en: '1 year from the date of manufacture',
+            zh: '自生产日期起 1 年',
+          },
+          source: 'docs/products/05.Nam moi den say thang hoa.md',
+        },
+      ],
     },
     usage: {
       preparation: [
         {
           text: {
-            vi: 'Rửa sạch và ngâm nấm trong nước khoảng 10 – 15 phút để nấm trở lại độ mềm tự nhiên. Sử dụng để chế biến các món ăn như xào, nấu hoặc hầm.',
-            en: 'Rinse, then soak the mushrooms in water for about 10–15 minutes until they return to their natural softness. Use in dishes such as stir-fries, simmered dishes or stews.',
-            zh: '洗净后将菌菇在水中浸泡约 10–15 分钟，使其恢复自然柔软。可用于炒、煮或炖等菜肴。',
+            vi: 'Ngâm nấm trong nước ấm khoảng 5–10 phút trước khi chế biến để nấm nở mềm.',
+            en: 'Soak the mushrooms in warm water for about 5–10 minutes before cooking to soften them.',
+            zh: '烹饪前将菌菇放入温水中浸泡约 5–10 分钟，使其泡发变软。',
           },
-          source: `${TCB_02}, Phụ lục 2 – Hướng dẫn sử dụng (p.6)`,
+          source: 'docs/products/05.Nam moi den say thang hoa.md',
+        },
+        {
+          text: {
+            vi: 'Dùng để nấu canh, xào, hầm, lẩu nấm hoặc chế biến các món chay.',
+            en: 'Use in soups, stir-fries, stews, mushroom hotpots or vegetarian dishes.',
+            zh: '可用于煮汤、炒菜、炖菜、菌菇火锅或素食料理。',
+          },
+          source: 'docs/products/05.Nam moi den say thang hoa.md',
         },
       ],
       storage: [
         {
           text: {
-            vi: 'Bảo quản trong túi kín, đặt ở nơi khô ráo và thoáng mát. Tránh để sản phẩm dưới ánh nắng mặt trời hoặc nơi có nhiệt độ cao.',
-            en: 'Keep in a sealed bag in a dry, cool, well-ventilated place. Keep the product out of the sun and away from high temperatures.',
-            zh: '密封袋装，存放于干燥、阴凉通风处。避免阳光直射或高温环境。',
+            vi: 'Để nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp. Đóng kín bao bì sau khi sử dụng.',
+            en: 'Store in a dry, cool, well-ventilated place away from direct sunlight. Close the packaging tightly after use.',
+            zh: '存放于干燥、阴凉通风处，避免阳光直射。使用后请密封包装。',
           },
-          source: `${TCB_02}, Phụ lục 2 – Bảo quản (p.6)`,
+          source: 'docs/products/05.Nam moi den say thang hoa.md',
         },
         {
           text: {
-            vi: 'Không sử dụng khi sản phẩm có mùi lạ, có dấu hiệu hư hỏng hoặc đã hết hạn sử dụng.',
-            en: 'Do not use if the product has an unusual smell, shows signs of spoilage or is past its expiry date.',
-            zh: '产品如有异味、变质迹象或已过保质期，请勿食用。',
+            vi: 'Hạn sử dụng: 1 năm kể từ ngày sản xuất.',
+            en: 'Shelf life: 1 year from the date of manufacture.',
+            zh: '保质期：自生产日期起 1 年。',
           },
-          source: `${TCB_02}, Phụ lục 2 – Khuyến cáo (p.6)`,
+          source: 'docs/products/05.Nam moi den say thang hoa.md',
         },
       ],
     },
@@ -571,13 +837,198 @@ const raw: RawProduct[] = [
       plate: false,
     },
     intro: {
+      paragraphs: [
+        {
+          text: {
+            vi: 'Đông trùng hạ thảo Nương Farm được nuôi trồng theo mô hình hữu cơ tuần hoàn khép kín tại vùng Bảy Núi, An Giang và chế biến bằng công nghệ sấy thăng hoa.',
+            en: 'Nương Farm cordyceps is grown using a closed-loop organic circular farming model in Bảy Núi, An Giang, and processed by freeze-drying.',
+            zh: 'Nương Farm 蛹虫草在安江省七山地区以闭环有机循环农业模式培育，并采用冷冻干燥工艺加工。',
+          },
+          source: 'docs/products/08. Dong trung ha thao say thang hoa.md',
+        },
+        {
+          text: {
+            vi: 'Sản phẩm có đặc tính giòn xốp và mùi thơm nấm tự nhiên, phù hợp để pha trà hoặc kết hợp vào các món ăn hằng ngày.',
+            en: 'With a crisp, porous texture and a natural mushroom aroma, the product can be brewed as tea or added to everyday dishes.',
+            zh: '产品质地酥脆疏松，带有天然菌菇香气，可用于泡茶或搭配日常菜肴。',
+          },
+          source: 'docs/products/08. Dong trung ha thao say thang hoa.md',
+        },
+      ],
       facts: [
         {
-          label: RAW_MATERIAL,
-          value: { vi: 'Đông trùng hạ thảo nuôi cấy tại trang trại', en: 'Cordyceps cultivated on the farm', zh: '农场培育的蛹虫草' },
-          source: `${HOME_INTRO}; ${OWNER_HOME}`,
+          label: {
+            vi: 'Vùng nuôi trồng',
+            en: 'Growing region',
+            zh: '种植地区',
+          },
+          value: {
+            vi: 'Bảy Núi, An Giang',
+            en: 'Bảy Núi, An Giang',
+            zh: '安江省七山',
+          },
+          source: 'docs/products/08. Dong trung ha thao say thang hoa.md',
         },
-        { label: PROCESS, value: FREEZE_DRIED, source: `${OWNER_HOME} (product name and summary)` },
+        {
+          label: {
+            vi: 'Thương hiệu',
+            en: 'Brand',
+            zh: '品牌',
+          },
+          value: {
+            vi: 'Nương Farm',
+            en: 'Nương Farm',
+            zh: 'Nương Farm',
+          },
+          source: 'docs/products/08. Dong trung ha thao say thang hoa.md',
+        },
+        {
+          label: {
+            vi: 'Phương pháp chế biến',
+            en: 'Processing',
+            zh: '加工方式',
+          },
+          value: {
+            vi: 'Sấy thăng hoa',
+            en: 'Freeze-drying',
+            zh: '冷冻干燥',
+          },
+          source: 'docs/products/08. Dong trung ha thao say thang hoa.md',
+        },
+        {
+          label: {
+            vi: 'Xuất xứ',
+            en: 'Country of origin',
+            zh: '原产国',
+          },
+          value: {
+            vi: 'Việt Nam',
+            en: 'Vietnam',
+            zh: '越南',
+          },
+          source: 'docs/products/08. Dong trung ha thao say thang hoa.md',
+        },
+      ],
+    },
+    composition: {
+      ingredients: {
+        text: {
+          vi: '100% đông trùng hạ thảo sấy thăng hoa nguyên chất.',
+          en: '100% pure freeze-dried cordyceps.',
+          zh: '100% 纯冻干蛹虫草。',
+        },
+        source: 'docs/products/08. Dong trung ha thao say thang hoa.md',
+      },
+      facts: [
+        {
+          label: {
+            vi: 'Khối lượng tịnh',
+            en: 'Net weight',
+            zh: '净含量',
+          },
+          value: {
+            vi: '25 g',
+            en: '25 g',
+            zh: '25 克',
+          },
+          source: 'docs/products/08. Dong trung ha thao say thang hoa.md',
+        },
+        {
+          label: {
+            vi: 'Quy cách đóng gói',
+            en: 'Packaging',
+            zh: '包装',
+          },
+          value: {
+            vi: 'Hũ thủy tinh',
+            en: 'Glass jar',
+            zh: '玻璃罐',
+          },
+          source: 'docs/products/08. Dong trung ha thao say thang hoa.md',
+        },
+        {
+          label: {
+            vi: 'Hạn sử dụng',
+            en: 'Shelf life',
+            zh: '保质期',
+          },
+          value: {
+            vi: '1 năm kể từ ngày sản xuất',
+            en: '1 year from the date of manufacture',
+            zh: '自生产日期起 1 年',
+          },
+          source: 'docs/products/08. Dong trung ha thao say thang hoa.md',
+        },
+      ],
+    },
+    usage: {
+      preparation: [
+        {
+          text: {
+            vi: 'Pha trà: Cho 5–10 sợi nấm vào ly, rót nước nóng khoảng 80°C và hãm trong 15–20 phút. Sau khi uống trà, có thể ăn cả sợi nấm.',
+            en: 'Tea: Place 5–10 strands in a cup, add hot water at about 80°C and steep for 15–20 minutes. The strands can be eaten after drinking the tea.',
+            zh: '泡茶：将 5–10 根虫草放入杯中，注入约 80°C 的热水，浸泡 15–20 分钟。饮茶后可食用虫草。',
+          },
+          source: 'docs/products/08. Dong trung ha thao say thang hoa.md',
+        },
+        {
+          text: {
+            vi: 'Món hầm, canh, súp: Kết hợp với thịt gà hoặc sườn heo.',
+            en: 'Stews, soups and broths: Combine with chicken or pork ribs.',
+            zh: '炖菜和汤品：可搭配鸡肉或猪排骨。',
+          },
+          source: 'docs/products/08. Dong trung ha thao say thang hoa.md',
+        },
+        {
+          text: {
+            vi: 'Cháo: Cho vào cháo trắng hoặc cháo thịt bằm.',
+            en: 'Congee: Add to plain rice congee or minced-meat congee.',
+            zh: '粥品：可加入白粥或肉末粥。',
+          },
+          source: 'docs/products/08. Dong trung ha thao say thang hoa.md',
+        },
+        {
+          text: {
+            vi: 'Món chưng: Chưng cùng tổ yến, đường phèn, táo đỏ và kỷ tử.',
+            en: 'Steamed dishes: Steam with edible bird’s nest, rock sugar, red dates and goji berries.',
+            zh: '炖盅：可与燕窝、冰糖、红枣和枸杞一同炖煮。',
+          },
+          source: 'docs/products/08. Dong trung ha thao say thang hoa.md',
+        },
+        {
+          text: {
+            vi: 'Cho sợi nấm vào khi món ăn sắp chín.',
+            en: 'Add the strands when the dish is nearly cooked.',
+            zh: '在菜肴快熟时加入虫草。',
+          },
+          source: 'docs/products/08. Dong trung ha thao say thang hoa.md',
+        },
+      ],
+      storage: [
+        {
+          text: {
+            vi: 'Bảo quản nơi khô thoáng, tránh ẩm ướt.',
+            en: 'Store in a dry, well-ventilated place away from moisture.',
+            zh: '存放于干燥通风处，避免受潮。',
+          },
+          source: 'docs/products/08. Dong trung ha thao say thang hoa.md',
+        },
+        {
+          text: {
+            vi: 'Hạn sử dụng: 1 năm kể từ ngày sản xuất.',
+            en: 'Shelf life: 1 year from the date of manufacture.',
+            zh: '保质期：自生产日期起 1 年。',
+          },
+          source: 'docs/products/08. Dong trung ha thao say thang hoa.md',
+        },
+        {
+          text: {
+            vi: 'Không sử dụng sản phẩm khi có dấu hiệu hư hỏng, nấm mốc.',
+            en: 'Do not use if the product shows signs of spoilage or mould.',
+            zh: '产品如有变质或发霉迹象，请勿食用。',
+          },
+          source: 'docs/products/08. Dong trung ha thao say thang hoa.md',
+        },
       ],
     },
   },
