@@ -244,6 +244,63 @@ const badge = (page, selector, marks, size) => page.evaluate(({ selector, marks,
   }
 }, { selector, marks, size });
 
+
+/* Whole data files (not split by language) ------------------------------- */
+// Each text inside is a { vi, en, zh } group; facts' sources, slugs, links and
+// images stay in the file but out of the admin.
+const DATA_FILES = {
+  'san-pham/showroom': {
+    label: 'Danh sách 12 sản phẩm (trang Sản phẩm)', page: ['/san-pham/', 'main'], items: 'products',
+    hint: 'Mỗi khối là một sản phẩm, theo thứ tự trên trang. Các tab trên web: Giới thiệu, Thành phần, Cách dùng, Hồ sơ, Nhận xét.',
+  },
+};
+const DATA_HIDDEN = ['slug', 'source', 'file', 'alt', 'detail', 'href', 'src', 'width', 'height'];
+const DATA_LABELS = {
+  products: 'Sản phẩm', name: 'Tên sản phẩm', category: 'Loại (chữ nhỏ trên tên)', summary: 'Câu tóm tắt dưới tên',
+  intro: 'Tab Giới thiệu', paragraphs: 'Các đoạn văn', facts: 'Bảng thông tin', label: 'Tên dòng', value: 'Nội dung',
+  composition: 'Tab Thành phần', ingredients: 'Thành phần', usage: 'Tab Cách dùng', preparation: 'Cách chế biến', storage: 'Bảo quản',
+  recipes: 'Món ăn', steps: 'Các bước', time: 'Thời gian', servings: 'Khẩu phần',
+  records: 'Tab Hồ sơ (giấy tờ)', title: 'Tên giấy tờ', kind: 'Loại giấy tờ', issuer: 'Nơi cấp', reference: 'Số hiệu', date: 'Ngày', scope: 'Phạm vi', linkLabel: 'Chữ của đường dẫn',
+  reviews: 'Tab Nhận xét', quote: 'Lời nhận xét', author: 'Người nhận xét', sourceName: 'Nguồn nhận xét',
+};
+const LANG_LABELS = { vi: 'Tiếng Việt', en: 'Tiếng Anh', zh: 'Tiếng Trung' };
+const isText = (v) => v && typeof v === 'object' && !Array.isArray(v) && Object.keys(v).sort().join() === 'en,vi,zh';
+const isSourced = (v) => v && typeof v === 'object' && !Array.isArray(v) && isText(v.text);
+const textGroup = (label, name, samples, required) => ({
+  label, name, widget: 'object', required,
+  fields: ['vi', 'en', 'zh'].map((l) => ({ label: LANG_LABELS[l], name: l, widget: samples.some((s) => isLong(s?.[l] ?? '')) ? 'text' : 'string' })),
+});
+// samples: every value this field takes across the file (to find optional keys and long texts).
+const dataField = (name, samples, required = true) => {
+  if (DATA_HIDDEN.includes(name)) return null;
+  const label = DATA_LABELS[name] ?? name;
+  const present = samples.filter((s) => s !== undefined);
+  const first = present[0];
+  if (isText(first)) return textGroup(label, name, present, required);
+  // { text, source }: show the text under the field's own label.
+  if (isSourced(first)) return { label, name, widget: 'object', required, fields: [textGroup('Nội dung', 'text', present.map((s) => s.text), true)] };
+  if (Array.isArray(first) || present.some(Array.isArray)) {
+    const items = present.flat();
+    const f = { label, name, widget: 'list', required, collapsed: true };
+    if (items.length && isText(items[0])) {
+      f.fields = textGroup('Dòng', 'item', items, true).fields;
+      f.summary = '{{fields.vi}}';
+      return f;
+    }
+    const keys = [...new Set(items.flatMap((x) => Object.keys(x)))];
+    f.fields = keys.map((k) => dataField(k, items.map((x) => x[k]), items.every((x) => x[k] !== undefined))).filter(Boolean);
+    const shown = f.fields[0];
+    f.summary = shown ? `{{fields.${shown.name}${shown.fields?.[0]?.name === 'text' ? '.text' : ''}.vi}}` : undefined;
+    return f;
+  }
+  if (first && typeof first === 'object') {
+    const keys = [...new Set(present.flatMap((x) => Object.keys(x)))];
+    const fields = keys.map((k) => dataField(k, present.map((x) => x[k]), present.every((x) => x[k] !== undefined))).filter(Boolean);
+    return fields.length ? { label, name, widget: 'object', required, collapsed: true, fields } : null;
+  }
+  return { label, name, widget: present.some((s) => isLong(String(s))) ? 'text' : 'string', required };
+};
+
 const browser = await chromium.launch();
 // Whole pages are photographed at half resolution, with larger marks.
 const pages = {
@@ -319,6 +376,26 @@ for (const [name, label, dir] of groups) {
     files.push({ name: n, label: labels._, file: `src/content/${key}.md`, format: 'frontmatter', i18n: true, preview_path: url, fields });
     console.log(key, marks.length, 'marks');
   }
+  for (const [key, spec] of Object.entries(DATA_FILES).filter(([k]) => k.startsWith(dir + '/'))) {
+    const n = key.slice(dir.length + 1);
+    const data = read(`src/content/${key}.md`);
+    const list = dataField(spec.items, [data[spec.items]]);
+    list.hint = spec.hint;
+    // Products have images and links in the file: edit them, don't add or remove.
+    list.min = list.max = data[spec.items].length;
+    const [url, selector] = spec.page;
+    page = pages.section;
+    const found = await shoot(url, selector, data[spec.items].map((item) => [item.name?.vi ?? item.title?.vi ?? '']));
+    const marks = [];
+    found.forEach((boxes, i) => boxes.slice(0, 1).forEach((b) => marks.push({ ...b, text: CIRCLED[i] })));
+    await badge(page, selector, marks, 26);
+    const img = `huong-dan/${dir}-${n}.jpg`;
+    await page.locator(selector).first().screenshot({ path: `public/admin/${img}`, type: 'jpeg', quality: 62 });
+    list.hint += ` Số ①–${CIRCLED[data[spec.items].length - 1]} trên ảnh là thứ tự các sản phẩm.`;
+    guide[n] = { image: img, url, fields: [[list.name, list.label]] };
+    files.push({ name: n, label: spec.label, file: `src/content/${key}.md`, format: 'frontmatter', i18n: false, preview_path: url, fields: [list] });
+    console.log(key, marks.length, 'marks');
+  }
   collections.push({ name, label, i18n: true, files });
 }
 await browser.close();
@@ -341,3 +418,25 @@ if (missing.length) { console.error('MISSING LABELS:\n' + missing.join('\n')); p
 fs.writeFileSync('public/admin/config.yml', '# Generated by scripts/admin-guide.mjs — edit the labels there and rerun.\n' + yaml.dump(config, { lineWidth: -1, noRefs: true }));
 fs.writeFileSync('public/admin/huong-dan/guide.js', '// Generated by scripts/admin-guide.mjs.\nwindow.ADMIN_GUIDE = ' + JSON.stringify(guide, null, 1) + ';\n');
 console.log('done');
+
+// Keep each copy file in the order Sveltia saves it (fields in config order,
+// then the fields it is not shown, sorted by name), so a save in the admin
+// changes only the lines that were edited.
+const sortDeep = (v) => Array.isArray(v) ? v.map(sortDeep) : v && typeof v === 'object' ? Object.fromEntries(Object.keys(v).sort().map((k) => [k, sortDeep(v[k])])) : v;
+const ordered = (data, fields) => {
+  if (!data || typeof data !== 'object' || Array.isArray(data)) return data;
+  const out = {};
+  for (const f of fields) {
+    if (!(f.name in data)) continue;
+    const v = data[f.name];
+    out[f.name] = f.widget === 'object' ? ordered(v, f.fields) : f.widget === 'list' && f.fields ? v.map((x) => ordered(x, f.fields)) : v;
+  }
+  for (const k of Object.keys(data).filter((k) => !(k in out)).sort()) out[k] = sortDeep(data[k]);
+  return out;
+};
+for (const c of config.collections) for (const f of c.files) {
+  const data = read(f.file);
+  const next = f.i18n ? Object.fromEntries(['vi', 'en', 'zh'].map((l) => [l, ordered(data[l], f.fields)])) : ordered(data, f.fields);
+  fs.writeFileSync(f.file, '---\n' + yaml.dump(next, { lineWidth: -1, noRefs: true }) + '---\n');
+}
+console.log('copy files ordered');

@@ -809,6 +809,355 @@ collections:
               label: Đoạn văn
               name: item
               widget: text
+      - name: showroom
+        label: Danh sách 12 sản phẩm (trang Sản phẩm)
+        file: src/content/san-pham/showroom.md
+        format: frontmatter
+        i18n: false
+        preview_path: /san-pham/
+        fields:
+          - label: Sản phẩm
+            name: products
+            widget: list
+            required: true
+            collapsed: true
+            fields:
+              - label: Tên sản phẩm
+                name: name
+                widget: object
+                required: true
+                fields:
+                  - label: Tiếng Việt
+                    name: vi
+                    widget: string
+                  - label: Tiếng Anh
+                    name: en
+                    widget: string
+                  - label: Tiếng Trung
+                    name: zh
+                    widget: string
+              - label: Loại (chữ nhỏ trên tên)
+                name: category
+                widget: object
+                required: false
+                fields:
+                  - label: Nội dung
+                    name: text
+                    widget: object
+                    required: true
+                    fields:
+                      - label: Tiếng Việt
+                        name: vi
+                        widget: string
+                      - label: Tiếng Anh
+                        name: en
+                        widget: string
+                      - label: Tiếng Trung
+                        name: zh
+                        widget: string
+              - label: Câu tóm tắt dưới tên
+                name: summary
+                widget: object
+                required: true
+                fields:
+                  - label: Nội dung
+                    name: text
+                    widget: object
+                    required: true
+                    fields:
+                      - label: Tiếng Việt
+                        name: vi
+                        widget: text
+                      - label: Tiếng Anh
+                        name: en
+                        widget: text
+                      - label: Tiếng Trung
+                        name: zh
+                        widget: string
+              - label: Tab Giới thiệu
+                name: intro
+                widget: object
+                required: true
+                collapsed: true
+                fields:
+                  - label: Các đoạn văn
+                    name: paragraphs
+                    widget: list
+                    required: true
+                    collapsed: true
+                    fields:
+                      - label: text
+                        name: text
+                        widget: object
+                        required: true
+                        fields:
+                          - label: Tiếng Việt
+                            name: vi
+                            widget: text
+                          - label: Tiếng Anh
+                            name: en
+                            widget: text
+                          - label: Tiếng Trung
+                            name: zh
+                            widget: string
+                    summary: '{{fields.text.vi}}'
+                  - label: Bảng thông tin
+                    name: facts
+                    widget: list
+                    required: true
+                    collapsed: true
+                    fields:
+                      - label: Tên dòng
+                        name: label
+                        widget: object
+                        required: true
+                        fields:
+                          - label: Tiếng Việt
+                            name: vi
+                            widget: string
+                          - label: Tiếng Anh
+                            name: en
+                            widget: string
+                          - label: Tiếng Trung
+                            name: zh
+                            widget: string
+                      - label: Nội dung
+                        name: value
+                        widget: object
+                        required: true
+                        fields:
+                          - label: Tiếng Việt
+                            name: vi
+                            widget: string
+                          - label: Tiếng Anh
+                            name: en
+                            widget: string
+                          - label: Tiếng Trung
+                            name: zh
+                            widget: string
+                    summary: '{{fields.label.vi}}'
+              - label: Tab Thành phần
+                name: composition
+                widget: object
+                required: true
+                collapsed: true
+                fields:
+                  - label: Thành phần
+                    name: ingredients
+                    widget: object
+                    required: true
+                    fields:
+                      - label: Nội dung
+                        name: text
+                        widget: object
+                        required: true
+                        fields:
+                          - label: Tiếng Việt
+                            name: vi
+                            widget: text
+                          - label: Tiếng Anh
+                            name: en
+                            widget: text
+                          - label: Tiếng Trung
+                            name: zh
+                            widget: string
+                  - label: Bảng thông tin
+                    name: facts
+                    widget: list
+                    required: false
+                    collapsed: true
+                    fields:
+                      - label: Tên dòng
+                        name: label
+                        widget: object
+                        required: true
+                        fields:
+                          - label: Tiếng Việt
+                            name: vi
+                            widget: string
+                          - label: Tiếng Anh
+                            name: en
+                            widget: string
+                          - label: Tiếng Trung
+                            name: zh
+                            widget: string
+                      - label: Nội dung
+                        name: value
+                        widget: object
+                        required: true
+                        fields:
+                          - label: Tiếng Việt
+                            name: vi
+                            widget: string
+                          - label: Tiếng Anh
+                            name: en
+                            widget: string
+                          - label: Tiếng Trung
+                            name: zh
+                            widget: string
+                    summary: '{{fields.label.vi}}'
+              - label: Tab Cách dùng
+                name: usage
+                widget: object
+                required: true
+                collapsed: true
+                fields:
+                  - label: Cách chế biến
+                    name: preparation
+                    widget: list
+                    required: true
+                    collapsed: true
+                    fields:
+                      - label: text
+                        name: text
+                        widget: object
+                        required: true
+                        fields:
+                          - label: Tiếng Việt
+                            name: vi
+                            widget: text
+                          - label: Tiếng Anh
+                            name: en
+                            widget: text
+                          - label: Tiếng Trung
+                            name: zh
+                            widget: string
+                    summary: '{{fields.text.vi}}'
+                  - label: Bảo quản
+                    name: storage
+                    widget: list
+                    required: true
+                    collapsed: true
+                    fields:
+                      - label: text
+                        name: text
+                        widget: object
+                        required: true
+                        fields:
+                          - label: Tiếng Việt
+                            name: vi
+                            widget: text
+                          - label: Tiếng Anh
+                            name: en
+                            widget: text
+                          - label: Tiếng Trung
+                            name: zh
+                            widget: string
+                    summary: '{{fields.text.vi}}'
+              - label: Tab Hồ sơ (giấy tờ)
+                name: records
+                widget: list
+                required: false
+                collapsed: true
+                fields:
+                  - label: Tên giấy tờ
+                    name: title
+                    widget: object
+                    required: true
+                    fields:
+                      - label: Tiếng Việt
+                        name: vi
+                        widget: string
+                      - label: Tiếng Anh
+                        name: en
+                        widget: text
+                      - label: Tiếng Trung
+                        name: zh
+                        widget: string
+                  - label: Loại giấy tờ
+                    name: kind
+                    widget: object
+                    required: true
+                    fields:
+                      - label: Tiếng Việt
+                        name: vi
+                        widget: string
+                      - label: Tiếng Anh
+                        name: en
+                        widget: string
+                      - label: Tiếng Trung
+                        name: zh
+                        widget: string
+                  - label: Nơi cấp
+                    name: issuer
+                    widget: object
+                    required: true
+                    fields:
+                      - label: Tiếng Việt
+                        name: vi
+                        widget: string
+                      - label: Tiếng Anh
+                        name: en
+                        widget: string
+                      - label: Tiếng Trung
+                        name: zh
+                        widget: string
+                  - label: Số hiệu
+                    name: reference
+                    widget: string
+                    required: true
+                  - label: Ngày
+                    name: date
+                    widget: string
+                    required: true
+                  - label: Phạm vi
+                    name: scope
+                    widget: object
+                    required: true
+                    fields:
+                      - label: Tiếng Việt
+                        name: vi
+                        widget: text
+                      - label: Tiếng Anh
+                        name: en
+                        widget: text
+                      - label: Tiếng Trung
+                        name: zh
+                        widget: string
+                  - label: Chữ của đường dẫn
+                    name: linkLabel
+                    widget: object
+                    required: false
+                    fields:
+                      - label: Tiếng Việt
+                        name: vi
+                        widget: string
+                      - label: Tiếng Anh
+                        name: en
+                        widget: string
+                      - label: Tiếng Trung
+                        name: zh
+                        widget: string
+                summary: '{{fields.title.vi}}'
+              - label: Tab Nhận xét
+                name: reviews
+                widget: list
+                required: false
+                collapsed: true
+                fields:
+                  - label: Lời nhận xét
+                    name: quote
+                    widget: object
+                    required: true
+                    fields:
+                      - label: Tiếng Việt
+                        name: vi
+                        widget: text
+                      - label: Tiếng Anh
+                        name: en
+                        widget: text
+                      - label: Tiếng Trung
+                        name: zh
+                        widget: text
+                  - label: Người nhận xét
+                    name: author
+                    widget: string
+                    required: true
+                summary: '{{fields.quote.vi}}'
+            summary: '{{fields.name.vi}}'
+            hint: 'Mỗi khối là một sản phẩm, theo thứ tự trên trang. Các tab trên web: Giới thiệu, Thành phần, Cách dùng, Hồ sơ, Nhận xét. Số ①–⑫ trên ảnh là thứ tự các sản phẩm.'
+            max: 12
+            min: 12
   - name: tuan_hoan
     label: Nông nghiệp tuần hoàn
     i18n: true

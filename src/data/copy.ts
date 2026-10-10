@@ -11,7 +11,7 @@
 
 import { locales, type Locale } from '../i18n';
 
-const files = import.meta.glob<Record<string, unknown>>('../content/{trang-chu,chung,san-pham,ve-chung-toi,tuan-hoan}/*.md', {
+const files = import.meta.glob<Record<string, unknown>>('../content/**/*.md', {
   import: 'frontmatter',
   eager: true,
 });
@@ -48,3 +48,10 @@ export function copy<T = any>(name: string, lang: Locale): T {
 /** Fills {placeholders} in a copy string: fill('Chi tiết {name}', { name }). */
 export const fill = (text: string, values: Record<string, string>) =>
   text.replace(/\{(\w+)\}/g, (m, k: string) => values[k] ?? m);
+
+/** A content file kept whole (not split by language), e.g. the showroom products. */
+export function dataFile<T = any>(name: string): T {
+  const data = files[`../content/${name}.md`];
+  if (!data) throw new Error(`src/content/${name}.md: không tìm thấy file`);
+  return data as T;
+}

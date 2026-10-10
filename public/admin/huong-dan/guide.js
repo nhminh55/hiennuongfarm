@@ -476,6 +476,16 @@ window.ADMIN_GUIDE = {
    ]
   ]
  },
+ "showroom": {
+  "image": "huong-dan/san-pham-showroom.jpg",
+  "url": "/san-pham/",
+  "fields": [
+   [
+    "products",
+    "Sản phẩm"
+   ]
+  ]
+ },
  "nong-nghiep-tuan-hoan": {
   "image": "huong-dan/tuan-hoan-nong-nghiep-tuan-hoan.jpg",
   "url": "/nong-nghiep-tuan-hoan/",
