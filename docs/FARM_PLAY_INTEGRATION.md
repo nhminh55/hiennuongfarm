@@ -12,7 +12,8 @@ Worktree: E:/code/hiennuongfarm/.worktrees/farm-play.
 
 This branch owns only src/pages/choi-cung-nong-trai/, src/components/farm-play/,
 src/data/farm-play/, src/scripts/farm-play/, src/styles/farm-play.css,
-public/images/farm-play/, tests/farm-play/, and this document.
+public/images/farm-play/, and this document. The games' text lives in
+src/content/choi-cung-nong-trai/ and is edited in the admin (/admin).
 BaseLayout, shared header/footer, global styles, dependencies and other pages are reused without edits.
 
 ## Preview and checks
@@ -23,12 +24,8 @@ Port 4330 was already occupied; Astro selected 4331. Port 4321 was never managed
 From this worktree, with repository dependencies available:
 
     npm run dev -- --host 127.0.0.1 --port 4331
-    node --test tests/farm-play/logic.test.mjs
-    node tests/farm-play/browser.mjs
-    node tests/farm-play/responsive.mjs
     npm run build
 
-Set FARM_PLAY_URL for another preview port. The browser script uses existing Playwright and Chromium.
 Review captures are saved, uncommitted, under design-reference/screenshots/farm-play/.
 The nested worktree is excluded locally through .git/info/exclude; the tracked .gitignore is unchanged.
 The local node_modules junction reuses the main checkout's dependencies; it is not a merge requirement.
