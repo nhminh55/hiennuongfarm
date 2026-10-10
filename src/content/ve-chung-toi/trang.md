@@ -11,7 +11,6 @@ vi:
     - Năng lượng
     - Tuần hoàn
     - Con người
-  circularLink: Khám phá vòng tuần hoàn
   media:
     founders:
       alt: Chị Châu Thị Nương và anh Trần Phương Hiền vẫy tay bên tảng đá khắc tên Trang trại Nông nghiệp Hiền Nương
@@ -37,6 +36,7 @@ vi:
     harvest:
       alt: Hai người đội nón bê rổ nấm linh chi vừa thu hoạch giữa những hàng phôi trên nền rơm
       caption: Thu hoạch nấm
+  circularLink: Khám phá vòng tuần hoàn
   film:
     eyebrow: Video giới thiệu
     title: Một vòng tuần hoàn, bắt đầu từ Bảy Núi.
@@ -65,7 +65,6 @@ en:
     - Energy
     - Circularity
     - People
-  circularLink: Explore the cycle
   media:
     founders:
       alt: Ms. Châu Thị Nương and Mr. Trần Phương Hiền waving beside the stone engraved with the farm’s name, Trang trại Nông nghiệp Hiền Nương
@@ -91,6 +90,7 @@ en:
     harvest:
       alt: Two people in hats carrying baskets of freshly harvested lingzhi between rows of substrate on straw
       caption: Harvesting mushrooms
+  circularLink: Explore the cycle
   film:
     eyebrow: Introduction video
     title: A cycle that begins in Bảy Núi.
@@ -119,7 +119,6 @@ zh:
     - 能源
     - 循环
     - 人们
-  circularLink: 探索循环
   media:
     founders:
       alt: Châu Thị Nương 女士和 Trần Phương Hiền 先生在刻有农场名称“Trang trại Nông nghiệp Hiền Nương”的石碑旁挥手
@@ -145,6 +144,7 @@ zh:
     harvest:
       alt: 两位戴帽子的人在铺着稻草的菌包行间端着刚采收的灵芝
       caption: 采收菌菇
+  circularLink: 探索循环
   film:
     eyebrow: 介绍视频
     title: 一个循环，从七山开始。

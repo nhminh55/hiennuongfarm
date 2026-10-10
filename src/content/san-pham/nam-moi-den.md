@@ -1,19 +1,7 @@
 ---
 vi:
-  steps:
-    - title: Chuẩn bị giá thể
-      text: Rơm và các phụ phẩm nông nghiệp tại địa phương được tận dụng để tạo giá thể trồng nấm.
-    - title: Đóng bịch
-      text: Giá thể được đóng vào bịch, đậy nắp và xếp vào khay sắt.
-    - title: Nuôi trồng trên kệ
-      text: Các bịch được xếp thành từng dãy trên kệ trong nhà trồng.
-    - title: Chăm sóc và thu hái
-      text: Người làm nấm theo dõi các bịch trên kệ cho đến khi nấm được thu hái.
-    - title: Tái sử dụng giá thể
-      text: Sau mỗi vòng trồng nấm, giá thể tiếp tục được tận dụng trong các công đoạn nông nghiệp khác, như nuôi trùn quế và tạo phân hữu cơ.
   origin: Nuôi trồng tại trang trại Hiền Nương, vùng Bảy Núi – An Giang.
   heroBody: Một trong bốn dòng nấm chính của Hiền Nương, nấm mối đen được nuôi trồng từ bịch giá thể tại trang trại, trong mô hình nông nghiệp gắn với nguồn nguyên liệu của địa phương.
-  introCaption: Kiểm tra bịch nấm trong nhà trồng của trang trại.
   introEyebrow: Giới thiệu
   introTitle: Một trong bốn dòng nấm chính của trang trại.
   introBody:
@@ -28,15 +16,27 @@ vi:
       value: Nông nghiệp tuần hoàn
     - label: Kiểm nghiệm mẫu
       value: VietLabs, 2023
+  introCaption: Kiểm tra bịch nấm trong nhà trồng của trang trại.
   processEyebrow: Quy trình tại trang trại
   processTitle: Từ phụ phẩm nông nghiệp đến những bịch nấm trên kệ.
+  steps:
+    - title: Chuẩn bị giá thể
+      text: Rơm và các phụ phẩm nông nghiệp tại địa phương được tận dụng để tạo giá thể trồng nấm.
+    - title: Đóng bịch
+      text: Giá thể được đóng vào bịch, đậy nắp và xếp vào khay sắt.
+    - title: Nuôi trồng trên kệ
+      text: Các bịch được xếp thành từng dãy trên kệ trong nhà trồng.
+    - title: Chăm sóc và thu hái
+      text: Người làm nấm theo dõi các bịch trên kệ cho đến khi nấm được thu hái.
+    - title: Tái sử dụng giá thể
+      text: Sau mỗi vòng trồng nấm, giá thể tiếp tục được tận dụng trong các công đoạn nông nghiệp khác, như nuôi trùn quế và tạo phân hữu cơ.
   processNote: Hình ảnh trích từ video giới thiệu của Hiền Nương Farm, ghi lại quy trình chung tại trang trại.
   peopleEyebrow: Con người
   peopleTitle: Qua bàn tay của những người làm nấm.
   peopleBody: Từ đóng bịch đến chăm sóc trên kệ, mỗi công đoạn tại trang trại đều qua bàn tay của người làm nấm.
   labNote: Tên mẫu ghi trên báo cáo là “Nấm mối”.
-  ctaTitle: Trao đổi về nấm mối đen và hợp tác.
   ctaBody: Liên hệ với Hiền Nương để trao đổi về sản phẩm, phân phối và các hình thức hợp tác từ những dòng nấm của trang trại.
+  ctaTitle: Trao đổi về nấm mối đen và hợp tác.
   nang_cao:
     stepAlts:
       - Những người làm nấm ngồi quanh một đống giá thể màu nâu trong xưởng, bên cạnh các bịch giá thể đang được đóng
@@ -48,20 +48,8 @@ vi:
       - Những người làm nấm mặc áo lao động xanh đậm, đeo găng tay hồng, ngồi trên nền xưởng đóng giá thể vào bịch
       - Một người phụ nữ mặc áo hồng, quàng khăn rằn, đeo găng tay đặt tay lên các bịch nấm trên kệ trong nhà trồng
 en:
-  steps:
-    - title: Preparing the substrate
-      text: Rice straw and other local agricultural by-products are used to make the substrate for growing mushrooms.
-    - title: Bagging
-      text: The substrate is packed into bags, capped and set in steel trays.
-    - title: Growing on shelves
-      text: The bags are lined up in rows on shelves in the grow house.
-    - title: Tending and harvesting
-      text: The growers watch over the bags on the shelves until the mushrooms are harvested.
-    - title: Reusing the substrate
-      text: After each growing cycle, the substrate goes on to be used in other farm work, such as raising earthworms and making organic fertiliser.
   origin: Grown at the Hiền Nương farm, in the Bảy Núi region of An Giang.
   heroBody: One of Hiền Nương’s four main mushroom lines, black termite mushroom is grown from substrate bags on the farm, in a farming model tied to local materials.
-  introCaption: Checking mushroom bags in the farm’s grow house.
   introEyebrow: Introduction
   introTitle: One of the farm’s four main mushroom lines.
   introBody:
@@ -76,15 +64,27 @@ en:
       value: Circular agriculture
     - label: Sample testing
       value: VietLabs, 2023
+  introCaption: Checking mushroom bags in the farm’s grow house.
   processEyebrow: Process at the farm
   processTitle: From agricultural by-products to mushroom bags on the shelf.
+  steps:
+    - title: Preparing the substrate
+      text: Rice straw and other local agricultural by-products are used to make the substrate for growing mushrooms.
+    - title: Bagging
+      text: The substrate is packed into bags, capped and set in steel trays.
+    - title: Growing on shelves
+      text: The bags are lined up in rows on shelves in the grow house.
+    - title: Tending and harvesting
+      text: The growers watch over the bags on the shelves until the mushrooms are harvested.
+    - title: Reusing the substrate
+      text: After each growing cycle, the substrate goes on to be used in other farm work, such as raising earthworms and making organic fertiliser.
   processNote: Images are taken from Hiền Nương Farm’s introductory video and show the farm’s general process.
   peopleEyebrow: People
   peopleTitle: Through the hands of the mushroom growers.
   peopleBody: From bagging to tending the shelves, every stage at the farm passes through the hands of the people who grow the mushrooms.
   labNote: The sample name on the report is “Nấm mối” (termite mushroom).
-  ctaTitle: Talk with us about black termite mushroom and partnership.
   ctaBody: Contact Hiền Nương to discuss products, distribution and ways of partnering around the farm’s mushroom lines.
+  ctaTitle: Talk with us about black termite mushroom and partnership.
   nang_cao:
     stepAlts:
       - Mushroom growers sitting around a pile of brown substrate in a workshop, beside substrate bags being filled
@@ -96,20 +96,8 @@ en:
       - Mushroom growers in dark green work clothes and pink gloves, sitting on the workshop floor packing substrate into bags
       - A woman in a pink shirt and a checked khăn rằn scarf, wearing gloves, resting her hands on mushroom bags on a shelf in a grow house
 zh:
-  steps:
-    - title: 制备基质
-      text: 利用当地的稻草和其他农业副产品制作种菇基质。
-    - title: 装袋
-      text: 将基质装入菌袋，盖好盖子，放进铁托盘。
-    - title: 上架培育
-      text: 菌袋在种植棚内的架子上排成一列列。
-    - title: 照料与采收
-      text: 种菇人照看架上的菌袋，直到菌菇采收。
-    - title: 基质再利用
-      text: 每一季种菇结束后，基质继续用于其他农业环节，如养殖蚯蚓和制作有机肥。
   origin: 种植于安江省七山地区的 Hiền Nương 农场。
   heroBody: 黑皮鸡枞菌是 Hiền Nương 四类主要菌菇之一，在农场以基质袋种植，所采用的农业模式与当地原料紧密相连。
-  introCaption: 在农场种植棚内检查菌袋。
   introEyebrow: 简介
   introTitle: 农场四类主要菌菇之一。
   introBody:
@@ -124,15 +112,27 @@ zh:
       value: 循环农业
     - label: 样品检测
       value: VietLabs，2023
+  introCaption: 在农场种植棚内检查菌袋。
   processEyebrow: 农场流程
   processTitle: 从农业副产品到架上的菌袋。
+  steps:
+    - title: 制备基质
+      text: 利用当地的稻草和其他农业副产品制作种菇基质。
+    - title: 装袋
+      text: 将基质装入菌袋，盖好盖子，放进铁托盘。
+    - title: 上架培育
+      text: 菌袋在种植棚内的架子上排成一列列。
+    - title: 照料与采收
+      text: 种菇人照看架上的菌袋，直到菌菇采收。
+    - title: 基质再利用
+      text: 每一季种菇结束后，基质继续用于其他农业环节，如养殖蚯蚓和制作有机肥。
   processNote: 图片截取自 Hiền Nương Farm 的介绍影片，记录的是农场的一般流程。
   peopleEyebrow: 人物
   peopleTitle: 经由种菇人之手。
   peopleBody: 从装袋到架上照料，农场的每一道工序都经由种菇人亲手完成。
   labNote: 报告上的样品名称为“Nấm mối”。
-  ctaTitle: 洽谈黑皮鸡枞菌与合作事宜。
   ctaBody: 欢迎联系 Hiền Nương，洽谈产品、分销以及围绕农场菌菇的各种合作方式。
+  ctaTitle: 洽谈黑皮鸡枞菌与合作事宜。
   nang_cao:
     stepAlts:
       - 种菇人围坐在车间里一堆褐色基质旁，旁边是正在装填的基质袋

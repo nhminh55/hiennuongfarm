@@ -1,5 +1,8 @@
 ---
 vi:
+  eyebrow: Sản vật từ trang trại
+  title: Tinh hoa từ những loại nấm quý
+  intro: 'Bốn dòng nấm chính được nuôi trồng tại trang trại — nấm mối đen, nấm linh chi, đông trùng hạ thảo và nấm bào ngư — cùng tám sản phẩm chế biến từ chúng: nấm sấy thăng hoa, snack nấm, trà hòa tan, bào tử linh chi và đông trùng hạ thảo ngâm mật ong.'
   linhChi: Nấm Linh Chi Tai To
   additional:
     - Nấm Mối Đen Sấy Thăng Hoa
@@ -23,9 +26,6 @@ vi:
     - Trà hòa tan kết hợp linh chi và đông trùng hạ thảo.
     - Sản phẩm từ bào tử của nấm linh chi tại Hiền Nương.
     - Sự kết hợp giữa đông trùng hạ thảo và mật ong.
-  eyebrow: Sản vật từ trang trại
-  title: Tinh hoa từ những loại nấm quý
-  intro: 'Bốn dòng nấm chính được nuôi trồng tại trang trại — nấm mối đen, nấm linh chi, đông trùng hạ thảo và nấm bào ngư — cùng tám sản phẩm chế biến từ chúng: nấm sấy thăng hoa, snack nấm, trà hòa tan, bào tử linh chi và đông trùng hạ thảo ngâm mật ong.'
   all: Xem tất cả sản phẩm
   details: Chi tiết
   nang_cao:
@@ -35,6 +35,9 @@ vi:
     prev: Sản phẩm trước
     next: Sản phẩm tiếp theo
 en:
+  eyebrow: Produce from the Farm
+  title: The essence of prized mushrooms
+  intro: 'Four main mushroom lines are grown on the farm — black termite mushroom, lingzhi, cordyceps and oyster mushroom — alongside eight products made from them: freeze-dried mushrooms, mushroom snacks, instant teas, lingzhi spores and cordyceps in honey.'
   linhChi: Large-Cap Lingzhi Mushroom
   additional:
     - Freeze-Dried Black Termite Mushroom
@@ -58,9 +61,6 @@ en:
     - An instant tea combining lingzhi and cordyceps.
     - Made from the spores of Hiền Nương’s lingzhi.
     - Cordyceps paired with honey.
-  eyebrow: Produce from the Farm
-  title: The essence of prized mushrooms
-  intro: 'Four main mushroom lines are grown on the farm — black termite mushroom, lingzhi, cordyceps and oyster mushroom — alongside eight products made from them: freeze-dried mushrooms, mushroom snacks, instant teas, lingzhi spores and cordyceps in honey.'
   all: View all products
   details: Details
   nang_cao:
@@ -70,6 +70,9 @@ en:
     prev: Previous product
     next: Next product
 zh:
+  eyebrow: 农场物产
+  title: 珍贵菌菇的精华
+  intro: 农场主要种植四类菌菇——黑皮鸡枞菌、灵芝、蛹虫草和平菇，并以此制成八款产品：冻干菌菇、菌菇零食、速溶茶、灵芝孢子和蜂蜜浸蛹虫草。
   linhChi: 大朵灵芝
   additional:
     - 冻干黑皮鸡枞菌
@@ -93,9 +96,6 @@ zh:
     - 灵芝与蛹虫草搭配的速溶茶。
     - 取自 Hiền Nương 灵芝孢子的产品。
     - 蛹虫草与蜂蜜的结合。
-  eyebrow: 农场物产
-  title: 珍贵菌菇的精华
-  intro: 农场主要种植四类菌菇——黑皮鸡枞菌、灵芝、蛹虫草和平菇，并以此制成八款产品：冻干菌菇、菌菇零食、速溶茶、灵芝孢子和蜂蜜浸蛹虫草。
   all: 查看全部产品
   details: 详情
   nang_cao:

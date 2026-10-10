@@ -51,4 +51,6 @@ Nút **Đăng nhập bằng GitHub** cần một GitHub OAuth App:
 
 Ai có quyền ghi vào repository `nhminh55/hiennuongfarm` thì đăng nhập và sửa được.
 
-Về kỹ thuật: trang quản trị là Sveltia CMS (`public/admin/`, cấu hình ở `public/admin/config.yml`). Đăng nhập dùng `functions/api/auth/`. Nội dung nằm ở `src/content/` và được đọc bởi `src/data/copy.ts`. Thêm một ô mới thì phải khai báo ở cả file nội dung lẫn `config.yml`.
+Về kỹ thuật: trang quản trị là Sveltia CMS (`public/admin/`). Đăng nhập dùng `functions/api/auth/`. Nội dung nằm ở `src/content/` và được đọc bởi `src/data/copy.ts`. `public/admin/config.yml` (nhãn, thứ tự ô) và ảnh chú thích trong `public/admin/huong-dan/` được sinh bởi `scripts/admin-guide.mjs`. Thêm ô mới hoặc đổi giao diện thì sửa nhãn trong script đó, build, mở `npx astro preview --port 4330`, rồi chạy `node scripts/admin-guide.mjs http://127.0.0.1:4330`.
+
+Trên máy (localhost): mở `/admin`, bấm **Làm việc với kho mã nguồn cục bộ** và chọn thư mục dự án (Chrome hoặc Edge). Cách này sửa thẳng file trên máy, không commit gì.
