@@ -34,7 +34,9 @@ interface Step {
   title: string;
   /** Wheel label, with its line break. */
   name: string;
-  text: string;
+  /** One-line summary under the title. */
+  lead: string;
+  text: string[];
 }
 
 // Facts: OWNER-VERIFIED. Keep the 100% to the electricity used for growing
@@ -47,15 +49,15 @@ const t = {
     title: 'Tiếp nối giá trị từ phụ phẩm.',
     lead: 'Từ phụ phẩm nông nghiệp đến nấm, trùn quế và nguồn dinh dưỡng cho cây trồng.',
     cycleTitle: 'Vòng tuần hoàn tại trang trại',
-    hint: 'Chọn một bước để khám phá',
-    stepsLabel: 'Năm bước của vòng tuần hoàn',
+    stepsLabel: 'Sáu bước của vòng tuần hoàn',
     motto: ['Từ đất,', 'trở về đất.'],
     steps: [
-      { title: 'Phụ phẩm nông nghiệp', name: 'Phụ phẩm\nnông nghiệp', text: 'Phụ phẩm nông nghiệp được tận dụng làm nguyên liệu chuẩn bị giá thể trồng nấm, tiếp nối giá trị từ những nguồn vật liệu sẵn có.' },
-      { title: 'Chuẩn bị giá thể', name: 'Chuẩn bị\ngiá thể', text: 'Nguyên liệu được xử lý, phối trộn và đóng bịch thành giá thể phù hợp cho quá trình nuôi trồng nấm.' },
-      { title: 'Nuôi trồng & thu hoạch', name: 'Nuôi trồng\n& thu hoạch', text: 'Nấm được chăm sóc và thu hoạch tại trang trại, phục vụ nhu cầu sử dụng nấm tươi và chế biến thành các sản phẩm khác.' },
-      { title: 'Giá thể nuôi trùn quế', name: 'Giá thể nuôi\ntrùn quế', text: 'Sau thu hoạch, giá thể được tận dụng thay vì bỏ đi: giá thể nấm mối đen được phối trộn thêm nguyên liệu mới để trồng nấm rơm, hết vụ mới dùng làm thức ăn cho trùn quế.' },
-      { title: 'Phân trùn bón cây', name: 'Phân trùn\nbón cây', text: 'Phân trùn được sử dụng để bón cây, bổ sung nguồn dinh dưỡng hữu cơ cho đất và tiếp nối vòng tuần hoàn.' },
+      { title: 'Phụ phẩm nông nghiệp', name: 'Phụ phẩm\nnông nghiệp', lead: 'Tiếp nối giá trị từ rơm rạ.', text: ['Sau mỗi vụ lúa, nguồn rơm rạ tại địa phương được tận dụng làm nguyên liệu trồng nấm mối đen. Thay vì bỏ đi, phụ phẩm nông nghiệp trở thành đầu vào cho một chu kỳ sản xuất mới tại Hiền Nương.', 'Nguồn nguyên liệu được kiểm tra trước khi sử dụng, chuẩn bị cho công đoạn xử lý và phối trộn giá thể. Từ những vật liệu quen thuộc của đồng ruộng, trang trại tạo thêm giá trị qua mô hình nuôi trồng nấm.'] },
+      { title: 'Chuẩn bị giá thể', name: 'Chuẩn bị\ngiá thể', lead: 'Tạo nền dinh dưỡng cho nấm phát triển.', text: ['Rơm được băm nhuyễn, phối trộn cùng cám gạo, cám bắp để tạo thành giá thể trồng nấm. Hỗn hợp được đóng vào từng bịch và hấp xử lý trước khi cấy meo.', 'Độ mịn, độ ẩm và chất lượng nguyên liệu được kiểm soát trong quá trình chuẩn bị. Giá thể sau xử lý là môi trường cung cấp dinh dưỡng để tơ nấm phát triển ở bước tiếp theo.'] },
+      { title: 'Cấy meo & ủ phôi', name: 'Cấy meo\n& ủ phôi', lead: 'Nuôi dưỡng tơ nấm từ bên trong.', text: ['Meo nấm được cấy vào giá thể đã xử lý, sau đó các bịch được đưa vào giai đoạn ủ để tơ nấm phát triển. Khi tơ lan dần trong giá thể, bịch chuyển thành phôi nấm để phục vụ nuôi trồng.', 'Hiền Nương chủ động sản xuất meo giống và phôi tại cơ sở, theo dõi quá trình phát triển và kiểm tra chất lượng trước khi đưa phôi vào nhà trồng hoặc cung ứng cho người có nhu cầu. Việc chủ động từ khâu giống giúp trang trại kiểm soát đầu vào và đồng hành cùng người trồng bằng hướng dẫn kỹ thuật.'] },
+      { title: 'Nuôi trồng & thu hoạch', name: 'Nuôi trồng\n& thu hoạch', lead: 'Chăm sóc phôi, đón từng đợt nấm.', text: ['Sau giai đoạn phát triển tơ, phôi nấm mối đen được mở nắp và phủ lớp cát đã làm sạch, khử trùng. Nhà trồng được duy trì độ ẩm và nhiệt độ phù hợp, kết hợp phun sương bằng nước sạch để hỗ trợ nấm phát triển.', 'Nấm được theo dõi và thu hoạch qua nhiều đợt trong một chu kỳ nuôi trồng. Khi chu kỳ kết thúc, phần giá thể còn lại được chuyển sang công đoạn tận dụng tiếp theo.'] },
+      { title: 'Giá thể nuôi trùn quế', name: 'Giá thể nuôi\ntrùn quế', lead: 'Sau mùa nấm, giá thể tiếp tục có ích.', text: ['Giá thể sau chu kỳ trồng nấm được thu gom, tháo bỏ bao nhựa và tận dụng làm nguồn thức ăn cho trùn quế. Phần vật liệu từng nuôi dưỡng nấm tiếp tục trở thành đầu vào cho hoạt động nuôi trùn.', 'Qua quá trình trùn tiêu hóa nguồn vật liệu hữu cơ, trang trại thu được phân trùn để phục vụ cây trồng. Công đoạn này giúp tận dụng thêm giá trị của giá thể sau thu hoạch và giảm lượng vật liệu phải thải bỏ.'] },
+      { title: 'Phân trùn bón cây', name: 'Phân trùn\nbón cây', lead: 'Đưa nguồn dinh dưỡng hữu cơ trở lại đất.', text: ['Phân trùn quế được sử dụng làm nguồn dinh dưỡng hữu cơ cho cây trồng; tại Hiền Nương, phân trùn còn được phối trộn thêm phân bò để phục vụ việc bón cây. Thành phẩm ở bước này là phân hữu cơ, được tách khỏi công đoạn nuôi trùn.', 'Nguồn dinh dưỡng tiếp tục nuôi dưỡng đất và cây trồng. Khi cây tạo ra phụ phẩm phù hợp, nguồn vật liệu ấy có thể được tận dụng cho những chu kỳ sản xuất tiếp theo — nối tiếp hành trình từ phụ phẩm đến nấm, từ giá thể đến phân bón, rồi trở về đất.'] },
     ] as Step[],
     products: 'Xem sản phẩm',
     prev: 'Bước trước',
@@ -90,15 +92,15 @@ const t = {
     title: 'Carrying on the value of by-products.',
     lead: 'From agricultural by-products to mushrooms, red worms and nourishment for crops.',
     cycleTitle: 'The cycle on the farm',
-    hint: 'Choose a step to explore',
-    stepsLabel: 'The five steps of the cycle',
+    stepsLabel: 'The six steps of the cycle',
     motto: ['From the soil,', 'back to the soil.'],
     steps: [
-      { title: 'Agricultural by-products', name: 'Agricultural\nby-products', text: 'Agricultural by-products are put to use as material for preparing the mushroom-growing substrate, carrying on the value of materials already at hand.' },
-      { title: 'Preparing the substrate', name: 'Preparing\nthe substrate', text: 'The materials are treated, mixed and bagged into a substrate suited to growing mushrooms.' },
-      { title: 'Growing & harvesting', name: 'Growing\n& harvesting', text: 'The mushrooms are tended and harvested on the farm, to be enjoyed fresh and processed into other products.' },
-      { title: 'Substrate for red worms', name: 'Substrate for\nred worms', text: 'After the harvest, the substrate is put to use instead of being thrown away: black termite mushroom substrate is mixed with fresh material to grow straw mushrooms, then becomes feed for red worms.' },
-      { title: 'Worm castings for crops', name: 'Worm castings\nfor crops', text: 'The worm castings are used to fertilise crops, adding organic nourishment to the soil and carrying the cycle on.' },
+      { title: 'Agricultural by-products', name: 'Agricultural\nby-products', lead: 'Carrying on the value of rice straw.', text: ['After each rice harvest, local rice straw is put to use as material for growing black termite mushrooms. Instead of being thrown away, the by-products become the input for a new production cycle at Hiền Nương.', 'The materials are checked before use, ready for treating and mixing into the substrate. From materials familiar to every rice field, the farm adds value through growing mushrooms.'] },
+      { title: 'Preparing the substrate', name: 'Preparing\nthe substrate', lead: 'A nourishing base for the mushrooms to grow.', text: ['The straw is finely chopped and mixed with rice bran and corn bran to make the mushroom-growing substrate. The mix is packed into bags and steamed before the spawn is added.', 'Fineness, moisture and the quality of the materials are kept in check during preparation. The treated substrate is what feeds the mycelium in the next step.'] },
+      { title: 'Spawning & incubation', name: 'Spawning\n& incubation', lead: 'Nurturing the mycelium from within.', text: ['Mushroom spawn is added to the treated substrate, and the bags are set aside to incubate while the mycelium grows. As it spreads through the substrate, each bag becomes a spawn bag ready for growing.', 'Hiền Nương produces its own spawn and spawn bags on site, following their growth and checking their quality before they go into the grow houses or to growers who need them. Producing its own spawn lets the farm control what goes in and support growers with technical guidance.'] },
+      { title: 'Growing & harvesting', name: 'Growing\n& harvesting', lead: 'Tending the bags, welcoming each flush.', text: ['Once the mycelium has grown, the black termite mushroom bags are opened and covered with a layer of cleaned, sterilised sand. The grow houses are kept at suitable humidity and temperature, with a mist of clean water to help the mushrooms grow.', 'The mushrooms are watched and harvested over several flushes in each growing cycle. When the cycle ends, the remaining substrate moves on to the next use.'] },
+      { title: 'Substrate for red worms', name: 'Substrate for\nred worms', lead: 'After the mushroom season, the substrate stays useful.', text: ['After a growing cycle, the substrate is gathered, freed of its plastic bags and put to use as feed for red worms. Material that once nourished mushrooms becomes the input for raising worms.', 'As the worms digest the organic material, the farm gains worm castings for its crops. This step draws more value from the spent substrate and reduces what has to be thrown away.'] },
+      { title: 'Worm castings for crops', name: 'Worm castings\nfor crops', lead: 'Returning organic nourishment to the soil.', text: ['Red worm castings are used as organic nourishment for crops; at Hiền Nương they are also mixed with cow manure for fertilising. The product of this step is an organic fertiliser, kept separate from raising the worms.', 'The nourishment goes on to feed the soil and the crops. When the crops leave suitable by-products, those materials can be used in the next production cycles — carrying the journey on from by-products to mushrooms, from substrate to fertiliser, and back to the soil.'] },
     ] as Step[],
     products: 'View products',
     prev: 'Previous step',
@@ -133,15 +135,15 @@ const t = {
     title: '延续副产品的价值。',
     lead: '从农业副产品到菌菇、红蚯蚓，再到作物的养分。',
     cycleTitle: '农场里的循环',
-    hint: '选择一个步骤进行了解',
-    stepsLabel: '循环的五个步骤',
+    stepsLabel: '循环的六个步骤',
     motto: ['源于土地，', '回归土地。'],
     steps: [
-      { title: '农业副产品', name: '农业\n副产品', text: '农业副产品被用作制备种菇基质的原料，让手边现有材料的价值得以延续。' },
-      { title: '制备基质', name: '制备\n基质', text: '原料经过处理、混合并装袋，制成适合种植菌菇的基质。' },
-      { title: '种植与采收', name: '种植\n与采收', text: '菌菇在农场里精心照料和采收，既供应鲜菇，也加工成其他产品。' },
-      { title: '养殖红蚯蚓基质', name: '养殖红蚯蚓\n基质', text: '采收之后，基质继续被利用，而不是被丢弃：黑皮鸡枞菌的基质掺入新原料用来种草菇，草菇季结束后再用作红蚯蚓的饲料。' },
-      { title: '蚯蚓粪施肥', name: '蚯蚓粪\n施肥', text: '蚯蚓粪用于给作物施肥，为土壤补充有机养分，让循环得以延续。' },
+      { title: '农业副产品', name: '农业\n副产品', lead: '延续稻草的价值。', text: ['每季水稻收割之后，当地的稻草被用作种植黑皮鸡枞菌的原料。农业副产品不再被丢弃，而是成为 Hiền Nương 新一轮生产的起点。', '原料在使用前经过检查，为处理和混合基质做好准备。农场用田间熟悉的材料，通过种植菌菇创造更多价值。'] },
+      { title: '制备基质', name: '制备\n基质', lead: '为菌菇生长打好营养基础。', text: ['稻草被切碎，与米糠、玉米糠混合制成种菇基质。混合料装袋后经过蒸煮处理，再进行接种。', '制备过程中控制原料的细度、湿度和质量。处理后的基质为下一步菌丝生长提供养分。'] },
+      { title: '接种与养菌', name: '接种\n与养菌', lead: '从内部培育菌丝。', text: ['菌种接入处理好的基质，菌袋随后进入培养阶段，让菌丝生长。菌丝逐渐长满基质后，菌袋便成为可用于种植的菌包。', 'Hiền Nương 在本场自行生产菌种和菌包，跟踪生长过程并检查质量，再将菌包送入种植棚或供应给有需要的种植户。从菌种开始自主生产，让农场能够把控投入，并以技术指导陪伴种植户。'] },
+      { title: '种植与采收', name: '种植\n与采收', lead: '照料菌包，迎接每一茬菌菇。', text: ['菌丝长成后，黑皮鸡枞菌菌包开口，覆上一层清洗消毒过的沙。种植棚保持适宜的湿度和温度，并用清水喷雾帮助菌菇生长。', '在一个种植周期内，菌菇分多茬观察和采收。周期结束后，剩余的基质进入下一道利用工序。'] },
+      { title: '养殖红蚯蚓基质', name: '养殖红蚯蚓\n基质', lead: '菌菇季之后，基质依然有用。', text: ['种植周期结束后，基质被收集起来，去掉塑料袋，用作红蚯蚓的饲料。曾经滋养菌菇的材料，继续成为养殖蚯蚓的原料。', '蚯蚓消化这些有机材料后，农场获得用于作物的蚯蚓粪。这一步进一步利用采收后的基质，并减少需要丢弃的材料。'] },
+      { title: '蚯蚓粪施肥', name: '蚯蚓粪\n施肥', lead: '让有机养分回到土壤。', text: ['红蚯蚓粪被用作作物的有机养分；在 Hiền Nương，蚯蚓粪还会掺入牛粪用于施肥。这一步的成品是有机肥，与养殖蚯蚓的工序分开。', '养分继续滋养土壤和作物。当作物留下合适的副产品，这些材料又可用于下一轮生产——从副产品到菌菇，从基质到肥料，再回到土地。'] },
     ] as Step[],
     products: '查看产品',
     prev: '上一步',
@@ -171,19 +173,19 @@ const t = {
   },
 }[lang];
 
-// Five steps, in order round the wheel (clockwise). Step 03 links to the
-// products: processing belongs to them, not to the material cycle.
-const icons = ['01-phu-pham', '02.gia-the-trong-nam', '03-thu-hoach-nam', '04-gia-the-nuoi-trun-que', '05-phan-trun-bon-cay'];
+// Six steps, in order round the wheel (clockwise). Each has a round picture
+// for the wheel (-cartoon) and a square one, its paper edge drawn in, for
+// its explanation (-mep-giay).
+const icons = ['01-phu-pham', '02-gia-the', '03-cay-meo-u-phoi', '04-nuoi-trong-thu-hoach', '05-gia-the-nuoi-trun', '06-phan-trun-bon-cay'];
 const steps = t.steps.map((step, i) => ({
   ...step,
   icon: icons[i],
-  link: i === 2 ? { label: t.products, href: productsHref } : undefined,
 }));
 
 // Wheel geometry, shared with the script through CSS (--radius, --anchor):
 // node centres sit on a circle of RADIUS % of the wheel's width, and the
 // chosen step turns to ANCHOR degrees clockwise from 12 o'clock.
-const RADIUS = 34;
+const RADIUS = 37;
 const ANCHOR = 60;
 const at = (i: number) => {
   const a = ((ANCHOR + i * (360 / steps.length)) * Math.PI) / 180;
@@ -218,8 +220,6 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
         </h2>
 
         <div class="cycle__grid">
-          <p class="cycle__hint">{t.hint}</p>
-
           <div class="cycle__wheel" data-reveal style="--reveal-delay: 80ms">
             <div class="wheel" style={`--radius: ${RADIUS}; --anchor: ${ANCHOR}`} data-wheel>
               <svg class="wheel__arrows" viewBox="-500 -500 1000 1000" aria-hidden="true" focusable="false">
@@ -249,7 +249,7 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
                     <span class="wheel__num">{num(i)}</span>
                     <span class="wheel__img">
                       <img
-                        src={`/images/circular/${step.icon}.webp`}
+                        src={`/images/circular/steps/${step.icon}-cartoon.webp`}
                         alt=""
                         width="320"
                         height="320"
@@ -276,16 +276,19 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
                   tabindex="0"
                   data-panel
                 >
-                  <p class="step__kicker" aria-hidden="true">
-                    <span class="step__num">{num(i)}</span>
-                    <span class="step__rule"></span>
-                    <span class="step__of">{num(i)} / {num(steps.length - 1)}</span>
-                  </p>
+                  <p class="step__kicker" aria-hidden="true">{num(i)} / {num(steps.length - 1)}</p>
                   <h3 class="step__title">{step.title}</h3>
-                  <p class="step__text">{step.text}</p>
-                  {step.link && (
-                    <a class="link-arrow step__link" href={step.link.href}>{step.link.label} <Arrow /></a>
-                  )}
+                  <p class="step__lead">{step.lead}</p>
+                  {step.text.map((para) => <p class="step__text">{para}</p>)}
+                  <img
+                    class="step__img"
+                    src={`/images/circular/steps/${step.icon}-mep-giay.webp`}
+                    alt=""
+                    width="640"
+                    height="640"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
               ))}
             </div>
@@ -784,22 +787,20 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
   .cycle__grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "hint" "wheel" "detail";
+    grid-template-areas: "wheel" "detail";
     margin-top: var(--space-l);
   }
 
-  .cycle__hint {
-    grid-area: hint;
-    font-size: var(--type-small);
-    line-height: 1.5;
-    color: var(--color-text-muted);
+  .cycle__wheel { grid-area: wheel; }
+  .cycle__detail {
+    grid-area: detail;
+    margin-top: var(--space-l);
+    padding: clamp(1rem, 2.2vw, 1.75rem);
+    background: var(--color-cream);
+    border: 1px solid var(--color-line);
   }
 
-  .cycle__wheel { grid-area: wheel; margin-top: var(--space-l); }
-  .cycle__detail { grid-area: detail; margin-top: var(--space-l); }
-
   /* Without script every explanation is listed in order. */
-  :global(html:not(.js)) .cycle__hint,
   :global(html:not(.js)) .cycle__controls { display: none; }
 
   /* The wheel ---------------------------------------------------------------
@@ -807,12 +808,12 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
      composition scales as one; text keeps a readable minimum. */
 
   .wheel {
-    --d: 19cqi;
+    --d: 20cqi;
     --wheel-bg: var(--color-paper);
     position: relative;
     container-type: inline-size;
     width: 100%;
-    max-width: 36rem;
+    max-width: 40rem;
     margin-inline: auto;
     aspect-ratio: 1;
   }
@@ -946,6 +947,7 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    position: relative;
   }
 
   :global(html:not(.js)) .step + .step {
@@ -958,60 +960,70 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
     opacity: 0;
   }
 
+  /* The step count sits at the left of the title's line. */
   .step__kicker {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
-    gap: 0.875rem;
-    width: 100%;
-    color: var(--color-earth);
-  }
-
-  .step__num {
-    font-family: var(--font-display);
-    font-size: 1.75rem;
-    line-height: 1;
-    font-variant-numeric: tabular-nums;
-    color: var(--color-earth);
-  }
-
-  .step__rule {
-    width: 2.75rem;
-    height: 1px;
-    background: currentColor;
-    opacity: 0.7;
-  }
-
-  .step__of {
+    height: calc(var(--type-product) * 1.15);
     font-size: var(--type-eyebrow);
     font-weight: 500;
+    line-height: 1;
     letter-spacing: 0.16em;
     font-variant-numeric: tabular-nums;
-    color: var(--color-text-muted);
+    color: var(--color-earth);
   }
 
   .step__title {
-    margin-top: var(--space-m);
+    align-self: center;
+    padding-inline: 4.5rem;
     font-family: var(--font-display);
-    font-weight: 500;
+    font-weight: 700;
     font-size: var(--type-product);
+    text-align: center;
     line-height: 1.15;
     letter-spacing: -0.005em;
     text-wrap: balance;
     color: var(--color-deep-green);
   }
 
+  .step__lead {
+    align-self: center;
+    margin-top: 0.25rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.4;
+    text-align: center;
+    color: var(--color-earth);
+  }
+  /* A short centred rule between the heading and the text. */
+  .step__lead::after {
+    content: "";
+    display: block;
+    width: 2.5rem;
+    height: 1px;
+    margin: 0.625rem auto 0;
+    background: currentColor;
+    opacity: 0.6;
+  }
+
   .step__text {
     margin-top: var(--space-s);
-    max-width: 30rem;
     font-size: var(--type-body);
     line-height: 1.68;
     color: var(--color-text-muted);
     text-wrap: pretty;
   }
 
-  .step__link {
-    margin-top: var(--space-m);
-    color: var(--color-forest);
+    .step__img {
+    align-self: center;
+    width: 50%;
+    aspect-ratio: 1;
+    margin-top: var(--space-s);
+    object-fit: cover;
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -1029,7 +1041,8 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
     display: flex;
     justify-content: space-between;
     gap: var(--space-s);
-    margin-top: var(--space-l);
+    margin-top: var(--space-s);
+    padding-top: var(--space-s);
     border-top: 1px solid var(--color-line);
   }
 
@@ -1038,21 +1051,31 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
     align-items: center;
     gap: 0.75rem;
     min-height: 2.75rem;
-    padding-block: 0.75rem;
+    padding: 0.625rem 1.25rem;
+    border: 1px solid var(--color-forest);
     font-size: var(--type-cta);
     font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
     color: var(--color-forest);
+    transition: background-color 250ms var(--ease), color 250ms var(--ease);
+  }
+  .cycle__control:hover,
+  .cycle__control:focus-visible {
+    background: var(--color-forest);
+    color: var(--color-cream);
   }
   .cycle__control--prev :global(.arrow) { rotate: 180deg; }
+  @media (max-width: 479px) {
+    .cycle__control { gap: 0.5rem; padding-inline: 0.875rem; }
+  }
   .cycle__control:hover :global(.arrow) { transform: translateX(4px); }
 
   /* Phones: the wheel reaches half a gutter into each margin and its
-     pictures grow a little, so the five steps stay easy to read and tap. */
+     pictures grow a little, so the six steps stay easy to read and tap. */
   @media (max-width: 639px) {
     .wheel {
-      --d: 20cqi;
+      --d: 18cqi;
       width: calc(100% + var(--gutter));
       max-width: none;
       margin-inline: calc(var(--gutter) / -2);
@@ -1063,27 +1086,20 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
 
   @media (min-width: 768px) {
     .cycle__detail { width: 100%; max-width: 36rem; margin-inline: auto; }
-    .cycle__hint { text-align: center; }
   }
 
   /* Desktop: wheel on the left, its explanation on the right. */
   @media (min-width: 1024px) {
     .cycle__grid {
-      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-      grid-template-rows: 1fr auto auto 1fr;
-      grid-template-areas:
-        "wheel ."
-        "wheel hint"
-        "wheel detail"
-        "wheel .";
-      column-gap: clamp(2rem, 5vw, 6rem);
+      grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+      grid-template-areas: "wheel detail";
+      align-items: center;
+      column-gap: clamp(2rem, 4vw, 4.5rem);
     }
-    .cycle__wheel { margin-top: 0; }
-    .cycle__hint { text-align: left; }
-    .cycle__detail { margin: var(--space-m) 0 0; max-width: 30rem; }
+    .cycle__detail { margin-top: 0; }
     /* Short laptop screens: the whole wheel, labels included, stays in
        view below the header when the section is opened from a link. */
-    .wheel { max-width: max(26rem, min(40rem, 100svh - var(--header-h) - 13.5rem)); }
+    .wheel { max-width: max(30rem, min(46rem, 100svh - var(--header-h) - 9rem)); }
   }
 
   /* Products ---------------------------------------------------------------- */
