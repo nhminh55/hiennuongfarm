@@ -1,4 +1,5 @@
 ---
+import { copy } from '../../data/copy';
 // The other mushroom lines as a quiet ruled index — not a recommendation grid.
 import Eyebrow from '../Eyebrow.astro';
 import Arrow from '../Arrow.astro';
@@ -12,11 +13,7 @@ interface Props {
 
 const { current } = Astro.props;
 const lang = getLocale(Astro.url);
-const t = {
-  vi: { eyebrow: 'Sản vật từ trang trại', title: 'Các dòng nấm khác', all: 'Tất cả sản phẩm' },
-  en: { eyebrow: 'Produce from the Farm', title: 'Other mushroom lines', all: 'All products' },
-  zh: { eyebrow: '农场物产', title: '其他菌菇品类', all: '全部产品' },
-}[lang];
+const t = copy('san-pham/chung-san-pham-khac', lang);
 const others = localizedProducts(lang)
   .map((p, i) => ({ ...p, num: String(i + 1).padStart(2, '0') }))
   .filter((p) => p.slug !== current);

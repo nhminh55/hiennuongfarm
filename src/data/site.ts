@@ -6,16 +6,29 @@
  * They must be confirmed by Hiền Nương before launch.
  */
 
-import type { Locale } from '../i18n';
+import { locales, type Locale } from '../i18n';
+import { copy } from './copy';
+
+// The text below comes from src/content/chung/lien-he.md and menu.md.
+// Email, phones and the registration are the same in every language (the
+// admin keeps them in step); they are read from the Vietnamese block.
+type ContactCopy = {
+  description: string; address: string[]; locations: { name: string; address: string }[];
+  email: string; phone: string; phone2: string;
+  business_name: string[]; business_code: string; business_registration: string[]; business_issuer: string;
+};
+type MenuCopy = { nav: Record<string, string> };
+const byLocale = <T>(pick: (lang: Locale) => T) =>
+  Object.fromEntries(locales.map((lang) => [lang, pick(lang)])) as Record<Locale, T>;
+const contactCopy = (lang: Locale) => copy<ContactCopy>('chung/lien-he', lang);
+const navLabel = (key: string) => byLocale((lang) => copy<MenuCopy>('chung/menu', lang).nav[key]);
+const shared = contactCopy('vi');
+const tel = (display: string) => display.replace(/\s/g, '');
 
 export const site = {
   name: 'Hiền Nương Farm',
   url: 'https://hiennuongfarm.vn',
-  description: {
-    vi: 'Hiền Nương Farm — mô hình nông nghiệp tuần hoàn tại vùng Bảy Núi, An Giang.',
-    en: 'Hiền Nương Farm — a circular agriculture model in the Bảy Núi region of An Giang, Vietnam.',
-    zh: 'Hiền Nương Farm——位于越南安江省七山地区的循环农业模式。',
-  } satisfies Record<Locale, string>,
+  description: byLocale((lang) => contactCopy(lang).description),
 };
 
 export interface NavItem {
@@ -28,65 +41,53 @@ export interface NavItem {
 
 // Links point to homepage sections until each secondary page is built.
 export const nav: NavItem[] = [
-  { label: { vi: 'Về Hiền Nương', en: 'About Hiền Nương', zh: '关于 Hiền Nương' }, href: '/ve-chung-toi/', fallback: '/#ve-hien-nuong' },
-  { label: { vi: 'Nông nghiệp tuần hoàn', en: 'Circular Agriculture', zh: '循环农业' }, href: '/nong-nghiep-tuan-hoan/', fallback: '/#tuan-hoan' },
-  { label: { vi: 'Sản vật', en: 'Farm Produce', zh: '农场物产' }, href: '/san-pham/' },
-  { label: { vi: 'Vùng Bảy Núi', en: 'Bảy Núi Region', zh: '七山地区' }, href: '/#bay-nui' },
-  { label: { vi: 'Dấu ấn', en: 'Press', zh: '媒体报道' }, href: '/#dau-an' },
-  { label: { vi: 'Hợp tác', en: 'Partnership', zh: '合作' }, href: '/#hop-tac' },
+  { label: navLabel('about'), href: '/ve-chung-toi/', fallback: '/#ve-hien-nuong' },
+  { label: navLabel('circular'), href: '/nong-nghiep-tuan-hoan/', fallback: '/#tuan-hoan' },
+  { label: navLabel('produce'), href: '/san-pham/' },
+  { label: navLabel('bayNui'), href: '/#bay-nui' },
+  { label: navLabel('press'), href: '/#dau-an' },
+  { label: navLabel('partner'), href: '/#hop-tac' },
 ];
 
 // Footer "Khám phá": a shorter list than the header.
 export const footerNav: NavItem[] = [
   nav[0],
-  { label: { vi: 'Sản phẩm', en: 'Products', zh: '产品' }, href: '/san-pham/' },
+  { label: navLabel('products'), href: '/san-pham/' },
   nav[1],
   nav[4],
   // Vietnamese only (viOnlyPaths); hidden in other languages.
-  { label: { vi: 'Chơi cùng nông trại', en: 'Play with the farm', zh: '农场小游戏' }, href: '/choi-cung-nong-trai/' },
+  { label: navLabel('play'), href: '/choi-cung-nong-trai/' },
 ];
 
 // VERIFY: address from the mockup. Email and phone are owner-provided.
 // Other languages keep the local place names and add the country.
 export const contact = {
-  addressLines: {
-    vi: ['Khóm Thới Thuận, Phường Thới Sơn', 'Tỉnh An Giang'],
-    en: ['Khóm Thới Thuận, Phường Thới Sơn', 'An Giang Province, Vietnam'],
-    zh: ['Khóm Thới Thuận, Phường Thới Sơn', '越南安江省'],
-  } satisfies Record<Locale, string[]>,
+  addressLines: byLocale((lang) => contactCopy(lang).address),
   mapUrl: 'https://maps.app.goo.gl/x9ZQNXxzfZaVnP6X8',
   // Owner-provided farm locations, listed in the footer.
   locations: [
     {
-      name: { vi: 'Cơ sở Thới Sơn', en: 'Thới Sơn site', zh: 'Thới Sơn 基地' },
-      address: {
-        vi: 'Khóm Thới Thuận, Phường Thới Sơn, Tỉnh An Giang',
-        en: 'Khóm Thới Thuận, Phường Thới Sơn, An Giang Province, Vietnam',
-        zh: 'Khóm Thới Thuận, Phường Thới Sơn, 越南安江省',
-      },
+      name: byLocale((lang) => contactCopy(lang).locations[0].name),
+      address: byLocale((lang) => contactCopy(lang).locations[0].address),
       mapUrl: 'https://maps.app.goo.gl/x9ZQNXxzfZaVnP6X8',
     },
     {
-      name: { vi: 'Cơ sở Tri Tôn', en: 'Tri Tôn site', zh: 'Tri Tôn 基地' },
-      address: {
-        vi: 'Cầu 15, Xã Tri Tôn, Tỉnh An Giang',
-        en: 'Cầu 15, Xã Tri Tôn, An Giang Province, Vietnam',
-        zh: 'Cầu 15, Xã Tri Tôn, 越南安江省',
-      },
+      name: byLocale((lang) => contactCopy(lang).locations[1].name),
+      address: byLocale((lang) => contactCopy(lang).locations[1].address),
       mapUrl: 'https://maps.app.goo.gl/kF66YB8ddwbSqQTe8',
     },
   ] satisfies { name: Record<Locale, string>; address: Record<Locale, string>; mapUrl: string }[],
-  email: 'contact@hiennuongfarm.vn',
-  phone: '+84985799777',
-  phoneDisplay: '+84 985 799 777',
-  phone2: '+84988799777',
-  phone2Display: '+84 988 799 777',
+  email: shared.email,
+  phone: tel(shared.phone),
+  phoneDisplay: shared.phone,
+  phone2: tel(shared.phone2),
+  phone2Display: shared.phone2,
 };
 
 // Owner-provided household business registration, shown as-is in every language.
 export const business = {
-  name: ['HỘ KINH DOANH TRANG TRẠI', 'NÔNG NGHIỆP HIỀN NƯƠNG'],
-  code: 'Mã số HKD: 8668062400-001',
-  registration: ['Đăng ký HKD số 52H8006524', 'Ngày: 10/04/2024'],
-  issuer: 'Cơ quan cấp: Phòng Tài chính – Kế hoạch huyện Tri Tôn, tỉnh An Giang',
+  name: shared.business_name,
+  code: shared.business_code,
+  registration: shared.business_registration,
+  issuer: shared.business_issuer,
 };

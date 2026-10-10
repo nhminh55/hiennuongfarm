@@ -1,4 +1,5 @@
 ---
+import { copy } from '../data/copy';
 import { contact } from '../data/site';
 import { navDropdowns } from '../data/drafts';
 import { SHOWROOM_FRESH, showroomHref, showroomProducts } from '../data/showroom';
@@ -19,12 +20,14 @@ const lang = getLocale(Astro.url);
 // the header says "Sản phẩm"; homepage section headings keep "Sản vật".
 // Each label goes to its homepage section; its dropdown (src/data/drafts.ts)
 // opens the pages, Sản phẩm (#san-vat) and Về Hiền Nương included.
+// Labels: src/content/chung/menu.md.
+const menu = copy('chung/menu', lang).header;
 const links = [
-  { label: { vi: 'Về Hiền Nương', en: 'About Hiền Nương', zh: '关于 Hiền Nương' }, anchor: '/#ve-hien-nuong' },
-  { label: { vi: 'Nông nghiệp tuần hoàn', en: 'Circular Agriculture', zh: '循环农业' }, anchor: '/#tuan-hoan' },
-  { label: { vi: 'Sản phẩm', en: 'Products', zh: '产品' }, anchor: '/#san-vat' },
-  { label: { vi: 'Dấu ấn', en: 'Press', zh: '媒体报道' }, anchor: '/#dau-an' },
-  { label: { vi: 'Hợp tác', en: 'Partnership', zh: '合作' }, anchor: '/#hop-tac' },
+  { label: menu.about, anchor: '/#ve-hien-nuong' },
+  { label: menu.circular, anchor: '/#tuan-hoan' },
+  { label: menu.products, anchor: '/#san-vat' },
+  { label: menu.press, anchor: '/#dau-an' },
+  { label: menu.partner, anchor: '/#hop-tac' },
 ];
 // Vietnamese-only pages (viOnlyPaths) open in Vietnamese from every language.
 const subLink = (href: string) =>
@@ -33,22 +36,18 @@ const subLink = (href: string) =>
 const products = showroomProducts(lang).map((p) => ({ label: p.name, href: showroomHref(p.slug, lang) }));
 const productGroups = [products.slice(0, SHOWROOM_FRESH), products.slice(SHOWROOM_FRESH)];
 const navItems = links.map((item) => ({
-  label: item.label[lang],
+  label: item.label,
   href: localizePath(item.anchor, lang),
   children: navDropdowns[item.anchor]?.map((child) => ({ label: child.label[lang], video: child.video, items: child.group === undefined ? undefined : productGroups[child.group], ...subLink(child.href) })),
 }));
 // Contact details: the cooperation page's contact section; the homepage
 // section in languages without that page.
-const contactLink = { label: { vi: 'Liên hệ', en: 'Contact', zh: '联系我们' }[lang], href: pageHref('/hop-tac/#lien-he', lang, '/#hop-tac') };
+const contactLink = { label: menu.contact, href: pageHref('/hop-tac/#lien-he', lang, '/#hop-tac') };
 
 // Search covers the Vietnamese pages only (see src/pages/tim-kiem/).
 const searchable = lang === 'vi';
 
-const t = {
-  vi: { mainNav: 'Điều hướng chính', menuNav: 'Điều hướng', menu: 'Menu', close: 'Đóng', submenu: 'Menu con' },
-  en: { mainNav: 'Main navigation', menuNav: 'Navigation', menu: 'Menu', close: 'Close', submenu: 'Submenu' },
-  zh: { mainNav: '主导航', menuNav: '导航', menu: '菜单', close: '关闭', submenu: '子菜单' },
-}[lang];
+const t = copy('chung/header', lang);
 
 // Home is current only on "/"; a page link is current for its own path and
 // everything below it; in-page section links are never "current".

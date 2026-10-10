@@ -103,7 +103,7 @@ Do not rename “Về Hiền Nương” to “Về chúng tôi” or shorten “
 
 Purpose: brand origin, founders, and the region.
 
-Published in Vietnamese, English and Chinese (/ve-chung-toi/, /en/ve-chung-toi/, /zh/ve-chung-toi/). Vietnamese chapter copy: the six Markdown files in src/content/about/ (one per chapter, read in filename order by src/data/about.ts and rendered whole); the opening line, Định hướng phát triển and the closing come from docs/HIEN_NUONG_ABOUT_VI.md; English and Chinese are in src/data/about.ts. One continuous page in normal document scroll (no pinned stage, no page turning), with a compact chapter bar held under the header that marks the chapter being read:
+Published in Vietnamese, English and Chinese (/ve-chung-toi/, /en/ve-chung-toi/, /zh/ve-chung-toi/). Chapter copy in every language: src/content/ve-chung-toi/cac-chuong.md (read by src/data/about.ts, each chapter rendered whole); the rest of the page: src/content/ve-chung-toi/trang.md. The Vietnamese opening line, Định hướng phát triển and the closing come from docs/HIEN_NUONG_ABOUT_VI.md. One continuous page in normal document scroll (no pinned stage, no page turning), with a compact chapter bar held under the header that marks the chapter being read:
 
 - 01 Câu chuyện: #cau-chuyen — founders, 2020, ông Tư Phú right after the founders, learning to make spawn; one pulled quotation.
 - 02 Bảy Núi: #bay-nui — the region: mountains, rice fields, palmyra palms, Khmer culture; the seven peaks in a disclosure.

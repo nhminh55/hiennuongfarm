@@ -1,0 +1,1316 @@
+# Admin (Sveltia CMS) for the page copy in src/content/, labelled in Vietnamese for
+# the owner (docs/HUONG_DAN_SUA_NOI_DUNG.md). A field added to a copy file needs an entry here too.
+backend:
+  name: github
+  repo: nhminh55/hiennuongfarm
+  branch: main
+  base_url: https://hiennuongfarm.pages.dev
+  auth_endpoint: api/auth
+  commit_messages:
+    update: 'Nội dung: sửa {{collection}} · {{slug}}'
+media_folder: public/images/uploads
+output:
+  omit_empty_optional_fields: true
+i18n:
+  structure: single_file
+  locales:
+    - vi
+    - en
+    - zh
+  default_locale: vi
+collections:
+  - name: trang_chu
+    label: Trang chủ
+    i18n: true
+    files:
+      - name: 01-mo-dau
+        label: Phần mở đầu (ảnh lớn đầu trang)
+        file: src/content/trang-chu/01-mo-dau.md
+        format: frontmatter
+        i18n: true
+        fields:
+          - label: Tên các phần (thanh bên phải)
+            name: sections
+            i18n: true
+            hint: Theo thứ tự các mục trên trang chủ
+            widget: list
+            min: 5
+            max: 5
+            field:
+              label: Nội dung
+              name: item
+              widget: string
+          - label: Tiêu đề lớn
+            name: title
+            i18n: true
+            hint: Mỗi ô là một dòng
+            widget: list
+            min: 2
+            max: 2
+            field:
+              label: Nội dung
+              name: item
+              widget: string
+          - label: Dòng giới thiệu dưới tiêu đề
+            name: sub
+            i18n: true
+            widget: string
+          - label: Nút chính
+            name: cta
+            i18n: true
+            widget: string
+          - label: Chữ “Kéo xuống”
+            name: scroll
+            i18n: true
+            widget: string
+          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
+            name: nang_cao
+            i18n: true
+            widget: object
+            collapsed: true
+            fields:
+              - label: Mô tả các ảnh nền
+                name: alts
+                i18n: true
+                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                widget: list
+                min: 4
+                max: 4
+                field:
+                  label: Nội dung
+                  name: item
+                  widget: text
+              - label: Tên thanh điều hướng các phần
+                name: navLabel
+                i18n: true
+                widget: string
+      - name: 02-ve-hien-nuong
+        label: Mục 01 · Về Hiền Nương
+        file: src/content/trang-chu/02-ve-hien-nuong.md
+        format: frontmatter
+        i18n: true
+        fields:
+          - label: Chữ nhỏ trên tiêu đề
+            name: eyebrow
+            i18n: true
+            widget: string
+          - label: Tiêu đề
+            name: title
+            i18n: true
+            widget: string
+          - label: Đoạn giới thiệu
+            name: body
+            i18n: true
+            widget: text
+          - label: Nút “Tìm hiểu thêm”
+            name: more
+            i18n: true
+            widget: string
+          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
+            name: nang_cao
+            i18n: true
+            widget: object
+            collapsed: true
+            fields:
+              - label: Mô tả ảnh chị Nương
+                name: alt
+                i18n: true
+                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                widget: text
+      - name: 03-brand-film
+        label: Khối Brand Film
+        file: src/content/trang-chu/03-brand-film.md
+        format: frontmatter
+        i18n: true
+        fields:
+          - label: Chữ nhỏ
+            name: label
+            i18n: true
+            widget: string
+          - label: Tiêu đề phim
+            name: title
+            i18n: true
+            widget: string
+          - label: Mô tả ngắn
+            name: summary
+            i18n: true
+            widget: string
+          - label: Nút xem phim
+            name: cta
+            i18n: true
+            widget: string
+          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
+            name: nang_cao
+            i18n: true
+            widget: object
+            collapsed: true
+            fields:
+              - label: Chữ của nút phát (trình đọc màn hình)
+                name: watch
+                i18n: true
+                widget: string
+              - label: Mô tả ảnh bìa phim
+                name: alt
+                i18n: true
+                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                widget: string
+      - name: 04-tuan-hoan
+        label: Mục Nông nghiệp tuần hoàn
+        file: src/content/trang-chu/04-tuan-hoan.md
+        format: frontmatter
+        i18n: true
+        fields:
+          - label: Sáu bước của vòng tuần hoàn
+            name: steps
+            i18n: true
+            hint: Đúng 6 bước, theo thứ tự trên vòng. Xuống dòng trong ô = xuống dòng trên vòng
+            widget: list
+            min: 6
+            max: 6
+            field:
+              label: Nội dung
+              name: item
+              widget: text
+          - label: Chữ nhỏ trên tiêu đề
+            name: eyebrow
+            i18n: true
+            widget: string
+          - label: Tiêu đề
+            name: title
+            i18n: true
+            widget: string
+          - label: Đoạn giới thiệu
+            name: body
+            i18n: true
+            widget: text
+          - label: Nút “Tìm hiểu thêm”
+            name: more
+            i18n: true
+            widget: string
+          - label: Câu khẩu hiệu
+            name: motto
+            i18n: true
+            hint: Mỗi ô là một dòng
+            widget: list
+            min: 2
+            max: 2
+            field:
+              label: Nội dung
+              name: item
+              widget: string
+          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
+            name: nang_cao
+            i18n: true
+            widget: object
+            collapsed: true
+            fields:
+              - label: Tên vòng tuần hoàn (trình đọc màn hình)
+                name: stepsLabel
+                i18n: true
+                widget: string
+              - label: Mô tả ảnh nấm bào ngư
+                name: alt
+                i18n: true
+                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                widget: text
+      - name: 05-san-vat
+        label: Mục Sản vật
+        file: src/content/trang-chu/05-san-vat.md
+        format: frontmatter
+        i18n: true
+        fields:
+          - label: Tên hiển thị của Nấm Linh Chi
+            name: linhChi
+            i18n: true
+            widget: string
+          - label: Tên 8 sản phẩm còn lại
+            name: additional
+            i18n: true
+            hint: Đúng 8 tên, theo thứ tự trên băng chuyền
+            widget: list
+            min: 8
+            max: 8
+            field:
+              label: Nội dung
+              name: item
+              widget: string
+          - label: Mô tả 12 sản phẩm
+            name: descriptions
+            i18n: true
+            hint: Đúng 12 mô tả, theo thứ tự trên băng chuyền
+            widget: list
+            min: 12
+            max: 12
+            field:
+              label: Nội dung
+              name: item
+              widget: string
+          - label: Chữ nhỏ trên tiêu đề
+            name: eyebrow
+            i18n: true
+            widget: string
+          - label: Tiêu đề
+            name: title
+            i18n: true
+            widget: string
+          - label: Đoạn giới thiệu
+            name: intro
+            i18n: true
+            widget: text
+          - label: Nút “Xem tất cả sản phẩm”
+            name: all
+            i18n: true
+            widget: string
+          - label: Nút “Chi tiết”
+            name: details
+            i18n: true
+            widget: string
+          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
+            name: nang_cao
+            i18n: true
+            widget: object
+            collapsed: true
+            fields:
+              - label: Tên băng chuyền
+                name: carousel
+                i18n: true
+                widget: string
+              - label: Tên danh sách sản phẩm
+                name: list
+                i18n: true
+                widget: string
+              - label: Nút chi tiết (trình đọc màn hình)
+                name: detailsOf
+                i18n: true
+                hint: '{name} là chỗ website tự điền tên sản phẩm, giữ nguyên'
+                widget: string
+              - label: Nút sản phẩm trước
+                name: prev
+                i18n: true
+                widget: string
+              - label: Nút sản phẩm tiếp theo
+                name: next
+                i18n: true
+                widget: string
+      - name: 06-bay-nui
+        label: Mục Vùng Bảy Núi
+        file: src/content/trang-chu/06-bay-nui.md
+        format: frontmatter
+        i18n: true
+        fields:
+          - label: Chữ nhỏ trên tiêu đề
+            name: eyebrow
+            i18n: true
+            widget: string
+          - label: Tiêu đề
+            name: title
+            i18n: true
+            widget: string
+          - label: Đoạn giới thiệu
+            name: body
+            i18n: true
+            widget: text
+          - label: Nút
+            name: more
+            i18n: true
+            widget: string
+          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
+            name: nang_cao
+            i18n: true
+            widget: object
+            collapsed: true
+            fields:
+              - label: Mô tả ảnh cánh đồng
+                name: alt
+                i18n: true
+                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                widget: text
+      - name: 07-dau-an
+        label: Mục Dấu ấn
+        file: src/content/trang-chu/07-dau-an.md
+        format: frontmatter
+        i18n: true
+        fields:
+          - label: Chữ nhỏ trên tiêu đề
+            name: eyebrow
+            i18n: true
+            widget: string
+          - label: Tiêu đề
+            name: title
+            i18n: true
+            widget: string
+          - label: Đoạn giới thiệu
+            name: intro
+            i18n: true
+            widget: text
+          - label: Nút “Xem chi tiết”
+            name: more
+            i18n: true
+            widget: string
+          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
+            name: nang_cao
+            i18n: true
+            widget: object
+            collapsed: true
+            fields:
+              - label: Nút xem chi tiết (trình đọc màn hình)
+                name: moreOf
+                i18n: true
+                hint: '{title} là chỗ website tự điền tên bài, giữ nguyên'
+                widget: string
+      - name: 08-hop-tac
+        label: Mục Hợp tác
+        file: src/content/trang-chu/08-hop-tac.md
+        format: frontmatter
+        i18n: true
+        fields:
+          - label: Chữ nhỏ trên tiêu đề
+            name: eyebrow
+            i18n: true
+            widget: string
+          - label: Tiêu đề
+            name: title
+            i18n: true
+            widget: string
+          - label: Đoạn giới thiệu
+            name: body
+            i18n: true
+            widget: text
+          - label: Nút
+            name: cta
+            i18n: true
+            widget: string
+          - label: Chú thích ảnh
+            name: caption
+            i18n: true
+            widget: string
+          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
+            name: nang_cao
+            i18n: true
+            widget: object
+            collapsed: true
+            fields:
+              - label: Tiêu đề email khi khách bấm gửi mail
+                name: subject
+                i18n: true
+                widget: string
+              - label: Mô tả ảnh lễ ký kết
+                name: alt
+                i18n: true
+                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                widget: text
+  - name: ve_chung_toi
+    label: Về chúng tôi
+    i18n: true
+    files:
+      - name: trang
+        label: Tiêu đề, ảnh, video, phần kết
+        file: src/content/ve-chung-toi/trang.md
+        format: frontmatter
+        i18n: true
+        fields:
+          - label: Chữ “Trang chủ” trong đường dẫn
+            name: home
+            i18n: true
+            widget: string
+          - label: Chữ nhỏ trên tiêu đề
+            name: eyebrow
+            i18n: true
+            widget: string
+          - label: Tiêu đề trang
+            name: title
+            i18n: true
+            widget: string
+          - label: Câu dẫn dưới tiêu đề
+            name: lead
+            i18n: true
+            widget: string
+          - label: Tên ngắn của 6 chương (thanh chương)
+            name: nav
+            i18n: true
+            hint: Đúng 6 tên
+            widget: list
+            min: 6
+            max: 6
+            field:
+              label: Nội dung
+              name: item
+              widget: string
+          - label: Nút “Khám phá vòng tuần hoàn”
+            name: circularLink
+            i18n: true
+            widget: string
+          - label: 'Ảnh: chú thích và mô tả'
+            name: media
+            i18n: true
+            widget: object
+            collapsed: true
+            fields:
+              - label: Ảnh hai người sáng lập
+                name: founders
+                i18n: true
+                widget: object
+                collapsed: true
+                fields:
+                  - label: Mô tả ảnh
+                    name: alt
+                    i18n: true
+                    hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                    widget: text
+              - label: Ảnh Bảy Núi
+                name: bayNui
+                i18n: true
+                widget: object
+                collapsed: true
+                fields:
+                  - label: Mô tả ảnh
+                    name: alt
+                    i18n: true
+                    hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                    widget: text
+              - label: Ảnh cơ sở Thới Sơn
+                name: thoiSon
+                i18n: true
+                widget: object
+                collapsed: true
+                fields:
+                  - label: Mô tả ảnh
+                    name: alt
+                    i18n: true
+                    hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                    widget: text
+                  - label: Chú thích dưới ảnh
+                    name: caption
+                    i18n: true
+                    widget: string
+              - label: Ảnh cơ sở Tà Đảnh
+                name: taDanh
+                i18n: true
+                widget: object
+                collapsed: true
+                fields:
+                  - label: Mô tả ảnh
+                    name: alt
+                    i18n: true
+                    hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                    widget: text
+                  - label: Chú thích dưới ảnh
+                    name: caption
+                    i18n: true
+                    widget: string
+              - label: Ảnh mái điện mặt trời
+                name: solar
+                i18n: true
+                widget: object
+                collapsed: true
+                fields:
+                  - label: Mô tả ảnh
+                    name: alt
+                    i18n: true
+                    hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                    widget: text
+              - label: Ảnh nguyên liệu giá thể
+                name: substrate
+                i18n: true
+                widget: object
+                collapsed: true
+                fields:
+                  - label: Mô tả ảnh
+                    name: alt
+                    i18n: true
+                    hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                    widget: text
+                  - label: Chú thích dưới ảnh
+                    name: caption
+                    i18n: true
+                    widget: string
+              - label: Ảnh bịch phôi
+                name: bags
+                i18n: true
+                widget: object
+                collapsed: true
+                fields:
+                  - label: Mô tả ảnh
+                    name: alt
+                    i18n: true
+                    hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                    widget: string
+                  - label: Chú thích dưới ảnh
+                    name: caption
+                    i18n: true
+                    widget: string
+              - label: Ảnh chuẩn bị giá thể
+                name: team
+                i18n: true
+                widget: object
+                collapsed: true
+                fields:
+                  - label: Mô tả ảnh
+                    name: alt
+                    i18n: true
+                    hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                    widget: text
+                  - label: Chú thích dưới ảnh
+                    name: caption
+                    i18n: true
+                    widget: string
+              - label: Ảnh thu hoạch
+                name: harvest
+                i18n: true
+                widget: object
+                collapsed: true
+                fields:
+                  - label: Mô tả ảnh
+                    name: alt
+                    i18n: true
+                    hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                    widget: text
+                  - label: Chú thích dưới ảnh
+                    name: caption
+                    i18n: true
+                    widget: string
+          - label: Video giới thiệu
+            name: film
+            i18n: true
+            widget: object
+            fields:
+              - label: Chữ nhỏ
+                name: eyebrow
+                i18n: true
+                widget: string
+              - label: Tiêu đề
+                name: title
+                i18n: true
+                widget: string
+              - label: Nút xem phim
+                name: watch
+                i18n: true
+                widget: string
+          - label: Phần kết
+            name: closing
+            i18n: true
+            widget: object
+            fields:
+              - label: Chữ nhỏ
+                name: eyebrow
+                i18n: true
+                widget: string
+              - label: Tiêu đề
+                name: title
+                i18n: true
+                widget: string
+              - label: Các đoạn văn
+                name: body
+                i18n: true
+                hint: Mỗi ô là một đoạn
+                widget: list
+                field:
+                  label: Nội dung
+                  name: item
+                  widget: text
+              - label: Nút
+                name: button
+                i18n: true
+                widget: string
+          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
+            name: nang_cao
+            i18n: true
+            widget: object
+            collapsed: true
+            fields:
+              - label: Tên trang (trên tab trình duyệt)
+                name: pageTitle
+                i18n: true
+                widget: string
+              - label: Mô tả trang trên Google
+                name: description
+                i18n: true
+                widget: text
+              - label: Mô tả ảnh đầu trang
+                name: heroAlt
+                i18n: true
+                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                widget: text
+              - label: Tên thanh chương
+                name: navLabel
+                i18n: true
+                widget: string
+      - name: cac-chuong
+        label: Sáu chương
+        file: src/content/ve-chung-toi/cac-chuong.md
+        format: frontmatter
+        i18n: true
+        fields:
+          - label: Các chương
+            name: chapters
+            i18n: true
+            hint: Đúng 6 chương, theo thứ tự 01 → 06
+            widget: list
+            min: 6
+            max: 6
+            fields:
+              - label: Chữ nhỏ cạnh số chương
+                name: label
+                i18n: true
+                widget: string
+              - label: Tiêu đề chương
+                name: title
+                i18n: true
+                widget: string
+              - label: Các đoạn văn
+                name: paragraphs
+                i18n: true
+                hint: Mỗi ô là một đoạn. Chỉ chữ thường, không dùng chữ đậm, nghiêng hay link
+                widget: list
+                field:
+                  label: Nội dung
+                  name: item
+                  widget: text
+              - label: Phần mở rộng (bấm để xem)
+                name: more
+                i18n: true
+                hint: Chỉ chương Bảy Núi có phần này
+                widget: object
+                fields:
+                  - label: Câu hỏi
+                    name: summary
+                    i18n: true
+                    widget: string
+                  - label: Đoạn dẫn
+                    name: intro
+                    i18n: true
+                    widget: text
+                  - label: Tiêu đề hai cột của bảng
+                    name: head
+                    i18n: true
+                    hint: Đúng 2 ô
+                    widget: list
+                    min: 2
+                    max: 2
+                    field:
+                      label: Nội dung
+                      name: item
+                      widget: string
+                  - label: Các dòng bảng
+                    name: rows
+                    i18n: true
+                    widget: list
+                    fields:
+                      - label: Tên thường gọi
+                        name: name
+                        i18n: true
+                        widget: string
+                      - label: Tên Hán Việt
+                        name: sino
+                        i18n: true
+                        widget: string
+                    collapsed: true
+                    summary: '{{fields.name}}'
+                required: false
+            collapsed: true
+            summary: '{{fields.label}}'
+  - name: san_pham
+    label: Sản phẩm
+    i18n: true
+    files:
+      - name: ten-va-mo-ta
+        label: Tên và mô tả 4 dòng nấm chính
+        file: src/content/san-pham/ten-va-mo-ta.md
+        format: frontmatter
+        i18n: true
+        fields:
+          - label: Nấm Mối Đen
+            name: nam-moi-den
+            i18n: true
+            widget: object
+            fields:
+              - label: Tên sản phẩm
+                name: name
+                i18n: true
+                widget: string
+              - label: Mô tả ngắn dưới tên
+                name: note
+                i18n: true
+                widget: string
+              - label: Mô tả ảnh
+                name: alt
+                i18n: true
+                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                widget: string
+          - label: Nấm Linh Chi
+            name: nam-linh-chi
+            i18n: true
+            widget: object
+            fields:
+              - label: Tên sản phẩm
+                name: name
+                i18n: true
+                widget: string
+              - label: Mô tả ngắn dưới tên
+                name: note
+                i18n: true
+                widget: string
+              - label: Mô tả ảnh
+                name: alt
+                i18n: true
+                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                widget: string
+          - label: Đông Trùng Hạ Thảo
+            name: dong-trung-ha-thao
+            i18n: true
+            widget: object
+            fields:
+              - label: Tên sản phẩm
+                name: name
+                i18n: true
+                widget: string
+              - label: Mô tả ngắn dưới tên
+                name: note
+                i18n: true
+                widget: string
+              - label: Mô tả ảnh
+                name: alt
+                i18n: true
+                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                widget: string
+          - label: Nấm Bào Ngư
+            name: nam-bao-ngu
+            i18n: true
+            widget: object
+            fields:
+              - label: Tên sản phẩm
+                name: name
+                i18n: true
+                widget: string
+              - label: Mô tả ngắn dưới tên
+                name: note
+                i18n: true
+                widget: string
+              - label: Mô tả ảnh
+                name: alt
+                i18n: true
+                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                widget: string
+      - name: trang-san-pham
+        label: Trang Sản phẩm (/san-pham/)
+        file: src/content/san-pham/trang-san-pham.md
+        format: frontmatter
+        i18n: true
+        fields:
+          - label: Chữ “Trang chủ” trong đường dẫn
+            name: home
+            i18n: true
+            widget: string
+          - label: Chữ nhỏ trên tiêu đề
+            name: eyebrow
+            i18n: true
+            widget: string
+          - label: Tiêu đề phần liên hệ cuối trang
+            name: ctaTitle
+            i18n: true
+            widget: string
+          - label: Đoạn liên hệ cuối trang
+            name: ctaBody
+            i18n: true
+            widget: text
+          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
+            name: nang_cao
+            i18n: true
+            widget: object
+            collapsed: true
+            fields:
+              - label: Tên trang (trên tab trình duyệt)
+                name: pageTitle
+                i18n: true
+                widget: string
+              - label: Mô tả trang trên Google
+                name: description
+                i18n: true
+                widget: text
+      - name: nam-moi-den
+        label: Trang Nấm Mối Đen
+        file: src/content/san-pham/nam-moi-den.md
+        format: frontmatter
+        i18n: true
+        fields:
+          - label: Quy trình · các bước
+            name: steps
+            i18n: true
+            hint: Đúng 5 bước, theo thứ tự
+            widget: list
+            min: 5
+            max: 5
+            fields:
+              - label: Tên bước
+                name: title
+                i18n: true
+                widget: string
+              - label: Mô tả bước
+                name: text
+                i18n: true
+                widget: text
+            collapsed: true
+            summary: '{{fields.title}}'
+          - label: Dòng xuất xứ dưới tên
+            name: origin
+            i18n: true
+            widget: string
+          - label: Đoạn mở đầu
+            name: heroBody
+            i18n: true
+            widget: text
+          - label: Giới thiệu · chú thích ảnh
+            name: introCaption
+            i18n: true
+            widget: string
+          - label: Giới thiệu · chữ nhỏ
+            name: introEyebrow
+            i18n: true
+            widget: string
+          - label: Giới thiệu · tiêu đề
+            name: introTitle
+            i18n: true
+            widget: string
+          - label: Giới thiệu · các đoạn văn
+            name: introBody
+            i18n: true
+            hint: Mỗi ô là một đoạn
+            widget: list
+            min: 2
+            max: 2
+            field:
+              label: Nội dung
+              name: item
+              widget: text
+          - label: Bảng thông tin nhanh
+            name: facts
+            i18n: true
+            hint: Đúng 4 dòng
+            widget: list
+            min: 4
+            max: 4
+            fields:
+              - label: Tên
+                name: label
+                i18n: true
+                widget: string
+              - label: Nội dung
+                name: value
+                i18n: true
+                widget: string
+            collapsed: true
+            summary: '{{fields.label}}'
+          - label: Quy trình · chữ nhỏ
+            name: processEyebrow
+            i18n: true
+            widget: string
+          - label: Quy trình · tiêu đề
+            name: processTitle
+            i18n: true
+            widget: string
+          - label: Quy trình · ghi chú dưới cùng
+            name: processNote
+            i18n: true
+            widget: text
+          - label: Con người · chữ nhỏ
+            name: peopleEyebrow
+            i18n: true
+            widget: string
+          - label: Con người · tiêu đề
+            name: peopleTitle
+            i18n: true
+            widget: string
+          - label: Con người · đoạn văn
+            name: peopleBody
+            i18n: true
+            widget: text
+          - label: Ghi chú dưới bảng kiểm nghiệm
+            name: labNote
+            i18n: true
+            widget: string
+          - label: Tiêu đề phần liên hệ cuối trang
+            name: ctaTitle
+            i18n: true
+            widget: string
+          - label: Đoạn liên hệ cuối trang
+            name: ctaBody
+            i18n: true
+            widget: text
+          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
+            name: nang_cao
+            i18n: true
+            widget: object
+            collapsed: true
+            fields:
+              - label: Mô tả ảnh các bước
+                name: stepAlts
+                i18n: true
+                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                widget: list
+                min: 3
+                max: 3
+                field:
+                  label: Nội dung
+                  name: item
+                  widget: text
+              - label: Mô tả trang trên Google
+                name: description
+                i18n: true
+                widget: text
+              - label: Mô tả ảnh giới thiệu
+                name: introAlt
+                i18n: true
+                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                widget: text
+              - label: Mô tả ảnh con người
+                name: peopleAlts
+                i18n: true
+                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                widget: list
+                min: 2
+                max: 2
+                field:
+                  label: Nội dung
+                  name: item
+                  widget: text
+      - name: chung-dau-trang
+        label: Phần đầu trang sản phẩm (dùng chung)
+        file: src/content/san-pham/chung-dau-trang.md
+        format: frontmatter
+        i18n: true
+        fields:
+          - label: Chữ “Trang chủ” trong đường dẫn
+            name: home
+            i18n: true
+            widget: string
+          - label: Chữ “Sản phẩm” trong đường dẫn
+            name: products
+            i18n: true
+            widget: string
+          - label: Chữ nhỏ trên tên sản phẩm
+            name: eyebrow
+            i18n: true
+            widget: string
+          - label: Nút xem quy trình
+            name: process
+            i18n: true
+            widget: string
+          - label: Nút liên hệ
+            name: contact
+            i18n: true
+            widget: string
+      - name: chung-san-pham-khac
+        label: Mục “Sản phẩm khác” (dùng chung)
+        file: src/content/san-pham/chung-san-pham-khac.md
+        format: frontmatter
+        i18n: true
+        fields:
+          - label: Chữ nhỏ trên tiêu đề
+            name: eyebrow
+            i18n: true
+            widget: string
+          - label: Tiêu đề
+            name: title
+            i18n: true
+            widget: string
+          - label: Nút “Tất cả sản phẩm”
+            name: all
+            i18n: true
+            widget: string
+      - name: chung-kiem-nghiem
+        label: Bảng kết quả kiểm nghiệm (dùng chung)
+        file: src/content/san-pham/chung-kiem-nghiem.md
+        format: frontmatter
+        i18n: true
+        fields:
+          - label: Chữ nhỏ trên tiêu đề
+            name: eyebrow
+            i18n: true
+            widget: string
+          - label: Tiêu đề
+            name: title
+            i18n: true
+            widget: string
+          - label: Đoạn giới thiệu
+            name: intro
+            i18n: true
+            widget: text
+          - label: Chữ “Báo cáo”
+            name: report
+            i18n: true
+            widget: string
+          - label: Chữ “Mẫu thử”
+            name: sample
+            i18n: true
+            widget: string
+          - label: Chữ “Đơn vị thử nghiệm”
+            name: lab
+            i18n: true
+            widget: string
+          - label: Chữ “Đơn vị gửi mẫu”
+            name: customer
+            i18n: true
+            widget: string
+          - label: Chữ “Ngày thử nghiệm”
+            name: testedOn
+            i18n: true
+            widget: string
+          - label: Chữ “Mã báo cáo”
+            name: code
+            i18n: true
+            widget: string
+          - label: Tiêu đề cột “Chỉ tiêu”
+            name: param
+            i18n: true
+            widget: string
+          - label: Tiêu đề cột “Kết quả”
+            name: result
+            i18n: true
+            widget: string
+          - label: Ghi chú dưới bảng
+            name: notes
+            i18n: true
+            hint: Mỗi ô là một đoạn
+            widget: list
+            field:
+              label: Nội dung
+              name: item
+              widget: text
+  - name: chung
+    label: Menu, liên hệ, chân trang
+    i18n: true
+    files:
+      - name: lien-he
+        label: Liên hệ & đăng ký kinh doanh
+        file: src/content/chung/lien-he.md
+        format: frontmatter
+        i18n: true
+        fields:
+          - label: Email
+            name: email
+            i18n: duplicate
+            widget: string
+          - label: Số điện thoại 1
+            name: phone
+            i18n: duplicate
+            hint: Viết có dấu cách cho dễ đọc, ví dụ +84 985 799 777
+            widget: string
+          - label: Số điện thoại 2
+            name: phone2
+            i18n: duplicate
+            widget: string
+          - label: Tên hộ kinh doanh
+            name: business_name
+            i18n: duplicate
+            hint: Mỗi ô là một dòng
+            widget: list
+            min: 2
+            max: 2
+            field:
+              label: Nội dung
+              name: item
+              widget: string
+          - label: Mã số HKD
+            name: business_code
+            i18n: duplicate
+            widget: string
+          - label: Số và ngày đăng ký
+            name: business_registration
+            i18n: duplicate
+            hint: Mỗi ô là một dòng
+            widget: list
+            min: 2
+            max: 2
+            field:
+              label: Nội dung
+              name: item
+              widget: string
+          - label: Cơ quan cấp
+            name: business_issuer
+            i18n: duplicate
+            widget: string
+          - label: Địa chỉ (menu trên điện thoại)
+            name: address
+            i18n: true
+            hint: Mỗi ô là một dòng
+            widget: list
+            min: 2
+            max: 2
+            field:
+              label: Nội dung
+              name: item
+              widget: string
+          - label: Hai cơ sở (chân trang)
+            name: locations
+            i18n: true
+            hint: 'Đúng 2 cơ sở: Thới Sơn, rồi Tri Tôn'
+            widget: list
+            min: 2
+            max: 2
+            fields:
+              - label: Tên cơ sở
+                name: name
+                i18n: true
+                widget: string
+              - label: Địa chỉ
+                name: address
+                i18n: true
+                widget: string
+            collapsed: true
+            summary: '{{fields.name}}'
+          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
+            name: nang_cao
+            i18n: true
+            widget: object
+            collapsed: true
+            fields:
+              - label: Mô tả website trên Google và khi chia sẻ link
+                name: description
+                i18n: true
+                widget: text
+      - name: menu
+        label: Menu
+        file: src/content/chung/menu.md
+        format: frontmatter
+        i18n: true
+        fields:
+          - label: Menu trên cùng
+            name: header
+            i18n: true
+            widget: object
+            fields:
+              - label: Về Hiền Nương
+                name: about
+                i18n: true
+                widget: string
+              - label: Nông nghiệp tuần hoàn
+                name: circular
+                i18n: true
+                widget: string
+              - label: Sản phẩm
+                name: products
+                i18n: true
+                widget: string
+              - label: Dấu ấn
+                name: press
+                i18n: true
+                widget: string
+              - label: Hợp tác
+                name: partner
+                i18n: true
+                widget: string
+              - label: Liên hệ
+                name: contact
+                i18n: true
+                widget: string
+          - label: Tên trang ở chân trang và đường dẫn
+            name: nav
+            i18n: true
+            hint: Cột “Khám phá” ở chân trang, dòng “Trang chủ / …” và các chỗ khác
+            widget: object
+            fields:
+              - label: Về Hiền Nương
+                name: about
+                i18n: true
+                widget: string
+              - label: Nông nghiệp tuần hoàn
+                name: circular
+                i18n: true
+                widget: string
+              - label: Sản vật
+                name: produce
+                i18n: true
+                widget: string
+              - label: Vùng Bảy Núi
+                name: bayNui
+                i18n: true
+                widget: string
+              - label: Dấu ấn
+                name: press
+                i18n: true
+                widget: string
+              - label: Hợp tác
+                name: partner
+                i18n: true
+                widget: string
+              - label: Sản phẩm
+                name: products
+                i18n: true
+                widget: string
+              - label: Chơi cùng nông trại
+                name: play
+                i18n: true
+                widget: string
+      - name: footer
+        label: Chân trang
+        file: src/content/chung/footer.md
+        format: frontmatter
+        i18n: true
+        fields:
+          - label: Câu dưới logo
+            name: line
+            i18n: true
+            hint: Mỗi ô là một dòng
+            widget: list
+            min: 2
+            max: 2
+            field:
+              label: Nội dung
+              name: item
+              widget: string
+          - label: Tiêu đề cột “Khám phá”
+            name: explore
+            i18n: true
+            widget: string
+          - label: Tiêu đề cột “Liên hệ”
+            name: contact
+            i18n: true
+            widget: string
+          - label: Dòng bản quyền
+            name: rights
+            i18n: true
+            widget: string
+          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
+            name: nang_cao
+            i18n: true
+            widget: object
+            collapsed: true
+            fields:
+              - label: Tên vùng điều hướng
+                name: navLabel
+                i18n: true
+                widget: string
+              - label: Chữ khi thiếu liên kết
+                name: noLink
+                i18n: true
+                widget: string
+              - label: Nút lên đầu trang
+                name: top
+                i18n: true
+                widget: string
+      - name: header
+        label: Chữ phụ của menu (trình đọc màn hình)
+        file: src/content/chung/header.md
+        format: frontmatter
+        i18n: true
+        fields:
+          - label: Tên menu chính
+            name: mainNav
+            i18n: true
+            widget: string
+          - label: Tên menu điện thoại
+            name: menuNav
+            i18n: true
+            widget: string
+          - label: Nút mở menu
+            name: menu
+            i18n: true
+            widget: string
+          - label: Nút đóng
+            name: close
+            i18n: true
+            widget: string
+          - label: Tên menu con
+            name: submenu
+            i18n: true
+            widget: string

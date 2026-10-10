@@ -43,7 +43,7 @@ Do not modify network/firewall/VPN settings unless requested.
 
 ## Deployment
 
-Primary production: **Cloudflare Pages — `hiennuongfarm.pages.dev`**
+Primary production: **Cloudflare Pages — `hiennuongfarm.vn`** (also served at `hiennuongfarm.pages.dev`)
 
 `main` → `.github/workflows/deploy-pages.yml` → Pages project `hiennuongfarm`.
 

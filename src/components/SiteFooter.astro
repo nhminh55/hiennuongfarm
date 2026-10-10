@@ -1,4 +1,5 @@
 ---
+import { copy } from '../data/copy';
 import { footerNav, contact, business } from '../data/site';
 import { getLocale, isTranslated, localizePath, pageHref } from '../i18n';
 import BrandLogo from './BrandLogo.astro';
@@ -18,35 +19,7 @@ const social = [
 ];
 const year = new Date().getFullYear();
 const lang = getLocale(Astro.url);
-const t = {
-  vi: {
-    line: ['Nông nghiệp tuần hoàn', 'từ vùng Bảy Núi, An Giang.'],
-    navLabel: 'Điều hướng chân trang',
-    explore: 'Khám phá',
-    contact: 'Liên hệ',
-    noLink: 'liên kết chưa được cung cấp',
-    rights: 'Bảo lưu mọi quyền.',
-    top: 'Lên đầu trang',
-  },
-  en: {
-    line: ['Circular agriculture', 'from the Bảy Núi region, An Giang.'],
-    navLabel: 'Footer navigation',
-    explore: 'Explore',
-    contact: 'Contact',
-    noLink: 'link not yet available',
-    rights: 'All rights reserved.',
-    top: 'Back to top',
-  },
-  zh: {
-    line: ['循环农业，', '来自安江省七山地区。'],
-    navLabel: '页脚导航',
-    explore: '探索',
-    contact: '联系方式',
-    noLink: '链接暂未提供',
-    rights: '版权所有。',
-    top: '返回顶部',
-  },
-}[lang];
+const t = copy('chung/footer', lang);
 ---
 <footer class="site-footer">
   <svg class="site-footer__landscape" viewBox="0 0 1440 240" preserveAspectRatio="none" aria-hidden="true" focusable="false">

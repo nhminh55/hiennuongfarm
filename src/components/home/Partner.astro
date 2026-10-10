@@ -1,4 +1,5 @@
 ---
+import { copy } from '../../data/copy';
 import Photo from '../Photo.astro';
 import Eyebrow from '../Eyebrow.astro';
 import Arrow from '../Arrow.astro';
@@ -6,35 +7,7 @@ import { contact } from '../../data/site';
 import { getLocale, pageHref } from '../../i18n';
 
 const lang = getLocale(Astro.url);
-const t = {
-  vi: {
-    subject: 'Hợp tác cùng Hiền Nương Farm',
-    eyebrow: 'Hợp tác cùng Hiền Nương',
-    title: 'Cùng tạo nên những giá trị bền vững từ nông nghiệp.',
-    body: 'Chúng tôi chào đón những kết nối trong sản xuất, phân phối và chia sẻ kiến thức về nông nghiệp bền vững. Cùng Hiền Nương đưa sản phẩm từ trang trại đến gần hơn với người tiêu dùng, nâng tầm giá trị nông sản Việt. Mỗi sự đồng hành là cơ hội để cùng học hỏi và phát triển lâu dài.',
-    cta: 'Khám phá hợp tác',
-    alt: 'Lễ ký kết hợp tác truyền thông giữa Trang trại Hiền Nương và sinh viên FPT Cần Thơ; chị Châu Thị Nương mặc áo dài đỏ ngồi ký văn bản, xung quanh là các đại biểu chụp ảnh chung',
-    caption: 'Ký kết hợp tác truyền thông với sinh viên FPT Cần Thơ · 26.06.2025',
-  },
-  en: {
-    subject: 'Partnering with Hiền Nương Farm',
-    eyebrow: 'Partner with Hiền Nương',
-    title: 'Creating lasting value from agriculture, together.',
-    body: 'We welcome connections in production, distribution and the sharing of knowledge about sustainable agriculture. Join Hiền Nương in bringing farm produce closer to consumers and raising the value of Vietnamese agricultural products. Every partnership is a chance to learn together and grow for the long term.',
-    cta: 'Explore a partnership',
-    alt: 'Signing ceremony for a media partnership between Hiền Nương Farm and FPT Cần Thơ students; Châu Thị Nương, in a red áo dài, sits signing the agreement among a group of delegates',
-    caption: 'Media partnership signing with FPT Cần Thơ students · 26.06.2025',
-  },
-  zh: {
-    subject: '与 Hiền Nương Farm 合作',
-    eyebrow: '与 Hiền Nương 合作',
-    title: '携手从农业中创造可持续的价值。',
-    body: '我们欢迎在生产、分销以及可持续农业知识分享方面的合作。与 Hiền Nương 一起，让农场的产品更贴近消费者，提升越南农产品的价值。每一次同行，都是共同学习、长远发展的机会。',
-    cta: '探索合作',
-    alt: 'Hiền Nương 农场与 FPT 芹苴大学生媒体合作签约仪式；身穿红色奥黛的 Châu Thị Nương 坐着签署文件，周围是合影的代表们',
-    caption: '与 FPT 芹苴大学生签署媒体合作协议 · 2025.06.26',
-  },
-}[lang];
+const t = copy('trang-chu/08-hop-tac', lang);
 const subject = encodeURIComponent(t.subject);
 // Vietnamese links to /hop-tac/; other languages keep the email until it is translated.
 const ctaHref = pageHref('/hop-tac/', lang, `mailto:${contact.email}?subject=${subject}`);

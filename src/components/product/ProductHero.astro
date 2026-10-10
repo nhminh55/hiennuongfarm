@@ -1,4 +1,5 @@
 ---
+import { copy } from '../../data/copy';
 /**
  * Product page opening: name and provenance on the left, the product
  * photograph bleeding off the right edge. No overlay — the text never sits
@@ -22,11 +23,7 @@ interface Props {
 
 const lang = getLocale(Astro.url);
 const { product, origin, processHref = '#quy-trinh', contactHref = localizePath('/#hop-tac', lang) } = Astro.props;
-const t = {
-  vi: { home: 'Trang chủ', products: 'Sản phẩm', eyebrow: 'Sản vật từ trang trại', process: 'Tìm hiểu quy trình', contact: 'Liên hệ hợp tác' },
-  en: { home: 'Home', products: 'Products', eyebrow: 'Produce from the Farm', process: 'See the process', contact: 'Discuss a partnership' },
-  zh: { home: '首页', products: '产品', eyebrow: '农场物产', process: '了解流程', contact: '洽谈合作' },
-}[lang];
+const t = copy('san-pham/chung-dau-trang', lang);
 ---
 <section class="p-hero" aria-labelledby="product-title">
   <div class="container grid p-hero__grid">
