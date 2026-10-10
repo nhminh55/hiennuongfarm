@@ -56,6 +56,10 @@ vi:
   motto:
     - Từ đất,
     - trở về đất.
+  playCycle:
+    title: Một vòng nông trại
+    line: Bạn thử ghép lại vòng tuần hoàn nhé?
+    label: Ghé chơi
   filmEyebrow: Trải nghiệm nông trại
   filmTitle: Khám phá trang trại nấm
   filmBody: Theo chân chúng mình ghé thăm Hiền Nương Farm để khám phá những bịch phôi và quá trình làm nấm tuần hoàn như thế nào nhé!
@@ -67,17 +71,13 @@ vi:
     - Trên cùng một khu đất, Hiền Nương kết hợp sản xuất điện sạch và trồng nấm, đưa nguồn năng lượng tại chỗ vào công việc hằng ngày.
   solarCaption: Phía trên là hệ thống điện mặt trời. Phía dưới là không gian sản xuất nấm.
   solarFact: Điện mặt trời cho hoạt động trồng nấm
-  closingBody: Nếu bạn quan tâm đến sản phẩm, muốn tìm hiểu mô hình hoặc trao đổi cơ hội hợp tác, chúng tôi mong được trò chuyện cùng bạn.
-  closingTitle: Cùng tiếp nối những vòng giá trị.
-  watch: Xem phim
-  playCycle:
-    title: Một vòng nông trại
-    line: Bạn thử ghép lại vòng tuần hoàn nhé?
-    label: Ghé chơi
   playQuiz:
     title: Bạn hiểu nấm tới đâu?
     line: 5 câu hỏi nhỏ trước khi bạn đi tiếp.
     label: Ghé chơi
+  closingBody: Nếu bạn quan tâm đến sản phẩm, muốn tìm hiểu mô hình hoặc trao đổi cơ hội hợp tác, chúng tôi mong được trò chuyện cùng bạn.
+  closingTitle: Cùng tiếp nối những vòng giá trị.
+  watch: Xem phim
   nang_cao:
     description: 'Nông nghiệp tuần hoàn tại Hiền Nương Farm: từ phụ phẩm nông nghiệp đến nấm, trùn quế và nguồn dinh dưỡng cho cây trồng, cùng nguồn điện mặt trời tại trang trại.'
     live: 'Bước {n} trên {total}: {title}'
@@ -143,6 +143,10 @@ en:
   motto:
     - From the soil,
     - back to the soil.
+  playCycle:
+    title: Một vòng nông trại
+    line: Bạn thử ghép lại vòng tuần hoàn nhé?
+    label: Ghé chơi
   filmEyebrow: Farm experience
   filmTitle: Discover the mushroom farm
   filmBody: Come along with us to Hiền Nương Farm and discover the spawn bags and how mushrooms are grown in a cycle!
@@ -154,17 +158,13 @@ en:
     - On the same land, Hiền Nương combines clean power generation with mushroom growing, bringing energy made on site into everyday work.
   solarCaption: Above, the solar power system. Below, the space where the mushrooms are grown.
   solarFact: Solar electricity for growing mushrooms
-  closingBody: If you are interested in our products, would like to learn about the model or discuss working together, we would be glad to talk with you.
-  closingTitle: Carrying the cycles of value forward, together.
-  watch: Watch the film
-  playCycle:
-    title: Một vòng nông trại
-    line: Bạn thử ghép lại vòng tuần hoàn nhé?
-    label: Ghé chơi
   playQuiz:
     title: Bạn hiểu nấm tới đâu?
     line: 5 câu hỏi nhỏ trước khi bạn đi tiếp.
     label: Ghé chơi
+  closingBody: If you are interested in our products, would like to learn about the model or discuss working together, we would be glad to talk with you.
+  closingTitle: Carrying the cycles of value forward, together.
+  watch: Watch the film
   nang_cao:
     description: 'Circular agriculture at Hiền Nương Farm: from agricultural by-products to mushrooms, red worms and nourishment for crops, alongside solar power generated on the farm.'
     live: 'Step {n} of {total}: {title}'
@@ -230,6 +230,10 @@ zh:
   motto:
     - 源于土地，
     - 回归土地。
+  playCycle:
+    title: Một vòng nông trại
+    line: Bạn thử ghép lại vòng tuần hoàn nhé?
+    label: Ghé chơi
   filmEyebrow: 农场体验
   filmTitle: 探访菌菇农场
   filmBody: 跟随我们走进 Hiền Nương Farm，看看菌袋，了解菌菇循环种植的过程吧！
@@ -241,17 +245,13 @@ zh:
     - 在同一片土地上，Hiền Nương 将清洁发电与种植菌菇相结合，把就地产生的能源用于日常工作。
   solarCaption: 上方是太阳能发电系统，下方是菌菇生产空间。
   solarFact: 种植菌菇用电来自太阳能
-  closingBody: 如果您对我们的产品感兴趣，希望了解这一模式或洽谈合作，我们期待与您交流。
-  closingTitle: 一起延续价值的循环。
-  watch: 观看影片
-  playCycle:
-    title: Một vòng nông trại
-    line: Bạn thử ghép lại vòng tuần hoàn nhé?
-    label: Ghé chơi
   playQuiz:
     title: Bạn hiểu nấm tới đâu?
     line: 5 câu hỏi nhỏ trước khi bạn đi tiếp.
     label: Ghé chơi
+  closingBody: 如果您对我们的产品感兴趣，希望了解这一模式或洽谈合作，我们期待与您交流。
+  closingTitle: 一起延续价值的循环。
+  watch: 观看影片
   nang_cao:
     description: Hiền Nương Farm 的循环农业：从农业副产品到菌菇、红蚯蚓和作物养分，以及农场自产的太阳能电力。
     live: 第 {n} 步，共 {total} 步：{title}

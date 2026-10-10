@@ -1,6 +1,7 @@
 ---
 vi:
   home: Trang chủ
+  play: 'Ghé chơi: Hôm nay ăn nấm gì?'
   eyebrow: Sản vật từ trang trại
   ctaBody: Liên hệ với Hiền Nương để trao đổi về sản phẩm, phân phối và các hình thức hợp tác từ những dòng nấm của trang trại.
   ctaTitle: Trao đổi về sản phẩm và hợp tác.
@@ -9,6 +10,7 @@ vi:
     pageTitle: Sản phẩm
 en:
   home: Home
+  play: 'Ghé chơi: Hôm nay ăn nấm gì?'
   eyebrow: Produce from the Farm
   ctaBody: Contact Hiền Nương to discuss products, distribution and ways of partnering around the farm’s mushroom lines.
   ctaTitle: Talk with us about our products and partnership.
@@ -17,6 +19,7 @@ en:
     pageTitle: Products
 zh:
   home: 首页
+  play: 'Ghé chơi: Hôm nay ăn nấm gì?'
   eyebrow: 农场物产
   ctaBody: 欢迎联系 Hiền Nương，洽谈产品、分销以及围绕农场菌菇的各种合作方式。
   ctaTitle: 洽谈产品与合作事宜。

@@ -32,7 +32,7 @@ press:
         file: bt-netzero-ta-danh
         origin: E007__baotintuc.vn/E007__a3970f__r005.avif
         sizes: 640x404 1280x807
-    date: '2025-05-18'
+    date: 2025-05-18
     featured: true
     kind: article
     slug: bien-giac-mo-netzero-tu-trang-trai-nam
@@ -57,7 +57,7 @@ press:
         file: vnn-cong-nhan
         origin: E009__vietnamnet.vn/E009__ba0dea__r004.jpg
         sizes: 640x407 1280x815
-    date: '2025-09-28'
+    date: 2025-09-28
     featured: true
     kind: article
     slug: roi-buc-giang-nu-giao-vien-khoi-nghiep
@@ -88,7 +88,7 @@ press:
         file: nd-khmer-doi-ngu
         origin: E005__nhandan.vn/E005__ad1000__r001.avif
         sizes: 640x310 1000x484
-    date: '2025-09-05'
+    date: 2025-09-05
     featured: true
     kind: article
     slug: nguoi-phu-nu-khmer-khoi-nghiep-tu-trong-nam-huu-co
@@ -104,7 +104,7 @@ press:
       origin: E030__tapchivietnamhuongsac.vn/E030__14eef0__r001.jpg
       position: 30% 40%
       sizes: 640x480 1024x768
-    date: '2026-03-31'
+    date: 2026-03-31
     featured: true
     kind: article
     slug: co-giao-tieng-anh-trong-nam-ocop
@@ -121,7 +121,7 @@ press:
       file: vnb-phoi-nam
       origin: E042__vnbusiness.vn/E042__83ff7b__r002.jpg
       sizes: 640x480 1024x768
-    date: '2026-03-30'
+    date: 2026-03-30
     featured: true
     kind: article
     slug: bien-rom-ra-thanh-vang
@@ -138,7 +138,7 @@ press:
       origin: E018__danviet.vn/E018__dbb019__r002.jpg
       sizes: 640x341 1280x681 1800x958
     quote: Từng phôi nấm trước khi cung ứng ra thị trường đều được kiểm tra kỹ lưỡng, đảm bảo phôi nấm tốt nhất đến tay người tiêu dùng.
-    date: '2026-03-22'
+    date: 2026-03-22
     featured: true
     kind: article
     slug: chu-tich-hoi-nong-dan-tham-mo-hinh-trong-nam
@@ -148,7 +148,7 @@ press:
     byline: Thái Hà
     intro: Chặng đường từ trại nấm đầu tiên đến danh hiệu Nông dân Việt Nam xuất sắc năm 2025.
     lede: Năm 2025, chị Châu Thị Nương, ngụ xã Cô Tô, tỉnh An Giang, vinh dự được bình chọn là “Nông dân Việt Nam xuất sắc” với mô hình trồng nấm hiệu quả, bền vững và giàu tính sáng tạo.
-    date: '2026-03-03'
+    date: 2026-03-03
     featured: true
     kind: article
     slug: tu-trai-nam-nho-den-danh-hieu-nong-dan-viet-nam-xuat-sac-2025
@@ -157,7 +157,7 @@ press:
     headline: Làm giàu từ nấm sạch
     byline: Chúc Ly
     intro: Trang trại nấm sạch của chị Châu Thị Nương, nơi phụ phẩm nông nghiệp như rơm, trấu, mùn cưa trở thành nguyên liệu trồng nấm.
-    date: '2025-12-28'
+    date: 2025-12-28
     featured: true
     kind: article
     slug: lam-giau-tu-nam-sach
@@ -191,7 +191,7 @@ press:
     alternates:
       - outlet: Cổng Thông tin điện tử tỉnh An Giang
         url: https://angiang.gov.vn/vi/nu-nong-dan-xuat-sac-vung-bay-nui-an-giang
-    date: '2025-10-26'
+    date: 2025-10-26
     featured: true
     kind: article
     slug: nu-nong-dan-xuat-sac-vung-bay-nui
@@ -213,7 +213,7 @@ press:
     alternates:
       - outlet: Tin nhanh Chứng khoán
         url: https://www.tinnhanhchungkhoan.vn/chau-thi-nuong-giam-doc-htx-nong-nghiep-ta-danh-mo-loi-di-xanh-tu-nam-huu-co-post379112.html
-    date: '2025-10-23'
+    date: 2025-10-23
     featured: true
     kind: article
     slug: chau-thi-nuong-mo-loi-di-xanh-tu-nam-huu-co
@@ -237,7 +237,7 @@ press:
         file: btt-bay-nui-cay-meo
         origin: E008__dantocmiennui.baotintuc.vn/E008__ff552c__r003.avif
         sizes: 640x417 1280x834
-    date: '2025-09-20'
+    date: 2025-09-20
     featured: true
     kind: article
     slug: mo-huong-moi-nong-nghiep-xanh-o-long-bay-nui
@@ -246,7 +246,7 @@ press:
     headline: Tăng thu nhập nhờ làm nông lắp thêm điện mặt trời
     byline: Viễn Thông
     intro: Bài tổng hợp về các mô hình trồng trọt, chăn nuôi kết hợp pin mặt trời; trong đó có khu trồng nấm dưới mái pin của HTX Nông nghiệp Tà Đảnh.
-    date: '2025-02-26'
+    date: 2025-02-26
     featured: true
     kind: article
     slug: tang-thu-nhap-nho-lam-nong-lap-them-dien-mat-troi
@@ -275,7 +275,7 @@ press:
         file: tn-xuong
         origin: E003__thanhnien.vn/E003__05eaff__r005.jpg
         sizes: 640x640 1280x1280
-    date: '2024-07-07'
+    date: 2024-07-07
     featured: true
     kind: article
     slug: re-huong-trong-nam-nguoi-phu-nu-mien-tay
@@ -283,7 +283,7 @@ press:
   - outlet: Truyền hình Vĩnh Long
     headline: 'Khát vọng mùa vàng – Tập 92: Chị Châu Thị Nương với mô hình trồng nấm theo chuỗi tuần hoàn khép kín'
     intro: Phóng sự truyền hình trong chương trình “Khát vọng mùa vàng” về mô hình trồng nấm theo chuỗi tuần hoàn khép kín của chị Châu Thị Nương.
-    date: '2024-07-04'
+    date: 2024-07-04
     featured: true
     kind: video
     slug: khat-vong-mua-vang-tap-92
@@ -302,7 +302,7 @@ press:
       origin: E004__nhandan.vn/E004__6fb14d__r001.avif
       position: 40% 30%
       sizes: 640x360 800x450
-    date: '2024-06-30'
+    date: 2024-06-30
     featured: true
     kind: article
     slug: nam-moi-nang-nuong
@@ -319,7 +319,7 @@ press:
       file: bag-tuan-hoan
       origin: E011__baoangiang.com.vn/E011__6bee3f__r002.jpg
       sizes: 640x480 1024x768
-    date: '2024-03-14'
+    date: 2024-03-14
     featured: true
     kind: article
     slug: nong-nghiep-tuan-hoan-tu-duoc-lieu-tu-nhien
@@ -327,7 +327,7 @@ press:
   - outlet: Báo An Giang
     headline: Nông dân An Giang ứng dụng công nghệ cao vào sản xuất
     byline: Đặng Linh
-    date: '2025-12-17'
+    date: 2025-12-17
     kind: article
     slug: nong-dan-an-giang-ung-dung-cong-nghe-cao-vao-san-xuat
     url: https://baoangiang.com.vn/nong-dan-an-giang-ung-dung-cong-nghe-cao-vao-san-xuat-a470518.html
@@ -337,14 +337,14 @@ press:
     alternates:
       - outlet: Hội Nông dân Việt Nam
         url: https://www.hoinongdan.org.vn/trung-uong-hoi/chu-tich-t-u-hoi-nong-dan-viet-nam-luong-quoc-doan-tham-mo-hinh-cua-nong-dan-san-xuat-gioi-tai-an-giang-380436
-    date: '2026-03-06'
+    date: 2026-03-06
     kind: article
     slug: chu-tich-tu-hoi-nong-dan-tham-mo-hinh-nong-dan-san-xuat-gioi
     url: https://danviet.vn/chu-tich-tu-hoi-nong-dan-viet-nam-luong-quoc-doan-tham-mo-hinh-cua-nong-dan-san-xuat-gioi-tai-an-giang-d1407793.html
   - outlet: Báo Nhân Dân
     headline: Công bố 95 nông dân Việt Nam xuất sắc và nhà khoa học của nhà nông năm 2025
     byline: Thanh Trà
-    date: '2025-10-08'
+    date: 2025-10-08
     kind: article
     mention: true
     slug: cong-bo-95-nong-dan-viet-nam-xuat-sac-2025
@@ -352,7 +352,7 @@ press:
   - outlet: Báo An Giang
     headline: Nông dân Tri Tôn đẩy mạnh sản xuất, nâng cao thu nhập
     byline: Minh Đức
-    date: '2024-11-04'
+    date: 2024-11-04
     kind: article
     slug: nong-dan-tri-ton-day-manh-san-xuat
     url: https://baoangiang.com.vn/nong-dan-tri-ton-day-manh-san-xuat-nang-cao-thu-nhap-a408766.html
@@ -362,20 +362,20 @@ press:
     alternates:
       - outlet: Khuyến nông Đắk Lắk
         url: https://khuyennongdaklak.com.vn/an-giang-trong-nam-moi-den-theo-huong-tuan-hoan-khep-kin-10795.html
-    date: '2024-06-19'
+    date: 2024-06-19
     kind: article
     slug: trong-nam-moi-den-theo-huong-tuan-hoan-khep-kin
     url: https://angiang.gov.vn/vi/trong-nam-moi-den-theo-huong-tuan-hoan-khep-kin
   - outlet: Báo An Giang
     headline: Nông dân chuyển đổi tư duy sản xuất
     byline: Thanh Tiến
-    date: '2023-10-15'
+    date: 2023-10-15
     kind: article
     slug: nong-dan-chuyen-doi-tu-duy-san-xuat
     url: https://baoangiang.com.vn/nong-dan-chuyen-doi-tu-duy-san-xuat-a377198.html
   - outlet: Cổng thông tin Hội LHPN Việt Nam
     headline: Phụ nữ dân tộc Khmer vùng đồng bằng sông Cửu Long phát huy tài nguyên bản địa, sáng tạo khởi nghiệp
-    date: '2023-08-11'
+    date: 2023-08-11
     kind: article
     slug: phu-nu-khmer-dbscl-sang-tao-khoi-nghiep
     url: https://vwu.vn/vi_VN/web/guest/tin-chi-tiet/-/chi-tiet/phu-nu-dan-toc-khmer-vung-%C4%91ong-bang-song-cuu-long-phat-huy-tai-nguyen-ban-%C4%91ia-sang-tao-khoi-nghiep-58172-2.html
@@ -385,39 +385,39 @@ press:
     alternates:
       - outlet: Thế giới Tiếp thị (Dân Việt)
         url: https://thegioitiepthi.danviet.vn/doc-dao-san-pham-khoi-nghiep-20230224075746932-d19192.html
-    date: '2023-01-27'
+    date: 2023-01-27
     kind: article
     slug: doc-dao-san-pham-khoi-nghiep
     url: https://baoangiang.com.vn/doc-dao-san-pham-khoi-nghiep-a352309.html
   - outlet: Cổng thông tin Hội LHPN Việt Nam
     headline: 'An Giang: Mô hình “Nấm mối nàng Nương” mang thực phẩm sạch tới người tiêu dùng'
-    date: '2022-10-10'
+    date: 2022-10-10
     kind: article
     slug: an-giang-mo-hinh-nam-moi-nang-nuong
     url: https://vwu.vn/web/guest/tin-chi-tiet/-/chi-tiet/an-giang-mo-hinh-nam-moi-nang-nuong-mang-thuc-pham-sach-toi-nguoi-tieu-dung-50818-9.html
   - outlet: Báo An Giang
     headline: “Nấm mối nàng Nương”
     byline: Ánh Nguyên
-    date: '2022-08-25'
+    date: 2022-08-25
     kind: article
     slug: bao-an-giang-nam-moi-nang-nuong
     url: https://baoangiang.com.vn/-nam-moi-nang-nuong--a341198.html
   - outlet: Báo điện tử Dân Việt
     headline: 'Thi ảnh nông thôn Việt Nam 40 năm đổi mới: Đưa công nghệ xanh vào chuỗi sản xuất nấm tuần hoàn'
-    date: '2026-09-24'
+    date: 2026-09-24
     kind: article
     slug: thi-anh-dua-cong-nghe-xanh-vao-chuoi-san-xuat-nam-tuan-hoan
     url: https://danviet.vn/thi-anh-nong-thon-viet-nam-40-nam-doi-moi-dua-cong-nghe-xanh-vao-chuoi-san-xuat-nam-tuan-hoan-d1461950.html
   - outlet: Báo Phụ nữ Việt Nam
     headline: Ứng dụng công nghệ từ đồng ruộng ra thị trường số, nông dân miền Tây gặt "quả ngọt"
-    date: '2026-09-02'
+    date: 2026-09-02
     kind: article
     mention: true
     slug: ung-dung-cong-nghe-tu-dong-ruong-ra-thi-truong-so
     url: https://phunuvietnam.vn/ung-dung-cong-nghe-tu-dong-ruong-ra-thi-truong-so-nong-dan-mien-tay-gat-qua-ngot-238260823135529548.htm
   - outlet: Báo An Giang
     headline: Thới Sơn khai mở tiềm năng du lịch
-    date: '2026-07-06'
+    date: 2026-07-06
     kind: article
     mention: true
     slug: thoi-son-khai-mo-tiem-nang-du-lich
@@ -427,7 +427,7 @@ press:
     alternates:
       - outlet: Báo Phụ Nữ TP.HCM (địa chỉ cũ)
         url: https://www.phunuonline.com.vn/nong-nghiep-mien-tay-no-luc-chuyen-doi-xanh-a1585014.html
-    date: '2026-06-15'
+    date: 2026-06-15
     kind: article
     slug: nong-nghiep-mien-tay-no-luc-chuyen-doi-xanh
     url: https://tuoitre.vn/phunuonline/nong-nghiep-mien-tay-no-luc-chuyen-doi-xanh-1101585014.htm
@@ -436,79 +436,79 @@ press:
     alternates:
       - outlet: Báo Phụ Nữ TP.HCM (địa chỉ cũ)
         url: https://www.phunuonline.com.vn/thoi-quen-dot-dong-o-mien-tay-gay-lang-phi-tai-nguyen-va-o-nhiem-a1583890.html
-    date: '2026-06-01'
+    date: 2026-06-01
     kind: article
     slug: thoi-quen-dot-dong-o-mien-tay
     url: https://tuoitre.vn/phunuonline/thoi-quen-dot-dong-o-mien-tay-gay-lang-phi-tai-nguyen-va-o-nhiem-1101583890.htm
   - outlet: Báo An Giang
     headline: Chuyển kinh tế nâu thành xanh
-    date: '2026-05-27'
+    date: 2026-05-27
     kind: article
     mention: true
     slug: chuyen-kinh-te-nau-thanh-xanh
     url: https://baoangiang.com.vn/chuyen-kinh-te-nau-thanh-xanh-a486892.html
   - outlet: Báo An Giang
     headline: Gỡ khó để hợp tác xã phát triển
-    date: '2026-05-11'
+    date: 2026-05-11
     kind: article
     mention: true
     slug: go-kho-de-hop-tac-xa-phat-trien
     url: https://baoangiang.com.vn/go-kho-de-hop-tac-xa-phat-trien-a485133.html
   - outlet: Báo điện tử Dân Việt
     headline: Cô giáo ở An Giang đầu tư tiền tỷ lắp điện mặt trời ở trại nấm, bất ngờ nấm đẻ tua tủa, tạo chuỗi sản xuất xanh
-    date: '2026-03-30'
+    date: 2026-03-30
     kind: article
     slug: co-giao-o-an-giang-lap-dien-mat-troi-o-trai-nam
     url: https://danviet.vn/co-giao-o-an-giang-dau-tu-tien-ty-lap-dien-mat-troi-o-trai-nam-bat-ngo-nam-de-tua-tua-tao-chuoi-san-xuat-xanh-d1414455.html
   - outlet: Báo Nhân Dân
     headline: Tiềm ẩn nhiều nguy hại từ thói quen đốt rơm rạ trên đồng
-    date: '2026-03-29'
+    date: 2026-03-29
     kind: article
     mention: true
     slug: tiem-an-nhieu-nguy-hai-tu-thoi-quen-dot-rom-ra
     url: https://nhandan.vn/tiem-an-nhieu-nguy-hai-tu-thoi-quen-dot-rom-ra-tren-dong-post951838.html
   - outlet: Thiên nhiên & Môi trường
     headline: Nông nghiệp An Giang tăng tốc chuyển đổi số
-    date: '2026-03-27'
+    date: 2026-03-27
     kind: article
     mention: true
     slug: nong-nghiep-an-giang-tang-toc-chuyen-doi-so
     url: https://thiennhienmoitruong.vn/nong-nghiep-an-giang-tang-toc-chuyen-doi-so.html
   - outlet: Báo Phụ nữ Việt Nam
     headline: 30 chủ dự án tiêu biểu đoạt giải "Phụ nữ Việt tự tin làm kinh tế"
-    date: '2026-03-23'
+    date: 2026-03-23
     kind: article
     mention: true
     slug: 30-chu-du-an-doat-giai-phu-nu-viet-tu-tin-lam-kinh-te
     url: https://phunuvietnam.vn/30-chu-du-an-tieu-bieu-doat-giai-phu-nu-viet-tu-tin-lam-kinh-te-238260323141305731.htm
   - outlet: Hội Nông dân Việt Nam
     headline: 'Đoàn Đại biểu Quốc hội An Giang: Dấu ấn người đại biểu của nông dân và kỳ vọng “vươn mình” trong nhiệm kỳ mới'
-    date: '2026-02-26'
+    date: 2026-02-26
     kind: article
     mention: true
     slug: doan-dai-bieu-quoc-hoi-an-giang-dau-an-nguoi-dai-bieu-cua-nong-dan
     url: https://hoinongdan.org.vn/trung-uong-hoi/doan-dai-bieu-quoc-hoi-an-giang-dau-an-nguoi-dai-bieu-cua-nong-dan-va-ky-vong-vuon-minh-trong-nhiem-ky-moi-380395
   - outlet: Doanh nghiệp & Tiếp thị
     headline: Châu Thị Nương – hình mẫu nông dân trong xây dựng nông thôn mới và phát triển sản phẩm OCOP
-    date: '2026-02-18'
+    date: 2026-02-18
     kind: article
     slug: chau-thi-nuong-hinh-mau-nong-dan-xay-dung-nong-thon-moi
     url: https://dntt.vn/chau-thi-nuong-hinh-mau-nong-dan-trong-xay-dung-nong-thon-moi-va-phat-trien-san-pham-ocop-d13644.html
   - outlet: Báo An Giang
     headline: Tất bật sản xuất hàng Tết
-    date: '2026-02-12'
+    date: 2026-02-12
     kind: article
     slug: tat-bat-san-xuat-hang-tet
     url: https://baoangiang.com.vn/tat-bat-san-xuat-hang-tet-a476831.html
   - outlet: Báo Tuổi Trẻ
     headline: Quà Tết với sản phẩm OCOP "sức khỏe"
-    date: '2026-01-30'
+    date: 2026-01-30
     kind: article
     slug: qua-tet-voi-san-pham-ocop-suc-khoe
     url: https://tuoitre.vn/qua-tet-voi-san-pham-ocop-suc-khoe-20260130080016094.htm
   - outlet: Báo An Giang
     headline: Từ cơ sở gửi gắm niềm tin, kiến nghị đột phá cho nhiệm kỳ mới
-    date: '2026-01-18'
+    date: 2026-01-18
     kind: article
     mention: true
     slug: tu-co-so-gui-gam-niem-tin-kien-nghi-dot-pha
@@ -520,46 +520,46 @@ press:
         url: https://cms.baochinhphu.vn/cap-nhat-hoi-nghi-thu-tuong-chinh-phu-doi-thoai-voi-nong-dan-nam-2025-102251210080135023.htm
       - outlet: Cổng TTĐT Chính phủ – Xây dựng chính sách
         url: https://xaydungchinhsach.chinhphu.vn/thu-tuong-doi-thoai-voi-nong-dan-nam-2025-119251210085703666.htm
-    date: '2025-12-10'
+    date: 2025-12-10
     kind: article
     mention: true
     slug: tong-thuat-hoi-nghi-thu-tuong-doi-thoai-voi-nong-dan-2025
     url: https://baochinhphu.vn/cap-nhat-hoi-nghi-thu-tuong-chinh-phu-doi-thoai-voi-nong-dan-nam-2025-102251210080135023.htm
   - outlet: Báo Thanh Niên
     headline: Nông dân kể chuyện lên núi 'hứng sóng' livestream bán nông sản
-    date: '2025-12-10'
+    date: 2025-12-10
     kind: article
     mention: true
     slug: nong-dan-ke-chuyen-len-nui-hung-song-livestream
     url: https://thanhnien.vn/nong-dan-ke-chuyen-len-nui-hung-song-livestream-ban-nong-san-185251210143337259.htm
   - outlet: Báo An Giang
     headline: Nông dân Cô Tô làm chủ kinh tế nông thôn
-    date: '2025-12-01'
+    date: 2025-12-01
     kind: article
     slug: nong-dan-co-to-lam-chu-kinh-te-nong-thon
     url: https://baoangiang.com.vn/nong-dan-co-to-lam-chu-kinh-te-nong-thon-a468674.html
   - outlet: Báo Cần Thơ
     headline: Triển vọng sản xuất nấm theo hướng tuần hoàn, khép kín
-    date: '2025-11-26'
+    date: 2025-11-26
     kind: article
     slug: trien-vong-san-xuat-nam-theo-huong-tuan-hoan-khep-kin
     url: https://baocantho.com.vn/trien-vong-san-xuat-nam-theo-huong-tuan-hoan-khep-kin-a194527.html
   - outlet: Hội Nông dân Việt Nam
     headline: Tổng Bí thư Tô Lâm gặp mặt các nông dân xuất sắc, Nhà khoa học của Nhà nông tiêu biểu
-    date: '2025-10-15'
+    date: 2025-10-15
     kind: article
     mention: true
     slug: tong-bi-thu-gap-mat-nong-dan-xuat-sac-2025
     url: https://www.hoinongdan.org.vn/hoat-dong-hoi/tong-bi-thu-to-lam-gap-mat-cac-nong-dan-xuat-sac-nha-khoa-hoc-cua-nha-nong-tieu-bieu-380043
   - outlet: Báo điện tử Dân Việt
     headline: Nhặt thứ rác gì mang về nhà mà một "chị đẹp" An Giang nay là Nông dân Việt Nam xuất sắc 2025?
-    date: '2025-09-12'
+    date: 2025-09-12
     kind: article
     slug: nhat-thu-rac-gi-mang-ve-nha-chi-dep-an-giang
     url: https://danviet.vn/nhat-thu-rac-gi-mang-ve-nha-ma-mot-chi-dep-an-giang-nay-la-nong-dan-viet-nam-xuat-sac-d1360947.html
   - outlet: Báo điện tử Dân Việt
     headline: Một nữ giám đốc HTX ở tỉnh An Giang mới "biến" thứ rác gì mà ra bộn tiền, 10 người khen cả 10?
-    date: '2025-07-19'
+    date: 2025-07-19
     kind: article
     slug: mot-nu-giam-doc-htx-o-an-giang-bien-thu-rac
     url: https://danviet.vn/mot-nu-giam-doc-htx-o-tinh-an-giang-moi-bien-thu-rac-gi-ma-ra-bon-tien-10-nguoi-khen-ca-10-d1348548.html
@@ -568,39 +568,39 @@ press:
     alternates:
       - outlet: Trường Đại học FPT
         url: https://daihoc.fpt.edu.vn/trai-nghiem-sinh-vien/hoat-dong-sinh-vien/sinh-vien-truong-dai-hoc-fpt-phan-hieu-can-tho-ky-ket-hop-tac-thuc-hien-truyen-thong-voi-doanh-nghiep/
-    date: '2025-06-28'
+    date: 2025-06-28
     kind: article
     slug: sinh-vien-fpt-can-tho-ky-ket-hop-tac-truyen-thong
     url: https://baocantho.com.vn/sinh-vien-truong-dai-hoc-fpt-phan-hieu-can-tho-ky-ket-hop-tac-thuc-hien-truyen-thong-voi-doanh-nghie-a187954.html
   - outlet: Báo An Giang
     headline: Tri Tôn công nhận thêm 4 sản phẩm đạt tiêu chuẩn OCOP 3 sao
-    date: '2025-04-26'
+    date: 2025-04-26
     kind: article
     mention: true
     slug: tri-ton-cong-nhan-them-4-san-pham-ocop-3-sao
     url: https://baoangiang.com.vn/tri-ton-cong-nhan-them-4-san-pham-dat-tieu-chuan-ocop-3-sao-a419698.html
   - outlet: VietnamPlus – TTXVN
     headline: 'Phụ nữ ĐBSCL và cuộc chuyển dịch Xanh: Năng lượng mới, tầm nhìn mới'
-    date: '2025-04-07'
+    date: 2025-04-07
     kind: article
     slug: phu-nu-dbscl-va-cuoc-chuyen-dich-xanh
     url: https://www.vietnamplus.vn/phu-nu-dbscl-va-cuoc-chuyen-dich-xanh-nang-luong-moi-tam-nhin-moi-post1025227.vnp
   - outlet: Vietnam Agriculture – Báo Nông nghiệp và Môi trường
     headline: 'Cultivating medicinal mushrooms under solar panels: An economic and environmental solution'
-    date: '2025-03-01'
+    date: 2025-03-01
     kind: article
     slug: cultivating-medicinal-mushrooms-under-solar-panels
     url: https://van.nongnghiepmoitruong.vn/cultivating-medicinal-mushrooms-under-solar-panels-an-economic-and-environmental-solution-d423294.html
   - outlet: Hội Nông dân Việt Nam
     headline: Tập huấn kỹ năng truyền thông cho cán bộ, hội viên Hội Nông dân tại Cà Mau và An Giang
-    date: '2024-08-23'
+    date: 2024-08-23
     kind: article
     mention: true
     slug: tap-huan-ky-nang-truyen-thong-hoi-nong-dan-ca-mau-an-giang
     url: https://www.hoinongdan.org.vn/trung-uong-hoi/tap-huan-ky-nang-truyen-thong-cho-can-bo-hoi-vien-hoi-nong-dan-tai-ca-mau-va-an-giang-289657
   - outlet: Doanh nghiệp & Thương hiệu
     headline: Chị nông dân trồng loại cây "siêu sạch", nhẹ nhàng thu gần 1 tỷ đồng/năm
-    date: '2024-08-22'
+    date: 2024-08-22
     kind: article
     slug: chi-nong-dan-trong-loai-cay-sieu-sach
     url: https://doanhnghiepthuonghieu.vn/chi-nong-dan-trong-loai-cay-sieu-sach-nhe-nhang-thu-gan-1-ty-dong-nam1-p58316.html
@@ -609,66 +609,66 @@ press:
     alternates:
       - outlet: Báo Phụ Nữ TP.HCM (địa chỉ cũ)
         url: https://www.phunuonline.com.vn/tao-viec-lam-cho-phu-nu-nong-thon-bang-nghe-trong-nam-a1525754.html
-    date: '2024-08-15'
+    date: 2024-08-15
     kind: article
     slug: tao-viec-lam-cho-phu-nu-nong-thon-bang-nghe-trong-nam
     url: https://tuoitre.vn/phunuonline/tao-viec-lam-cho-phu-nu-nong-thon-bang-nghe-trong-nam-1101525754.htm
   - outlet: VOV Giao thông
     headline: Nữ giám đốc mê làm kinh tế tuần hoàn khép kín
-    date: '2024-06-24'
+    date: 2024-06-24
     kind: audio
     slug: nu-giam-doc-me-lam-kinh-te-tuan-hoan-khep-kin
     url: https://vovgiaothong.vn/newsaudio/nu-giam-doc-me-lam-kinh-te-tuan-hoan-khep-kin-d39522.html
   - outlet: Báo An Giang
     headline: Hỗ trợ phụ nữ Chợ Mới khởi nghiệp
-    date: '2024-03-21'
+    date: 2024-03-21
     kind: article
     mention: true
     slug: ho-tro-phu-nu-cho-moi-khoi-nghiep
     url: https://baoangiang.com.vn/ho-tro-phu-nu-cho-moi-khoi-nghiep-a390965.html
   - outlet: Báo Cần Thơ
     headline: Thu nhập trăm triệu mỗi năm nhờ trồng nấm mối đen
-    date: '2024-03-21'
+    date: 2024-03-21
     kind: article
     slug: thu-nhap-tram-trieu-moi-nam-nho-trong-nam-moi-den
     url: https://baocantho.com.vn/thu-nhap-tram-trieu-moi-nam-nho-trong-nam-moi-den-a171459.html
   - outlet: Cổng thông tin Hội LHPN Việt Nam
     headline: 'Thực hiện chương trình mục tiêu quốc gia phát triển vùng dân tộc thiểu số và miền núi: Tích cực triển khai các dự án trong Chương trình Mục tiêu quốc gia'
-    date: '2023-12-06'
+    date: 2023-12-06
     kind: article
     mention: true
     slug: tich-cuc-trien-khai-cac-du-an-chuong-trinh-muc-tieu-quoc-gia
     url: https://vwu.vn/web/guest/tin-chi-tiet/-/chi-tiet/thuc-hien-chuong-trinh-muc-tieu-quoc-gia-phat-trien-vung-dan-toc-thieu-so-va-mien-nui-tich-cuc-trien-khai-cac-du-an-trong-chuong-trinh-muc-tieu-quoc-gia-60755-6901.html
   - outlet: Thời báo Tài chính Việt Nam
     headline: Tổ chức Vòng chung kết Sáng kiến ESG Việt Nam 2023 để chọn 3 doanh nghiệp chiến thắng
-    date: '2023-09-09'
+    date: 2023-09-09
     kind: article
     mention: true
     slug: to-chuc-vong-chung-ket-sang-kien-esg-viet-nam-2023
     url: https://thoibaotaichinhvietnam.vn/to-chuc-vong-chung-ket-sang-kien-esg-viet-nam-2023-de-chon-3-doanh-nghiep-chien-thang-135459.html
   - outlet: Báo Đầu tư
     headline: 10 doanh nghiệp “so găng” tại Vòng chung kết Sáng kiến ESG Việt Nam 2023
-    date: '2023-09-08'
+    date: 2023-09-08
     kind: article
     mention: true
     slug: 10-doanh-nghiep-so-gang-vong-chung-ket-sang-kien-esg-2023
     url: https://baodautu.vn/10-doanh-nghiep-so-gang-tai-vong-chung-ket-sang-kien-esg-viet-nam-2023-d198122.html
   - outlet: VnEconomy
     headline: Top 3 doanh nghiệp đạt Sáng kiến Việt Nam 2023 sẽ được công bố vào tháng 10/2023
-    date: '2023-09-08'
+    date: 2023-09-08
     kind: article
     mention: true
     slug: top-3-doanh-nghiep-dat-sang-kien-viet-nam-2023
     url: https://vneconomy.vn/top-3-doanh-nghiep-dat-sang-kien-viet-nam-2023-se-duoc-cong-bo-vao-thang-10-2023.htm
   - outlet: Báo Phụ nữ Việt Nam
     headline: Trồng nấm mối đen để mang thực phẩm sạch đến người tiêu dùng
-    date: '2023-04-05'
+    date: 2023-04-05
     kind: article
     slug: trong-nam-moi-den-de-mang-thuc-pham-sach
     url: https://phunuvietnam.vn/trong-nam-moi-den-de-mang-thuc-pham-sach-den-nguoi-tieu-dung-20230405144535187.htm
   - outlet: Báo Tin tức và Dân tộc – TTXVN
     headline: Tạo sự khác biệt cho sản phẩm OCOP
-    date: '2023-01-31'
+    date: 2023-01-31
     kind: article
     slug: tao-su-khac-biet-cho-san-pham-ocop
     url: https://baotintuc.vn/kinh-te/tao-su-khac-biet-cho-san-pham-ocop-20230131105311312.htm

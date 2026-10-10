@@ -177,8 +177,12 @@ window.ADMIN_GUIDE = {
     "③ Tiêu đề"
    ],
    [
+    "groups",
+    "④ Ba thẻ"
+   ],
+   [
     "more",
-    "④ Nút “Xem chi tiết”"
+    "⑤ Nút “Xem chi tiết”"
    ]
   ]
  },
@@ -443,16 +447,120 @@ window.ADMIN_GUIDE = {
     "① Chữ “Trang chủ” trong đường dẫn"
    ],
    [
+    "play",
+    "② Liên kết trò chơi “Ghé chơi”"
+   ],
+   [
     "eyebrow",
-    "② Chữ nhỏ trên tiêu đề"
+    "③ Chữ nhỏ trên tiêu đề"
    ],
    [
     "ctaBody",
-    "③ Đoạn liên hệ cuối trang"
+    "④ Đoạn liên hệ cuối trang"
    ],
    [
     "ctaTitle",
-    "④ Tiêu đề phần liên hệ cuối trang"
+    "⑤ Tiêu đề phần liên hệ cuối trang"
+   ]
+  ]
+ },
+ "showroom-khung": {
+  "image": "huong-dan/san-pham-showroom-khung.jpg",
+  "url": "/san-pham/",
+  "fields": [
+   [
+    "count",
+    "① Chữ đếm sản phẩm"
+   ],
+   [
+    "groups",
+    "② Tên hai nhóm"
+   ],
+   [
+    "ask",
+    "③ Nút liên hệ tư vấn"
+   ],
+   [
+    "call",
+    "④ Nút gọi điện"
+   ]
+  ]
+ },
+ "showroom-tab": {
+  "image": "huong-dan/san-pham-showroom-tab.jpg",
+  "url": "/san-pham/",
+  "fields": [
+   [
+    "tabs",
+    "① Tên các tab"
+   ],
+   [
+    "detail",
+    "② Liên kết “Xem trang sản phẩm”"
+   ],
+   [
+    "compositionTitle",
+    "Tab Thành phần: tiêu đề"
+   ],
+   [
+    "ingredients",
+    "Tab Thành phần: chữ “Thành phần”"
+   ],
+   [
+    "preparation",
+    "Tab Cách dùng: chữ “Cách dùng”"
+   ],
+   [
+    "storage",
+    "Tab Cách dùng: chữ “Bảo quản”"
+   ],
+   [
+    "recipes",
+    "Tab Cách dùng: tiêu đề món gợi ý"
+   ],
+   [
+    "recipeIngredients",
+    "Món gợi ý: chữ “Nguyên liệu”"
+   ],
+   [
+    "recipeSteps",
+    "Món gợi ý: chữ “Cách làm”"
+   ],
+   [
+    "time",
+    "Món gợi ý: chữ “Thời gian”"
+   ],
+   [
+    "servings",
+    "Món gợi ý: chữ “Khẩu phần”"
+   ],
+   [
+    "recordsTitle",
+    "Tab Hồ sơ: tiêu đề"
+   ],
+   [
+    "issuer",
+    "Tab Hồ sơ: chữ “Đơn vị cấp”"
+   ],
+   [
+    "reference",
+    "Tab Hồ sơ: chữ “Số”"
+   ],
+   [
+    "date",
+    "Tab Hồ sơ: chữ “Ngày”"
+   ],
+   [
+    "scope",
+    "Tab Hồ sơ: chữ “Phạm vi”"
+   ],
+   [
+    "viewDocument",
+    "Tab Hồ sơ: nút xem tài liệu"
+   ],
+   [
+    "reviewsTitle",
+    "Tab Nhận xét: tiêu đề"
    ]
   ]
  },
@@ -638,6 +746,16 @@ window.ADMIN_GUIDE = {
    ]
   ]
  },
+ "kiem-nghiem": {
+  "image": "huong-dan/san-pham-kiem-nghiem.jpg",
+  "url": "/san-pham/nam-moi-den/",
+  "fields": [
+   [
+    "products",
+    "① Sản phẩm"
+   ]
+  ]
+ },
  "nong-nghiep-tuan-hoan": {
   "image": "huong-dan/tuan-hoan-nong-nghiep-tuan-hoan.jpg",
   "url": "/nong-nghiep-tuan-hoan/",
@@ -667,48 +785,56 @@ window.ADMIN_GUIDE = {
     "⑥ Câu khẩu hiệu giữa vòng"
    ],
    [
+    "playCycle",
+    "⑦ Lời mời chơi 1"
+   ],
+   [
     "filmEyebrow",
-    "⑦ Phim · chữ nhỏ"
+    "⑧ Phim · chữ nhỏ"
    ],
    [
     "filmTitle",
-    "⑧ Phim · tiêu đề"
+    "⑨ Phim · tiêu đề"
    ],
    [
     "filmBody",
-    "⑨ Phim · đoạn giới thiệu"
+    "⑩ Phim · đoạn giới thiệu"
    ],
    [
     "filmNote",
-    "⑩ Phim · dòng ghi chú"
+    "⑪ Phim · dòng ghi chú"
    ],
    [
     "solarEyebrow",
-    "⑪ Điện mặt trời · chữ nhỏ"
+    "⑫ Điện mặt trời · chữ nhỏ"
    ],
    [
     "solarTitle",
-    "⑫ Điện mặt trời · tiêu đề"
+    "⑬ Điện mặt trời · tiêu đề"
    ],
    [
     "solarBody",
-    "⑬ Điện mặt trời · các đoạn văn"
+    "⑭ Điện mặt trời · các đoạn văn"
    ],
    [
     "solarCaption",
-    "⑭ Điện mặt trời · chú thích ảnh"
+    "⑮ Điện mặt trời · chú thích ảnh"
    ],
    [
     "solarFact",
-    "⑮ Điện mặt trời · dòng dưới số 100%"
+    "⑯ Điện mặt trời · dòng dưới số 100%"
+   ],
+   [
+    "playQuiz",
+    "⑰ Lời mời chơi 2"
    ],
    [
     "closingBody",
-    "⑯ Phần kết · đoạn văn"
+    "⑱ Phần kết · đoạn văn"
    ],
    [
     "closingTitle",
-    "⑰ Phần kết · tiêu đề"
+    "⑲ Phần kết · tiêu đề"
    ],
    [
     "watch",
@@ -766,6 +892,80 @@ window.ADMIN_GUIDE = {
    ]
   ]
  },
+ "gioi-thieu": {
+  "image": "huong-dan/hop-tac-gioi-thieu.jpg",
+  "url": "/hop-tac/",
+  "fields": [
+   [
+    "home",
+    "① Đường dẫn: chữ “Trang chủ”"
+   ],
+   [
+    "title",
+    "② Tên trang"
+   ],
+   [
+    "lead",
+    "③ Đoạn giới thiệu"
+   ],
+   [
+    "eyebrow",
+    "④ Chữ nhỏ trên tiêu đề"
+   ],
+   [
+    "heading",
+    "⑤ Tiêu đề"
+   ]
+  ]
+ },
+ "huong-hop-tac": {
+  "image": "huong-dan/hop-tac-huong-hop-tac.jpg",
+  "url": "/hop-tac/",
+  "fields": [
+   [
+    "hint",
+    "① Lời nhắc chọn hướng"
+   ],
+   [
+    "directions",
+    "② Ba hướng hợp tác"
+   ],
+   [
+    "centreWith",
+    "③ Chữ giữa tam giác (dòng 1)"
+   ],
+   [
+    "centreBrand",
+    "④ Chữ giữa tam giác (dòng 2)"
+   ]
+  ]
+ },
+ "doi-tac": {
+  "image": "huong-dan/hop-tac-doi-tac.jpg",
+  "url": "/hop-tac/",
+  "fields": [
+   [
+    "eyebrow",
+    "① Chữ nhỏ trên tiêu đề"
+   ],
+   [
+    "lead",
+    "② Đoạn giới thiệu"
+   ],
+   [
+    "title",
+    "③ Tiêu đề"
+   ],
+   [
+    "partners",
+    "④ Đối tác"
+   ],
+   [
+    "more",
+    "Chữ liên kết xem tư liệu"
+   ]
+  ]
+ },
  "lien-he": {
   "image": "huong-dan/chung-lien-he.jpg",
   "url": "/",
@@ -808,6 +1008,436 @@ window.ADMIN_GUIDE = {
    ]
   ]
  },
+ "chung": {
+  "image": "huong-dan/choi-cung-nong-trai-chung.jpg",
+  "url": "/choi-cung-nong-trai/",
+  "fields": [
+   [
+    "title",
+    "① Tiêu đề trang"
+   ],
+   [
+    "home",
+    "② Đường dẫn: chữ “Trang chủ”"
+   ],
+   [
+    "section",
+    "③ Tên mục (đường dẫn và chữ nhỏ trên tiêu đề các trò chơi)"
+   ],
+   [
+    "eyebrow",
+    "④ Chữ nhỏ trên tiêu đề"
+   ],
+   [
+    "intro",
+    "⑤ Câu giới thiệu"
+   ],
+   [
+    "activities",
+    "⑥ Ba trò chơi"
+   ],
+   [
+    "play_label",
+    "⑦ Chữ trên nút “Ghé chơi”"
+   ],
+   [
+    "note",
+    "⑧ Ghi chú cuối trang"
+   ],
+   [
+    "all_activities",
+    "⑨ Liên kết “Tất cả hoạt động” (cuối trang trò chơi)"
+   ],
+   [
+    "no_login",
+    "Chữ sau thời lượng (Không cần đăng nhập)"
+   ],
+   [
+    "widget_title",
+    "Tiêu đề thẻ “Ghé chơi” ở mép phải các trang"
+   ],
+   [
+    "widget_all",
+    "Liên kết cuối thẻ “Ghé chơi”"
+   ]
+  ]
+ },
+ "am-thanh": {
+  "image": "huong-dan/choi-cung-nong-trai-am-thanh.jpg",
+  "url": "/choi-cung-nong-trai/mot-vong-nong-trai/",
+  "fields": [
+   [
+    "sound",
+    "① Tên nút Âm thanh"
+   ],
+   [
+    "music",
+    "② Tên nút Nhạc nền"
+   ],
+   [
+    "note",
+    "③ Ghi chú dưới nút"
+   ],
+   [
+    "off",
+    "Trạng thái Tắt"
+   ],
+   [
+    "on",
+    "Trạng thái Bật"
+   ],
+   [
+    "on_tap",
+    "Trạng thái Bật · chạm để phát"
+   ],
+   [
+    "remembered",
+    "Thông báo khi đã nhớ lựa chọn"
+   ],
+   [
+    "turned_on",
+    "Thông báo khi bật"
+   ],
+   [
+    "turned_off",
+    "Thông báo khi tắt"
+   ],
+   [
+    "blocked",
+    "Thông báo khi trình duyệt chặn âm thanh"
+   ],
+   [
+    "paused",
+    "Thông báo khi âm thanh tạm dừng"
+   ]
+  ]
+ },
+ "mot-vong-nong-trai": {
+  "image": "huong-dan/choi-cung-nong-trai-mot-vong-nong-trai.jpg",
+  "url": "/choi-cung-nong-trai/mot-vong-nong-trai/",
+  "fields": [
+   [
+    "guide_eyebrow",
+    "① Khung hướng dẫn: chữ nhỏ"
+   ],
+   [
+    "guide_title",
+    "② Khung hướng dẫn: tiêu đề"
+   ],
+   [
+    "placed",
+    "③ Nhãn “Đã ghép”"
+   ],
+   [
+    "steps",
+    "④ Năm bước"
+   ],
+   [
+    "guide_text",
+    "⑤ Khung hướng dẫn: đoạn văn"
+   ],
+   [
+    "hint_button",
+    "⑥ Nút Gợi ý"
+   ],
+   [
+    "reset_button",
+    "⑦ Nút Chơi lại"
+   ],
+   [
+    "start",
+    "⑧ Lời nhắn lúc bắt đầu"
+   ],
+   [
+    "progress",
+    "Tiến độ"
+   ],
+   [
+    "selected",
+    "Khi chọn mảnh"
+   ],
+   [
+    "incorrect",
+    "Khi đặt sai chỗ"
+   ],
+   [
+    "empty",
+    "Khi chưa chọn mảnh"
+   ],
+   [
+    "occupied",
+    "Khi chỗ đã ghép"
+   ],
+   [
+    "finished",
+    "Khi ghép xong"
+   ],
+   [
+    "hint",
+    "Gợi ý"
+   ],
+   [
+    "restarted",
+    "Khi chơi lại"
+   ],
+   [
+    "complete_eyebrow",
+    "Hoàn thành: chữ nhỏ"
+   ],
+   [
+    "complete_title",
+    "Hoàn thành: tiêu đề"
+   ],
+   [
+    "complete_text",
+    "Hoàn thành: đoạn văn"
+   ],
+   [
+    "complete_link",
+    "Hoàn thành: liên kết"
+   ],
+   [
+    "noscript",
+    "Khi tắt JavaScript: câu trước liên kết"
+   ],
+   [
+    "noscript_link",
+    "Khi tắt JavaScript: chữ liên kết"
+   ]
+  ]
+ },
+ "hom-nay-an-nam-gi": {
+  "image": "huong-dan/choi-cung-nong-trai-hom-nay-an-nam-gi.jpg",
+  "url": "/choi-cung-nong-trai/hom-nay-an-nam-gi/",
+  "fields": [
+   [
+    "initial_eyebrow",
+    "① Lúc đầu: chữ nhỏ"
+   ],
+   [
+    "flavor_question",
+    "② Câu hỏi 01"
+   ],
+   [
+    "initial_title",
+    "③ Lúc đầu: tiêu đề"
+   ],
+   [
+    "flavors",
+    "④ Các vị"
+   ],
+   [
+    "time_question",
+    "⑤ Câu hỏi 02"
+   ],
+   [
+    "times",
+    "⑥ Các mức thời gian"
+   ],
+   [
+    "pantry_question",
+    "⑦ Câu hỏi 03"
+   ],
+   [
+    "pantry_note",
+    "⑧ Ghi chú câu 03"
+   ],
+   [
+    "recipes",
+    "⑨ Món ăn"
+   ],
+   [
+    "pantry",
+    "⑩ Nguyên liệu có sẵn"
+   ],
+   [
+    "submit",
+    "⑪ Nút gợi ý món"
+   ],
+   [
+    "disclosure",
+    "⑫ Ghi chú dưới nút"
+   ],
+   [
+    "initial_text",
+    "⑬ Lúc đầu: đoạn văn"
+   ],
+   [
+    "no_match_eyebrow",
+    "Không có món: chữ nhỏ"
+   ],
+   [
+    "no_match_title",
+    "Không có món: tiêu đề"
+   ],
+   [
+    "no_match",
+    "Không có món: lời nhắn"
+   ],
+   [
+    "relax_button",
+    "Nút Chọn Thảnh thơi"
+   ],
+   [
+    "result_eyebrow",
+    "Kết quả: chữ nhỏ"
+   ],
+   [
+    "recipe_meta",
+    "Kết quả: dòng thông tin"
+   ],
+   [
+    "match_some",
+    "Khi dùng được nguyên liệu đã chọn"
+   ],
+   [
+    "match_none",
+    "Khi không dùng nguyên liệu đã chọn"
+   ],
+   [
+    "shopping_title",
+    "Tiêu đề “Cần chuẩn bị thêm”"
+   ],
+   [
+    "shopping_note",
+    "Ghi chú “Cần chuẩn bị thêm”"
+   ],
+   [
+    "show_details",
+    "Nút Xem cách nấu"
+   ],
+   [
+    "hide_details",
+    "Nút Thu gọn công thức"
+   ],
+   [
+    "alternative_button",
+    "Nút Thử món khác"
+   ],
+   [
+    "alternative_one",
+    "Khi chỉ có một món"
+   ],
+   [
+    "alternative_many",
+    "Khi có nhiều món"
+   ],
+   [
+    "product_link",
+    "Liên kết sản phẩm"
+   ],
+   [
+    "suggested",
+    "Thông báo gợi ý"
+   ],
+   [
+    "changed",
+    "Khi đổi lựa chọn"
+   ],
+   [
+    "details_meta",
+    "Công thức: dòng thông tin"
+   ],
+   [
+    "ingredients_title",
+    "Tiêu đề “Nguyên liệu”"
+   ],
+   [
+    "steps_title",
+    "Tiêu đề “Cách nấu”"
+   ],
+   [
+    "noscript",
+    "Khi tắt JavaScript"
+   ]
+  ]
+ },
+ "ban-hieu-nam-toi-dau": {
+  "image": "huong-dan/choi-cung-nong-trai-ban-hieu-nam-toi-dau.jpg",
+  "url": "/choi-cung-nong-trai/ban-hieu-nam-toi-dau/",
+  "fields": [
+   [
+    "questions",
+    "① Câu hỏi"
+   ],
+   [
+    "next",
+    "② Nút Câu tiếp theo"
+   ],
+   [
+    "caption",
+    "③ Chú thích ảnh"
+   ],
+   [
+    "progress",
+    "Tiến độ"
+   ],
+   [
+    "start",
+    "Tiêu đề lúc đầu"
+   ],
+   [
+    "last",
+    "Nút Xem kết quả"
+   ],
+   [
+    "correct_mark",
+    "Nhãn “Đáp án đúng”"
+   ],
+   [
+    "chosen_mark",
+    "Nhãn “Bạn đã chọn”"
+   ],
+   [
+    "right",
+    "Khi trả lời đúng"
+   ],
+   [
+    "wrong",
+    "Khi trả lời sai"
+   ],
+   [
+    "complete_eyebrow",
+    "Kết quả: chữ nhỏ"
+   ],
+   [
+    "complete_title",
+    "Kết quả: tiêu đề"
+   ],
+   [
+    "score",
+    "Điểm"
+   ],
+   [
+    "result_all",
+    "Lời nhắn khi đúng 5/5"
+   ],
+   [
+    "result_most",
+    "Lời nhắn khi đúng 3–4"
+   ],
+   [
+    "result_few",
+    "Lời nhắn khi đúng 0–2"
+   ],
+   [
+    "replay",
+    "Nút Chơi lại"
+   ],
+   [
+    "link",
+    "Liên kết cuối"
+   ],
+   [
+    "noscript",
+    "Khi tắt JavaScript: câu trước liên kết"
+   ],
+   [
+    "noscript_link",
+    "Khi tắt JavaScript: chữ liên kết"
+   ]
+  ]
+ },
  "menu": {
   "image": "huong-dan/chung-menu.jpg",
   "url": "/san-pham/",
@@ -841,6 +1471,50 @@ window.ADMIN_GUIDE = {
    [
     "rights",
     "④ Dòng bản quyền"
+   ]
+  ]
+ },
+ "menu-tha-xuong": {
+  "image": "huong-dan/chung-menu-tha-xuong.jpg",
+  "url": "/san-pham/",
+  "fields": [
+   [
+    "menus",
+    "Menu thả xuống"
+   ]
+  ]
+ },
+ "tim-kiem": {
+  "image": "huong-dan/chung-tim-kiem.jpg",
+  "url": "/tim-kiem/",
+  "fields": [
+   [
+    "title",
+    "① Tên trang"
+   ],
+   [
+    "submit",
+    "② Nút tìm kiếm"
+   ],
+   [
+    "home",
+    "③ Đường dẫn: chữ “Trang chủ”"
+   ],
+   [
+    "heading",
+    "④ Tiêu đề"
+   ],
+   [
+    "emptyLead",
+    "Lời gợi ý khi chưa tìm"
+   ],
+   [
+    "emptyLinks",
+    "Liên kết gợi ý"
+   ],
+   [
+    "noscript",
+    "Thông báo khi tắt JavaScript"
    ]
   ]
  }

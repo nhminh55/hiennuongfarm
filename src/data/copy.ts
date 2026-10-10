@@ -11,10 +11,21 @@
 
 import { locales, type Locale } from '../i18n';
 
-const files = import.meta.glob<Record<string, unknown>>('../content/**/*.md', {
+const raw = import.meta.glob<Record<string, unknown>>('../content/**/*.md', {
   import: 'frontmatter',
   eager: true,
 });
+
+// YAML reads an unquoted 2025-05-18 as a date (which reaches this module as
+// "2025-05-18T00:00:00.000Z"); the admin writes dates that way. Turn them back
+// into the "2025-05-18" strings the pages expect.
+const plain = (v: unknown): unknown =>
+  v instanceof Date ? v.toISOString().slice(0, 10)
+  : typeof v === 'string' && /^\d{4}-\d{2}-\d{2}T00:00:00\.000Z$/.test(v) ? v.slice(0, 10)
+  : Array.isArray(v) ? v.map(plain)
+  : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, plain(x)]))
+  : v;
+const files = Object.fromEntries(Object.entries(raw).map(([k, v]) => [k, plain(v) as Record<string, unknown>]));
 
 const shape = (v: unknown): string =>
   Array.isArray(v) ? `[${v.length ? shape(v[0]) : ''}]`

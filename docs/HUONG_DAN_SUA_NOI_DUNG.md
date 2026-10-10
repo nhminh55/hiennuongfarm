@@ -9,7 +9,7 @@ Mọi chữ trên trang chủ, trang Về chúng tôi, các trang Sản phẩm, 
 ## Cách sửa
 
 1. Mở trang quản trị và bấm **Đăng nhập bằng GitHub**.
-2. Cột trái là các nhóm trang: **Trang chủ**, **Về chúng tôi**, **Sản phẩm**, **Nông nghiệp tuần hoàn**, **Menu, liên hệ, chân trang**. Bấm vào nhóm, rồi bấm vào mục cần sửa.
+2. Cột trái là các nhóm trang: **Trang chủ**, **Về chúng tôi**, **Sản phẩm**, **Nông nghiệp tuần hoàn**, **Dấu ấn**, **Hợp tác**, **Chơi cùng nông trại**, **Menu, liên hệ, chân trang**. Bấm vào nhóm, rồi bấm vào mục cần sửa.
 3. Sửa chữ trong các ô. Phía trên có các tab **Tiếng Việt / Tiếng Anh / Tiếng Trung** để đổi ngôn ngữ, bên phải là phần xem trước.
 4. Bấm **Lưu** ở góc trên bên phải.
 5. Chờ 1–3 phút rồi tải lại trang web (Ctrl + F5) để xem.
@@ -25,7 +25,8 @@ Bấm Lưu là trang quản trị tự ghi lên GitHub và web tự cập nhật
 - Đoạn văn chỉ là chữ thường: không dùng chữ đậm, nghiêng hay link.
 - Sửa tiếng Việt thì nhớ sửa luôn bản tiếng Anh và tiếng Trung tương ứng (nếu cần).
 - Không đưa lên web số liệu, chứng nhận hay đối tác chưa được xác nhận.
-- Ảnh, đường dẫn, thứ tự các mục và các trang khác (Dấu ấn, Hợp tác, và danh sách 12 sản phẩm ở trang /san-pham/) vẫn nằm trong code. Muốn đổi những phần đó thì nhờ người phụ trách website.
+- Ảnh, đường dẫn, ngày tháng, thứ tự các mục, số lượng mục trong danh sách (sản phẩm, bài báo, câu hỏi trò chơi…) và các chữ được ghép tự động (ngày tháng, số đếm) vẫn nằm trong code hoặc bị khoá. Muốn đổi những phần đó thì nhờ người phụ trách website.
+- Trường có chữ trong ngoặc nhọn như `{name}`, `{n}` thì giữ nguyên phần ngoặc nhọn: website tự điền vào đó.
 
 ## Nếu lỡ sửa sai
 

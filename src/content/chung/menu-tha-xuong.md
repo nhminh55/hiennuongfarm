@@ -1,7 +1,6 @@
 ---
 menus:
-  - href: /#ve-hien-nuong
-    items:
+  - items:
       - label:
           vi: Câu chuyện Hiền Nương
           en: The Hiền Nương story
@@ -38,8 +37,8 @@ menus:
           zh: 介绍视频
         href: /ve-chung-toi/#video-gioi-thieu
         video: true
-  - href: /#tuan-hoan
-    items:
+    href: /#ve-hien-nuong
+  - items:
       - label:
           vi: Vòng tuần hoàn tại farm
           en: The cycle on the farm
@@ -56,8 +55,8 @@ menus:
           en: Solar energy
           zh: 太阳能
         href: /nong-nghiep-tuan-hoan/#nang-luong-mat-troi
-  - href: /#san-vat
-    items:
+    href: /#tuan-hoan
+  - items:
       - label:
           vi: Tất cả sản phẩm
           en: All products
@@ -67,16 +66,16 @@ menus:
           vi: Nấm tươi
           en: Fresh mushrooms
           zh: 鲜菇
-        href: /san-pham/#nam-tuoi
         group: 0
+        href: /san-pham/#nam-tuoi
       - label:
           vi: Sản phẩm chế biến
           en: Processed products
           zh: 加工产品
-        href: /san-pham/#san-pham-che-bien
         group: 1
-  - href: /#dau-an
-    items:
+        href: /san-pham/#san-pham-che-bien
+    href: /#san-vat
+  - items:
       - label:
           vi: Báo chí & Truyền thông
           en: Press & media
@@ -97,8 +96,8 @@ menus:
           en: Product certifications
           zh: 产品认证
         href: /dau-an/chung-nhan/
-  - href: /#hop-tac
-    items:
+    href: /#dau-an
+  - items:
       - label:
           vi: Thông tin hợp tác
           en: Partnership information
@@ -109,4 +108,5 @@ menus:
           en: Contact
           zh: 联系我们
         href: /hop-tac/#lien-he
+    href: /#hop-tac
 ---

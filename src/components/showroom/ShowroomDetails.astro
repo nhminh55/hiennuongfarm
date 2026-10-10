@@ -1,4 +1,5 @@
 ---
+import { copy } from '../../data/copy';
 /**
  * Showroom details — the tabbed information under the stage.
  *
@@ -22,74 +23,7 @@ interface Props {
 const { products } = Astro.props;
 const lang = getLocale(Astro.url);
 
-const t = {
-  vi: {
-    tablist: 'Thông tin sản phẩm',
-    tabs: { 'gioi-thieu': 'Giới thiệu', 'thanh-phan': 'Thành phần', 'cach-dung': 'Cách dùng', 'ho-so': 'Hồ sơ', 'nhan-xet': 'Nhận xét' },
-    detail: 'Xem trang sản phẩm',
-    compositionTitle: 'Thành phần & quy cách',
-    ingredients: 'Thành phần',
-    preparation: 'Cách dùng',
-    storage: 'Bảo quản',
-    recipes: 'Gợi ý chế biến',
-    recipeIngredients: 'Nguyên liệu',
-    recipeSteps: 'Cách làm',
-    time: 'Thời gian',
-    servings: 'Khẩu phần',
-    recordsTitle: 'Hồ sơ sản phẩm',
-    issuer: 'Đơn vị cấp',
-    reference: 'Số',
-    date: 'Ngày',
-    scope: 'Phạm vi',
-    viewDocument: 'Xem tài liệu',
-    newTab: '(mở trong thẻ mới)',
-    reviewsTitle: 'Nhận xét của khách hàng',
-  },
-  en: {
-    tablist: 'Product information',
-    tabs: { 'gioi-thieu': 'Introduction', 'thanh-phan': 'Ingredients', 'cach-dung': 'How to use', 'ho-so': 'Records', 'nhan-xet': 'Reviews' },
-    detail: 'View product page',
-    compositionTitle: 'Ingredients & specifications',
-    ingredients: 'Ingredients',
-    preparation: 'How to use',
-    storage: 'Storage',
-    recipes: 'Recipe ideas',
-    recipeIngredients: 'Ingredients',
-    recipeSteps: 'Method',
-    time: 'Time',
-    servings: 'Serves',
-    recordsTitle: 'Product records',
-    issuer: 'Issued by',
-    reference: 'No.',
-    date: 'Date',
-    scope: 'Scope',
-    viewDocument: 'View document',
-    newTab: '(opens in a new tab)',
-    reviewsTitle: 'Customer reviews',
-  },
-  zh: {
-    tablist: '产品信息',
-    tabs: { 'gioi-thieu': '简介', 'thanh-phan': '成分', 'cach-dung': '用法', 'ho-so': '档案', 'nhan-xet': '评价' },
-    detail: '查看产品页面',
-    compositionTitle: '成分与规格',
-    ingredients: '成分',
-    preparation: '用法',
-    storage: '储存',
-    recipes: '烹饪建议',
-    recipeIngredients: '食材',
-    recipeSteps: '做法',
-    time: '时间',
-    servings: '份量',
-    recordsTitle: '产品档案',
-    issuer: '签发单位',
-    reference: '编号',
-    date: '日期',
-    scope: '适用范围',
-    viewDocument: '查看文件',
-    newTab: '（在新标签页中打开）',
-    reviewsTitle: '客户评价',
-  },
-}[lang];
+const t = copy('san-pham/showroom-tab', lang);
 
 // Server-rendered state: the first product, on its first tab.
 const first = products[0];

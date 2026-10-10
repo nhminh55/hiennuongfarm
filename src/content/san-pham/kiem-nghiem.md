@@ -1,7 +1,6 @@
 ---
 products:
-  - slug: nam-moi-den
-    reports:
+  - reports:
       - id: VLAB-2309-0307/1
         sample: Nấm mối
         lab: VietLabs
@@ -35,4 +34,5 @@ products:
             value: 6.5 × 10
             exp: '1'
             unit: CFU/g
+    slug: nam-moi-den
 ---

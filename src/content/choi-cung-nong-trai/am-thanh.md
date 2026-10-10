@@ -1,10 +1,10 @@
 ---
 sound: Âm thanh
 music: Nhạc nền
+note: Âm thanh chỉ phát khi bạn bật. Nhạc nền là một giai điệu nhẹ không lời.
 'off': Tắt
 'on': Bật
 on_tap: Bật · chạm để phát
-note: Âm thanh chỉ phát khi bạn bật. Nhạc nền là một giai điệu nhẹ không lời.
 remembered: Đã nhớ lựa chọn của bạn. Bấm từng nút âm thanh để cho phép phát trong lần ghé này.
 turned_on: '{name} đã bật. Bạn có thể tắt bất cứ lúc nào.'
 turned_off: '{name} đã tắt.'

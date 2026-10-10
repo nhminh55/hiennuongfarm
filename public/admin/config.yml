@@ -258,7 +258,25 @@ collections:
             name: title
             i18n: true
             widget: string
-          - label: ④ Nút “Xem chi tiết”
+          - label: ④ Ba thẻ
+            name: groups
+            i18n: true
+            hint: Báo chí, Giải thưởng, Sự kiện
+            widget: list
+            min: 3
+            max: 3
+            fields:
+              - label: Tiêu đề thẻ
+                name: title
+                i18n: true
+                widget: string
+              - label: Mô tả thẻ
+                name: note
+                i18n: true
+                widget: text
+            collapsed: true
+            summary: '{{fields.title}}'
+          - label: ⑤ Nút “Xem chi tiết”
             name: more
             i18n: true
             widget: string
@@ -581,16 +599,157 @@ collections:
             name: home
             i18n: true
             widget: string
-          - label: ② Chữ nhỏ trên tiêu đề
+          - label: ② Liên kết trò chơi “Ghé chơi”
+            name: play
+            i18n: true
+            widget: string
+          - label: ③ Chữ nhỏ trên tiêu đề
             name: eyebrow
             i18n: true
             widget: string
-          - label: ③ Đoạn liên hệ cuối trang
+          - label: ④ Đoạn liên hệ cuối trang
             name: ctaBody
             i18n: true
             widget: text
-          - label: ④ Tiêu đề phần liên hệ cuối trang
+          - label: ⑤ Tiêu đề phần liên hệ cuối trang
             name: ctaTitle
+            i18n: true
+            widget: string
+      - name: showroom-khung
+        label: 'Trang Sản phẩm: nút và nhãn'
+        file: src/content/san-pham/showroom-khung.md
+        format: frontmatter
+        i18n: true
+        preview_path: /san-pham/
+        fields:
+          - label: ① Chữ đếm sản phẩm
+            name: count
+            i18n: true
+            hint: '3 ô: chữ trước số, số, chữ sau số. {n} là số sản phẩm, giữ nguyên'
+            widget: list
+            min: 3
+            max: 3
+            field:
+              label: Dòng
+              name: item
+              widget: string
+          - label: ② Tên hai nhóm
+            name: groups
+            i18n: true
+            hint: Nấm tươi, rồi Sản phẩm chế biến
+            widget: list
+            min: 2
+            max: 2
+            field:
+              label: Dòng
+              name: item
+              widget: string
+          - label: ③ Nút liên hệ tư vấn
+            name: ask
+            i18n: true
+            widget: string
+          - label: ④ Nút gọi điện
+            name: call
+            i18n: true
+            widget: string
+      - name: showroom-tab
+        label: 'Trang Sản phẩm: tên tab và tiêu đề trong tab'
+        file: src/content/san-pham/showroom-tab.md
+        format: frontmatter
+        i18n: true
+        preview_path: /san-pham/
+        fields:
+          - label: ① Tên các tab
+            name: tabs
+            i18n: true
+            widget: object
+            fields:
+              - label: Tab Giới thiệu
+                name: gioi-thieu
+                i18n: true
+                widget: string
+              - label: Tab Thành phần
+                name: thanh-phan
+                i18n: true
+                widget: string
+              - label: Tab Cách dùng
+                name: cach-dung
+                i18n: true
+                widget: string
+              - label: Tab Hồ sơ
+                name: ho-so
+                i18n: true
+                widget: string
+              - label: Tab Nhận xét
+                name: nhan-xet
+                i18n: true
+                widget: string
+          - label: ② Liên kết “Xem trang sản phẩm”
+            name: detail
+            i18n: true
+            widget: string
+          - label: 'Tab Thành phần: tiêu đề'
+            name: compositionTitle
+            i18n: true
+            widget: string
+          - label: 'Tab Thành phần: chữ “Thành phần”'
+            name: ingredients
+            i18n: true
+            widget: string
+          - label: 'Tab Cách dùng: chữ “Cách dùng”'
+            name: preparation
+            i18n: true
+            widget: string
+          - label: 'Tab Cách dùng: chữ “Bảo quản”'
+            name: storage
+            i18n: true
+            widget: string
+          - label: 'Tab Cách dùng: tiêu đề món gợi ý'
+            name: recipes
+            i18n: true
+            widget: string
+          - label: 'Món gợi ý: chữ “Nguyên liệu”'
+            name: recipeIngredients
+            i18n: true
+            widget: string
+          - label: 'Món gợi ý: chữ “Cách làm”'
+            name: recipeSteps
+            i18n: true
+            widget: string
+          - label: 'Món gợi ý: chữ “Thời gian”'
+            name: time
+            i18n: true
+            widget: string
+          - label: 'Món gợi ý: chữ “Khẩu phần”'
+            name: servings
+            i18n: true
+            widget: string
+          - label: 'Tab Hồ sơ: tiêu đề'
+            name: recordsTitle
+            i18n: true
+            widget: string
+          - label: 'Tab Hồ sơ: chữ “Đơn vị cấp”'
+            name: issuer
+            i18n: true
+            widget: string
+          - label: 'Tab Hồ sơ: chữ “Số”'
+            name: reference
+            i18n: true
+            widget: string
+          - label: 'Tab Hồ sơ: chữ “Ngày”'
+            name: date
+            i18n: true
+            widget: string
+          - label: 'Tab Hồ sơ: chữ “Phạm vi”'
+            name: scope
+            i18n: true
+            widget: string
+          - label: 'Tab Hồ sơ: nút xem tài liệu'
+            name: viewDocument
+            i18n: true
+            widget: string
+          - label: 'Tab Nhận xét: tiêu đề'
+            name: reviewsTitle
             i18n: true
             widget: string
       - name: nam-moi-den
@@ -886,7 +1045,7 @@ collections:
                     required: true
                     collapsed: true
                     fields:
-                      - label: text
+                      - label: Nội dung
                         name: text
                         widget: object
                         required: true
@@ -900,6 +1059,10 @@ collections:
                           - label: Tiếng Trung
                             name: zh
                             widget: string
+                    allow_add: false
+                    allow_remove: false
+                    allow_duplicate: false
+                    allow_reorder: false
                     summary: '{{fields.text.vi}}'
                   - label: Bảng thông tin
                     name: facts
@@ -935,6 +1098,10 @@ collections:
                           - label: Tiếng Trung
                             name: zh
                             widget: string
+                    allow_add: false
+                    allow_remove: false
+                    allow_duplicate: false
+                    allow_reorder: false
                     summary: '{{fields.label.vi}}'
               - label: Tab Thành phần
                 name: composition
@@ -995,6 +1162,10 @@ collections:
                           - label: Tiếng Trung
                             name: zh
                             widget: string
+                    allow_add: false
+                    allow_remove: false
+                    allow_duplicate: false
+                    allow_reorder: false
                     summary: '{{fields.label.vi}}'
               - label: Tab Cách dùng
                 name: usage
@@ -1008,7 +1179,7 @@ collections:
                     required: true
                     collapsed: true
                     fields:
-                      - label: text
+                      - label: Nội dung
                         name: text
                         widget: object
                         required: true
@@ -1022,6 +1193,10 @@ collections:
                           - label: Tiếng Trung
                             name: zh
                             widget: string
+                    allow_add: false
+                    allow_remove: false
+                    allow_duplicate: false
+                    allow_reorder: false
                     summary: '{{fields.text.vi}}'
                   - label: Bảo quản
                     name: storage
@@ -1029,7 +1204,7 @@ collections:
                     required: true
                     collapsed: true
                     fields:
-                      - label: text
+                      - label: Nội dung
                         name: text
                         widget: object
                         required: true
@@ -1043,6 +1218,10 @@ collections:
                           - label: Tiếng Trung
                             name: zh
                             widget: string
+                    allow_add: false
+                    allow_remove: false
+                    allow_duplicate: false
+                    allow_reorder: false
                     summary: '{{fields.text.vi}}'
               - label: Tab Hồ sơ (giấy tờ)
                 name: records
@@ -1128,6 +1307,10 @@ collections:
                       - label: Tiếng Trung
                         name: zh
                         widget: string
+                allow_add: false
+                allow_remove: false
+                allow_duplicate: false
+                allow_reorder: false
                 summary: '{{fields.title.vi}}'
               - label: Tab Nhận xét
                 name: reviews
@@ -1153,11 +1336,119 @@ collections:
                     name: author
                     widget: string
                     required: true
+                allow_add: false
+                allow_remove: false
+                allow_duplicate: false
+                allow_reorder: false
                 summary: '{{fields.quote.vi}}'
+            allow_add: false
+            allow_remove: false
+            allow_duplicate: false
+            allow_reorder: false
             summary: '{{fields.name.vi}}'
             hint: 'Mỗi khối là một sản phẩm, theo thứ tự trên trang. Các tab trên web: Giới thiệu, Thành phần, Cách dùng, Hồ sơ, Nhận xét. Số trên ảnh là thứ tự các mục.'
             max: 12
             min: 12
+      - name: kiem-nghiem
+        label: Phiếu kiểm nghiệm (trang Nấm Mối Đen)
+        file: src/content/san-pham/kiem-nghiem.md
+        format: frontmatter
+        i18n: false
+        preview_path: /san-pham/nam-moi-den/
+        fields:
+          - label: ① Sản phẩm
+            name: products
+            widget: list
+            required: true
+            collapsed: true
+            fields:
+              - label: Phiếu
+                name: reports
+                widget: list
+                required: true
+                collapsed: true
+                fields:
+                  - label: Số phiếu
+                    name: id
+                    widget: string
+                    required: true
+                  - label: Tên mẫu (đúng như trên phiếu)
+                    name: sample
+                    widget: string
+                    required: true
+                  - label: Đơn vị kiểm nghiệm
+                    name: lab
+                    widget: string
+                    required: true
+                  - label: Đơn vị gửi mẫu
+                    name: customer
+                    widget: string
+                    required: true
+                  - label: Ngày kiểm nghiệm
+                    name: testedOn
+                    widget: string
+                    required: true
+                  - label: Nhóm chỉ tiêu
+                    name: group
+                    widget: object
+                    required: true
+                    fields:
+                      - label: Tiếng Việt
+                        name: vi
+                        widget: string
+                      - label: Tiếng Anh
+                        name: en
+                        widget: string
+                      - label: Tiếng Trung
+                        name: zh
+                        widget: string
+                  - label: Kết quả
+                    name: results
+                    widget: list
+                    required: true
+                    collapsed: true
+                    fields:
+                      - label: Tên chỉ tiêu (tiếng Việt)
+                        name: name
+                        widget: string
+                        required: true
+                      - label: Tên chỉ tiêu (tiếng Anh)
+                        name: en
+                        widget: string
+                        required: true
+                        hint: Đúng như in trên phiếu
+                      - label: Tên chỉ tiêu (tiếng Trung)
+                        name: zh
+                        widget: string
+                        required: true
+                      - label: Kết quả
+                        name: value
+                        widget: string
+                        required: true
+                        hint: Giữ đúng như in trên phiếu
+                      - label: Số mũ (lũy thừa 10)
+                        name: exp
+                        widget: string
+                        required: false
+                      - label: Đơn vị
+                        name: unit
+                        widget: string
+                        required: true
+                    allow_add: false
+                    allow_remove: false
+                    allow_duplicate: false
+                    allow_reorder: false
+                    summary: '{{fields.name.vi}}'
+                allow_add: false
+                allow_remove: false
+                allow_duplicate: false
+                allow_reorder: false
+                summary: '{{fields.id.vi}}'
+            allow_add: false
+            allow_remove: false
+            allow_duplicate: false
+            allow_reorder: false
+            summary: '{{fields.reports.vi}}'
   - name: tuan_hoan
     label: Nông nghiệp tuần hoàn
     i18n: true
@@ -1228,31 +1519,48 @@ collections:
               label: Dòng
               name: item
               widget: string
-          - label: ⑦ Phim · chữ nhỏ
+          - label: ⑦ Lời mời chơi 1
+            name: playCycle
+            i18n: true
+            widget: object
+            fields:
+              - label: Tiêu đề
+                name: title
+                i18n: true
+                widget: string
+              - label: Câu mời
+                name: line
+                i18n: true
+                widget: string
+              - label: Nút
+                name: label
+                i18n: true
+                widget: string
+          - label: ⑧ Phim · chữ nhỏ
             name: filmEyebrow
             i18n: true
             widget: string
-          - label: ⑧ Phim · tiêu đề
+          - label: ⑨ Phim · tiêu đề
             name: filmTitle
             i18n: true
             widget: string
-          - label: ⑨ Phim · đoạn giới thiệu
+          - label: ⑩ Phim · đoạn giới thiệu
             name: filmBody
             i18n: true
             widget: text
-          - label: ⑩ Phim · dòng ghi chú
+          - label: ⑪ Phim · dòng ghi chú
             name: filmNote
             i18n: true
             widget: string
-          - label: ⑪ Điện mặt trời · chữ nhỏ
+          - label: ⑫ Điện mặt trời · chữ nhỏ
             name: solarEyebrow
             i18n: true
             widget: string
-          - label: ⑫ Điện mặt trời · tiêu đề
+          - label: ⑬ Điện mặt trời · tiêu đề
             name: solarTitle
             i18n: true
             widget: string
-          - label: ⑬ Điện mặt trời · các đoạn văn
+          - label: ⑭ Điện mặt trời · các đoạn văn
             name: solarBody
             i18n: true
             hint: Mỗi ô là một đoạn
@@ -1261,19 +1569,36 @@ collections:
               label: Dòng
               name: item
               widget: text
-          - label: ⑭ Điện mặt trời · chú thích ảnh
+          - label: ⑮ Điện mặt trời · chú thích ảnh
             name: solarCaption
             i18n: true
             widget: text
-          - label: ⑮ Điện mặt trời · dòng dưới số 100%
+          - label: ⑯ Điện mặt trời · dòng dưới số 100%
             name: solarFact
             i18n: true
             widget: string
-          - label: ⑯ Phần kết · đoạn văn
+          - label: ⑰ Lời mời chơi 2
+            name: playQuiz
+            i18n: true
+            widget: object
+            fields:
+              - label: Tiêu đề
+                name: title
+                i18n: true
+                widget: string
+              - label: Câu mời
+                name: line
+                i18n: true
+                widget: string
+              - label: Nút
+                name: label
+                i18n: true
+                widget: string
+          - label: ⑱ Phần kết · đoạn văn
             name: closingBody
             i18n: true
             widget: text
-          - label: ⑰ Phần kết · tiêu đề
+          - label: ⑲ Phần kết · tiêu đề
             name: closingTitle
             i18n: true
             widget: string
@@ -1302,6 +1627,10 @@ collections:
                 name: title
                 widget: string
                 required: true
+            allow_add: false
+            allow_remove: false
+            allow_duplicate: false
+            allow_reorder: false
             summary: '{{fields.title.vi}}'
             hint: ' Số trên ảnh là thứ tự các mục.'
             max: 4
@@ -1367,6 +1696,10 @@ collections:
                     name: credit
                     widget: string
                     required: true
+                allow_add: false
+                allow_remove: false
+                allow_duplicate: false
+                allow_reorder: false
                 summary: '{{fields.caption.vi}}'
               - label: Trích dẫn lời chị Nương
                 name: quote
@@ -1377,668 +1710,14 @@ collections:
                 widget: list
                 required: false
                 collapsed: true
-                fields:
-                  - label: '0'
-                    name: '0'
-                    widget: string
-                    required: true
-                  - label: '1'
-                    name: '1'
-                    widget: string
-                    required: true
-                  - label: '2'
-                    name: '2'
-                    widget: string
-                    required: true
-                  - label: '3'
-                    name: '3'
-                    widget: string
-                    required: true
-                  - label: '4'
-                    name: '4'
-                    widget: string
-                    required: true
-                  - label: '5'
-                    name: '5'
-                    widget: string
-                    required: true
-                  - label: '6'
-                    name: '6'
-                    widget: string
-                    required: true
-                  - label: '7'
-                    name: '7'
-                    widget: string
-                    required: true
-                  - label: '8'
-                    name: '8'
-                    widget: string
-                    required: true
-                  - label: '9'
-                    name: '9'
-                    widget: string
-                    required: true
-                  - label: '10'
-                    name: '10'
-                    widget: string
-                    required: true
-                  - label: '11'
-                    name: '11'
-                    widget: string
-                    required: true
-                  - label: '12'
-                    name: '12'
-                    widget: string
-                    required: true
-                  - label: '13'
-                    name: '13'
-                    widget: string
-                    required: true
-                  - label: '14'
-                    name: '14'
-                    widget: string
-                    required: true
-                  - label: '15'
-                    name: '15'
-                    widget: string
-                    required: true
-                  - label: '16'
-                    name: '16'
-                    widget: string
-                    required: true
-                  - label: '17'
-                    name: '17'
-                    widget: string
-                    required: true
-                  - label: '18'
-                    name: '18'
-                    widget: string
-                    required: true
-                  - label: '19'
-                    name: '19'
-                    widget: string
-                    required: true
-                  - label: '20'
-                    name: '20'
-                    widget: string
-                    required: true
-                  - label: '21'
-                    name: '21'
-                    widget: string
-                    required: true
-                  - label: '22'
-                    name: '22'
-                    widget: string
-                    required: true
-                  - label: '23'
-                    name: '23'
-                    widget: string
-                    required: true
-                  - label: '24'
-                    name: '24'
-                    widget: string
-                    required: true
-                  - label: '25'
-                    name: '25'
-                    widget: string
-                    required: true
-                  - label: '26'
-                    name: '26'
-                    widget: string
-                    required: true
-                  - label: '27'
-                    name: '27'
-                    widget: string
-                    required: true
-                  - label: '28'
-                    name: '28'
-                    widget: string
-                    required: true
-                  - label: '29'
-                    name: '29'
-                    widget: string
-                    required: true
-                  - label: '30'
-                    name: '30'
-                    widget: string
-                    required: true
-                  - label: '31'
-                    name: '31'
-                    widget: string
-                    required: true
-                  - label: '32'
-                    name: '32'
-                    widget: string
-                    required: true
-                  - label: '33'
-                    name: '33'
-                    widget: string
-                    required: true
-                  - label: '34'
-                    name: '34'
-                    widget: string
-                    required: true
-                  - label: '35'
-                    name: '35'
-                    widget: string
-                    required: true
-                  - label: '36'
-                    name: '36'
-                    widget: string
-                    required: true
-                  - label: '37'
-                    name: '37'
-                    widget: string
-                    required: true
-                  - label: '38'
-                    name: '38'
-                    widget: string
-                    required: true
-                  - label: '39'
-                    name: '39'
-                    widget: string
-                    required: true
-                  - label: '40'
-                    name: '40'
-                    widget: string
-                    required: true
-                  - label: '41'
-                    name: '41'
-                    widget: string
-                    required: true
-                  - label: '42'
-                    name: '42'
-                    widget: string
-                    required: true
-                  - label: '43'
-                    name: '43'
-                    widget: string
-                    required: true
-                  - label: '44'
-                    name: '44'
-                    widget: string
-                    required: true
-                  - label: '45'
-                    name: '45'
-                    widget: string
-                    required: true
-                  - label: '46'
-                    name: '46'
-                    widget: string
-                    required: true
-                  - label: '47'
-                    name: '47'
-                    widget: string
-                    required: true
-                  - label: '48'
-                    name: '48'
-                    widget: string
-                    required: true
-                  - label: '49'
-                    name: '49'
-                    widget: string
-                    required: true
-                  - label: '50'
-                    name: '50'
-                    widget: string
-                    required: true
-                  - label: '51'
-                    name: '51'
-                    widget: string
-                    required: true
-                  - label: '52'
-                    name: '52'
-                    widget: string
-                    required: true
-                  - label: '53'
-                    name: '53'
-                    widget: string
-                    required: true
-                  - label: '54'
-                    name: '54'
-                    widget: string
-                    required: true
-                  - label: '55'
-                    name: '55'
-                    widget: string
-                    required: true
-                  - label: '56'
-                    name: '56'
-                    widget: string
-                    required: true
-                  - label: '57'
-                    name: '57'
-                    widget: string
-                    required: true
-                  - label: '58'
-                    name: '58'
-                    widget: string
-                    required: true
-                  - label: '59'
-                    name: '59'
-                    widget: string
-                    required: true
-                  - label: '60'
-                    name: '60'
-                    widget: string
-                    required: true
-                  - label: '61'
-                    name: '61'
-                    widget: string
-                    required: true
-                  - label: '62'
-                    name: '62'
-                    widget: string
-                    required: true
-                  - label: '63'
-                    name: '63'
-                    widget: string
-                    required: true
-                  - label: '64'
-                    name: '64'
-                    widget: string
-                    required: true
-                  - label: '65'
-                    name: '65'
-                    widget: string
-                    required: true
-                  - label: '66'
-                    name: '66'
-                    widget: string
-                    required: true
-                  - label: '67'
-                    name: '67'
-                    widget: string
-                    required: true
-                  - label: '68'
-                    name: '68'
-                    widget: string
-                    required: true
-                  - label: '69'
-                    name: '69'
-                    widget: string
-                    required: true
-                  - label: '70'
-                    name: '70'
-                    widget: string
-                    required: true
-                  - label: '71'
-                    name: '71'
-                    widget: string
-                    required: true
-                  - label: '72'
-                    name: '72'
-                    widget: string
-                    required: true
-                  - label: '73'
-                    name: '73'
-                    widget: string
-                    required: true
-                  - label: '74'
-                    name: '74'
-                    widget: string
-                    required: true
-                  - label: '75'
-                    name: '75'
-                    widget: string
-                    required: true
-                  - label: '76'
-                    name: '76'
-                    widget: string
-                    required: true
-                  - label: '77'
-                    name: '77'
-                    widget: string
-                    required: true
-                  - label: '78'
-                    name: '78'
-                    widget: string
-                    required: true
-                  - label: '79'
-                    name: '79'
-                    widget: string
-                    required: true
-                  - label: '80'
-                    name: '80'
-                    widget: string
-                    required: true
-                  - label: '81'
-                    name: '81'
-                    widget: string
-                    required: true
-                  - label: '82'
-                    name: '82'
-                    widget: string
-                    required: true
-                  - label: '83'
-                    name: '83'
-                    widget: string
-                    required: true
-                  - label: '84'
-                    name: '84'
-                    widget: string
-                    required: true
-                  - label: '85'
-                    name: '85'
-                    widget: string
-                    required: true
-                  - label: '86'
-                    name: '86'
-                    widget: string
-                    required: true
-                  - label: '87'
-                    name: '87'
-                    widget: string
-                    required: true
-                  - label: '88'
-                    name: '88'
-                    widget: string
-                    required: true
-                  - label: '89'
-                    name: '89'
-                    widget: string
-                    required: true
-                  - label: '90'
-                    name: '90'
-                    widget: string
-                    required: true
-                  - label: '91'
-                    name: '91'
-                    widget: string
-                    required: true
-                  - label: '92'
-                    name: '92'
-                    widget: string
-                    required: true
-                  - label: '93'
-                    name: '93'
-                    widget: string
-                    required: true
-                  - label: '94'
-                    name: '94'
-                    widget: string
-                    required: true
-                  - label: '95'
-                    name: '95'
-                    widget: string
-                    required: true
-                  - label: '96'
-                    name: '96'
-                    widget: string
-                    required: true
-                  - label: '97'
-                    name: '97'
-                    widget: string
-                    required: true
-                  - label: '98'
-                    name: '98'
-                    widget: string
-                    required: true
-                  - label: '99'
-                    name: '99'
-                    widget: string
-                    required: true
-                  - label: '100'
-                    name: '100'
-                    widget: string
-                    required: true
-                  - label: '101'
-                    name: '101'
-                    widget: string
-                    required: true
-                  - label: '102'
-                    name: '102'
-                    widget: string
-                    required: true
-                  - label: '103'
-                    name: '103'
-                    widget: string
-                    required: true
-                  - label: '104'
-                    name: '104'
-                    widget: string
-                    required: true
-                  - label: '105'
-                    name: '105'
-                    widget: string
-                    required: true
-                  - label: '106'
-                    name: '106'
-                    widget: string
-                    required: true
-                  - label: '107'
-                    name: '107'
-                    widget: string
-                    required: true
-                  - label: '108'
-                    name: '108'
-                    widget: string
-                    required: true
-                  - label: '109'
-                    name: '109'
-                    widget: string
-                    required: true
-                  - label: '110'
-                    name: '110'
-                    widget: string
-                    required: false
-                  - label: '111'
-                    name: '111'
-                    widget: string
-                    required: false
-                  - label: '112'
-                    name: '112'
-                    widget: string
-                    required: false
-                  - label: '113'
-                    name: '113'
-                    widget: string
-                    required: false
-                  - label: '114'
-                    name: '114'
-                    widget: string
-                    required: false
-                  - label: '115'
-                    name: '115'
-                    widget: string
-                    required: false
-                  - label: '116'
-                    name: '116'
-                    widget: string
-                    required: false
-                  - label: '117'
-                    name: '117'
-                    widget: string
-                    required: false
-                  - label: '118'
-                    name: '118'
-                    widget: string
-                    required: false
-                  - label: '119'
-                    name: '119'
-                    widget: string
-                    required: false
-                  - label: '120'
-                    name: '120'
-                    widget: string
-                    required: false
-                  - label: '121'
-                    name: '121'
-                    widget: string
-                    required: false
-                  - label: '122'
-                    name: '122'
-                    widget: string
-                    required: false
-                  - label: '123'
-                    name: '123'
-                    widget: string
-                    required: false
-                  - label: '124'
-                    name: '124'
-                    widget: string
-                    required: false
-                  - label: '125'
-                    name: '125'
-                    widget: string
-                    required: false
-                  - label: '126'
-                    name: '126'
-                    widget: string
-                    required: false
-                  - label: '127'
-                    name: '127'
-                    widget: string
-                    required: false
-                  - label: '128'
-                    name: '128'
-                    widget: string
-                    required: false
-                  - label: '129'
-                    name: '129'
-                    widget: string
-                    required: false
-                  - label: '130'
-                    name: '130'
-                    widget: string
-                    required: false
-                  - label: '131'
-                    name: '131'
-                    widget: string
-                    required: false
-                  - label: '132'
-                    name: '132'
-                    widget: string
-                    required: false
-                  - label: '133'
-                    name: '133'
-                    widget: string
-                    required: false
-                  - label: '134'
-                    name: '134'
-                    widget: string
-                    required: false
-                  - label: '135'
-                    name: '135'
-                    widget: string
-                    required: false
-                  - label: '136'
-                    name: '136'
-                    widget: string
-                    required: false
-                  - label: '137'
-                    name: '137'
-                    widget: string
-                    required: false
-                  - label: '138'
-                    name: '138'
-                    widget: string
-                    required: false
-                  - label: '139'
-                    name: '139'
-                    widget: string
-                    required: false
-                  - label: '140'
-                    name: '140'
-                    widget: string
-                    required: false
-                  - label: '141'
-                    name: '141'
-                    widget: string
-                    required: false
-                  - label: '142'
-                    name: '142'
-                    widget: string
-                    required: false
-                  - label: '143'
-                    name: '143'
-                    widget: string
-                    required: false
-                  - label: '144'
-                    name: '144'
-                    widget: string
-                    required: false
-                  - label: '145'
-                    name: '145'
-                    widget: string
-                    required: false
-                  - label: '146'
-                    name: '146'
-                    widget: string
-                    required: false
-                  - label: '147'
-                    name: '147'
-                    widget: string
-                    required: false
-                  - label: '148'
-                    name: '148'
-                    widget: string
-                    required: false
-                  - label: '149'
-                    name: '149'
-                    widget: string
-                    required: false
-                  - label: '150'
-                    name: '150'
-                    widget: string
-                    required: false
-                  - label: '151'
-                    name: '151'
-                    widget: string
-                    required: false
-                  - label: '152'
-                    name: '152'
-                    widget: string
-                    required: false
-                  - label: '153'
-                    name: '153'
-                    widget: string
-                    required: false
-                  - label: '154'
-                    name: '154'
-                    widget: string
-                    required: false
-                  - label: '155'
-                    name: '155'
-                    widget: string
-                    required: false
-                  - label: '156'
-                    name: '156'
-                    widget: string
-                    required: false
-                  - label: '157'
-                    name: '157'
-                    widget: string
-                    required: false
-                  - label: '158'
-                    name: '158'
-                    widget: string
-                    required: false
-                  - label: '159'
-                    name: '159'
-                    widget: string
-                    required: false
-                  - label: '160'
-                    name: '160'
-                    widget: string
-                    required: false
-                  - label: '161'
-                    name: '161'
-                    widget: string
-                    required: false
-                  - label: '162'
-                    name: '162'
-                    widget: string
-                    required: false
-                  - label: '163'
-                    name: '163'
-                    widget: string
-                    required: false
-                  - label: '164'
-                    name: '164'
-                    widget: string
-                    required: false
-                summary: '{{fields.0.vi}}'
+                field:
+                  label: Dòng
+                  name: item
+                  widget: text
+            allow_add: false
+            allow_remove: false
+            allow_duplicate: false
+            allow_reorder: false
             summary: '{{fields.outlet.vi}}'
             hint: Mỗi khối là một bài báo. Tiêu đề, sapo và trích dẫn phải giữ đúng nguyên văn của báo. Số trên ảnh là thứ tự các mục.
             max: 65
@@ -2104,6 +1783,10 @@ collections:
                     name: credit
                     widget: string
                     required: true
+                allow_add: false
+                allow_remove: false
+                allow_duplicate: false
+                allow_reorder: false
                 summary: '{{fields.caption.vi}}'
               - label: Nguồn
                 name: sources
@@ -2115,7 +1798,15 @@ collections:
                     name: label
                     widget: string
                     required: true
+                allow_add: false
+                allow_remove: false
+                allow_duplicate: false
+                allow_reorder: false
                 summary: '{{fields.label.vi}}'
+            allow_add: false
+            allow_remove: false
+            allow_duplicate: false
+            allow_reorder: false
             summary: '{{fields.year.vi}}'
             hint: ' Số trên ảnh là thứ tự các mục.'
             max: 3
@@ -2150,932 +1841,10 @@ collections:
                 widget: list
                 required: true
                 collapsed: true
-                fields:
-                  - label: '0'
-                    name: '0'
-                    widget: string
-                    required: true
-                  - label: '1'
-                    name: '1'
-                    widget: string
-                    required: true
-                  - label: '2'
-                    name: '2'
-                    widget: string
-                    required: true
-                  - label: '3'
-                    name: '3'
-                    widget: string
-                    required: true
-                  - label: '4'
-                    name: '4'
-                    widget: string
-                    required: true
-                  - label: '5'
-                    name: '5'
-                    widget: string
-                    required: true
-                  - label: '6'
-                    name: '6'
-                    widget: string
-                    required: true
-                  - label: '7'
-                    name: '7'
-                    widget: string
-                    required: true
-                  - label: '8'
-                    name: '8'
-                    widget: string
-                    required: true
-                  - label: '9'
-                    name: '9'
-                    widget: string
-                    required: true
-                  - label: '10'
-                    name: '10'
-                    widget: string
-                    required: true
-                  - label: '11'
-                    name: '11'
-                    widget: string
-                    required: true
-                  - label: '12'
-                    name: '12'
-                    widget: string
-                    required: true
-                  - label: '13'
-                    name: '13'
-                    widget: string
-                    required: true
-                  - label: '14'
-                    name: '14'
-                    widget: string
-                    required: true
-                  - label: '15'
-                    name: '15'
-                    widget: string
-                    required: true
-                  - label: '16'
-                    name: '16'
-                    widget: string
-                    required: true
-                  - label: '17'
-                    name: '17'
-                    widget: string
-                    required: true
-                  - label: '18'
-                    name: '18'
-                    widget: string
-                    required: true
-                  - label: '19'
-                    name: '19'
-                    widget: string
-                    required: true
-                  - label: '20'
-                    name: '20'
-                    widget: string
-                    required: true
-                  - label: '21'
-                    name: '21'
-                    widget: string
-                    required: true
-                  - label: '22'
-                    name: '22'
-                    widget: string
-                    required: true
-                  - label: '23'
-                    name: '23'
-                    widget: string
-                    required: true
-                  - label: '24'
-                    name: '24'
-                    widget: string
-                    required: true
-                  - label: '25'
-                    name: '25'
-                    widget: string
-                    required: true
-                  - label: '26'
-                    name: '26'
-                    widget: string
-                    required: true
-                  - label: '27'
-                    name: '27'
-                    widget: string
-                    required: true
-                  - label: '28'
-                    name: '28'
-                    widget: string
-                    required: true
-                  - label: '29'
-                    name: '29'
-                    widget: string
-                    required: true
-                  - label: '30'
-                    name: '30'
-                    widget: string
-                    required: true
-                  - label: '31'
-                    name: '31'
-                    widget: string
-                    required: true
-                  - label: '32'
-                    name: '32'
-                    widget: string
-                    required: true
-                  - label: '33'
-                    name: '33'
-                    widget: string
-                    required: true
-                  - label: '34'
-                    name: '34'
-                    widget: string
-                    required: true
-                  - label: '35'
-                    name: '35'
-                    widget: string
-                    required: true
-                  - label: '36'
-                    name: '36'
-                    widget: string
-                    required: true
-                  - label: '37'
-                    name: '37'
-                    widget: string
-                    required: true
-                  - label: '38'
-                    name: '38'
-                    widget: string
-                    required: true
-                  - label: '39'
-                    name: '39'
-                    widget: string
-                    required: true
-                  - label: '40'
-                    name: '40'
-                    widget: string
-                    required: true
-                  - label: '41'
-                    name: '41'
-                    widget: string
-                    required: true
-                  - label: '42'
-                    name: '42'
-                    widget: string
-                    required: true
-                  - label: '43'
-                    name: '43'
-                    widget: string
-                    required: true
-                  - label: '44'
-                    name: '44'
-                    widget: string
-                    required: true
-                  - label: '45'
-                    name: '45'
-                    widget: string
-                    required: true
-                  - label: '46'
-                    name: '46'
-                    widget: string
-                    required: true
-                  - label: '47'
-                    name: '47'
-                    widget: string
-                    required: true
-                  - label: '48'
-                    name: '48'
-                    widget: string
-                    required: true
-                  - label: '49'
-                    name: '49'
-                    widget: string
-                    required: true
-                  - label: '50'
-                    name: '50'
-                    widget: string
-                    required: true
-                  - label: '51'
-                    name: '51'
-                    widget: string
-                    required: true
-                  - label: '52'
-                    name: '52'
-                    widget: string
-                    required: true
-                  - label: '53'
-                    name: '53'
-                    widget: string
-                    required: true
-                  - label: '54'
-                    name: '54'
-                    widget: string
-                    required: true
-                  - label: '55'
-                    name: '55'
-                    widget: string
-                    required: true
-                  - label: '56'
-                    name: '56'
-                    widget: string
-                    required: true
-                  - label: '57'
-                    name: '57'
-                    widget: string
-                    required: true
-                  - label: '58'
-                    name: '58'
-                    widget: string
-                    required: true
-                  - label: '59'
-                    name: '59'
-                    widget: string
-                    required: true
-                  - label: '60'
-                    name: '60'
-                    widget: string
-                    required: true
-                  - label: '61'
-                    name: '61'
-                    widget: string
-                    required: true
-                  - label: '62'
-                    name: '62'
-                    widget: string
-                    required: true
-                  - label: '63'
-                    name: '63'
-                    widget: string
-                    required: true
-                  - label: '64'
-                    name: '64'
-                    widget: string
-                    required: true
-                  - label: '65'
-                    name: '65'
-                    widget: string
-                    required: true
-                  - label: '66'
-                    name: '66'
-                    widget: string
-                    required: true
-                  - label: '67'
-                    name: '67'
-                    widget: string
-                    required: true
-                  - label: '68'
-                    name: '68'
-                    widget: string
-                    required: true
-                  - label: '69'
-                    name: '69'
-                    widget: string
-                    required: true
-                  - label: '70'
-                    name: '70'
-                    widget: string
-                    required: true
-                  - label: '71'
-                    name: '71'
-                    widget: string
-                    required: true
-                  - label: '72'
-                    name: '72'
-                    widget: string
-                    required: true
-                  - label: '73'
-                    name: '73'
-                    widget: string
-                    required: true
-                  - label: '74'
-                    name: '74'
-                    widget: string
-                    required: true
-                  - label: '75'
-                    name: '75'
-                    widget: string
-                    required: true
-                  - label: '76'
-                    name: '76'
-                    widget: string
-                    required: true
-                  - label: '77'
-                    name: '77'
-                    widget: string
-                    required: true
-                  - label: '78'
-                    name: '78'
-                    widget: string
-                    required: true
-                  - label: '79'
-                    name: '79'
-                    widget: string
-                    required: true
-                  - label: '80'
-                    name: '80'
-                    widget: string
-                    required: true
-                  - label: '81'
-                    name: '81'
-                    widget: string
-                    required: true
-                  - label: '82'
-                    name: '82'
-                    widget: string
-                    required: true
-                  - label: '83'
-                    name: '83'
-                    widget: string
-                    required: true
-                  - label: '84'
-                    name: '84'
-                    widget: string
-                    required: true
-                  - label: '85'
-                    name: '85'
-                    widget: string
-                    required: true
-                  - label: '86'
-                    name: '86'
-                    widget: string
-                    required: true
-                  - label: '87'
-                    name: '87'
-                    widget: string
-                    required: true
-                  - label: '88'
-                    name: '88'
-                    widget: string
-                    required: true
-                  - label: '89'
-                    name: '89'
-                    widget: string
-                    required: true
-                  - label: '90'
-                    name: '90'
-                    widget: string
-                    required: true
-                  - label: '91'
-                    name: '91'
-                    widget: string
-                    required: true
-                  - label: '92'
-                    name: '92'
-                    widget: string
-                    required: true
-                  - label: '93'
-                    name: '93'
-                    widget: string
-                    required: true
-                  - label: '94'
-                    name: '94'
-                    widget: string
-                    required: true
-                  - label: '95'
-                    name: '95'
-                    widget: string
-                    required: false
-                  - label: '96'
-                    name: '96'
-                    widget: string
-                    required: false
-                  - label: '97'
-                    name: '97'
-                    widget: string
-                    required: false
-                  - label: '98'
-                    name: '98'
-                    widget: string
-                    required: false
-                  - label: '99'
-                    name: '99'
-                    widget: string
-                    required: false
-                  - label: '100'
-                    name: '100'
-                    widget: string
-                    required: false
-                  - label: '101'
-                    name: '101'
-                    widget: string
-                    required: false
-                  - label: '102'
-                    name: '102'
-                    widget: string
-                    required: false
-                  - label: '103'
-                    name: '103'
-                    widget: string
-                    required: false
-                  - label: '104'
-                    name: '104'
-                    widget: string
-                    required: false
-                  - label: '105'
-                    name: '105'
-                    widget: string
-                    required: false
-                  - label: '106'
-                    name: '106'
-                    widget: string
-                    required: false
-                  - label: '107'
-                    name: '107'
-                    widget: string
-                    required: false
-                  - label: '108'
-                    name: '108'
-                    widget: string
-                    required: false
-                  - label: '109'
-                    name: '109'
-                    widget: string
-                    required: false
-                  - label: '110'
-                    name: '110'
-                    widget: string
-                    required: false
-                  - label: '111'
-                    name: '111'
-                    widget: string
-                    required: false
-                  - label: '112'
-                    name: '112'
-                    widget: string
-                    required: false
-                  - label: '113'
-                    name: '113'
-                    widget: string
-                    required: false
-                  - label: '114'
-                    name: '114'
-                    widget: string
-                    required: false
-                  - label: '115'
-                    name: '115'
-                    widget: string
-                    required: false
-                  - label: '116'
-                    name: '116'
-                    widget: string
-                    required: false
-                  - label: '117'
-                    name: '117'
-                    widget: string
-                    required: false
-                  - label: '118'
-                    name: '118'
-                    widget: string
-                    required: false
-                  - label: '119'
-                    name: '119'
-                    widget: string
-                    required: false
-                  - label: '120'
-                    name: '120'
-                    widget: string
-                    required: false
-                  - label: '121'
-                    name: '121'
-                    widget: string
-                    required: false
-                  - label: '122'
-                    name: '122'
-                    widget: string
-                    required: false
-                  - label: '123'
-                    name: '123'
-                    widget: string
-                    required: false
-                  - label: '124'
-                    name: '124'
-                    widget: string
-                    required: false
-                  - label: '125'
-                    name: '125'
-                    widget: string
-                    required: false
-                  - label: '126'
-                    name: '126'
-                    widget: string
-                    required: false
-                  - label: '127'
-                    name: '127'
-                    widget: string
-                    required: false
-                  - label: '128'
-                    name: '128'
-                    widget: string
-                    required: false
-                  - label: '129'
-                    name: '129'
-                    widget: string
-                    required: false
-                  - label: '130'
-                    name: '130'
-                    widget: string
-                    required: false
-                  - label: '131'
-                    name: '131'
-                    widget: string
-                    required: false
-                  - label: '132'
-                    name: '132'
-                    widget: string
-                    required: false
-                  - label: '133'
-                    name: '133'
-                    widget: string
-                    required: false
-                  - label: '134'
-                    name: '134'
-                    widget: string
-                    required: false
-                  - label: '135'
-                    name: '135'
-                    widget: string
-                    required: false
-                  - label: '136'
-                    name: '136'
-                    widget: string
-                    required: false
-                  - label: '137'
-                    name: '137'
-                    widget: string
-                    required: false
-                  - label: '138'
-                    name: '138'
-                    widget: string
-                    required: false
-                  - label: '139'
-                    name: '139'
-                    widget: string
-                    required: false
-                  - label: '140'
-                    name: '140'
-                    widget: string
-                    required: false
-                  - label: '141'
-                    name: '141'
-                    widget: string
-                    required: false
-                  - label: '142'
-                    name: '142'
-                    widget: string
-                    required: false
-                  - label: '143'
-                    name: '143'
-                    widget: string
-                    required: false
-                  - label: '144'
-                    name: '144'
-                    widget: string
-                    required: false
-                  - label: '145'
-                    name: '145'
-                    widget: string
-                    required: false
-                  - label: '146'
-                    name: '146'
-                    widget: string
-                    required: false
-                  - label: '147'
-                    name: '147'
-                    widget: string
-                    required: false
-                  - label: '148'
-                    name: '148'
-                    widget: string
-                    required: false
-                  - label: '149'
-                    name: '149'
-                    widget: string
-                    required: false
-                  - label: '150'
-                    name: '150'
-                    widget: string
-                    required: false
-                  - label: '151'
-                    name: '151'
-                    widget: string
-                    required: false
-                  - label: '152'
-                    name: '152'
-                    widget: string
-                    required: false
-                  - label: '153'
-                    name: '153'
-                    widget: string
-                    required: false
-                  - label: '154'
-                    name: '154'
-                    widget: string
-                    required: false
-                  - label: '155'
-                    name: '155'
-                    widget: string
-                    required: false
-                  - label: '156'
-                    name: '156'
-                    widget: string
-                    required: false
-                  - label: '157'
-                    name: '157'
-                    widget: string
-                    required: false
-                  - label: '158'
-                    name: '158'
-                    widget: string
-                    required: false
-                  - label: '159'
-                    name: '159'
-                    widget: string
-                    required: false
-                  - label: '160'
-                    name: '160'
-                    widget: string
-                    required: false
-                  - label: '161'
-                    name: '161'
-                    widget: string
-                    required: false
-                  - label: '162'
-                    name: '162'
-                    widget: string
-                    required: false
-                  - label: '163'
-                    name: '163'
-                    widget: string
-                    required: false
-                  - label: '164'
-                    name: '164'
-                    widget: string
-                    required: false
-                  - label: '165'
-                    name: '165'
-                    widget: string
-                    required: false
-                  - label: '166'
-                    name: '166'
-                    widget: string
-                    required: false
-                  - label: '167'
-                    name: '167'
-                    widget: string
-                    required: false
-                  - label: '168'
-                    name: '168'
-                    widget: string
-                    required: false
-                  - label: '169'
-                    name: '169'
-                    widget: string
-                    required: false
-                  - label: '170'
-                    name: '170'
-                    widget: string
-                    required: false
-                  - label: '171'
-                    name: '171'
-                    widget: string
-                    required: false
-                  - label: '172'
-                    name: '172'
-                    widget: string
-                    required: false
-                  - label: '173'
-                    name: '173'
-                    widget: string
-                    required: false
-                  - label: '174'
-                    name: '174'
-                    widget: string
-                    required: false
-                  - label: '175'
-                    name: '175'
-                    widget: string
-                    required: false
-                  - label: '176'
-                    name: '176'
-                    widget: string
-                    required: false
-                  - label: '177'
-                    name: '177'
-                    widget: string
-                    required: false
-                  - label: '178'
-                    name: '178'
-                    widget: string
-                    required: false
-                  - label: '179'
-                    name: '179'
-                    widget: string
-                    required: false
-                  - label: '180'
-                    name: '180'
-                    widget: string
-                    required: false
-                  - label: '181'
-                    name: '181'
-                    widget: string
-                    required: false
-                  - label: '182'
-                    name: '182'
-                    widget: string
-                    required: false
-                  - label: '183'
-                    name: '183'
-                    widget: string
-                    required: false
-                  - label: '184'
-                    name: '184'
-                    widget: string
-                    required: false
-                  - label: '185'
-                    name: '185'
-                    widget: string
-                    required: false
-                  - label: '186'
-                    name: '186'
-                    widget: string
-                    required: false
-                  - label: '187'
-                    name: '187'
-                    widget: string
-                    required: false
-                  - label: '188'
-                    name: '188'
-                    widget: string
-                    required: false
-                  - label: '189'
-                    name: '189'
-                    widget: string
-                    required: false
-                  - label: '190'
-                    name: '190'
-                    widget: string
-                    required: false
-                  - label: '191'
-                    name: '191'
-                    widget: string
-                    required: false
-                  - label: '192'
-                    name: '192'
-                    widget: string
-                    required: false
-                  - label: '193'
-                    name: '193'
-                    widget: string
-                    required: false
-                  - label: '194'
-                    name: '194'
-                    widget: string
-                    required: false
-                  - label: '195'
-                    name: '195'
-                    widget: string
-                    required: false
-                  - label: '196'
-                    name: '196'
-                    widget: string
-                    required: false
-                  - label: '197'
-                    name: '197'
-                    widget: string
-                    required: false
-                  - label: '198'
-                    name: '198'
-                    widget: string
-                    required: false
-                  - label: '199'
-                    name: '199'
-                    widget: string
-                    required: false
-                  - label: '200'
-                    name: '200'
-                    widget: string
-                    required: false
-                  - label: '201'
-                    name: '201'
-                    widget: string
-                    required: false
-                  - label: '202'
-                    name: '202'
-                    widget: string
-                    required: false
-                  - label: '203'
-                    name: '203'
-                    widget: string
-                    required: false
-                  - label: '204'
-                    name: '204'
-                    widget: string
-                    required: false
-                  - label: '205'
-                    name: '205'
-                    widget: string
-                    required: false
-                  - label: '206'
-                    name: '206'
-                    widget: string
-                    required: false
-                  - label: '207'
-                    name: '207'
-                    widget: string
-                    required: false
-                  - label: '208'
-                    name: '208'
-                    widget: string
-                    required: false
-                  - label: '209'
-                    name: '209'
-                    widget: string
-                    required: false
-                  - label: '210'
-                    name: '210'
-                    widget: string
-                    required: false
-                  - label: '211'
-                    name: '211'
-                    widget: string
-                    required: false
-                  - label: '212'
-                    name: '212'
-                    widget: string
-                    required: false
-                  - label: '213'
-                    name: '213'
-                    widget: string
-                    required: false
-                  - label: '214'
-                    name: '214'
-                    widget: string
-                    required: false
-                  - label: '215'
-                    name: '215'
-                    widget: string
-                    required: false
-                  - label: '216'
-                    name: '216'
-                    widget: string
-                    required: false
-                  - label: '217'
-                    name: '217'
-                    widget: string
-                    required: false
-                  - label: '218'
-                    name: '218'
-                    widget: string
-                    required: false
-                  - label: '219'
-                    name: '219'
-                    widget: string
-                    required: false
-                  - label: '220'
-                    name: '220'
-                    widget: string
-                    required: false
-                  - label: '221'
-                    name: '221'
-                    widget: string
-                    required: false
-                  - label: '222'
-                    name: '222'
-                    widget: string
-                    required: false
-                  - label: '223'
-                    name: '223'
-                    widget: string
-                    required: false
-                  - label: '224'
-                    name: '224'
-                    widget: string
-                    required: false
-                  - label: '225'
-                    name: '225'
-                    widget: string
-                    required: false
-                  - label: '226'
-                    name: '226'
-                    widget: string
-                    required: false
-                  - label: '227'
-                    name: '227'
-                    widget: string
-                    required: false
-                  - label: '228'
-                    name: '228'
-                    widget: string
-                    required: false
-                  - label: '229'
-                    name: '229'
-                    widget: string
-                    required: false
-                  - label: '230'
-                    name: '230'
-                    widget: string
-                    required: false
-                summary: '{{fields.0.vi}}'
+                field:
+                  label: Dòng
+                  name: item
+                  widget: text
               - label: Bộ ảnh
                 name: photos
                 widget: list
@@ -3090,14 +1859,10 @@ collections:
                     name: credit
                     widget: string
                     required: true
-                  - label: srcset
-                    name: srcset
-                    widget: string
-                    required: false
-                  - label: full
-                    name: full
-                    widget: string
-                    required: false
+                allow_add: false
+                allow_remove: false
+                allow_duplicate: false
+                allow_reorder: false
                 summary: '{{fields.caption.vi}}'
               - label: Nguồn
                 name: sources
@@ -3109,7 +1874,15 @@ collections:
                     name: label
                     widget: string
                     required: true
+                allow_add: false
+                allow_remove: false
+                allow_duplicate: false
+                allow_reorder: false
                 summary: '{{fields.label.vi}}'
+            allow_add: false
+            allow_remove: false
+            allow_duplicate: false
+            allow_reorder: false
             summary: '{{fields.title.vi}}'
             hint: ' Số trên ảnh là thứ tự các mục.'
             max: 6
@@ -3131,6 +1904,10 @@ collections:
                 name: name
                 widget: string
                 required: true
+            allow_add: false
+            allow_remove: false
+            allow_duplicate: false
+            allow_reorder: false
             summary: '{{fields.name.vi}}'
             hint: ' Số trên ảnh là thứ tự các mục.'
             max: 3
@@ -3330,6 +2107,830 @@ collections:
             name: xem_anh_dong
             widget: string
             required: true
+  - name: hop_tac
+    label: Hợp tác
+    i18n: true
+    files:
+      - name: gioi-thieu
+        label: Phần mở đầu
+        file: src/content/hop-tac/gioi-thieu.md
+        format: frontmatter
+        i18n: false
+        preview_path: /hop-tac/
+        fields:
+          - label: '① Đường dẫn: chữ “Trang chủ”'
+            name: home
+            widget: string
+            required: true
+          - label: ② Tên trang
+            name: title
+            widget: string
+            required: true
+            hint: Hiện ở đường dẫn và tab trình duyệt
+          - label: ③ Đoạn giới thiệu
+            name: lead
+            widget: text
+            required: true
+          - label: ④ Chữ nhỏ trên tiêu đề
+            name: eyebrow
+            widget: string
+            required: true
+          - label: ⑤ Tiêu đề
+            name: heading
+            widget: string
+            required: true
+      - name: huong-hop-tac
+        label: Ba hướng hợp tác
+        file: src/content/hop-tac/huong-hop-tac.md
+        format: frontmatter
+        i18n: false
+        preview_path: /hop-tac/
+        fields:
+          - label: ① Lời nhắc chọn hướng
+            name: hint
+            widget: string
+            required: true
+          - label: ② Ba hướng hợp tác
+            name: directions
+            widget: list
+            required: true
+            collapsed: true
+            fields:
+              - label: Tên hướng (dưới ảnh)
+                name: name
+                widget: string
+                required: true
+              - label: Tên ngắn
+                name: short
+                widget: string
+                required: true
+                hint: Nút chọn ở phần Liên hệ
+              - label: Tiêu đề hướng
+                name: title
+                widget: string
+                required: true
+              - label: Đoạn giải thích
+                name: text
+                widget: text
+                required: true
+              - label: Nút liên hệ
+                name: cta
+                widget: string
+                required: true
+              - label: Tiêu đề thư soạn sẵn
+                name: subject
+                widget: string
+                required: true
+                hint: Cũng hiện trong ghi chú ở phần Liên hệ
+              - label: Chú thích ảnh
+                name: caption
+                widget: string
+                required: true
+            allow_add: false
+            allow_remove: false
+            allow_duplicate: false
+            allow_reorder: false
+            summary: '{{fields.name.vi}}'
+            hint: Đúng 3 hướng
+          - label: ③ Chữ giữa tam giác (dòng 1)
+            name: centreWith
+            widget: string
+            required: true
+          - label: ④ Chữ giữa tam giác (dòng 2)
+            name: centreBrand
+            widget: string
+            required: true
+      - name: doi-tac
+        label: Đối tác & kết nối
+        file: src/content/hop-tac/doi-tac.md
+        format: frontmatter
+        i18n: false
+        preview_path: /hop-tac/
+        fields:
+          - label: ① Chữ nhỏ trên tiêu đề
+            name: eyebrow
+            widget: string
+            required: true
+          - label: ② Đoạn giới thiệu
+            name: lead
+            widget: text
+            required: true
+          - label: ③ Tiêu đề
+            name: title
+            widget: string
+            required: true
+          - label: ④ Đối tác
+            name: partners
+            widget: list
+            required: true
+            collapsed: true
+            fields:
+              - label: Tên đối tác
+                name: name
+                widget: string
+                required: true
+              - label: Loại kết nối (dòng nhỏ trên tên)
+                name: kind
+                widget: string
+                required: true
+              - label: Đoạn mô tả
+                name: text
+                widget: text
+                required: true
+              - label: Nguồn tư liệu
+                name: outlet
+                widget: object
+                required: true
+                collapsed: true
+                fields:
+                  - label: Tên nguồn tư liệu
+                    name: label
+                    widget: string
+                    required: true
+              - label: Ảnh
+                name: photo
+                widget: object
+                required: false
+                collapsed: true
+                fields:
+                  - label: Chú thích ảnh
+                    name: caption
+                    widget: text
+                    required: true
+            allow_add: false
+            allow_remove: false
+            allow_duplicate: false
+            allow_reorder: false
+            summary: '{{fields.name.vi}}'
+          - label: Chữ liên kết xem tư liệu
+            name: more
+            widget: string
+            required: true
+      - name: lien-he
+        label: Phần liên hệ
+        file: src/content/hop-tac/lien-he.md
+        format: frontmatter
+        i18n: false
+        preview_path: /hop-tac/
+        fields:
+          - label: ① Chữ nhỏ trên tiêu đề
+            name: eyebrow
+            widget: string
+            required: true
+          - label: ② Nhãn chọn hướng trao đổi
+            name: choicesLabel
+            widget: string
+            required: true
+          - label: ③ Tiêu đề
+            name: title
+            widget: string
+            required: true
+          - label: ④ Nút liên hệ
+            name: cta
+            widget: string
+            required: true
+          - label: ⑤ Đoạn mời
+            name: text
+            widget: text
+            required: true
+          - label: ⑥ Nhãn Email
+            name: email
+            widget: string
+            required: true
+          - label: ⑦ Nhãn Điện thoại
+            name: phone
+            widget: string
+            required: true
+          - label: ⑧ Nhãn Zalo
+            name: zalo
+            widget: string
+            required: true
+          - label: Ghi chú (trước tiêu đề thư)
+            name: noteBefore
+            widget: string
+            required: true
+            hint: Tiêu đề thư tự chèn vào sau
+          - label: Ghi chú (sau tiêu đề thư)
+            name: noteAfter
+            widget: string
+            required: true
+  - name: choi
+    label: Chơi cùng nông trại
+    i18n: true
+    files:
+      - name: chung
+        label: Trang chính và phần chung
+        file: src/content/choi-cung-nong-trai/chung.md
+        format: frontmatter
+        i18n: false
+        preview_path: /choi-cung-nong-trai/
+        fields:
+          - label: ① Tiêu đề trang
+            name: title
+            widget: string
+            required: true
+          - label: '② Đường dẫn: chữ “Trang chủ”'
+            name: home
+            widget: string
+            required: true
+          - label: ③ Tên mục (đường dẫn và chữ nhỏ trên tiêu đề các trò chơi)
+            name: section
+            widget: string
+            required: true
+          - label: ④ Chữ nhỏ trên tiêu đề
+            name: eyebrow
+            widget: string
+            required: true
+          - label: ⑤ Câu giới thiệu
+            name: intro
+            widget: string
+            required: true
+          - label: ⑥ Ba trò chơi
+            name: activities
+            widget: list
+            required: true
+            collapsed: true
+            fields:
+              - label: Tên trò chơi
+                name: title
+                widget: string
+                required: true
+              - label: Câu giới thiệu trên trang trò chơi
+                name: intro
+                widget: string
+                required: true
+              - label: Thời lượng
+                name: time
+                widget: string
+                required: true
+              - label: Mô tả trên trang chính
+                name: text
+                widget: text
+                required: true
+              - label: Mô tả trong thẻ “Ghé chơi”
+                name: widget_text
+                widget: text
+                required: true
+            allow_add: false
+            allow_remove: false
+            allow_duplicate: false
+            allow_reorder: false
+            summary: '{{fields.title.vi}}'
+            hint: Đúng 3 trò, theo thứ tự
+          - label: ⑦ Chữ trên nút “Ghé chơi”
+            name: play_label
+            widget: string
+            required: true
+          - label: ⑧ Ghi chú cuối trang
+            name: note
+            widget: string
+            required: true
+          - label: ⑨ Liên kết “Tất cả hoạt động” (cuối trang trò chơi)
+            name: all_activities
+            widget: string
+            required: true
+          - label: Chữ sau thời lượng (Không cần đăng nhập)
+            name: no_login
+            widget: string
+            required: true
+          - label: Tiêu đề thẻ “Ghé chơi” ở mép phải các trang
+            name: widget_title
+            widget: string
+            required: true
+          - label: Liên kết cuối thẻ “Ghé chơi”
+            name: widget_all
+            widget: string
+            required: true
+      - name: am-thanh
+        label: Nút âm thanh (các trò chơi)
+        file: src/content/choi-cung-nong-trai/am-thanh.md
+        format: frontmatter
+        i18n: false
+        preview_path: /choi-cung-nong-trai/mot-vong-nong-trai/
+        fields:
+          - label: ① Tên nút Âm thanh
+            name: sound
+            widget: string
+            required: true
+          - label: ② Tên nút Nhạc nền
+            name: music
+            widget: string
+            required: true
+          - label: ③ Ghi chú dưới nút
+            name: note
+            widget: text
+            required: true
+          - label: Trạng thái Tắt
+            name: 'off'
+            widget: string
+            required: true
+          - label: Trạng thái Bật
+            name: 'on'
+            widget: string
+            required: true
+          - label: Trạng thái Bật · chạm để phát
+            name: on_tap
+            widget: string
+            required: true
+          - label: Thông báo khi đã nhớ lựa chọn
+            name: remembered
+            widget: text
+            required: true
+          - label: Thông báo khi bật
+            name: turned_on
+            widget: string
+            required: true
+            hint: '{name} là tên nút, giữ nguyên'
+          - label: Thông báo khi tắt
+            name: turned_off
+            widget: string
+            required: true
+            hint: '{name} là tên nút, giữ nguyên'
+          - label: Thông báo khi trình duyệt chặn âm thanh
+            name: blocked
+            widget: text
+            required: true
+          - label: Thông báo khi âm thanh tạm dừng
+            name: paused
+            widget: string
+            required: true
+      - name: mot-vong-nong-trai
+        label: 'Trò chơi: Một vòng nông trại'
+        file: src/content/choi-cung-nong-trai/mot-vong-nong-trai.md
+        format: frontmatter
+        i18n: false
+        preview_path: /choi-cung-nong-trai/mot-vong-nong-trai/
+        fields:
+          - label: '① Khung hướng dẫn: chữ nhỏ'
+            name: guide_eyebrow
+            widget: string
+            required: true
+          - label: '② Khung hướng dẫn: tiêu đề'
+            name: guide_title
+            widget: list
+            required: true
+            collapsed: true
+            field:
+              label: Dòng
+              name: item
+              widget: string
+            hint: Mỗi ô là một dòng
+          - label: ③ Nhãn “Đã ghép”
+            name: placed
+            widget: string
+            required: true
+          - label: ④ Năm bước
+            name: steps
+            widget: list
+            required: true
+            collapsed: true
+            fields:
+              - label: Tên mảnh ghép
+                name: name
+                widget: string
+                required: true
+              - label: Tên khu vực trên nông trại
+                name: place
+                widget: string
+                required: true
+              - label: Giải thích khi ghép đúng
+                name: explanation
+                widget: text
+                required: true
+            allow_add: false
+            allow_remove: false
+            allow_duplicate: false
+            allow_reorder: false
+            summary: '{{fields.name.vi}}'
+            hint: Đúng 5 bước, theo thứ tự trên vòng
+          - label: '⑤ Khung hướng dẫn: đoạn văn'
+            name: guide_text
+            widget: text
+            required: true
+          - label: ⑥ Nút Gợi ý
+            name: hint_button
+            widget: string
+            required: true
+          - label: ⑦ Nút Chơi lại
+            name: reset_button
+            widget: string
+            required: true
+          - label: ⑧ Lời nhắn lúc bắt đầu
+            name: start
+            widget: text
+            required: true
+          - label: Tiến độ
+            name: progress
+            widget: string
+            required: true
+            hint: '{done} là chỗ website tự điền, giữ nguyên'
+          - label: Khi chọn mảnh
+            name: selected
+            widget: string
+            required: true
+            hint: '{name} là chỗ website tự điền, giữ nguyên'
+          - label: Khi đặt sai chỗ
+            name: incorrect
+            widget: string
+            required: true
+          - label: Khi chưa chọn mảnh
+            name: empty
+            widget: string
+            required: true
+          - label: Khi chỗ đã ghép
+            name: occupied
+            widget: string
+            required: true
+          - label: Khi ghép xong
+            name: finished
+            widget: string
+            required: true
+            hint: '{explanation} là chỗ website tự điền, giữ nguyên'
+          - label: Gợi ý
+            name: hint
+            widget: text
+            required: true
+            hint: '{name}, {step}, {place} là chỗ website tự điền, giữ nguyên'
+          - label: Khi chơi lại
+            name: restarted
+            widget: string
+            required: true
+          - label: 'Hoàn thành: chữ nhỏ'
+            name: complete_eyebrow
+            widget: string
+            required: true
+          - label: 'Hoàn thành: tiêu đề'
+            name: complete_title
+            widget: string
+            required: true
+          - label: 'Hoàn thành: đoạn văn'
+            name: complete_text
+            widget: text
+            required: true
+          - label: 'Hoàn thành: liên kết'
+            name: complete_link
+            widget: string
+            required: true
+          - label: 'Khi tắt JavaScript: câu trước liên kết'
+            name: noscript
+            widget: string
+            required: true
+          - label: 'Khi tắt JavaScript: chữ liên kết'
+            name: noscript_link
+            widget: string
+            required: true
+      - name: hom-nay-an-nam-gi
+        label: 'Trò chơi: Hôm nay ăn nấm gì?'
+        file: src/content/choi-cung-nong-trai/hom-nay-an-nam-gi.md
+        format: frontmatter
+        i18n: false
+        preview_path: /choi-cung-nong-trai/hom-nay-an-nam-gi/
+        fields:
+          - label: '① Lúc đầu: chữ nhỏ'
+            name: initial_eyebrow
+            widget: string
+            required: true
+          - label: ② Câu hỏi 01
+            name: flavor_question
+            widget: string
+            required: true
+          - label: '③ Lúc đầu: tiêu đề'
+            name: initial_title
+            widget: list
+            required: true
+            collapsed: true
+            field:
+              label: Dòng
+              name: item
+              widget: string
+            hint: Mỗi ô là một dòng
+          - label: ④ Các vị
+            name: flavors
+            widget: list
+            required: true
+            collapsed: true
+            fields:
+              - label: Tên vị
+                name: name
+                widget: string
+                required: true
+            allow_add: false
+            allow_remove: false
+            allow_duplicate: false
+            allow_reorder: false
+            summary: '{{fields.name.vi}}'
+          - label: ⑤ Câu hỏi 02
+            name: time_question
+            widget: string
+            required: true
+          - label: ⑥ Các mức thời gian
+            name: times
+            widget: list
+            required: true
+            collapsed: true
+            fields:
+              - label: Tên mức thời gian
+                name: name
+                widget: string
+                required: true
+            allow_add: false
+            allow_remove: false
+            allow_duplicate: false
+            allow_reorder: false
+            summary: '{{fields.name.vi}}'
+          - label: ⑦ Câu hỏi 03
+            name: pantry_question
+            widget: string
+            required: true
+          - label: ⑧ Ghi chú câu 03
+            name: pantry_note
+            widget: string
+            required: true
+          - label: ⑨ Món ăn
+            name: recipes
+            widget: list
+            required: true
+            collapsed: true
+            fields:
+              - label: Tên món
+                name: name
+                widget: string
+                required: true
+              - label: Nguyên liệu
+                name: ingredients
+                widget: list
+                required: true
+                collapsed: true
+                fields:
+                  - label: Tên nguyên liệu
+                    name: name
+                    widget: string
+                    required: true
+                  - label: Lượng
+                    name: quantity
+                    widget: string
+                    required: true
+                allow_add: false
+                allow_remove: false
+                allow_duplicate: false
+                allow_reorder: false
+                summary: '{{fields.name.vi}}'
+              - label: Các bước nấu
+                name: steps
+                widget: list
+                required: true
+                collapsed: true
+                field:
+                  label: Dòng
+                  name: item
+                  widget: text
+              - label: Gợi ý thay thế
+                name: substitution
+                widget: text
+                required: true
+            allow_add: false
+            allow_remove: false
+            allow_duplicate: false
+            allow_reorder: false
+            summary: '{{fields.name.vi}}'
+          - label: ⑩ Nguyên liệu có sẵn
+            name: pantry
+            widget: list
+            required: true
+            collapsed: true
+            fields:
+              - label: Tên nguyên liệu
+                name: name
+                widget: string
+                required: true
+            allow_add: false
+            allow_remove: false
+            allow_duplicate: false
+            allow_reorder: false
+            summary: '{{fields.name.vi}}'
+          - label: ⑪ Nút gợi ý món
+            name: submit
+            widget: string
+            required: true
+          - label: ⑫ Ghi chú dưới nút
+            name: disclosure
+            widget: text
+            required: true
+          - label: '⑬ Lúc đầu: đoạn văn'
+            name: initial_text
+            widget: text
+            required: true
+          - label: 'Không có món: chữ nhỏ'
+            name: no_match_eyebrow
+            widget: string
+            required: true
+          - label: 'Không có món: tiêu đề'
+            name: no_match_title
+            widget: string
+            required: true
+          - label: 'Không có món: lời nhắn'
+            name: no_match
+            widget: text
+            required: true
+            hint: '{flavor}, {time}, {name}, {minutes} là chỗ website tự điền, giữ nguyên'
+          - label: Nút Chọn Thảnh thơi
+            name: relax_button
+            widget: string
+            required: true
+          - label: 'Kết quả: chữ nhỏ'
+            name: result_eyebrow
+            widget: string
+            required: true
+          - label: 'Kết quả: dòng thông tin'
+            name: recipe_meta
+            widget: string
+            required: true
+            hint: '{flavor}, {minutes}, {servings} là chỗ website tự điền, giữ nguyên'
+          - label: Khi dùng được nguyên liệu đã chọn
+            name: match_some
+            widget: text
+            required: true
+            hint: '{list} là chỗ website tự điền, giữ nguyên'
+          - label: Khi không dùng nguyên liệu đã chọn
+            name: match_none
+            widget: text
+            required: true
+          - label: Tiêu đề “Cần chuẩn bị thêm”
+            name: shopping_title
+            widget: string
+            required: true
+          - label: Ghi chú “Cần chuẩn bị thêm”
+            name: shopping_note
+            widget: string
+            required: true
+          - label: Nút Xem cách nấu
+            name: show_details
+            widget: string
+            required: true
+          - label: Nút Thu gọn công thức
+            name: hide_details
+            widget: string
+            required: true
+          - label: Nút Thử món khác
+            name: alternative_button
+            widget: string
+            required: true
+          - label: Khi chỉ có một món
+            name: alternative_one
+            widget: string
+            required: true
+          - label: Khi có nhiều món
+            name: alternative_many
+            widget: string
+            required: true
+            hint: '{count}, {index} là chỗ website tự điền, giữ nguyên'
+          - label: Liên kết sản phẩm
+            name: product_link
+            widget: string
+            required: true
+          - label: Thông báo gợi ý
+            name: suggested
+            widget: string
+            required: true
+            hint: '{name}, {minutes}, {servings} là chỗ website tự điền, giữ nguyên'
+          - label: Khi đổi lựa chọn
+            name: changed
+            widget: string
+            required: true
+          - label: 'Công thức: dòng thông tin'
+            name: details_meta
+            widget: string
+            required: true
+            hint: '{minutes}, {servings} là chỗ website tự điền, giữ nguyên'
+          - label: Tiêu đề “Nguyên liệu”
+            name: ingredients_title
+            widget: string
+            required: true
+          - label: Tiêu đề “Cách nấu”
+            name: steps_title
+            widget: string
+            required: true
+          - label: Khi tắt JavaScript
+            name: noscript
+            widget: string
+            required: true
+      - name: ban-hieu-nam-toi-dau
+        label: 'Trò chơi: Bạn hiểu nấm tới đâu?'
+        file: src/content/choi-cung-nong-trai/ban-hieu-nam-toi-dau.md
+        format: frontmatter
+        i18n: false
+        preview_path: /choi-cung-nong-trai/ban-hieu-nam-toi-dau/
+        fields:
+          - label: ① Câu hỏi
+            name: questions
+            widget: list
+            required: true
+            collapsed: true
+            fields:
+              - label: Câu hỏi
+                name: question
+                widget: string
+                required: true
+              - label: Bốn lựa chọn
+                name: choices
+                widget: list
+                required: true
+                collapsed: true
+                field:
+                  label: Dòng
+                  name: item
+                  widget: string
+                hint: 'Giữ đúng thứ tự: đáp án đúng nằm ở vị trí cũ'
+              - label: Giải thích
+                name: explanation
+                widget: text
+                required: true
+            allow_add: false
+            allow_remove: false
+            allow_duplicate: false
+            allow_reorder: false
+            summary: '{{fields.question.vi}}'
+            hint: Mỗi lượt chơi lấy ngẫu nhiên 5 câu
+          - label: ② Nút Câu tiếp theo
+            name: next
+            widget: string
+            required: true
+          - label: ③ Chú thích ảnh
+            name: caption
+            widget: string
+            required: true
+          - label: Tiến độ
+            name: progress
+            widget: string
+            required: true
+            hint: '{n} là chỗ website tự điền, giữ nguyên'
+          - label: Tiêu đề lúc đầu
+            name: start
+            widget: string
+            required: true
+          - label: Nút Xem kết quả
+            name: last
+            widget: string
+            required: true
+          - label: Nhãn “Đáp án đúng”
+            name: correct_mark
+            widget: string
+            required: true
+          - label: Nhãn “Bạn đã chọn”
+            name: chosen_mark
+            widget: string
+            required: true
+          - label: Khi trả lời đúng
+            name: right
+            widget: string
+            required: true
+            hint: '{explanation} là chỗ website tự điền, giữ nguyên'
+          - label: Khi trả lời sai
+            name: wrong
+            widget: string
+            required: true
+            hint: '{explanation} là chỗ website tự điền, giữ nguyên'
+          - label: 'Kết quả: chữ nhỏ'
+            name: complete_eyebrow
+            widget: string
+            required: true
+          - label: 'Kết quả: tiêu đề'
+            name: complete_title
+            widget: string
+            required: true
+          - label: Điểm
+            name: score
+            widget: string
+            required: true
+            hint: '{score} là chỗ website tự điền, giữ nguyên'
+          - label: Lời nhắn khi đúng 5/5
+            name: result_all
+            widget: text
+            required: true
+          - label: Lời nhắn khi đúng 3–4
+            name: result_most
+            widget: text
+            required: true
+          - label: Lời nhắn khi đúng 0–2
+            name: result_few
+            widget: text
+            required: true
+          - label: Nút Chơi lại
+            name: replay
+            widget: string
+            required: true
+          - label: Liên kết cuối
+            name: link
+            widget: string
+            required: true
+          - label: 'Khi tắt JavaScript: câu trước liên kết'
+            name: noscript
+            widget: string
+            required: true
+          - label: 'Khi tắt JavaScript: chữ liên kết'
+            name: noscript_link
+            widget: string
+            required: true
   - name: chung
     label: Menu, liên hệ, chân trang
     i18n: true
@@ -3505,3 +3106,96 @@ collections:
             name: rights
             i18n: true
             widget: string
+      - name: menu-tha-xuong
+        label: Menu thả xuống
+        file: src/content/chung/menu-tha-xuong.md
+        format: frontmatter
+        i18n: false
+        preview_path: /san-pham/
+        fields:
+          - label: Menu thả xuống
+            name: menus
+            widget: list
+            required: true
+            collapsed: true
+            fields:
+              - label: Các mục
+                name: items
+                widget: list
+                required: true
+                collapsed: true
+                fields:
+                  - label: Tên mục
+                    name: label
+                    widget: object
+                    required: true
+                    fields:
+                      - label: Tiếng Việt
+                        name: vi
+                        widget: string
+                      - label: Tiếng Anh
+                        name: en
+                        widget: string
+                      - label: Tiếng Trung
+                        name: zh
+                        widget: string
+                allow_add: false
+                allow_remove: false
+                allow_duplicate: false
+                allow_reorder: false
+                summary: '{{fields.label.vi}}'
+            allow_add: false
+            allow_remove: false
+            allow_duplicate: false
+            allow_reorder: false
+            summary: '{{fields.items.vi}}'
+            hint: Mỗi khối là menu thả xuống của một mục trên thanh menu (Về Hiền Nương, Nông nghiệp tuần hoàn, Sản phẩm, Dấu ấn, Hợp tác). Số trên ảnh là thứ tự các mục.
+            max: 5
+            min: 5
+      - name: tim-kiem
+        label: Trang tìm kiếm
+        file: src/content/chung/tim-kiem.md
+        format: frontmatter
+        i18n: false
+        preview_path: /tim-kiem/
+        fields:
+          - label: ① Tên trang
+            name: title
+            widget: string
+            required: true
+            hint: Hiện ở đường dẫn và tab trình duyệt
+          - label: ② Nút tìm kiếm
+            name: submit
+            widget: string
+            required: true
+          - label: '③ Đường dẫn: chữ “Trang chủ”'
+            name: home
+            widget: string
+            required: true
+          - label: ④ Tiêu đề
+            name: heading
+            widget: string
+            required: true
+          - label: Lời gợi ý khi chưa tìm
+            name: emptyLead
+            widget: string
+            required: true
+          - label: Liên kết gợi ý
+            name: emptyLinks
+            widget: list
+            required: true
+            collapsed: true
+            fields:
+              - label: Chữ liên kết
+                name: label
+                widget: string
+                required: true
+            allow_add: false
+            allow_remove: false
+            allow_duplicate: false
+            allow_reorder: false
+            summary: '{{fields.label.vi}}'
+          - label: Thông báo khi tắt JavaScript
+            name: noscript
+            widget: string
+            required: true

@@ -1,68 +1,28 @@
 ---
-flavor_question: Bạn muốn ăn kiểu nào?
-time_question: Có bao nhiêu thời gian?
-pantry_question: Bếp đang có gì?
-pantry_note: Chọn những thứ có sẵn, hoặc bỏ qua.
-submit: Gợi ý món cho tui
-disclosure: Gợi ý biên tập cho căn bếp của bạn. Thời gian gồm sơ chế và nấu, dùng để tham khảo.
 initial_eyebrow: Một bữa ngon bắt đầu từ đây
+flavor_question: Bạn muốn ăn kiểu nào?
 initial_title:
   - Để nấm ghé
   - vào bếp bạn.
-initial_text: Chọn vị bạn thích và thời gian có sẵn. Một món nấm, vài nguyên liệu quen, vừa đủ cho hai người.
-no_match_eyebrow: Chưa tìm được món phù hợp
-no_match_title: Mình đổi một chút nhé?
-no_match: Chưa có món {flavor} trong {time} phút. {name} cần khoảng {minutes} phút. Chọn “Thảnh thơi” để xem món này, hoặc đổi sang vị khác.
-relax_button: Chọn Thảnh thơi
-result_eyebrow: Món hợp với lựa chọn của bạn
-recipe_meta: '{flavor} · {minutes} phút · {servings} người'
-match_some: 'Dùng được nguyên liệu bạn đã chọn: {list}. Các nguyên liệu khác cần kiểm tra thêm.'
-match_none: Món phù hợp với vị và thời gian đã chọn. Bạn cần kiểm tra đầy đủ nguyên liệu bên dưới.
-shopping_title: Cần chuẩn bị thêm
-shopping_note: Nấm và gia vị cũng được liệt kê để bạn tiện kiểm tra.
-show_details: Xem cách nấu
-hide_details: Thu gọn công thức
-alternative_button: Thử món khác
-alternative_one: Hiện có một món phù hợp. Đổi vị hoặc thời gian để tìm thêm món.
-alternative_many: Có {count} món phù hợp; đang xem món {index}.
-product_link: Khám phá nấm bào ngư tại Hiền Nương
-suggested: 'Gợi ý: {name}. {minutes} phút, cho {servings} người.'
-changed: Lựa chọn đã đổi. Bấm “Gợi ý món cho tui” để xem món phù hợp.
-details_meta: '{minutes} phút gồm sơ chế và nấu · {servings} người'
-ingredients_title: Nguyên liệu
-steps_title: Cách nấu
-noscript: Bật JavaScript để nhận gợi ý món và xem công thức.
 flavors:
-  - id: light
-    name: Thanh nhẹ
-  - id: rich
-    name: Đậm đà
-  - id: crisp
-    name: Giòn vui
+  - name: Thanh nhẹ
+    id: light
+  - name: Đậm đà
+    id: rich
+  - name: Giòn vui
+    id: crisp
+time_question: Có bao nhiêu thời gian?
 times:
-  - id: '15'
-    name: 15 phút
-  - id: '30'
-    name: 30 phút
-  - id: leisure
-    name: Thảnh thơi
-pantry:
-  - id: tofu
-    name: Đậu hũ
-  - id: greens
-    name: Rau xanh
-  - id: egg
-    name: Trứng
-  - id: rice
-    name: Cơm
+  - name: 15 phút
+    id: '15'
+  - name: 30 phút
+    id: '30'
+  - name: Thảnh thơi
+    id: leisure
+pantry_question: Bếp đang có gì?
+pantry_note: Chọn những thứ có sẵn, hoặc bỏ qua.
 recipes:
-  - id: soup
-    name: Canh nấm đậu hũ
-    flavors:
-      - light
-    minutes: 15
-    image: /images/farm-play/soup.webp
-    alt: Minh họa bát canh nấm bào ngư, đậu hũ và rau xanh
+  - name: Canh nấm đậu hũ
     ingredients:
       - name: Nấm bào ngư
         quantity: 200 g
@@ -90,13 +50,13 @@ recipes:
       - Đun sôi nước với muối. Cho nấm vào, nấu 5 phút.
       - Thêm đậu hũ và rau, nấu thêm 3–4 phút đến khi rau chín. Nêm nước tương, thêm hành và dùng nóng.
     substitution: Có thể thay rau cải bằng cải thìa hoặc cải ngọt.
-  - id: eggs
-    name: Trứng xào nấm bào ngư
+    alt: Minh họa bát canh nấm bào ngư, đậu hũ và rau xanh
     flavors:
-      - rich
+      - light
+    id: soup
+    image: /images/farm-play/soup.webp
     minutes: 15
-    image: /images/farm-play/eggs.webp
-    alt: Minh họa đĩa trứng xào nấm bào ngư và hành lá
+  - name: Trứng xào nấm bào ngư
     ingredients:
       - name: Nấm bào ngư
         quantity: 200 g
@@ -121,13 +81,13 @@ recipes:
       - Làm nóng dầu, xào nấm 5–6 phút cho chín và bớt nước.
       - Rót trứng vào, đảo nhẹ 2–3 phút đến khi trứng chín hoàn toàn. Thêm nước tương còn lại, tiêu và hành.
     substitution: Không có hành lá thì bỏ qua; dùng cùng cơm có sẵn nếu thích.
-  - id: greens
-    name: Nấm xào rau cải
+    alt: Minh họa đĩa trứng xào nấm bào ngư và hành lá
     flavors:
-      - light
-    minutes: 25
-    image: /images/farm-play/greens.webp
-    alt: Minh họa đĩa nấm bào ngư xào rau cải xanh
+      - rich
+    id: eggs
+    image: /images/farm-play/eggs.webp
+    minutes: 15
+  - name: Nấm xào rau cải
     ingredients:
       - name: Nấm bào ngư
         quantity: 250 g
@@ -152,13 +112,13 @@ recipes:
       - Làm nóng dầu, phi tỏi 30 giây. Cho nấm vào xào 6–8 phút.
       - Cho phần cọng rau vào trước, thêm nước và xào 2 phút. Thêm lá, nước tương; đảo thêm 2–3 phút đến khi chín.
     substitution: Dùng cải thìa, cải ngọt hoặc bông cải; bông cải cần thêm thời gian cho chín.
-  - id: braise
-    name: Nấm kho đậu hũ
+    alt: Minh họa đĩa nấm bào ngư xào rau cải xanh
     flavors:
-      - rich
-    minutes: 30
-    image: /images/farm-play/braise.webp
-    alt: Minh họa nồi nấm bào ngư và đậu hũ kho nước tương
+      - light
+    id: greens
+    image: /images/farm-play/greens.webp
+    minutes: 25
+  - name: Nấm kho đậu hũ
     ingredients:
       - name: Nấm bào ngư
         quantity: 250 g
@@ -189,13 +149,13 @@ recipes:
       - Làm nóng dầu, áp chảo đậu hũ 6–8 phút, trở nhẹ. Thêm hành và nấm, đảo 4 phút.
       - Thêm nước, nước tương và đường. Kho lửa nhỏ 10–12 phút cho nấm chín và nước sánh nhẹ; rắc tiêu.
     substitution: Đậu hũ đã chiên có thể dùng thay đậu hũ trắng; giảm thời gian áp chảo.
-  - id: crispy
-    name: Nấm bào ngư chiên giòn
+    alt: Minh họa nồi nấm bào ngư và đậu hũ kho nước tương
     flavors:
-      - crisp
-    minutes: 35
-    image: /images/farm-play/crispy.webp
-    alt: Minh họa đĩa nấm bào ngư tẩm bột chiên giòn
+      - rich
+    id: braise
+    image: /images/farm-play/braise.webp
+    minutes: 30
+  - name: Nấm bào ngư chiên giòn
     ingredients:
       - name: Nấm bào ngư
         quantity: 250 g
@@ -220,14 +180,13 @@ recipes:
       - Làm nóng dầu trên lửa vừa. Nhúng từng miếng nấm vào bột rồi thả cẩn thận vào dầu.
       - Chiên từng mẻ nhỏ 4–5 phút, trở miếng nấm để vàng đều và chín bên trong. Vớt ra giá cho ráo dầu, dùng ngay.
     substitution: Có thể dùng bột chiên giòn pha theo hướng dẫn trên bao bì thay hỗn hợp bột.
-  - id: rice
-    name: Cơm nấm áp chảo
+    alt: Minh họa đĩa nấm bào ngư tẩm bột chiên giòn
     flavors:
       - crisp
-      - rich
-    minutes: 45
-    image: /images/farm-play/rice.webp
-    alt: Minh họa cơm áp chảo có nấm bào ngư, trứng và rau xanh
+    id: crispy
+    image: /images/farm-play/crispy.webp
+    minutes: 35
+  - name: Cơm nấm áp chảo
     ingredients:
       - name: Nấm bào ngư
         quantity: 200 g
@@ -256,4 +215,45 @@ recipes:
       - Thêm dầu còn lại vào chảo chống dính. Dàn cơm thành lớp mỏng, áp lửa vừa nhỏ 8–10 phút đến khi đáy vàng; chia hai mẻ nếu chảo nhỏ.
       - Cho hỗn hợp nấm lên cơm, làm nóng thêm 2 phút rồi dùng.
     substitution: Không có rau cải thì dùng rau xanh sẵn có; cơm nguội phải được bảo quản lạnh đúng cách trước khi dùng.
+    alt: Minh họa cơm áp chảo có nấm bào ngư, trứng và rau xanh
+    flavors:
+      - crisp
+      - rich
+    id: rice
+    image: /images/farm-play/rice.webp
+    minutes: 45
+pantry:
+  - name: Đậu hũ
+    id: tofu
+  - name: Rau xanh
+    id: greens
+  - name: Trứng
+    id: egg
+  - name: Cơm
+    id: rice
+submit: Gợi ý món cho tui
+disclosure: Gợi ý biên tập cho căn bếp của bạn. Thời gian gồm sơ chế và nấu, dùng để tham khảo.
+initial_text: Chọn vị bạn thích và thời gian có sẵn. Một món nấm, vài nguyên liệu quen, vừa đủ cho hai người.
+no_match_eyebrow: Chưa tìm được món phù hợp
+no_match_title: Mình đổi một chút nhé?
+no_match: Chưa có món {flavor} trong {time} phút. {name} cần khoảng {minutes} phút. Chọn “Thảnh thơi” để xem món này, hoặc đổi sang vị khác.
+relax_button: Chọn Thảnh thơi
+result_eyebrow: Món hợp với lựa chọn của bạn
+recipe_meta: '{flavor} · {minutes} phút · {servings} người'
+match_some: 'Dùng được nguyên liệu bạn đã chọn: {list}. Các nguyên liệu khác cần kiểm tra thêm.'
+match_none: Món phù hợp với vị và thời gian đã chọn. Bạn cần kiểm tra đầy đủ nguyên liệu bên dưới.
+shopping_title: Cần chuẩn bị thêm
+shopping_note: Nấm và gia vị cũng được liệt kê để bạn tiện kiểm tra.
+show_details: Xem cách nấu
+hide_details: Thu gọn công thức
+alternative_button: Thử món khác
+alternative_one: Hiện có một món phù hợp. Đổi vị hoặc thời gian để tìm thêm món.
+alternative_many: Có {count} món phù hợp; đang xem món {index}.
+product_link: Khám phá nấm bào ngư tại Hiền Nương
+suggested: 'Gợi ý: {name}. {minutes} phút, cho {servings} người.'
+changed: Lựa chọn đã đổi. Bấm “Gợi ý món cho tui” để xem món phù hợp.
+details_meta: '{minutes} phút gồm sơ chế và nấu · {servings} người'
+ingredients_title: Nguyên liệu
+steps_title: Cách nấu
+noscript: Bật JavaScript để nhận gợi ý món và xem công thức.
 ---

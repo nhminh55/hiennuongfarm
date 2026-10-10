@@ -1,4 +1,5 @@
 ---
+import { copy, fill } from '../../data/copy';
 /**
  * The /san-pham/ showroom: a list of the 12 products and a stage that shows
  * the selected one. The selection lives in the URL hash (/san-pham/#slug).
@@ -22,35 +23,7 @@ interface Props { products: ShowroomItem[] }
 const { products } = Astro.props;
 const lang = getLocale(Astro.url);
 
-const t = {
-  vi: {
-    count: (n: number) => ['', String(n), ' sản phẩm'],
-    groups: ['Nấm tươi', 'Sản phẩm chế biến'],
-    ask: 'Liên hệ tư vấn',
-    call: 'Gọi điện',
-    previous: 'Sản phẩm trước',
-    next: 'Sản phẩm tiếp theo',
-    subject: (name: string) => `Tư vấn sản phẩm: ${name} — Hiền Nương Farm`,
-  },
-  en: {
-    count: (n: number) => ['', String(n), ' products'],
-    groups: ['Fresh mushrooms', 'Made from them'],
-    ask: 'Ask for advice',
-    call: 'Call us',
-    previous: 'Previous product',
-    next: 'Next product',
-    subject: (name: string) => `Product enquiry: ${name} — Hiền Nương Farm`,
-  },
-  zh: {
-    count: (n: number) => ['', String(n), ' 款产品'],
-    groups: ['鲜菇', '加工产品'],
-    ask: '咨询',
-    call: '致电',
-    previous: '上一款产品',
-    next: '下一款产品',
-    subject: (name: string) => `产品咨询：${name} — Hiền Nương Farm`,
-  },
-}[lang];
+const t = copy('san-pham/showroom-khung', lang);
 
 const total = products.length;
 // The approved catalogue order: the four main lines grown on the farm, then the products made from them.
@@ -60,7 +33,7 @@ const groups = [
   { id: showroomGroupIds[1], title: t.groups[1], start: FRESH, items: products.slice(FRESH) },
 ];
 const pad = (n: number) => String(n).padStart(2, '0');
-const mail = (name: string) => `mailto:${contact.email}?subject=${encodeURIComponent(t.subject(name))}`;
+const mail = (name: string) => `mailto:${contact.email}?subject=${encodeURIComponent(fill(t.subject, { name }))}`;
 
 const data = products.map((p, i) => ({
   slug: p.slug,
@@ -85,7 +58,7 @@ const layers = [
   <div class="container showroom__grid">
     <nav class="showroom__index" aria-labelledby="showroom-count" data-showroom-index>
       <p class="showroom__count" id="showroom-count">
-        {t.count(total)[0]}<span class="showroom__count-num">{t.count(total)[1]}</span>{t.count(total)[2]}
+        {t.count[0]}<span class="showroom__count-num">{fill(t.count[1], { n: String(total) })}</span>{t.count[2]}
         <span class="showroom__pos" aria-hidden="true" data-showroom-pos>{pad(1)} / {pad(total)}</span>
       </p>
       <div class="showroom__list" data-showroom-list>

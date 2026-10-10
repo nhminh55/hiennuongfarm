@@ -1,7 +1,5 @@
 ---
 hint: Chọn một hướng để tìm hiểu.
-centreWith: Cùng
-centreBrand: Hiền Nương
 directions:
   - name: Phân phối sản phẩm
     short: Phân phối
@@ -11,12 +9,12 @@ directions:
     subject: Phân phối sản phẩm — Hiền Nương Farm
     caption: 'Ảnh: Báo Nhân Dân'
     image:
-      src: /images/hop-tac/phan-phoi-san-pham.webp
-      thumb: /images/hop-tac/phan-phoi-san-pham-640.webp
-      srcset: /images/hop-tac/phan-phoi-san-pham-640.webp 640w, /images/hop-tac/phan-phoi-san-pham.webp 1226w
-      width: 1226
-      height: 866
       alt: Những khay nấm mối tươi đã hút chân không, dán nhãn Nấm Mối Nàng Nương, xếp cạnh nhau
+      height: 866
+      src: /images/hop-tac/phan-phoi-san-pham.webp
+      srcset: /images/hop-tac/phan-phoi-san-pham-640.webp 640w, /images/hop-tac/phan-phoi-san-pham.webp 1226w
+      thumb: /images/hop-tac/phan-phoi-san-pham-640.webp
+      width: 1226
   - name: Hợp tác sản xuất
     short: Sản xuất
     title: Kết nối từ công việc làm nông.
@@ -25,12 +23,12 @@ directions:
     subject: Hợp tác sản xuất — Hiền Nương Farm
     caption: 'Ảnh: Báo An Giang'
     image:
-      src: /images/hop-tac/hop-tac-san-xuat.webp
-      thumb: /images/hop-tac/hop-tac-san-xuat-640.webp
-      srcset: /images/hop-tac/hop-tac-san-xuat-640.webp 640w, /images/hop-tac/hop-tac-san-xuat.webp 1280w
-      width: 1280
-      height: 872
       alt: Các lao động ngồi quanh đống giá thể trong nhà xưởng, đóng giá thể vào bịch để trồng nấm
+      height: 872
+      src: /images/hop-tac/hop-tac-san-xuat.webp
+      srcset: /images/hop-tac/hop-tac-san-xuat-640.webp 640w, /images/hop-tac/hop-tac-san-xuat.webp 1280w
+      thumb: /images/hop-tac/hop-tac-san-xuat-640.webp
+      width: 1280
   - name: Học tập & truyền thông
     short: Học tập & truyền thông
     title: Chia sẻ kiến thức, lan tỏa câu chuyện.
@@ -39,11 +37,13 @@ directions:
     subject: Học tập & truyền thông — Hiền Nương Farm
     caption: Ký kết hợp tác truyền thông với sinh viên FPT Cần Thơ · 26.06.2025
     image:
+      alt: Lễ ký kết hợp tác truyền thông giữa Trang trại Hiền Nương và sinh viên FPT Cần Thơ; chị Châu Thị Nương mặc áo dài đỏ ngồi ký văn bản, xung quanh là các đại biểu chụp ảnh chung
+      height: 565
       src: /images/hop-tac/kyket.webp
       thumb: /images/hop-tac/kyket.webp
       width: 800
-      height: 565
-      alt: Lễ ký kết hợp tác truyền thông giữa Trang trại Hiền Nương và sinh viên FPT Cần Thơ; chị Châu Thị Nương mặc áo dài đỏ ngồi ký văn bản, xung quanh là các đại biểu chụp ảnh chung
+centreWith: Cùng
+centreBrand: Hiền Nương
 nang_cao:
   label: Ba hướng hợp tác
 ---

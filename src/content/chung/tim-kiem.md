@@ -1,8 +1,8 @@
 ---
-home: Trang chủ
 title: Tìm kiếm
-heading: Kết quả tìm kiếm
 submit: Tìm kiếm
+home: Trang chủ
+heading: Kết quả tìm kiếm
 emptyLead: 'Bạn có thể bắt đầu từ:'
 emptyLinks:
   - label: Sản phẩm

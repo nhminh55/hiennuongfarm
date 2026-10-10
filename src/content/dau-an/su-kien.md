@@ -114,7 +114,7 @@ activities:
         href: https://www.hoinongdan.org.vn/trung-uong-hoi/chu-tich-t-u-hoi-nong-dan-viet-nam-luong-quoc-doan-tham-mo-hinh-cua-nong-dan-san-xuat-gioi-tai-an-giang-380436
       - label: Dân Việt, 22.03.2026
         href: https://danviet.vn/chu-tich-hoi-nong-dan-viet-nam-luong-quoc-doan-tham-mo-hinh-trong-nam-doanh-thu-15-ty-dong-nam-cua-nu-nong-dan-khmer-d1412214.html
-    date: '2026-03-05'
+    date: 2026-03-05
     slug: chu-tich-hoi-nong-dan-tham-nuong-farm
   - title: Hội nghị Thủ tướng Chính phủ đối thoại với nông dân năm 2025
     place: Điểm cầu tỉnh An Giang
@@ -127,7 +127,7 @@ activities:
         href: https://baochinhphu.vn/cap-nhat-hoi-nghi-thu-tuong-chinh-phu-doi-thoai-voi-nong-dan-nam-2025-102251210080135023.htm
       - label: Báo Thanh Niên, 10.12.2025
         href: https://thanhnien.vn/nong-dan-ke-chuyen-len-nui-hung-song-livestream-ban-nong-san-185251210143337259.htm
-    date: '2025-12-10'
+    date: 2025-12-10
     slug: hoi-nghi-thu-tuong-doi-thoai-voi-nong-dan-2025
   - title: Gặp mặt Tổng Bí thư Tô Lâm cùng các Nông dân Việt Nam xuất sắc năm 2025
     place: Trụ sở Trung ương Đảng, Hà Nội
@@ -163,7 +163,7 @@ activities:
       - label: Hệ sinh thái GBI, 28.10.2025
         href: https://hesinhthaigbi.vn/3eFh09D5F93e2cC
     award: nong-dan-viet-nam-xuat-sac-2025
-    date: '2025-10-14'
+    date: 2025-10-14
     slug: gap-mat-tong-bi-thu-to-lam
   - title: Ký kết hợp tác truyền thông với sinh viên FPT Cần Thơ
     place: Trường Đại học FPT phân hiệu Cần Thơ
@@ -174,17 +174,17 @@ activities:
     photos:
       - caption: Lễ ký kết hợp tác truyền thông giữa Trang trại Hiền Nương và sinh viên FPT Cần Thơ, ngày 26.06.2025.
         credit: Trường Đại học FPT
-        srcset: /images/hop-tac/kyket.webp 800w
-        full: /images/hop-tac/kyket.webp
         alt: Lễ ký kết hợp tác truyền thông giữa Trang trại Hiền Nương và sinh viên FPT Cần Thơ; chị Châu Thị Nương mặc áo dài đỏ ngồi ký văn bản, xung quanh là các đại biểu chụp ảnh chung
+        full: /images/hop-tac/kyket.webp
         height: 565
         origin: public/images/hop-tac/kyket.webp (E023__daihoc.fpt.edu.vn)
         src: /images/hop-tac/kyket.webp
+        srcset: /images/hop-tac/kyket.webp 800w
         width: 800
     sources:
       - label: Trường Đại học FPT, 02.07.2025
         href: https://daihoc.fpt.edu.vn/trai-nghiem-sinh-vien/hoat-dong-sinh-vien/sinh-vien-truong-dai-hoc-fpt-phan-hieu-can-tho-ky-ket-hop-tac-thuc-hien-truyen-thong-voi-doanh-nghiep/
-    date: '2025-06-26'
+    date: 2025-06-26
     slug: ky-ket-hop-tac-truyen-thong-sinh-vien-fpt-can-tho
     source: Date and place from the banner in the photograph and the Talk Xanh event page (luma.com/kuw8qjx3); FPT University article 02.07.2025.
   - title: Chung kết cuộc thi Tìm kiếm sáng kiến tăng quyền năng kinh tế phụ nữ trong nông nghiệp

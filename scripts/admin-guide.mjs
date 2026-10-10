@@ -15,7 +15,9 @@ const require = createRequire(import.meta.url);
 const yaml = require('js-yaml');
 const { chromium } = require('@playwright/test');
 const BASE = process.argv[2] ?? 'http://127.0.0.1:4330';
-const read = (f) => yaml.load(fs.readFileSync(f, 'utf8').split(/^---$/m)[1]);
+// Unquoted dates read as Date objects; keep them as "2025-05-18" text, as src/data/copy.ts does.
+const plainDates = (v) => v instanceof Date ? v.toISOString().slice(0, 10) : Array.isArray(v) ? v.map(plainDates) : v && typeof v === 'object' ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, plainDates(x)])) : v;
+const read = (f) => plainDates(yaml.load(fs.readFileSync(f, 'utf8').split(/^---$/m)[1]));
 
 const ADV = 'Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)';
 const ALT = 'Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang';
@@ -41,7 +43,7 @@ const L = {
     'nang_cao.prev': 'Nút sản phẩm trước', 'nang_cao.next': 'Nút sản phẩm tiếp theo' },
   'trang-chu/06-bay-nui': { _: 'Mục Vùng Bảy Núi',
     eyebrow: 'Chữ nhỏ trên tiêu đề', title: 'Tiêu đề', body: 'Đoạn giới thiệu', more: 'Nút', 'nang_cao.alt': ['Mô tả ảnh cánh đồng', ALT] },
-  'trang-chu/07-dau-an': { _: 'Mục Dấu ấn',
+  'trang-chu/07-dau-an': { _: 'Mục Dấu ấn', groups: ['Ba thẻ', 'Báo chí, Giải thưởng, Sự kiện'], 'groups[].title': 'Tiêu đề thẻ', 'groups[].note': 'Mô tả thẻ',
     eyebrow: 'Chữ nhỏ trên tiêu đề', title: 'Tiêu đề', intro: 'Đoạn giới thiệu', more: 'Nút “Xem chi tiết”', 'nang_cao.moreOf': ['Nút xem chi tiết (trình đọc màn hình)', '{title} là chỗ website tự điền tên bài, giữ nguyên'] },
   'trang-chu/08-hop-tac': { _: 'Mục Hợp tác',
     eyebrow: 'Chữ nhỏ trên tiêu đề', title: 'Tiêu đề', body: 'Đoạn giới thiệu', cta: 'Nút', caption: 'Chú thích ảnh',
@@ -60,7 +62,15 @@ const L = {
   'chung/header': { _: 'Chữ phụ của menu (trình đọc màn hình)',
     mainNav: 'Tên menu chính', menuNav: 'Tên menu điện thoại', menu: 'Nút mở menu', close: 'Nút đóng', submenu: 'Tên menu con' },
   'san-pham/ten-va-mo-ta': { _: 'Tên 4 dòng nấm chính' },
-  'san-pham/trang-san-pham': { _: 'Trang Sản phẩm (/san-pham/)',
+  'san-pham/showroom-khung': { _: 'Trang Sản phẩm: nút và nhãn',
+    count: ['Chữ đếm sản phẩm', '3 ô: chữ trước số, số, chữ sau số. {n} là số sản phẩm, giữ nguyên'], groups: ['Tên hai nhóm', 'Nấm tươi, rồi Sản phẩm chế biến'], ask: 'Nút liên hệ tư vấn', call: 'Nút gọi điện',
+    'nang_cao.previous': 'Nút sản phẩm trước', 'nang_cao.next': 'Nút sản phẩm tiếp theo', 'nang_cao.subject': ['Tiêu đề email tư vấn', '{name} là tên sản phẩm, giữ nguyên'] },
+  'san-pham/showroom-tab': { _: 'Trang Sản phẩm: tên tab và tiêu đề trong tab',
+    tabs: 'Tên các tab', 'tabs.gioi-thieu': 'Tab Giới thiệu', 'tabs.thanh-phan': 'Tab Thành phần', 'tabs.cach-dung': 'Tab Cách dùng', 'tabs.ho-so': 'Tab Hồ sơ', 'tabs.nhan-xet': 'Tab Nhận xét',
+    detail: 'Liên kết “Xem trang sản phẩm”', compositionTitle: 'Tab Thành phần: tiêu đề', ingredients: 'Tab Thành phần: chữ “Thành phần”', preparation: 'Tab Cách dùng: chữ “Cách dùng”', storage: 'Tab Cách dùng: chữ “Bảo quản”', recipes: 'Tab Cách dùng: tiêu đề món gợi ý', recipeIngredients: 'Món gợi ý: chữ “Nguyên liệu”', recipeSteps: 'Món gợi ý: chữ “Cách làm”', time: 'Món gợi ý: chữ “Thời gian”', servings: 'Món gợi ý: chữ “Khẩu phần”',
+    recordsTitle: 'Tab Hồ sơ: tiêu đề', issuer: 'Tab Hồ sơ: chữ “Đơn vị cấp”', reference: 'Tab Hồ sơ: chữ “Số”', date: 'Tab Hồ sơ: chữ “Ngày”', scope: 'Tab Hồ sơ: chữ “Phạm vi”', viewDocument: 'Tab Hồ sơ: nút xem tài liệu', reviewsTitle: 'Tab Nhận xét: tiêu đề',
+    'nang_cao.tablist': 'Tên thanh tab (trình đọc màn hình)', 'nang_cao.newTab': 'Chữ “mở trong thẻ mới” (trình đọc màn hình)' },
+  'san-pham/trang-san-pham': { _: 'Trang Sản phẩm (/san-pham/)', play: 'Liên kết trò chơi “Ghé chơi”',
     eyebrow: 'Chữ nhỏ trên tiêu đề', home: 'Chữ “Trang chủ” trong đường dẫn', ctaTitle: 'Tiêu đề phần liên hệ cuối trang', ctaBody: 'Đoạn liên hệ cuối trang',
     'nang_cao.pageTitle': 'Tên trang (trên tab trình duyệt)', 'nang_cao.description': 'Mô tả trang trên Google' },
   'san-pham/nam-moi-den': { _: 'Trang Nấm Mối Đen',
@@ -77,7 +87,7 @@ const L = {
   'san-pham/chung-kiem-nghiem': { _: 'Bảng kết quả kiểm nghiệm (dùng chung)',
     eyebrow: 'Chữ nhỏ trên tiêu đề', title: 'Tiêu đề', intro: 'Đoạn giới thiệu', report: 'Chữ “Báo cáo”', sample: 'Chữ “Mẫu thử”', lab: 'Chữ “Đơn vị thử nghiệm”', customer: 'Chữ “Đơn vị gửi mẫu”',
     testedOn: 'Chữ “Ngày thử nghiệm”', code: 'Chữ “Mã báo cáo”', param: 'Tiêu đề cột “Chỉ tiêu”', result: 'Tiêu đề cột “Kết quả”', notes: ['Ghi chú dưới bảng', 'Mỗi ô là một đoạn'] },
-  'tuan-hoan/nong-nghiep-tuan-hoan': { _: 'Trang Nông nghiệp tuần hoàn',
+  'tuan-hoan/nong-nghiep-tuan-hoan': { _: 'Trang Nông nghiệp tuần hoàn', playCycle: 'Lời mời chơi 1', 'playCycle.title': 'Tiêu đề', 'playCycle.line': 'Câu mời', 'playCycle.label': 'Nút', playQuiz: 'Lời mời chơi 2', 'playQuiz.title': 'Tiêu đề', 'playQuiz.line': 'Câu mời', 'playQuiz.label': 'Nút',
     home: 'Chữ “Trang chủ” trong đường dẫn', title: 'Tiêu đề trang', lead: 'Câu dẫn dưới tiêu đề', cycleTitle: 'Tiêu đề vòng tuần hoàn', motto: ['Câu khẩu hiệu giữa vòng', 'Mỗi ô là một dòng'],
     steps: ['Sáu bước của vòng tuần hoàn', 'Đúng 6 bước, theo thứ tự trên vòng'], 'steps[].title': 'Tên bước', 'steps[].name': ['Tên trên vòng', 'Xuống dòng trong ô = xuống dòng trên vòng'], 'steps[].lead': 'Câu tóm tắt', 'steps[].text': ['Các đoạn văn', 'Mỗi ô là một đoạn'],
     solarEyebrow: 'Điện mặt trời · chữ nhỏ', solarTitle: 'Điện mặt trời · tiêu đề', solarBody: ['Điện mặt trời · các đoạn văn', 'Mỗi ô là một đoạn'], solarFact: 'Điện mặt trời · dòng dưới số 100%', solarCaption: 'Điện mặt trời · chú thích ảnh',
@@ -135,6 +145,8 @@ const PAGES = {
   'san-pham/ten-va-mo-ta': ['/', '#san-vat'],
   'san-pham/trang-san-pham': ['/san-pham/', 'main'],
   'san-pham/nam-moi-den': ['/san-pham/nam-moi-den/', 'main'],
+  'san-pham/showroom-khung': ['/san-pham/', 'main'],
+  'san-pham/showroom-tab': ['/san-pham/', 'main'],
   'san-pham/chung-dau-trang': ['/san-pham/nam-moi-den/', '.p-hero'],
   'san-pham/chung-san-pham-khac': ['/san-pham/nam-moi-den/', '.related'],
   'san-pham/chung-kiem-nghiem': ['/san-pham/nam-moi-den/', '#kiem-nghiem'],
@@ -255,6 +267,18 @@ const DATA_FILES = {
   },
 };
 Object.assign(DATA_FILES, {
+  "hop-tac/gioi-thieu": {"label":"Phần mở đầu","page":["/hop-tac/","main"],"items":null,"labels":{"home":"Đường dẫn: chữ “Trang chủ”","title":["Tên trang","Hiện ở đường dẫn và tab trình duyệt"],"eyebrow":"Chữ nhỏ trên tiêu đề","heading":"Tiêu đề","lead":"Đoạn giới thiệu"}},
+  "hop-tac/huong-hop-tac": {"label":"Ba hướng hợp tác","page":["/hop-tac/",".ways"],"items":null,"hidden":["thumb","srcset"],"labels":{"hint":"Lời nhắc chọn hướng","centreWith":"Chữ giữa tam giác (dòng 1)","centreBrand":"Chữ giữa tam giác (dòng 2)","directions":["Ba hướng hợp tác","Đúng 3 hướng"],"directions[].name":"Tên hướng (dưới ảnh)","directions[].short":["Tên ngắn","Nút chọn ở phần Liên hệ"],"directions[].title":"Tiêu đề hướng","directions[].text":"Đoạn giải thích","directions[].cta":"Nút liên hệ","directions[].subject":["Tiêu đề thư soạn sẵn","Cũng hiện trong ghi chú ở phần Liên hệ"],"directions[].image":"Ảnh","directions[].image.caption":"Chú thích ảnh","directions[].caption":"Chú thích ảnh","photo":"Ảnh","caption":"Chú thích ảnh"}},
+  "hop-tac/doi-tac": {"label":"Đối tác & kết nối","page":["/hop-tac/",".links"],"items":null,"labels":{"eyebrow":"Chữ nhỏ trên tiêu đề","title":"Tiêu đề","lead":"Đoạn giới thiệu","more":"Chữ liên kết xem tư liệu","partners":"Đối tác","partners[].name":"Tên đối tác","partners[].kind":"Loại kết nối (dòng nhỏ trên tên)","partners[].text":"Đoạn mô tả","partners[].outlet":"Nguồn tư liệu","partners[].outlet.label":"Tên nguồn tư liệu","partners[].photo":"Ảnh","partners[].photo.caption":"Chú thích ảnh"}},
+  "hop-tac/lien-he": {"label":"Phần liên hệ","page":["/hop-tac/",".invite"],"items":null,"labels":{"eyebrow":"Chữ nhỏ trên tiêu đề","title":"Tiêu đề","text":"Đoạn mời","choicesLabel":"Nhãn chọn hướng trao đổi","cta":"Nút liên hệ","noteBefore":["Ghi chú (trước tiêu đề thư)","Tiêu đề thư tự chèn vào sau"],"noteAfter":"Ghi chú (sau tiêu đề thư)","email":"Nhãn Email","phone":"Nhãn Điện thoại","zalo":"Nhãn Zalo"}},
+  "chung/menu-tha-xuong": {"label":"Menu thả xuống","page":["/san-pham/",".site-header__bar"],"items":"menus","itemName":"items.0.label","hidden":["video","group"],"hint":"Mỗi khối là menu thả xuống của một mục trên thanh menu (Về Hiền Nương, Nông nghiệp tuần hoàn, Sản phẩm, Dấu ấn, Hợp tác).","labels":{"menus":"Menu thả xuống","items":"Các mục","label":"Tên mục"}},
+  "chung/tim-kiem": {"label":"Trang tìm kiếm","page":["/tim-kiem/","main"],"items":null,"labels":{"home":"Đường dẫn: chữ “Trang chủ”","title":["Tên trang","Hiện ở đường dẫn và tab trình duyệt"],"heading":"Tiêu đề","submit":"Nút tìm kiếm","emptyLead":"Lời gợi ý khi chưa tìm","emptyLinks":"Liên kết gợi ý","emptyLinks[].label":"Chữ liên kết","noscript":"Thông báo khi tắt JavaScript"}},
+  "san-pham/kiem-nghiem": {"label":"Phiếu kiểm nghiệm (trang Nấm Mối Đen)","page":["/san-pham/nam-moi-den/","#kiem-nghiem"],"items":null,"hint":"Giữ đúng như in trên phiếu kiểm nghiệm.","labels":{"products":"Sản phẩm","reports":"Phiếu","id":"Số phiếu","sample":"Tên mẫu (đúng như trên phiếu)","lab":"Đơn vị kiểm nghiệm","customer":"Đơn vị gửi mẫu","testedOn":"Ngày kiểm nghiệm","group":"Nhóm chỉ tiêu","results":"Kết quả","products[].reports[].results[].name":"Tên chỉ tiêu (tiếng Việt)","products[].reports[].results[].en":["Tên chỉ tiêu (tiếng Anh)","Đúng như in trên phiếu"],"products[].reports[].results[].zh":"Tên chỉ tiêu (tiếng Trung)","value":["Kết quả","Giữ đúng như in trên phiếu"],"exp":"Số mũ (lũy thừa 10)","unit":"Đơn vị"}},
+  "choi-cung-nong-trai/chung": {"label":"Trang chính và phần chung","page":["/choi-cung-nong-trai/","main"],"items":null,"hidden":["id","slug","alt","number","image","minutes","correct","flavors.id","key","source"],"labels":{"title":"Tiêu đề trang","intro":"Câu giới thiệu","eyebrow":"Chữ nhỏ trên tiêu đề","note":"Ghi chú cuối trang","play_label":"Chữ trên nút “Ghé chơi”","home":"Đường dẫn: chữ “Trang chủ”","section":"Tên mục (đường dẫn và chữ nhỏ trên tiêu đề các trò chơi)","no_login":"Chữ sau thời lượng (Không cần đăng nhập)","all_activities":"Liên kết “Tất cả hoạt động” (cuối trang trò chơi)","widget_title":"Tiêu đề thẻ “Ghé chơi” ở mép phải các trang","widget_all":"Liên kết cuối thẻ “Ghé chơi”","activities":["Ba trò chơi","Đúng 3 trò, theo thứ tự"],"activities.title":"Tên trò chơi","activities.intro":"Câu giới thiệu trên trang trò chơi","activities.time":"Thời lượng","activities.text":"Mô tả trên trang chính","activities.widget_text":"Mô tả trong thẻ “Ghé chơi”"}},
+  "choi-cung-nong-trai/am-thanh": {"label":"Nút âm thanh (các trò chơi)","page":["/choi-cung-nong-trai/mot-vong-nong-trai/","main"],"items":null,"hidden":["id","slug","alt","number","image","minutes","correct","flavors.id","key","source"],"labels":{"sound":"Tên nút Âm thanh","music":"Tên nút Nhạc nền","off":"Trạng thái Tắt","on":"Trạng thái Bật","on_tap":"Trạng thái Bật · chạm để phát","note":"Ghi chú dưới nút","remembered":"Thông báo khi đã nhớ lựa chọn","turned_on":["Thông báo khi bật","{name} là tên nút, giữ nguyên"],"turned_off":["Thông báo khi tắt","{name} là tên nút, giữ nguyên"],"blocked":"Thông báo khi trình duyệt chặn âm thanh","paused":"Thông báo khi âm thanh tạm dừng"}},
+  "choi-cung-nong-trai/mot-vong-nong-trai": {"label":"Trò chơi: Một vòng nông trại","page":["/choi-cung-nong-trai/mot-vong-nong-trai/","main"],"items":null,"hidden":["id","slug","alt","number","image","minutes","correct","flavors.id","key","source"],"labels":{"guide_eyebrow":"Khung hướng dẫn: chữ nhỏ","guide_title":["Khung hướng dẫn: tiêu đề","Mỗi ô là một dòng"],"guide_text":"Khung hướng dẫn: đoạn văn","progress":["Tiến độ","{done} là chỗ website tự điền, giữ nguyên"],"hint_button":"Nút Gợi ý","reset_button":"Nút Chơi lại","placed":"Nhãn “Đã ghép”","start":"Lời nhắn lúc bắt đầu","selected":["Khi chọn mảnh","{name} là chỗ website tự điền, giữ nguyên"],"incorrect":"Khi đặt sai chỗ","empty":"Khi chưa chọn mảnh","occupied":"Khi chỗ đã ghép","correct":["Khi đặt đúng","{explanation} là chỗ website tự điền, giữ nguyên"],"finished":["Khi ghép xong","{explanation} là chỗ website tự điền, giữ nguyên"],"hint":["Gợi ý","{name}, {step}, {place} là chỗ website tự điền, giữ nguyên"],"restarted":"Khi chơi lại","complete_eyebrow":"Hoàn thành: chữ nhỏ","complete_title":"Hoàn thành: tiêu đề","complete_text":"Hoàn thành: đoạn văn","complete_link":"Hoàn thành: liên kết","noscript":"Khi tắt JavaScript: câu trước liên kết","noscript_link":"Khi tắt JavaScript: chữ liên kết","steps":["Năm bước","Đúng 5 bước, theo thứ tự trên vòng"],"steps.name":"Tên mảnh ghép","steps.place":"Tên khu vực trên nông trại","steps.explanation":"Giải thích khi ghép đúng"}},
+  "choi-cung-nong-trai/hom-nay-an-nam-gi": {"label":"Trò chơi: Hôm nay ăn nấm gì?","page":["/choi-cung-nong-trai/hom-nay-an-nam-gi/","main"],"items":null,"hidden":["id","slug","alt","number","image","minutes","correct","flavors.id","key","source","recipes.flavors"],"labels":{"flavor_question":"Câu hỏi 01","time_question":"Câu hỏi 02","pantry_question":"Câu hỏi 03","pantry_note":"Ghi chú câu 03","submit":"Nút gợi ý món","disclosure":"Ghi chú dưới nút","initial_eyebrow":"Lúc đầu: chữ nhỏ","initial_title":["Lúc đầu: tiêu đề","Mỗi ô là một dòng"],"initial_text":"Lúc đầu: đoạn văn","no_match_eyebrow":"Không có món: chữ nhỏ","no_match_title":"Không có món: tiêu đề","no_match":["Không có món: lời nhắn","{flavor}, {time}, {name}, {minutes} là chỗ website tự điền, giữ nguyên"],"relax_button":"Nút Chọn Thảnh thơi","result_eyebrow":"Kết quả: chữ nhỏ","recipe_meta":["Kết quả: dòng thông tin","{flavor}, {minutes}, {servings} là chỗ website tự điền, giữ nguyên"],"match_some":["Khi dùng được nguyên liệu đã chọn","{list} là chỗ website tự điền, giữ nguyên"],"match_none":"Khi không dùng nguyên liệu đã chọn","shopping_title":"Tiêu đề “Cần chuẩn bị thêm”","shopping_note":"Ghi chú “Cần chuẩn bị thêm”","show_details":"Nút Xem cách nấu","hide_details":"Nút Thu gọn công thức","alternative_button":"Nút Thử món khác","alternative_one":"Khi chỉ có một món","alternative_many":["Khi có nhiều món","{count}, {index} là chỗ website tự điền, giữ nguyên"],"product_link":"Liên kết sản phẩm","suggested":["Thông báo gợi ý","{name}, {minutes}, {servings} là chỗ website tự điền, giữ nguyên"],"changed":"Khi đổi lựa chọn","details_meta":["Công thức: dòng thông tin","{minutes}, {servings} là chỗ website tự điền, giữ nguyên"],"ingredients_title":"Tiêu đề “Nguyên liệu”","steps_title":"Tiêu đề “Cách nấu”","noscript":"Khi tắt JavaScript","flavors":"Các vị","flavors.name":"Tên vị","times":"Các mức thời gian","times.name":"Tên mức thời gian","pantry":"Nguyên liệu có sẵn","pantry.name":"Tên nguyên liệu","recipes":"Món ăn","recipes.name":"Tên món","recipes.ingredients":"Nguyên liệu","recipes.ingredients.name":"Tên nguyên liệu","recipes.ingredients.quantity":"Lượng","recipes.steps":"Các bước nấu","recipes.substitution":"Gợi ý thay thế","servings":"Khẩu phần"}},
+  "choi-cung-nong-trai/ban-hieu-nam-toi-dau": {"label":"Trò chơi: Bạn hiểu nấm tới đâu?","page":["/choi-cung-nong-trai/ban-hieu-nam-toi-dau/","main"],"items":null,"hidden":["id","slug","alt","number","image","minutes","correct","flavors.id","key","source"],"labels":{"caption":"Chú thích ảnh","progress":["Tiến độ","{n} là chỗ website tự điền, giữ nguyên"],"start":"Tiêu đề lúc đầu","next":"Nút Câu tiếp theo","last":"Nút Xem kết quả","correct_mark":"Nhãn “Đáp án đúng”","chosen_mark":"Nhãn “Bạn đã chọn”","right":["Khi trả lời đúng","{explanation} là chỗ website tự điền, giữ nguyên"],"wrong":["Khi trả lời sai","{explanation} là chỗ website tự điền, giữ nguyên"],"complete_eyebrow":"Kết quả: chữ nhỏ","complete_title":"Kết quả: tiêu đề","score":["Điểm","{score} là chỗ website tự điền, giữ nguyên"],"result_all":"Lời nhắn khi đúng 5/5","result_most":"Lời nhắn khi đúng 3–4","result_few":"Lời nhắn khi đúng 0–2","replay":"Nút Chơi lại","link":"Liên kết cuối","noscript":"Khi tắt JavaScript: câu trước liên kết","noscript_link":"Khi tắt JavaScript: chữ liên kết","questions":["Câu hỏi","Mỗi lượt chơi lấy ngẫu nhiên 5 câu"],"questions.question":"Câu hỏi","questions.choices":["Bốn lựa chọn","Giữ đúng thứ tự: đáp án đúng nằm ở vị trí cũ"],"questions.explanation":"Giải thích"}},
   "dau-an/cac-trang": {"label":"Tên các trang Dấu ấn","page":["/dau-an/bao-chi/",".da-head"],"items":"pages","itemName":"title","labels":{"pages":"Các trang","title":"Tên trang"},"hidden":["id","url","kind","featured","mention","youtube","date","award","sizes","origin","position","document","alternates"]},
   "dau-an/bao-chi": {"label":"Báo chí & Truyền thông","page":["/dau-an/bao-chi/","main"],"items":"press","itemName":"headline","hidden":["id","url","kind","featured","mention","youtube","date","award","sizes","origin","position","document","alternates"],"hint":"Mỗi khối là một bài báo. Tiêu đề, sapo và trích dẫn phải giữ đúng nguyên văn của báo.","labels":{"press":"Bài báo","outlet":"Tên báo / đài","headline":"Tiêu đề bài (nguyên văn)","byline":"Tác giả","intro":"Giới thiệu ngắn","lede":"Đoạn mở đầu (sapo, nguyên văn)","quote":"Trích dẫn lời chị Nương","points":"Điểm chính trong bài","photo":"Ảnh chính","gallery":"Ảnh khác trong bài","caption":"Chú thích ảnh","credit":"Nguồn ảnh"}},
   "dau-an/giai-thuong": {"label":"Giải thưởng & Ghi nhận","page":["/dau-an/giai-thuong/","main"],"items":"awards","itemName":"name","hidden":["id","url","kind","featured","mention","youtube","date","award","sizes","origin","position","document","alternates"],"labels":{"awards":"Giải thưởng","year":"Năm","name":"Tên danh hiệu / giải thưởng","by":"Đơn vị trao tặng","recipient":"Người / đơn vị nhận","significance":"Ý nghĩa","photo":"Ảnh chính","evidence":"Giấy chứng nhận và tư liệu","sources":"Nguồn","label":"Tên nguồn","caption":"Chú thích ảnh","credit":"Nguồn ảnh"}},
@@ -262,9 +286,10 @@ Object.assign(DATA_FILES, {
   "dau-an/chung-nhan": {"label":"Chứng nhận sản phẩm (OCOP)","page":["/dau-an/chung-nhan/","main"],"items":"products","itemName":"name","hidden":["id","url","kind","featured","mention","youtube","date","award","sizes","origin","position","document","alternates"],"labels":{"products":"Sản phẩm OCOP","name":"Tên sản phẩm","citation":"Nguồn","label":"Tên nguồn"}},
   "dau-an/trang": {"label":"Chữ chung trên các trang Dấu ấn","page":["/dau-an/bao-chi/tu-lieu/","main"],"items":null,"hidden":["id","url","kind","featured","mention","youtube","date","award","sizes","origin","position","document","alternates","bao_chi_mo_ta","tu_lieu_mo_ta","giai_thuong_mo_ta","su_kien_mo_ta","chung_nhan_mo_ta"],"labels":{"trang_chu":"Đường dẫn: chữ “Trang chủ”","dau_an":"Nhãn “Dấu ấn”","nguon":"Chữ “Nguồn:”","anh":"Chữ “Ảnh:” trước nguồn ảnh","chi_nuong":"Tên dưới trích dẫn","phong_su_truyen_hinh":"Nhãn phóng sự truyền hình","dang_tai":"Chữ “Đăng tải” trước ngày video","xem_phong_su":"Nút xem phóng sự","bao_chi_xem_bai":"Báo chí: nút Xem bài","bao_chi_bai_khac":"Báo chí: tiêu đề Những bài viết khác","bao_chi_trong_bai":"Báo chí: dòng nguồn trích dẫn","bao_chi_xem_toan_bo":"Báo chí: liên kết kho tư liệu","bao_chi_tra_cuu":"Báo chí: dòng giải thích kho tư liệu","bai_doc_bai_goc":"Trang bài: nút Đọc bài gốc","bai_trich_mo_dau":"Trang bài: chú thích đoạn mở đầu","bai_diem_chinh":"Trang bài: tiêu đề điểm chính","bai_theo":"Trang bài: chữ “Theo”","bai_moi_hon":"Trang bài: Bài mới hơn","bai_tat_ca":"Trang bài: Tất cả bài viết","bai_truoc_do":"Trang bài: Bài trước đó","tu_lieu_tieu_de":"Kho tư liệu: tiêu đề","tu_lieu_dan":"Kho tư liệu: dòng giới thiệu","tu_lieu_don_vi":"Kho tư liệu: đơn vị đếm bài","tu_lieu_nguon":"Kho tư liệu: đơn vị đếm nguồn","tu_lieu_tim":"Kho tư liệu: gợi ý ô tìm kiếm","tu_lieu_loc":"Kho tư liệu: nút Lọc","tu_lieu_tat_ca_nam":"Kho tư liệu: Tất cả các năm","tu_lieu_tat_ca_nguon":"Kho tư liệu: Tất cả các nguồn","tu_lieu_khac":"Kho tư liệu: nhóm không có ngày","tu_lieu_muc":"Kho tư liệu: đơn vị “mục”","tu_lieu_phat_thanh":"Kho tư liệu: nhãn Phát thanh","tu_lieu_khong_co":"Kho tư liệu: khi không có kết quả","tu_lieu_xoa_loc":"Kho tư liệu: nút Xóa bộ lọc","giai_thuong_xem_hoat_dong":"Giải thưởng: liên kết Xem hoạt động","su_kien_mo_bo_anh":"Sự kiện: Mở bộ ảnh","su_kien_anh":"Sự kiện: đơn vị “ảnh”","su_kien_xem_chi_tiet":"Sự kiện: Xem chi tiết","su_kien_moi_hon":"Sự kiện: Mới hơn","su_kien_tat_ca":"Sự kiện: Tất cả hoạt động","su_kien_truoc_do":"Sự kiện: Trước đó","chung_nhan_nhan":"Chứng nhận: nhãn nhỏ","chung_nhan_tieu_de":"Chứng nhận: tiêu đề","chung_nhan_dan":"Chứng nhận: dòng giới thiệu","chung_nhan_huy_hieu":"Chứng nhận: huy hiệu","chung_nhan_thuong_hieu":"Chứng nhận: dòng thương hiệu","chung_nhan_xem_san_pham":"Chứng nhận: Xem sản phẩm","xem_anh_dong":"Khung xem ảnh: nút Đóng"}},
 });
-const DATA_HIDDEN = ['slug', 'source', 'file', 'alt', 'detail', 'href', 'src', 'width', 'height'];
+// Not shown as text: ids and links, image files and sizes, search descriptions, screen-reader labels.
+const DATA_HIDDEN = ['slug', 'source', 'file', 'alt', 'detail', 'href', 'src', 'width', 'height', 'srcset', 'full', 'thumb', 'scientific', 'nang_cao', 'description', 'namesLabel', 'moreSr', 'inputLabel'];
 const DATA_LABELS = {
-  products: 'Sản phẩm', name: 'Tên sản phẩm', category: 'Loại (chữ nhỏ trên tên)', summary: 'Câu tóm tắt dưới tên',
+  text: 'Nội dung', products: 'Sản phẩm', name: 'Tên sản phẩm', category: 'Loại (chữ nhỏ trên tên)', summary: 'Câu tóm tắt dưới tên',
   intro: 'Tab Giới thiệu', paragraphs: 'Các đoạn văn', facts: 'Bảng thông tin', label: 'Tên dòng', value: 'Nội dung',
   composition: 'Tab Thành phần', ingredients: 'Thành phần', usage: 'Tab Cách dùng', preparation: 'Cách chế biến', storage: 'Bảo quản',
   recipes: 'Món ăn', steps: 'Các bước', time: 'Thời gian', servings: 'Khẩu phần',
@@ -272,6 +297,8 @@ const DATA_LABELS = {
   reviews: 'Tab Nhận xét', quote: 'Lời nhận xét', author: 'Người nhận xét', sourceName: 'Nguồn nhận xét',
 };
 const withHint = (f, name) => { const l = f && (fileLabels[name] ?? DATA_LABELS[name]); if (f && Array.isArray(l)) f.hint = l[1]; return f; };
+// Nested fields take their hint from a [label, hint] label too.
+const hintOf = (l) => (Array.isArray(l) ? l[1] : undefined);
 const LANG_LABELS = { vi: 'Tiếng Việt', en: 'Tiếng Anh', zh: 'Tiếng Trung' };
 const isText = (v) => v && typeof v === 'object' && !Array.isArray(v) && Object.keys(v).sort().join() === 'en,vi,zh';
 const isSourced = (v) => v && typeof v === 'object' && !Array.isArray(v) && isText(v.text);
@@ -283,9 +310,15 @@ const textGroup = (label, name, samples, required) => ({
 // Labels for the data file being built (by field name), over DATA_LABELS.
 let fileLabels = {};
 let fileHidden = [];
-const dataField = (name, samples, required = true) => {
-  if (DATA_HIDDEN.includes(name) || fileHidden.includes(name)) return null;
-  const l = fileLabels[name] ?? DATA_LABELS[name] ?? name;
+const dataField = (name, samples, required = true, path = name) => {
+  const l0 = fileLabels[path] ?? fileLabels[path.replace(/\[\]/g, '')] ?? fileLabels[name] ?? DATA_LABELS[name];
+  const fld = dataFieldInner(name, samples, required, path);
+  return fld && hintOf(l0) && !fld.hint ? { ...fld, hint: hintOf(l0) } : fld;
+};
+const dataFieldInner = (name, samples, required = true, path = name) => {
+  const plain = path.replace(/\[\]/g, '');
+  if (DATA_HIDDEN.includes(name) || fileHidden.includes(name) || fileHidden.includes(plain)) return null;
+  const l = fileLabels[path] ?? fileLabels[plain] ?? fileLabels[name] ?? DATA_LABELS[name] ?? name;
   const [label, hint] = Array.isArray(l) ? l : [l];
   const present = samples.filter((s) => s !== undefined);
   const first = present[0];
@@ -295,20 +328,26 @@ const dataField = (name, samples, required = true) => {
   if (Array.isArray(first) || present.some(Array.isArray)) {
     const items = present.flat();
     const f = { label, name, widget: 'list', required, collapsed: true };
+    if (items.length && items.every((x) => typeof x === 'string')) {
+      f.field = { label: 'Dòng', name: 'item', widget: items.some(isLong) ? 'text' : 'string' };
+      return f;
+    }
     if (items.length && isText(items[0])) {
       f.fields = textGroup('Dòng', 'item', items, true).fields;
       f.summary = '{{fields.vi}}';
       return f;
     }
     const keys = [...new Set(items.flatMap((x) => Object.keys(x)))];
-    f.fields = keys.map((k) => dataField(k, items.map((x) => x[k]), items.every((x) => x[k] !== undefined))).filter(Boolean);
+    f.fields = keys.map((k) => dataField(k, items.map((x) => x[k]), items.every((x) => x[k] !== undefined), `${path}[].${k}`)).filter(Boolean);
+    // Items hold ids, links and images the admin does not show: edit them in place only.
+    Object.assign(f, { allow_add: false, allow_remove: false, allow_duplicate: false, allow_reorder: false });
     const shown = f.fields[0];
     f.summary = shown ? `{{fields.${shown.name}${shown.fields?.[0]?.name === 'text' ? '.text' : ''}.vi}}` : undefined;
     return f;
   }
   if (first && typeof first === 'object') {
     const keys = [...new Set(present.flatMap((x) => Object.keys(x)))];
-    const fields = keys.map((k) => dataField(k, present.map((x) => x[k]), present.every((x) => x[k] !== undefined))).filter(Boolean);
+    const fields = keys.map((k) => dataField(k, present.map((x) => x[k]), present.every((x) => x[k] !== undefined), `${path}.${k}`)).filter(Boolean);
     return fields.length ? { label, name, widget: 'object', required, collapsed: true, fields } : null;
   }
   return { label, name, widget: present.some((s) => isLong(String(s))) ? 'text' : 'string', required };
@@ -343,10 +382,14 @@ const groups = [
   ['san_pham', 'Sản phẩm', 'san-pham'],
   ['tuan_hoan', 'Nông nghiệp tuần hoàn', 'tuan-hoan'],
   ['dau_an', 'Dấu ấn', 'dau-an'],
+  ['hop_tac', 'Hợp tác', 'hop-tac'],
+  ['choi', 'Chơi cùng nông trại', 'choi-cung-nong-trai'],
   ['chung', 'Menu, liên hệ, chân trang', 'chung'],
 ];
 const order = {
-  'dau-an': [], chung: ['lien-he', 'menu', 'footer', 'header'], 'san-pham': ['ten-va-mo-ta', 'trang-san-pham', 'nam-moi-den', 'chung-dau-trang', 'chung-san-pham-khac', 'chung-kiem-nghiem'], 've-chung-toi': ['trang', 'cac-chuong'] };
+  'dau-an': [],
+  'hop-tac': [],
+  'choi-cung-nong-trai': [], chung: ['lien-he', 'menu', 'footer', 'header'], 'san-pham': ['ten-va-mo-ta', 'trang-san-pham', 'showroom-khung', 'showroom-tab', 'nam-moi-den', 'chung-dau-trang', 'chung-san-pham-khac', 'chung-kiem-nghiem'], 've-chung-toi': ['trang', 'cac-chuong'] };
 fs.mkdirSync('public/admin/huong-dan', { recursive: true });
 const collections = [];
 for (const [name, label, dir] of groups) {
@@ -473,6 +516,8 @@ const ordered = (data, fields) => {
 for (const c of config.collections) for (const f of c.files) {
   const data = read(f.file);
   const next = f.i18n ? Object.fromEntries(['vi', 'en', 'zh'].map((l) => [l, ordered(data[l], f.fields)])) : ordered(data, f.fields);
-  fs.writeFileSync(f.file, '---\n' + yaml.dump(next, { lineWidth: -1, noRefs: true }) + '---\n');
+  // Dates unquoted, as Sveltia writes them.
+  const text = yaml.dump(next, { lineWidth: -1, noRefs: true }).replace(/: '(\d{4}-\d{2}-\d{2})'$/gm, ': $1');
+  fs.writeFileSync(f.file, '---\n' + text + '---\n');
 }
 console.log('copy files ordered');
