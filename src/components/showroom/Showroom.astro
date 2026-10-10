@@ -15,7 +15,7 @@
  */
 import Arrow from '../Arrow.astro';
 import { contact } from '../../data/site';
-import { showroomHref, type ShowroomItem } from '../../data/showroom';
+import { SHOWROOM_FRESH, showroomGroupIds, showroomHref, type ShowroomItem } from '../../data/showroom';
 import { getLocale } from '../../i18n';
 
 interface Props { products: ShowroomItem[] }
@@ -54,10 +54,10 @@ const t = {
 
 const total = products.length;
 // The approved catalogue order: the four main lines grown on the farm, then the products made from them.
-const FRESH = 4;
+const FRESH = SHOWROOM_FRESH;
 const groups = [
-  { title: t.groups[0], start: 0, items: products.slice(0, FRESH) },
-  { title: t.groups[1], start: FRESH, items: products.slice(FRESH) },
+  { id: showroomGroupIds[0], title: t.groups[0], start: 0, items: products.slice(0, FRESH) },
+  { id: showroomGroupIds[1], title: t.groups[1], start: FRESH, items: products.slice(FRESH) },
 ];
 const pad = (n: number) => String(n).padStart(2, '0');
 const mail = (name: string) => `mailto:${contact.email}?subject=${encodeURIComponent(t.subject(name))}`;
@@ -90,7 +90,7 @@ const layers = [
       </p>
       <div class="showroom__list" data-showroom-list>
         {groups.map((g) => (
-          <div class="showroom__group" role="group" aria-label={`${g.title} (${g.items.length})`}>
+          <div class="showroom__group" id={g.id} data-group-first={g.items[0].slug} role="group" aria-label={`${g.title} (${g.items.length})`}>
             <p class="showroom__group-title" aria-hidden="true">{g.title} <span class="showroom__group-count">{g.items.length}</span></p>
             <ol class="showroom__group-list" start={g.start + 1}>
               {g.items.map((p, j) => { const i = g.start + j; return (
@@ -159,6 +159,8 @@ const layers = [
             if (!root) return;
             const { items } = JSON.parse(root.querySelector('[data-showroom-data]').textContent);
             const bySlug = new Map(items.map((p) => [p.slug, p]));
+            // A group hash (#nam-tuoi) opens that group's first product.
+            const groupFirst = new Map([...root.querySelectorAll('[data-group-first]')].map((g) => [g.id, g.dataset.groupFirst]));
             const $ = (s) => root.querySelector(s);
             const index = $('[data-showroom-index]');
             const list = $('[data-showroom-list]');
@@ -323,7 +325,7 @@ const layers = [
             if (location.hash.length > 1 && !bySlug.has(initial) && !(initial && document.getElementById(initial))) {
               history.replaceState(history.state, '', location.pathname + location.search);
             }
-            const start = bySlug.get(bySlug.has(initial) ? initial : items[0].slug);
+            const start = bySlug.get(bySlug.has(initial) ? initial : groupFirst.get(initial) ?? items[0].slug);
             update(start);
             layers.forEach(hide);
             show(start, true);
@@ -391,6 +393,7 @@ const layers = [
             const sync = () => {
               const slug = slugFromHash();
               if (bySlug.has(slug)) select(slug, true);
+              else if (groupFirst.has(slug)) select(groupFirst.get(slug), true);
               else if (location.hash.length <= 1) select(items[0].slug, true);
               else if (!document.getElementById(slug)) history.replaceState(history.state, '', `#${current}`);
               document.title = titleFor(bySlug.get(current));

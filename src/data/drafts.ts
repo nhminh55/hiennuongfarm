@@ -70,7 +70,7 @@ export const draftPages: DraftPage[] = [];
  * Header dropdowns (docs/SITEMAP.md §4), keyed by the header link's homepage
  * anchor. Links to Vietnamese-only pages open the Vietnamese page.
  */
-export const navDropdowns: Record<string, { label: Record<Locale, string>; href: string; video?: boolean }[]> = {
+export const navDropdowns: Record<string, { label: Record<Locale, string>; href: string; video?: boolean; /** Showroom group whose products open in a side flyout. */ group?: 0 | 1 }[]> = {
   '/#ve-hien-nuong': [
     { label: { vi: 'Câu chuyện Hiền Nương', en: 'The Hiền Nương story', zh: 'Hiền Nương 的故事' }, href: '/ve-chung-toi/#cau-chuyen' },
     { label: { vi: 'Vùng Bảy Núi', en: 'The Bảy Núi region', zh: '七山地区' }, href: '/ve-chung-toi/#bay-nui' },
@@ -85,7 +85,11 @@ export const navDropdowns: Record<string, { label: Record<Locale, string>; href:
     { label: { vi: 'Trải nghiệm nông trại', en: 'Farm experience', zh: '农场体验' }, href: '/nong-nghiep-tuan-hoan/#trai-nghiem-nong-trai', video: true },
     { label: { vi: 'Năng lượng mặt trời', en: 'Solar energy', zh: '太阳能' }, href: '/nong-nghiep-tuan-hoan/#nang-luong-mat-troi' },
   ],
-  '/#san-vat': [{ label: { vi: 'Tất cả sản phẩm', en: 'All products', zh: '全部产品' }, href: '/san-pham/' }],
+  '/#san-vat': [
+    { label: { vi: 'Tất cả sản phẩm', en: 'All products', zh: '全部产品' }, href: '/san-pham/' },
+    { label: { vi: 'Nấm tươi', en: 'Fresh mushrooms', zh: '鲜菇' }, href: '/san-pham/#nam-tuoi', group: 0 },
+    { label: { vi: 'Sản phẩm chế biến', en: 'Processed products', zh: '加工产品' }, href: '/san-pham/#san-pham-che-bien', group: 1 },
+  ],
   '/#dau-an': [
     { label: { vi: 'Báo chí & Truyền thông', en: 'Press & media', zh: '新闻与媒体' }, href: '/dau-an/bao-chi/' },
     { label: { vi: 'Giải thưởng & Ghi nhận', en: 'Awards & recognition', zh: '奖项与认可' }, href: '/dau-an/giai-thuong/' },

@@ -1863,6 +1863,11 @@ const texts = (list: SourcedText[] | undefined, lang: Locale) => (list ?? []).ma
 const localizeHref = (href: string, lang: Locale) => (href.startsWith('/') ? localizePath(href, lang) : href);
 
 /** The showroom products in a language. */
+/** The first SHOWROOM_FRESH products are fresh mushrooms; the rest are made from them. */
+export const SHOWROOM_FRESH = 4;
+/** Hash ids of the two showroom groups: /san-pham/#nam-tuoi, /san-pham/#san-pham-che-bien. */
+export const showroomGroupIds = ['nam-tuoi', 'san-pham-che-bien'] as const;
+
 export const showroomProducts = (lang: Locale): ShowroomItem[] =>
   raw.map((p) => {
     const src = `/images/products/showroom/final/${p.image.file}`;
