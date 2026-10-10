@@ -9,7 +9,7 @@ Mọi chữ trên trang chủ, trang Về chúng tôi, các trang Sản phẩm, 
 ## Cách sửa
 
 1. Mở trang quản trị và bấm **Đăng nhập bằng GitHub**.
-2. Cột trái là các nhóm trang: **Trang chủ**, **Về chúng tôi**, **Sản phẩm**, **Menu, liên hệ, chân trang**. Bấm vào nhóm, rồi bấm vào mục cần sửa.
+2. Cột trái là các nhóm trang: **Trang chủ**, **Về chúng tôi**, **Sản phẩm**, **Nông nghiệp tuần hoàn**, **Menu, liên hệ, chân trang**. Bấm vào nhóm, rồi bấm vào mục cần sửa.
 3. Sửa chữ trong các ô. Phía trên có các tab **Tiếng Việt / Tiếng Anh / Tiếng Trung** để đổi ngôn ngữ, bên phải là phần xem trước.
 4. Bấm **Lưu** ở góc trên bên phải.
 5. Chờ 1–3 phút rồi tải lại trang web (Ctrl + F5) để xem.
@@ -18,14 +18,14 @@ Bấm Lưu là trang quản trị tự ghi lên GitHub và web tự cập nhật
 
 ## Lưu ý
 
-- **Nâng cao:** mỗi mục có một nhóm "Nâng cao" thu gọn ở cuối. Nhóm này chứa mô tả ảnh cho người khiếm thị, chữ cho trình đọc màn hình và mô tả hiện trên Google. Các chữ này không hiện trên trang, ít khi cần sửa.
+- **Chỉ chữ hiện trên trang:** admin chỉ có những chữ hiện ra trên website. Mô tả ảnh cho người khiếm thị, chữ cho trình đọc màn hình và mô tả trên Google vẫn nằm trong file nội dung nhưng không hiện trong admin; muốn sửa thì nhờ người phụ trách website.
 - **Email, số điện thoại, đăng ký kinh doanh** (mục *Liên hệ & đăng ký kinh doanh*) giống nhau ở mọi ngôn ngữ: sửa một lần là đổi cả ba.
 - **Số ô cố định:** nhiều danh sách có số ô cố định vì giao diện cần đúng số lượng, ví dụ tiêu đề 2 dòng hay 6 bước của vòng tuần hoàn. Riêng đoạn văn của các chương và phần kết thì thêm hoặc bớt được bằng nút **+ Thêm**.
 - Chữ trong ngoặc nhọn như `{name}` hay `{title}` do website tự điền, phải giữ nguyên.
 - Đoạn văn chỉ là chữ thường: không dùng chữ đậm, nghiêng hay link.
 - Sửa tiếng Việt thì nhớ sửa luôn bản tiếng Anh và tiếng Trung tương ứng (nếu cần).
 - Không đưa lên web số liệu, chứng nhận hay đối tác chưa được xác nhận.
-- Ảnh, đường dẫn, thứ tự các mục và các trang khác (Dấu ấn, Showroom, Hợp tác, Nông nghiệp tuần hoàn) vẫn nằm trong code. Muốn đổi những phần đó thì nhờ người phụ trách website.
+- Ảnh, đường dẫn, thứ tự các mục và các trang khác (Dấu ấn, Hợp tác, và danh sách 12 sản phẩm ở trang /san-pham/) vẫn nằm trong code. Muốn đổi những phần đó thì nhờ người phụ trách website.
 
 ## Nếu lỡ sửa sai
 

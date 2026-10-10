@@ -59,7 +59,7 @@ const L = {
     'nang_cao.navLabel': 'Tên vùng điều hướng', 'nang_cao.noLink': 'Chữ khi thiếu liên kết', 'nang_cao.top': 'Nút lên đầu trang' },
   'chung/header': { _: 'Chữ phụ của menu (trình đọc màn hình)',
     mainNav: 'Tên menu chính', menuNav: 'Tên menu điện thoại', menu: 'Nút mở menu', close: 'Nút đóng', submenu: 'Tên menu con' },
-  'san-pham/ten-va-mo-ta': { _: 'Tên và mô tả 4 dòng nấm chính' },
+  'san-pham/ten-va-mo-ta': { _: 'Tên 4 dòng nấm chính' },
   'san-pham/trang-san-pham': { _: 'Trang Sản phẩm (/san-pham/)',
     eyebrow: 'Chữ nhỏ trên tiêu đề', home: 'Chữ “Trang chủ” trong đường dẫn', ctaTitle: 'Tiêu đề phần liên hệ cuối trang', ctaBody: 'Đoạn liên hệ cuối trang',
     'nang_cao.pageTitle': 'Tên trang (trên tab trình duyệt)', 'nang_cao.description': 'Mô tả trang trên Google' },
@@ -77,6 +77,14 @@ const L = {
   'san-pham/chung-kiem-nghiem': { _: 'Bảng kết quả kiểm nghiệm (dùng chung)',
     eyebrow: 'Chữ nhỏ trên tiêu đề', title: 'Tiêu đề', intro: 'Đoạn giới thiệu', report: 'Chữ “Báo cáo”', sample: 'Chữ “Mẫu thử”', lab: 'Chữ “Đơn vị thử nghiệm”', customer: 'Chữ “Đơn vị gửi mẫu”',
     testedOn: 'Chữ “Ngày thử nghiệm”', code: 'Chữ “Mã báo cáo”', param: 'Tiêu đề cột “Chỉ tiêu”', result: 'Tiêu đề cột “Kết quả”', notes: ['Ghi chú dưới bảng', 'Mỗi ô là một đoạn'] },
+  'tuan-hoan/nong-nghiep-tuan-hoan': { _: 'Trang Nông nghiệp tuần hoàn',
+    home: 'Chữ “Trang chủ” trong đường dẫn', title: 'Tiêu đề trang', lead: 'Câu dẫn dưới tiêu đề', cycleTitle: 'Tiêu đề vòng tuần hoàn', motto: ['Câu khẩu hiệu giữa vòng', 'Mỗi ô là một dòng'],
+    steps: ['Sáu bước của vòng tuần hoàn', 'Đúng 6 bước, theo thứ tự trên vòng'], 'steps[].title': 'Tên bước', 'steps[].name': ['Tên trên vòng', 'Xuống dòng trong ô = xuống dòng trên vòng'], 'steps[].lead': 'Câu tóm tắt', 'steps[].text': ['Các đoạn văn', 'Mỗi ô là một đoạn'],
+    solarEyebrow: 'Điện mặt trời · chữ nhỏ', solarTitle: 'Điện mặt trời · tiêu đề', solarBody: ['Điện mặt trời · các đoạn văn', 'Mỗi ô là một đoạn'], solarFact: 'Điện mặt trời · dòng dưới số 100%', solarCaption: 'Điện mặt trời · chú thích ảnh',
+    filmEyebrow: 'Phim · chữ nhỏ', filmTitle: 'Phim · tiêu đề', filmBody: 'Phim · đoạn giới thiệu', filmNote: 'Phim · dòng ghi chú', watch: 'Phim · nút xem',
+    closingTitle: 'Phần kết · tiêu đề', closingBody: 'Phần kết · đoạn văn',
+    'nang_cao.pageTitle': 'Tên trang (trên tab trình duyệt)', 'nang_cao.description': 'Mô tả trang trên Google', 'nang_cao.stepsLabel': 'Tên vòng tuần hoàn (trình đọc màn hình)',
+    'nang_cao.prev': 'Nút bước trước', 'nang_cao.next': 'Nút bước tiếp theo', 'nang_cao.live': ['Câu đọc khi đổi bước (trình đọc màn hình)', '{n}, {total}, {title} là chỗ website tự điền, giữ nguyên'], 'nang_cao.solarAlt': ['Mô tả ảnh điện mặt trời', ALT] },
   've-chung-toi/cac-chuong': { _: 'Sáu chương',
     chapters: ['Các chương', 'Đúng 6 chương, theo thứ tự 01 → 06'], 'chapters[].label': 'Chữ nhỏ cạnh số chương', 'chapters[].title': 'Tiêu đề chương',
     'chapters[].paragraphs': ['Các đoạn văn', 'Mỗi ô là một đoạn. Chỉ chữ thường, không dùng chữ đậm, nghiêng hay link'],
@@ -93,7 +101,7 @@ const MEDIA = { founders: 'Ảnh hai người sáng lập', bayNui: 'Ảnh Bảy
 const PRODUCTS = { 'nam-moi-den': 'Nấm Mối Đen', 'nam-linh-chi': 'Nấm Linh Chi', 'dong-trung-ha-thao': 'Đông Trùng Hạ Thảo', 'nam-bao-ngu': 'Nấm Bào Ngư' };
 const missing = [];
 // Lists the owner may lengthen or shorten; every other list keeps its number of items (the page lays them out by position).
-const FREE = ['notes', 'closing.body', 'chapters[].paragraphs', 'chapters[].more.rows'];
+const FREE = ['notes', 'closing.body', 'chapters[].paragraphs', 'chapters[].more.rows', 'steps[].text', 'solarBody'];
 const isLong = (v) => typeof v === 'string' && (v.length > 70 || v.includes('\n'));
 const lab = (labels, key) => {
   if (labels[key] !== undefined) return labels[key];
@@ -103,7 +111,7 @@ const lab = (labels, key) => {
   if (parts[0] === 'media' && last === 'alt') return ['Mô tả ảnh', ALT];
   if (parts[0] === 'media' && last === 'caption') return 'Chú thích dưới ảnh';
   if (parts.length === 1 && PRODUCTS[last]) return PRODUCTS[last];
-  if (parts.length === 2 && PRODUCTS[parts[0]]) return { name: 'Tên sản phẩm', note: 'Mô tả ngắn dưới tên', alt: ['Mô tả ảnh', ALT] }[last];
+  if (parts.length === 2 && PRODUCTS[parts[0]]) return { name: ['Tên sản phẩm', 'Hiện ở thẻ sản phẩm trên trang chủ, trang sản phẩm và mục “Sản phẩm khác”'], note: ['Mô tả ngắn (hiện chưa hiển thị trên web)', 'Trang chủ dùng ô “Mô tả 12 sản phẩm” trong Trang chủ › Mục Sản vật'], alt: ['Mô tả ảnh', ALT] }[last];
 };
 // For lists of objects, use the most complete item (e.g. the chapter with `more`).
 const valueOf = (list, k) => list.map((x) => x[k]).find((x) => x !== undefined) ?? list[0][k];
@@ -122,12 +130,15 @@ const PAGES = {
   'trang-chu/08-hop-tac': ['/', '#hop-tac'],
   've-chung-toi/trang': ['/ve-chung-toi/', 'main'],
   've-chung-toi/cac-chuong': ['/ve-chung-toi/', 'main'],
-  'san-pham/ten-va-mo-ta': ['/san-pham/', 'main'],
+  // The names show on the homepage cards, the Nấm Mối Đen page and “Sản phẩm khác”;
+  // the /san-pham/ showroom has its own copy (src/data/showroom.ts).
+  'san-pham/ten-va-mo-ta': ['/', '#san-vat'],
   'san-pham/trang-san-pham': ['/san-pham/', 'main'],
   'san-pham/nam-moi-den': ['/san-pham/nam-moi-den/', 'main'],
   'san-pham/chung-dau-trang': ['/san-pham/nam-moi-den/', '.p-hero'],
   'san-pham/chung-san-pham-khac': ['/san-pham/nam-moi-den/', '.related'],
   'san-pham/chung-kiem-nghiem': ['/san-pham/nam-moi-den/', '#kiem-nghiem'],
+  'tuan-hoan/nong-nghiep-tuan-hoan': ['/nong-nghiep-tuan-hoan/', 'main'],
   'chung/lien-he': ['/', '.site-footer', null, ['address']],
   'chung/menu': ['/san-pham/', '.site-header__bar'],
   'chung/footer': ['/', '.site-footer'],
@@ -141,7 +152,18 @@ const ITEM = {
 };
 const CIRCLED = '①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳';
 
+// Text the owner never sees on the page stays out of the admin: alt text,
+// screen-reader labels, search descriptions (each file's nang_cao group), and
+// copy no page uses. Sveltia keeps fields it is not told about when it saves.
+const HIDDEN_FILES = ['chung/header'];
+const HIDDEN = {
+  'san-pham/ten-va-mo-ta': /^[^.]+.(note|alt)$/,
+  'chung/menu': /^nav.(produce|bayNui|partner)$/,
+  've-chung-toi/trang': /^media.[^.]+.alt$/,
+};
+let hidden = () => false;
 const field = (labels, key, name, v, i18n) => {
+  if (name === 'nang_cao' || hidden(key)) return null;
   let l = name === 'nang_cao' ? ADV : lab(labels, key);
   if (l === undefined) { missing.push(key); l = name; }
   const [label, hint] = Array.isArray(l) ? l : [l];
@@ -151,7 +173,7 @@ const field = (labels, key, name, v, i18n) => {
     if (!FREE.includes(key)) { f.min = v.length; f.max = v.length; }
     if (v[0] && typeof v[0] === 'object') {
       const keys = [...new Set(v.flatMap((x) => Object.keys(x)))];
-      f.fields = keys.map((k) => field(labels, `${key}[].${k}`, k, valueOf(v, k), i18n));
+      f.fields = keys.map((k) => field(labels, `${key}[].${k}`, k, valueOf(v, k), i18n)).filter(Boolean);
       f.collapsed = true;
       f.summary = `{{fields.${keys[0]}}}`;
     } else {
@@ -161,7 +183,8 @@ const field = (labels, key, name, v, i18n) => {
   } else if (v && typeof v === 'object') {
     f.widget = 'object';
     if (name === 'nang_cao' || key.startsWith('media')) f.collapsed = true;
-    f.fields = Object.entries(v).map(([k, x]) => field(labels, `${key}.${k}`, k, x, i18n));
+    f.fields = Object.entries(v).map(([k, x]) => field(labels, `${key}.${k}`, k, x, i18n)).filter(Boolean);
+    if (!f.fields.length) return null;
   } else {
     f.widget = isLong(v) ? 'text' : 'string';
   }
@@ -248,6 +271,7 @@ const groups = [
   ['trang_chu', 'Trang chủ', 'trang-chu'],
   ['ve_chung_toi', 'Về chúng tôi', 've-chung-toi'],
   ['san_pham', 'Sản phẩm', 'san-pham'],
+  ['tuan_hoan', 'Nông nghiệp tuần hoàn', 'tuan-hoan'],
   ['chung', 'Menu, liên hệ, chân trang', 'chung'],
 ];
 const order = { chung: ['lien-he', 'menu', 'footer', 'header'], 'san-pham': ['ten-va-mo-ta', 'trang-san-pham', 'nam-moi-den', 'chung-dau-trang', 'chung-san-pham-khac', 'chung-kiem-nghiem'], 've-chung-toi': ['trang', 'cac-chuong'] };
@@ -256,12 +280,13 @@ const collections = [];
 for (const [name, label, dir] of groups) {
   const names = order[dir] ?? fs.readdirSync('src/content/' + dir).map((f) => f.replace(/\.md$/, '')).sort();
   const files = [];
-  for (const n of names) {
+  for (const n of names.filter((n) => !HIDDEN_FILES.includes(`${dir}/${n}`))) {
     const key = `${dir}/${n}`, labels = L[key];
     if (!labels) throw new Error('no labels for ' + key);
     const vi = read(`src/content/${key}.md`).vi;
     const i18nOf = (k) => (key === 'chung/lien-he' && /^(email|phone|phone2|business_)/.test(k) ? 'duplicate' : true);
-    let fields = Object.entries(vi).map(([k, v]) => field(labels, k, k, v, i18nOf(k)));
+    hidden = (k) => HIDDEN[key]?.test(k) ?? false;
+    let fields = Object.entries(vi).map(([k, v]) => field(labels, k, k, v, i18nOf(k))).filter(Boolean);
     const [url, selector, size, skip = []] = PAGES[key];
     const visible = fields.filter((f) => f.name !== 'nang_cao');
     // One list of items (the chapters): number the items, not the field.

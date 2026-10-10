@@ -11,7 +11,7 @@
 
 import { locales, type Locale } from '../i18n';
 
-const files = import.meta.glob<Record<string, unknown>>('../content/{trang-chu,chung,san-pham,ve-chung-toi}/*.md', {
+const files = import.meta.glob<Record<string, unknown>>('../content/{trang-chu,chung,san-pham,ve-chung-toi,tuan-hoan}/*.md', {
   import: 'frontmatter',
   eager: true,
 });

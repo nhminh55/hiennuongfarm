@@ -27,8 +27,8 @@ vi:
     - trở về đất.
   more: Tìm hiểu thêm
   nang_cao:
-    stepsLabel: Chu trình nông nghiệp tuần hoàn, sáu giai đoạn nối tiếp thành một vòng
     alt: 'Chùm nấm bào ngư mọc từ bịch phôi trên kệ sắt trong nhà nuôi nấm. Dòng chữ trên ảnh: “Nông nghiệp tuần hoàn là cách chúng tôi trả lại sự cân bằng cho đất.”'
+    stepsLabel: Chu trình nông nghiệp tuần hoàn, sáu giai đoạn nối tiếp thành một vòng
 en:
   eyebrow: Circular Agriculture
   title: A sustainable path, working with nature
@@ -57,8 +57,8 @@ en:
     - back to the soil.
   more: Learn more
   nang_cao:
-    stepsLabel: 'The circular agriculture cycle: six stages that join into a loop'
     alt: 'A cluster of oyster mushrooms growing from a spawn bag on a steel shelf in a mushroom house. Text on the photo, in Vietnamese: “Circular agriculture is how we give balance back to the soil.”'
+    stepsLabel: 'The circular agriculture cycle: six stages that join into a loop'
 zh:
   eyebrow: 循环农业
   title: 与自然同行的可持续之路
@@ -87,6 +87,6 @@ zh:
     - 回归土地。
   more: 了解更多
   nang_cao:
-    stepsLabel: 循环农业流程：六个阶段首尾相连，形成一个循环
     alt: 一簇平菇从菇房铁架上的菌袋中长出。照片上的越南语文字：“循环农业，是我们让土地重获平衡的方式。”
+    stepsLabel: 循环农业流程：六个阶段首尾相连，形成一个循环
 ---

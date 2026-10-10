@@ -66,27 +66,6 @@ collections:
               widget: string
             collapsed: true
             summary: '{{fields.item}}'
-          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
-            name: nang_cao
-            i18n: true
-            widget: object
-            collapsed: true
-            fields:
-              - label: Mô tả các ảnh nền
-                name: alts
-                i18n: true
-                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
-                widget: list
-                min: 4
-                max: 4
-                field:
-                  label: Mô tả ảnh
-                  name: item
-                  widget: text
-              - label: Tên thanh điều hướng các phần
-                name: navLabel
-                i18n: true
-                widget: string
       - name: 02-ve-hien-nuong
         label: Mục 01 · Về Hiền Nương
         file: src/content/trang-chu/02-ve-hien-nuong.md
@@ -110,17 +89,6 @@ collections:
             name: more
             i18n: true
             widget: string
-          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
-            name: nang_cao
-            i18n: true
-            widget: object
-            collapsed: true
-            fields:
-              - label: Mô tả ảnh chị Nương
-                name: alt
-                i18n: true
-                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
-                widget: text
       - name: 03-brand-film
         label: Khối Brand Film
         file: src/content/trang-chu/03-brand-film.md
@@ -144,21 +112,6 @@ collections:
             name: cta
             i18n: true
             widget: string
-          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
-            name: nang_cao
-            i18n: true
-            widget: object
-            collapsed: true
-            fields:
-              - label: Chữ của nút phát (trình đọc màn hình)
-                name: watch
-                i18n: true
-                widget: string
-              - label: Mô tả ảnh bìa phim
-                name: alt
-                i18n: true
-                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
-                widget: string
       - name: 04-tuan-hoan
         label: Mục Nông nghiệp tuần hoàn
         file: src/content/trang-chu/04-tuan-hoan.md
@@ -206,21 +159,6 @@ collections:
             name: more
             i18n: true
             widget: string
-          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
-            name: nang_cao
-            i18n: true
-            widget: object
-            collapsed: true
-            fields:
-              - label: Tên vòng tuần hoàn (trình đọc màn hình)
-                name: stepsLabel
-                i18n: true
-                widget: string
-              - label: Mô tả ảnh nấm bào ngư
-                name: alt
-                i18n: true
-                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
-                widget: text
       - name: 05-san-vat
         label: Mục Sản vật
         file: src/content/trang-chu/05-san-vat.md
@@ -278,33 +216,6 @@ collections:
             name: details
             i18n: true
             widget: string
-          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
-            name: nang_cao
-            i18n: true
-            widget: object
-            collapsed: true
-            fields:
-              - label: Tên băng chuyền
-                name: carousel
-                i18n: true
-                widget: string
-              - label: Tên danh sách sản phẩm
-                name: list
-                i18n: true
-                widget: string
-              - label: Nút chi tiết (trình đọc màn hình)
-                name: detailsOf
-                i18n: true
-                hint: '{name} là chỗ website tự điền tên sản phẩm, giữ nguyên'
-                widget: string
-              - label: Nút sản phẩm trước
-                name: prev
-                i18n: true
-                widget: string
-              - label: Nút sản phẩm tiếp theo
-                name: next
-                i18n: true
-                widget: string
       - name: 06-bay-nui
         label: Mục Vùng Bảy Núi
         file: src/content/trang-chu/06-bay-nui.md
@@ -328,17 +239,6 @@ collections:
             name: more
             i18n: true
             widget: string
-          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
-            name: nang_cao
-            i18n: true
-            widget: object
-            collapsed: true
-            fields:
-              - label: Mô tả ảnh cánh đồng
-                name: alt
-                i18n: true
-                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
-                widget: text
       - name: 07-dau-an
         label: Mục Dấu ấn
         file: src/content/trang-chu/07-dau-an.md
@@ -362,17 +262,6 @@ collections:
             name: more
             i18n: true
             widget: string
-          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
-            name: nang_cao
-            i18n: true
-            widget: object
-            collapsed: true
-            fields:
-              - label: Nút xem chi tiết (trình đọc màn hình)
-                name: moreOf
-                i18n: true
-                hint: '{title} là chỗ website tự điền tên bài, giữ nguyên'
-                widget: string
       - name: 08-hop-tac
         label: Mục Hợp tác
         file: src/content/trang-chu/08-hop-tac.md
@@ -400,21 +289,6 @@ collections:
             name: caption
             i18n: true
             widget: string
-          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
-            name: nang_cao
-            i18n: true
-            widget: object
-            collapsed: true
-            fields:
-              - label: Tiêu đề email khi khách bấm gửi mail
-                name: subject
-                i18n: true
-                widget: string
-              - label: Mô tả ảnh lễ ký kết
-                name: alt
-                i18n: true
-                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
-                widget: text
   - name: ve_chung_toi
     label: Về chúng tôi
     i18n: true
@@ -461,39 +335,12 @@ collections:
             widget: object
             collapsed: true
             fields:
-              - label: Ảnh hai người sáng lập
-                name: founders
-                i18n: true
-                widget: object
-                collapsed: true
-                fields:
-                  - label: Mô tả ảnh
-                    name: alt
-                    i18n: true
-                    hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
-                    widget: text
-              - label: Ảnh Bảy Núi
-                name: bayNui
-                i18n: true
-                widget: object
-                collapsed: true
-                fields:
-                  - label: Mô tả ảnh
-                    name: alt
-                    i18n: true
-                    hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
-                    widget: text
               - label: Ảnh cơ sở Thới Sơn
                 name: thoiSon
                 i18n: true
                 widget: object
                 collapsed: true
                 fields:
-                  - label: Mô tả ảnh
-                    name: alt
-                    i18n: true
-                    hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
-                    widget: text
                   - label: Chú thích dưới ảnh
                     name: caption
                     i18n: true
@@ -504,37 +351,16 @@ collections:
                 widget: object
                 collapsed: true
                 fields:
-                  - label: Mô tả ảnh
-                    name: alt
-                    i18n: true
-                    hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
-                    widget: text
                   - label: Chú thích dưới ảnh
                     name: caption
                     i18n: true
                     widget: string
-              - label: Ảnh mái điện mặt trời
-                name: solar
-                i18n: true
-                widget: object
-                collapsed: true
-                fields:
-                  - label: Mô tả ảnh
-                    name: alt
-                    i18n: true
-                    hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
-                    widget: text
               - label: Ảnh nguyên liệu giá thể
                 name: substrate
                 i18n: true
                 widget: object
                 collapsed: true
                 fields:
-                  - label: Mô tả ảnh
-                    name: alt
-                    i18n: true
-                    hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
-                    widget: text
                   - label: Chú thích dưới ảnh
                     name: caption
                     i18n: true
@@ -545,11 +371,6 @@ collections:
                 widget: object
                 collapsed: true
                 fields:
-                  - label: Mô tả ảnh
-                    name: alt
-                    i18n: true
-                    hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
-                    widget: string
                   - label: Chú thích dưới ảnh
                     name: caption
                     i18n: true
@@ -560,11 +381,6 @@ collections:
                 widget: object
                 collapsed: true
                 fields:
-                  - label: Mô tả ảnh
-                    name: alt
-                    i18n: true
-                    hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
-                    widget: text
                   - label: Chú thích dưới ảnh
                     name: caption
                     i18n: true
@@ -575,11 +391,6 @@ collections:
                 widget: object
                 collapsed: true
                 fields:
-                  - label: Mô tả ảnh
-                    name: alt
-                    i18n: true
-                    hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
-                    widget: text
                   - label: Chú thích dưới ảnh
                     name: caption
                     i18n: true
@@ -629,29 +440,6 @@ collections:
                   widget: text
               - label: Nút
                 name: button
-                i18n: true
-                widget: string
-          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
-            name: nang_cao
-            i18n: true
-            widget: object
-            collapsed: true
-            fields:
-              - label: Tên trang (trên tab trình duyệt)
-                name: pageTitle
-                i18n: true
-                widget: string
-              - label: Mô tả trang trên Google
-                name: description
-                i18n: true
-                widget: text
-              - label: Mô tả ảnh đầu trang
-                name: heroAlt
-                i18n: true
-                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
-                widget: text
-              - label: Tên thanh chương
-                name: navLabel
                 i18n: true
                 widget: string
       - name: cac-chuong
@@ -736,11 +524,11 @@ collections:
     i18n: true
     files:
       - name: ten-va-mo-ta
-        label: Tên và mô tả 4 dòng nấm chính
+        label: Tên 4 dòng nấm chính
         file: src/content/san-pham/ten-va-mo-ta.md
         format: frontmatter
         i18n: true
-        preview_path: /san-pham/
+        preview_path: /
         fields:
           - label: ① Nấm Mối Đen
             name: nam-moi-den
@@ -750,15 +538,7 @@ collections:
               - label: Tên sản phẩm
                 name: name
                 i18n: true
-                widget: string
-              - label: Mô tả ngắn dưới tên
-                name: note
-                i18n: true
-                widget: string
-              - label: Mô tả ảnh
-                name: alt
-                i18n: true
-                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                hint: Hiện ở thẻ sản phẩm trên trang chủ, trang sản phẩm và mục “Sản phẩm khác”
                 widget: string
           - label: ② Nấm Linh Chi
             name: nam-linh-chi
@@ -768,15 +548,7 @@ collections:
               - label: Tên sản phẩm
                 name: name
                 i18n: true
-                widget: string
-              - label: Mô tả ngắn dưới tên
-                name: note
-                i18n: true
-                widget: string
-              - label: Mô tả ảnh
-                name: alt
-                i18n: true
-                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                hint: Hiện ở thẻ sản phẩm trên trang chủ, trang sản phẩm và mục “Sản phẩm khác”
                 widget: string
           - label: ③ Đông Trùng Hạ Thảo
             name: dong-trung-ha-thao
@@ -786,15 +558,7 @@ collections:
               - label: Tên sản phẩm
                 name: name
                 i18n: true
-                widget: string
-              - label: Mô tả ngắn dưới tên
-                name: note
-                i18n: true
-                widget: string
-              - label: Mô tả ảnh
-                name: alt
-                i18n: true
-                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                hint: Hiện ở thẻ sản phẩm trên trang chủ, trang sản phẩm và mục “Sản phẩm khác”
                 widget: string
           - label: ④ Nấm Bào Ngư
             name: nam-bao-ngu
@@ -804,15 +568,7 @@ collections:
               - label: Tên sản phẩm
                 name: name
                 i18n: true
-                widget: string
-              - label: Mô tả ngắn dưới tên
-                name: note
-                i18n: true
-                widget: string
-              - label: Mô tả ảnh
-                name: alt
-                i18n: true
-                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                hint: Hiện ở thẻ sản phẩm trên trang chủ, trang sản phẩm và mục “Sản phẩm khác”
                 widget: string
       - name: trang-san-pham
         label: Trang Sản phẩm (/san-pham/)
@@ -837,20 +593,6 @@ collections:
             name: ctaTitle
             i18n: true
             widget: string
-          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
-            name: nang_cao
-            i18n: true
-            widget: object
-            collapsed: true
-            fields:
-              - label: Tên trang (trên tab trình duyệt)
-                name: pageTitle
-                i18n: true
-                widget: string
-              - label: Mô tả trang trên Google
-                name: description
-                i18n: true
-                widget: text
       - name: nam-moi-den
         label: Trang Nấm Mối Đen
         file: src/content/san-pham/nam-moi-den.md
@@ -961,43 +703,6 @@ collections:
             name: ctaTitle
             i18n: true
             widget: string
-          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
-            name: nang_cao
-            i18n: true
-            widget: object
-            collapsed: true
-            fields:
-              - label: Mô tả ảnh các bước
-                name: stepAlts
-                i18n: true
-                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
-                widget: list
-                min: 3
-                max: 3
-                field:
-                  label: Mô tả ảnh
-                  name: item
-                  widget: text
-              - label: Mô tả trang trên Google
-                name: description
-                i18n: true
-                widget: text
-              - label: Mô tả ảnh giới thiệu
-                name: introAlt
-                i18n: true
-                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
-                widget: text
-              - label: Mô tả ảnh con người
-                name: peopleAlts
-                i18n: true
-                hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
-                widget: list
-                min: 2
-                max: 2
-                field:
-                  label: Mô tả ảnh
-                  name: item
-                  widget: text
       - name: chung-dau-trang
         label: Phần đầu trang sản phẩm (dùng chung)
         file: src/content/san-pham/chung-dau-trang.md
@@ -1104,6 +809,129 @@ collections:
               label: Đoạn văn
               name: item
               widget: text
+  - name: tuan_hoan
+    label: Nông nghiệp tuần hoàn
+    i18n: true
+    files:
+      - name: nong-nghiep-tuan-hoan
+        label: Trang Nông nghiệp tuần hoàn
+        file: src/content/tuan-hoan/nong-nghiep-tuan-hoan.md
+        format: frontmatter
+        i18n: true
+        preview_path: /nong-nghiep-tuan-hoan/
+        fields:
+          - label: ① Chữ “Trang chủ” trong đường dẫn
+            name: home
+            i18n: true
+            widget: string
+          - label: ② Câu dẫn dưới tiêu đề
+            name: lead
+            i18n: true
+            widget: text
+          - label: ③ Tiêu đề trang
+            name: title
+            i18n: true
+            widget: string
+          - label: ④ Tiêu đề vòng tuần hoàn
+            name: cycleTitle
+            i18n: true
+            widget: string
+          - label: ⑤ Sáu bước của vòng tuần hoàn
+            name: steps
+            i18n: true
+            hint: Đúng 6 bước, theo thứ tự trên vòng
+            widget: list
+            min: 6
+            max: 6
+            fields:
+              - label: Tên bước
+                name: title
+                i18n: true
+                widget: string
+              - label: Tên trên vòng
+                name: name
+                i18n: true
+                hint: Xuống dòng trong ô = xuống dòng trên vòng
+                widget: text
+              - label: Câu tóm tắt
+                name: lead
+                i18n: true
+                widget: string
+              - label: Các đoạn văn
+                name: text
+                i18n: true
+                hint: Mỗi ô là một đoạn
+                widget: list
+                field:
+                  label: Dòng
+                  name: item
+                  widget: text
+            collapsed: true
+            summary: '{{fields.title}}'
+          - label: ⑥ Câu khẩu hiệu giữa vòng
+            name: motto
+            i18n: true
+            hint: Mỗi ô là một dòng
+            widget: list
+            min: 2
+            max: 2
+            field:
+              label: Dòng
+              name: item
+              widget: string
+          - label: ⑦ Phim · chữ nhỏ
+            name: filmEyebrow
+            i18n: true
+            widget: string
+          - label: ⑧ Phim · tiêu đề
+            name: filmTitle
+            i18n: true
+            widget: string
+          - label: ⑨ Phim · đoạn giới thiệu
+            name: filmBody
+            i18n: true
+            widget: text
+          - label: ⑩ Phim · dòng ghi chú
+            name: filmNote
+            i18n: true
+            widget: string
+          - label: ⑪ Điện mặt trời · chữ nhỏ
+            name: solarEyebrow
+            i18n: true
+            widget: string
+          - label: ⑫ Điện mặt trời · tiêu đề
+            name: solarTitle
+            i18n: true
+            widget: string
+          - label: ⑬ Điện mặt trời · các đoạn văn
+            name: solarBody
+            i18n: true
+            hint: Mỗi ô là một đoạn
+            widget: list
+            field:
+              label: Dòng
+              name: item
+              widget: text
+          - label: ⑭ Điện mặt trời · chú thích ảnh
+            name: solarCaption
+            i18n: true
+            widget: text
+          - label: ⑮ Điện mặt trời · dòng dưới số 100%
+            name: solarFact
+            i18n: true
+            widget: string
+          - label: ⑯ Phần kết · đoạn văn
+            name: closingBody
+            i18n: true
+            widget: text
+          - label: ⑰ Phần kết · tiêu đề
+            name: closingTitle
+            i18n: true
+            widget: string
+          - label: Phim · nút xem
+            name: watch
+            i18n: true
+            widget: string
   - name: chung
     label: Menu, liên hệ, chân trang
     i18n: true
@@ -1187,16 +1015,6 @@ collections:
               label: Dòng
               name: item
               widget: string
-          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
-            name: nang_cao
-            i18n: true
-            widget: object
-            collapsed: true
-            fields:
-              - label: Mô tả website trên Google và khi chia sẻ link
-                name: description
-                i18n: true
-                widget: text
       - name: menu
         label: Menu
         file: src/content/chung/menu.md
@@ -1247,20 +1065,8 @@ collections:
                 name: circular
                 i18n: true
                 widget: string
-              - label: Sản vật
-                name: produce
-                i18n: true
-                widget: string
-              - label: Vùng Bảy Núi
-                name: bayNui
-                i18n: true
-                widget: string
               - label: Dấu ấn
                 name: press
-                i18n: true
-                widget: string
-              - label: Hợp tác
-                name: partner
                 i18n: true
                 widget: string
               - label: Sản phẩm
@@ -1299,50 +1105,5 @@ collections:
               widget: string
           - label: ④ Dòng bản quyền
             name: rights
-            i18n: true
-            widget: string
-          - label: Nâng cao (mô tả ảnh, chữ cho trình đọc màn hình, mô tả trên Google)
-            name: nang_cao
-            i18n: true
-            widget: object
-            collapsed: true
-            fields:
-              - label: Tên vùng điều hướng
-                name: navLabel
-                i18n: true
-                widget: string
-              - label: Chữ khi thiếu liên kết
-                name: noLink
-                i18n: true
-                widget: string
-              - label: Nút lên đầu trang
-                name: top
-                i18n: true
-                widget: string
-      - name: header
-        label: Chữ phụ của menu (trình đọc màn hình)
-        file: src/content/chung/header.md
-        format: frontmatter
-        i18n: true
-        preview_path: /san-pham/
-        fields:
-          - label: Tên menu chính
-            name: mainNav
-            i18n: true
-            widget: string
-          - label: Tên menu điện thoại
-            name: menuNav
-            i18n: true
-            widget: string
-          - label: Nút mở menu
-            name: menu
-            i18n: true
-            widget: string
-          - label: Nút đóng
-            name: close
-            i18n: true
-            widget: string
-          - label: Tên menu con
-            name: submenu
             i18n: true
             widget: string

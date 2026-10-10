@@ -262,7 +262,7 @@ window.ADMIN_GUIDE = {
  },
  "ten-va-mo-ta": {
   "image": "huong-dan/san-pham-ten-va-mo-ta.jpg",
-  "url": "/san-pham/",
+  "url": "/",
   "fields": [
    [
     "nam-moi-den",
@@ -476,6 +476,84 @@ window.ADMIN_GUIDE = {
    ]
   ]
  },
+ "nong-nghiep-tuan-hoan": {
+  "image": "huong-dan/tuan-hoan-nong-nghiep-tuan-hoan.jpg",
+  "url": "/nong-nghiep-tuan-hoan/",
+  "fields": [
+   [
+    "home",
+    "① Chữ “Trang chủ” trong đường dẫn"
+   ],
+   [
+    "lead",
+    "② Câu dẫn dưới tiêu đề"
+   ],
+   [
+    "title",
+    "③ Tiêu đề trang"
+   ],
+   [
+    "cycleTitle",
+    "④ Tiêu đề vòng tuần hoàn"
+   ],
+   [
+    "steps",
+    "⑤ Sáu bước của vòng tuần hoàn"
+   ],
+   [
+    "motto",
+    "⑥ Câu khẩu hiệu giữa vòng"
+   ],
+   [
+    "filmEyebrow",
+    "⑦ Phim · chữ nhỏ"
+   ],
+   [
+    "filmTitle",
+    "⑧ Phim · tiêu đề"
+   ],
+   [
+    "filmBody",
+    "⑨ Phim · đoạn giới thiệu"
+   ],
+   [
+    "filmNote",
+    "⑩ Phim · dòng ghi chú"
+   ],
+   [
+    "solarEyebrow",
+    "⑪ Điện mặt trời · chữ nhỏ"
+   ],
+   [
+    "solarTitle",
+    "⑫ Điện mặt trời · tiêu đề"
+   ],
+   [
+    "solarBody",
+    "⑬ Điện mặt trời · các đoạn văn"
+   ],
+   [
+    "solarCaption",
+    "⑭ Điện mặt trời · chú thích ảnh"
+   ],
+   [
+    "solarFact",
+    "⑮ Điện mặt trời · dòng dưới số 100%"
+   ],
+   [
+    "closingBody",
+    "⑯ Phần kết · đoạn văn"
+   ],
+   [
+    "closingTitle",
+    "⑰ Phần kết · tiêu đề"
+   ],
+   [
+    "watch",
+    "Phim · nút xem"
+   ]
+  ]
+ },
  "lien-he": {
   "image": "huong-dan/chung-lien-he.jpg",
   "url": "/",
@@ -551,32 +629,6 @@ window.ADMIN_GUIDE = {
    [
     "rights",
     "④ Dòng bản quyền"
-   ]
-  ]
- },
- "header": {
-  "image": "huong-dan/chung-header.jpg",
-  "url": "/san-pham/",
-  "fields": [
-   [
-    "mainNav",
-    "Tên menu chính"
-   ],
-   [
-    "menuNav",
-    "Tên menu điện thoại"
-   ],
-   [
-    "menu",
-    "Nút mở menu"
-   ],
-   [
-    "close",
-    "Nút đóng"
-   ],
-   [
-    "submenu",
-    "Tên menu con"
    ]
   ]
  }

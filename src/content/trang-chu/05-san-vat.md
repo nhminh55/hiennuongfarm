@@ -30,10 +30,10 @@ vi:
   details: Chi tiết
   nang_cao:
     carousel: băng chuyền
-    list: Danh sách 12 sản phẩm
     detailsOf: Chi tiết {name}
-    prev: Sản phẩm trước
+    list: Danh sách 12 sản phẩm
     next: Sản phẩm tiếp theo
+    prev: Sản phẩm trước
 en:
   eyebrow: Produce from the Farm
   title: The essence of prized mushrooms
@@ -65,10 +65,10 @@ en:
   details: Details
   nang_cao:
     carousel: carousel
-    list: List of 12 products
     detailsOf: 'Details: {name}'
-    prev: Previous product
+    list: List of 12 products
     next: Next product
+    prev: Previous product
 zh:
   eyebrow: 农场物产
   title: 珍贵菌菇的精华
@@ -100,8 +100,8 @@ zh:
   details: 详情
   nang_cao:
     carousel: 轮播
-    list: 12 款产品列表
     detailsOf: '{name}详情'
-    prev: 上一个产品
+    list: 12 款产品列表
     next: 下一个产品
+    prev: 上一个产品
 ---

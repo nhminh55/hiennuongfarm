@@ -38,15 +38,15 @@ vi:
   ctaBody: Liên hệ với Hiền Nương để trao đổi về sản phẩm, phân phối và các hình thức hợp tác từ những dòng nấm của trang trại.
   ctaTitle: Trao đổi về nấm mối đen và hợp tác.
   nang_cao:
-    stepAlts:
-      - Những người làm nấm ngồi quanh một đống giá thể màu nâu trong xưởng, bên cạnh các bịch giá thể đang được đóng
-      - Đôi tay đặt một bịch giá thể vào khay sắt cùng các bịch đã đậy nắp xanh
-      - Những dãy bịch nấm có nắp xanh xếp kín trên các tầng kệ sắt trong nhà trồng
     description: Nấm mối đen — một trong bốn dòng nấm chính của Hiền Nương Farm, nuôi trồng tại vùng Bảy Núi, An Giang.
     introAlt: Hai người mặc áo blouse trắng cùng xem một bịch giá thể giữa các kệ bịch nấm trong nhà trồng
     peopleAlts:
       - Những người làm nấm mặc áo lao động xanh đậm, đeo găng tay hồng, ngồi trên nền xưởng đóng giá thể vào bịch
       - Một người phụ nữ mặc áo hồng, quàng khăn rằn, đeo găng tay đặt tay lên các bịch nấm trên kệ trong nhà trồng
+    stepAlts:
+      - Những người làm nấm ngồi quanh một đống giá thể màu nâu trong xưởng, bên cạnh các bịch giá thể đang được đóng
+      - Đôi tay đặt một bịch giá thể vào khay sắt cùng các bịch đã đậy nắp xanh
+      - Những dãy bịch nấm có nắp xanh xếp kín trên các tầng kệ sắt trong nhà trồng
 en:
   origin: Grown at the Hiền Nương farm, in the Bảy Núi region of An Giang.
   heroBody: One of Hiền Nương’s four main mushroom lines, black termite mushroom is grown from substrate bags on the farm, in a farming model tied to local materials.
@@ -86,15 +86,15 @@ en:
   ctaBody: Contact Hiền Nương to discuss products, distribution and ways of partnering around the farm’s mushroom lines.
   ctaTitle: Talk with us about black termite mushroom and partnership.
   nang_cao:
-    stepAlts:
-      - Mushroom growers sitting around a pile of brown substrate in a workshop, beside substrate bags being filled
-      - Hands placing a substrate bag into a steel tray with other bags already closed with green caps
-      - Rows of green-capped mushroom bags packed onto tiers of steel shelving in a grow house
     description: Black termite mushroom — one of Hiền Nương Farm’s four main mushroom lines, grown in the Bảy Núi region of An Giang, Vietnam.
     introAlt: Two people in white coats looking at a substrate bag together between shelves of mushroom bags in a grow house
     peopleAlts:
       - Mushroom growers in dark green work clothes and pink gloves, sitting on the workshop floor packing substrate into bags
       - A woman in a pink shirt and a checked khăn rằn scarf, wearing gloves, resting her hands on mushroom bags on a shelf in a grow house
+    stepAlts:
+      - Mushroom growers sitting around a pile of brown substrate in a workshop, beside substrate bags being filled
+      - Hands placing a substrate bag into a steel tray with other bags already closed with green caps
+      - Rows of green-capped mushroom bags packed onto tiers of steel shelving in a grow house
 zh:
   origin: 种植于安江省七山地区的 Hiền Nương 农场。
   heroBody: 黑皮鸡枞菌是 Hiền Nương 四类主要菌菇之一，在农场以基质袋种植，所采用的农业模式与当地原料紧密相连。
@@ -134,13 +134,13 @@ zh:
   ctaBody: 欢迎联系 Hiền Nương，洽谈产品、分销以及围绕农场菌菇的各种合作方式。
   ctaTitle: 洽谈黑皮鸡枞菌与合作事宜。
   nang_cao:
-    stepAlts:
-      - 种菇人围坐在车间里一堆褐色基质旁，旁边是正在装填的基质袋
-      - 双手将一个基质袋放进铁托盘，旁边是已盖上绿色盖子的菌袋
-      - 种植棚内层层铁架上摆满了绿色盖子的菌袋
     description: 黑皮鸡枞菌——Hiền Nương Farm 四类主要菌菇之一，种植于越南安江省七山地区。
     introAlt: 两位身穿白大褂的人在种植棚的菌袋架之间一起查看一个基质袋
     peopleAlts:
       - 身穿深绿色工作服、戴粉色手套的种菇人坐在车间地上，将基质装入菌袋
       - 一位身穿粉色上衣、围着格子头巾、戴着手套的女士，把手放在种植棚架子上的菌袋上
+    stepAlts:
+      - 种菇人围坐在车间里一堆褐色基质旁，旁边是正在装填的基质袋
+      - 双手将一个基质袋放进铁托盘，旁边是已盖上绿色盖子的菌袋
+      - 种植棚内层层铁架上摆满了绿色盖子的菌袋
 ---

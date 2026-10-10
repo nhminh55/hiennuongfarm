@@ -6,8 +6,8 @@ vi:
   cta: Khám phá hợp tác
   caption: Ký kết hợp tác truyền thông với sinh viên FPT Cần Thơ · 26.06.2025
   nang_cao:
-    subject: Hợp tác cùng Hiền Nương Farm
     alt: Lễ ký kết hợp tác truyền thông giữa Trang trại Hiền Nương và sinh viên FPT Cần Thơ; chị Châu Thị Nương mặc áo dài đỏ ngồi ký văn bản, xung quanh là các đại biểu chụp ảnh chung
+    subject: Hợp tác cùng Hiền Nương Farm
 en:
   eyebrow: Partner with Hiền Nương
   title: Creating lasting value from agriculture, together.
@@ -15,8 +15,8 @@ en:
   cta: Explore a partnership
   caption: Media partnership signing with FPT Cần Thơ students · 26.06.2025
   nang_cao:
-    subject: Partnering with Hiền Nương Farm
     alt: Signing ceremony for a media partnership between Hiền Nương Farm and FPT Cần Thơ students; Châu Thị Nương, in a red áo dài, sits signing the agreement among a group of delegates
+    subject: Partnering with Hiền Nương Farm
 zh:
   eyebrow: 与 Hiền Nương 合作
   title: 携手从农业中创造可持续的价值。
@@ -24,6 +24,6 @@ zh:
   cta: 探索合作
   caption: 与 FPT 芹苴大学生签署媒体合作协议 · 2025.06.26
   nang_cao:
-    subject: 与 Hiền Nương Farm 合作
     alt: Hiền Nương 农场与 FPT 芹苴大学生媒体合作签约仪式；身穿红色奥黛的 Châu Thị Nương 坐着签署文件，周围是合影的代表们
+    subject: 与 Hiền Nương Farm 合作
 ---
