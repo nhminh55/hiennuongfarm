@@ -1,7 +1,8 @@
 /**
  * The 12 products shown in the /san-pham/ showroom.
  *
- * Names and summaries are owner-supplied (the homepage catalogue). Images are
+ * Names are owner-supplied (the homepage catalogue); summaries are condensed
+ * from the owner product copy in docs/products/. Images are
  * the final showroom scenes supplied in design-reference/12-san-pham-showroom-final;
  * they are visual assets, not
  * evidence. Every other field must come from an original label, document or
@@ -148,12 +149,8 @@ const raw: RawProduct[] = [
     name: { vi: 'Nấm Mối Đen', en: 'Black Termite Mushroom', zh: '黑皮鸡枞菌' },
     category: { text: CATEGORY.fresh, source: `${OWNER_HOME} (“Nấm tươi nuôi trồng tại trang trại Hiền Nương.”)` },
     summary: {
-      text: {
-        vi: 'Nấm tươi nuôi trồng tại trang trại Hiền Nương.',
-        en: 'Fresh mushrooms grown at the Hiền Nương farm.',
-        zh: '在 Hiền Nương 农场种植的新鲜菌菇。',
-      },
-      source: OWNER_HOME,
+      text: { vi: 'Thịt nấm chắc, giòn, vị ngọt thanh và mùi thơm đặc trưng.', en: 'Firm, crisp flesh with a mild natural sweetness and a distinctive aroma.', zh: '菌肉紧实爽脆，带天然清甜和独特香气。' },
+      source: 'docs/products/01. Nam moi den.md (owner product copy; summary condensed 2026-10-10)',
     },
     image: {
       file: '01-nam-moi-den.webp',
@@ -288,13 +285,10 @@ const raw: RawProduct[] = [
   {
     slug: 'nam-linh-chi',
     name: { vi: 'Nấm Linh Chi Tai To', en: 'Large-Cap Lingzhi Mushroom', zh: '大朵灵芝' },
+    category: { text: CATEGORY.fresh, source: 'Owner instruction, 2026-10-10 (one of the four fresh lines)' },
     summary: {
-      text: {
-        vi: 'Dòng linh chi được nuôi trồng và thu hái tại trang trại.',
-        en: 'Lingzhi grown and harvested on the farm.',
-        zh: '在农场种植和采收的灵芝。',
-      },
-      source: OWNER_HOME,
+      text: { vi: 'Nguyên tai nấm lớn, thái lát mỏng để hãm trà hoặc nấu nước.', en: 'Whole large caps, sliced thin to steep as tea or simmer into a drink.', zh: '整朵大灵芝，切薄片后可泡茶或煮水。' },
+      source: 'docs/products/02. Nam linh chi tai to.md (owner product copy; summary condensed 2026-10-10)',
     },
     image: {
       file: '02-nam-linh-chi-tai-to.webp',
@@ -520,13 +514,10 @@ const raw: RawProduct[] = [
   {
     slug: 'dong-trung-ha-thao',
     name: { vi: 'Đông Trùng Hạ Thảo', en: 'Cordyceps', zh: '蛹虫草' },
+    category: { text: CATEGORY.fresh, source: 'Owner instruction, 2026-10-10 (one of the four fresh lines)' },
     summary: {
-      text: {
-        vi: 'Đông trùng hạ thảo được nuôi cấy tại Hiền Nương Farm.',
-        en: 'Cordyceps cultivated at Hiền Nương Farm.',
-        zh: '在 Hiền Nương Farm 培育的蛹虫草。',
-      },
-      source: OWNER_HOME,
+      text: { vi: 'Sợi nấm tươi mọng, vị ngọt thanh, dùng hãm trà, nấu món hoặc ngâm mật ong.', en: 'Fresh, juicy strands with a mild sweetness, for tea, cooking or steeping in honey.', zh: '鲜嫩多汁的菌丝，口感清甜，可泡茶、入菜或浸蜂蜜。' },
+      source: 'docs/products/03. Dong trung ha thao.md (owner product copy; summary condensed 2026-10-10)',
     },
     image: {
       file: '03-dong-trung-ha-thao.webp',
@@ -623,12 +614,8 @@ const raw: RawProduct[] = [
     name: { vi: 'Nấm Bào Ngư', en: 'Oyster Mushroom', zh: '平菇' },
     category: { text: CATEGORY.fresh, source: `${OWNER_HOME} (“Nấm tươi được nuôi trồng theo quy trình của trang trại.”)` },
     summary: {
-      text: {
-        vi: 'Nấm tươi được nuôi trồng theo quy trình của trang trại.',
-        en: 'Fresh mushrooms grown following the farm’s own process.',
-        zh: '按照农场自己的流程种植的新鲜菌菇。',
-      },
-      source: OWNER_HOME,
+      text: { vi: 'Tai nấm to, dày thịt, dai giòn và ngọt nước khi xào hay nấu lẩu.', en: 'Large, thick caps that stay chewy-crisp and sweet in stir-fries and hotpots.', zh: '菌盖大而厚实，炒菜或火锅都爽脆鲜甜。' },
+      source: 'docs/products/04. Nam bao ngu.md (owner product copy; summary condensed 2026-10-10)',
     },
     image: {
       file: '04-nam-bao-ngu.webp',
@@ -742,12 +729,8 @@ const raw: RawProduct[] = [
     name: { vi: 'Nấm Mối Đen Sấy Thăng Hoa', en: 'Freeze-Dried Black Termite Mushroom', zh: '冻干黑皮鸡枞菌' },
     category: { text: CATEGORY.freezeDried, source: `${OWNER_HOME} (product name and summary)` },
     summary: {
-      text: {
-        vi: 'Nấm mối đen chế biến bằng phương pháp sấy thăng hoa.',
-        en: 'Black termite mushroom, processed by freeze-drying.',
-        zh: '采用冷冻干燥工艺加工的黑皮鸡枞菌。',
-      },
-      source: OWNER_HOME,
+      text: { vi: 'Sấy thăng hoa giữ hương vị nấm, tiện nấu canh, xào, hầm hay lẩu.', en: 'Freeze-drying keeps the mushroom’s flavour, ready for soups, stir-fries, stews or hotpot.', zh: '冻干保留菌菇风味，方便煮汤、炒菜、炖菜或火锅。' },
+      source: 'docs/products/05.Nam moi den say thang hoa.md (owner product copy; summary condensed 2026-10-10)',
     },
     image: {
       file: '05-nam-moi-den-say-thang-hoa.webp',
@@ -968,12 +951,8 @@ const raw: RawProduct[] = [
     name: { vi: 'Snack Nấm Mối Đen', en: 'Black Termite Mushroom Snack', zh: '黑皮鸡枞菌零食' },
     category: { text: CATEGORY.snack, source: `${OWNER_HOME} (product name)` },
     summary: {
-      text: {
-        vi: 'Sản phẩm chế biến từ nấm mối đen của Hiền Nương.',
-        en: 'Made from Hiền Nương’s black termite mushrooms.',
-        zh: '以 Hiền Nương 的黑皮鸡枞菌加工而成。',
-      },
-      source: OWNER_HOME,
+      text: { vi: 'Nấm mối sấy giòn rụm, ăn liền ngay khi mở gói.', en: 'Crunchy dried termite mushrooms, ready to eat straight from the pack.', zh: '酥脆的鸡枞菌干，开袋即食。' },
+      source: 'docs/products/06. Snack nam moi den.md (owner product copy; summary condensed 2026-10-10)',
     },
     image: {
       file: '06-snack-nam-moi-den.webp',
@@ -1075,12 +1054,8 @@ const raw: RawProduct[] = [
     name: { vi: 'Snack Nấm Bào Ngư', en: 'Oyster Mushroom Snack', zh: '平菇零食' },
     category: { text: CATEGORY.snack, source: `${OWNER_HOME} (product name)` },
     summary: {
-      text: {
-        vi: 'Sản phẩm chế biến từ nấm bào ngư của Hiền Nương.',
-        en: 'Made from Hiền Nương’s oyster mushrooms.',
-        zh: '以 Hiền Nương 的平菇加工而成。',
-      },
-      source: OWNER_HOME,
+      text: { vi: 'Nấm bào ngư sấy giòn, giữ vị ngọt tự nhiên, không phẩm màu.', en: 'Crisp-dried oyster mushrooms that keep their natural sweetness, with no colouring.', zh: '酥脆平菇，保留天然清甜，不含色素。' },
+      source: 'docs/products/07. Snack nam bao ngu.md (owner product copy; summary condensed 2026-10-10)',
     },
     image: {
       file: '07-snack-nam-bao-ngu.webp',
@@ -1190,12 +1165,8 @@ const raw: RawProduct[] = [
     name: { vi: 'Đông Trùng Hạ Thảo Sấy Thăng Hoa', en: 'Freeze-Dried Cordyceps', zh: '冻干蛹虫草' },
     category: { text: CATEGORY.freezeDried, source: `${OWNER_HOME} (product name and summary)` },
     summary: {
-      text: {
-        vi: 'Đông trùng hạ thảo chế biến bằng phương pháp sấy thăng hoa.',
-        en: 'Cordyceps, processed by freeze-drying.',
-        zh: '采用冷冻干燥工艺加工的蛹虫草。',
-      },
-      source: OWNER_HOME,
+      text: { vi: 'Sợi đông trùng giòn xốp, thơm mùi nấm, dễ thêm vào bữa ăn hằng ngày.', en: 'Light, crisp cordyceps strands with a natural mushroom aroma, easy to add to everyday meals.', zh: '蛹虫草酥脆轻盈，带天然菌香，易融入日常饮食。' },
+      source: 'docs/products/08. Dong trung ha thao say thang hoa.md (owner product copy; summary condensed 2026-10-10)',
     },
     image: {
       file: '08-dong-trung-ha-thao-say-thang-hoa.webp',
@@ -1406,12 +1377,8 @@ const raw: RawProduct[] = [
     name: { vi: 'Trà Hòa Tan Linh Chi', en: 'Instant Lingzhi Tea', zh: '灵芝速溶茶' },
     category: { text: CATEGORY.tea, source: `${OWNER_HOME} (product name and summary)` },
     summary: {
-      text: {
-        vi: 'Sản phẩm trà hòa tan được phát triển từ nấm linh chi.',
-        en: 'An instant tea developed from lingzhi.',
-        zh: '以灵芝开发的速溶茶。',
-      },
-      source: OWNER_HOME,
+      text: { vi: 'Trà linh chi hòa tan thơm nhẹ, pha nhanh, uống nóng hay lạnh đều được.', en: 'Instant lingzhi tea with a light aroma, quick to make, hot or cold.', zh: '速溶灵芝茶，香气清淡，冲泡快捷，冷热皆宜。' },
+      source: 'docs/products/09. Tra hoa tan linh chi.md (owner product copy; summary condensed 2026-10-10)',
     },
     image: {
       file: '09-tra-hoa-tan-linh-chi-200g.webp',
@@ -1517,12 +1484,8 @@ const raw: RawProduct[] = [
     name: { vi: 'Trà Hòa Tan Linh Chi Trùng Thảo', en: 'Instant Lingzhi & Cordyceps Tea', zh: '灵芝虫草速溶茶' },
     category: { text: CATEGORY.tea, source: `${OWNER_HOME} (product name and summary)` },
     summary: {
-      text: {
-        vi: 'Trà hòa tan kết hợp linh chi và đông trùng hạ thảo.',
-        en: 'An instant tea combining lingzhi and cordyceps.',
-        zh: '灵芝与蛹虫草搭配的速溶茶。',
-      },
-      source: OWNER_HOME,
+      text: { vi: 'Linh chi và đông trùng hạ thảo trong một ly trà hòa tan thơm dịu, dễ uống.', en: 'Lingzhi and cordyceps in one gently fragrant, easy-drinking instant tea.', zh: '灵芝与蛹虫草合为一杯香气柔和、易于入口的速溶茶。' },
+      source: 'docs/products/10. Tra hoa tan linh chi trung thao.md (owner product copy; summary condensed 2026-10-10)',
     },
     image: {
       file: '10-tra-linh-chi-trung-thao.webp',
@@ -1623,12 +1586,8 @@ const raw: RawProduct[] = [
     slug: 'bao-tu-nam-linh-chi',
     name: { vi: 'Bào Tử Nấm Linh Chi', en: 'Lingzhi Spores', zh: '灵芝孢子' },
     summary: {
-      text: {
-        vi: 'Sản phẩm từ bào tử của nấm linh chi tại Hiền Nương.',
-        en: 'Made from the spores of Hiền Nương’s lingzhi.',
-        zh: '取自 Hiền Nương 灵芝孢子的产品。',
-      },
-      source: OWNER_HOME,
+      text: { vi: 'Bột bào tử linh chi đỏ nguyên chất, dùng hãm trà hoặc pha cùng mật ong.', en: 'Pure red lingzhi spore powder, to steep as tea or stir into honey.', zh: '纯红灵芝孢子粉，可泡茶或调入蜂蜜。' },
+      source: 'docs/products/11. Bao tu nam linh chi.md (owner product copy; summary condensed 2026-10-10)',
     },
     image: {
       file: '11-bao-tu-nam-linh-chi.webp',
@@ -1724,12 +1683,8 @@ const raw: RawProduct[] = [
     slug: 'dong-trung-ha-thao-ngam-mat-ong',
     name: { vi: 'Đông Trùng Hạ Thảo Ngâm Mật Ong', en: 'Cordyceps in Honey', zh: '蜂蜜浸蛹虫草' },
     summary: {
-      text: {
-        vi: 'Sự kết hợp giữa đông trùng hạ thảo và mật ong.',
-        en: 'Cordyceps paired with honey.',
-        zh: '蛹虫草与蜂蜜的结合。',
-      },
-      source: OWNER_HOME,
+      text: { vi: 'Đông trùng hạ thảo tươi ngâm mật ong rừng, dùng trực tiếp hoặc pha nước ấm.', en: 'Fresh cordyceps steeped in forest honey, to take as is or stir into warm water.', zh: '鲜蛹虫草浸于森林蜂蜜，可直接食用或用温水冲调。' },
+      source: 'docs/products/12. Dong trung ha thao ngam mat ong.md (owner product copy; summary condensed 2026-10-10)',
     },
     image: {
       file: '12-dong-trung-ha-thao-ngam-mat-ong.webp',

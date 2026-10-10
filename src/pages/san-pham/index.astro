@@ -10,34 +10,38 @@ import Eyebrow from '../../components/Eyebrow.astro';
 import Arrow from '../../components/Arrow.astro';
 import Showroom from '../../components/showroom/Showroom.astro';
 import ShowroomDetails from '../../components/showroom/ShowroomDetails.astro';
+import CtaBand from '../../components/page/CtaBand.astro';
 import { showroomProducts } from '../../data/showroom';
-import { getLocale, localizePath } from '../../i18n';
+import { getLocale, localizePath, pageHref } from '../../i18n';
 
 const lang = getLocale(Astro.url);
 const products = showroomProducts(lang);
+const contactHref = pageHref('/hop-tac/', lang, '/#hop-tac');
 
-// The lead is the approved homepage catalogue introduction (src/components/home/Products.astro).
 const t = {
   vi: {
     pageTitle: 'Sản phẩm',
     home: 'Trang chủ',
     eyebrow: 'Sản vật từ trang trại',
-    lead: 'Bốn dòng nấm chính được nuôi trồng tại trang trại — nấm mối đen, nấm linh chi, đông trùng hạ thảo và nấm bào ngư — cùng tám sản phẩm chế biến từ chúng: nấm sấy thăng hoa, snack nấm, trà hòa tan, bào tử linh chi và đông trùng hạ thảo ngâm mật ong.',
     description: 'Mười hai sản phẩm của Hiền Nương Farm: bốn dòng nấm chính nuôi trồng tại vùng Bảy Núi, An Giang, cùng các sản phẩm chế biến từ chúng.',
+    ctaTitle: 'Trao đổi về sản phẩm và hợp tác.',
+    ctaBody: 'Liên hệ với Hiền Nương để trao đổi về sản phẩm, phân phối và các hình thức hợp tác từ những dòng nấm của trang trại.',
   },
   en: {
     pageTitle: 'Products',
     home: 'Home',
     eyebrow: 'Produce from the Farm',
-    lead: 'Four main mushroom lines are grown on the farm — black termite mushroom, lingzhi, cordyceps and oyster mushroom — alongside eight products made from them: freeze-dried mushrooms, mushroom snacks, instant teas, lingzhi spores and cordyceps in honey.',
     description: 'The twelve products of Hiền Nương Farm: four main mushroom lines grown in the Bảy Núi region of An Giang, Vietnam, and the products made from them.',
+    ctaTitle: 'Talk with us about our products and partnership.',
+    ctaBody: 'Contact Hiền Nương to discuss products, distribution and ways of partnering around the farm’s mushroom lines.',
   },
   zh: {
     pageTitle: '产品',
     home: '首页',
     eyebrow: '农场物产',
-    lead: '农场主要种植四类菌菇——黑皮鸡枞菌、灵芝、蛹虫草和平菇，并以此制成八款产品：冻干菌菇、菌菇零食、速溶茶、灵芝孢子和蜂蜜浸蛹虫草。',
     description: 'Hiền Nương Farm 的十二款产品：种植于越南安江省七山地区的四类主要菌菇，以及由它们制成的产品。',
+    ctaTitle: '洽谈产品与合作事宜。',
+    ctaBody: '欢迎联系 Hiền Nương，洽谈产品、分销以及围绕农场菌菇的各种合作方式。',
   },
 }[lang];
 ---
@@ -47,10 +51,9 @@ const t = {
       <Breadcrumb class="intro__crumbs" items={[{ label: t.home, href: localizePath('/', lang) }, { label: t.pageTitle }]} />
       <div class="intro__head">
         <Eyebrow>{t.eyebrow}</Eyebrow>
-        <h1 class="intro__title" id="page-title">{t.pageTitle}</h1>
+        <h1 class="sr-only" id="page-title">{t.pageTitle}</h1>
       </div>
       <div class="intro__text">
-        <p class="intro__lead">{t.lead}</p>
         {lang === 'vi' && (
           <a class="link-arrow intro__play" href="/choi-cung-nong-trai/hom-nay-an-nam-gi/">Hôm nay ăn nấm gì? <Arrow /></a>
         )}
@@ -61,6 +64,8 @@ const t = {
   <Showroom products={products}>
     <ShowroomDetails products={products} />
   </Showroom>
+
+  <CtaBand title={t.ctaTitle} href={contactHref}>{t.ctaBody}</CtaBand>
 </BaseLayout>
 
 <style>
@@ -77,33 +82,12 @@ const t = {
 
   .intro__head { margin-top: var(--space-2xs); }
 
-  .intro__title {
-    margin-top: var(--space-s);
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: var(--type-title);
-    line-height: 1.1;
-    letter-spacing: -0.005em;
-  }
-
-  .intro__lead {
-    max-width: 40rem;
-    font-size: var(--type-body);
-    line-height: 1.65;
-    color: var(--color-text-muted);
-    text-wrap: pretty;
-  }
-
-  .intro__play { margin-top: var(--space-s); }
-
   @media (min-width: 1280px) {
     .intro__grid {
       grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
       column-gap: var(--col-gap);
-      align-items: end;
+      align-items: center;
     }
     .intro__grid > :global(.intro__crumbs) { grid-column: 1 / -1; }
-    .intro__head { margin-top: var(--space-xs); }
-    .intro__text { padding-bottom: 0.5rem; }
   }
 </style>
