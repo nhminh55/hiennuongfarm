@@ -70,6 +70,14 @@ vi:
   closingBody: Nếu bạn quan tâm đến sản phẩm, muốn tìm hiểu mô hình hoặc trao đổi cơ hội hợp tác, chúng tôi mong được trò chuyện cùng bạn.
   closingTitle: Cùng tiếp nối những vòng giá trị.
   watch: Xem phim
+  playCycle:
+    title: Một vòng nông trại
+    line: Bạn thử ghép lại vòng tuần hoàn nhé?
+    label: Ghé chơi
+  playQuiz:
+    title: Bạn hiểu nấm tới đâu?
+    line: 5 câu hỏi nhỏ trước khi bạn đi tiếp.
+    label: Ghé chơi
   nang_cao:
     description: 'Nông nghiệp tuần hoàn tại Hiền Nương Farm: từ phụ phẩm nông nghiệp đến nấm, trùn quế và nguồn dinh dưỡng cho cây trồng, cùng nguồn điện mặt trời tại trang trại.'
     live: 'Bước {n} trên {total}: {title}'
@@ -149,6 +157,14 @@ en:
   closingBody: If you are interested in our products, would like to learn about the model or discuss working together, we would be glad to talk with you.
   closingTitle: Carrying the cycles of value forward, together.
   watch: Watch the film
+  playCycle:
+    title: Một vòng nông trại
+    line: Bạn thử ghép lại vòng tuần hoàn nhé?
+    label: Ghé chơi
+  playQuiz:
+    title: Bạn hiểu nấm tới đâu?
+    line: 5 câu hỏi nhỏ trước khi bạn đi tiếp.
+    label: Ghé chơi
   nang_cao:
     description: 'Circular agriculture at Hiền Nương Farm: from agricultural by-products to mushrooms, red worms and nourishment for crops, alongside solar power generated on the farm.'
     live: 'Step {n} of {total}: {title}'
@@ -228,6 +244,14 @@ zh:
   closingBody: 如果您对我们的产品感兴趣，希望了解这一模式或洽谈合作，我们期待与您交流。
   closingTitle: 一起延续价值的循环。
   watch: 观看影片
+  playCycle:
+    title: Một vòng nông trại
+    line: Bạn thử ghép lại vòng tuần hoàn nhé?
+    label: Ghé chơi
+  playQuiz:
+    title: Bạn hiểu nấm tới đâu?
+    line: 5 câu hỏi nhỏ trước khi bạn đi tiếp.
+    label: Ghé chơi
   nang_cao:
     description: Hiền Nương Farm 的循环农业：从农业副产品到菌菇、红蚯蚓和作物养分，以及农场自产的太阳能电力。
     live: 第 {n} 步，共 {total} 步：{title}

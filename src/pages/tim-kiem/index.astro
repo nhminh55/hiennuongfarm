@@ -9,34 +9,38 @@
  * nothing is written for a result that the page itself does not say.
  * The page is kept out of search engines and out of the sitemap.
  */
+import { dataFile } from '../../data/copy';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/page/Breadcrumb.astro';
----
-<BaseLayout title="Tìm kiếm" description="Tìm trên trang Hiền Nương Farm." noindex>
-  <section class="search-page container" aria-labelledby="search-title">
-    <Breadcrumb items={[{ label: 'Trang chủ', href: '/' }, { label: 'Tìm kiếm' }]} />
 
-    <h1 class="search-page__title" id="search-title">Kết quả tìm kiếm</h1>
+// Copy: src/content/chung/tim-kiem.md. The messages written by the script
+// below stay in the script.
+const t = dataFile('chung/tim-kiem');
+---
+<BaseLayout title={t.title} description={t.nang_cao.description} noindex>
+  <section class="search-page container" aria-labelledby="search-title">
+    <Breadcrumb items={[{ label: t.home, href: '/' }, { label: t.title }]} />
+
+    <h1 class="search-page__title" id="search-title">{t.heading}</h1>
 
     <form class="search-page__form" action="/tim-kiem/" method="get" role="search">
-      <label class="sr-only" for="search-q">Từ khóa</label>
+      <label class="sr-only" for="search-q">{t.nang_cao.inputLabel}</label>
       <input class="search-page__input" id="search-q" type="search" name="q" autocomplete="off" required data-search-input />
-      <button class="search-page__submit" type="submit">Tìm kiếm</button>
+      <button class="search-page__submit" type="submit">{t.submit}</button>
     </form>
 
     <p class="search-page__status" role="status" aria-live="polite" data-search-status></p>
     <ol class="search-page__results" data-search-results></ol>
 
     <div class="search-page__empty" data-search-empty hidden>
-      <p>Bạn có thể bắt đầu từ:</p>
+      <p>{t.emptyLead}</p>
       <ul>
-        <li><a href="/san-pham/">Sản phẩm</a></li>
-        <li><a href="/nong-nghiep-tuan-hoan/">Nông nghiệp tuần hoàn</a></li>
-        <li><a href="/dau-an/bao-chi/">Báo chí & truyền thông</a></li>
+        {/* Labels keep a bare "&", as before: only < and > are escaped. */}
+        {t.emptyLinks.map((l: { label: string; href: string }) => <li><a href={l.href} set:html={l.label.replace(/</g, '&lt;').replace(/>/g, '&gt;')} /></li>)}
       </ul>
     </div>
 
-    <noscript><p class="search-page__status">Cần bật JavaScript để xem kết quả tìm kiếm.</p></noscript>
+    <noscript><p class="search-page__status">{t.noscript}</p></noscript>
   </section>
 </BaseLayout>
 

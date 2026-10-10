@@ -9,16 +9,12 @@ const lang = getLocale(Astro.url);
 
 // Dấu ấn is a group of pages, not a page: the three cards open its sections
 // directly. The pages are Vietnamese only, so every language links to the
-// Vietnamese page.
+// Vietnamese page. Titles and notes: the `groups` list in
+// src/content/trang-chu/07-dau-an.md, in the same order.
+const t = copy('trang-chu/07-dau-an', lang);
 const groups = [
   {
     href: '/dau-an/bao-chi/',
-    title: { vi: 'Báo chí & Truyền thông', en: 'Press & Media', zh: '媒体报道' },
-    note: {
-      vi: 'Những câu chuyện về Hiền Nương trên báo chí, truyền hình và các kênh truyền thông.',
-      en: 'Stories about Hiền Nương in newspapers, on television and across the media.',
-      zh: '报刊、电视及各类媒体上关于 Hiền Nương 的故事。',
-    },
     // Dân Việt feature, 2025; cropped clear of the outlet watermark.
     photo: {
       src: '/images/farm/dau-an-bao-chi-dan-viet-1024.webp',
@@ -35,12 +31,6 @@ const groups = [
   },
   {
     href: '/dau-an/giai-thuong/',
-    title: { vi: 'Giải thưởng & Ghi nhận', en: 'Awards & Recognition', zh: '奖项与荣誉' },
-    note: {
-      vi: 'Các danh hiệu, chứng nhận và những cột mốc được ghi nhận trên hành trình phát triển.',
-      en: 'Titles, certifications and the milestones recognised along the way.',
-      zh: '发展历程中获得的称号、认证与里程碑。',
-    },
     photo: {
       src: '/images/farm/dau-an-cup-chung-nhan-2025-1024.webp',
       srcset: '/images/farm/dau-an-cup-chung-nhan-2025-640.webp 640w, /images/farm/dau-an-cup-chung-nhan-2025-1024.webp 1024w',
@@ -55,12 +45,6 @@ const groups = [
   },
   {
     href: '/dau-an/su-kien/',
-    title: { vi: 'Sự kiện & Hoạt động', en: 'Events & Activities', zh: '活动与交流' },
-    note: {
-      vi: 'Những lần tham gia diễn đàn, gặp gỡ, kết nối và chia sẻ cùng cộng đồng.',
-      en: 'Forums, meetings and gatherings: connecting and sharing with the community.',
-      zh: '参与论坛、会面与交流，与社区连接、分享。',
-    },
     photo: {
       src: '/images/farm/dau-an-chi-nuong-phat-bieu-960.webp',
       srcset: '/images/farm/dau-an-chi-nuong-phat-bieu-960.webp 960w, /images/farm/dau-an-chi-nuong-phat-bieu-1440.webp 1440w',
@@ -74,14 +58,12 @@ const groups = [
       },
     },
   },
-].map((g) => ({
+].map((g, i) => ({
   ...g,
-  title: g.title[lang],
-  note: g.note[lang],
+  title: t.groups[i].title,
+  note: t.groups[i].note,
   photo: { ...g.photo, alt: g.photo.alt[lang] },
 }));
-
-const t = copy('trang-chu/07-dau-an', lang);
 ---
 <section class="section marks" id="dau-an" aria-labelledby="marks-title">
   <div class="container">

@@ -180,7 +180,7 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
       </div>
     </section>
 
-    <PlayInvite title="Một vòng nông trại" line="Bạn thử ghép lại vòng tuần hoàn nhé?" slug="mot-vong-nong-trai" />
+    <PlayInvite title={t.playCycle.title} line={t.playCycle.line} label={t.playCycle.label} slug="mot-vong-nong-trai" />
 
     <!-- Farm experience (header dropdown: Trải nghiệm nông trại) ------- -->
     <section class="section film" id="trai-nghiem-nong-trai" aria-labelledby="film-title">
@@ -252,7 +252,7 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
       </div>
     </section>
 
-    <PlayInvite title="Bạn hiểu nấm tới đâu?" line="5 câu hỏi nhỏ trước khi bạn đi tiếp." slug="ban-hieu-nam-toi-dau" />
+    <PlayInvite title={t.playQuiz.title} line={t.playQuiz.line} label={t.playQuiz.label} slug="ban-hieu-nam-toi-dau" />
 
     <!-- 5 · Closing ------------------------------------------------------- -->
     <CtaBand title={t.closingTitle} href={contactHref}>{t.closingBody}</CtaBand>
