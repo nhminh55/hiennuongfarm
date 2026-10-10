@@ -31,7 +31,7 @@ const subLink = (href: string) =>
 const navItems = links.map((item) => ({
   label: item.label[lang],
   href: localizePath(item.anchor, lang),
-  children: navDropdowns[item.anchor]?.map((child) => ({ label: child.label[lang], ...subLink(child.href) })),
+  children: navDropdowns[item.anchor]?.map((child) => ({ label: child.label[lang], video: child.video, ...subLink(child.href) })),
 }));
 // Contact details: the cooperation page's contact section; the homepage
 // section in languages without that page.
@@ -78,7 +78,7 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
                 <div class="site-nav__panel" id={`nav-sub-${i}`} data-dropdown-panel hidden>
                   <ul class="site-nav__sub">
                     {item.children.map((child) => (
-                      <li><a class="site-nav__sublink" href={child.href} hreflang={child.hreflang} aria-current={currentSub(child.href)}>{child.label}</a></li>
+                      <li><a class="site-nav__sublink" href={child.href} hreflang={child.hreflang} aria-current={currentSub(child.href)}>{child.label}{child.video && <svg class="nav-video" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1" y="3.5" width="10" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.2" /><path d="M11 7l4-2.5v7L11 9z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" /></svg>}</a></li>
                     ))}
                   </ul>
                 </div>
@@ -145,7 +145,7 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
                   </button>
                   <ul class="mobile-menu__sub" id={`menu-sub-${i}`} data-dropdown-panel hidden>
                     {item.children.map((child) => (
-                      <li><a href={child.href} hreflang={child.hreflang} aria-current={currentSub(child.href)} data-menu-link>{child.label}</a></li>
+                      <li><a href={child.href} hreflang={child.hreflang} aria-current={currentSub(child.href)} data-menu-link>{child.label}{child.video && <svg class="nav-video" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1" y="3.5" width="10" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.2" /><path d="M11 7l4-2.5v7L11 9z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" /></svg>}</a></li>
                     ))}
                   </ul>
                 </>
@@ -466,6 +466,9 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
   }
 
   /* Submenu rows: an inset, square highlight on hover and keyboard focus. */
+  /* Small video mark after a link that opens a film. */
+  .nav-video { display: inline-block; width: 0.95em; height: 0.95em; margin-left: 0.45em; vertical-align: -0.1em; opacity: 0.75; }
+
   .site-nav__sublink,
   .mobile-menu__sub a { transition: background-color 250ms var(--ease); }
   .site-nav__sublink:hover,

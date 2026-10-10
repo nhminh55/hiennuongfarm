@@ -70,7 +70,7 @@ export const draftPages: DraftPage[] = [];
  * Header dropdowns (docs/SITEMAP.md §4), keyed by the header link's homepage
  * anchor. Links to Vietnamese-only pages open the Vietnamese page.
  */
-export const navDropdowns: Record<string, { label: Record<Locale, string>; href: string }[]> = {
+export const navDropdowns: Record<string, { label: Record<Locale, string>; href: string; video?: boolean }[]> = {
   '/#ve-hien-nuong': [
     { label: { vi: 'Câu chuyện Hiền Nương', en: 'The Hiền Nương story', zh: 'Hiền Nương 的故事' }, href: '/ve-chung-toi/#cau-chuyen' },
     { label: { vi: 'Vùng Bảy Núi', en: 'The Bảy Núi region', zh: '七山地区' }, href: '/ve-chung-toi/#bay-nui' },
@@ -78,11 +78,11 @@ export const navDropdowns: Record<string, { label: Record<Locale, string>; href:
     { label: { vi: 'Năng lượng mặt trời', en: 'Solar energy', zh: '太阳能' }, href: '/ve-chung-toi/#nang-luong' },
     { label: { vi: 'Sau mùa thu hoạch', en: 'After the harvest', zh: '收获之后' }, href: '/ve-chung-toi/#tuan-hoan' },
     { label: { vi: 'Con người', en: 'People', zh: '人们' }, href: '/ve-chung-toi/#con-nguoi' },
-    { label: { vi: 'Video giới thiệu', en: 'Introduction video', zh: '介绍视频' }, href: '/ve-chung-toi/#video-gioi-thieu' },
+    { label: { vi: 'Video giới thiệu', en: 'Introduction video', zh: '介绍视频' }, href: '/ve-chung-toi/#video-gioi-thieu', video: true },
   ],
   '/#tuan-hoan': [
-    { label: { vi: 'Tổng quan mô hình', en: 'Model overview', zh: '模式概览' }, href: '/nong-nghiep-tuan-hoan/' },
     { label: { vi: 'Vòng tuần hoàn tại farm', en: 'The cycle on the farm', zh: '农场里的循环' }, href: '/nong-nghiep-tuan-hoan/#vong-tuan-hoan' },
+    { label: { vi: 'Trải nghiệm nông trại', en: 'Farm experience', zh: '农场体验' }, href: '/nong-nghiep-tuan-hoan/#trai-nghiem-nong-trai', video: true },
     { label: { vi: 'Năng lượng mặt trời', en: 'Solar energy', zh: '太阳能' }, href: '/nong-nghiep-tuan-hoan/#nang-luong-mat-troi' },
   ],
   '/#san-vat': [{ label: { vi: 'Tất cả sản phẩm', en: 'All products', zh: '全部产品' }, href: '/san-pham/' }],

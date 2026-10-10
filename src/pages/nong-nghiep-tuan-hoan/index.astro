@@ -28,7 +28,6 @@ const lang = getLocale(Astro.url);
 // The cooperation page is Vietnamese only; other languages go to the
 // homepage cooperation section.
 const contactHref = pageHref('/hop-tac/', lang, '/#hop-tac');
-const productsHref = localizePath('/san-pham/', lang);
 
 interface Step {
   title: string;
@@ -59,17 +58,9 @@ const t = {
       { title: 'Giá thể nuôi trùn quế', name: 'Giá thể nuôi\ntrùn quế', lead: 'Sau mùa nấm, giá thể tiếp tục có ích.', text: ['Giá thể sau chu kỳ trồng nấm được thu gom, tháo bỏ bao nhựa và tận dụng làm nguồn thức ăn cho trùn quế. Phần vật liệu từng nuôi dưỡng nấm tiếp tục trở thành đầu vào cho hoạt động nuôi trùn.', 'Qua quá trình trùn tiêu hóa nguồn vật liệu hữu cơ, trang trại thu được phân trùn để phục vụ cây trồng. Công đoạn này giúp tận dụng thêm giá trị của giá thể sau thu hoạch và giảm lượng vật liệu phải thải bỏ.'] },
       { title: 'Phân trùn bón cây', name: 'Phân trùn\nbón cây', lead: 'Đưa nguồn dinh dưỡng hữu cơ trở lại đất.', text: ['Phân trùn quế được sử dụng làm nguồn dinh dưỡng hữu cơ cho cây trồng; tại Hiền Nương, phân trùn còn được phối trộn thêm phân bò để phục vụ việc bón cây. Thành phẩm ở bước này là phân hữu cơ, được tách khỏi công đoạn nuôi trùn.', 'Nguồn dinh dưỡng tiếp tục nuôi dưỡng đất và cây trồng. Khi cây tạo ra phụ phẩm phù hợp, nguồn vật liệu ấy có thể được tận dụng cho những chu kỳ sản xuất tiếp theo — nối tiếp hành trình từ phụ phẩm đến nấm, từ giá thể đến phân bón, rồi trở về đất.'] },
     ] as Step[],
-    products: 'Xem sản phẩm',
     prev: 'Bước trước',
     next: 'Bước tiếp theo',
     live: 'Bước {n} trên {total}: {title}',
-    produceEyebrow: 'Sản phẩm',
-    produceTitle: 'Từ mùa nấm đến những sản phẩm.',
-    produceBody: [
-      'Nấm thu hoạch tại trang trại phục vụ nhu cầu sử dụng nấm tươi và được chế biến thành các sản phẩm khác.',
-      'Nấm mối đen, nấm linh chi, đông trùng hạ thảo và nấm bào ngư là bốn dòng nấm chính được nuôi trồng tại trang trại.',
-    ],
-    produceAlt: 'Chùm nấm bào ngư trắng xám mọc từ bịch phôi trong nhà trồng',
     solarEyebrow: 'Năng lượng mặt trời',
     solarTitle: 'Nguồn điện từ mặt trời.',
     solarBody: [
@@ -79,8 +70,10 @@ const t = {
     solarFact: 'Điện mặt trời cho hoạt động trồng nấm',
     solarAlt: 'Các dãy nhà mái lợp tấm pin mặt trời giữa cây xanh và hàng thốt nốt, nhìn từ trên cao',
     solarCaption: 'Phía trên là hệ thống điện mặt trời. Phía dưới là không gian sản xuất nấm.',
-    filmEyebrow: 'Brand Film',
-    filmTitle: 'Một góc nhìn từ trang trại.',
+    filmEyebrow: 'Trải nghiệm nông trại',
+    filmTitle: 'Khám phá trang trại nấm',
+    filmBody: 'Theo chân chúng mình ghé thăm Hiền Nương Farm để khám phá những bịch phôi và quá trình làm nấm tuần hoàn như thế nào nhé!',
+    filmNote: 'Một chuyến đi, bao điều mới',
     watch: 'Xem phim',
     closingTitle: 'Cùng tiếp nối những vòng giá trị.',
     closingBody: 'Nếu bạn quan tâm đến sản phẩm, muốn tìm hiểu mô hình hoặc trao đổi cơ hội hợp tác, chúng tôi mong được trò chuyện cùng bạn.',
@@ -102,17 +95,9 @@ const t = {
       { title: 'Substrate for red worms', name: 'Substrate for\nred worms', lead: 'After the mushroom season, the substrate stays useful.', text: ['After a growing cycle, the substrate is gathered, freed of its plastic bags and put to use as feed for red worms. Material that once nourished mushrooms becomes the input for raising worms.', 'As the worms digest the organic material, the farm gains worm castings for its crops. This step draws more value from the spent substrate and reduces what has to be thrown away.'] },
       { title: 'Worm castings for crops', name: 'Worm castings\nfor crops', lead: 'Returning organic nourishment to the soil.', text: ['Red worm castings are used as organic nourishment for crops; at Hiền Nương they are also mixed with cow manure for fertilising. The product of this step is an organic fertiliser, kept separate from raising the worms.', 'The nourishment goes on to feed the soil and the crops. When the crops leave suitable by-products, those materials can be used in the next production cycles — carrying the journey on from by-products to mushrooms, from substrate to fertiliser, and back to the soil.'] },
     ] as Step[],
-    products: 'View products',
     prev: 'Previous step',
     next: 'Next step',
     live: 'Step {n} of {total}: {title}',
-    produceEyebrow: 'Products',
-    produceTitle: 'From seasons of mushrooms to the products.',
-    produceBody: [
-      'Mushrooms harvested on the farm are enjoyed fresh and processed into other products.',
-      'Black termite mushroom, lingzhi, cordyceps and oyster mushroom are the four main mushroom lines grown on the farm.',
-    ],
-    produceAlt: 'A cluster of greyish-white oyster mushrooms growing from a spawn bag in a grow house',
     solarEyebrow: 'Solar energy',
     solarTitle: 'Power from the sun.',
     solarBody: [
@@ -122,8 +107,10 @@ const t = {
     solarFact: 'Solar electricity for growing mushrooms',
     solarAlt: 'Rows of buildings roofed with solar panels among green trees and palmyra palms, seen from above',
     solarCaption: 'Above, the solar power system. Below, the space where the mushrooms are grown.',
-    filmEyebrow: 'Brand Film',
-    filmTitle: 'A view from the farm.',
+    filmEyebrow: 'Farm experience',
+    filmTitle: 'Discover the mushroom farm',
+    filmBody: 'Come along with us to Hiền Nương Farm and discover the spawn bags and how mushrooms are grown in a cycle!',
+    filmNote: 'One trip, so much to discover',
     watch: 'Watch the film',
     closingTitle: 'Carrying the cycles of value forward, together.',
     closingBody: 'If you are interested in our products, would like to learn about the model or discuss working together, we would be glad to talk with you.',
@@ -145,17 +132,9 @@ const t = {
       { title: '养殖红蚯蚓基质', name: '养殖红蚯蚓\n基质', lead: '菌菇季之后，基质依然有用。', text: ['种植周期结束后，基质被收集起来，去掉塑料袋，用作红蚯蚓的饲料。曾经滋养菌菇的材料，继续成为养殖蚯蚓的原料。', '蚯蚓消化这些有机材料后，农场获得用于作物的蚯蚓粪。这一步进一步利用采收后的基质，并减少需要丢弃的材料。'] },
       { title: '蚯蚓粪施肥', name: '蚯蚓粪\n施肥', lead: '让有机养分回到土壤。', text: ['红蚯蚓粪被用作作物的有机养分；在 Hiền Nương，蚯蚓粪还会掺入牛粪用于施肥。这一步的成品是有机肥，与养殖蚯蚓的工序分开。', '养分继续滋养土壤和作物。当作物留下合适的副产品，这些材料又可用于下一轮生产——从副产品到菌菇，从基质到肥料，再回到土地。'] },
     ] as Step[],
-    products: '查看产品',
     prev: '上一步',
     next: '下一步',
     live: '第 {n} 步，共 {total} 步：{title}',
-    produceEyebrow: '产品',
-    produceTitle: '从一季季菌菇到各类产品。',
-    produceBody: [
-      '农场采收的菌菇既供应鲜食，也被加工成其他产品。',
-      '黑皮鸡枞菌、灵芝、蛹虫草和平菇是农场种植的四类主要菌菇。',
-    ],
-    produceAlt: '一簇灰白色平菇从种植棚内的菌袋中长出',
     solarEyebrow: '太阳能',
     solarTitle: '来自太阳的电力。',
     solarBody: [
@@ -165,8 +144,10 @@ const t = {
     solarFact: '种植菌菇用电来自太阳能',
     solarAlt: '从高处俯瞰，一排排铺着太阳能板的屋顶掩映在绿树和糖棕树之间',
     solarCaption: '上方是太阳能发电系统，下方是菌菇生产空间。',
-    filmEyebrow: '品牌影片',
-    filmTitle: '农场一隅。',
+    filmEyebrow: '农场体验',
+    filmTitle: '探访菌菇农场',
+    filmBody: '跟随我们走进 Hiền Nương Farm，看看菌袋，了解菌菇循环种植的过程吧！',
+    filmNote: '一次旅程，许多新发现',
     watch: '观看影片',
     closingTitle: '一起延续价值的循环。',
     closingBody: '如果您对我们的产品感兴趣，希望了解这一模式或洽谈合作，我们期待与您交流。',
@@ -311,29 +292,38 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
 
     <PlayInvite title="Một vòng nông trại" line="Bạn thử ghép lại vòng tuần hoàn nhé?" slug="mot-vong-nong-trai" />
 
-    <!-- 2 · Products ------------------------------------------------------ -->
-    <section class="section produce" aria-labelledby="produce-title">
-      <div class="container produce__grid">
-        <figure class="produce__figure" data-reveal>
-          <div class="produce__photo">
+    <!-- Farm experience (header dropdown: Trải nghiệm nông trại) ------- -->
+    <section class="section film" id="trai-nghiem-nong-trai" aria-labelledby="film-title">
+      <div class="container film__grid">
+        <div class="film__head" data-reveal>
+          <Eyebrow>{t.filmEyebrow}</Eyebrow>
+          <h2 class="section-title" id="film-title">{t.filmTitle}</h2>
+          <div class="section-body"><p>{t.filmBody}</p></div>
+          <p class="film__note">{t.filmNote}</p>
+        </div>
+
+        <!-- A visit to the mushroom farm (YouTube). The player loads only
+             when the reader presses play; nothing plays on its own. -->
+        <div class="film__media" data-reveal style="--reveal-delay: 120ms" data-film>
+          <button
+            class="film__poster"
+            type="button"
+            aria-label={`${t.watch}: ${filmName}`}
+            data-player-title={`Hiền Nương Farm — ${filmName}`}
+            data-film-play
+          >
             <img
-              src="/images/farm/product-nam-bao-ngu.webp"
-              width="1122"
-              height="1402"
-              alt={t.produceAlt}
+              src="/images/farm/kham-pha-trang-trai-nam.webp"
+              width="1280"
+              height="720"
+              alt=""
               loading="lazy"
               decoding="async"
             />
-          </div>
-        </figure>
-
-        <div class="produce__text" data-reveal style="--reveal-delay: 120ms">
-          <Eyebrow>{t.produceEyebrow}</Eyebrow>
-          <h2 class="section-title" id="produce-title">{t.produceTitle}</h2>
-          <div class="section-body">
-            {t.produceBody.map((p) => <p>{p}</p>)}
-          </div>
-          <a class="link-arrow section-link" href={productsHref}>{t.products} <Arrow /></a>
+            <span class="film__play" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 4v16l13-8z" /></svg>
+            </span>
+          </button>
         </div>
       </div>
     </section>
@@ -369,41 +359,6 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
           </div>
           <figcaption class="solar__caption">{t.solarCaption}</figcaption>
         </figure>
-      </div>
-    </section>
-
-    <!-- 4 · Film ---------------------------------------------------------- -->
-    <section class="section film" aria-labelledby="film-title">
-      <div class="container">
-        <div class="film__head" data-reveal>
-          <Eyebrow>{t.filmEyebrow}</Eyebrow>
-          <h2 class="section-title" id="film-title">{t.filmTitle}</h2>
-        </div>
-
-        <!-- The farm's brand film (homepage, About). The player loads only
-             when the reader presses play; nothing plays on its own. -->
-        <div class="film__media" data-reveal style="--reveal-delay: 120ms" data-film>
-          <button
-            class="film__poster"
-            type="button"
-            aria-label={`${t.watch}: ${filmName} (02:23)`}
-            data-player-title={`Hiền Nương Farm — ${filmName}`}
-            data-film-play
-          >
-            <img
-              src="/images/farm/bay-nui-canh-dong.webp"
-              width="1672"
-              height="941"
-              alt=""
-              loading="lazy"
-              decoding="async"
-            />
-            <span class="film__play" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 4v16l13-8z" /></svg>
-            </span>
-            <span class="film__meta" aria-hidden="true">{t.watch} · 02:23</span>
-          </button>
-        </div>
       </div>
     </section>
 
@@ -675,7 +630,7 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
   const filmPlay = film?.querySelector<HTMLButtonElement>('[data-film-play]');
   filmPlay?.addEventListener('click', () => {
     const iframe = document.createElement('iframe');
-    iframe.src = 'https://www.youtube-nocookie.com/embed/V-jPu_G8fe8?autoplay=1&playsinline=1&rel=0';
+    iframe.src = 'https://www.youtube-nocookie.com/embed/Huo8YIoQgIk?autoplay=1&playsinline=1&rel=0';
     iframe.title = filmPlay.dataset.playerTitle ?? '';
     iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
     iframe.allowFullscreen = true;
@@ -1102,33 +1057,6 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
     .wheel { max-width: max(30rem, min(46rem, 100svh - var(--header-h) - 9rem)); }
   }
 
-  /* Products ---------------------------------------------------------------- */
-
-  .produce {
-    background: var(--color-cream);
-    border-top: 1px solid var(--color-line);
-  }
-
-  .produce__grid {
-    display: grid;
-    row-gap: var(--space-xl);
-  }
-
-  .produce__photo {
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-    max-width: 28rem;
-  }
-  .produce__photo img { width: 100%; height: 100%; object-fit: cover; }
-
-  @media (min-width: 768px) {
-    .produce__grid {
-      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-      column-gap: clamp(2rem, 6vw, 7rem);
-      align-items: center;
-    }
-  }
-
   /* Solar ------------------------------------------------------------------- */
 
   .solar__grid {
@@ -1204,6 +1132,37 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
     aspect-ratio: 16 / 9;
     background: var(--color-deep-green);
   }
+  /* Text left, film right; the section stays low. */
+  @media (min-width: 1024px) {
+    .film { padding-block: clamp(3rem, 2rem + 3vw, 5rem); }
+    .film__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      column-gap: var(--split-gap, clamp(3rem, 5vw, 5rem));
+      align-items: center;
+    }
+    .film__media { margin-top: 0; }
+  }
+
+  /* The film title matches the page title (.intro__title). */
+  .film .section-title { font-size: var(--type-title); line-height: 1.1; }
+
+  .film__note {
+    margin-top: var(--space-l);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--color-earth);
+  }
+  .film__note::before {
+    content: '';
+    display: block;
+    width: 3rem;
+    height: 1px;
+    margin-bottom: var(--space-m);
+    background: currentColor;
+  }
 
   .film__poster {
     position: absolute;
@@ -1233,20 +1192,6 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
   .film__play svg { margin-left: 3px; }
   .film__poster:hover .film__play,
   .film__poster:focus-visible .film__play { background: var(--color-deep-green); }
-
-  .film__meta {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    padding: 0.625rem 1rem;
-    background: var(--color-paper);
-    color: var(--color-text);
-    font-size: 0.6875rem;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    line-height: 1.4;
-  }
 
   .film__media :global(.film__player) {
     position: absolute;
