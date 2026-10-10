@@ -7,48 +7,49 @@ import { getLocale, pageHref } from '../../i18n';
 const lang = getLocale(Astro.url);
 const t = {
   vi: {
-    steps: ['Phụ phẩm\nnông nghiệp', 'Giá thể\ntrồng nấm', 'Thu hoạch\nnấm', 'Giá thể nuôi\ntrùn quế', 'Phân trùn\nbón cây'],
+    steps: ['Phụ phẩm\nnông nghiệp', 'Chuẩn bị\ngiá thể', 'Cấy meo\n& ủ phôi', 'Nuôi trồng\n& thu hoạch', 'Giá thể nuôi\ntrùn quế', 'Phân trùn\nbón cây'],
     eyebrow: 'Nông nghiệp tuần hoàn',
     title: 'Hướng đi bền vững cùng thiên nhiên',
     body: 'Chúng tôi tận dụng rơm, trấu, cám và mùn cưa địa phương làm giá thể trồng nấm, rồi tái sử dụng giá thể sau thu hoạch trong sản xuất nông nghiệp, giảm lãng phí và tiếp nối vòng tuần hoàn từ đất — trở về với đất.',
     more: 'Tìm hiểu thêm',
     motto: ['Từ đất,', 'trở về đất.'],
-    stepsLabel: 'Chu trình nông nghiệp tuần hoàn, năm giai đoạn nối tiếp thành một vòng',
+    stepsLabel: 'Chu trình nông nghiệp tuần hoàn, sáu giai đoạn nối tiếp thành một vòng',
     alt: 'Chùm nấm bào ngư mọc từ bịch phôi trên kệ sắt trong nhà nuôi nấm. Dòng chữ trên ảnh: “Nông nghiệp tuần hoàn là cách chúng tôi trả lại sự cân bằng cho đất.”',
   },
   en: {
-    steps: ['Agricultural\nby-products', 'Mushroom\nsubstrate', 'Mushroom\nharvest', 'Substrate for\nred worms', 'Worm castings\nfor crops'],
+    steps: ['Agricultural\nby-products', 'Preparing\nthe substrate', 'Spawning\n& incubation', 'Growing\n& harvesting', 'Substrate for\nred worms', 'Worm castings\nfor crops'],
     eyebrow: 'Circular Agriculture',
     title: 'A sustainable path, working with nature',
     body: 'We use local rice straw, husks, bran and sawdust as a substrate for growing mushrooms, then reuse the substrate after harvest in farming — reducing waste and continuing the cycle from the soil, back to the soil.',
     more: 'Learn more',
     motto: ['From the soil,', 'back to the soil.'],
-    stepsLabel: 'The circular agriculture cycle: five stages that join into a loop',
+    stepsLabel: 'The circular agriculture cycle: six stages that join into a loop',
     alt: 'A cluster of oyster mushrooms growing from a spawn bag on a steel shelf in a mushroom house. Text on the photo, in Vietnamese: “Circular agriculture is how we give balance back to the soil.”',
   },
   zh: {
-    steps: ['农业\n副产品', '种菇\n基质', '菌菇\n采收', '养殖红蚯蚓\n基质', '蚯蚓粪\n施肥'],
+    steps: ['农业\n副产品', '制备\n基质', '接种\n与养菌', '种植\n与采收', '养殖红蚯蚓\n基质', '蚯蚓粪\n施肥'],
     eyebrow: '循环农业',
     title: '与自然同行的可持续之路',
     body: '我们利用当地的稻草、稻壳、米糠和木屑作为种菇基质，采收后再将基质用于农业生产，减少浪费，让循环延续——源于土地，回归土地。',
     more: '了解更多',
     motto: ['源于土地，', '回归土地。'],
-    stepsLabel: '循环农业流程：五个阶段首尾相连，形成一个循环',
+    stepsLabel: '循环农业流程：六个阶段首尾相连，形成一个循环',
     alt: '一簇平菇从菇房铁架上的菌袋中长出。照片上的越南语文字：“循环农业，是我们让土地重获平衡的方式。”',
   },
 }[lang];
 
-// By-products → mushroom substrate → harvest → spent substrate for red
-// worms (trùn quế) → worm castings for the crops: five steps set by the
-// owner. Inputs: rơm (CONTENT_EVIDENCE_BANK.md §2); trấu, cám,
+// The six steps of the circular page (nong-nghiep-tuan-hoan), with its
+// round pictures. Inputs: rơm (CONTENT_EVIDENCE_BANK.md §2); trấu, cám,
 // mùn cưa (Hiền Nương video, 00:41).
-// x / y place each icon's centre in the diagram, after the section mockup.
+// x / y place each icon's centre in the diagram: a hexagon from 30°, so
+// steps 1–3 sit on the right with their names outside, 4–6 on the left.
 const steps = [
-  { icon: '01-phu-pham', x: 50, y: 14.1 },
-  { icon: '02.gia-the-trong-nam', x: 84.14, y: 38.91 },
-  { icon: '03-thu-hoach-nam', x: 71.1, y: 79.04 },
-  { icon: '04-gia-the-nuoi-trun-que', x: 28.9, y: 79.04 },
-  { icon: '05-phan-trun-bon-cay', x: 15.86, y: 38.91 },
+  { icon: '01-phu-pham', x: 67.95, y: 18.91 },
+  { icon: '02-gia-the', x: 85.9, y: 50 },
+  { icon: '03-cay-meo-u-phoi', x: 67.95, y: 81.09 },
+  { icon: '04-nuoi-trong-thu-hoach', x: 32.05, y: 81.09 },
+  { icon: '05-gia-the-nuoi-trun', x: 14.1, y: 50 },
+  { icon: '06-phan-trun-bon-cay', x: 32.05, y: 18.91 },
 ].map((step, i) => ({ ...step, name: t.steps[i] }));
 
 // Clockwise arrows between the stages, drawn in a square around
@@ -61,11 +62,12 @@ const at = (deg: number, r: number) => {
   return `${(C.x + r * Math.sin(rad)).toFixed(1)} ${(C.y - r * Math.cos(rad)).toFixed(1)}`;
 };
 const arrows = [
-  [22, 50, 210],
-  [94, 122, 210],
-  [166, 194, 210],
-  [238, 266, 210],
-  [310, 338, 210],
+  [50, 70, 210],
+  [110, 130, 210],
+  [170, 190, 210],
+  [230, 250, 210],
+  [290, 310, 210],
+  [350, 370, 210],
 ].map(([a, b, r]) => `M${at(a, r)} A${r} ${r} 0 0 1 ${at(b, r)}`);
 ---
 <section class="section cycle" id="tuan-hoan" aria-labelledby="cycle-title">
@@ -106,7 +108,7 @@ const arrows = [
                 <span class="ring__num">{String(i + 1).padStart(2, '0')}</span>
                 <img
                   class="ring__icon"
-                  src={`/images/circular/${step.icon}.webp`}
+                  src={`/images/circular/steps/${step.icon}-cartoon.webp`}
                   alt=""
                   width="320"
                   height="320"
@@ -177,12 +179,12 @@ const arrows = [
   .cycle__figure { max-width: 26rem; }
 
   /* --- Diagram ---------------------------------------------------------
-     The five stages are set around a loop of arrows at every width. All
+     The six stages are set around a loop of arrows at every width. All
      sizes follow the ring's own width (it is the container), so the
      composition scales as one. */
 
   .ring {
-    --icon: 24cqi;
+    --icon: 21cqi;
     --num-h: 4.4cqi;
     position: relative;
     container-type: inline-size;
@@ -215,11 +217,11 @@ const arrows = [
     stroke-width: 2;
   }
   @keyframes cycle-tracker {
-    from { transform: rotate(22deg); }
-    to { transform: rotate(382deg); }
+    from { transform: rotate(50deg); }
+    to { transform: rotate(410deg); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .ring__tracker { animation: none; transform: rotate(22deg); }
+    .ring__tracker { animation: none; transform: rotate(50deg); }
   }
 
   .ring__motto {
@@ -430,10 +432,6 @@ const arrows = [
     font-size: 0.875rem;
     white-space: pre;
     line-height: 1.35;
-  }
-  .ring__step:first-child .ring__name {
-    top: var(--num-h);
-    transform: translateY(-50%);
   }
   .ring__step:nth-child(2) .ring__name,
   .ring__step:nth-child(5) .ring__name { max-width: none; white-space: pre; }
