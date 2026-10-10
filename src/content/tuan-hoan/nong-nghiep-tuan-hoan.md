@@ -1,7 +1,7 @@
 ---
 vi:
   home: Trang chủ
-  lead: "Từ phụ phẩm nông nghiệp đến nấm, trùn quế và nguồn dinh dưỡng cho cây\_trồng."
+  lead: Từ phụ phẩm nông nghiệp đến nấm, trùn quế và nguồn dinh dưỡng cho cây trồng.
   title: Tiếp nối giá trị từ phụ phẩm.
   cycleTitle: Vòng tuần hoàn tại trang trại
   steps:
@@ -12,7 +12,7 @@ vi:
       lead: Tiếp nối giá trị từ rơm rạ.
       text:
         - Sau mỗi vụ lúa, nguồn rơm rạ tại địa phương được tận dụng làm nguyên liệu trồng nấm mối đen. Thay vì bỏ đi, phụ phẩm nông nghiệp trở thành đầu vào cho một chu kỳ sản xuất mới tại Hiền Nương.
-        - Nguồn nguyên liệu được kiểm tra trước khi sử dụng, chuẩn bị cho công đoạn xử lý và phối trộn giá thể. Từ những vật liệu quen thuộc của đồng ruộng, trang trại tạo thêm giá trị qua mô hình nuôi trồng nấm.
+        - Nguồn nguyên liệu gồm rơm, trấu, cám và mùn cưa được kiểm tra trước khi sử dụng, chuẩn bị cho công đoạn xử lý và phối trộn giá thể. Từ những vật liệu quen thuộc của đồng ruộng, trang trại tạo thêm giá trị qua mô hình nuôi trồng nấm.
     - title: Chuẩn bị giá thể
       name: |-
         Chuẩn bị
@@ -88,7 +88,7 @@ vi:
     stepsLabel: Sáu bước của vòng tuần hoàn
 en:
   home: Home
-  lead: "From agricultural by-products to mushrooms, red worms and nourishment for\_crops."
+  lead: From agricultural by-products to mushrooms, red worms and nourishment for crops.
   title: Carrying on the value of by-products.
   cycleTitle: The cycle on the farm
   steps:
