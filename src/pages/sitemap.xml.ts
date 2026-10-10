@@ -11,14 +11,18 @@ import { isTranslated, languages, locales, localizePath } from '../i18n';
 import { activities, press } from '../data/dau-an';
 
 const pages: { path: string; lastmod: string }[] = [
-  { path: '/', lastmod: '2026-10-09' },
-  { path: '/san-pham/', lastmod: '2026-10-09' },
+  { path: '/', lastmod: '2026-10-10' },
+  { path: '/san-pham/', lastmod: '2026-10-10' },
   { path: '/san-pham/nam-moi-den/', lastmod: '2026-10-07' },
   { path: '/ve-chung-toi/', lastmod: '2026-10-09' },
-  { path: '/nong-nghiep-tuan-hoan/', lastmod: '2026-10-09' },
+  { path: '/nong-nghiep-tuan-hoan/', lastmod: '2026-10-10' },
   { path: '/hop-tac/', lastmod: '2026-10-08' },
+  { path: '/choi-cung-nong-trai/', lastmod: '2026-10-10' },
+  { path: '/choi-cung-nong-trai/mot-vong-nong-trai/', lastmod: '2026-10-09' },
+  { path: '/choi-cung-nong-trai/hom-nay-an-nam-gi/', lastmod: '2026-10-09' },
+  { path: '/choi-cung-nong-trai/ban-hieu-nam-toi-dau/', lastmod: '2026-10-09' },
   { path: '/dau-an/bao-chi/', lastmod: '2026-10-09' },
-  { path: '/dau-an/bao-chi/tu-lieu/', lastmod: '2026-10-09' },
+  { path: '/dau-an/bao-chi/tu-lieu/', lastmod: '2026-10-10' },
   { path: '/dau-an/giai-thuong/', lastmod: '2026-10-09' },
   { path: '/dau-an/su-kien/', lastmod: '2026-10-09' },
   { path: '/dau-an/chung-nhan/', lastmod: '2026-10-09' },
