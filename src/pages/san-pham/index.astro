@@ -8,6 +8,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/page/Breadcrumb.astro';
 import Eyebrow from '../../components/Eyebrow.astro';
 import Arrow from '../../components/Arrow.astro';
+import GameIcon from '../../components/farm-play/GameIcon.astro';
 import Showroom from '../../components/showroom/Showroom.astro';
 import ShowroomDetails from '../../components/showroom/ShowroomDetails.astro';
 import CtaBand from '../../components/page/CtaBand.astro';
@@ -55,7 +56,7 @@ const t = {
       </div>
       <div class="intro__text">
         {lang === 'vi' && (
-          <a class="link-arrow intro__play" href="/choi-cung-nong-trai/hom-nay-an-nam-gi/">Hôm nay ăn nấm gì? <Arrow /></a>
+          <a class="link-arrow intro__play" href="/choi-cung-nong-trai/hom-nay-an-nam-gi/" style="display:inline-flex;align-items:center;gap:0.5rem;white-space:nowrap"><GameIcon /> Ghé chơi: Hôm nay ăn nấm gì? <Arrow /></a>
         )}
       </div>
     </div>

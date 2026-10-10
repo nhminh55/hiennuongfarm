@@ -5,6 +5,7 @@
  * other languages.
  */
 import Arrow from '../Arrow.astro';
+import GameIcon from './GameIcon.astro';
 import { getLocale } from '../../i18n';
 
 interface Props {
@@ -24,7 +25,7 @@ const { title, line, slug, label = 'Ghé chơi' } = Astro.props;
       <div class="play-invite__inner" data-reveal>
         <p class="play-invite__title">{title}</p>
         <p class="play-invite__line">{line}</p>
-        <a class="link-arrow play-invite__link" href={`/choi-cung-nong-trai/${slug}/`}>{label} <Arrow /></a>
+        <a class="link-arrow play-invite__link" href={`/choi-cung-nong-trai/${slug}/`}><GameIcon class="play-invite__icon" /> {label} <Arrow /></a>
       </div>
     </div>
   </aside>
@@ -48,9 +49,11 @@ const { title, line, slug, label = 'Ghé chơi' } = Astro.props;
     line-height: 1.15;
   }
 
+  .play-invite__icon { flex: none; }
+
   .play-invite__line { color: var(--color-text-muted); }
 
-  .play-invite__link { margin-top: var(--space-xs); justify-self: start; }
+  .play-invite__link { display: inline-flex; align-items: center; gap: 0.4rem; white-space: nowrap; margin-top: var(--space-xs); justify-self: start; }
 
   @media (min-width: 768px) {
     .play-invite__inner {

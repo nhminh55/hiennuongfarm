@@ -6,6 +6,7 @@
  * shown on the activity pages themselves.
  */
 import { getLocale } from '../../i18n';
+import GameIcon from './GameIcon.astro';
 
 const lang = getLocale(Astro.url);
 const show = lang === 'vi' && !Astro.url.pathname.startsWith('/choi-cung-nong-trai/');
@@ -19,13 +20,13 @@ const games = [
 {show && (
   <div class="play-widget" data-play-widget>
     <button class="play-widget__tab" type="button" aria-expanded="false" aria-controls="play-widget-panel" data-play-open>
-      <svg class="play-widget__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="7" width="19" height="11" rx="5.5" /><path d="M7.5 10.5v4M5.5 12.5h4" stroke-linecap="round" /><circle cx="15.5" cy="11.5" r="0.9" fill="currentColor" stroke="none" /><circle cx="17.5" cy="13.8" r="0.9" fill="currentColor" stroke="none" /></svg>
+      <GameIcon class="play-widget__icon" />
       <span class="play-widget__tab-label">Ghé chơi một chút?</span>
     </button>
 
     <aside class="play-widget__panel" id="play-widget-panel" aria-labelledby="play-widget-title" inert data-play-panel>
       <div class="play-widget__head">
-        <p class="play-widget__title" id="play-widget-title">Ghé chơi một chút?</p>
+        <p class="play-widget__title" id="play-widget-title"><GameIcon class="play-widget__title-icon" /> Ghé chơi một chút?</p>
         <button class="play-widget__close" type="button" aria-label="Đóng" data-play-close>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
         </button>
@@ -170,6 +171,8 @@ const games = [
     letter-spacing: 0.16em;
     text-transform: uppercase;
   }
+
+  .play-widget__title { display: flex; align-items: center; gap: 0.5rem; }
 
   .play-widget__close {
     display: grid;

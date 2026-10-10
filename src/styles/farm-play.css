@@ -14,6 +14,8 @@
 .farm-play p { text-wrap:pretty; }
 .farm-play .play-related { display:flex; justify-content:center; flex-wrap:wrap; gap:1rem 2rem; border-top:1px solid var(--color-line); padding-top:1.5rem; margin-top:3.5rem; font-size:.8rem; }
 .farm-play .play-related a { padding-block:.5rem; text-decoration:underline; text-underline-offset:5px; }
+.farm-play .play-link__icon { vertical-align:-.2em; margin-right:.35rem; }
+.farm-play .play-link { white-space:nowrap; }
 .farm-play .play-link { display:inline-block; padding-block:.65rem; text-decoration:underline; text-underline-offset:6px; font-size:.85rem; font-weight:400; }
 .farm-play .play-button { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:.75rem 1.4rem; background:var(--color-forest); color:var(--color-paper); border:1px solid var(--color-forest); font-size:.9rem; font-weight:400; line-height:1.5; }
 .farm-play .play-button:hover { background:var(--color-deep-green); }
