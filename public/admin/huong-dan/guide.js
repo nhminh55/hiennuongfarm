@@ -209,44 +209,196 @@ window.ADMIN_GUIDE = {
   ]
  },
  "trang": {
-  "image": "huong-dan/ve-chung-toi-trang.jpg",
-  "url": "/ve-chung-toi/",
+  "image": "huong-dan/dau-an-trang.jpg",
+  "url": "/dau-an/bao-chi/tu-lieu/",
   "fields": [
    [
-    "home",
-    "① Chữ “Trang chủ” trong đường dẫn"
+    "trang_chu",
+    "① Đường dẫn: chữ “Trang chủ”"
    ],
    [
-    "eyebrow",
-    "② Chữ nhỏ trên tiêu đề"
+    "dau_an",
+    "② Nhãn “Dấu ấn”"
    ],
    [
-    "title",
-    "③ Tiêu đề trang"
+    "tu_lieu_tieu_de",
+    "③ Kho tư liệu: tiêu đề"
    ],
    [
-    "lead",
-    "④ Câu dẫn dưới tiêu đề"
+    "tu_lieu_don_vi",
+    "④ Kho tư liệu: đơn vị đếm bài"
    ],
    [
-    "nav",
-    "⑤ Tên ngắn của 6 chương (thanh chương)"
+    "tu_lieu_dan",
+    "⑤ Kho tư liệu: dòng giới thiệu"
    ],
    [
-    "media",
-    "⑥ Ảnh: chú thích và mô tả"
+    "tu_lieu_nguon",
+    "⑥ Kho tư liệu: đơn vị đếm nguồn"
    ],
    [
-    "circularLink",
-    "⑦ Nút “Khám phá vòng tuần hoàn”"
+    "tu_lieu_tat_ca_nam",
+    "⑦ Kho tư liệu: Tất cả các năm"
    ],
    [
-    "film",
-    "⑧ Video giới thiệu"
+    "tu_lieu_muc",
+    "⑧ Kho tư liệu: đơn vị “mục”"
    ],
    [
-    "closing",
-    "⑨ Phần kết"
+    "phong_su_truyen_hinh",
+    "⑨ Nhãn phóng sự truyền hình"
+   ],
+   [
+    "tu_lieu_phat_thanh",
+    "⑩ Kho tư liệu: nhãn Phát thanh"
+   ],
+   [
+    "nguon",
+    "Chữ “Nguồn:”"
+   ],
+   [
+    "anh",
+    "Chữ “Ảnh:” trước nguồn ảnh"
+   ],
+   [
+    "chi_nuong",
+    "Tên dưới trích dẫn"
+   ],
+   [
+    "dang_tai",
+    "Chữ “Đăng tải” trước ngày video"
+   ],
+   [
+    "xem_phong_su",
+    "Nút xem phóng sự"
+   ],
+   [
+    "bao_chi_xem_bai",
+    "Báo chí: nút Xem bài"
+   ],
+   [
+    "bao_chi_bai_khac",
+    "Báo chí: tiêu đề Những bài viết khác"
+   ],
+   [
+    "bao_chi_trong_bai",
+    "Báo chí: dòng nguồn trích dẫn"
+   ],
+   [
+    "bao_chi_xem_toan_bo",
+    "Báo chí: liên kết kho tư liệu"
+   ],
+   [
+    "bao_chi_tra_cuu",
+    "Báo chí: dòng giải thích kho tư liệu"
+   ],
+   [
+    "bai_doc_bai_goc",
+    "Trang bài: nút Đọc bài gốc"
+   ],
+   [
+    "bai_trich_mo_dau",
+    "Trang bài: chú thích đoạn mở đầu"
+   ],
+   [
+    "bai_diem_chinh",
+    "Trang bài: tiêu đề điểm chính"
+   ],
+   [
+    "bai_theo",
+    "Trang bài: chữ “Theo”"
+   ],
+   [
+    "bai_moi_hon",
+    "Trang bài: Bài mới hơn"
+   ],
+   [
+    "bai_tat_ca",
+    "Trang bài: Tất cả bài viết"
+   ],
+   [
+    "bai_truoc_do",
+    "Trang bài: Bài trước đó"
+   ],
+   [
+    "tu_lieu_tim",
+    "Kho tư liệu: gợi ý ô tìm kiếm"
+   ],
+   [
+    "tu_lieu_loc",
+    "Kho tư liệu: nút Lọc"
+   ],
+   [
+    "tu_lieu_tat_ca_nguon",
+    "Kho tư liệu: Tất cả các nguồn"
+   ],
+   [
+    "tu_lieu_khac",
+    "Kho tư liệu: nhóm không có ngày"
+   ],
+   [
+    "tu_lieu_khong_co",
+    "Kho tư liệu: khi không có kết quả"
+   ],
+   [
+    "tu_lieu_xoa_loc",
+    "Kho tư liệu: nút Xóa bộ lọc"
+   ],
+   [
+    "giai_thuong_xem_hoat_dong",
+    "Giải thưởng: liên kết Xem hoạt động"
+   ],
+   [
+    "su_kien_mo_bo_anh",
+    "Sự kiện: Mở bộ ảnh"
+   ],
+   [
+    "su_kien_anh",
+    "Sự kiện: đơn vị “ảnh”"
+   ],
+   [
+    "su_kien_xem_chi_tiet",
+    "Sự kiện: Xem chi tiết"
+   ],
+   [
+    "su_kien_moi_hon",
+    "Sự kiện: Mới hơn"
+   ],
+   [
+    "su_kien_tat_ca",
+    "Sự kiện: Tất cả hoạt động"
+   ],
+   [
+    "su_kien_truoc_do",
+    "Sự kiện: Trước đó"
+   ],
+   [
+    "chung_nhan_nhan",
+    "Chứng nhận: nhãn nhỏ"
+   ],
+   [
+    "chung_nhan_tieu_de",
+    "Chứng nhận: tiêu đề"
+   ],
+   [
+    "chung_nhan_dan",
+    "Chứng nhận: dòng giới thiệu"
+   ],
+   [
+    "chung_nhan_huy_hieu",
+    "Chứng nhận: huy hiệu"
+   ],
+   [
+    "chung_nhan_thuong_hieu",
+    "Chứng nhận: dòng thương hiệu"
+   ],
+   [
+    "chung_nhan_xem_san_pham",
+    "Chứng nhận: Xem sản phẩm"
+   ],
+   [
+    "xem_anh_dong",
+    "Khung xem ảnh: nút Đóng"
    ]
   ]
  },
@@ -561,6 +713,56 @@ window.ADMIN_GUIDE = {
    [
     "watch",
     "Phim · nút xem"
+   ]
+  ]
+ },
+ "cac-trang": {
+  "image": "huong-dan/dau-an-cac-trang.jpg",
+  "url": "/dau-an/bao-chi/",
+  "fields": [
+   [
+    "pages",
+    "Các trang"
+   ]
+  ]
+ },
+ "bao-chi": {
+  "image": "huong-dan/dau-an-bao-chi.jpg",
+  "url": "/dau-an/bao-chi/",
+  "fields": [
+   [
+    "press",
+    "Bài báo"
+   ]
+  ]
+ },
+ "giai-thuong": {
+  "image": "huong-dan/dau-an-giai-thuong.jpg",
+  "url": "/dau-an/giai-thuong/",
+  "fields": [
+   [
+    "awards",
+    "Giải thưởng"
+   ]
+  ]
+ },
+ "su-kien": {
+  "image": "huong-dan/dau-an-su-kien.jpg",
+  "url": "/dau-an/su-kien/",
+  "fields": [
+   [
+    "activities",
+    "Hoạt động"
+   ]
+  ]
+ },
+ "chung-nhan": {
+  "image": "huong-dan/dau-an-chung-nhan.jpg",
+  "url": "/dau-an/chung-nhan/",
+  "fields": [
+   [
+    "products",
+    "Sản phẩm OCOP"
    ]
   ]
  },

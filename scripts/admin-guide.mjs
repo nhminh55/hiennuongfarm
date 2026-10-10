@@ -254,6 +254,14 @@ const DATA_FILES = {
     hint: 'Mỗi khối là một sản phẩm, theo thứ tự trên trang. Các tab trên web: Giới thiệu, Thành phần, Cách dùng, Hồ sơ, Nhận xét.',
   },
 };
+Object.assign(DATA_FILES, {
+  "dau-an/cac-trang": {"label":"Tên các trang Dấu ấn","page":["/dau-an/bao-chi/",".da-head"],"items":"pages","itemName":"title","labels":{"pages":"Các trang","title":"Tên trang"},"hidden":["id","url","kind","featured","mention","youtube","date","award","sizes","origin","position","document","alternates"]},
+  "dau-an/bao-chi": {"label":"Báo chí & Truyền thông","page":["/dau-an/bao-chi/","main"],"items":"press","itemName":"headline","hidden":["id","url","kind","featured","mention","youtube","date","award","sizes","origin","position","document","alternates"],"hint":"Mỗi khối là một bài báo. Tiêu đề, sapo và trích dẫn phải giữ đúng nguyên văn của báo.","labels":{"press":"Bài báo","outlet":"Tên báo / đài","headline":"Tiêu đề bài (nguyên văn)","byline":"Tác giả","intro":"Giới thiệu ngắn","lede":"Đoạn mở đầu (sapo, nguyên văn)","quote":"Trích dẫn lời chị Nương","points":"Điểm chính trong bài","photo":"Ảnh chính","gallery":"Ảnh khác trong bài","caption":"Chú thích ảnh","credit":"Nguồn ảnh"}},
+  "dau-an/giai-thuong": {"label":"Giải thưởng & Ghi nhận","page":["/dau-an/giai-thuong/","main"],"items":"awards","itemName":"name","hidden":["id","url","kind","featured","mention","youtube","date","award","sizes","origin","position","document","alternates"],"labels":{"awards":"Giải thưởng","year":"Năm","name":"Tên danh hiệu / giải thưởng","by":"Đơn vị trao tặng","recipient":"Người / đơn vị nhận","significance":"Ý nghĩa","photo":"Ảnh chính","evidence":"Giấy chứng nhận và tư liệu","sources":"Nguồn","label":"Tên nguồn","caption":"Chú thích ảnh","credit":"Nguồn ảnh"}},
+  "dau-an/su-kien": {"label":"Sự kiện & Hoạt động","page":["/dau-an/su-kien/","main"],"items":"activities","itemName":"title","hidden":["id","url","kind","featured","mention","youtube","date","award","sizes","origin","position","document","alternates"],"labels":{"activities":"Hoạt động","title":"Tên hoạt động","place":"Địa điểm","summary":"Tóm tắt (trang danh sách)","story":"Nội dung (trang bộ ảnh)","photos":"Bộ ảnh","sources":"Nguồn","label":"Tên nguồn","caption":"Chú thích ảnh","credit":"Nguồn ảnh"}},
+  "dau-an/chung-nhan": {"label":"Chứng nhận sản phẩm (OCOP)","page":["/dau-an/chung-nhan/","main"],"items":"products","itemName":"name","hidden":["id","url","kind","featured","mention","youtube","date","award","sizes","origin","position","document","alternates"],"labels":{"products":"Sản phẩm OCOP","name":"Tên sản phẩm","citation":"Nguồn","label":"Tên nguồn"}},
+  "dau-an/trang": {"label":"Chữ chung trên các trang Dấu ấn","page":["/dau-an/bao-chi/tu-lieu/","main"],"items":null,"hidden":["id","url","kind","featured","mention","youtube","date","award","sizes","origin","position","document","alternates","bao_chi_mo_ta","tu_lieu_mo_ta","giai_thuong_mo_ta","su_kien_mo_ta","chung_nhan_mo_ta"],"labels":{"trang_chu":"Đường dẫn: chữ “Trang chủ”","dau_an":"Nhãn “Dấu ấn”","nguon":"Chữ “Nguồn:”","anh":"Chữ “Ảnh:” trước nguồn ảnh","chi_nuong":"Tên dưới trích dẫn","phong_su_truyen_hinh":"Nhãn phóng sự truyền hình","dang_tai":"Chữ “Đăng tải” trước ngày video","xem_phong_su":"Nút xem phóng sự","bao_chi_xem_bai":"Báo chí: nút Xem bài","bao_chi_bai_khac":"Báo chí: tiêu đề Những bài viết khác","bao_chi_trong_bai":"Báo chí: dòng nguồn trích dẫn","bao_chi_xem_toan_bo":"Báo chí: liên kết kho tư liệu","bao_chi_tra_cuu":"Báo chí: dòng giải thích kho tư liệu","bai_doc_bai_goc":"Trang bài: nút Đọc bài gốc","bai_trich_mo_dau":"Trang bài: chú thích đoạn mở đầu","bai_diem_chinh":"Trang bài: tiêu đề điểm chính","bai_theo":"Trang bài: chữ “Theo”","bai_moi_hon":"Trang bài: Bài mới hơn","bai_tat_ca":"Trang bài: Tất cả bài viết","bai_truoc_do":"Trang bài: Bài trước đó","tu_lieu_tieu_de":"Kho tư liệu: tiêu đề","tu_lieu_dan":"Kho tư liệu: dòng giới thiệu","tu_lieu_don_vi":"Kho tư liệu: đơn vị đếm bài","tu_lieu_nguon":"Kho tư liệu: đơn vị đếm nguồn","tu_lieu_tim":"Kho tư liệu: gợi ý ô tìm kiếm","tu_lieu_loc":"Kho tư liệu: nút Lọc","tu_lieu_tat_ca_nam":"Kho tư liệu: Tất cả các năm","tu_lieu_tat_ca_nguon":"Kho tư liệu: Tất cả các nguồn","tu_lieu_khac":"Kho tư liệu: nhóm không có ngày","tu_lieu_muc":"Kho tư liệu: đơn vị “mục”","tu_lieu_phat_thanh":"Kho tư liệu: nhãn Phát thanh","tu_lieu_khong_co":"Kho tư liệu: khi không có kết quả","tu_lieu_xoa_loc":"Kho tư liệu: nút Xóa bộ lọc","giai_thuong_xem_hoat_dong":"Giải thưởng: liên kết Xem hoạt động","su_kien_mo_bo_anh":"Sự kiện: Mở bộ ảnh","su_kien_anh":"Sự kiện: đơn vị “ảnh”","su_kien_xem_chi_tiet":"Sự kiện: Xem chi tiết","su_kien_moi_hon":"Sự kiện: Mới hơn","su_kien_tat_ca":"Sự kiện: Tất cả hoạt động","su_kien_truoc_do":"Sự kiện: Trước đó","chung_nhan_nhan":"Chứng nhận: nhãn nhỏ","chung_nhan_tieu_de":"Chứng nhận: tiêu đề","chung_nhan_dan":"Chứng nhận: dòng giới thiệu","chung_nhan_huy_hieu":"Chứng nhận: huy hiệu","chung_nhan_thuong_hieu":"Chứng nhận: dòng thương hiệu","chung_nhan_xem_san_pham":"Chứng nhận: Xem sản phẩm","xem_anh_dong":"Khung xem ảnh: nút Đóng"}},
+});
 const DATA_HIDDEN = ['slug', 'source', 'file', 'alt', 'detail', 'href', 'src', 'width', 'height'];
 const DATA_LABELS = {
   products: 'Sản phẩm', name: 'Tên sản phẩm', category: 'Loại (chữ nhỏ trên tên)', summary: 'Câu tóm tắt dưới tên',
@@ -263,6 +271,7 @@ const DATA_LABELS = {
   records: 'Tab Hồ sơ (giấy tờ)', title: 'Tên giấy tờ', kind: 'Loại giấy tờ', issuer: 'Nơi cấp', reference: 'Số hiệu', date: 'Ngày', scope: 'Phạm vi', linkLabel: 'Chữ của đường dẫn',
   reviews: 'Tab Nhận xét', quote: 'Lời nhận xét', author: 'Người nhận xét', sourceName: 'Nguồn nhận xét',
 };
+const withHint = (f, name) => { const l = f && (fileLabels[name] ?? DATA_LABELS[name]); if (f && Array.isArray(l)) f.hint = l[1]; return f; };
 const LANG_LABELS = { vi: 'Tiếng Việt', en: 'Tiếng Anh', zh: 'Tiếng Trung' };
 const isText = (v) => v && typeof v === 'object' && !Array.isArray(v) && Object.keys(v).sort().join() === 'en,vi,zh';
 const isSourced = (v) => v && typeof v === 'object' && !Array.isArray(v) && isText(v.text);
@@ -271,9 +280,13 @@ const textGroup = (label, name, samples, required) => ({
   fields: ['vi', 'en', 'zh'].map((l) => ({ label: LANG_LABELS[l], name: l, widget: samples.some((s) => isLong(s?.[l] ?? '')) ? 'text' : 'string' })),
 });
 // samples: every value this field takes across the file (to find optional keys and long texts).
+// Labels for the data file being built (by field name), over DATA_LABELS.
+let fileLabels = {};
+let fileHidden = [];
 const dataField = (name, samples, required = true) => {
-  if (DATA_HIDDEN.includes(name)) return null;
-  const label = DATA_LABELS[name] ?? name;
+  if (DATA_HIDDEN.includes(name) || fileHidden.includes(name)) return null;
+  const l = fileLabels[name] ?? DATA_LABELS[name] ?? name;
+  const [label, hint] = Array.isArray(l) ? l : [l];
   const present = samples.filter((s) => s !== undefined);
   const first = present[0];
   if (isText(first)) return textGroup(label, name, present, required);
@@ -329,9 +342,11 @@ const groups = [
   ['ve_chung_toi', 'Về chúng tôi', 've-chung-toi'],
   ['san_pham', 'Sản phẩm', 'san-pham'],
   ['tuan_hoan', 'Nông nghiệp tuần hoàn', 'tuan-hoan'],
+  ['dau_an', 'Dấu ấn', 'dau-an'],
   ['chung', 'Menu, liên hệ, chân trang', 'chung'],
 ];
-const order = { chung: ['lien-he', 'menu', 'footer', 'header'], 'san-pham': ['ten-va-mo-ta', 'trang-san-pham', 'nam-moi-den', 'chung-dau-trang', 'chung-san-pham-khac', 'chung-kiem-nghiem'], 've-chung-toi': ['trang', 'cac-chuong'] };
+const order = {
+  'dau-an': [], chung: ['lien-he', 'menu', 'footer', 'header'], 'san-pham': ['ten-va-mo-ta', 'trang-san-pham', 'nam-moi-den', 'chung-dau-trang', 'chung-san-pham-khac', 'chung-kiem-nghiem'], 've-chung-toi': ['trang', 'cac-chuong'] };
 fs.mkdirSync('public/admin/huong-dan', { recursive: true });
 const collections = [];
 for (const [name, label, dir] of groups) {
@@ -379,21 +394,42 @@ for (const [name, label, dir] of groups) {
   for (const [key, spec] of Object.entries(DATA_FILES).filter(([k]) => k.startsWith(dir + '/'))) {
     const n = key.slice(dir.length + 1);
     const data = read(`src/content/${key}.md`);
-    const list = dataField(spec.items, [data[spec.items]]);
-    list.hint = spec.hint;
-    // Products have images and links in the file: edit them, don't add or remove.
-    list.min = list.max = data[spec.items].length;
+    fileLabels = spec.labels ?? {};
+    fileHidden = spec.hidden ?? [];
     const [url, selector] = spec.page;
     page = pages.section;
-    const found = await shoot(url, selector, data[spec.items].map((item) => [item.name?.vi ?? item.title?.vi ?? '']));
     const marks = [];
-    found.forEach((boxes, i) => boxes.slice(0, 1).forEach((b) => marks.push({ ...b, text: CIRCLED[i] })));
+    let fields;
+    if (spec.items) {
+      // One list of items (products, articles): one block per item, numbered on the screenshot.
+      const list = withHint(dataField(spec.items, [data[spec.items]]), spec.items);
+      list.hint = [spec.hint, list.hint].filter(Boolean).join(' ');
+      // Items carry images and links in the file: edit them, don't add or remove.
+      list.min = list.max = data[spec.items].length;
+      const title = (item) => { const v = (spec.itemName ?? 'name').split('.').reduce((o, k) => o?.[k], item) ?? item.title ?? item.name; return typeof v === 'object' ? v?.vi ?? '' : v ?? ''; };
+      const found = await shoot(url, selector, data[spec.items].map((item) => [title(item)]));
+      found.forEach((boxes, i) => boxes.slice(0, 1).forEach((b) => marks.push({ ...b, text: CIRCLED[i] ?? String(i + 1) })));
+      list.hint += ` Số trên ảnh là thứ tự các mục.`;
+      fields = [list];
+    } else {
+      // Separate fields: in page order, numbered like the copy files.
+      fields = Object.keys(data).map((k) => withHint(dataField(k, [data[k]]), k)).filter(Boolean);
+      const found = await shoot(url, selector, fields.map((f) => strings(data[f.name])));
+      const ranked = fields.map((f, i) => ({ f, boxes: found[i], y: found[i].length ? Math.min(...found[i].map((b) => b.y)) : Infinity, i })).sort((a, b) => a.y - b.y || a.i - b.i);
+      let num = 0;
+      for (const r of ranked) {
+        if (r.y === Infinity) continue;
+        const c = CIRCLED[num++] ?? String(num);
+        r.f.label = `${c} ${r.f.label}`;
+        marks.push({ ...r.boxes.sort((a, b) => a.y - b.y || a.x - b.x)[0], text: c });
+      }
+      fields = ranked.map((r) => r.f);
+    }
     await badge(page, selector, marks, 26);
     const img = `huong-dan/${dir}-${n}.jpg`;
     await page.locator(selector).first().screenshot({ path: `public/admin/${img}`, type: 'jpeg', quality: 62 });
-    list.hint += ` Số ①–${CIRCLED[data[spec.items].length - 1]} trên ảnh là thứ tự các sản phẩm.`;
-    guide[n] = { image: img, url, fields: [[list.name, list.label]] };
-    files.push({ name: n, label: spec.label, file: `src/content/${key}.md`, format: 'frontmatter', i18n: false, preview_path: url, fields: [list] });
+    guide[n] = { image: img, url, fields: fields.map((f) => [f.name, f.label]) };
+    files.push({ name: n, label: spec.label, file: `src/content/${key}.md`, format: 'frontmatter', i18n: false, preview_path: url, fields });
     console.log(key, marks.length, 'marks');
   }
   collections.push({ name, label, i18n: true, files });
