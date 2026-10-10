@@ -7,6 +7,7 @@
 import Arrow from '../Arrow.astro';
 import GameIcon from './GameIcon.astro';
 import { getLocale } from '../../i18n';
+import { dataFile } from '../../data/copy';
 
 interface Props {
   title: string;
@@ -17,7 +18,7 @@ interface Props {
 }
 
 const lang = getLocale(Astro.url);
-const { title, line, slug, label = 'Ghé chơi' } = Astro.props;
+const { title, line, slug, label = dataFile('choi-cung-nong-trai/chung').play_label } = Astro.props;
 ---
 {lang === 'vi' && (
   <aside class="play-invite" aria-label={title}>

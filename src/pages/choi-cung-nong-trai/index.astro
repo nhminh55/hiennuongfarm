@@ -1,16 +1,15 @@
 ---
 import PlayLayout from '../../components/farm-play/PlayLayout.astro';
 import GameIcon from '../../components/farm-play/GameIcon.astro';
-const activities = [
- {slug:'mot-vong-nong-trai',number:'01',title:'Một vòng nông trại',text:'Từ phụ phẩm đến vườn cây. Ghép năm mảnh nhỏ để khám phá cách những giá trị được tiếp nối.',time:'Khoảng 2–3 phút',image:'/images/farm-play/farm.webp',alt:'Minh họa nông trại với kho phụ phẩm, nhà trồng nấm, khu nuôi trùn và vườn cây'},
- {slug:'hom-nay-an-nam-gi',number:'02',title:'Hôm nay ăn nấm gì?',text:'Bếp đang có gì, bạn thích vị nào? Tìm một gợi ý món nấm vừa với thời gian của mình.',time:'Khoảng 1–2 phút',image:'/images/farm-play/soup.webp',alt:'Minh họa bát canh nấm đậu hũ và rau xanh'},
- {slug:'ban-hieu-nam-toi-dau',number:'03',title:'Bạn hiểu nấm tới đâu?',text:'Năm câu hỏi nhẹ nhàng. Mỗi câu trả lời mở thêm một điều về nấm và vòng tuần hoàn tại trang trại.',time:'Khoảng 3 phút',image:'/images/farm-play/quiz.webp',alt:'Minh họa chùm nấm bào ngư mọc từ bịch giá thể trên kệ tre'},
-];
+import { dataFile } from '../../data/copy';
+// Text: src/content/choi-cung-nong-trai/chung.md.
+const t = dataFile('choi-cung-nong-trai/chung');
+const activities: {slug:string; number:string; title:string; text:string; time:string; image:string}[] = t.activities;
 ---
-<PlayLayout title="Chơi cùng nông trại" intro="Ghé chơi một chút, mang về một điều hay.">
+<PlayLayout title={t.title} intro={t.intro}>
  <div class="play-collection">{activities.map(a=><article class="play-activity">
   <a class="activity-art" href={'/choi-cung-nong-trai/'+a.slug+'/'} tabindex="-1" aria-hidden="true"><img src={a.image} alt="" width="720" height="480" loading="lazy" /></a>
-  <div class="activity-copy"><p class="play-eyebrow">{a.number} <span>{a.time}</span></p><h2><a href={'/choi-cung-nong-trai/'+a.slug+'/'}>{a.title}</a></h2><p>{a.text}</p><a class="play-link" href={'/choi-cung-nong-trai/'+a.slug+'/'}><GameIcon class="play-link__icon" size={16} /> Ghé chơi</a></div>
+  <div class="activity-copy"><p class="play-eyebrow">{a.number} <span>{a.time}</span></p><h2><a href={'/choi-cung-nong-trai/'+a.slug+'/'}>{a.title}</a></h2><p>{a.text}</p><a class="play-link" href={'/choi-cung-nong-trai/'+a.slug+'/'}><GameIcon class="play-link__icon" size={16} /> {t.play_label}</a></div>
  </article>)}</div>
- <p class="play-note">Chơi theo nhịp của bạn. Không tính giờ, không cần tài khoản.</p>
+ <p class="play-note">{t.note}</p>
 </PlayLayout>

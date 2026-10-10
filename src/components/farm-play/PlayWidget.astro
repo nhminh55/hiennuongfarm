@@ -7,26 +7,25 @@
  */
 import { getLocale } from '../../i18n';
 import GameIcon from './GameIcon.astro';
+import { dataFile } from '../../data/copy';
 
 const lang = getLocale(Astro.url);
 const show = lang === 'vi' && !Astro.url.pathname.startsWith('/choi-cung-nong-trai/');
 
-const games = [
-  { slug: 'mot-vong-nong-trai', title: 'Một vòng nông trại', text: 'Từ phụ phẩm đến vườn cây. Ghép năm mảnh nhỏ để khám phá cách những giá trị được tiếp nối.', image: '/images/farm-play/farm.webp' },
-  { slug: 'hom-nay-an-nam-gi', title: 'Hôm nay ăn nấm gì?', text: 'Bếp đang có gì, bạn thích vị nào? Tìm một gợi ý món nấm vừa với thời gian của mình.', image: '/images/farm-play/soup.webp' },
-  { slug: 'ban-hieu-nam-toi-dau', title: 'Bạn hiểu nấm tới đâu?', text: 'Năm câu hỏi nhẹ nhàng về nấm và vòng tuần hoàn tại trang trại.', image: '/images/farm-play/quiz.webp' },
-];
+// Text: src/content/choi-cung-nong-trai/chung.md (widget_title, widget_all, activities[].widget_text).
+const t = dataFile('choi-cung-nong-trai/chung');
+const games: { slug: string; title: string; widget_text: string; image: string }[] = t.activities;
 ---
 {show && (
   <div class="play-widget" data-play-widget>
     <button class="play-widget__tab" type="button" aria-expanded="false" aria-controls="play-widget-panel" data-play-open>
       <GameIcon class="play-widget__icon" />
-      <span class="play-widget__tab-label">Ghé chơi một chút?</span>
+      <span class="play-widget__tab-label">{t.widget_title}</span>
     </button>
 
     <aside class="play-widget__panel" id="play-widget-panel" aria-labelledby="play-widget-title" inert data-play-panel>
       <div class="play-widget__head">
-        <p class="play-widget__title" id="play-widget-title"><GameIcon class="play-widget__title-icon" /> Ghé chơi một chút?</p>
+        <p class="play-widget__title" id="play-widget-title"><GameIcon class="play-widget__title-icon" /> {t.widget_title}</p>
         <button class="play-widget__close" type="button" aria-label="Đóng" data-play-close>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
         </button>
@@ -39,14 +38,14 @@ const games = [
               <img src={g.image} alt="" width="720" height="480" loading="lazy" decoding="async" />
               <span class="play-widget__copy">
                 <span class="play-widget__name">{g.title}</span>
-                <span class="play-widget__text">{g.text}</span>
+                <span class="play-widget__text">{g.widget_text}</span>
               </span>
             </a>
           </li>
         ))}
       </ul>
 
-      <a class="play-widget__all" href="/choi-cung-nong-trai/">Xem tất cả hoạt động</a>
+      <a class="play-widget__all" href="/choi-cung-nong-trai/">{t.widget_all}</a>
     </aside>
   </div>
 )}

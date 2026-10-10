@@ -1,23 +1,28 @@
 ---
 import PlayLayout from '../../components/farm-play/PlayLayout.astro';
 import {flavors,pantry} from '../../data/farm-play/recipes.mjs';
+import { dataFile } from '../../data/copy';
+// Text: src/content/choi-cung-nong-trai/chung.md (title, intro, time) and hom-nay-an-nam-gi.md.
+const a = dataFile('choi-cung-nong-trai/chung').activities.find((a: {slug:string}) => a.slug === 'hom-nay-an-nam-gi');
+const t = dataFile('choi-cung-nong-trai/hom-nay-an-nam-gi');
+const times: {id:string; name:string}[] = t.times;
 ---
-<PlayLayout title="Hôm nay ăn nấm gì?" intro="Chọn một chút sở thích, tìm một món ngon." activity="hom-nay-an-nam-gi" duration="Khoảng 1–2 phút">
+<PlayLayout title={a.title} intro={a.intro} activity="hom-nay-an-nam-gi" duration={a.time}>
  <div class="meal-tool" data-meal-tool>
   <form class="meal-form">
-   <fieldset><legend><span>01</span> Bạn muốn ăn kiểu nào?</legend><div class="meal-options">{flavors.map(f=><label class="meal-choice"><input type="radio" name="flavor" value={f.id} required/><span>{f.name}</span></label>)}</div></fieldset>
-   <fieldset><legend><span>02</span> Có bao nhiêu thời gian?</legend><div class="meal-options">{[{id:'15',name:'15 phút'},{id:'30',name:'30 phút'},{id:'leisure',name:'Thảnh thơi'}].map(t=><label class="meal-choice"><input type="radio" name="time" value={t.id} required/><span>{t.name}</span></label>)}</div></fieldset>
-   <fieldset><legend><span>03</span> Bếp đang có gì?</legend><p class="play-small">Chọn những thứ có sẵn, hoặc bỏ qua.</p><div class="pantry-options">{pantry.map(p=><label class="meal-choice meal-choice--pantry"><input type="checkbox" name="pantry" value={p.id}/><span>{p.name}</span></label>)}</div></fieldset>
-   <button class="play-button meal-submit" type="submit" disabled>Gợi ý món cho tui</button><p class="play-small meal-disclosure">Gợi ý biên tập cho căn bếp của bạn. Thời gian gồm sơ chế và nấu, dùng để tham khảo.</p>
+   <fieldset><legend><span>01</span> {t.flavor_question}</legend><div class="meal-options">{flavors.map(f=><label class="meal-choice"><input type="radio" name="flavor" value={f.id} required/><span>{f.name}</span></label>)}</div></fieldset>
+   <fieldset><legend><span>02</span> {t.time_question}</legend><div class="meal-options">{times.map(time=><label class="meal-choice"><input type="radio" name="time" value={time.id} required/><span>{time.name}</span></label>)}</div></fieldset>
+   <fieldset><legend><span>03</span> {t.pantry_question}</legend><p class="play-small">{t.pantry_note}</p><div class="pantry-options">{pantry.map(p=><label class="meal-choice meal-choice--pantry"><input type="checkbox" name="pantry" value={p.id}/><span>{p.name}</span></label>)}</div></fieldset>
+   <button class="play-button meal-submit" type="submit" disabled>{t.submit}</button><p class="play-small meal-disclosure">{t.disclosure}</p>
   </form>
   <section class="meal-result" aria-label="Gợi ý món ăn">
-   <div data-initial><p class="play-eyebrow">Một bữa ngon bắt đầu từ đây</p><h2>Để nấm ghé<br/>vào bếp bạn.</h2><img class="meal-art" src="/images/farm-play/soup.webp" alt="Minh họa canh nấm bào ngư với đậu hũ và rau xanh" width="768" height="768"/><p>Chọn vị bạn thích và thời gian có sẵn. Một món nấm, vài nguyên liệu quen, vừa đủ cho hai người.</p></div>
-   <div data-no-match hidden><p class="play-eyebrow">Chưa tìm được món phù hợp</p><h2 tabindex="-1">Mình đổi một chút nhé?</h2><p data-adjustment></p><button class="play-button play-button--outline" data-relax type="button">Chọn Thảnh thơi</button></div>
-   <div data-result hidden><p class="play-eyebrow">Món hợp với lựa chọn của bạn</p><h2 data-recipe-title tabindex="-1"></h2><p class="recipe-meta" data-recipe-meta></p><img class="meal-art" data-recipe-image src="/images/farm-play/soup.webp" width="768" height="768" alt=""/><p class="recipe-match" data-match-note></p><div class="recipe-shopping"><h3>Cần chuẩn bị thêm</h3><p class="play-small">Nấm và gia vị cũng được liệt kê để bạn tiện kiểm tra.</p><ul data-missing></ul></div><div class="play-actions"><button class="play-button" data-details-toggle aria-expanded="false" aria-controls="recipe-details">Xem cách nấu</button><button class="play-button play-button--outline" data-alternative>Thử món khác</button></div><p class="play-small" data-alternative-note></p><a class="play-link" data-product href="/san-pham/#nam-bao-ngu">Khám phá nấm bào ngư tại Hiền Nương</a></div>
+   <div data-initial><p class="play-eyebrow">{t.initial_eyebrow}</p><h2>{t.initial_title.map((line: string, i: number) => <>{i > 0 && <br/>}{line}</>)}</h2><img class="meal-art" src="/images/farm-play/soup.webp" alt="Minh họa canh nấm bào ngư với đậu hũ và rau xanh" width="768" height="768"/><p>{t.initial_text}</p></div>
+   <div data-no-match hidden><p class="play-eyebrow">{t.no_match_eyebrow}</p><h2 tabindex="-1">{t.no_match_title}</h2><p data-adjustment></p><button class="play-button play-button--outline" data-relax type="button">{t.relax_button}</button></div>
+   <div data-result hidden><p class="play-eyebrow">{t.result_eyebrow}</p><h2 data-recipe-title tabindex="-1"></h2><p class="recipe-meta" data-recipe-meta></p><img class="meal-art" data-recipe-image src="/images/farm-play/soup.webp" width="768" height="768" alt=""/><p class="recipe-match" data-match-note></p><div class="recipe-shopping"><h3>{t.shopping_title}</h3><p class="play-small">{t.shopping_note}</p><ul data-missing></ul></div><div class="play-actions"><button class="play-button" data-details-toggle aria-expanded="false" aria-controls="recipe-details">{t.show_details}</button><button class="play-button play-button--outline" data-alternative>{t.alternative_button}</button></div><p class="play-small" data-alternative-note></p><a class="play-link" data-product href="/san-pham/#nam-bao-ngu">{t.product_link}</a></div>
    <p class="play-feedback" data-meal-feedback role="status" aria-live="polite"></p>
   </section>
-  <section id="recipe-details" class="recipe-details" hidden><h2 tabindex="-1" data-details-heading></h2><p data-details-meta></p><div class="recipe-columns"><div><h3>Nguyên liệu</h3><ul data-ingredients></ul></div><div><h3>Cách nấu</h3><ol data-steps></ol><p class="play-note" data-substitution></p></div></div><button class="play-link" data-close-details>Thu gọn công thức</button></section>
-  <noscript><p class="play-note">Bật JavaScript để nhận gợi ý món và xem công thức.</p></noscript>
+  <section id="recipe-details" class="recipe-details" hidden><h2 tabindex="-1" data-details-heading></h2><p data-details-meta></p><div class="recipe-columns"><div><h3>{t.ingredients_title}</h3><ul data-ingredients></ul></div><div><h3>{t.steps_title}</h3><ol data-steps></ol><p class="play-note" data-substitution></p></div></div><button class="play-link" data-close-details>{t.hide_details}</button></section>
+  <noscript><p class="play-note">{t.noscript}</p></noscript>
  </div>
  <script>import '../../scripts/farm-play/meal.js';</script>
 </PlayLayout>

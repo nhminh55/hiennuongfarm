@@ -36,3 +36,5 @@ export function advanceQuiz(state) {
  if(state.complete || state.answer===null) return state;
  return state.index===state.questions.length-1 ? {...state,complete:true} : {...state,index:state.index+1,answer:null};
 }
+// Fills {placeholders} in a text from the content files: fill('Câu {n} / 5', {n:1}).
+export const fill = (text,values) => text.replace(/\{(\w+)\}/g,(m,k)=>k in values ? String(values[k]) : m);

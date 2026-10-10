@@ -1,13 +1,17 @@
 ---
 import PlayLayout from '../../components/farm-play/PlayLayout.astro';
+import { dataFile, fill } from '../../data/copy';
+// Text: src/content/choi-cung-nong-trai/chung.md (title, intro, time) and ban-hieu-nam-toi-dau.md.
+const a = dataFile('choi-cung-nong-trai/chung').activities.find((a: {slug:string}) => a.slug === 'ban-hieu-nam-toi-dau');
+const t = dataFile('choi-cung-nong-trai/ban-hieu-nam-toi-dau');
 ---
-<PlayLayout title="Bạn hiểu nấm tới đâu?" intro="5 câu hỏi nhỏ, vài điều thú vị về nấm." activity="ban-hieu-nam-toi-dau" duration="Khoảng 3 phút">
+<PlayLayout title={a.title} intro={a.intro} activity="ban-hieu-nam-toi-dau" duration={a.time}>
  <section class="quiz-game" data-quiz-game aria-label="Câu hỏi về nấm">
-  <figure class="quiz-figure"><img src="/images/farm-play/quiz.webp" alt="Minh họa nấm bào ngư mọc từ các bịch giá thể trên kệ tre trong nhà trồng" width="768" height="1024" fetchpriority="high"/><figcaption>Một điều mới sau mỗi câu hỏi.</figcaption></figure>
+  <figure class="quiz-figure"><img src="/images/farm-play/quiz.webp" alt="Minh họa nấm bào ngư mọc từ các bịch giá thể trên kệ tre trong nhà trồng" width="768" height="1024" fetchpriority="high"/><figcaption>{t.caption}</figcaption></figure>
   <div class="quiz-panel">
-   <div data-quiz-active><div class="quiz-progress"><progress value="0" max="5" aria-label="Số câu đã trả lời"></progress><p data-quiz-progress>Câu 1 / 5</p></div><h2 class="quiz-question" data-question tabindex="-1">Sẵn sàng khám phá?</h2><div class="quiz-choices" data-choices></div><div class="play-feedback quiz-feedback" data-quiz-feedback role="status" aria-live="polite"></div><button class="play-button quiz-next" data-next disabled>Câu tiếp theo</button></div>
-   <div class="quiz-completion" data-quiz-complete hidden><p class="play-eyebrow">Bạn đã hoàn thành</p><h2 tabindex="-1">Người bạn của nấm</h2><p class="quiz-score" data-score></p><p data-result-message></p><div class="play-actions"><button class="play-button" data-replay>Chơi lại</button><a class="play-link" href="/nong-nghiep-tuan-hoan/">Khám phá vòng tuần hoàn</a></div></div>
-   <noscript><p class="play-note">Bật JavaScript để chơi. Bạn có thể <a class="play-link" href="/nong-nghiep-tuan-hoan/">tìm hiểu vòng tuần hoàn tại đây</a>.</p></noscript>
+   <div data-quiz-active><div class="quiz-progress"><progress value="0" max="5" aria-label="Số câu đã trả lời"></progress><p data-quiz-progress>{fill(t.progress, {n: '1'})}</p></div><h2 class="quiz-question" data-question tabindex="-1">{t.start}</h2><div class="quiz-choices" data-choices></div><div class="play-feedback quiz-feedback" data-quiz-feedback role="status" aria-live="polite"></div><button class="play-button quiz-next" data-next disabled>{t.next}</button></div>
+   <div class="quiz-completion" data-quiz-complete hidden><p class="play-eyebrow">{t.complete_eyebrow}</p><h2 tabindex="-1">{t.complete_title}</h2><p class="quiz-score" data-score></p><p data-result-message></p><div class="play-actions"><button class="play-button" data-replay>{t.replay}</button><a class="play-link" href="/nong-nghiep-tuan-hoan/">{t.link}</a></div></div>
+   <noscript><p class="play-note">{t.noscript} <a class="play-link" href="/nong-nghiep-tuan-hoan/">{t.noscript_link}</a>.</p></noscript>
   </div>
  </section>
  <script>import '../../scripts/farm-play/quiz.js';</script>

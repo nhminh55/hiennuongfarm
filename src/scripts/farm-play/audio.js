@@ -1,5 +1,8 @@
 // Original procedural sine-tone effects and pentatonic instrumental, authored for this project.
 // No samples, recordings, external media, or licensed third-party composition.
+// Text lives in src/content/choi-cung-nong-trai/am-thanh.md (edited in the admin).
+import text from '../../content/choi-cung-nong-trai/am-thanh.md?data';
+import {fill} from './logic.mjs';
 const instances=new WeakMap();
 const preferenceKey='hien-nuong-farm-play-audio-v1';
 export function initAudio() {
@@ -10,11 +13,11 @@ export function initAudio() {
  const save=()=>{try{localStorage.setItem(preferenceKey,JSON.stringify(preferences));}catch{}};
  function render() {
   soundButton.setAttribute('aria-pressed',String(preferences.sound));musicButton.setAttribute('aria-pressed',String(preferences.music));
-  soundButton.textContent='Âm thanh: '+(preferences.sound?(soundArmed?'Bật':'Bật · chạm để phát'):'Tắt');
-  musicButton.textContent='Nhạc nền: '+(preferences.music?(musicArmed?'Bật':'Bật · chạm để phát'):'Tắt');
+  soundButton.textContent=text.sound+': '+(preferences.sound?(soundArmed?text.on:text.on_tap):text.off);
+  musicButton.textContent=text.music+': '+(preferences.music?(musicArmed?text.on:text.on_tap):text.off);
   soundButton.disabled=busy;musicButton.disabled=busy;
  }
- if(preferences.sound||preferences.music)status.textContent='Đã nhớ lựa chọn của bạn. Bấm từng nút âm thanh để cho phép phát trong lần ghé này.';
+ if(preferences.sound||preferences.music)status.textContent=text.remembered;
  async function activate() {
   const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)throw new Error('unsupported');
   context??=new Audio();if(context.state!=='running')await context.resume();if(destroyed||context.state!=='running')throw new Error('blocked');
@@ -43,14 +46,14 @@ export function initAudio() {
   if(busy||destroyed)return;busy=true;render();
   try {
    const armed=kind==='sound'?soundArmed:musicArmed;
-   if(preferences[kind]&&armed){preferences[kind]=false;if(kind==='sound'){soundArmed=false;stopNodes(activeEffect);activeEffect=[];}else{musicArmed=false;stopMusic();}status.textContent=(kind==='sound'?'Âm thanh':'Nhạc nền')+' đã tắt.';}
-   else {await activate();preferences[kind]=true;if(kind==='sound'){soundArmed=true;play('select');}else{musicArmed=true;startMusic();}status.textContent=(kind==='sound'?'Âm thanh':'Nhạc nền')+' đã bật. Bạn có thể tắt bất cứ lúc nào.';}
+   if(preferences[kind]&&armed){preferences[kind]=false;if(kind==='sound'){soundArmed=false;stopNodes(activeEffect);activeEffect=[];}else{musicArmed=false;stopMusic();}status.textContent=fill(text.turned_off,{name:kind==='sound'?text.sound:text.music});}
+   else {await activate();preferences[kind]=true;if(kind==='sound'){soundArmed=true;play('select');}else{musicArmed=true;startMusic();}status.textContent=fill(text.turned_on,{name:kind==='sound'?text.sound:text.music});}
    save();
-  }catch{if(kind==='sound')soundArmed=false;else{musicArmed=false;stopMusic();}status.textContent='Trình duyệt chưa cho phép phát âm thanh. Bạn có thể bấm nút để thử lại; trò chơi vẫn hoạt động bình thường.';}
+  }catch{if(kind==='sound')soundArmed=false;else{musicArmed=false;stopMusic();}status.textContent=text.blocked;}
   finally{busy=false;render();}
  }
  const onSound=()=>toggle('sound'),onMusic=()=>toggle('music');
- async function visibility() {if(document.hidden){stopMusic();stopNodes(activeEffect);activeEffect=[];if(context?.state==='running'){suspension=context.suspend().catch(()=>{});await suspension;}}else if(!destroyed&&(soundArmed||musicArmed)){try{await suspension;if(document.hidden||destroyed)return;await activate();startMusic();}catch{status.textContent='Âm thanh đang tạm dừng. Tắt rồi bật lại để tiếp tục phát.';}}}
+ async function visibility() {if(document.hidden){stopMusic();stopNodes(activeEffect);activeEffect=[];if(context?.state==='running'){suspension=context.suspend().catch(()=>{});await suspension;}}else if(!destroyed&&(soundArmed||musicArmed)){try{await suspension;if(document.hidden||destroyed)return;await activate();startMusic();}catch{status.textContent=text.paused;}}}
  function destroy() {if(destroyed)return;destroyed=true;stopMusic();stopNodes(activeEffect);context?.close().catch(()=>{});document.removeEventListener('visibilitychange',visibility);document.removeEventListener('astro:before-swap',destroy);soundButton.removeEventListener('click',onSound);musicButton.removeEventListener('click',onMusic);}
  // pagehide cleans up even for the back-forward cache; pageshow rebinds without autoplay.
  function onPageHide(){destroy();instances.delete(root);window.removeEventListener('pagehide',onPageHide);}
