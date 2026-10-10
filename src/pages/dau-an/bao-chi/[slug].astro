@@ -9,7 +9,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import DauAnHead from '../../../components/dau-an/DauAnHead.astro';
 import Lightbox from '../../../components/dau-an/Lightbox.astro';
 import Arrow from '../../../components/Arrow.astro';
-import { formatDate, press, type FeaturedPress } from '../../../data/dau-an';
+import { dauAnText as t, formatDate, press, type FeaturedPress } from '../../../data/dau-an';
 
 export const getStaticPaths = () =>
   press.map((item, i) => ({
@@ -27,7 +27,7 @@ const { item, prev, next } = Astro.props;
 const photos = [item.photo, ...(item.gallery ?? [])].filter((p) => p !== undefined);
 const domain = new URL(item.url).hostname.replace(/^www\./, '');
 const isVideo = item.kind === 'video';
-const action = isVideo ? 'Xem phóng sự' : 'Đọc bài gốc';
+const action = isVideo ? t.xem_phong_su : t.bai_doc_bai_goc;
 const href = (p: FeaturedPress) => `/dau-an/bao-chi/${p.slug}/`;
 ---
 <BaseLayout title={item.headline} description={`${item.outlet}, ${formatDate(item.date)}: ${item.intro}`}>
@@ -36,10 +36,10 @@ const href = (p: FeaturedPress) => `/dau-an/bao-chi/${p.slug}/`;
   <article class="report" aria-labelledby="report-title">
     <div class="container report__grid">
       <header class="report__head">
-        <p class="eyebrow">{isVideo ? `Phóng sự truyền hình · ${item.outlet}` : item.outlet}</p>
+        <p class="eyebrow">{isVideo ? `${t.phong_su_truyen_hinh} · ${item.outlet}` : item.outlet}</p>
         <h1 class:list={['report__title', { 'report__title--long': item.headline.length > 70 }]} id="report-title">{item.headline}</h1>
         <p class="report__meta">
-          <time datetime={item.date}>{isVideo ? `Đăng tải ${formatDate(item.date)}` : formatDate(item.date)}</time>
+          <time datetime={item.date}>{isVideo ? `${t.dang_tai} ${formatDate(item.date)}` : formatDate(item.date)}</time>
           {item.byline && <span>{item.byline}</span>}
         </p>
       </header>
@@ -58,7 +58,7 @@ const href = (p: FeaturedPress) => `/dau-an/bao-chi/${p.slug}/`;
           </div>
         ) : photos.length > 0 ? (
           <figure class="report__figure">
-            <a class="report__photo" href={photos[0].full} data-lightbox="bai" data-caption={`${photos[0].caption ?? photos[0].alt} Ảnh: ${photos[0].credit}.`} data-width={photos[0].width} data-height={photos[0].height}>
+            <a class="report__photo" href={photos[0].full} data-lightbox="bai" data-caption={`${photos[0].caption ?? photos[0].alt} ${t.anh} ${photos[0].credit}.`} data-width={photos[0].width} data-height={photos[0].height}>
               <img
                 src={photos[0].src}
                 srcset={photos[0].srcset}
@@ -70,7 +70,7 @@ const href = (p: FeaturedPress) => `/dau-an/bao-chi/${p.slug}/`;
               />
             </a>
             <figcaption class="report__caption">
-              {photos[0].caption && <span>{photos[0].caption}</span>} <span class="report__credit">Ảnh: {photos[0].credit}</span>
+              {photos[0].caption && <span>{photos[0].caption}</span>} <span class="report__credit">{t.anh} {photos[0].credit}</span>
             </figcaption>
           </figure>
         ) : (
@@ -85,7 +85,7 @@ const href = (p: FeaturedPress) => `/dau-an/bao-chi/${p.slug}/`;
           <ul class="report__thumbs" aria-label="Ảnh khác trong bài">
             {photos.slice(1).map((p) => (
               <li>
-                <a href={p.full} data-lightbox="bai" data-caption={`${p.caption ?? p.alt} Ảnh: ${p.credit}.`} data-width={p.width} data-height={p.height}>
+                <a href={p.full} data-lightbox="bai" data-caption={`${p.caption ?? p.alt} ${t.anh} ${p.credit}.`} data-width={p.width} data-height={p.height}>
                   <img src={`${p.srcset.split(' ')[0]}`} width={p.width} height={p.height} alt={p.alt} loading="lazy" decoding="async" />
                 </a>
               </li>
@@ -100,24 +100,24 @@ const href = (p: FeaturedPress) => `/dau-an/bao-chi/${p.slug}/`;
         {item.lede && (
           <figure class="report__lede">
             <blockquote><p>{item.lede}</p></blockquote>
-            <figcaption>Trích phần mở đầu bài viết</figcaption>
+            <figcaption>{t.bai_trich_mo_dau}</figcaption>
           </figure>
         )}
 
         {item.quote && (
           <figure class="report__quote">
             <blockquote><p>“{item.quote}”</p></blockquote>
-            <figcaption>Chị Châu Thị Nương</figcaption>
+            <figcaption>{t.chi_nuong}</figcaption>
           </figure>
         )}
 
         {item.points && (
           <div class="report__points">
-            <h2 class="eyebrow">Những điểm chính trong bài</h2>
+            <h2 class="eyebrow">{t.bai_diem_chinh}</h2>
             <ul>
               {item.points.map((p) => <li>{p}</li>)}
             </ul>
-            <p class="report__points-note">Theo {item.outlet}, {formatDate(item.date)}.</p>
+            <p class="report__points-note">{t.bai_theo} {item.outlet}, {formatDate(item.date)}.</p>
           </div>
         )}
 
@@ -127,7 +127,7 @@ const href = (p: FeaturedPress) => `/dau-an/bao-chi/${p.slug}/`;
             <Arrow direction="up-right" />
             <span class="sr-only">(mở trong thẻ mới)</span>
           </a>
-          <p class="report__attr">Nguồn: {item.outlet} · {domain}</p>
+          <p class="report__attr">{t.nguon} {item.outlet} · {domain}</p>
         </div>
       </div>
     </div>
@@ -137,21 +137,21 @@ const href = (p: FeaturedPress) => `/dau-an/bao-chi/${p.slug}/`;
     <div class="pager__inner">
       {prev ? (
         <a class="pager__link" href={href(prev)} rel="prev">
-          <span class="pager__label"><Arrow direction="right" /> Bài mới hơn</span>
+          <span class="pager__label"><Arrow direction="right" /> {t.bai_moi_hon}</span>
           <span class="pager__title">{prev.headline}</span>
         </a>
       ) : <span />}
-      <a class="pager__all" href="/dau-an/bao-chi/">Tất cả bài viết</a>
+      <a class="pager__all" href="/dau-an/bao-chi/">{t.bai_tat_ca}</a>
       {next ? (
         <a class="pager__link pager__link--next" href={href(next)} rel="next">
-          <span class="pager__label">Bài trước đó <Arrow /></span>
+          <span class="pager__label">{t.bai_truoc_do} <Arrow /></span>
           <span class="pager__title">{next.headline}</span>
         </a>
       ) : <span />}
     </div>
   </nav>
 
-  {photos.length > 0 && <Lightbox />}
+  {photos.length > 0 && <Lightbox closeLabel={t.xem_anh_dong} />}
 </BaseLayout>
 
 <style>

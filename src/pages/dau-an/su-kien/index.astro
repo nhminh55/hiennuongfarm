@@ -13,7 +13,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import DauAnHead from '../../../components/dau-an/DauAnHead.astro';
 import Arrow from '../../../components/Arrow.astro';
-import { activities, formatDate, type Activity } from '../../../data/dau-an';
+import { activities, dauAnPages, dauAnText as t, formatDate, type Activity } from '../../../data/dau-an';
 
 const opening = activities[0];
 const cover = opening.photos[1] ?? opening.photos[0];
@@ -31,8 +31,8 @@ const shown = (a: Activity) => (a === opening ? a.photos.filter((p) => p !== cov
 const mirrored = new Set(activities.filter((a) => shown(a).length >= 3).filter((_, i) => i % 2 === 1));
 ---
 <BaseLayout
-  title="Sự kiện & Hoạt động"
-  description="Nhật ký bằng ảnh các sự kiện và hoạt động của Hiền Nương Farm và chị Châu Thị Nương, sắp xếp theo thời gian, kèm nguồn."
+  title={dauAnPages.find((p) => p.href === '/dau-an/su-kien/')!.title}
+  description={t.su_kien_mo_ta}
 >
   <DauAnHead current="/dau-an/su-kien/" />
 
@@ -51,7 +51,7 @@ const mirrored = new Set(activities.filter((a) => shown(a).length >= 3).filter((
     </div>
     <figcaption class="container opening__caption">
       <span class="opening__date">{formatDate(opening.date)}</span>
-      <span>{opening.title}. Ảnh: {cover.credit}</span>
+      <span>{opening.title}. {t.anh} {cover.credit}</span>
     </figcaption>
   </figure>
 
@@ -97,8 +97,8 @@ const mirrored = new Set(activities.filter((a) => shown(a).length >= 3).filter((
                 </div>
               )}
 
-              <a class="link-arrow entry__more" href={href(a)} aria-label={`${a.photos.length > 0 ? 'Mở bộ ảnh' : 'Xem chi tiết'}: ${a.title}`}>
-                {a.photos.length > 0 ? `Mở bộ ảnh · ${a.photos.length} ảnh` : 'Xem chi tiết'} <Arrow />
+              <a class="link-arrow entry__more" href={href(a)} aria-label={`${a.photos.length > 0 ? t.su_kien_mo_bo_anh : t.su_kien_xem_chi_tiet}: ${a.title}`}>
+                {a.photos.length > 0 ? `${t.su_kien_mo_bo_anh} · ${a.photos.length} ${t.su_kien_anh}` : t.su_kien_xem_chi_tiet} <Arrow />
               </a>
             </div>
           </li>

@@ -6,7 +6,7 @@
  * that lists the three.
  */
 import Breadcrumb from '../page/Breadcrumb.astro';
-import { dauAnPages } from '../../data/dau-an';
+import { dauAnPages, dauAnText as t } from '../../data/dau-an';
 
 interface Props {
   /** Path of the current page, e.g. "/dau-an/bao-chi/". */
@@ -20,8 +20,8 @@ interface Props {
 const { current, title, as: Tag = 'h1' } = Astro.props;
 const page = dauAnPages.find((p) => p.href === current)!;
 const crumbs = [
-  { label: 'Trang chủ', href: '/' },
-  { label: 'Dấu ấn', href: '/#dau-an' },
+  { label: t.trang_chu, href: '/' },
+  { label: t.dau_an, href: '/#dau-an' },
   title ? { label: page.title, href: page.href } : { label: page.title },
   ...(title ? [{ label: title }] : []),
 ];
@@ -30,7 +30,7 @@ const crumbs = [
   <div class="container da-head__grid">
     <Breadcrumb class="da-head__crumbs" items={crumbs} />
     <div class="da-head__title-wrap">
-      <p class="eyebrow">Dấu ấn</p>
+      <p class="eyebrow">{t.dau_an}</p>
       <Tag class="da-head__title" id={Tag === 'h1' ? 'page-title' : undefined}>{page.title}</Tag>
     </div>
     <nav class="da-head__nav" aria-label="Các trang Dấu ấn">

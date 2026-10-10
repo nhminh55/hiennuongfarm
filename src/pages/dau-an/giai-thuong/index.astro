@@ -14,15 +14,15 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import DauAnHead from '../../../components/dau-an/DauAnHead.astro';
 import Lightbox from '../../../components/dau-an/Lightbox.astro';
 import Arrow from '../../../components/Arrow.astro';
-import { activities, awards, type Pic } from '../../../data/dau-an';
+import { activities, awards, dauAnPages, dauAnText as t, type Pic } from '../../../data/dau-an';
 
-const captionOf = (p: Pic) => `${p.caption ?? p.alt} Ảnh: ${p.credit}.`;
+const captionOf = (p: Pic) => `${p.caption ?? p.alt} ${t.anh} ${p.credit}.`;
 // A document photographed flat is shown whole, at its own size.
 const isDocument = (p: Pic) => p.document ?? p.width < 600;
 ---
 <BaseLayout
-  title="Giải thưởng & Ghi nhận"
-  description="Các danh hiệu và giải thưởng của chị Châu Thị Nương và HTX Nông nghiệp Tà Đảnh, kèm giấy chứng nhận và nguồn xác minh."
+  title={dauAnPages.find((p) => p.href === '/dau-an/giai-thuong/')!.title}
+  description={t.giai_thuong_mo_ta}
 >
   <DauAnHead current="/dau-an/giai-thuong/" />
 
@@ -58,7 +58,7 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
                   fetchpriority={i === 0 ? 'high' : undefined}
                 />
               </a>
-              <figcaption class="award__caption">{a.photo.caption} <span class="award__credit">Ảnh: {a.photo.credit}</span></figcaption>
+              <figcaption class="award__caption">{a.photo.caption} <span class="award__credit">{t.anh} {a.photo.credit}</span></figcaption>
             </figure>
 
             <div class="award__text" data-reveal>
@@ -88,7 +88,7 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
 
               <div class="award__links">
                 <p class="award__sources">
-                  Nguồn:{' '}
+                  {t.nguon}{' '}
                   {a.sources.map((s, j) => (
                     <>
                       {j > 0 && ' · '}
@@ -98,7 +98,7 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
                 </p>
                 {related && (
                   <a class="link-arrow award__related" href={`/dau-an/su-kien/${related.slug}/`}>
-                    Xem hoạt động <Arrow />
+                    {t.giai_thuong_xem_hoat_dong} <Arrow />
                   </a>
                 )}
               </div>
@@ -109,7 +109,7 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
     })}
   </div>
 
-  <Lightbox />
+  <Lightbox closeLabel={t.xem_anh_dong} />
 </BaseLayout>
 
 <style>

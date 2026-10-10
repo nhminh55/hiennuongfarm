@@ -12,6 +12,12 @@
  * "#anh-<group>-<n>" to the address, so the view can be shared and the
  * browser's Back button closes it; the page does not scroll.
  */
+interface Props {
+  /** The close button's text (src/content/dau-an/trang.md). */
+  closeLabel: string;
+}
+
+const { closeLabel } = Astro.props;
 const label = 'Xem ảnh';
 ---
 <dialog class="lightbox" aria-label={label} data-lightbox-dialog>
@@ -32,7 +38,7 @@ const label = 'Xem ảnh';
       </button>
     </div>
     <button class="lightbox__close" type="button" data-lightbox-close>
-      Đóng
+      {closeLabel}
       <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M1 1l10 10M11 1 1 11" /></svg>
     </button>
   </div>

@@ -14,7 +14,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import DauAnHead from '../../../components/dau-an/DauAnHead.astro';
 import Arrow from '../../../components/Arrow.astro';
-import { formatDate, press, pressBySlug, type FeaturedPress } from '../../../data/dau-an';
+import { dauAnPages, dauAnText as txt, formatDate, press, pressBySlug, type FeaturedPress } from '../../../data/dau-an';
 
 const [featured, ...rest] = press;
 const side = rest.slice(0, 2);
@@ -58,8 +58,8 @@ const meta = (p: FeaturedPress) => `${p.outlet} · ${formatDate(p.date)}`;
 const sizes = (span: number) => `(min-width: 1024px) ${Math.round((span / 12) * 92)}vw, (min-width: 640px) 50vw, 100vw`;
 ---
 <BaseLayout
-  title="Báo chí & Truyền thông"
-  description="Những bài báo, phóng sự về Hiền Nương Farm và chị Châu Thị Nương: tên báo, tiêu đề gốc, ngày đăng và liên kết đến bài gốc."
+  title={dauAnPages.find((p) => p.href === '/dau-an/bao-chi/')!.title}
+  description={txt.bao_chi_mo_ta}
 >
   <DauAnHead current="/dau-an/bao-chi/" />
 
@@ -81,7 +81,7 @@ const sizes = (span: number) => `(min-width: 1024px) ${Math.round((span / 12) * 
         <p class="eyebrow feature__meta">{meta(featured)}</p>
         <h2 class="feature__title"><a href={href(featured)}>{featured.headline}</a></h2>
         <p class="feature__intro">{featured.intro}</p>
-        <a class="link-arrow feature__more" href={href(featured)} aria-label={`Xem bài: ${featured.headline}`}>Xem bài <Arrow /></a>
+        <a class="link-arrow feature__more" href={href(featured)} aria-label={`${txt.bao_chi_xem_bai}: ${featured.headline}`}>{txt.bao_chi_xem_bai} <Arrow /></a>
       </article>
 
       <div class="press-feature__side">
@@ -109,7 +109,7 @@ const sizes = (span: number) => `(min-width: 1024px) ${Math.round((span / 12) * 
 
   <section class="wall" aria-labelledby="wall-title">
     <div class="container">
-      <h2 class="eyebrow wall__head" id="wall-title">Những bài viết khác</h2>
+      <h2 class="eyebrow wall__head" id="wall-title">{txt.bao_chi_bai_khac}</h2>
       <ol class="wall__grid">
         {tiles.map((t) =>
           t.type === 'quote' ? (
@@ -119,7 +119,7 @@ const sizes = (span: number) => `(min-width: 1024px) ${Math.round((span / 12) * 
                   <p>“{t.item.quote}”</p>
                 </blockquote>
                 <figcaption class="tile__attr">
-                  Chị Châu Thị Nương, trong bài <a href={href(t.item)}>{t.item.headline}</a> · {t.item.outlet}, {formatDate(t.item.date)}
+                  {txt.bao_chi_trong_bai} <a href={href(t.item)}>{t.item.headline}</a> · {t.item.outlet}, {formatDate(t.item.date)}
                 </figcaption>
               </figure>
             </li>
@@ -145,11 +145,11 @@ const sizes = (span: number) => `(min-width: 1024px) ${Math.round((span / 12) * 
                     />
                   </div>
                 )}
-                <p class="eyebrow tile__meta">{t.item.kind === 'video' ? `Phóng sự truyền hình · ${t.item.outlet}` : t.item.outlet}</p>
+                <p class="eyebrow tile__meta">{t.item.kind === 'video' ? `${txt.phong_su_truyen_hinh} · ${t.item.outlet}` : t.item.outlet}</p>
                 <h3 class="tile__title"><a class="stretch" href={href(t.item)}>{t.item.headline}</a></h3>
-                <p class="tile__date">{t.item.kind === 'video' ? `Đăng tải ${formatDate(t.item.date)}` : formatDate(t.item.date)}</p>
+                <p class="tile__date">{t.item.kind === 'video' ? `${txt.dang_tai} ${formatDate(t.item.date)}` : formatDate(t.item.date)}</p>
                 {!t.item.photo && <p class="tile__intro">{t.item.intro}</p>}
-                {t.item.kind === 'video' && <p class="tile__cue" aria-hidden="true"><span class="tile__play"></span>Xem phóng sự</p>}
+                {t.item.kind === 'video' && <p class="tile__cue" aria-hidden="true"><span class="tile__play"></span>{txt.xem_phong_su}</p>}
               </article>
             </li>
           ),
@@ -157,8 +157,8 @@ const sizes = (span: number) => `(min-width: 1024px) ${Math.round((span / 12) * 
       </ol>
 
       <p class="wall__archive">
-        <a class="link-arrow" href="/dau-an/bao-chi/tu-lieu/">Xem toàn bộ bài báo <Arrow /></a>
-        <span>Tra cứu các bài viết và phóng sự có nhắc đến Hiền Nương.</span>
+        <a class="link-arrow" href="/dau-an/bao-chi/tu-lieu/">{txt.bao_chi_xem_toan_bo} <Arrow /></a>
+        <span>{txt.bao_chi_tra_cuu}</span>
       </p>
     </div>
   </section>

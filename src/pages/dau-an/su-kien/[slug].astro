@@ -8,7 +8,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import DauAnHead from '../../../components/dau-an/DauAnHead.astro';
 import Lightbox from '../../../components/dau-an/Lightbox.astro';
 import Arrow from '../../../components/Arrow.astro';
-import { activities, awards, formatDate, type Activity } from '../../../data/dau-an';
+import { activities, awards, dauAnText as t, formatDate, type Activity } from '../../../data/dau-an';
 
 export const getStaticPaths = () =>
   activities.map((activity, i) => ({
@@ -42,7 +42,7 @@ const href = (x: Activity) => `/dau-an/su-kien/${x.slug}/`;
         {a.story.map((s) => <p>{s}</p>)}
         {a.sources.length > 0 && (
           <p class="album__sources">
-            Nguồn:{' '}
+            {t.nguon}{' '}
             {a.sources.map((s, j) => (
               <>
                 {j > 0 && ' · '}
@@ -61,14 +61,14 @@ const href = (x: Activity) => `/dau-an/su-kien/${x.slug}/`;
 
     {a.photos.length > 0 && (
       <section class="container album__photos" aria-label={`Bộ ảnh · ${a.photos.length} ảnh`}>
-        <p class="album__count">{a.photos.length} ảnh · Ảnh: {credits.join(', ')}</p>
+        <p class="album__count">{`${a.photos.length} ${t.su_kien_anh} · ${t.anh} ${credits.join(', ')}`}</p>
         <ul class="album__grid-photos">
           {a.photos.map((p, i) => (
             <li class:list={['album__item', { 'album__item--wide': i === 0 }]}>
               <a
                 href={p.full}
                 data-lightbox="album"
-                data-caption={`${p.caption ?? p.alt} Ảnh: ${p.credit}.`}
+                data-caption={`${p.caption ?? p.alt} ${t.anh} ${p.credit}.`}
                 data-width={p.width}
                 data-height={p.height}
               >
@@ -96,21 +96,21 @@ const href = (x: Activity) => `/dau-an/su-kien/${x.slug}/`;
     <div class="pager__inner">
       {newer ? (
         <a class="pager__link" href={href(newer)} rel="prev">
-          <span class="pager__label"><Arrow /> Mới hơn · {formatDate(newer.date)}</span>
+          <span class="pager__label"><Arrow /> {t.su_kien_moi_hon} · {formatDate(newer.date)}</span>
           <span class="pager__title">{newer.title}</span>
         </a>
       ) : <span />}
-      <a class="pager__all" href="/dau-an/su-kien/">Tất cả hoạt động</a>
+      <a class="pager__all" href="/dau-an/su-kien/">{t.su_kien_tat_ca}</a>
       {older ? (
         <a class="pager__link pager__link--next" href={href(older)} rel="next">
-          <span class="pager__label">Trước đó · {formatDate(older.date)} <Arrow /></span>
+          <span class="pager__label">{t.su_kien_truoc_do} · {formatDate(older.date)} <Arrow /></span>
           <span class="pager__title">{older.title}</span>
         </a>
       ) : <span />}
     </div>
   </nav>
 
-  {a.photos.length > 0 && <Lightbox />}
+  {a.photos.length > 0 && <Lightbox closeLabel={t.xem_anh_dong} />}
 </BaseLayout>
 
 <style>

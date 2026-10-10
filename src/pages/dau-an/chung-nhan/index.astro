@@ -8,22 +8,22 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import DauAnHead from '../../../components/dau-an/DauAnHead.astro';
 import Arrow from '../../../components/Arrow.astro';
-import { ocopProducts, ocopSource } from '../../../data/dau-an';
+import { dauAnPages, dauAnText as t, ocopProducts, ocopSource } from '../../../data/dau-an';
 
 const img = (slug: string, w: number) => `/images/products/studio/${slug}-${w}.webp`;
 ---
 <BaseLayout
-  title="Chứng nhận sản phẩm"
-  description="Ba sản phẩm nấm mang thương hiệu Nàng Nương đạt OCOP: nấm linh chi tai to, nấm đông trùng hạ thảo và nấm mối tươi."
+  title={dauAnPages.find((p) => p.href === '/dau-an/chung-nhan/')!.title}
+  description={t.chung_nhan_mo_ta}
 >
   <DauAnHead current="/dau-an/chung-nhan/" />
 
   <section class="ocop" aria-labelledby="ocop-title">
     <div class="container">
       <div class="ocop__intro">
-        <p class="eyebrow">OCOP · Mỗi xã một sản phẩm</p>
-        <h2 class="ocop__title" id="ocop-title">Ba sản phẩm đạt OCOP</h2>
-        <p class="ocop__lead">Trong các dòng nấm của trang trại, ba sản phẩm mang thương hiệu Nàng Nương đã đạt OCOP.</p>
+        <p class="eyebrow">{t.chung_nhan_nhan}</p>
+        <h2 class="ocop__title" id="ocop-title">{t.chung_nhan_tieu_de}</h2>
+        <p class="ocop__lead">{t.chung_nhan_dan}</p>
       </div>
 
       <ul class="ocop__list">
@@ -42,17 +42,17 @@ const img = (slug: string, w: number) => `/images/products/studio/${slug}-${w}.w
                   decoding="async"
                 />
               </span>
-              <span class="ocop__badge">OCOP</span>
+              <span class="ocop__badge">{t.chung_nhan_huy_hieu}</span>
               <span class="ocop__name">{p.name}</span>
-              <span class="ocop__brand">Thương hiệu Nàng Nương</span>
-              <span class="ocop__more">Xem sản phẩm <Arrow /></span>
+              <span class="ocop__brand">{t.chung_nhan_thuong_hieu}</span>
+              <span class="ocop__more">{t.chung_nhan_xem_san_pham} <Arrow /></span>
             </a>
           </li>
         ))}
       </ul>
 
       <p class="ocop__source">
-        Nguồn:{' '}
+        {t.nguon}{' '}
         <a href={ocopSource.href} target="_blank" rel="noopener">{ocopSource.label}<span class="sr-only"> (mở trong thẻ mới)</span></a>
       </p>
     </div>
