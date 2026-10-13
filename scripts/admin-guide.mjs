@@ -509,7 +509,9 @@ collections.push({
     ] },
     { label: 'Nội dung', name: 'body', widget: 'markdown' },
     { label: 'Nguồn thông tin', name: 'sources', widget: 'list', required: false, collapsed: true, hint: 'Không hiện trên trang', field: { label: 'Nguồn', name: 'item', widget: 'string' } },
+    { label: 'Tiêu đề trên Google', name: 'seoTitle', widget: 'string', required: false, hint: 'Để trống thì dùng tiêu đề bài' },
     { label: 'Mô tả trên Google', name: 'description', widget: 'text', required: false, hint: 'Để trống thì dùng phần tóm tắt' },
+    { label: 'Tác giả', name: 'author', widget: 'string', required: false, default: 'Hiền Nương Farm' },
   ],
 });
 chapters.fields.find((f) => f.name === 'more').required = false;

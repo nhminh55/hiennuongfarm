@@ -25,6 +25,10 @@ Content sources:
 
 Owner-verified facts override mere omissions in the Evidence Bank.
 
+## Images
+
+Before adding any photo to the repo, compress it to WebP first (long edge ≤ 1800px, quality ~78–84, aim ≤ 300 KB). Never commit raw JPG/PNG/AVIF exports. Use only authentic photos, never AI-generated or AI-retouched ones; the `01 Sản phẩm/Ảnh studio*` set is AI-made.
+
 ## Work
 
 Before editing: run `git status`, inspect only relevant code, preserve user work/approved UI, and make the smallest necessary change.

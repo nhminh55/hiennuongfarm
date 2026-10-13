@@ -39,6 +39,10 @@ const chuyenNhaNam = defineCollection({
       sources: z.array(z.string()).default([]),
       /** Search-engine description; the excerpt otherwise. */
       description: z.string().optional(),
+      /** <title> and share title; the title otherwise. */
+      seoTitle: z.string().optional(),
+      /** Byline in the structured data; Hiền Nương Farm by default. */
+      author: z.string().optional(),
     });
   },
 });

@@ -40,8 +40,7 @@ Bấm Lưu là trang quản trị tự ghi lên GitHub và web tự cập nhật
 - Trong trang quản trị, nhóm **Chuyện nhà Nấm (bài viết)** liệt kê từng bài; bấm **Tạo mới** để viết bài mới. Mỗi bài là một file trong `src/content/chuyen-nha-nam/`, tên file là địa chỉ bài (`/chuyen-nha-nam/<tên-file>/`).
 - Bài mới luôn bắt đầu là **Bản nháp**: bản nháp không lên website, không vào sitemap hay ô tìm kiếm (chỉ hiện, có nhãn “Bản nháp”, khi chạy thử trên máy). Bỏ chọn **Bản nháp** khi nội dung đã được xác nhận.
 - Ba chuyên mục: Hiểu về Nấm, Bếp nhà Nấm, Từ Đất đến Nấm. Mỗi trang danh sách 9 bài, mới nhất trước; bài có **Bài nổi bật** mới nhất mở đầu trang chính.
-- Ảnh bìa và ảnh trong bài nằm ở `src/assets/chuyen-nha-nam/` và được tự thu nhỏ khi build. Chỉ dùng ảnh thật của trang trại.
-- Hai bài đang là bản nháp chờ thông tin: *Nấm mối kho tiêu* (cần công thức) và *Trùn quế ở Hiền Nương* (cần ảnh và thông tin).
+- Ảnh bìa và ảnh trong bài nằm ở `src/assets/chuyen-nha-nam/` và được tự thu nhỏ khi build. Chỉ dùng ảnh thật của trang trại, nén sang WebP trước khi thêm (cạnh dài tối đa 1800px).
 
 ## Nếu lỡ sửa sai
 
