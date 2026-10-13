@@ -1,0 +1,13 @@
+---
+// /dau-an/su-kien/trang/2/ and on: the activities listing's later pages, laid out
+// by ../index.astro. Page size: perPage in src/data/dau-an.ts.
+import type { GetStaticPaths } from 'astro';
+import Page from '../index.astro';
+import { activities, perPage } from '../../../../data/dau-an';
+
+export const getStaticPaths = (({ paginate }) =>
+  paginate(activities, { pageSize: perPage['su-kien'] }).slice(1)) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+<Page page={page} />

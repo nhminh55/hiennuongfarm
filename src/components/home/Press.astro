@@ -4,17 +4,22 @@ import Photo from '../Photo.astro';
 import Arrow from '../Arrow.astro';
 import Eyebrow from '../Eyebrow.astro';
 import { getLocale } from '../../i18n';
+import { latestMarks, listingHref, numericDate } from '../../data/dau-an';
 
 const lang = getLocale(Astro.url);
+const vi = lang === 'vi' ? undefined : 'vi';
 
-// Dấu ấn is a group of pages, not a page: the three cards open its sections
-// directly. The pages are Vietnamese only, so every language links to the
-// Vietnamese page. Titles and notes: the `groups` list in
-// src/content/trang-chu/07-dau-an.md, in the same order.
+// Dấu ấn is a group of pages, not a page: one card per section, each showing
+// that section's newest entry (latestMarks, src/data/dau-an.ts), with links
+// to the entry and to the section. The pages are Vietnamese only, so every
+// language links to the Vietnamese page and shows the Vietnamese headline.
+// Section names: the `groups` list in src/content/trang-chu/07-dau-an.md,
+// in the same order. A section's own photograph stands in for an entry
+// that has none.
 const t = copy('trang-chu/07-dau-an', lang);
-const groups = [
+const sections = [
   {
-    href: '/dau-an/bao-chi/',
+    listing: 'bao-chi',
     // Dân Việt feature, 2025; cropped clear of the outlet watermark.
     photo: {
       src: '/images/farm/dau-an-bao-chi-dan-viet-1024.webp',
@@ -30,12 +35,13 @@ const groups = [
     },
   },
   {
-    href: '/dau-an/giai-thuong/',
+    listing: 'giai-thuong',
     photo: {
       src: '/images/farm/dau-an-cup-chung-nhan-2025-1024.webp',
       srcset: '/images/farm/dau-an-cup-chung-nhan-2025-640.webp 640w, /images/farm/dau-an-cup-chung-nhan-2025-1024.webp 1024w',
       width: 1024,
       height: 768,
+      position: undefined,
       alt: {
         vi: 'Cúp pha lê và giấy chứng nhận ghi tên Châu Thị Nương đạt danh hiệu Nông dân Việt Nam xuất sắc 2025',
         en: 'A crystal trophy and a certificate naming Châu Thị Nương an Outstanding Vietnamese Farmer 2025',
@@ -44,7 +50,7 @@ const groups = [
     },
   },
   {
-    href: '/dau-an/su-kien/',
+    listing: 'su-kien',
     photo: {
       src: '/images/farm/dau-an-chi-nuong-phat-bieu-960.webp',
       srcset: '/images/farm/dau-an-chi-nuong-phat-bieu-960.webp 960w, /images/farm/dau-an-chi-nuong-phat-bieu-1440.webp 1440w',
@@ -58,12 +64,17 @@ const groups = [
       },
     },
   },
-].map((g, i) => ({
-  ...g,
-  title: t.groups[i].title,
-  note: t.groups[i].note,
-  photo: { ...g.photo, alt: g.photo.alt[lang] },
-}));
+] as const;
+
+const cards = sections.flatMap((s, i) => {
+  const mark = latestMarks.find((m) => m.listing === s.listing);
+  if (!mark) return [];
+  return [{
+    mark,
+    section: { title: t.groups[i].title, href: listingHref(s.listing) },
+    photo: mark.photo ?? { ...s.photo, alt: s.photo.alt[lang] },
+  }];
+});
 ---
 <section class="section marks" id="dau-an" aria-labelledby="marks-title">
   <div class="container">
@@ -74,26 +85,34 @@ const groups = [
     </header>
 
     <ol class="marks__list">
-      {groups.map((g, i) => (
+      {cards.map(({ mark, section, photo }, i) => (
         <li class="mark" data-reveal>
           <Photo
             class="mark__photo"
-            src={g.photo.src}
-            srcset={g.photo.srcset}
+            src={photo.src}
+            srcset={photo.srcset}
             sizes="(min-width: 1024px) 31vw, (min-width: 640px) 50vw, 100vw"
-            width={g.photo.width}
-            height={g.photo.height}
-            position={g.photo.position}
-            alt={g.photo.alt}
+            width={photo.width}
+            height={photo.height}
+            position={photo.position}
+            alt={photo.alt}
           />
-          <span class="eyebrow mark__num">{String(i + 1).padStart(2, '0')}</span>
-          <h3 class="mark__title">{g.title}</h3>
-          <p class="small mark__note">{g.note}</p>
+          <p class="eyebrow mark__meta">
+            <span class="mark__num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="eyebrow__rule" aria-hidden="true"></span>
+            <a class="mark__section" href={section.href} hreflang={vi}>{section.title}</a>
+            <span class="mark__when">
+              <span class="mark__sep" aria-hidden="true"></span>
+              <time class="mark__date" datetime={mark.date}>{numericDate(mark.date)}</time>
+            </span>
+          </p>
+          <h3 class="mark__title" lang={vi}>{mark.title}</h3>
+          <p class="small mark__note" lang={vi}>{mark.excerpt}</p>
           <a
             class="link-arrow cta-label mark__more"
-            href={g.href}
-            hreflang={lang === 'vi' ? undefined : 'vi'}
-            aria-label={fill(t.moreOf, { title: g.title })}
+            href={mark.href}
+            hreflang={vi}
+            aria-label={fill(t.moreOf, { title: mark.title })}
           >{t.more} <Arrow /></a>
         </li>
       ))}
@@ -103,8 +122,10 @@ const groups = [
 
 <style>
   /* Dấu ấn: a short introduction over three editorial cards, one per page in
-     the group. Each card is a single link (the "Xem chi tiết" link, stretched
-     over the card), as in the Sản vật catalogue. */
+     the group, each with that page's newest entry. Each card is a single
+     link to the entry (the "Xem chi tiết" link, stretched over the card), as
+     in the Sản vật catalogue; the section's name above the headline links to
+     the section. */
   .marks { background: var(--color-cream); }
 
   .marks__title { margin-top: var(--space-m); max-width: 16ch; text-wrap: balance; }
@@ -138,22 +159,46 @@ const groups = [
     .mark:hover :global(.mark__photo img) { transform: scale(1.03); }
   }
 
-  .mark__num { font-variant-numeric: tabular-nums; }
+  .mark__meta { flex-wrap: wrap; row-gap: 0.25rem; }
+  .mark__num,
+  .mark__date { color: var(--color-earth); font-variant-numeric: tabular-nums; }
+  .mark__meta .eyebrow__rule { color: var(--color-earth); }
+  .mark__section {
+    position: relative;
+    z-index: 2;
+    color: var(--color-text);
+    border-bottom: 1px solid transparent;
+    transition: border-color 200ms var(--ease);
+  }
+  .mark__section:hover { border-color: currentColor; }
+  .mark__when { display: flex; align-items: center; gap: inherit; }
+  .mark__sep { width: 1px; height: 0.75rem; background: var(--color-line-strong); }
+  /* The date has a line of its own under the section, and joins it, after
+     a rule, where three cards side by side leave room (1560px and up). */
+  @media (max-width: 1559px) {
+    .mark__when { flex-basis: 100%; }
+    .mark__sep { display: none; }
+  }
 
   .mark__title {
     margin-top: var(--space-2xs);
     font-family: var(--font-display);
     font-weight: 500;
     font-size: var(--type-product);
-    line-height: 1.2;
-    text-wrap: balance;
+    line-height: 1.25;
+    text-wrap: pretty;
   }
 
   .mark__note {
+    display: -webkit-box;
     margin-top: var(--space-xs);
-    max-width: 34ch;
+    max-width: 46ch;
+    overflow: hidden;
     color: var(--color-text-muted);
     text-wrap: pretty;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
   }
 
   .mark__more { margin-top: var(--space-m); justify-self: start; align-self: end; }
@@ -177,7 +222,7 @@ const groups = [
       border-top: 1px solid var(--color-line);
     }
     .mark :global(.mark__photo) { grid-column: 1; grid-row: 1 / -1; margin-bottom: 0; }
-    .mark__num { grid-column: 2; grid-row: 2; }
+    .mark__meta { grid-column: 2; grid-row: 2; }
     .mark__title { grid-column: 2; grid-row: 3; }
     .mark__note { grid-column: 2; grid-row: 4; }
     .mark__more { grid-column: 2; grid-row: 5; }
@@ -204,10 +249,11 @@ const groups = [
       row-gap: 0;
       column-gap: clamp(var(--space-m), 2.5vw, var(--space-xl));
       margin-top: var(--space-l);
-      padding-top: var(--space-l);
-      border-top: 1px solid var(--color-line);
     }
     .mark { grid-template-rows: subgrid; grid-row: span 5; }
+    /* Wide, low photographs, as the approved mockup. */
+    .mark :global(.mark__photo) { --ratio: 16 / 7; }
+    .mark__note { -webkit-line-clamp: 2; line-clamp: 2; }
 
     /* Cards enter one after another, as the list comes into view. */
     .mark:nth-child(2) { --reveal-delay: 100ms; }

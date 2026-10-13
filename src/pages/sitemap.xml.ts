@@ -8,7 +8,11 @@
 
 import type { APIRoute } from 'astro';
 import { isTranslated, languages, locales, localizePath } from '../i18n';
-import { activities, press } from '../data/dau-an';
+import { activities, awards, listingHref, listingPage, press, type Listing } from '../data/dau-an';
+
+// Later pages of the Dấu ấn listings (/dau-an/bao-chi/trang/2/ and on).
+const laterPages = (listing: Listing, items: unknown[]) =>
+  Array.from({ length: listingPage(listing, items).lastPage - 1 }, (_, i) => ({ path: listingHref(listing, i + 2), lastmod: '2026-10-13' }));
 
 const pages: { path: string; lastmod: string }[] = [
   { path: '/', lastmod: '2026-10-10' },
@@ -26,6 +30,9 @@ const pages: { path: string; lastmod: string }[] = [
   { path: '/dau-an/giai-thuong/', lastmod: '2026-10-09' },
   { path: '/dau-an/su-kien/', lastmod: '2026-10-09' },
   { path: '/dau-an/chung-nhan/', lastmod: '2026-10-09' },
+  ...laterPages('bao-chi', press),
+  ...laterPages('giai-thuong', awards),
+  ...laterPages('su-kien', activities),
   ...press.map((p) => ({ path: `/dau-an/bao-chi/${p.slug}/`, lastmod: '2026-10-09' })),
   ...activities.map((a) => ({ path: `/dau-an/su-kien/${a.slug}/`, lastmod: '2026-10-09' })),
 ];

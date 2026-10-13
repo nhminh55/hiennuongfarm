@@ -1,0 +1,120 @@
+---
+/**
+ * "Tin mới": one slim bar under the homepage opening, linking to the news
+ * pinned in src/content/dau-an/tin-moi.md, or, with nothing pinned, to the
+ * newest entry of the three Dấu ấn sections (newsMark, src/data/dau-an.ts).
+ * The entries are Vietnamese, as their pages are; the label is translated.
+ */
+import Arrow from '../Arrow.astro';
+import { copy } from '../../data/copy';
+import { newsMark as news, numericDate } from '../../data/dau-an';
+import { getLocale } from '../../i18n';
+
+const lang = getLocale(Astro.url);
+const t = copy('trang-chu/07-dau-an', lang);
+const vi = lang === 'vi' ? undefined : 'vi';
+---
+{news && (
+  <aside class="news" aria-label={t.latest}>
+    <div class="container">
+      <div class="news__bar">
+        <span class="news__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14Z" />
+            <path d="M5 19 14 10M9.5 14.5h3.5M12 12V8.8" />
+          </svg>
+        </span>
+        <p class="news__text">
+          <span class="eyebrow news__meta">{t.latest} <span aria-hidden="true">·</span> <time datetime={news.date}>{numericDate(news.date)}</time></span>
+          <a class="news__title" href={news.href} lang={vi} hreflang={vi}>{news.title}</a>
+        </p>
+        <span class="link-arrow cta-label news__more" aria-hidden="true">{t.more} <Arrow /></span>
+        {news.photo && (
+          <img
+            class="news__photo"
+            src={news.photo.srcset.split(' ')[0]}
+            width={news.photo.width}
+            height={news.photo.height}
+            alt=""
+            style={news.photo.position ? `object-position: ${news.photo.position}` : undefined}
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+      </div>
+    </div>
+  </aside>
+)}
+
+<style>
+  /* A quiet notice on the cream page, between the opening and section 01.
+     The headline is the link; it covers the whole bar. */
+  .news { padding-top: var(--space-s); background: var(--color-paper); }
+
+  .news__bar {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    column-gap: var(--space-s);
+    padding: var(--space-s);
+    border: 1px solid var(--color-line);
+    border-radius: 6px;
+    background: #ECEBDF;
+    transition: border-color 300ms var(--ease);
+  }
+  .news__bar:hover { border-color: var(--color-line-strong); }
+  .news__bar:has(.news__title:focus-visible) { outline: 1px solid currentColor; outline-offset: 4px; }
+
+  .news__mark {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--color-muted-moss);
+    color: var(--color-cream);
+  }
+  .news__mark svg { width: 1.125rem; height: 1.125rem; }
+
+  .news__text { display: grid; gap: 0.25rem; min-width: 0; }
+
+  .news__meta { gap: 0.5rem; color: var(--color-earth); font-size: 0.6875rem; }
+  .news__meta time { font-variant-numeric: tabular-nums; letter-spacing: 0.08em; }
+
+  .news__title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.0625rem;
+    line-height: 1.3;
+    color: var(--color-text);
+    text-wrap: pretty;
+  }
+  .news__title::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: inherit; }
+  .news__title:focus-visible { outline: none; }
+
+  .news__more,
+  .news__photo { display: none; }
+
+  @media (min-width: 768px) {
+    .news { padding-top: var(--space-m); }
+    .news__bar {
+      grid-template-columns: auto minmax(0, 1fr) auto auto;
+      column-gap: var(--space-m);
+      padding: var(--space-2xs) var(--space-2xs) var(--space-2xs) var(--space-m);
+    }
+    .news__mark { width: 2.75rem; }
+    .news__title { font-size: 1.25rem; }
+    .news__more { display: inline-flex; white-space: nowrap; }
+    .news__more :global(.arrow) { width: 0.875rem; transition: transform 300ms var(--ease); }
+    .news__bar:hover .news__more { border-color: currentColor; }
+    .news__bar:hover .news__more :global(.arrow) { transform: translateX(4px); }
+    .news__photo {
+      display: block;
+      width: 10rem;
+      height: 3.75rem;
+      object-fit: cover;
+      border-radius: 3px;
+    }
+  }
+</style>

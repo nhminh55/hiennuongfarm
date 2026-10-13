@@ -1,0 +1,13 @@
+---
+// /dau-an/giai-thuong/trang/2/ and on: the awards listing's later pages, laid out
+// by ../index.astro. Page size: perPage in src/data/dau-an.ts.
+import type { GetStaticPaths } from 'astro';
+import Page from '../index.astro';
+import { awards, perPage } from '../../../../data/dau-an';
+
+export const getStaticPaths = (({ paginate }) =>
+  paginate(awards, { pageSize: perPage['giai-thuong'] }).slice(1)) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+<Page page={page} />

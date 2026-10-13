@@ -9,14 +9,26 @@
  * photographs actually held. An activity with no photograph stays a short
  * text entry. Dates are the ones the sources give; a year alone where only
  * the year is documented. Data and provenance: src/data/dau-an.ts.
+ *
+ * Five activities to a page (perPage in src/data/dau-an.ts); later pages,
+ * /dau-an/su-kien/trang/2/ and on (trang/[page].astro), open on the list.
  */
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import DauAnHead from '../../../components/dau-an/DauAnHead.astro';
+import Pager from '../../../components/dau-an/Pager.astro';
 import Arrow from '../../../components/Arrow.astro';
-import { activities, dauAnPages, dauAnText as t, formatDate, type Activity } from '../../../data/dau-an';
+import { activities, dauAnPages, dauAnText as t, formatDate, listingPage, type Activity, type ListingPage } from '../../../data/dau-an';
 
-const opening = activities[0];
-const cover = opening.photos[1] ?? opening.photos[0];
+interface Props {
+  /** Set by trang/[page].astro; the first page otherwise. */
+  page?: ListingPage<Activity>;
+}
+
+const { page = listingPage('su-kien', activities) } = Astro.props;
+const title = dauAnPages.find((p) => p.href === '/dau-an/su-kien/')!.title;
+// The opening photograph belongs to the first page.
+const opening = page.currentPage === 1 ? activities.find((a) => a.photos.length > 0) : undefined;
+const cover = opening && (opening.photos[1] ?? opening.photos[0]);
 const href = (a: Activity) => `/dau-an/su-kien/${a.slug}/`;
 
 // Day and month above the year: "05.03" / "2026"; a month alone: "Tháng 8" / "2026".
@@ -28,14 +40,15 @@ const dateParts = (iso: string) => {
 // Photographs shown in the list: the opening photograph is not repeated.
 const shown = (a: Activity) => (a === opening ? a.photos.filter((p) => p !== cover) : a.photos).slice(0, 3);
 // Every other three-photo group mirrors its layout.
-const mirrored = new Set(activities.filter((a) => shown(a).length >= 3).filter((_, i) => i % 2 === 1));
+const mirrored = new Set(page.data.filter((a) => shown(a).length >= 3).filter((_, i) => i % 2 === 1));
 ---
 <BaseLayout
-  title={dauAnPages.find((p) => p.href === '/dau-an/su-kien/')!.title}
+  title={page.currentPage === 1 ? title : `${title} · ${t.trang} ${page.currentPage}`}
   description={t.su_kien_mo_ta}
 >
   <DauAnHead current="/dau-an/su-kien/" />
 
+  {opening && cover && (
   <figure class="opening">
     <div class="opening__photo">
       <img
@@ -54,10 +67,11 @@ const mirrored = new Set(activities.filter((a) => shown(a).length >= 3).filter((
       <span>{opening.title}. {t.anh} {cover.credit}</span>
     </figcaption>
   </figure>
+  )}
 
-  <section class="diary" aria-label="Các hoạt động, mới nhất trước">
+  <section class:list={['diary', { 'diary--more': !opening }]} aria-label="Các hoạt động, mới nhất trước">
     <ol class="container diary__list">
-      {activities.map((a) => {
+      {page.data.map((a) => {
         const d = dateParts(a.date);
         const photos = shown(a);
         const layout = photos.length >= 3 ? 'trio' : photos.length === 2 ? 'pair' : photos.length === 1 ? 'single' : 'none';
@@ -105,6 +119,9 @@ const mirrored = new Set(activities.filter((a) => shown(a).length >= 3).filter((
         );
       })}
     </ol>
+    <div class="container">
+      <Pager listing="su-kien" currentPage={page.currentPage} lastPage={page.lastPage} />
+    </div>
   </section>
 </BaseLayout>
 
@@ -134,6 +151,8 @@ const mirrored = new Set(activities.filter((a) => shown(a).length >= 3).filter((
 
   /* Diary --------------------------------------------------------------- */
   .diary { padding-top: var(--space-2xl); padding-bottom: var(--section-y); }
+  /* Later pages open on the list, under the page heading. */
+  .diary--more { padding-top: var(--space-m); }
 
   .entry {
     display: grid;

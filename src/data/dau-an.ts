@@ -96,6 +96,13 @@ const pic = (raw: RawPic): Pic => {
   };
 };
 
+/**
+ * Newest first by ISO date (2026-03-05, 2026-08 or 2026 sort together);
+ * entries with the same date keep their order in the file.
+ */
+const newestFirst = <T>(items: T[], date: (item: T) => string) =>
+  [...items].sort((a, b) => date(b).localeCompare(date(a)));
+
 /** 18.05.2025 from 2025-05-18; Tháng 8/2026 from 2026-08; a year alone stays a year. */
 export const formatDate = (iso: string) => {
   const [y, m, d] = iso.split('-');
@@ -166,8 +173,8 @@ export const pressArchive: PressItem[] = dataFile<{ press: RawPressItem[] }>('da
 /** A press-page entry: dated, introduced, with a page of its own. */
 export type FeaturedPress = PressItem & { featured: true; date: string; intro: string };
 
-/** The press page, in its order: the lead first. */
-export const press = pressArchive.filter((p): p is FeaturedPress => p.featured === true);
+/** The press page, newest first. */
+export const press = newestFirst(pressArchive.filter((p): p is FeaturedPress => p.featured === true), (p) => p.date);
 
 export const pressBySlug = (slug: string) => press.find((p) => p.slug === slug);
 
@@ -183,6 +190,8 @@ export interface Source {
 export interface Award {
   id: string;
   year: string;
+  /** ISO date of the ceremony or decision, where a source gives it; the year alone otherwise. */
+  date?: string;
   /** Exact name of the distinction, as on the certificate or trophy. */
   name: string;
   /** Awarding organisation or programme. */
@@ -200,8 +209,12 @@ export interface Award {
 
 type RawAward = Omit<Award, 'photo' | 'evidence'> & { photo: RawPic; evidence: RawPic[] };
 
-export const awards: Award[] = dataFile<{ awards: RawAward[] }>('dau-an/giai-thuong').awards.map(
-  (a) => ({ ...a, photo: pic(a.photo), evidence: a.evidence.map(pic) }),
+/** Newest first. */
+export const awards: Award[] = newestFirst(
+  dataFile<{ awards: RawAward[] }>('dau-an/giai-thuong').awards.map(
+    (a) => ({ ...a, photo: pic(a.photo), evidence: a.evidence.map(pic) }),
+  ),
+  (a) => a.date ?? a.year,
 );
 
 // ---------------------------------------------------------------------------
@@ -228,8 +241,12 @@ export interface Activity {
 
 type RawActivity = Omit<Activity, 'photos'> & { photos: RawPic[] };
 
-export const activities: Activity[] = dataFile<{ activities: RawActivity[] }>('dau-an/su-kien').activities.map(
-  (a) => ({ ...a, photos: a.photos.map(pic) }),
+/** Newest first. */
+export const activities: Activity[] = newestFirst(
+  dataFile<{ activities: RawActivity[] }>('dau-an/su-kien').activities.map(
+    (a) => ({ ...a, photos: a.photos.map(pic) }),
+  ),
+  (a) => a.date,
 );
 
 export const activityBySlug = (slug: string) => activities.find((a) => a.slug === slug);
@@ -264,3 +281,111 @@ const ocop = dataFile<{ products: (Omit<OcopProduct, 'certificate'> & { certific
 export const ocopProducts: OcopProduct[] = ocop.products.map((p) => ({ ...p, certificate: pic(p.certificate) }));
 
 export const ocopSource: Source = ocop.citation;
+
+// ---------------------------------------------------------------------------
+// Listings: pages of entries, and the homepage
+// ---------------------------------------------------------------------------
+
+/**
+ * Entries per listing page. The first page keeps the section's address
+ * (/dau-an/bao-chi/); the next ones are /dau-an/bao-chi/trang/2/ and on,
+ * built by each section's trang/[page].astro. Articles keep their own
+ * addresses whatever page lists them.
+ */
+export const perPage = { 'bao-chi': 9, 'giai-thuong': 5, 'su-kien': 5 } as const;
+
+export type Listing = keyof typeof perPage;
+
+export const listingHref = (listing: Listing, page = 1) =>
+  page > 1 ? `/dau-an/${listing}/trang/${page}/` : `/dau-an/${listing}/`;
+
+/** The listing page that shows the entry at `index` (newest first). */
+export const listingPageOf = (listing: Listing, index: number) => Math.floor(index / perPage[listing]) + 1;
+
+/** An award has no page of its own: its anchor on the listing page that shows it. */
+export const awardHref = (a: Award) => `${listingHref('giai-thuong', listingPageOf('giai-thuong', awards.indexOf(a)))}#${a.id}`;
+
+/** One page of a listing; the same fields as Astro's paginate() pages. */
+export interface ListingPage<T> {
+  data: T[];
+  currentPage: number;
+  lastPage: number;
+}
+
+export const listingPage = <T>(listing: Listing, items: T[], page = 1): ListingPage<T> => {
+  const size = perPage[listing];
+  return {
+    data: items.slice((page - 1) * size, page * size),
+    currentPage: page,
+    lastPage: Math.max(1, Math.ceil(items.length / size)),
+  };
+};
+
+/** 13.10.2026, 08.2026 or 2026: the homepage's dates, the same in every language. */
+export const numericDate = (iso: string) => iso.split('-').reverse().join('.');
+
+/** An entry as the homepage shows it: its section's newest, or the pinned news. */
+export interface Mark {
+  listing: Listing;
+  title: string;
+  /** ISO date, a year-month or a year alone. */
+  date: string;
+  excerpt: string;
+  photo?: Pic;
+  href: string;
+}
+
+const pressMark = (p: FeaturedPress): Mark => ({
+  listing: 'bao-chi',
+  title: p.headline,
+  date: p.date,
+  excerpt: p.intro,
+  photo: p.photo ?? p.gallery?.[0],
+  href: `/dau-an/bao-chi/${p.slug}/`,
+});
+
+const awardMark = (a: Award): Mark => ({
+  listing: 'giai-thuong',
+  title: a.name,
+  date: a.date ?? a.year,
+  excerpt: a.significance.split(/\n\s*\n/)[0].trim(),
+  photo: a.photo,
+  href: awardHref(a),
+});
+
+const activityMark = (a: Activity): Mark => ({
+  listing: 'su-kien',
+  title: a.title,
+  date: a.date,
+  excerpt: a.summary,
+  photo: a.photos[0],
+  href: `/dau-an/su-kien/${a.slug}/`,
+});
+
+/** The homepage cards: each section's newest entry, in the menu's order. */
+export const latestMarks: Mark[] = [
+  press[0] && pressMark(press[0]),
+  awards[0] && awardMark(awards[0]),
+  activities[0] && activityMark(activities[0]),
+].filter((m): m is Mark => Boolean(m));
+
+/**
+ * The "Tin mới" bar under the homepage opening: the entry pinned in
+ * src/content/dau-an/tin-moi.md (`ghim: giai-thuong/<id>`, `bao-chi/<slug>`
+ * or `su-kien/<slug>`), or, with nothing pinned, the newest entry of the
+ * three sections. A pin that names no entry stops the build.
+ */
+const pin = dataFile<{ ghim?: string | null }>('dau-an/tin-moi').ghim?.trim();
+
+const pinned = (ref: string): Mark => {
+  const [listing, id] = ref.split('/');
+  const award = listing === 'giai-thuong' ? awards.find((a) => a.id === id) : undefined;
+  const item = listing === 'bao-chi' ? pressBySlug(id) : undefined;
+  const activity = listing === 'su-kien' ? activityBySlug(id) : undefined;
+  if (award) return awardMark(award);
+  if (item) return pressMark(item);
+  if (activity) return activityMark(activity);
+  throw new Error(`src/content/dau-an/tin-moi.md: không tìm thấy bài "${ref}" (ghi bao-chi/…, giai-thuong/… hoặc su-kien/…)`);
+};
+
+export const newsMark: Mark | undefined = pin ? pinned(pin) : newestFirst(latestMarks, (m) => m.date)[0];

@@ -3,7 +3,9 @@
  * /dau-an/giai-thuong/: Giải thưởng & Ghi nhận, "một dấu mốc, một câu
  * chuyện". Only recognitions with a source and a certificate, trophy or
  * ceremony photograph: press mentions and attendance are not awards.
- * Newest first; photograph and text change sides from one to the next.
+ * Newest first, five to a page (perPage in src/data/dau-an.ts; later
+ * pages at /dau-an/giai-thuong/trang/2/ and on, trang/[page].astro).
+ * Photograph and text change sides from one to the next.
  * Each recognition has an anchor (#id) to share; its evidence opens in
  * the photo viewer. Data and provenance: src/data/dau-an.ts.
  *
@@ -13,21 +15,30 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import DauAnHead from '../../../components/dau-an/DauAnHead.astro';
 import Lightbox from '../../../components/dau-an/Lightbox.astro';
+import Pager from '../../../components/dau-an/Pager.astro';
 import Arrow from '../../../components/Arrow.astro';
-import { activities, awards, dauAnPages, dauAnText as t, type Pic } from '../../../data/dau-an';
+import { activities, awards, dauAnPages, dauAnText as t, listingPage, type Award, type ListingPage, type Pic } from '../../../data/dau-an';
+
+interface Props {
+  /** Set by trang/[page].astro; the first page otherwise. */
+  page?: ListingPage<Award>;
+}
+
+const { page = listingPage('giai-thuong', awards) } = Astro.props;
+const title = dauAnPages.find((p) => p.href === '/dau-an/giai-thuong/')!.title;
 
 const captionOf = (p: Pic) => `${p.caption ?? p.alt} ${t.anh} ${p.credit}.`;
 // A document photographed flat is shown whole, at its own size.
 const isDocument = (p: Pic) => p.document ?? p.width < 600;
 ---
 <BaseLayout
-  title={dauAnPages.find((p) => p.href === '/dau-an/giai-thuong/')!.title}
+  title={page.currentPage === 1 ? title : `${title} · ${t.trang} ${page.currentPage}`}
   description={t.giai_thuong_mo_ta}
 >
   <DauAnHead current="/dau-an/giai-thuong/" />
 
   <div class="awards">
-    {awards.map((a, i) => {
+    {page.data.map((a, i) => {
       const related = activities.find((act) => act.award === a.id);
       const doc = isDocument(a.photo);
       return (
@@ -113,6 +124,9 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
         </article>
       );
     })}
+    <div class="container">
+      <Pager listing="giai-thuong" currentPage={page.currentPage} lastPage={page.lastPage} />
+    </div>
   </div>
 
   <Lightbox closeLabel={t.xem_anh_dong} />

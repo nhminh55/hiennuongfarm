@@ -11,6 +11,7 @@ vi:
     - title: Sự kiện & Hoạt động
       note: Những lần tham gia diễn đàn, gặp gỡ, kết nối và chia sẻ cùng cộng đồng.
   more: Xem chi tiết
+  latest: Tin mới
   nang_cao:
     moreOf: 'Xem chi tiết: {title}'
 en:
@@ -25,6 +26,7 @@ en:
     - title: Events & Activities
       note: 'Forums, meetings and gatherings: connecting and sharing with the community.'
   more: View details
+  latest: Latest
   nang_cao:
     moreOf: 'View details: {title} (in Vietnamese)'
 zh:
@@ -39,6 +41,7 @@ zh:
     - title: 活动与交流
       note: 参与论坛、会面与交流，与社区连接、分享。
   more: 查看详情
+  latest: 最新消息
   nang_cao:
     moreOf: 查看详情：{title}（越南语）
 ---

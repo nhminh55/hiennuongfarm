@@ -1,6 +1,7 @@
 ---
 awards:
   - year: '2026'
+    date: 2026-10-13
     name: Bằng khen của Chủ tịch UBND tỉnh An Giang
     by: Ủy ban nhân dân tỉnh An Giang
     recipient: Bà Châu Thị Nương — Giám đốc HTX Nông nghiệp Tà Đảnh

@@ -9,7 +9,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import DauAnHead from '../../../components/dau-an/DauAnHead.astro';
 import Lightbox from '../../../components/dau-an/Lightbox.astro';
 import Arrow from '../../../components/Arrow.astro';
-import { dauAnText as t, formatDate, press, type FeaturedPress } from '../../../data/dau-an';
+import { dauAnText as t, formatDate, listingHref, listingPageOf, press, type FeaturedPress } from '../../../data/dau-an';
 
 export const getStaticPaths = () =>
   press.map((item, i) => ({
@@ -141,7 +141,7 @@ const href = (p: FeaturedPress) => `/dau-an/bao-chi/${p.slug}/`;
           <span class="pager__title">{prev.headline}</span>
         </a>
       ) : <span />}
-      <a class="pager__all" href="/dau-an/bao-chi/">{t.bai_tat_ca}</a>
+      <a class="pager__all" href={listingHref('bao-chi', listingPageOf('bao-chi', press.indexOf(item)))}>{t.bai_tat_ca}</a>
       {next ? (
         <a class="pager__link pager__link--next" href={href(next)} rel="next">
           <span class="pager__label">{t.bai_truoc_do} <Arrow /></span>

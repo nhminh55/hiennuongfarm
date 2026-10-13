@@ -28,6 +28,13 @@ Bấm Lưu là trang quản trị tự ghi lên GitHub và web tự cập nhật
 - Ảnh, đường dẫn, ngày tháng, thứ tự các mục, số lượng mục trong danh sách (sản phẩm, bài báo, câu hỏi trò chơi…) và các chữ được ghép tự động (ngày tháng, số đếm) vẫn nằm trong code hoặc bị khoá. Muốn đổi những phần đó thì nhờ người phụ trách website.
 - Trường có chữ trong ngoặc nhọn như `{name}`, `{n}` thì giữ nguyên phần ngoặc nhọn: website tự điền vào đó.
 
+## Dấu ấn: bài mới, phân trang và thanh “Tin mới”
+
+- **Bài mới tự lên trang:** các bài trong `src/content/dau-an/bao-chi.md` (bài có `featured: true`), `giai-thuong.md` và `su-kien.md` được xếp **mới nhất trước** theo ngày (`date`; giải thưởng không có ngày thì theo `year`). Thêm bài rồi build/deploy là trang chủ và trang danh sách tự cập nhật, không cần sửa code.
+- **Trang chủ, mục Dấu ấn:** mỗi thẻ (Báo chí, Giải thưởng, Sự kiện) hiện bài mới nhất của mục đó: ảnh, tiêu đề, ngày, đoạn tóm tắt.
+- **Phân trang:** Báo chí 9 bài/trang, Giải thưởng 5, Sự kiện 5 (`perPage` trong `src/data/dau-an.ts`). Trang 1 giữ địa chỉ cũ (`/dau-an/bao-chi/`); các trang sau là `/dau-an/bao-chi/trang/2/`… Thanh số trang chỉ hiện khi có từ 2 trang trở lên. Địa chỉ của từng bài không đổi.
+- **Thanh “Tin mới”** (ngay dưới ảnh đầu trang chủ): ghim bài trong `src/content/dau-an/tin-moi.md`, dòng `ghim: giai-thuong/<id>` (hoặc `bao-chi/<slug>`, `su-kien/<slug>`). Để trống `ghim: ''` thì thanh tự hiện bài mới nhất của ba mục. Ghi sai mã bài thì bản build dừng và báo tên file.
+
 ## Nếu lỡ sửa sai
 
 Website **không hỏng**: nếu nội dung bị sai cấu trúc, bản build mới sẽ dừng lại và web giữ nguyên bản cũ.

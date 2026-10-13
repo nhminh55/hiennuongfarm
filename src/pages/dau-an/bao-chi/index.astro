@@ -6,77 +6,57 @@
  * src/data/dau-an.ts. Every piece shows its outlet, original headline and
  * publication date, and opens its own page with the link to the original.
  *
- * 1 · Lead: one report across two thirds, two stacked beside it.
- * 2 · The wall: the other reports, newest first, as photographs, headline
- *     cards (pieces without a usable photograph) and two short quotations,
- *     on a 12-column grid with varied spans and a staggered top edge.
+ * Newest first, nine to a page (perPage in src/data/dau-an.ts); later
+ * pages are /dau-an/bao-chi/trang/2/ and on (trang/[page].astro).
+ * 1 · Lead, first page only: the newest report across two thirds, the next
+ *     two stacked beside it.
+ * 2 · The wall: the other reports as photographs, or headline cards for
+ *     pieces without a usable photograph.
  */
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import DauAnHead from '../../../components/dau-an/DauAnHead.astro';
+import Pager from '../../../components/dau-an/Pager.astro';
 import Arrow from '../../../components/Arrow.astro';
-import { dauAnPages, dauAnText as txt, formatDate, press, pressBySlug, type FeaturedPress } from '../../../data/dau-an';
+import { dauAnPages, dauAnText as txt, formatDate, listingPage, press, type FeaturedPress, type ListingPage } from '../../../data/dau-an';
 
-const [featured, ...rest] = press;
+interface Props {
+  /** Set by trang/[page].astro; the first page otherwise. */
+  page?: ListingPage<FeaturedPress>;
+}
+
+const { page = listingPage('bao-chi', press) } = Astro.props;
+const first = page.currentPage === 1;
+const [featured, ...rest] = first ? page.data : [];
 const side = rest.slice(0, 2);
+const tiles = first ? rest.slice(2) : page.data;
 const href = (p: FeaturedPress) => `/dau-an/bao-chi/${p.slug}/`;
-
-type Tile =
-  | { type: 'item'; item: FeaturedPress; span: number; ratio?: string; offset?: boolean }
-  | { type: 'quote'; item: FeaturedPress; span: number; offset?: boolean };
-
-const item = (slug: string, span: number, ratio?: string, offset?: boolean): Tile => ({
-  type: 'item', item: pressBySlug(slug)!, span, ratio, offset,
-});
-const quote = (slug: string, span: number, offset?: boolean): Tile => ({
-  type: 'quote', item: pressBySlug(slug)!, span, offset,
-});
-
-// Rows of 12 columns. Pieces without a photograph become headline cards.
-const tiles: Tile[] = [
-  item('co-giao-tieng-anh-trong-nam-ocop', 5, '4 / 3'),
-  item('bien-rom-ra-thanh-vang', 4, '4 / 5', true),
-  quote('chau-thi-nuong-mo-loi-di-xanh-tu-nam-huu-co', 3),
-
-  item('chu-tich-hoi-nong-dan-tham-mo-hinh-trong-nam', 4, '3 / 2'),
-  item('lam-giau-tu-nam-sach', 4),
-  item('nu-nong-dan-xuat-sac-vung-bay-nui', 4, '4 / 5', true),
-
-  item('tu-trai-nam-nho-den-danh-hieu-nong-dan-viet-nam-xuat-sac-2025', 3),
-  item('mo-huong-moi-nong-nghiep-xanh-o-long-bay-nui', 5, '3 / 2'),
-  item('chau-thi-nuong-mo-loi-di-xanh-tu-nam-huu-co', 4, '4 / 3', true),
-
-  quote('nu-nong-dan-xuat-sac-vung-bay-nui', 4),
-  item('re-huong-trong-nam-nguoi-phu-nu-mien-tay', 4, '1 / 1'),
-  item('khat-vong-mua-vang-tap-92', 4),
-
-  item('tang-thu-nhap-nho-lam-nong-lap-them-dien-mat-troi', 3),
-  item('nam-moi-nang-nuong', 5, '16 / 9'),
-  item('nong-nghiep-tuan-hoan-tu-duoc-lieu-tu-nhien', 4, '4 / 3', true),
-];
+const title = dauAnPages.find((p) => p.href === '/dau-an/bao-chi/')!.title;
 
 const meta = (p: FeaturedPress) => `${p.outlet} · ${formatDate(p.date)}`;
-const sizes = (span: number) => `(min-width: 1024px) ${Math.round((span / 12) * 92)}vw, (min-width: 640px) 50vw, 100vw`;
 ---
 <BaseLayout
-  title={dauAnPages.find((p) => p.href === '/dau-an/bao-chi/')!.title}
+  title={first ? title : `${title} · ${txt.trang} ${page.currentPage}`}
   description={txt.bao_chi_mo_ta}
 >
   <DauAnHead current="/dau-an/bao-chi/" />
 
+  {featured && (
   <section class="press-lead" aria-label="Bài nổi bật">
     <div class="container press-feature__grid">
       <article class="feature">
         <a class="feature__media" href={href(featured)} tabindex="-1" aria-hidden="true">
+          {featured.photo && (
           <img
-            src={featured.photo!.src}
-            srcset={featured.photo!.srcset}
+            src={featured.photo.src}
+            srcset={featured.photo.srcset}
             sizes="(min-width: 1024px) 62vw, 100vw"
-            width={featured.photo!.width}
-            height={featured.photo!.height}
-            alt={featured.photo!.alt}
-            style={featured.photo!.position ? `object-position: ${featured.photo!.position}` : undefined}
+            width={featured.photo.width}
+            height={featured.photo.height}
+            alt={featured.photo.alt}
+            style={featured.photo.position ? `object-position: ${featured.photo.position}` : undefined}
             fetchpriority="high"
           />
+          )}
         </a>
         <p class="eyebrow feature__meta">{meta(featured)}</p>
         <h2 class="feature__title"><a href={href(featured)}>{featured.headline}</a></h2>
@@ -84,77 +64,69 @@ const sizes = (span: number) => `(min-width: 1024px) ${Math.round((span / 12) * 
         <a class="link-arrow feature__more" href={href(featured)} aria-label={`${txt.bao_chi_xem_bai}: ${featured.headline}`}>{txt.bao_chi_xem_bai} <Arrow /></a>
       </article>
 
+      {side.length > 0 && (
       <div class="press-feature__side">
         {side.map((p) => (
           <article class="side">
+            {p.photo && (
             <a class="side__media" href={href(p)} tabindex="-1" aria-hidden="true">
               <img
-                src={p.photo!.src}
-                srcset={p.photo!.srcset}
+                src={p.photo.src}
+                srcset={p.photo.srcset}
                 sizes="(min-width: 1024px) 30vw, 100vw"
-                width={p.photo!.width}
-                height={p.photo!.height}
-                alt={p.photo!.alt}
-                style={p.photo!.position ? `object-position: ${p.photo!.position}` : undefined}
+                width={p.photo.width}
+                height={p.photo.height}
+                alt={p.photo.alt}
+                style={p.photo.position ? `object-position: ${p.photo.position}` : undefined}
               />
             </a>
+            )}
             <p class="eyebrow side__meta">{meta(p)}</p>
             <h2 class="side__title"><a class="stretch" href={href(p)}>{p.headline}</a></h2>
             <p class="side__intro">{p.intro}</p>
           </article>
         ))}
       </div>
+      )}
     </div>
   </section>
+  )}
 
-  <section class="wall" aria-labelledby="wall-title">
+  <section class:list={['wall', { 'wall--more': !first }]} aria-labelledby="wall-title">
     <div class="container">
-      <h2 class="eyebrow wall__head" id="wall-title">{txt.bao_chi_bai_khac}</h2>
+      {tiles.length > 0 && (<>
+      <h2 class="eyebrow wall__head" id="wall-title">{first ? txt.bao_chi_bai_khac : `${txt.trang} ${page.currentPage}`}</h2>
       <ol class="wall__grid">
-        {tiles.map((t) =>
-          t.type === 'quote' ? (
-            <li class:list={['tile', 'tile--quote', { 'tile--offset': t.offset }]} style={`--span: ${t.span}`} data-reveal>
-              <figure>
-                <blockquote class="tile__quote">
-                  <p>“{t.item.quote}”</p>
-                </blockquote>
-                <figcaption class="tile__attr">
-                  {txt.bao_chi_trong_bai} <a href={href(t.item)}>{t.item.headline}</a> · {t.item.outlet}, {formatDate(t.item.date)}
-                </figcaption>
-              </figure>
-            </li>
-          ) : (
-            <li
-              class:list={['tile', t.item.photo ? 'tile--photo' : t.item.kind === 'video' ? 'tile--video' : 'tile--text', { 'tile--offset': t.offset }]}
-              style={`--span: ${t.span}${t.ratio ? `; --ratio: ${t.ratio}` : ''}`}
-              data-reveal
-            >
-              <article>
-                {t.item.photo && (
-                  <div class="tile__media">
-                    <img
-                      src={t.item.photo.src}
-                      srcset={t.item.photo.srcset}
-                      sizes={sizes(t.span)}
-                      width={t.item.photo.width}
-                      height={t.item.photo.height}
-                      alt={t.item.photo.alt}
-                      style={t.item.photo.position ? `object-position: ${t.item.photo.position}` : undefined}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                )}
-                <p class="eyebrow tile__meta">{t.item.kind === 'video' ? `${txt.phong_su_truyen_hinh} · ${t.item.outlet}` : t.item.outlet}</p>
-                <h3 class="tile__title"><a class="stretch" href={href(t.item)}>{t.item.headline}</a></h3>
-                <p class="tile__date">{t.item.kind === 'video' ? `${txt.dang_tai} ${formatDate(t.item.date)}` : formatDate(t.item.date)}</p>
-                {!t.item.photo && <p class="tile__intro">{t.item.intro}</p>}
-                {t.item.kind === 'video' && <p class="tile__cue" aria-hidden="true"><span class="tile__play"></span>{txt.xem_phong_su}</p>}
-              </article>
-            </li>
-          ),
-        )}
+        {tiles.map((p) => (
+          <li class:list={['tile', p.photo ? 'tile--photo' : p.kind === 'video' ? 'tile--video' : 'tile--text']} data-reveal>
+            <article>
+              {p.photo && (
+                <div class="tile__media">
+                  <img
+                    src={p.photo.src}
+                    srcset={p.photo.srcset}
+                    sizes="(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw"
+                    width={p.photo.width}
+                    height={p.photo.height}
+                    alt={p.photo.alt}
+                    style={p.photo.position ? `object-position: ${p.photo.position}` : undefined}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              )}
+              <p class="eyebrow tile__meta">{p.kind === 'video' ? `${txt.phong_su_truyen_hinh} · ${p.outlet}` : p.outlet}</p>
+              <h3 class="tile__title"><a class="stretch" href={href(p)}>{p.headline}</a></h3>
+              <p class="tile__date">{p.kind === 'video' ? `${txt.dang_tai} ${formatDate(p.date)}` : formatDate(p.date)}</p>
+              {!p.photo && <p class="tile__intro">{p.intro}</p>}
+              {p.kind === 'video' && <p class="tile__cue" aria-hidden="true"><span class="tile__play"></span>{txt.xem_phong_su}</p>}
+            </article>
+          </li>
+        ))}
       </ol>
+      </>)}
+
+      <Pager listing="bao-chi" currentPage={page.currentPage} lastPage={page.lastPage} />
 
       <p class="wall__archive">
         <a class="link-arrow" href="/dau-an/bao-chi/tu-lieu/">{txt.bao_chi_xem_toan_bo} <Arrow /></a>
@@ -349,34 +321,13 @@ const sizes = (span: number) => `(min-width: 1024px) ${Math.round((span / 12) * 
     border-color: transparent transparent transparent currentColor;
   }
 
-  /* Quotations: the farmer's own words, set large, with their source. */
-  .tile--quote figure { padding-top: var(--space-xs); }
-  .tile__quote p {
-    font-family: var(--font-display);
-    font-weight: 400;
-    font-size: var(--type-h2);
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-    text-wrap: pretty;
-  }
-  .tile__attr {
-    margin-top: var(--space-m);
-    padding-top: var(--space-s);
-    border-top: 1px solid var(--color-line);
-    font-size: 0.8125rem;
-    line-height: 1.6;
-    color: var(--color-text-muted);
-  }
-  .tile__attr a { color: var(--color-text); border-bottom: 1px solid var(--color-line-strong); }
-  .tile__attr a:hover { border-color: currentColor; }
-
   /* The way into the full archive: a quiet line under the wall. */
   .wall__archive {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
     gap: var(--space-2xs) var(--space-m);
-    margin-top: var(--space-2xl);
+    margin-top: var(--space-xl);
     padding-top: var(--space-m);
     border-top: 1px solid var(--color-line);
   }
@@ -385,21 +336,20 @@ const sizes = (span: number) => `(min-width: 1024px) ${Math.round((span / 12) * 
     color: var(--color-text-muted);
   }
 
-  /* Tablet: two columns; quotations across both. */
+  /* Later pages open on the wall. */
+  .wall--more .wall__head { border-top: 0; padding-top: 0; }
+
+  /* Tablet: two columns. */
   @media (min-width: 640px) and (max-width: 1023px) {
     .wall__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
-    .tile--quote { grid-column: 1 / -1; max-width: 40rem; }
   }
 
-  /* Desktop: each tile spans its share of 12 columns; some start lower. */
+  /* Desktop: three columns; photographs share one ratio so rows line up. */
   @media (min-width: 1024px) {
     .wall__grid {
-      grid-template-columns: repeat(12, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       align-items: start;
       row-gap: var(--space-2xl);
     }
-    .tile { grid-column: span var(--span, 4); }
-    .tile--offset { margin-top: var(--space-2xl); }
-    .tile--quote { padding-right: var(--space-m); }
   }
 </style>

@@ -1,0 +1,102 @@
+---
+/**
+ * Page numbers under a Dấu ấn listing: newer pages to the left. Shown only
+ * when the listing runs to more than one page. Page sizes and addresses:
+ * perPage and listingHref in src/data/dau-an.ts.
+ */
+import Arrow from '../Arrow.astro';
+import { dauAnText as t, listingHref, type Listing } from '../../data/dau-an';
+
+interface Props {
+  listing: Listing;
+  currentPage: number;
+  lastPage: number;
+}
+
+const { listing, currentPage, lastPage } = Astro.props;
+const pages = Array.from({ length: lastPage }, (_, i) => i + 1);
+---
+{lastPage > 1 && (
+  <nav class="da-pager" aria-label={`${t.trang} ${currentPage} / ${lastPage}`}>
+    {currentPage > 1 ? (
+      <a class="da-pager__step" href={listingHref(listing, currentPage - 1)} rel="prev">
+        <Arrow /> {t.trang_truoc}
+      </a>
+    ) : <span class="da-pager__step" aria-hidden="true"></span>}
+
+    <ol class="da-pager__pages">
+      {pages.map((n) => (
+        <li>
+          {n === currentPage ? (
+            <span class="da-pager__page" aria-current="page"><span class="sr-only">{t.trang} </span>{n}</span>
+          ) : (
+            <a class="da-pager__page" href={listingHref(listing, n)}><span class="sr-only">{t.trang} </span>{n}</a>
+          )}
+        </li>
+      ))}
+    </ol>
+
+    {currentPage < lastPage ? (
+      <a class="da-pager__step da-pager__step--next" href={listingHref(listing, currentPage + 1)} rel="next">
+        {t.trang_sau} <Arrow />
+      </a>
+    ) : <span class="da-pager__step" aria-hidden="true"></span>}
+  </nav>
+)}
+
+<style>
+  /* A quiet row of page numbers on a hairline, as the press archive's links. */
+  .da-pager {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: var(--space-s);
+    margin-top: var(--space-2xl);
+  }
+  .da-pager::before {
+    content: "";
+    grid-column: 1 / -1;
+    height: 1px;
+    margin-bottom: var(--space-m);
+    background: var(--color-line);
+  }
+
+  .da-pager__step {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    justify-self: start;
+    min-height: 2.75rem;
+    font-size: var(--type-cta);
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .da-pager__step :global(.arrow) { width: 0.875rem; transition: transform 300ms var(--ease); }
+  .da-pager__step:not(.da-pager__step--next) :global(.arrow) { rotate: 180deg; }
+  .da-pager__step--next { justify-self: end; }
+  a.da-pager__step:hover :global(.arrow) { transform: translateX(4px); }
+  a.da-pager__step:not(.da-pager__step--next):hover :global(.arrow) { transform: translateX(-4px); }
+
+  .da-pager__pages { display: flex; gap: var(--space-3xs); }
+
+  .da-pager__page {
+    display: grid;
+    place-items: center;
+    min-width: 2.75rem;
+    height: 2.75rem;
+    border-bottom: 1px solid transparent;
+    font-size: var(--type-small);
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text-muted);
+    transition: color 200ms var(--ease), border-color 200ms var(--ease);
+  }
+  a.da-pager__page:hover { color: var(--color-text); border-color: var(--color-line-strong); }
+  .da-pager__page[aria-current] { color: var(--color-text); font-weight: 500; border-color: var(--color-earth); }
+
+  /* Phone: the steps keep their arrows, the words go to screen readers. */
+  @media (max-width: 479px) {
+    .da-pager__step { font-size: 0; gap: 0; }
+    .da-pager__step :global(.arrow) { width: 1.125rem; }
+  }
+</style>

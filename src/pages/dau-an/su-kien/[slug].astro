@@ -8,7 +8,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import DauAnHead from '../../../components/dau-an/DauAnHead.astro';
 import Lightbox from '../../../components/dau-an/Lightbox.astro';
 import Arrow from '../../../components/Arrow.astro';
-import { activities, awards, dauAnText as t, formatDate, type Activity } from '../../../data/dau-an';
+import { activities, awardHref, awards, dauAnText as t, formatDate, listingHref, listingPageOf, type Activity } from '../../../data/dau-an';
 
 export const getStaticPaths = () =>
   activities.map((activity, i) => ({
@@ -52,7 +52,7 @@ const href = (x: Activity) => `/dau-an/su-kien/${x.slug}/`;
           </p>
         )}
         {award && (
-          <a class="link-arrow album__award" href={`/dau-an/giai-thuong/#${award.id}`}>
+          <a class="link-arrow album__award" href={awardHref(award)}>
             {award.name} <Arrow />
           </a>
         )}
@@ -100,7 +100,7 @@ const href = (x: Activity) => `/dau-an/su-kien/${x.slug}/`;
           <span class="pager__title">{newer.title}</span>
         </a>
       ) : <span />}
-      <a class="pager__all" href="/dau-an/su-kien/">{t.su_kien_tat_ca}</a>
+      <a class="pager__all" href={listingHref('su-kien', listingPageOf('su-kien', activities.indexOf(a)))}>{t.su_kien_tat_ca}</a>
       {older ? (
         <a class="pager__link pager__link--next" href={href(older)} rel="next">
           <span class="pager__label">{t.su_kien_truoc_do} · {formatDate(older.date)} <Arrow /></span>

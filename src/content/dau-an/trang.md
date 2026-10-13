@@ -48,6 +48,9 @@ chung_nhan_xem_san_pham: Xem sản phẩm
 chung_nhan_xem_giay: Xem giấy chứng nhận
 chung_nhan_giay_dan: Ba sản phẩm được UBND huyện Tri Tôn công nhận OCOP 3 sao theo Quyết định số 6351/QĐ-UBND ngày 18/12/2024. Chứng nhận có giá trị 36 tháng kể từ ngày ban hành.
 xem_anh_dong: Đóng
+trang: Trang
+trang_truoc: Trang trước
+trang_sau: Trang sau
 bao_chi_mo_ta: 'Những bài báo, phóng sự về Hiền Nương Farm và chị Châu Thị Nương: tên báo, tiêu đề gốc, ngày đăng và liên kết đến bài gốc.'
 chung_nhan_mo_ta: 'Ba sản phẩm nấm mang thương hiệu Hiền Nương Farm đạt OCOP 3 sao năm 2024: nấm linh chi tai to, nấm đông trùng hạ thảo và nấm mối tươi, kèm giấy chứng nhận.'
 giai_thuong_mo_ta: Các danh hiệu và giải thưởng của chị Châu Thị Nương và HTX Nông nghiệp Tà Đảnh, kèm giấy chứng nhận và nguồn xác minh.
