@@ -24,6 +24,39 @@ awards:
     sources: []
     id: bang-khen-chu-tich-ubnd-an-giang-2026
     source: 'Owner-supplied text and photos 13.10.2026 (ceremony for Ngày Doanh nhân Việt Nam; 30+ workers, 90% Khmer women, from chị Nương''s tham luận): chị Nương received a bằng khen from the Chủ tịch UBND tỉnh An Giang for contributions to the province''s agriculture. Stage screens show individual (Bà Châu Thị Nương) and collective (HTX Nông nghiệp Tà Đảnh) awards. No press source yet; add one when published.'
+  - year: '2026'
+    date: 2026-03-23
+    name: Giải “Phụ nữ Việt tự tin làm kinh tế” năm 2025
+    by: Hội Liên hiệp Phụ nữ Việt Nam · Công ty TNHH Quốc tế Unilever Việt Nam
+    recipient: Bà Châu Thị Nương — Chủ dự án “Trồng nấm theo hướng nông nghiệp tuần hoàn khép kín”
+    significance: Chị Châu Thị Nương đạt giải “Phụ nữ Việt tự tin làm kinh tế” năm 2025 với dự án trồng nấm theo hướng nông nghiệp tuần hoàn khép kín. Dự án áp dụng mô hình sản xuất tuần hoàn, biến phụ phẩm thành tài nguyên và góp phần xây dựng hệ sinh thái nông nghiệp thân thiện với môi trường. Giải được trao tại Hội nghị đánh giá thực hiện thỏa thuận hợp tác giữa Hội Liên hiệp Phụ nữ Việt Nam và Unilever Việt Nam giai đoạn 2022–2025, Hà Nội, ngày 23.03.2026.
+    photo:
+      caption: Chị Châu Thị Nương nhận giấy chứng nhận tại Hội nghị đánh giá thực hiện thỏa thuận hợp tác giữa Hội Liên hiệp Phụ nữ Việt Nam và Unilever Việt Nam, Hà Nội, 23.03.2026.
+      credit: Trang trại Hiền Nương
+      alt: Trên sân khấu, chị Châu Thị Nương mặc áo dài trắng hoa xanh cùng một đại biểu mặc áo dài xanh lá cầm giấy chứng nhận; màn hình phía sau ghi Hội nghị đánh giá thực hiện thỏa thuận hợp tác giữa Hội Liên hiệp Phụ nữ Việt Nam và Unilever Việt Nam giai đoạn 2022 - 2025, Hà Nội, ngày 23 tháng 3 năm 2026
+      file: pnvtt-nhan-giai
+      origin: ảnh chủ trang trại gửi (dau-an-moi-webp/phu nu.jpg)
+      position: 52% 50%
+      sizes: 640x426 1280x852
+    evidence:
+      - caption: Giấy chứng nhận bà Châu Thị Nương đạt giải “Phụ nữ Việt tự tin làm kinh tế” năm 2025.
+        credit: Trang trại Hiền Nương
+        alt: Giấy chứng nhận khung vàng có logo Hội Liên hiệp Phụ nữ Việt Nam và Unilever, chứng nhận bà Châu Thị Nương, chủ dự án Trồng nấm theo hướng nông nghiệp tuần hoàn khép kín, đạt giải Phụ nữ Việt tự tin làm kinh tế năm 2025
+        document: true
+        file: pnvtt-chung-nhan
+        origin: dau-an-moi-webp/chung-nhan-phu-nu-tu-tin-lam-kinh-te-2025.webp
+        sizes: 640x480 1280x960 1448x1086
+      - caption: Màn hình lễ trao giải Phụ nữ Việt tự tin làm kinh tế 2025 giới thiệu chị Châu Thị Nương, tỉnh An Giang.
+        credit: Trang trại Hiền Nương
+        alt: Màn hình sân khấu có logo Unilever và Hội Liên hiệp Phụ nữ Việt Nam, ghi Trao giải Phụ nữ Việt tự tin làm kinh tế 2025, Chị Châu Thị Nương, tỉnh An Giang, dự án Trồng nấm theo hướng nông nghiệp tuần hoàn khép kín, kèm ảnh chân dung chị Nương đội nón, quàng khăn rằn
+        file: pnvtt-trao-giai
+        origin: ảnh chủ trang trại gửi (dau-an-moi-webp/2aobor5fxkaqeltspxg1tzu3exscy2viqgyuufje40.jpg)
+        sizes: 640x496 1280x991
+    sources:
+      - label: Diễn đàn Doanh nghiệp, 24.03.2026
+        href: https://diendandoanhnghiep.vn/trao-30-giai-y-tuong-khoi-nghiep-trong-chuong-trinh-phu-nu-viet-tu-tin-lam-kinh-te-10175021.html
+    id: phu-nu-viet-tu-tin-lam-kinh-te-2025
+    source: 'Owner-supplied certificate (Hội LHPN Việt Nam, signed Trần Lan Phương; Unilever Việt Nam, signed Lê Thị Hồng Nhi; undated), a photo of the award screen (project description followed in the significance) and a stage photo dated by its backdrop: Hội nghị đánh giá thực hiện thỏa thuận hợp tác Hội LHPN Việt Nam – Unilever Việt Nam 2022–2025, Hà Nội, 23.03.2026. diendandoanhnghiep.vn 24.03.2026 reports the 30 prizes of the 2025 programme awarded in Hà Nội (An Giang among the provinces; winners not named).'
   - year: '2025'
     date: 2025-11-24
     name: Bằng khen của Hội Liên hiệp Phụ nữ Việt Nam
@@ -55,30 +88,6 @@ awards:
     sources: []
     id: bang-khen-hoi-lhpn-viet-nam-2025
     source: 'Owner-supplied certificate and photos: Bằng khen of the Hội LHPN Việt Nam (QĐ 6322/QĐ-ĐCT, signed Hà Nội 24.11.2025, Nguyễn Thị Tuyến) to HTX Nông nghiệp Tà Đảnh; stage backdrop dates the Hội nghị 30.11.2025 in Hà Nội. No press source yet; add one when published.'
-  - year: '2025'
-    name: Giải “Phụ nữ Việt tự tin làm kinh tế” năm 2025
-    by: Hội Liên hiệp Phụ nữ Việt Nam · Công ty TNHH Quốc tế Unilever Việt Nam
-    recipient: Bà Châu Thị Nương — Chủ dự án “Trồng nấm theo hướng nông nghiệp tuần hoàn khép kín”
-    significance: Chị Châu Thị Nương đạt giải “Phụ nữ Việt tự tin làm kinh tế” năm 2025 với dự án trồng nấm theo hướng nông nghiệp tuần hoàn khép kín. Dự án áp dụng mô hình sản xuất tuần hoàn, biến phụ phẩm thành tài nguyên và góp phần xây dựng hệ sinh thái nông nghiệp thân thiện với môi trường.
-    photo:
-      caption: Màn hình lễ trao giải Phụ nữ Việt tự tin làm kinh tế 2025 giới thiệu chị Châu Thị Nương, tỉnh An Giang.
-      credit: Trang trại Hiền Nương
-      alt: Màn hình sân khấu có logo Unilever và Hội Liên hiệp Phụ nữ Việt Nam, ghi Trao giải Phụ nữ Việt tự tin làm kinh tế 2025, Chị Châu Thị Nương, tỉnh An Giang, dự án Trồng nấm theo hướng nông nghiệp tuần hoàn khép kín, kèm ảnh chân dung chị Nương đội nón, quàng khăn rằn
-      file: pnvtt-trao-giai
-      origin: ảnh chủ trang trại gửi (dau-an-moi-webp/2aobor5fxkaqeltspxg1tzu3exscy2viqgyuufje40.jpg)
-      position: 50% 40%
-      sizes: 640x496 1280x991
-    evidence:
-      - caption: Giấy chứng nhận bà Châu Thị Nương đạt giải “Phụ nữ Việt tự tin làm kinh tế” năm 2025.
-        credit: Trang trại Hiền Nương
-        alt: Giấy chứng nhận khung vàng có logo Hội Liên hiệp Phụ nữ Việt Nam và Unilever, chứng nhận bà Châu Thị Nương, chủ dự án Trồng nấm theo hướng nông nghiệp tuần hoàn khép kín, đạt giải Phụ nữ Việt tự tin làm kinh tế năm 2025
-        document: true
-        file: pnvtt-chung-nhan
-        origin: dau-an-moi-webp/chung-nhan-phu-nu-tu-tin-lam-kinh-te-2025.webp
-        sizes: 640x480 1280x960 1448x1086
-    sources: []
-    id: phu-nu-viet-tu-tin-lam-kinh-te-2025
-    source: 'Owner-supplied certificate (Hội LHPN Việt Nam, signed Trần Lan Phương; Unilever Việt Nam, signed Lê Thị Hồng Nhi; undated) and a photo of the ceremony screen, whose project description the significance follows. Ceremony date unknown; diendandoanhnghiep.vn 24.03.2026 reports 30 prizes of the 2025 programme awarded in Hà Nội without naming winners. Add a date and source when confirmed.'
   - year: '2025'
     name: Nông dân Việt Nam xuất sắc năm 2025
     by: Trung ương Hội Nông dân Việt Nam · Chương trình Tự hào Nông dân Việt Nam năm 2025
