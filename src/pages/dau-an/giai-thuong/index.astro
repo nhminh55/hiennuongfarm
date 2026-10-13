@@ -37,6 +37,20 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
 >
   <DauAnHead current="/dau-an/giai-thuong/" />
 
+  {page.currentPage === 1 && (
+    <div class="container awards-hero">
+      <img
+        src="/images/dau-an/giai-thuong-hero-1280.webp"
+        srcset="/images/dau-an/giai-thuong-hero-640.webp 640w, /images/dau-an/giai-thuong-hero-1280.webp 1280w, /images/dau-an/giai-thuong-hero-1672.webp 1672w"
+        sizes="(min-width: 1440px) 1280px, 92vw"
+        width="1672"
+        height="941"
+        alt="Các bằng khen, giấy chứng nhận và cúp của Hiền Nương Farm bày cạnh nhau: chứng nhận Top 10 Sáng kiến ESG Việt Nam 2023, chứng nhận và cúp Nông dân Việt Nam xuất sắc 2025, bằng khen của Hội Liên hiệp Phụ nữ Việt Nam và của Hội Nông dân Việt Nam, cúp Giải Nhất Dự án GRAISEA 2, giấy chứng nhận Phụ nữ Việt tự tin làm kinh tế năm 2025"
+        fetchpriority="high"
+      />
+    </div>
+  )}
+
   <div class="awards">
     {page.data.map((a, i) => {
       const related = activities.find((act) => act.award === a.id);
@@ -48,30 +62,6 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
           aria-labelledby={`${a.id}-title`}
         >
           <div class="container award__grid">
-            <figure class="award__figure" data-reveal>
-              <a
-                class="award__photo"
-                href={a.photo.full}
-                data-lightbox={a.id}
-                data-caption={captionOf(a.photo)}
-                data-width={a.photo.width}
-                data-height={a.photo.height}
-              >
-                <img
-                  src={a.photo.src}
-                  srcset={a.photo.srcset}
-                  sizes="(min-width: 1024px) 56vw, 100vw"
-                  width={a.photo.width}
-                  height={a.photo.height}
-                  alt={a.photo.alt}
-                  style={a.photo.position ? `object-position: ${a.photo.position}` : undefined}
-                  loading={i === 0 ? 'eager' : 'lazy'}
-                  fetchpriority={i === 0 ? 'high' : undefined}
-                />
-              </a>
-              <figcaption class="award__caption">{a.photo.caption} <span class="award__credit">{t.anh} {a.photo.credit}</span></figcaption>
-            </figure>
-
             <div class="award__text" data-reveal>
               <p class="award__year">{a.year}</p>
               <p class="eyebrow award__by">{a.by}</p>
@@ -80,24 +70,6 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
               {a.significance.split(/\n\s*\n/).map((para) => (
                 <p class="award__significance">{para.trim()}</p>
               ))}
-
-              {a.evidence.length > 0 && (
-                <ul class="award__evidence" aria-label="Giấy chứng nhận và tư liệu">
-                  {a.evidence.map((e) => (
-                    <li>
-                      <a
-                        href={e.full}
-                        data-lightbox={a.id}
-                        data-caption={captionOf(e)}
-                        data-width={e.width}
-                        data-height={e.height}
-                      >
-                        <img src={e.srcset.split(' ')[0]} width={e.width} height={e.height} alt={e.alt} loading="lazy" decoding="async" />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              )}
 
               {(a.sources.length > 0 || related) && (
               <div class="award__links">
@@ -120,6 +92,49 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
               </div>
               )}
             </div>
+
+            <figure class="award__figure" data-reveal>
+              <a
+                class="award__photo"
+                href={a.photo.full}
+                data-lightbox={a.id}
+                data-caption={captionOf(a.photo)}
+                data-width={a.photo.width}
+                data-height={a.photo.height}
+              >
+                <img
+                  src={a.photo.src}
+                  srcset={a.photo.srcset}
+                  sizes="(min-width: 1024px) 56vw, 100vw"
+                  width={a.photo.width}
+                  height={a.photo.height}
+                  alt={a.photo.alt}
+                  style={a.photo.position ? `object-position: ${a.photo.position}` : undefined}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  fetchpriority={i === 0 && page.currentPage > 1 ? 'high' : undefined}
+                />
+              </a>
+              <figcaption class="award__caption">{a.photo.caption} <span class="award__credit">{t.anh} {a.photo.credit}</span></figcaption>
+
+              {a.evidence.length > 0 && (
+                <ul class="award__evidence" aria-label="Giấy chứng nhận và tư liệu">
+                  {a.evidence.map((e) => (
+                    <li>
+                      <a
+                        class:list={{ 'is-document': isDocument(e) }}
+                        href={e.full}
+                        data-lightbox={a.id}
+                        data-caption={captionOf(e)}
+                        data-width={e.width}
+                        data-height={e.height}
+                      >
+                        <img src={e.srcset.split(' ')[0]} width={e.width} height={e.height} alt={e.alt} loading="lazy" decoding="async" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </figure>
           </div>
         </article>
       );
@@ -133,6 +148,19 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
 </BaseLayout>
 
 <style>
+  /* The certificates and trophies together, page 1 only. */
+  .awards-hero { margin-bottom: var(--space-2xl); }
+  .awards-hero img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: var(--color-cream);
+  }
+  @media (min-width: 768px) {
+    .awards-hero img { aspect-ratio: 2 / 1; object-position: 50% 45%; }
+  }
+
   .awards { padding-bottom: var(--section-y); }
 
   .award + .award .award__grid {
@@ -143,16 +171,25 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
 
   .award__grid {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-l);
-    align-items: start;
+    align-items: center;
   }
 
-  .award__photo { display: block; overflow: hidden; cursor: zoom-in; background: var(--color-cream); }
-  /* Every main photograph takes the same 3:2 frame. */
-  .award__photo { aspect-ratio: 3 / 2; }
+  /* Every main photograph takes the same frame: 3:2, at most 440px high.
+     People are cropped around their focal point (photo.position). */
+  .award__photo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    max-height: 440px;
+    overflow: hidden;
+    cursor: zoom-in;
+    background: var(--color-cream);
+  }
   .award__photo img { width: 100%; height: 100%; object-fit: cover; }
 
-  /* A certificate stands whole on a cream ground within that frame. */
+  /* A certificate or trophy stands whole on a cream ground within that frame. */
   .award--document .award__photo { padding: clamp(var(--space-s), 3vw, var(--space-xl)); }
   .award--document .award__photo img { object-fit: contain; filter: drop-shadow(0 1px 0 var(--color-line)); }
 
@@ -206,21 +243,29 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
     text-wrap: pretty;
   }
 
+  /* The other photographs: one row of equal 96×72 frames, scrolling
+     sideways when there are many. */
   .award__evidence {
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
-    margin-top: var(--space-l);
+    gap: 12px;
+    margin-top: var(--space-s);
+    overflow-x: auto;
+    scrollbar-width: thin;
+    padding: 3px;
+    margin-inline: -3px;
   }
+  .award__evidence li { flex: none; }
   .award__evidence a {
     display: block;
-    height: 6.5rem;
+    width: 96px;
+    height: 72px;
     overflow: hidden;
     cursor: zoom-in;
     background: var(--color-cream);
-    outline-offset: 3px;
+    outline-offset: 2px;
   }
-  .award__evidence img { width: auto; height: 100%; object-fit: cover; transition: opacity 300ms var(--ease); }
+  .award__evidence img { width: 100%; height: 100%; object-fit: cover; transition: opacity 300ms var(--ease); }
+  .award__evidence a.is-document img { object-fit: contain; padding: 4px; }
   .award__evidence a:hover img { opacity: 0.85; }
 
   .award__links {
@@ -236,14 +281,16 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
   .award__sources a:hover { border-color: currentColor; }
   .award__related :global(.arrow) { width: 0.875rem; }
 
+  /* Desktop: text 44%, photographs 56%, 48px apart; sides alternate. */
   @media (min-width: 1024px) {
     .award__grid {
-      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-      column-gap: clamp(var(--space-l), 4vw, var(--space-3xl));
+      grid-template-columns: minmax(0, 56fr) minmax(0, 44fr);
+      column-gap: 48px;
     }
-    /* Flipped, the photograph keeps the wide column. */
-    .award--flip .award__grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
-    .award--flip .award__figure { order: 2; }
-    .award__evidence a { height: 7.5rem; }
+    .award__figure { grid-row: 1; grid-column: 1; }
+    .award__text { grid-row: 1; grid-column: 2; }
+    .award--flip .award__grid { grid-template-columns: minmax(0, 44fr) minmax(0, 56fr); }
+    .award--flip .award__text { grid-column: 1; }
+    .award--flip .award__figure { grid-column: 2; }
   }
 </style>
