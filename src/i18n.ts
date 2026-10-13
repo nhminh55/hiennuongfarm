@@ -36,9 +36,10 @@ export const langStaticPaths = () => prefixedLocales.map((lang) => ({ params: { 
  * Published pages with Vietnamese copy only: no /en/ or /zh/ route yet.
  * Everything under a `viOnlyPrefixes` path is Vietnamese only too: the
  * Dấu ấn pages and their report and album pages (src/data/dau-an.ts),
- * whose headlines are the outlets' own Vietnamese.
+ * whose headlines are the outlets' own Vietnamese, and Chuyện nhà Nấm
+ * (src/data/chuyen-nha-nam.ts), whose articles are written in Vietnamese.
  */
-export const viOnlyPrefixes = ['/dau-an/'];
+export const viOnlyPrefixes = ['/dau-an/', '/chuyen-nha-nam/'];
 export const viOnlyPaths = ['/hop-tac/', '/choi-cung-nong-trai/', '/choi-cung-nong-trai/mot-vong-nong-trai/', '/choi-cung-nong-trai/hom-nay-an-nam-gi/', '/choi-cung-nong-trai/ban-hieu-nam-toi-dau/'];
 
 /** Whether a page (a path without its language prefix) exists in every language. */

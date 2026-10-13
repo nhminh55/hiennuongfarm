@@ -9,10 +9,22 @@
 import type { APIRoute } from 'astro';
 import { isTranslated, languages, locales, localizePath } from '../i18n';
 import { activities, awards, listingHref, listingPage, press, type Listing } from '../data/dau-an';
+import { articleHref, categories, getArticles, isoDate, listHref, listPage } from '../data/chuyen-nha-nam';
 
 // Later pages of the Dấu ấn listings (/dau-an/bao-chi/trang/2/ and on).
 const laterPages = (listing: Listing, items: unknown[]) =>
   Array.from({ length: listingPage(listing, items).lastPage - 1 }, (_, i) => ({ path: listingHref(listing, i + 2), lastmod: '2026-10-13' }));
+
+// Chuyện nhà Nấm: published articles only (drafts never leave the dev
+// server), each listing and its later pages. A listing changes when its
+// newest article does.
+const articles = await getArticles();
+const newest = (items: typeof articles) => isoDate(new Date(Math.max(...items.map((a) => (a.data.updated ?? a.data.date).getTime()))));
+const storyListings = articles.length ? [undefined, ...categories.map((c) => c.id)].flatMap((category) => {
+  const items = articles.filter((a) => !category || a.data.category === category);
+  if (!items.length) return [];
+  return Array.from({ length: listPage(items).lastPage }, (_, i) => ({ path: listHref(category, i + 1), lastmod: newest(items) }));
+}) : [];
 
 const pages: { path: string; lastmod: string }[] = [
   { path: '/', lastmod: '2026-10-10' },
@@ -35,6 +47,8 @@ const pages: { path: string; lastmod: string }[] = [
   ...laterPages('su-kien', activities),
   ...press.map((p) => ({ path: `/dau-an/bao-chi/${p.slug}/`, lastmod: '2026-10-09' })),
   ...activities.map((a) => ({ path: `/dau-an/su-kien/${a.slug}/`, lastmod: '2026-10-09' })),
+  ...storyListings,
+  ...articles.map((a) => ({ path: articleHref(a), lastmod: isoDate(a.data.updated ?? a.data.date) })),
 ];
 
 export const GET: APIRoute = ({ site }) => {

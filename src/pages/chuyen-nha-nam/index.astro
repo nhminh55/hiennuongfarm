@@ -1,0 +1,12 @@
+---
+/**
+ * /chuyen-nha-nam/: every article, the featured one first, nine to a page
+ * (perPage in src/data/chuyen-nha-nam.ts). Later pages: trang/[page].astro;
+ * categories and articles: [slug].astro.
+ */
+import StoriesListing from '../../components/chuyen-nha-nam/StoriesListing.astro';
+import { getArticles, listingOrder, listPage } from '../../data/chuyen-nha-nam';
+
+const page = listPage(listingOrder(await getArticles()));
+---
+<StoriesListing page={page} />

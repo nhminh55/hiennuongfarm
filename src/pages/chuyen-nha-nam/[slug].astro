@@ -1,0 +1,39 @@
+---
+/**
+ * /chuyen-nha-nam/<slug>/: a category's first page (hieu-ve-nam,
+ * bep-nha-nam, tu-dat-den-nam) or one article (its file name in
+ * src/content/chuyen-nha-nam/). getArticles() stops the build if an
+ * article's file name takes a category's address.
+ */
+import type { GetStaticPaths } from 'astro';
+import StoriesListing from '../../components/chuyen-nha-nam/StoriesListing.astro';
+import StoryArticle from '../../components/chuyen-nha-nam/StoryArticle.astro';
+import { categories, getArticles, listingOrder, listPage } from '../../data/chuyen-nha-nam';
+
+export const getStaticPaths = (async () => {
+  const all = await getArticles();
+  // Newer / older follow the full listing, featured article first.
+  const ordered = listingOrder(all);
+  return [
+    ...categories.map((c) => ({
+      params: { slug: c.id },
+      props: { kind: 'category' as const, category: c.id, page: listPage(all.filter((a) => a.data.category === c.id)) },
+    })),
+    ...ordered.map((article, i) => ({
+      params: { slug: article.id },
+      props: {
+        kind: 'article' as const,
+        article,
+        related: all.filter((a) => a !== article && a.data.category === article.data.category).slice(0, 3),
+        newer: ordered[i - 1],
+        older: ordered[i + 1],
+      },
+    })),
+  ];
+}) satisfies GetStaticPaths;
+
+const props = Astro.props;
+---
+{props.kind === 'category'
+  ? <StoriesListing page={props.page} category={props.category} />
+  : <StoryArticle article={props.article} related={props.related} newer={props.newer} older={props.older} />}

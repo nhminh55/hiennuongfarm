@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-import PlayWidget from '../components/farm-play/PlayWidget.astro';
+import StoriesTab from '../components/chuyen-nha-nam/StoriesTab.astro';
 import { site } from '../data/site';
 import { getLocale, isTranslated, languages, locales, localizePath, stripLocale } from '../i18n';
 
@@ -13,10 +13,13 @@ interface Props {
   overlayHeader?: boolean;
   /** Keep the page out of search engines (unpublished scaffold pages). */
   noindex?: boolean;
+  /** Share image (og:image), an absolute or site path. */
+  image?: string;
+  ogType?: 'website' | 'article';
 }
 
 const lang = getLocale(Astro.url);
-const { title, description = site.description[lang], overlayHeader = false, noindex = false } = Astro.props;
+const { title, description = site.description[lang], overlayHeader = false, noindex = false, image, ogType = 'website' } = Astro.props;
 const pageTitle = title ? `${title} — ${site.name}` : site.name;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 // The same page in every language, for search engines.
@@ -38,6 +41,7 @@ const categories: [string, string][] = [
   ['/dau-an/chung-nhan/', 'Chứng nhận'],
   ['/hop-tac/', 'Hợp tác'],
   ['/choi-cung-nong-trai/', 'Chơi cùng nông trại'],
+  ['/chuyen-nha-nam/', 'Chuyện nhà Nấm'],
 ];
 const category = categories.find(([prefix]) => basePath.startsWith(prefix))?.[1] ?? 'Trang chủ';
 const skipLabel = { vi: 'Bỏ qua đến nội dung chính', en: 'Skip to main content', zh: '跳到主要内容' }[lang];
@@ -56,12 +60,15 @@ const skipLabel = { vi: 'Bỏ qua đến nội dung chính', en: 'Skip to main c
     <link rel="icon" type="image/png" href="/fav.png" />
     <meta name="theme-color" content="#173D2D" />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:locale" content={languages[lang].ogLocale} />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    {image && <meta property="og:image" content={new URL(image, Astro.site)} />}
+    {image && <meta name="twitter:card" content="summary_large_image" />}
+    <slot name="head" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -106,7 +113,7 @@ const skipLabel = { vi: 'Bỏ qua đến nội dung chính', en: 'Skip to main c
       <slot />
     </main>
     <SiteFooter />
-    <PlayWidget />
+    <StoriesTab />
 
     <script>
       // Reveal-on-scroll for elements marked with [data-reveal].

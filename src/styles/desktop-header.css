@@ -46,7 +46,17 @@
 }
 
 @media (min-width: 1280px) {
+  /* Six links: the hover numbers sit above the label instead of beside it,
+     and the gaps either side of the links tighten, so search and Liên hệ
+     stay in view at 1280. */
+  header.site-header .site-nav { margin-inline: -0.75rem; }
+
   .site-header .site-nav .site-nav__num {
+    position: absolute;
+    left: 0;
+    top: -0.2rem;
+    margin: 0;
+    line-height: 1;
     opacity: 0;
     transition: opacity 300ms var(--ease);
   }

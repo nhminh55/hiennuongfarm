@@ -42,4 +42,7 @@ export default defineConfig({
   // Dấu ấn has no landing page; its first page stands in for the address.
   redirects: { '/dau-an': '/dau-an/bao-chi/' },
   vite: { plugins: [markdownData()] },
+  // Images from src/assets (Chuyện nhà Nấm), Markdown ones included, get a
+  // srcset sized to their column.
+  image: { layout: 'constrained' },
 });

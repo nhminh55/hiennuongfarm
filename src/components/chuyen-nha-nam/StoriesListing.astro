@@ -1,0 +1,289 @@
+---
+/**
+ * One page of a Chuyện nhà Nấm listing (all articles or one category).
+ *
+ * Page 1 of the full listing opens on the featured article: photograph
+ * across seven columns, title and opening beside it. Below, the articles
+ * run in three columns (two on tablets, one on phones). Articles without
+ * a photograph are set as type on a hairline, not as empty boxes.
+ */
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import StoriesHead from './StoriesHead.astro';
+import Pager from '../dau-an/Pager.astro';
+import Arrow from '../Arrow.astro';
+import {
+  articleHref, categoryOf, formatDate, isoDate, listHref, text as t,
+  type Article, type CategoryId, type ListPage,
+} from '../../data/chuyen-nha-nam';
+
+interface Props {
+  page: ListPage;
+  category?: CategoryId;
+}
+
+const { page, category } = Astro.props;
+const current = category ? categoryOf(category) : undefined;
+const withLead = !category && page.currentPage === 1;
+const [lead, ...rest] = withLead ? page.data : [undefined, ...page.data];
+const title = [current?.title ?? t.title, page.currentPage > 1 ? `${t.page} ${page.currentPage}` : '']
+  .filter(Boolean).join(' · ');
+const description = current ? `${current.title}: ${current.line} ${t.title}, Hiền Nương Farm.` : t.description;
+const meta = (a: Article) => (category ? formatDate(a.data.date) : categoryOf(a.data.category).title);
+---
+<BaseLayout title={title} description={description}>
+  <StoriesHead category={category} currentPage={page.currentPage} />
+
+  {lead && (
+    <section class="cnn-lead" aria-label={t.featured}>
+      <div class="container">
+        <article class="lead">
+          {lead.data.cover && (
+            <a class="lead__media" href={articleHref(lead)} tabindex="-1" aria-hidden="true">
+              <Image
+                src={lead.data.cover.src}
+                alt={lead.data.cover.alt}
+                widths={[640, 960, 1280, 1600]}
+                sizes="(min-width: 1024px) 58vw, 100vw"
+                loading="eager"
+                fetchpriority="high"
+                style={lead.data.cover.position ? `object-position: ${lead.data.cover.position}` : undefined}
+              />
+            </a>
+          )}
+          <div class="lead__text">
+            <p class="eyebrow lead__meta">
+              <a href={listHref(lead.data.category)}>{categoryOf(lead.data.category).title}</a>
+              {lead.data.draft && <span class="cnn-draft">{t.draft}</span>}
+            </p>
+            <h2 class="lead__title"><a href={articleHref(lead)}>{lead.data.title}</a></h2>
+            <p class="lead__excerpt">{lead.data.excerpt}</p>
+            <p class="lead__date"><time datetime={isoDate(lead.data.date)}>{formatDate(lead.data.date)}</time></p>
+            <a class="link-arrow lead__more" href={articleHref(lead)} aria-label={`${t.read}: ${lead.data.title}`}>{t.read} <Arrow /></a>
+          </div>
+        </article>
+      </div>
+    </section>
+  )}
+
+  <section class="cnn-list" aria-labelledby={rest.length ? 'cnn-list-title' : undefined}>
+    <div class="container">
+      {rest.length > 0 ? (<>
+        <h2 class:list={['eyebrow', 'cnn-list__head', { 'sr-only': !withLead }]} id="cnn-list-title">{withLead ? t.more : title}</h2>
+        <ol class="cnn-grid">
+          {rest.map((a) => a && (
+            <li class:list={['tile', a.data.cover ? 'tile--photo' : 'tile--text']}>
+              <article>
+                {a.data.cover ? (<>
+                  <div class="tile__media">
+                    <Image
+                      src={a.data.cover.src}
+                      alt={a.data.cover.alt}
+                      widths={[480, 720, 960]}
+                      sizes="(min-width: 1024px) 30vw, (min-width: 640px) 46vw, 100vw"
+                      style={a.data.cover.position ? `object-position: ${a.data.cover.position}` : undefined}
+                    />
+                  </div>
+                  <p class="eyebrow tile__meta">
+                    {meta(a)}
+                    {a.data.draft && <span class="cnn-draft">{t.draft}</span>}
+                  </p>
+                  <h3 class="tile__title"><a class="stretch" href={articleHref(a)}>{a.data.title}</a></h3>
+                </>) : (
+                  <div class="tile__panel">
+                    <p class="eyebrow tile__meta">
+                      {meta(a)}
+                      {a.data.draft && <span class="cnn-draft">{t.draft}</span>}
+                    </p>
+                    <h3 class="tile__title"><a class="stretch" href={articleHref(a)}>{a.data.title}</a></h3>
+                  </div>
+                )}
+                <p class="tile__excerpt">{a.data.excerpt}</p>
+                {!category && <p class="tile__date"><time datetime={isoDate(a.data.date)}>{formatDate(a.data.date)}</time></p>}
+              </article>
+            </li>
+          ))}
+        </ol>
+      </>) : !lead && (
+        <p class="cnn-empty">{t.empty}</p>
+      )}
+
+      <Pager href={(n) => listHref(category, n)} currentPage={page.currentPage} lastPage={page.lastPage} />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Lead ---------------------------------------------------------------- */
+  .cnn-lead { padding-bottom: var(--space-2xl); }
+
+  .lead { display: grid; gap: var(--space-m); }
+
+  .lead__media,
+  .tile__media {
+    display: block;
+    overflow: hidden;
+    background: var(--color-cream);
+  }
+  .lead__media :global(img),
+  .tile__media :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 900ms var(--ease);
+  }
+  .lead__media { aspect-ratio: 3 / 2; }
+
+  .lead__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; }
+  .lead__meta a { border-bottom: 1px solid transparent; transition: border-color 200ms var(--ease); }
+  .lead__meta a:hover { border-color: currentColor; }
+
+  .lead__title {
+    margin-top: var(--space-s);
+    max-width: 18ch;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--type-h2);
+    line-height: 1.12;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+  }
+
+  .lead__excerpt {
+    margin-top: var(--space-s);
+    max-width: 34rem;
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+
+  .lead__date,
+  .tile__date {
+    margin-top: var(--space-s);
+    font-size: 0.8125rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text-muted);
+  }
+
+  .lead__more { margin-top: var(--space-m); justify-self: start; }
+  .lead__more :global(.arrow) { width: 0.875rem; }
+  .lead__text { display: grid; align-content: start; }
+
+  .lead__title a,
+  .tile__title a {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 500ms var(--ease);
+  }
+  .lead:hover .lead__title a,
+  .tile:hover .tile__title a { background-size: 100% 1px; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .lead:hover .lead__media :global(img),
+    .tile:hover .tile__media :global(img) { transform: scale(1.03); }
+  }
+
+  @media (min-width: 1024px) {
+    .lead {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      column-gap: clamp(var(--space-l), 4vw, var(--space-3xl));
+      align-items: end;
+    }
+    .lead__text { padding-bottom: var(--space-2xs); }
+  }
+
+  /* Grid ---------------------------------------------------------------- */
+  .cnn-list { padding-bottom: var(--section-y); }
+
+  .cnn-list__head {
+    padding-top: var(--space-m);
+    border-top: 1px solid var(--color-line-strong);
+  }
+
+  .cnn-grid {
+    display: grid;
+    gap: var(--space-xl) var(--col-gap);
+    margin-top: var(--space-l);
+  }
+  .cnn-list__head.sr-only + .cnn-grid { margin-top: 0; }
+
+  .tile { position: relative; min-width: 0; }
+  .tile article { display: grid; align-content: start; }
+
+  .tile__media { aspect-ratio: 4 / 3; margin-bottom: var(--space-s); }
+
+  .tile__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; font-size: 0.6875rem; }
+
+  .tile__title {
+    margin-top: var(--space-2xs);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--type-product);
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  .tile__excerpt {
+    margin-top: var(--space-2xs);
+    font-size: var(--type-small);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+
+  /* No photograph: a typeset cover on a cream field, the same 4:3 as the
+     photographs, so rows keep one line (the press wall's clipping cards). */
+  .tile__panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    aspect-ratio: 4 / 3;
+    margin-bottom: var(--space-s);
+    padding: var(--space-m);
+    background: var(--color-cream);
+    border-top: 2px solid var(--color-earth);
+  }
+  .tile__panel .tile__title {
+    margin-top: 0;
+    max-width: 14ch;
+    font-size: var(--type-h2);
+    line-height: 1.12;
+  }
+
+  /* Whole tile is the link; the title holds it. */
+  .stretch::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+  .stretch:focus-visible { outline: none; }
+  .tile:has(.stretch:focus-visible) { outline: 1px solid currentColor; outline-offset: 6px; }
+
+  .cnn-empty {
+    padding-top: var(--space-m);
+    border-top: 1px solid var(--color-line);
+    color: var(--color-text-muted);
+  }
+
+  /* Dev-server only: drafts never reach the built site. */
+  .cnn-draft {
+    padding: 0.1rem 0.45rem;
+    border: 1px dashed currentColor;
+    color: #9A4A2A;
+    letter-spacing: 0.12em;
+  }
+
+  /* One column: no row to line up with, so the typeset cover can be lower. */
+  @media (max-width: 639px) {
+    .tile__panel { aspect-ratio: 16 / 9; }
+  }
+
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .cnn-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  }
+
+  @media (min-width: 1024px) {
+    .cnn-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: start;
+      row-gap: var(--space-2xl);
+    }
+  }
+</style>

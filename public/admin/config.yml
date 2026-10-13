@@ -3064,6 +3064,10 @@ collections:
                 name: press
                 i18n: true
                 widget: string
+              - label: Chuyện nhà Nấm
+                name: stories
+                i18n: true
+                widget: string
               - label: Hợp tác
                 name: partner
                 i18n: true
@@ -3088,6 +3092,10 @@ collections:
                 widget: string
               - label: Dấu ấn
                 name: press
+                i18n: true
+                widget: string
+              - label: Chuyện nhà Nấm
+                name: stories
                 i18n: true
                 widget: string
               - label: Sản phẩm
@@ -3171,9 +3179,9 @@ collections:
             allow_duplicate: false
             allow_reorder: false
             summary: '{{fields.items.vi}}'
-            hint: Mỗi khối là menu thả xuống của một mục trên thanh menu (Về Hiền Nương, Nông nghiệp tuần hoàn, Sản phẩm, Dấu ấn, Hợp tác). Số trên ảnh là thứ tự các mục.
-            max: 5
-            min: 5
+            hint: Mỗi khối là menu thả xuống của một mục trên thanh menu (Về Hiền Nương, Nông nghiệp tuần hoàn, Sản phẩm, Dấu ấn, Chuyện nhà Nấm, Hợp tác). Số trên ảnh là thứ tự các mục.
+            max: 6
+            min: 6
       - name: tim-kiem
         label: Trang tìm kiếm
         file: src/content/chung/tim-kiem.md
@@ -3221,3 +3229,108 @@ collections:
             name: noscript
             widget: string
             required: true
+  - name: chuyen_nha_nam
+    label: Chuyện nhà Nấm (bài viết)
+    label_singular: bài viết
+    i18n: false
+    folder: src/content/chuyen-nha-nam
+    extension: md
+    format: frontmatter
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    identifier_field: title
+    summary: '{{title}} · {{date}}'
+    sortable_fields:
+      - date
+      - title
+    preview_path: /chuyen-nha-nam/{{slug}}/
+    media_folder: /src/assets/chuyen-nha-nam
+    public_folder: ../../assets/chuyen-nha-nam
+    description: Tên file là địa chỉ bài (/chuyen-nha-nam/<tên-file>/). Bài mới để ở chế độ nháp; bỏ chọn “Bản nháp” khi nội dung đã được xác nhận. Không đưa lên số liệu, chứng nhận hay lời khuyên sức khỏe chưa được xác nhận.
+    fields:
+      - label: Tiêu đề
+        name: title
+        widget: string
+      - label: Tóm tắt
+        name: excerpt
+        widget: text
+        hint: Một hai câu, hiện dưới tiêu đề và ở trang danh sách
+      - label: Chuyên mục
+        name: category
+        widget: select
+        options:
+          - label: Hiểu về Nấm
+            value: hieu-ve-nam
+          - label: Bếp nhà Nấm
+            value: bep-nha-nam
+          - label: Từ Đất đến Nấm
+            value: tu-dat-den-nam
+      - label: Ngày đăng
+        name: date
+        widget: datetime
+        time_format: false
+        format: YYYY-MM-DD
+      - label: Ngày cập nhật
+        name: updated
+        widget: datetime
+        time_format: false
+        format: YYYY-MM-DD
+        required: false
+      - label: Bản nháp
+        name: draft
+        widget: boolean
+        default: true
+        hint: Bản nháp không hiện trên website
+      - label: Bài nổi bật
+        name: featured
+        widget: boolean
+        default: false
+        required: false
+        hint: Bài nổi bật mới nhất mở đầu trang Chuyện nhà Nấm
+      - label: Ảnh bìa
+        name: cover
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - label: Ảnh
+            name: src
+            widget: image
+            hint: Chỉ dùng ảnh thật của trang trại
+          - label: Mô tả ảnh
+            name: alt
+            widget: string
+            hint: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+          - label: Chú thích
+            name: caption
+            widget: string
+            required: false
+          - label: Nguồn ảnh
+            name: credit
+            widget: string
+            required: false
+            hint: Ví dụ tên báo, với ảnh báo chí
+          - label: Vị trí cắt ảnh ở trang danh sách
+            name: position
+            widget: string
+            required: false
+            hint: Ví dụ 50% 30%; để trống là giữa ảnh
+      - label: Nội dung
+        name: body
+        widget: markdown
+      - label: Nguồn thông tin
+        name: sources
+        widget: list
+        required: false
+        collapsed: true
+        hint: Không hiện trên trang
+        field:
+          label: Nguồn
+          name: item
+          widget: string
+      - label: Mô tả trên Google
+        name: description
+        widget: text
+        required: false
+        hint: Để trống thì dùng phần tóm tắt

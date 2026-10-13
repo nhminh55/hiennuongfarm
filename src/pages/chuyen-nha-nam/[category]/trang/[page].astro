@@ -1,0 +1,21 @@
+---
+// /chuyen-nha-nam/<category>/trang/2/ and on: later pages of a category.
+import type { GetStaticPaths } from 'astro';
+import StoriesListing from '../../../../components/chuyen-nha-nam/StoriesListing.astro';
+import { categories, getArticles, listPage } from '../../../../data/chuyen-nha-nam';
+
+export const getStaticPaths = (async () => {
+  const paths = [];
+  for (const c of categories) {
+    const items = await getArticles(c.id);
+    const { lastPage } = listPage(items);
+    for (let n = 2; n <= lastPage; n++) {
+      paths.push({ params: { category: c.id, page: String(n) }, props: { category: c.id, page: listPage(items, n) } });
+    }
+  }
+  return paths;
+}) satisfies GetStaticPaths;
+
+const { category, page } = Astro.props;
+---
+<StoriesListing page={page} category={category} />

@@ -1,0 +1,76 @@
+---
+/**
+ * "Chuyện nhà Nấm" tab on the right edge of the viewport, a plain link to
+ * /chuyen-nha-nam/. It took the place of the farm-play tab (the games keep
+ * their pages, footer link and in-page invitations). Vietnamese only (the
+ * articles are), and not shown in the section itself or on the activity
+ * pages. Phones show the open-book mark alone; the label stays for screen
+ * readers.
+ */
+import { getLocale } from '../../i18n';
+import { base, text as t } from '../../data/chuyen-nha-nam';
+
+const path = Astro.url.pathname;
+const show = getLocale(Astro.url) === 'vi' && !path.startsWith(base) && !path.startsWith('/choi-cung-nong-trai/');
+---
+{show && (
+  <a class="stories-tab" href={base}>
+    <svg class="stories-tab__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 6.5C10.2 5.2 7.6 4.5 3.5 4.5v13c4.1 0 6.7.7 8.5 2 1.8-1.3 4.4-2 8.5-2v-13c-4.1 0-6.7.7-8.5 2Z" /><path d="M12 6.5v13" /></svg>
+    <span class="stories-tab__label">{t.title}</span>
+  </a>
+)}
+
+<style>
+  /* A narrow tab on the right edge, text reading bottom to top. */
+  .stories-tab {
+    position: fixed;
+    right: 0;
+    bottom: clamp(1.5rem, 8vh, 4rem);
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 0.55rem;
+    background: var(--color-forest);
+    color: var(--color-cream);
+    border-radius: 6px 0 0 6px;
+    box-shadow: 0 6px 20px rgba(16, 43, 33, 0.18);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .stories-tab__icon { flex: none; }
+
+  .stories-tab__label {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .stories-tab:hover { transform: translateX(-3px); }
+
+  /* Out of the way while the phone menu is open. */
+  :global(body.is-locked) .stories-tab { display: none; }
+  .stories-tab:focus-visible { outline: 2px solid var(--color-forest); outline-offset: 3px; }
+
+  /* Phone and small tablet: the open book alone. */
+  @media (max-width: 767px) {
+    .stories-tab { padding: 0.75rem 0.6rem; }
+    .stories-tab__label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stories-tab { transition-duration: 0s; }
+  }
+</style>

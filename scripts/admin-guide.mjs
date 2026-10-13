@@ -54,8 +54,8 @@ const L = {
     business_name: ['Tên hộ kinh doanh', 'Mỗi ô là một dòng'], business_code: 'Mã số HKD', business_registration: ['Số và ngày đăng ký', 'Mỗi ô là một dòng'], business_issuer: 'Cơ quan cấp',
     'nang_cao.description': 'Mô tả website trên Google và khi chia sẻ link' },
   'chung/menu': { _: 'Menu',
-    header: 'Menu trên cùng', 'header.about': 'Về Hiền Nương', 'header.circular': 'Nông nghiệp tuần hoàn', 'header.products': 'Sản phẩm', 'header.press': 'Dấu ấn', 'header.partner': 'Hợp tác', 'header.contact': 'Liên hệ',
-    nav: ['Tên trang ở chân trang và đường dẫn', 'Cột “Khám phá” ở chân trang, dòng “Trang chủ / …” và các chỗ khác'], 'nav.about': 'Về Hiền Nương', 'nav.circular': 'Nông nghiệp tuần hoàn', 'nav.produce': 'Sản vật', 'nav.bayNui': 'Vùng Bảy Núi', 'nav.press': 'Dấu ấn', 'nav.partner': 'Hợp tác', 'nav.products': 'Sản phẩm', 'nav.play': 'Chơi cùng nông trại' },
+    header: 'Menu trên cùng', 'header.about': 'Về Hiền Nương', 'header.circular': 'Nông nghiệp tuần hoàn', 'header.products': 'Sản phẩm', 'header.press': 'Dấu ấn', 'header.stories': 'Chuyện nhà Nấm', 'header.partner': 'Hợp tác', 'header.contact': 'Liên hệ',
+    nav: ['Tên trang ở chân trang và đường dẫn', 'Cột “Khám phá” ở chân trang, dòng “Trang chủ / …” và các chỗ khác'], 'nav.about': 'Về Hiền Nương', 'nav.circular': 'Nông nghiệp tuần hoàn', 'nav.produce': 'Sản vật', 'nav.bayNui': 'Vùng Bảy Núi', 'nav.press': 'Dấu ấn', 'nav.stories': 'Chuyện nhà Nấm', 'nav.partner': 'Hợp tác', 'nav.products': 'Sản phẩm', 'nav.play': 'Chơi cùng nông trại' },
   'chung/footer': { _: 'Chân trang',
     line: ['Câu dưới logo', 'Mỗi ô là một dòng'], explore: 'Tiêu đề cột “Khám phá”', contact: 'Tiêu đề cột “Liên hệ”', rights: 'Dòng bản quyền',
     'nang_cao.navLabel': 'Tên vùng điều hướng', 'nang_cao.noLink': 'Chữ khi thiếu liên kết', 'nang_cao.top': 'Nút lên đầu trang' },
@@ -271,7 +271,7 @@ Object.assign(DATA_FILES, {
   "hop-tac/huong-hop-tac": {"label":"Ba hướng hợp tác","page":["/hop-tac/",".ways"],"items":null,"hidden":["thumb","srcset"],"labels":{"hint":"Lời nhắc chọn hướng","centreWith":"Chữ giữa tam giác (dòng 1)","centreBrand":"Chữ giữa tam giác (dòng 2)","directions":["Ba hướng hợp tác","Đúng 3 hướng"],"directions[].name":"Tên hướng (dưới ảnh)","directions[].short":["Tên ngắn","Nút chọn ở phần Liên hệ"],"directions[].title":"Tiêu đề hướng","directions[].text":"Đoạn giải thích","directions[].cta":"Nút liên hệ","directions[].subject":["Tiêu đề thư soạn sẵn","Cũng hiện trong ghi chú ở phần Liên hệ"],"directions[].image":"Ảnh","directions[].image.caption":"Chú thích ảnh","directions[].caption":"Chú thích ảnh","photo":"Ảnh","caption":"Chú thích ảnh"}},
   "hop-tac/doi-tac": {"label":"Đối tác & kết nối","page":["/hop-tac/",".links"],"items":null,"labels":{"eyebrow":"Chữ nhỏ trên tiêu đề","title":"Tiêu đề","lead":"Đoạn giới thiệu","more":"Chữ liên kết xem tư liệu","partners":"Đối tác","partners[].name":"Tên đối tác","partners[].kind":"Loại kết nối (dòng nhỏ trên tên)","partners[].text":"Đoạn mô tả","partners[].outlet":"Nguồn tư liệu","partners[].outlet.label":"Tên nguồn tư liệu","partners[].photo":"Ảnh","partners[].photo.caption":"Chú thích ảnh"}},
   "hop-tac/lien-he": {"label":"Phần liên hệ","page":["/hop-tac/",".invite"],"items":null,"labels":{"eyebrow":"Chữ nhỏ trên tiêu đề","title":"Tiêu đề","text":"Đoạn mời","choicesLabel":"Nhãn chọn hướng trao đổi","cta":"Nút liên hệ","noteBefore":["Ghi chú (trước tiêu đề thư)","Tiêu đề thư tự chèn vào sau"],"noteAfter":"Ghi chú (sau tiêu đề thư)","email":"Nhãn Email","phone":"Nhãn Điện thoại","zalo":"Nhãn Zalo"}},
-  "chung/menu-tha-xuong": {"label":"Menu thả xuống","page":["/san-pham/",".site-header__bar"],"items":"menus","itemName":"items.0.label","hidden":["video","group"],"hint":"Mỗi khối là menu thả xuống của một mục trên thanh menu (Về Hiền Nương, Nông nghiệp tuần hoàn, Sản phẩm, Dấu ấn, Hợp tác).","labels":{"menus":"Menu thả xuống","items":"Các mục","label":"Tên mục"}},
+  "chung/menu-tha-xuong": {"label":"Menu thả xuống","page":["/san-pham/",".site-header__bar"],"items":"menus","itemName":"items.0.label","hidden":["video","group"],"hint":"Mỗi khối là menu thả xuống của một mục trên thanh menu (Về Hiền Nương, Nông nghiệp tuần hoàn, Sản phẩm, Dấu ấn, Chuyện nhà Nấm, Hợp tác).","labels":{"menus":"Menu thả xuống","items":"Các mục","label":"Tên mục"}},
   "chung/tim-kiem": {"label":"Trang tìm kiếm","page":["/tim-kiem/","main"],"items":null,"labels":{"home":"Đường dẫn: chữ “Trang chủ”","title":["Tên trang","Hiện ở đường dẫn và tab trình duyệt"],"heading":"Tiêu đề","submit":"Nút tìm kiếm","emptyLead":"Lời gợi ý khi chưa tìm","emptyLinks":"Liên kết gợi ý","emptyLinks[].label":"Chữ liên kết","noscript":"Thông báo khi tắt JavaScript"}},
   "san-pham/kiem-nghiem": {"label":"Phiếu kiểm nghiệm (trang Nấm Mối Đen)","page":["/san-pham/nam-moi-den/","#kiem-nghiem"],"items":null,"hint":"Giữ đúng như in trên phiếu kiểm nghiệm.","labels":{"products":"Sản phẩm","reports":"Phiếu","id":"Số phiếu","sample":"Tên mẫu (đúng như trên phiếu)","lab":"Đơn vị kiểm nghiệm","customer":"Đơn vị gửi mẫu","testedOn":"Ngày kiểm nghiệm","group":"Nhóm chỉ tiêu","results":"Kết quả","products[].reports[].results[].name":"Tên chỉ tiêu (tiếng Việt)","products[].reports[].results[].en":["Tên chỉ tiêu (tiếng Anh)","Đúng như in trên phiếu"],"products[].reports[].results[].zh":"Tên chỉ tiêu (tiếng Trung)","value":["Kết quả","Giữ đúng như in trên phiếu"],"exp":"Số mũ (lũy thừa 10)","unit":"Đơn vị"}},
   "choi-cung-nong-trai/chung": {"label":"Trang chính và phần chung","page":["/choi-cung-nong-trai/","main"],"items":null,"hidden":["id","slug","alt","number","image","minutes","correct","flavors.id","key","source"],"labels":{"title":"Tiêu đề trang","intro":"Câu giới thiệu","eyebrow":"Chữ nhỏ trên tiêu đề","note":"Ghi chú cuối trang","play_label":"Chữ trên nút “Ghé chơi”","home":"Đường dẫn: chữ “Trang chủ”","section":"Tên mục (đường dẫn và chữ nhỏ trên tiêu đề các trò chơi)","no_login":"Chữ sau thời lượng (Không cần đăng nhập)","all_activities":"Liên kết “Tất cả hoạt động” (cuối trang trò chơi)","widget_title":"Tiêu đề thẻ “Ghé chơi” ở mép phải các trang","widget_all":"Liên kết cuối thẻ “Ghé chơi”","activities":["Ba trò chơi","Đúng 3 trò, theo thứ tự"],"activities.title":"Tên trò chơi","activities.intro":"Câu giới thiệu trên trang trò chơi","activities.time":"Thời lượng","activities.text":"Mô tả trên trang chính","activities.widget_text":"Mô tả trong thẻ “Ghé chơi”"}},
@@ -480,6 +480,38 @@ for (const [name, label, dir] of groups) {
 await browser.close();
 
 const chapters = collections[1].files.find((f) => f.name === 'cac-chuong').fields[0];
+
+// Chuyện nhà Nấm: one Markdown file per article, so a folder collection
+// (schema: src/content.config.ts). New articles start as drafts.
+const CATEGORIES = [['Hiểu về Nấm', 'hieu-ve-nam'], ['Bếp nhà Nấm', 'bep-nha-nam'], ['Từ Đất đến Nấm', 'tu-dat-den-nam']];
+collections.push({
+  name: 'chuyen_nha_nam', label: 'Chuyện nhà Nấm (bài viết)', label_singular: 'bài viết', i18n: false,
+  folder: 'src/content/chuyen-nha-nam', extension: 'md', format: 'frontmatter',
+  create: true, delete: true, slug: '{{slug}}', identifier_field: 'title',
+  summary: '{{title}} · {{date}}', sortable_fields: ['date', 'title'],
+  preview_path: '/chuyen-nha-nam/{{slug}}/',
+  media_folder: '/src/assets/chuyen-nha-nam', public_folder: '../../assets/chuyen-nha-nam',
+  description: 'Tên file là địa chỉ bài (/chuyen-nha-nam/<tên-file>/). Bài mới để ở chế độ nháp; bỏ chọn “Bản nháp” khi nội dung đã được xác nhận. Không đưa lên số liệu, chứng nhận hay lời khuyên sức khỏe chưa được xác nhận.',
+  fields: [
+    { label: 'Tiêu đề', name: 'title', widget: 'string' },
+    { label: 'Tóm tắt', name: 'excerpt', widget: 'text', hint: 'Một hai câu, hiện dưới tiêu đề và ở trang danh sách' },
+    { label: 'Chuyên mục', name: 'category', widget: 'select', options: CATEGORIES.map(([label, value]) => ({ label, value })) },
+    { label: 'Ngày đăng', name: 'date', widget: 'datetime', time_format: false, format: 'YYYY-MM-DD' },
+    { label: 'Ngày cập nhật', name: 'updated', widget: 'datetime', time_format: false, format: 'YYYY-MM-DD', required: false },
+    { label: 'Bản nháp', name: 'draft', widget: 'boolean', default: true, hint: 'Bản nháp không hiện trên website' },
+    { label: 'Bài nổi bật', name: 'featured', widget: 'boolean', default: false, required: false, hint: 'Bài nổi bật mới nhất mở đầu trang Chuyện nhà Nấm' },
+    { label: 'Ảnh bìa', name: 'cover', widget: 'object', required: false, collapsed: true, fields: [
+      { label: 'Ảnh', name: 'src', widget: 'image', hint: 'Chỉ dùng ảnh thật của trang trại' },
+      { label: 'Mô tả ảnh', name: 'alt', widget: 'string', hint: ALT },
+      { label: 'Chú thích', name: 'caption', widget: 'string', required: false },
+      { label: 'Nguồn ảnh', name: 'credit', widget: 'string', required: false, hint: 'Ví dụ tên báo, với ảnh báo chí' },
+      { label: 'Vị trí cắt ảnh ở trang danh sách', name: 'position', widget: 'string', required: false, hint: 'Ví dụ 50% 30%; để trống là giữa ảnh' },
+    ] },
+    { label: 'Nội dung', name: 'body', widget: 'markdown' },
+    { label: 'Nguồn thông tin', name: 'sources', widget: 'list', required: false, collapsed: true, hint: 'Không hiện trên trang', field: { label: 'Nguồn', name: 'item', widget: 'string' } },
+    { label: 'Mô tả trên Google', name: 'description', widget: 'text', required: false, hint: 'Để trống thì dùng phần tóm tắt' },
+  ],
+});
 chapters.fields.find((f) => f.name === 'more').required = false;
 const config = {
   backend: {
@@ -513,7 +545,7 @@ const ordered = (data, fields) => {
   for (const k of Object.keys(data).filter((k) => !(k in out)).sort()) out[k] = sortDeep(data[k]);
   return out;
 };
-for (const c of config.collections) for (const f of c.files) {
+for (const c of config.collections) for (const f of c.files ?? []) {
   const data = read(f.file);
   const next = f.i18n ? Object.fromEntries(['vi', 'en', 'zh'].map((l) => [l, ordered(data[l], f.fields)])) : ordered(data, f.fields);
   // Dates unquoted, as Sveltia writes them.

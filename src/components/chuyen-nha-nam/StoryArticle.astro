@@ -1,0 +1,384 @@
+---
+/**
+ * One Chuyện nhà Nấm article: title and opening beside the photograph,
+ * then the text in a reading column with its category and date in the
+ * margin, and a few more articles from the same category.
+ * Structured data: Article and BreadcrumbList (schema.org).
+ */
+import { Image, getImage } from 'astro:assets';
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../page/Breadcrumb.astro';
+import Arrow from '../Arrow.astro';
+import { site } from '../../data/site';
+import {
+  articleHref, base, categoryOf, formatDate, isoDate, listHref, readingMinutes, text as t,
+  type Article,
+} from '../../data/chuyen-nha-nam';
+
+interface Props {
+  article: Article;
+  /** Same category, newest first, without this article. */
+  related: Article[];
+  newer?: Article;
+  older?: Article;
+}
+
+const { article, related, newer, older } = Astro.props;
+const { data } = article;
+const { Content } = await render(article);
+const category = categoryOf(data.category);
+const minutes = readingMinutes(article);
+const shareImage = data.cover ? (await getImage({ src: data.cover.src, width: 1200, format: 'jpeg', quality: 80 })).src : undefined;
+const url = new URL(articleHref(article), Astro.site).href;
+const abs = (path: string) => new URL(path, Astro.site).href;
+
+const crumbs = [
+  { label: t.home, href: '/' },
+  { label: t.title, href: base },
+  { label: category.title, href: listHref(data.category) },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: data.title,
+    description: data.description ?? data.excerpt,
+    inLanguage: 'vi',
+    articleSection: category.title,
+    datePublished: isoDate(data.date),
+    dateModified: isoDate(data.updated ?? data.date),
+    mainEntityOfPage: url,
+    url,
+    ...(shareImage && { image: [abs(shareImage)] }),
+    author: { '@type': 'Organization', name: site.name, url: site.url },
+    publisher: { '@type': 'Organization', name: site.name, url: site.url, logo: { '@type': 'ImageObject', url: abs('/app_icon.png') } },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [...crumbs, { label: data.title, href: articleHref(article) }].map((c, i) => ({
+      '@type': 'ListItem', position: i + 1, name: c.label, item: abs(c.href),
+    })),
+  },
+];
+---
+<BaseLayout title={data.title} description={data.description ?? data.excerpt} image={shareImage} ogType="article" noindex={data.draft}>
+  <Fragment slot="head">
+    <meta property="article:published_time" content={isoDate(data.date)} />
+    {data.updated && <meta property="article:modified_time" content={isoDate(data.updated)} />}
+    <meta property="article:section" content={category.title} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <article class="story" aria-labelledby="story-title">
+    <div class="container">
+      <Breadcrumb items={crumbs} />
+
+      <div class:list={['story__top', { 'story__top--plain': !data.cover }]}>
+        <header class="story__head">
+          <p class="eyebrow story__eyebrow">
+            <a href={listHref(data.category)}>{category.title}</a>
+            {data.draft && <span class="cnn-draft">{t.draft}</span>}
+          </p>
+          <h1 class="story__title" id="story-title">{data.title}</h1>
+          <p class="story__dek">{data.excerpt}</p>
+        </header>
+
+        {data.cover && (
+          <figure class="story__cover">
+            <Image
+              src={data.cover.src}
+              alt={data.cover.alt}
+              widths={[640, 960, 1280, 1600]}
+              sizes="(min-width: 1024px) 58vw, 100vw"
+              loading="eager"
+              fetchpriority="high"
+            />
+            {(data.cover.caption || data.cover.credit) && (
+              <figcaption>
+                {data.cover.caption}
+                {data.cover.credit && <span class="story__credit"> {t.photo} {data.cover.credit}</span>}
+              </figcaption>
+            )}
+          </figure>
+        )}
+      </div>
+
+      <div class="story__body">
+        <aside class="story__rail" aria-label="Thông tin bài">
+          <p><a href={listHref(data.category)}>{category.title}</a></p>
+          <p><time datetime={isoDate(data.date)}>{formatDate(data.date)}</time></p>
+          {data.updated && <p>{t.updated} <time datetime={isoDate(data.updated)}>{formatDate(data.updated)}</time></p>}
+          <p>{minutes} phút đọc</p>
+        </aside>
+        <div class="prose">
+          <Content />
+        </div>
+      </div>
+    </div>
+  </article>
+
+  {related.length > 0 && (
+    <section class="story-more container" aria-labelledby="story-more-title">
+      <h2 class="eyebrow story-more__head" id="story-more-title">{t.related} · {category.title}</h2>
+      <ul class="story-more__list">
+        {related.map((a) => (
+          <li>
+            <a href={articleHref(a)}>
+              <span class="story-more__title">{a.data.title}</span>
+              <span class="story-more__excerpt">{a.data.excerpt}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <nav class="story-pager container" aria-label="Bài khác">
+    <div class="story-pager__inner">
+      {newer ? (
+        <a class="story-pager__link" href={articleHref(newer)} rel="prev">
+          <span class="story-pager__label"><Arrow /> {t.newer}</span>
+          <span class="story-pager__title">{newer.data.title}</span>
+        </a>
+      ) : <span />}
+      <a class="story-pager__all" href={base}>{t.back}</a>
+      {older ? (
+        <a class="story-pager__link story-pager__link--next" href={articleHref(older)} rel="next">
+          <span class="story-pager__label">{t.older} <Arrow /></span>
+          <span class="story-pager__title">{older.data.title}</span>
+        </a>
+      ) : <span />}
+    </div>
+  </nav>
+</BaseLayout>
+
+<style>
+  .story { padding-top: clamp(1.25rem, 0.8rem + 1.6vw, 2.25rem); }
+
+  .story__top {
+    display: grid;
+    gap: var(--space-l);
+    margin-top: var(--space-m);
+  }
+
+  .story__eyebrow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; }
+  .story__eyebrow a { border-bottom: 1px solid transparent; transition: border-color 200ms var(--ease); }
+  .story__eyebrow a:hover { border-color: currentColor; }
+
+  .story__title {
+    margin-top: var(--space-s);
+    max-width: 20ch;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--type-title);
+    line-height: 1.1;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+  }
+
+  .story__dek {
+    margin-top: var(--space-s);
+    max-width: 34rem;
+    font-family: var(--font-display);
+    font-size: var(--type-lead);
+    line-height: 1.45;
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+
+  /* The photograph keeps its own proportions; tall ones stop at the fold. */
+  .story__cover { margin: 0; }
+  .story__cover :global(img) {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: min(78vh, 46rem);
+    background: var(--color-cream);
+  }
+  .story__cover figcaption {
+    margin-top: var(--space-xs);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+  .story__credit { white-space: nowrap; }
+
+  .story__body {
+    display: grid;
+    gap: var(--space-m);
+    margin-top: var(--space-xl);
+    padding-top: var(--space-m);
+    border-top: 1px solid var(--color-line-strong);
+  }
+
+  .story__rail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    font-size: var(--type-small);
+    color: var(--color-text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .story__rail a { color: var(--color-text); border-bottom: 1px solid var(--color-line-strong); }
+  .story__rail a:hover { border-color: currentColor; }
+
+  @media (min-width: 1024px) {
+    .story__top {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      column-gap: clamp(var(--space-l), 4vw, var(--space-3xl));
+      align-items: end;
+    }
+    .story__top--plain { grid-template-columns: minmax(0, 1fr); }
+    .story__cover { justify-self: end; }
+
+    .story__body {
+      grid-template-columns: minmax(0, 3fr) minmax(0, 7fr) minmax(0, 2fr);
+      column-gap: clamp(var(--space-l), 4vw, var(--space-3xl));
+    }
+    .story__rail { flex-direction: column; align-self: start; position: sticky; top: calc(var(--header-h) + var(--space-m)); }
+  }
+
+  /* Reading column ------------------------------------------------------ */
+  .prose { max-width: 40rem; min-width: 0; }
+  .prose :global(> * + *) { margin-top: var(--space-s); }
+  .prose :global(p),
+  .prose :global(li) { line-height: 1.75; text-wrap: pretty; }
+  .prose :global(> p:first-child) {
+    font-family: var(--font-display);
+    font-size: var(--type-lead);
+    line-height: 1.5;
+  }
+  .prose :global(h2) {
+    margin-top: var(--space-xl);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--type-h2);
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+  .prose :global(h2 + *) { margin-top: var(--space-s); }
+  .prose :global(ul),
+  .prose :global(ol) { display: grid; gap: var(--space-2xs); padding-left: 0; }
+  .prose :global(ul > li) { position: relative; padding-left: var(--space-m); }
+  .prose :global(ul > li)::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.85em;
+    width: 0.625rem;
+    height: 1px;
+    background: var(--color-earth);
+  }
+  .prose :global(ol) { counter-reset: step; }
+  .prose :global(ol > li) { position: relative; padding-left: 2.25rem; counter-increment: step; }
+  .prose :global(ol > li)::before {
+    content: counter(step, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.2em;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--color-earth);
+    font-variant-numeric: tabular-nums;
+  }
+  .prose :global(a) {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    text-decoration-color: var(--color-line-strong);
+    transition: text-decoration-color 200ms var(--ease);
+  }
+  .prose :global(a:hover) { text-decoration-color: currentColor; }
+  .prose :global(strong) { font-weight: 500; }
+  .prose :global(em) { color: var(--color-text-muted); font-size: var(--type-small); }
+  .prose :global(blockquote) {
+    margin-block: var(--space-l);
+    padding-left: var(--space-m);
+    border-left: 1px solid var(--color-earth);
+    font-family: var(--font-display);
+    font-size: var(--type-h2);
+    line-height: 1.2;
+  }
+  .prose :global(p:has(> img)) { margin-block: var(--space-l); }
+  .prose :global(img) { width: auto; max-width: 100%; height: auto; max-height: min(78vh, 44rem); background: var(--color-cream); }
+
+  .cnn-draft {
+    padding: 0.1rem 0.45rem;
+    border: 1px dashed currentColor;
+    color: #9A4A2A;
+    letter-spacing: 0.12em;
+  }
+
+  /* More from the category ---------------------------------------------- */
+  .story-more { margin-top: var(--space-2xl); }
+  .story-more__head {
+    padding-top: var(--space-m);
+    border-top: 1px solid var(--color-line-strong);
+  }
+  .story-more__list { display: grid; margin-top: var(--space-s); }
+  .story-more__list li + li { border-top: 1px solid var(--color-line); }
+  .story-more__list a {
+    display: grid;
+    gap: 0.25rem;
+    padding-block: var(--space-s);
+  }
+  .story-more__title {
+    font-family: var(--font-display);
+    font-size: var(--type-product);
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+  .story-more__excerpt { font-size: var(--type-small); color: var(--color-text-muted); text-wrap: pretty; }
+  .story-more__list a:hover .story-more__title { text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+
+  @media (min-width: 1024px) {
+    .story-more__list { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--col-gap); }
+    .story-more__list li + li { border-top: 0; }
+  }
+
+  /* Newer / older ------------------------------------------------------- */
+  .story-pager { margin-top: var(--space-2xl); padding-bottom: var(--section-y); }
+  .story-pager__inner {
+    display: grid;
+    gap: var(--space-m);
+    padding-top: var(--space-m);
+    border-top: 1px solid var(--color-line-strong);
+  }
+  .story-pager__link { display: grid; gap: var(--space-2xs); }
+  .story-pager__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-earth);
+  }
+  .story-pager__label :global(.arrow) { width: 0.875rem; }
+  .story-pager__link:first-child .story-pager__label :global(.arrow) { rotate: 180deg; }
+  .story-pager__title {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+  .story-pager__link:hover .story-pager__title { text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+  .story-pager__all {
+    justify-self: start;
+    font-size: var(--type-small);
+    border-bottom: 1px solid var(--color-line-strong);
+  }
+  .story-pager__all:hover { border-color: currentColor; }
+
+  @media (min-width: 768px) {
+    .story-pager__inner { grid-template-columns: 1fr auto 1fr; align-items: start; column-gap: var(--space-xl); }
+    .story-pager__all { justify-self: center; align-self: center; }
+    .story-pager__link--next { text-align: right; justify-items: end; }
+  }
+</style>

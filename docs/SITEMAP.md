@@ -25,6 +25,9 @@ Status vocabulary: Needs verification / Planned / In progress / Implemented / Pu
 | 2 | Giải thưởng & ghi nhận | /dau-an/giai-thuong/ | Live placeholder — VI only, noindex (2026-10-09) |
 | 2 | Chứng nhận sản phẩm | /dau-an/chung-nhan/ | Live placeholder — VI only, noindex (2026-10-09) |
 | 2 | Báo chí & truyền hình | /dau-an/bao-chi/ | Live placeholder — VI only, noindex (2026-10-09) |
+| 1 | Chuyện nhà Nấm | /chuyen-nha-nam/ | Published — VI only (2026-10-14); 9 articles a page, /chuyen-nha-nam/trang/{n}/ |
+| 2 | Chuyện nhà Nấm categories | /chuyen-nha-nam/{hieu-ve-nam,bep-nha-nam,tu-dat-den-nam}/ | Published — VI only (2026-10-14); later pages /trang/{n}/ |
+| 2 | Chuyện nhà Nấm articles | /chuyen-nha-nam/{slug}/ | Published — VI only; src/content/chuyen-nha-nam/*.md, drafts not built |
 | 1 | Hợp tác & liên hệ | /hop-tac/ | Needs verification |
 
 Bảy Núi is a section within About, not a separate page at this stage.
@@ -64,7 +67,7 @@ All child-page anchors below remain proposed and unverified.
 
 ## 4. Navbar and dropdowns: agreed behavior
 
-Keep the exact five navbar labels, numbered 01–05, and their order from section 3.
+Keep the exact navbar labels and their order from section 3. Since 2026-10-14 a sixth item, “Chuyện nhà Nấm” (Vietnamese only), sits between Dấu ấn and Hợp tác, numbered 01–06; it opens /chuyen-nha-nam/ itself, not a homepage anchor.
 Do not rename “Về Hiền Nương” to “Về chúng tôi” or shorten “Nông nghiệp tuần hoàn” to “Tuần hoàn”.
 
 | Navbar item | Dropdown label | Proposed destination |
@@ -80,6 +83,9 @@ Do not rename “Về Hiền Nương” to “Về chúng tôi” or shorten “
 | Dấu ấn | Giải thưởng & ghi nhận | /dau-an/giai-thuong/ |
 | Dấu ấn | Chứng nhận sản phẩm | /dau-an/chung-nhan/ |
 | Dấu ấn | Báo chí & truyền hình | /dau-an/bao-chi/ |
+| Chuyện nhà Nấm | Hiểu về Nấm | /chuyen-nha-nam/hieu-ve-nam/ |
+| Chuyện nhà Nấm | Bếp nhà Nấm | /chuyen-nha-nam/bep-nha-nam/ |
+| Chuyện nhà Nấm | Từ Đất đến Nấm | /chuyen-nha-nam/tu-dat-den-nam/ |
 | Hợp tác | Thông tin hợp tác | /hop-tac/ |
 | Hợp tác | Liên hệ | /hop-tac/#lien-he |
 

@@ -1,0 +1,116 @@
+---
+/**
+ * Opening of the Chuyện nhà Nấm listings: breadcrumb, title and a short
+ * line, then the category filter on a hairline. The filter is a row of
+ * links (one static page per category), so it works without JavaScript and
+ * every category has its own address.
+ */
+import Breadcrumb from '../page/Breadcrumb.astro';
+import { base, categories, categoryOf, listHref, text as t, type CategoryId } from '../../data/chuyen-nha-nam';
+
+interface Props {
+  category?: CategoryId;
+  currentPage: number;
+}
+
+const { category, currentPage } = Astro.props;
+const current = category ? categoryOf(category) : undefined;
+const crumbs = [
+  { label: t.home, href: '/' },
+  ...(current || currentPage > 1 ? [{ label: t.title, href: base }] : [{ label: t.title }]),
+  ...(current ? [currentPage > 1 ? { label: current.title, href: listHref(category) } : { label: current.title }] : []),
+  ...(currentPage > 1 ? [{ label: `${t.page} ${currentPage}` }] : []),
+];
+const filters = [{ id: undefined, title: t.all }, ...categories];
+---
+<header class="cnn-head">
+  <div class="container">
+    <Breadcrumb items={crumbs} />
+    <div class="cnn-head__grid">
+      <div>
+        <p class="eyebrow">{current ? t.title : t.eyebrow}</p>
+        <h1 class="cnn-head__title" id="page-title">{current ? current.title : t.title}</h1>
+      </div>
+      <p class="cnn-head__intro">{current ? current.line : t.intro}</p>
+    </div>
+
+    <nav class="cnn-filter" aria-label={t.filterLabel}>
+      <ul>
+        {filters.map((f) => (
+          <li>
+            <a href={listHref(f.id)} aria-current={f.id === category ? (currentPage > 1 ? 'true' : 'page') : undefined}>{f.title}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .cnn-head {
+    padding-top: clamp(1.25rem, 0.8rem + 1.6vw, 2.25rem);
+    padding-bottom: var(--space-xl);
+  }
+
+  .cnn-head__grid {
+    display: grid;
+    gap: var(--space-s);
+    margin-top: var(--space-m);
+  }
+
+  .cnn-head__title {
+    margin-top: var(--space-xs);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--type-title);
+    line-height: 1.1;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+  }
+
+  .cnn-head__intro {
+    max-width: 34rem;
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+
+  /* Category filter: quiet words on a hairline, the current one underlined
+     in earth, as the Dấu ấn page switch. */
+  .cnn-filter {
+    margin-top: var(--space-l);
+    border-top: 1px solid var(--color-line-strong);
+    border-bottom: 1px solid var(--color-line);
+  }
+  .cnn-filter ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 clamp(1.25rem, 3vw, 2.5rem);
+  }
+  .cnn-filter a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    font-size: var(--type-small);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    color: var(--color-text-muted);
+    border-bottom: 1px solid transparent;
+    margin-bottom: -1px;
+    transition: color 200ms var(--ease), border-color 200ms var(--ease);
+  }
+  .cnn-filter a:hover { color: var(--color-text); }
+  .cnn-filter a[aria-current] {
+    color: var(--color-text);
+    font-weight: 500;
+    border-bottom-color: var(--color-earth);
+  }
+
+  @media (min-width: 1024px) {
+    .cnn-head__grid {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      align-items: end;
+      column-gap: clamp(var(--space-l), 4vw, var(--space-3xl));
+    }
+    .cnn-head__intro { padding-bottom: 0.35rem; }
+  }
+</style>

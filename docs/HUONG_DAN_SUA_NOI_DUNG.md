@@ -35,6 +35,14 @@ Bấm Lưu là trang quản trị tự ghi lên GitHub và web tự cập nhật
 - **Phân trang:** Báo chí 9 bài/trang, Giải thưởng 5, Sự kiện 5 (`perPage` trong `src/data/dau-an.ts`). Trang 1 giữ địa chỉ cũ (`/dau-an/bao-chi/`); các trang sau là `/dau-an/bao-chi/trang/2/`… Thanh số trang chỉ hiện khi có từ 2 trang trở lên. Địa chỉ của từng bài không đổi.
 - **Thanh “Tin mới”** (ngay dưới ảnh đầu trang chủ): ghim bài trong `src/content/dau-an/tin-moi.md`, dòng `ghim: giai-thuong/<id>` (hoặc `bao-chi/<slug>`, `su-kien/<slug>`). Để trống `ghim: ''` thì thanh tự hiện bài mới nhất của ba mục. Ghi sai mã bài thì bản build dừng và báo tên file.
 
+## Chuyện nhà Nấm: viết và sửa bài
+
+- Trong trang quản trị, nhóm **Chuyện nhà Nấm (bài viết)** liệt kê từng bài; bấm **Tạo mới** để viết bài mới. Mỗi bài là một file trong `src/content/chuyen-nha-nam/`, tên file là địa chỉ bài (`/chuyen-nha-nam/<tên-file>/`).
+- Bài mới luôn bắt đầu là **Bản nháp**: bản nháp không lên website, không vào sitemap hay ô tìm kiếm (chỉ hiện, có nhãn “Bản nháp”, khi chạy thử trên máy). Bỏ chọn **Bản nháp** khi nội dung đã được xác nhận.
+- Ba chuyên mục: Hiểu về Nấm, Bếp nhà Nấm, Từ Đất đến Nấm. Mỗi trang danh sách 9 bài, mới nhất trước; bài có **Bài nổi bật** mới nhất mở đầu trang chính.
+- Ảnh bìa và ảnh trong bài nằm ở `src/assets/chuyen-nha-nam/` và được tự thu nhỏ khi build. Chỉ dùng ảnh thật của trang trại.
+- Hai bài đang là bản nháp chờ thông tin: *Nấm mối kho tiêu* (cần công thức) và *Trùn quế ở Hiền Nương* (cần ảnh và thông tin).
+
 ## Nếu lỡ sửa sai
 
 Website **không hỏng**: nếu nội dung bị sai cấu trúc, bản build mới sẽ dừng lại và web giữ nguyên bản cũ.

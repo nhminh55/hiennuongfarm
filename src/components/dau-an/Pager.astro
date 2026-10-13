@@ -2,24 +2,28 @@
 /**
  * Page numbers under a Dấu ấn listing: newer pages to the left. Shown only
  * when the listing runs to more than one page. Page sizes and addresses:
- * perPage and listingHref in src/data/dau-an.ts.
+ * perPage and listingHref in src/data/dau-an.ts. Other listings (Chuyện nhà
+ * Nấm) pass their own page addresses as `href`.
  */
 import Arrow from '../Arrow.astro';
 import { dauAnText as t, listingHref, type Listing } from '../../data/dau-an';
 
 interface Props {
-  listing: Listing;
+  listing?: Listing;
+  /** Address of page n; listingHref(listing, n) by default. */
+  href?: (n: number) => string;
   currentPage: number;
   lastPage: number;
 }
 
 const { listing, currentPage, lastPage } = Astro.props;
+const href = Astro.props.href ?? ((n: number) => listingHref(listing!, n));
 const pages = Array.from({ length: lastPage }, (_, i) => i + 1);
 ---
 {lastPage > 1 && (
   <nav class="da-pager" aria-label={`${t.trang} ${currentPage} / ${lastPage}`}>
     {currentPage > 1 ? (
-      <a class="da-pager__step" href={listingHref(listing, currentPage - 1)} rel="prev">
+      <a class="da-pager__step" href={href(currentPage - 1)} rel="prev">
         <Arrow /> {t.trang_truoc}
       </a>
     ) : <span class="da-pager__step" aria-hidden="true"></span>}
@@ -30,14 +34,14 @@ const pages = Array.from({ length: lastPage }, (_, i) => i + 1);
           {n === currentPage ? (
             <span class="da-pager__page" aria-current="page"><span class="sr-only">{t.trang} </span>{n}</span>
           ) : (
-            <a class="da-pager__page" href={listingHref(listing, n)}><span class="sr-only">{t.trang} </span>{n}</a>
+            <a class="da-pager__page" href={href(n)}><span class="sr-only">{t.trang} </span>{n}</a>
           )}
         </li>
       ))}
     </ol>
 
     {currentPage < lastPage ? (
-      <a class="da-pager__step da-pager__step--next" href={listingHref(listing, currentPage + 1)} rel="next">
+      <a class="da-pager__step da-pager__step--next" href={href(currentPage + 1)} rel="next">
         {t.trang_sau} <Arrow />
       </a>
     ) : <span class="da-pager__step" aria-hidden="true"></span>}

@@ -1,0 +1,18 @@
+---
+// /chuyen-nha-nam/trang/2/ and on: later pages of the full listing.
+import type { GetStaticPaths } from 'astro';
+import StoriesListing from '../../../components/chuyen-nha-nam/StoriesListing.astro';
+import { getArticles, listingOrder, listPage } from '../../../data/chuyen-nha-nam';
+
+export const getStaticPaths = (async () => {
+  const all = listingOrder(await getArticles());
+  const { lastPage } = listPage(all);
+  return Array.from({ length: lastPage - 1 }, (_, i) => ({
+    params: { page: String(i + 2) },
+    props: { page: listPage(all, i + 2) },
+  }));
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+<StoriesListing page={page} />

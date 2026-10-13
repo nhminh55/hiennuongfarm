@@ -99,6 +99,23 @@ menus:
     href: /#dau-an
   - items:
       - label:
+          vi: Hiểu về Nấm
+          en: Understanding mushrooms
+          zh: 认识蘑菇
+        href: /chuyen-nha-nam/hieu-ve-nam/
+      - label:
+          vi: Bếp nhà Nấm
+          en: The mushroom kitchen
+          zh: 蘑菇厨房
+        href: /chuyen-nha-nam/bep-nha-nam/
+      - label:
+          vi: Từ Đất đến Nấm
+          en: From soil to mushroom
+          zh: 从土地到蘑菇
+        href: /chuyen-nha-nam/tu-dat-den-nam/
+    href: /chuyen-nha-nam/
+  - items:
+      - label:
           vi: Thông tin hợp tác
           en: Partnership information
           zh: 合作信息

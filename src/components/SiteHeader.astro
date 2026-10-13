@@ -21,14 +21,17 @@ const lang = getLocale(Astro.url);
 // Each label goes to its homepage section; its dropdown (src/data/drafts.ts)
 // opens the pages, Sản phẩm (#san-vat) and Về Hiền Nương included.
 // Labels: src/content/chung/menu.md.
+// Chuyện nhà Nấm has no homepage section: it opens its own page, and as a
+// Vietnamese-only page (viOnlyPrefixes) it is left out of the other languages.
 const menu = copy('chung/menu', lang).header;
 const links = [
   { label: menu.about, anchor: '/#ve-hien-nuong' },
   { label: menu.circular, anchor: '/#tuan-hoan' },
   { label: menu.products, anchor: '/#san-vat' },
   { label: menu.press, anchor: '/#dau-an' },
+  { label: menu.stories, anchor: '/chuyen-nha-nam/' },
   { label: menu.partner, anchor: '/#hop-tac' },
-];
+].filter((item) => lang === 'vi' || item.anchor.includes('#') || isTranslated(item.anchor));
 // Vietnamese-only pages (viOnlyPaths) open in Vietnamese from every language.
 const subLink = (href: string) =>
   isTranslated(href) ? { href: localizePath(href, lang) } : { href, hreflang: lang === 'vi' ? undefined : 'vi' };
@@ -74,7 +77,7 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
           {navItems.map((item, i) => (
             item.children ? (
               <li class="site-nav__item" data-dropdown data-dropdown-hover>
-                <a class="site-nav__link" href={item.href}><span class="site-nav__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>{item.label}</a>
+                <a class="site-nav__link" href={item.href} aria-current={current(item.href)}><span class="site-nav__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>{item.label}</a>
                 <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls={`nav-sub-${i}`} aria-label={`${t.submenu}: ${item.label}`} data-dropdown-toggle>
                   <svg viewBox="0 0 10 6" aria-hidden="true" focusable="false"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1" /></svg>
                 </button>
@@ -144,7 +147,7 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
         <ol class="mobile-menu__list">
           {navItems.map((item, i) => (
             <li class:list={[{ 'mobile-menu__item': item.children }]} data-dropdown={item.children ? '' : undefined}>
-              <a class="mobile-menu__link" href={item.href} aria-current={item.children ? undefined : current(item.href)} data-menu-link>
+              <a class="mobile-menu__link" href={item.href} aria-current={current(item.href)} data-menu-link>
                 <span class="mobile-menu__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
                 <span>{item.label}</span>
               </a>

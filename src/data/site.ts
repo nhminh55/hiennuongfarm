@@ -55,7 +55,8 @@ export const footerNav: NavItem[] = [
   { label: navLabel('products'), href: '/san-pham/' },
   nav[1],
   nav[4],
-  // Vietnamese only (viOnlyPaths); hidden in other languages.
+  // Vietnamese only (viOnlyPaths, viOnlyPrefixes); hidden in other languages.
+  { label: navLabel('stories'), href: '/chuyen-nha-nam/' },
   { label: navLabel('play'), href: '/choi-cung-nong-trai/' },
 ];
 
