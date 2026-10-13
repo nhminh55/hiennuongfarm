@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hướng dẫn sử dụng website Hiền Nương Farm</title>
+<style>
+  :root { --bg:#f7f4ee; --paper:#fff; --ink:#24301f; --muted:#5d6656; --line:#ddd6c8; --accent:#3f5a2e; --soft:#eef2e6; --warn:#fff6e0; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:18px/1.7 "Segoe UI", Arial, sans-serif; }
+  header.top { background:var(--accent); color:#fff; padding:32px 16px; }
+  header.top h1 { margin:0 0 6px; font-size:1.8rem; line-height:1.3; }
+  header.top p { margin:0; opacity:.9; }
+  .wrap { max-width:900px; margin:0 auto; padding:0 16px; }
+  .find { position:sticky; top:0; z-index:5; background:var(--bg); border-bottom:1px solid var(--line); padding:10px 0; }
+  .find input { width:100%; font-size:1.05rem; padding:12px 14px; border:2px solid var(--line); border-radius:10px; }
+  .find input:focus { outline:none; border-color:var(--accent); }
+  nav.toc, section { background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:20px 24px; margin:22px 0; }
+  nav.toc ol { margin:0; padding-left:1.4em; columns:2; column-gap:32px; }
+  @media (max-width:640px){ nav.toc ol { columns:1; } body { font-size:17px; } nav.toc, section { padding:16px; } }
+  h2 { margin:0 0 12px; font-size:1.4rem; color:var(--accent); }
+  h3 { margin:20px 0 6px; font-size:1.12rem; }
+  a { color:var(--accent); }
+  .step { counter-reset:s; list-style:none; padding:0; }
+  .step li { counter-increment:s; position:relative; padding-left:44px; margin:10px 0; }
+  .step li::before { content:counter(s); position:absolute; left:0; top:2px; width:30px; height:30px; border-radius:50%; background:var(--accent); color:#fff; text-align:center; line-height:30px; font-weight:700; font-size:.95rem; }
+  .tip, .note { border-radius:10px; padding:12px 16px; margin:14px 0; }
+  .tip { background:var(--soft); }
+  .note { background:var(--warn); }
+  table { width:100%; border-collapse:collapse; margin:10px 0; font-size:.95rem; }
+  th, td { border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top; }
+  th { background:var(--soft); }
+  .tbl { overflow-x:auto; }
+  code, .addr { background:var(--soft); padding:1px 6px; border-radius:5px; font-family:Consolas, monospace; font-size:.92em; word-break:break-all; }
+  .hidden { display:none; }
+  .empty { display:none; padding:16px; text-align:center; color:var(--muted); }
+  footer { color:var(--muted); font-size:.9rem; text-align:center; padding:24px 16px 48px; }
+  @media print { .find { display:none; } section, nav.toc { break-inside:avoid; } }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <h1>Hướng dẫn sử dụng website Hiền Nương Farm</h1>
+  <p>Dành cho chị Nương: cách mở website, xem từng mục và xử lý những tình huống thường gặp.</p>
+</div></header>
+
+<div class="find"><div class="wrap">
+  <input id="q" type="search" placeholder="Gõ chữ để tìm nhanh, ví dụ: sản phẩm, ngôn ngữ, điện thoại…" aria-label="Tìm trong hướng dẫn">
+</div></div>
+
+<main class="wrap">
+<p class="empty" id="empty">Không tìm thấy mục nào phù hợp. Chị thử gõ từ khác ngắn hơn nhé.</p>
+
+<nav class="toc" data-s>
+  <h2>Mục lục</h2>
+  <ol>
+    <li><a href="#truy-cap">Cách mở website</a></li>
+    <li><a href="#bo-cuc">Bố cục chung của mỗi trang</a></li>
+    <li><a href="#menu">Thanh menu (các mục chính)</a></li>
+    <li><a href="#trang-chu">Trang chủ</a></li>
+    <li><a href="#ve-hien-nuong">Về Hiền Nương</a></li>
+    <li><a href="#tuan-hoan">Nông nghiệp tuần hoàn</a></li>
+    <li><a href="#san-pham">Sản phẩm</a></li>
+    <li><a href="#dau-an">Dấu ấn</a></li>
+    <li><a href="#hop-tac">Hợp tác &amp; Liên hệ</a></li>
+    <li><a href="#choi">Chơi cùng nông trại</a></li>
+    <li><a href="#tim-kiem">Tìm kiếm trên website</a></li>
+    <li><a href="#ngon-ngu">Đổi ngôn ngữ (Việt – Anh – Trung)</a></li>
+    <li><a href="#chia-se">Gửi link cho khách, bạn bè</a></li>
+    <li><a href="#sua-noi-dung">Muốn thay đổi nội dung thì làm sao?</a></li>
+    <li><a href="#su-co">Xử lý sự cố thường gặp</a></li>
+    <li><a href="#tra-cuu">Bảng tra cứu nhanh các địa chỉ</a></li>
+  </ol>
+</nav>
+
+<section id="truy-cap" data-s>
+  <h2>1. Cách mở website</h2>
+  <p>Địa chỉ website: <span class="addr">hiennuongfarm.vn</span></p>
+  <h3>Trên điện thoại</h3>
+  <ol class="step">
+    <li>Mở ứng dụng trình duyệt: <b>Chrome</b> (điện thoại Android) hoặc <b>Safari</b> (iPhone) — biểu tượng hình la bàn hoặc hình tròn nhiều màu.</li>
+    <li>Chạm vào ô ở trên cùng (ô địa chỉ / ô tìm kiếm).</li>
+    <li>Gõ <span class="addr">hiennuongfarm.vn</span> rồi bấm nút <b>Đi</b> / <b>Enter</b> trên bàn phím.</li>
+  </ol>
+  <h3>Trên máy tính</h3>
+  <ol class="step">
+    <li>Mở Chrome, Cốc Cốc, Edge hoặc Safari.</li>
+    <li>Bấm vào thanh địa chỉ trên cùng, gõ <span class="addr">hiennuongfarm.vn</span>, nhấn phím <b>Enter</b>.</li>
+  </ol>
+  <h3>Lưu lại để lần sau mở nhanh</h3>
+  <ul>
+    <li><b>Android (Chrome):</b> đang mở website → bấm dấu <b>⋮</b> góc trên bên phải → <b>Thêm vào màn hình chính</b>. Trên màn hình điện thoại sẽ có biểu tượng Hiền Nương, lần sau chỉ cần chạm vào.</li>
+    <li><b>iPhone (Safari):</b> bấm nút <b>Chia sẻ</b> (ô vuông có mũi tên đi lên) → <b>Thêm vào MH chính</b>.</li>
+    <li><b>Máy tính:</b> bấm hình ngôi sao ☆ ở cuối thanh địa chỉ để đánh dấu trang.</li>
+  </ul>
+  <div class="tip">💡 Không cần tài khoản hay mật khẩu để xem website. Ai có địa chỉ cũng xem được.</div>
+</section>
+
+<section id="bo-cuc" data-s>
+  <h2>2. Bố cục chung của mỗi trang</h2>
+  <p>Trang nào cũng có 3 phần giống nhau:</p>
+  <ul>
+    <li><b>Phần đầu trang (trên cùng):</b> logo Hiền Nương, thanh menu, nút đổi ngôn ngữ, nút tìm kiếm (hình kính lúp) và nút <b>Liên hệ</b>.</li>
+    <li><b>Phần nội dung (ở giữa):</b> chữ, hình, video của trang đó. Kéo (vuốt) lên xuống để xem.</li>
+    <li><b>Chân trang (dưới cùng):</b> địa chỉ hai cơ sở (Thới Sơn và Tri Tôn) kèm link bản đồ, email, hai số điện thoại, thông tin đăng ký hộ kinh doanh và danh sách link “Khám phá”.</li>
+  </ul>
+  <div class="tip">💡 <b>Bấm vào logo Hiền Nương</b> ở góc trên bên trái bất cứ lúc nào để quay về trang chủ.</div>
+</section>
+
+<section id="menu" data-s>
+  <h2>3. Thanh menu (các mục chính)</h2>
+  <p>Menu có 5 mục, đánh số từ 01 đến 05: <b>Về Hiền Nương · Nông nghiệp tuần hoàn · Sản phẩm · Dấu ấn · Hợp tác</b>.</p>
+  <h3>Trên máy tính</h3>
+  <ul>
+    <li><b>Bấm vào tên mục</b> → website chạy tới phần tương ứng trên trang chủ.</li>
+    <li><b>Đưa chuột lên tên mục</b> (hoặc bấm vào mũi tên nhỏ ⌄ bên cạnh) → hiện ra danh sách các trang con. Bấm vào trang con để mở.</li>
+  </ul>
+  <h3>Trên điện thoại</h3>
+  <ol class="step">
+    <li>Bấm nút <b>Menu</b> (ba gạch ngang ☰) ở góc trên.</li>
+    <li>Bấm vào <b>tên mục</b> để tới phần đó trên trang chủ, <b>hoặc</b> bấm vào <b>mũi tên ⌄</b> bên phải để mở danh sách trang con.</li>
+    <li>Muốn đóng menu: bấm lại nút Menu (dấu ✕).</li>
+  </ol>
+  <div class="tip">💡 Mục có biểu tượng <b>máy quay nhỏ</b> bên cạnh là mục có video.</div>
+</section>
+
+<section id="trang-chu" data-s>
+  <h2>4. Trang chủ</h2>
+  <p>Địa chỉ: <span class="addr">hiennuongfarm.vn</span></p>
+  <p>Đây là trang khách thấy đầu tiên. Kéo xuống sẽ lần lượt thấy:</p>
+  <ul>
+    <li><b>Ảnh lớn mở đầu</b> giới thiệu Hiền Nương Farm.</li>
+    <li><b>01 Về Hiền Nương</b> – giới thiệu ngắn, có nút dẫn sang trang câu chuyện đầy đủ.</li>
+    <li><b>Vùng Bảy Núi</b> – giới thiệu vùng đất của trang trại.</li>
+    <li><b>02 Nông nghiệp tuần hoàn</b> – vòng tuần hoàn 6 bước tại trang trại.</li>
+    <li><b>03 Sản phẩm</b> – các sản phẩm của trang trại.</li>
+    <li><b>04 Dấu ấn</b> – báo chí, sự kiện, ghi nhận.</li>
+    <li><b>05 Hợp tác</b> – mời hợp tác và thông tin liên hệ.</li>
+  </ul>
+  <p>Mỗi phần thường có nút/đường link để <b>xem chi tiết</b> ở trang riêng.</p>
+</section>
+
+<section id="ve-hien-nuong" data-s>
+  <h2>5. Về Hiền Nương</h2>
+  <p>Địa chỉ: <span class="addr">hiennuongfarm.vn/ve-chung-toi/</span></p>
+  <p>Trang kể câu chuyện của trang trại, đọc liền một mạch từ trên xuống. Khi kéo xuống, một <b>thanh nhỏ dưới menu</b> cho biết chị đang đọc chương nào; bấm vào tên chương trên thanh đó để nhảy tới.</p>
+  <div class="tbl"><table>
+    <tr><th>Chương</th><th>Nội dung</th></tr>
+    <tr><td>Câu chuyện</td><td>Chị Châu Thị Nương và anh Trần Phương Hiền, khởi nghiệp năm 2020.</td></tr>
+    <tr><td>Bảy Núi</td><td>Vùng đất: núi, ruộng, cây thốt nốt, văn hóa Khmer. Có phần bấm mở xem bảy ngọn núi.</td></tr>
+    <tr><td>Hai cơ sở</td><td>Cơ sở Thới Sơn và Tà Đảnh.</td></tr>
+    <tr><td>Năng lượng</td><td>Điện mặt trời dùng cho trồng nấm.</td></tr>
+    <tr><td>Tuần hoàn (Sau mùa thu hoạch)</td><td>Phụ phẩm, giá thể, nuôi trùn, phân trùn cho cây.</td></tr>
+    <tr><td>Con người</td><td>Người lao động địa phương, chia sẻ kinh nghiệm.</td></tr>
+    <tr><td>Định hướng phát triển</td><td>Hướng đi sắp tới.</td></tr>
+    <tr><td>Video giới thiệu</td><td>Bấm nút ▶ để xem video.</td></tr>
+  </table></div>
+</section>
+
+<section id="tuan-hoan" data-s>
+  <h2>6. Nông nghiệp tuần hoàn</h2>
+  <p>Địa chỉ: <span class="addr">hiennuongfarm.vn/nong-nghiep-tuan-hoan/</span></p>
+  <ul>
+    <li><b>Vòng tuần hoàn tại farm:</b> hình bánh xe 6 bước. <b>Bấm vào từng bước</b> trên bánh xe, khung bên cạnh (hoặc bên dưới, trên điện thoại) sẽ hiện giải thích của bước đó.</li>
+    <li><b>Trải nghiệm nông trại:</b> video về trang trại, bấm ▶ để xem.</li>
+    <li><b>Năng lượng mặt trời:</b> phần nói về hệ thống điện mặt trời.</li>
+  </ul>
+</section>
+
+<section id="san-pham" data-s>
+  <h2>7. Sản phẩm</h2>
+  <p>Địa chỉ: <span class="addr">hiennuongfarm.vn/san-pham/</span></p>
+  <p>Trang trưng bày 12 sản phẩm, chia hai nhóm:</p>
+  <div class="tbl"><table>
+    <tr><th>Nấm tươi</th><th>Sản phẩm chế biến</th></tr>
+    <tr><td>Nấm Mối Đen<br>Nấm Linh Chi Tai To<br>Đông Trùng Hạ Thảo<br>Nấm Bào Ngư</td>
+        <td>Nấm Mối Đen Sấy Thăng Hoa<br>Snack Nấm Mối Đen<br>Snack Nấm Bào Ngư<br>Đông Trùng Hạ Thảo Sấy Thăng Hoa<br>Trà Hòa Tan Linh Chi<br>Trà Hòa Tan Linh Chi Trùng Thảo<br>Bào Tử Nấm Linh Chi<br>Đông Trùng Hạ Thảo Ngâm Mật Ong</td></tr>
+  </table></div>
+  <h3>Cách xem</h3>
+  <ol class="step">
+    <li>Bấm vào hình hoặc tên một sản phẩm để xem ảnh lớn và thông tin của sản phẩm đó.</li>
+    <li>Bấm sản phẩm khác để chuyển qua.</li>
+    <li>Riêng <b>Nấm Mối Đen</b> có thêm trang chi tiết riêng: <span class="addr">hiennuongfarm.vn/san-pham/nam-moi-den/</span></li>
+  </ol>
+  <div class="tip">💡 Trong menu <b>Sản phẩm</b>, đưa chuột vào “Nấm tươi” hoặc “Sản phẩm chế biến” sẽ hiện ngay danh sách sản phẩm của nhóm đó.<br>💡 Muốn gửi khách đúng một sản phẩm: mở sản phẩm đó rồi sao chép địa chỉ trên thanh trình duyệt (xem <a href="#chia-se">mục 13</a>).</div>
+</section>
+
+<section id="dau-an" data-s>
+  <h2>8. Dấu ấn</h2>
+  <p>Nơi tập hợp những gì nói về Hiền Nương. Gồm 4 trang:</p>
+  <div class="tbl"><table>
+    <tr><th>Trang</th><th>Địa chỉ</th><th>Có gì</th></tr>
+    <tr><td>Báo chí &amp; Truyền thông</td><td><span class="addr">/dau-an/bao-chi/</span></td><td>Các bài báo, phóng sự. Bấm vào một bài để đọc tóm tắt và mở bài gốc.</td></tr>
+    <tr><td>Giải thưởng &amp; Ghi nhận</td><td><span class="addr">/dau-an/giai-thuong/</span></td><td>Các giải thưởng, bằng khen.</td></tr>
+    <tr><td>Sự kiện &amp; Hoạt động</td><td><span class="addr">/dau-an/su-kien/</span></td><td>Hội chợ, hội nghị, các buổi gặp gỡ. Bấm vào từng sự kiện để xem ảnh và chi tiết.</td></tr>
+    <tr><td>Chứng nhận sản phẩm</td><td><span class="addr">/dau-an/chung-nhan/</span></td><td>Các chứng nhận của sản phẩm.</td></tr>
+  </table></div>
+  <p>Các trang Dấu ấn hiện chỉ có <b>tiếng Việt</b>.</p>
+</section>
+
+<section id="hop-tac" data-s>
+  <h2>9. Hợp tác &amp; Liên hệ</h2>
+  <p>Địa chỉ: <span class="addr">hiennuongfarm.vn/hop-tac/</span> — phần liên hệ: <span class="addr">hiennuongfarm.vn/hop-tac/#lien-he</span></p>
+  <p>Khách bấm nút <b>Liên hệ</b> trên cùng của mọi trang sẽ tới đây. Thông tin liên hệ đang hiển thị trên website:</p>
+  <ul>
+    <li>Email: <b>contact@hiennuongfarm.vn</b></li>
+    <li>Điện thoại: <b>0985 799 777</b> và <b>0988 799 777</b></li>
+    <li>Cơ sở Thới Sơn: Khóm Thới Thuận, Phường Thới Sơn, Tỉnh An Giang</li>
+    <li>Cơ sở Tri Tôn: Cầu 15, Xã Tri Tôn, Tỉnh An Giang</li>
+  </ul>
+  <div class="note">⚠️ Khách sẽ gọi điện / gửi email theo các thông tin trên. Chị nhớ <b>kiểm tra hộp thư contact@hiennuongfarm.vn thường xuyên</b>. Nếu đổi số điện thoại hay email, báo người quản lý website để cập nhật ngay (xem <a href="#sua-noi-dung">mục 14</a>).</div>
+  <p>Trên điện thoại, khách bấm vào số điện thoại là máy tự gọi; bấm vào địa chỉ “xem bản đồ” là mở Google Maps chỉ đường.</p>
+</section>
+
+<section id="choi" data-s>
+  <h2>10. Chơi cùng nông trại</h2>
+  <p>Địa chỉ: <span class="addr">hiennuongfarm.vn/choi-cung-nong-trai/</span> (có link ở chân trang, mục “Khám phá”; những chỗ có hình <b>tay cầm chơi game 🎮</b> là lời mời chơi).</p>
+  <p>Ba trò chơi nhỏ, nhẹ nhàng, giúp khách hiểu thêm về nấm và trang trại:</p>
+  <ul>
+    <li><b>Một vòng nông trại</b> (2–3 phút): ghép 5 mảnh để thấy vòng tuần hoàn từ phụ phẩm đến vườn cây.</li>
+    <li><b>Hôm nay ăn nấm gì?</b> (1–2 phút): chọn sở thích, website gợi ý một món nấm và cách nấu.</li>
+    <li><b>Bạn hiểu nấm tới đâu?</b> (khoảng 3 phút): 5 câu hỏi vui về nấm.</li>
+  </ul>
+  <p>Bấm <b>Ghé chơi</b> để bắt đầu. Trò chơi có thể có âm thanh — nhớ chỉnh loa nếu đang ở nơi đông người.</p>
+</section>
+
+<section id="tim-kiem" data-s>
+  <h2>11. Tìm kiếm trên website</h2>
+  <ol class="step">
+    <li>Bấm biểu tượng <b>kính lúp 🔍</b> ở phần đầu trang.</li>
+    <li>Gõ từ cần tìm, ví dụ “linh chi”, “Bảy Núi”, “Tổng Bí thư”.</li>
+    <li>Nhấn <b>Enter</b> (hoặc nút tìm). Danh sách kết quả hiện ra, bấm vào kết quả để mở.</li>
+  </ol>
+  <div class="tip">💡 Gõ không dấu cũng được. Nút tìm kiếm chỉ có khi xem website bằng tiếng Việt.</div>
+</section>
+
+<section id="ngon-ngu" data-s>
+  <h2>12. Đổi ngôn ngữ (Việt – Anh – Trung)</h2>
+  <p>Ở phần đầu trang có nút chọn ngôn ngữ: <b>VI</b> (tiếng Việt), <b>EN</b> (tiếng Anh), <b>中文</b> (tiếng Trung). Bấm để chuyển.</p>
+  <ul>
+    <li>Đã có đủ 3 thứ tiếng: Trang chủ, Về Hiền Nương, Nông nghiệp tuần hoàn, Sản phẩm.</li>
+    <li>Chỉ có tiếng Việt: Dấu ấn, Hợp tác, Chơi cùng nông trại, Tìm kiếm. Khi khách nước ngoài bấm vào những mục này, website sẽ mở bản tiếng Việt.</li>
+  </ul>
+  <p>Gửi khách nước ngoài: thêm <span class="addr">/en/</span> (tiếng Anh) hoặc <span class="addr">/zh/</span> (tiếng Trung) sau tên miền, ví dụ <span class="addr">hiennuongfarm.vn/en/</span>.</p>
+</section>
+
+<section id="chia-se" data-s>
+  <h2>13. Gửi link cho khách, bạn bè</h2>
+  <h3>Trên điện thoại</h3>
+  <ol class="step">
+    <li>Mở đúng trang (hoặc đúng sản phẩm) muốn gửi.</li>
+    <li>Android: bấm <b>⋮</b> → <b>Chia sẻ</b>. iPhone: bấm nút <b>Chia sẻ</b> (ô vuông mũi tên lên).</li>
+    <li>Chọn Zalo, Messenger… và chọn người nhận.</li>
+  </ol>
+  <h3>Trên máy tính</h3>
+  <ol class="step">
+    <li>Bấm vào thanh địa chỉ trên cùng (chữ sẽ được bôi xanh).</li>
+    <li>Nhấn <b>Ctrl + C</b> để sao chép.</li>
+    <li>Mở Zalo/Facebook, bấm vào ô nhắn tin, nhấn <b>Ctrl + V</b> để dán rồi gửi.</li>
+  </ol>
+  <div class="tip">💡 Khi dán link vào Zalo/Facebook, thường sẽ tự hiện ảnh và tiêu đề trang cho đẹp.</div>
+</section>
+
+<section id="sua-noi-dung" data-s>
+  <h2>14. Muốn thay đổi nội dung thì làm sao?</h2>
+  <p>Website này <b>không có trang quản trị</b> để tự đăng bài hay sửa chữ. Đây là điều có chủ ý: website chạy nhanh, an toàn, khó bị phá, và chị <b>không thể lỡ tay làm hỏng</b> website.</p>
+  <p>Khi cần thay đổi (thêm sản phẩm, đổi giá/thông tin, thêm bài báo, sự kiện, đổi số điện thoại, sửa lỗi chính tả…), chị chỉ cần gửi cho người quản lý website (qua Zalo hoặc email) những thứ sau:</p>
+  <ol class="step">
+    <li><b>Trang nào:</b> gửi link trang đó, hoặc chụp màn hình chỗ cần sửa.</li>
+    <li><b>Sửa thành gì:</b> gõ nội dung mới.</li>
+    <li><b>Hình ảnh / video (nếu có):</b> gửi file gốc, rõ nét (gửi dạng “File” trên Zalo để ảnh không bị mờ).</li>
+    <li><b>Với bài báo, sự kiện, giải thưởng:</b> kèm tên, ngày, nơi tổ chức hoặc tên báo, link bài gốc.</li>
+  </ol>
+  <div class="note">⚠️ Website chỉ đăng thông tin <b>có thật và có nguồn</b> (bài báo, giấy chứng nhận, hình ảnh thật). Vì vậy khi gửi giải thưởng hay chứng nhận, chị nhớ gửi kèm ảnh giấy tờ để đối chiếu.</div>
+  <p>Sau khi sửa xong, nội dung mới thường hiện lên website trong vài phút. Nếu chưa thấy, xem <a href="#su-co">mục 15</a>.</p>
+</section>
+
+<section id="su-co" data-s>
+  <h2>15. Xử lý sự cố thường gặp</h2>
+  <div class="tbl"><table>
+    <tr><th>Gặp chuyện gì</th><th>Làm thế nào</th></tr>
+    <tr><td>Website không mở được</td><td>Kiểm tra wifi / 4G (thử mở Facebook xem có vào được không). Kiểm tra đã gõ đúng <span class="addr">hiennuongfarm.vn</span>. Đợi 5 phút thử lại. Vẫn không được thì báo người quản lý website.</td></tr>
+    <tr><td>Đã sửa rồi mà vẫn thấy nội dung cũ</td><td>Tải lại trang: máy tính nhấn <b>Ctrl + F5</b>; điện thoại kéo trang xuống từ trên cùng hoặc bấm nút ↻.</td></tr>
+    <tr><td>Video không chạy</td><td>Kiểm tra mạng; bấm nút ▶ thêm lần nữa; xem điện thoại có đang tắt tiếng không.</td></tr>
+    <tr><td>Chữ quá nhỏ</td><td>Điện thoại: dùng hai ngón tay kéo giãn màn hình. Máy tính: giữ <b>Ctrl</b> và nhấn phím <b>+</b> (thu nhỏ: <b>Ctrl</b> và <b>−</b>).</td></tr>
+    <tr><td>Lỡ bấm lạc sang trang khác</td><td>Bấm nút <b>Quay lại ←</b> của trình duyệt, hoặc bấm logo Hiền Nương để về trang chủ.</td></tr>
+    <tr><td>Thấy thông tin sai, lỗi chính tả, hình lỗi</td><td>Chụp màn hình, gửi người quản lý website kèm link trang.</td></tr>
+    <tr><td>Khách nói không gửi được email / gọi không được</td><td>Kiểm tra lại email và số điện thoại ở <a href="#hop-tac">mục 9</a> còn đúng không; nếu đã đổi thì báo cập nhật.</td></tr>
+  </table></div>
+  <div class="note">⚠️ <b>Cảnh giác lừa đảo:</b> nếu có ai gọi điện, nhắn tin, gửi email nói website “sắp hết hạn”, “bị khóa”, đòi chuyển tiền hoặc đòi mật khẩu — <b>đừng làm theo</b>, hãy hỏi lại người quản lý website trước.</div>
+</section>
+
+<section id="tra-cuu" data-s>
+  <h2>16. Bảng tra cứu nhanh các địa chỉ</h2>
+  <p>Gõ đầy đủ <span class="addr">hiennuongfarm.vn</span> + phần đuôi bên dưới.</p>
+  <div class="tbl"><table>
+    <tr><th>Trang</th><th>Phần đuôi địa chỉ</th></tr>
+    <tr><td>Trang chủ</td><td><code>/</code></td></tr>
+    <tr><td>Về Hiền Nương</td><td><code>/ve-chung-toi/</code></td></tr>
+    <tr><td>Video giới thiệu</td><td><code>/ve-chung-toi/#video-gioi-thieu</code></td></tr>
+    <tr><td>Nông nghiệp tuần hoàn</td><td><code>/nong-nghiep-tuan-hoan/</code></td></tr>
+    <tr><td>Tất cả sản phẩm</td><td><code>/san-pham/</code></td></tr>
+    <tr><td>Nấm Mối Đen (trang riêng)</td><td><code>/san-pham/nam-moi-den/</code></td></tr>
+    <tr><td>Báo chí &amp; Truyền thông</td><td><code>/dau-an/bao-chi/</code></td></tr>
+    <tr><td>Giải thưởng &amp; Ghi nhận</td><td><code>/dau-an/giai-thuong/</code></td></tr>
+    <tr><td>Sự kiện &amp; Hoạt động</td><td><code>/dau-an/su-kien/</code></td></tr>
+    <tr><td>Chứng nhận sản phẩm</td><td><code>/dau-an/chung-nhan/</code></td></tr>
+    <tr><td>Hợp tác</td><td><code>/hop-tac/</code></td></tr>
+    <tr><td>Liên hệ</td><td><code>/hop-tac/#lien-he</code></td></tr>
+    <tr><td>Chơi cùng nông trại</td><td><code>/choi-cung-nong-trai/</code></td></tr>
+    <tr><td>Tìm kiếm</td><td><code>/tim-kiem/</code></td></tr>
+    <tr><td>Bản tiếng Anh / tiếng Trung</td><td><code>/en/</code> · <code>/zh/</code></td></tr>
+  </table></div>
+  <p><b>Người quản lý website:</b> ............................................ &nbsp; <b>Zalo/ĐT:</b> ...............................</p>
+</section>
+</main>
+
+<footer>Hướng dẫn sử dụng website Hiền Nương Farm · cập nhật tháng 10/2026 · Có thể in ra giấy (Ctrl + P).</footer>
+
+<script>
+  var q = document.getElementById('q'), secs = document.querySelectorAll('[data-s]'), empty = document.getElementById('empty');
+  function plain(s){ return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d'); }
+  q.addEventListener('input', function(){
+    var t = plain(q.value.trim()), n = 0;
+    secs.forEach(function(s){ var hit = !t || plain(s.textContent).indexOf(t) > -1; s.classList.toggle('hidden', !hit); if (hit) n++; });
+    empty.style.display = n ? 'none' : 'block';
+  });
+</script>
+</body>
+</html>

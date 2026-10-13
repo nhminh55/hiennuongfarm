@@ -35,7 +35,7 @@ awards:
       credit: Trang trại Hiền Nương
       alt: Trên sân khấu, chị Châu Thị Nương mặc áo dài trắng hoa xanh cùng một đại biểu mặc áo dài xanh lá cầm giấy chứng nhận; màn hình phía sau ghi Hội nghị đánh giá thực hiện thỏa thuận hợp tác giữa Hội Liên hiệp Phụ nữ Việt Nam và Unilever Việt Nam giai đoạn 2022 - 2025, Hà Nội, ngày 23 tháng 3 năm 2026
       file: pnvtt-nhan-giai
-      origin: ảnh chủ trang trại gửi (dau-an-moi-webp/phu nu.jpg)
+      origin: ảnh chủ trang trại gửi (HIEN_NUONG_PHOTO_COLLECTION/03 Giải thưởng và chứng nhận/Phụ nữ Việt tự tin làm kinh tế/phu-nu-tu-tin-hoi-nghi-lhpn-unilever.jpg)
       position: 52% 50%
       sizes: 640x426 1280x852
     evidence:
@@ -44,13 +44,13 @@ awards:
         alt: Giấy chứng nhận khung vàng có logo Hội Liên hiệp Phụ nữ Việt Nam và Unilever, chứng nhận bà Châu Thị Nương, chủ dự án Trồng nấm theo hướng nông nghiệp tuần hoàn khép kín, đạt giải Phụ nữ Việt tự tin làm kinh tế năm 2025
         document: true
         file: pnvtt-chung-nhan
-        origin: dau-an-moi-webp/chung-nhan-phu-nu-tu-tin-lam-kinh-te-2025.webp
+        origin: HIEN_NUONG_PHOTO_COLLECTION/03 Giải thưởng và chứng nhận/Phụ nữ Việt tự tin làm kinh tế/chung-nhan-phu-nu-tu-tin-lam-kinh-te-2025.webp
         sizes: 640x480 1280x960 1448x1086
       - caption: Màn hình lễ trao giải Phụ nữ Việt tự tin làm kinh tế 2025 giới thiệu chị Châu Thị Nương, tỉnh An Giang.
         credit: Trang trại Hiền Nương
         alt: Màn hình sân khấu có logo Unilever và Hội Liên hiệp Phụ nữ Việt Nam, ghi Trao giải Phụ nữ Việt tự tin làm kinh tế 2025, Chị Châu Thị Nương, tỉnh An Giang, dự án Trồng nấm theo hướng nông nghiệp tuần hoàn khép kín, kèm ảnh chân dung chị Nương đội nón, quàng khăn rằn
         file: pnvtt-trao-giai
-        origin: ảnh chủ trang trại gửi (dau-an-moi-webp/2aobor5fxkaqeltspxg1tzu3exscy2viqgyuufje40.jpg)
+        origin: ảnh chủ trang trại gửi (HIEN_NUONG_PHOTO_COLLECTION/03 Giải thưởng và chứng nhận/Phụ nữ Việt tự tin làm kinh tế/phu-nu-tu-tin-trao-giai-2025-man-hinh.jpg)
         sizes: 640x496 1280x991
     sources:
       - label: Diễn đàn Doanh nghiệp, 24.03.2026
@@ -68,7 +68,7 @@ awards:
       credit: Trang trại Hiền Nương
       alt: Chị Châu Thị Nương mặc áo dài đỏ, cầm bằng khen và bó hoa, đứng trước phông nền Hội nghị tổng kết Đề án Hỗ trợ phụ nữ khởi nghiệp, biểu dương điển hình hợp tác xã do phụ nữ tham gia quản lý năm 2025
       file: lhpn-trao-bang-khen
-      origin: ảnh chủ trang trại gửi (hoi lien hiep PN/2aobor5fxjucpdxogpanjbpmi58igkr1i40jzrss23.jpg)
+      origin: ảnh chủ trang trại gửi (HIEN_NUONG_PHOTO_COLLECTION/03 Giải thưởng và chứng nhận/Hội LHPN Việt Nam/lhpn-hoi-nghi-san-khau.jpg)
       position: 48% 50%
       sizes: 640x461 1268x914
     evidence:
@@ -77,13 +77,13 @@ awards:
         alt: Bằng khen khung vàng có logo Hội Liên hiệp Phụ nữ Việt Nam, tặng Hợp tác xã Nông nghiệp Tà Đảnh đã có thành tích xuất sắc trong thực hiện Đề án Hỗ trợ hợp tác xã do phụ nữ tham gia quản lý, tạo việc làm cho lao động nữ đến năm 2030 năm 2025, ký ngày 24 tháng 11 năm 2025
         document: true
         file: lhpn-bang-khen
-        origin: hoi lien hiep PN/bang-khen-hoi-lhpn-2025.webp
+        origin: HIEN_NUONG_PHOTO_COLLECTION/03 Giải thưởng và chứng nhận/Hội LHPN Việt Nam/bang-khen-hoi-lhpn-2025.webp
         sizes: 640x480 1280x960 1448x1086
       - caption: Chị Châu Thị Nương tại Hội nghị của Hội Liên hiệp Phụ nữ Việt Nam, Hà Nội, tháng 11.2025.
         credit: Trang trại Hiền Nương
         alt: Chị Châu Thị Nương mặc áo dài đỏ đứng cạnh hai standee của Hội Liên hiệp Phụ nữ Việt Nam ghi Phụ nữ tự chủ kinh tế và Phụ nữ khởi nghiệp tự tin, tự chủ, bứt phá
         file: lhpn-hoi-nghi
-        origin: ảnh chủ trang trại gửi (hoi lien hiep PN/2aobor5fxjqdrcyebb7eap0wam68wsshgrpx4iem30.jpg)
+        origin: ảnh chủ trang trại gửi (HIEN_NUONG_PHOTO_COLLECTION/03 Giải thưởng và chứng nhận/Hội LHPN Việt Nam/lhpn-standee-chi-nuong.jpg)
         sizes: 575x650
     sources: []
     id: bang-khen-hoi-lhpn-viet-nam-2025
@@ -99,7 +99,7 @@ awards:
       credit: Trang trại Hiền Nương
       alt: Chị Châu Thị Nương mặc áo dài đỏ, quàng khăn rằn, cài hoa đỏ trên ngực, đứng phát biểu giữa hội trường
       file: tbt-phat-bieu
-      origin: HIEN_NUONG_DAU_AN_HANDOFF/dau-an-handoff/dau-an-chi-nuong-phat-bieu.jpg (netid.vn, L08)
+      origin: HIEN_NUONG_PHOTO_COLLECTION/_Handoff Dấu ấn/dau-an-chi-nuong-phat-bieu.jpg (netid.vn, L08)
       position: 62% 30%
       sizes: 640x427 1280x854 1800x1200
     evidence:
@@ -108,20 +108,20 @@ awards:
         alt: Giấy chứng nhận của Ban Tổ chức Chương trình Tự hào Nông dân Việt Nam năm 2025 ghi bà Châu Thị Nương, ấp Tân Bình, xã Cô Tô, tỉnh An Giang, đạt danh hiệu Nông dân Việt Nam xuất sắc 2025, ký ngày 10 tháng 10 năm 2025
         document: true
         file: ndvnxs-chung-nhan
-        origin: dau-an-moi-webp/nong dan xuat sac/chung-nhan-nong-dan-xuat-sac-2025.webp
+        origin: HIEN_NUONG_PHOTO_COLLECTION/03 Giải thưởng và chứng nhận/Nông dân Việt Nam xuất sắc 2025/chung-nhan-nong-dan-xuat-sac-2025.webp
         sizes: 464x640 1068x1472
       - caption: Cúp danh hiệu Nông dân Việt Nam xuất sắc năm 2025.
         credit: Trang trại Hiền Nương
         alt: Cúp pha lê hình ngôi sao khắc dòng chữ Danh hiệu Nông dân Việt Nam xuất sắc năm 2025
         document: true
         file: ndvnxs-cup
-        origin: dau-an-moi-webp/nong dan xuat sac/cup-nong-dan-xuat-sac-2025.webp
+        origin: HIEN_NUONG_PHOTO_COLLECTION/03 Giải thưởng và chứng nhận/Nông dân Việt Nam xuất sắc 2025/cup-nong-dan-xuat-sac-2025.webp
         sizes: 464x640 1068x1472
       - caption: Lễ tôn vinh Nông dân Việt Nam xuất sắc 2025 trên sân khấu chương trình Tự hào Nông dân Việt Nam 2025, Hà Nội, 14.10.2025.
         credit: Trang trại Hiền Nương
         alt: Các nông dân xuất sắc đứng thành hàng trên sân khấu, cầm chứng nhận; màn hình phía sau ghi Tự hào Nông dân Việt Nam 2025, Nông dân Việt Nam xuất sắc 2025, Hà Nội, ngày 14 tháng 10 năm 2025
         file: ndvnxs-san-khau
-        origin: dau-an-moi-webp/nong dan xuat sac/nong dan xuat sac.jpg (ảnh in đóng khung, cắt bỏ khung)
+        origin: HIEN_NUONG_PHOTO_COLLECTION/03 Giải thưởng và chứng nhận/Nông dân Việt Nam xuất sắc 2025/nong-dan-xuat-sac-2025-anh-khung.jpg (ảnh in đóng khung, cắt bỏ khung)
         sizes: 640x416 1076x700
       - caption: Chị Châu Thị Nương và anh Trần Phương Hiền (áo trắng) cùng các đại biểu trước phông chương trình Tự hào Nông dân Việt Nam 2025, Hà Nội, 14.10.2025.
         credit: Trang trại Hiền Nương
@@ -160,7 +160,7 @@ awards:
       alt: Bằng khen khung vàng có logo Hội Nông dân Việt Nam, Ban Chấp hành Trung ương Hội Nông dân Việt Nam tặng bà Châu Thị Nương, ấp Tân Bình, xã Cô Tô, tỉnh An Giang, đã có thành tích xuất sắc trong lao động, sản xuất và xây dựng nông thôn mới, góp phần xây dựng giai cấp nông dân và Hội Nông dân Việt Nam vững mạnh
       document: true
       file: hnd-bang-khen
-      origin: dau-an-moi-webp/bang-khen-hoi-nong-dan-2025.webp
+      origin: HIEN_NUONG_PHOTO_COLLECTION/03 Giải thưởng và chứng nhận/Bằng khen khác/bang-khen-hoi-nong-dan-2025.webp
       sizes: 640x480 1280x960 1448x1086
     evidence: []
     sources: []
@@ -176,7 +176,7 @@ awards:
       credit: Trang trại Hiền Nương
       alt: Mười đại diện doanh nghiệp đứng thành hàng trên sân khấu, cầm hoa và chứng nhận, chị Châu Thị Nương mặc áo dài đỏ ở giữa; màn hình phía sau ghi Top 10 doanh nghiệp Finalists, Sáng kiến ESG Việt Nam 2023, cùng logo USAID
       file: esg-san-khau
-      origin: ảnh chủ trang trại gửi (Nấm mối Nàng Nương [13-10-2026 20_31]/sáng kiến.jpg)
+      origin: ảnh chủ trang trại gửi (HIEN_NUONG_PHOTO_COLLECTION/03 Giải thưởng và chứng nhận/Top 10 ESG 2023/top-10-esg-2023-san-khau.jpg)
       position: 50% 60%
       sizes: 640x481 1080x811
     evidence:
@@ -185,7 +185,7 @@ awards:
         alt: Giấy chứng nhận khung vàng có logo USAID, trao tặng Hợp tác xã Nông nghiệp Tà Đảnh, thuộc Top 10 doanh nghiệp xuất sắc nhất Sáng kiến ESG Việt Nam 2023
         document: true
         file: esg-chung-nhan
-        origin: design-reference/chung nhan/chung-nhan-esg-top-10-2023.webp
+        origin: HIEN_NUONG_PHOTO_COLLECTION/03 Giải thưởng và chứng nhận/Top 10 ESG 2023/chung-nhan-esg-top-10-2023.webp
         sizes: 640x511 1280x1021 1404x1120
     sources:
       - label: VnEconomy, 08.09.2023
@@ -214,14 +214,14 @@ awards:
         alt: Giấy chứng nhận khung vàng có logo Sverige và Oxfam, chứng nhận Hợp tác xã Nông nghiệp Tà Đảnh đã đạt Giải Nhất cuộc thi Tìm kiếm sáng kiến tăng quyền năng kinh tế phụ nữ trong chuỗi lúa gạo, An Giang, ngày 29 tháng 7 năm 2022
         document: true
         file: ox-giay-chung-nhan
-        origin: design-reference/chung nhan/giay-chung-nhan-graisea-2-2022.webp
+        origin: HIEN_NUONG_PHOTO_COLLECTION/03 Giải thưởng và chứng nhận/GRAISEA 2022/giay-chung-nhan-graisea-2-2022.webp
         sizes: 640x477 1280x955 1452x1083
       - caption: Cúp Giải Nhất của cuộc thi, Dự án GRAISEA 2.
         credit: Trang trại Hiền Nương
         alt: Cúp pha lê có logo Sverige và Oxfam, khắc dòng chữ Đạt Giải Nhất cuộc thi Tìm kiếm sáng kiến tăng quyền năng kinh tế phụ nữ trong nông nghiệp, Dự án GRAISEA 2
         document: true
         file: ox-cup-giai-nhat
-        origin: design-reference/chung nhan/cup-giai-nhat-graisea-2-2022.webp
+        origin: HIEN_NUONG_PHOTO_COLLECTION/03 Giải thưởng và chứng nhận/GRAISEA 2022/cup-giai-nhat-graisea-2-2022.webp
         sizes: 480x640 1086x1448
       - caption: Chị Châu Thị Nương, đại diện HTX Tà Đảnh, tỉnh An Giang thuyết trình về mô hình “Tận dụng rơm rạ sản xuất phôi nấm mối đen”.
         credit: Oxfam tại Việt Nam

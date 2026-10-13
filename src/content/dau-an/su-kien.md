@@ -10,41 +10,41 @@ activities:
         credit: Trang trại Hiền Nương
         alt: Chị Châu Thị Nương mặc áo dài xanh, quàng khăn rằn, đội nón lá, đeo thẻ triển lãm, đứng tại gian trưng bày bên giỏ mây xếp các hũ sản phẩm
         file: vf26-chan-dung
-        origin: HIEN_NUONG_PHOTO_COLLECTION/events-8-2026/01.jpg
+        origin: HIEN_NUONG_PHOTO_COLLECTION/04 Sự kiện/2026-08/01.jpg
         sizes: 640x427 1280x854 1800x1201
       - caption: Giới thiệu nấm linh chi tại gian trưng bày.
         credit: Trang trại Hiền Nương
         alt: Chị Châu Thị Nương mặc áo dài xanh, quàng khăn rằn, nghiêng người chỉnh chậu nấm linh chi trên kệ trưng bày; phía sau là các hộp thiếc in hình nấm linh chi xếp chồng
         file: vf26-linh-chi
-        origin: HIEN_NUONG_PHOTO_COLLECTION/events-8-2026/03.jpg
+        origin: HIEN_NUONG_PHOTO_COLLECTION/04 Sự kiện/2026-08/03.jpg
         position: 30% 35%
         sizes: 640x427 1280x854 1800x1201
       - credit: Trang trại Hiền Nương
         alt: Chị Châu Thị Nương mặc áo dài xanh, quàng khăn rằn, trao đổi với khách tham quan đang xem tờ giới thiệu, bên giỏ mây xếp hũ sản phẩm và các hộp thiếc in hình nấm linh chi
         file: vf26-khach-tham-quan
-        origin: HIEN_NUONG_PHOTO_COLLECTION/events-8-2026/07.jpg
+        origin: HIEN_NUONG_PHOTO_COLLECTION/04 Sự kiện/2026-08/07.jpg
         position: 70% 50%
         sizes: 640x480 1280x960 1800x1350
       - caption: Góc trưng bày nấm và các sản phẩm chế biến.
         credit: Trang trại Hiền Nương
         alt: Kệ trưng bày với bốn chậu nấm linh chi ở hàng trước, phía sau xếp các hộp thiếc xanh in hình nấm linh chi, hộp rượu và chai sản phẩm; phông nền ghi Hợp tác xã Nông nghiệp Tà Đảnh
         file: vf26-trung-bay
-        origin: HIEN_NUONG_PHOTO_COLLECTION/events-8-2026/04.jpg
+        origin: HIEN_NUONG_PHOTO_COLLECTION/04 Sự kiện/2026-08/04.jpg
         sizes: 640x427 1280x854 1800x1201
       - credit: Trang trại Hiền Nương
         alt: Sáu người đeo thẻ triển lãm đứng chụp ảnh chung trên thảm xanh trước dãy gian hàng, trong đó có chị Châu Thị Nương mặc áo dài xanh quàng khăn rằn; phía sau là kệ chậu nấm linh chi
         file: vf26-anh-chung
-        origin: HIEN_NUONG_PHOTO_COLLECTION/events-8-2026/05.jpg
+        origin: HIEN_NUONG_PHOTO_COLLECTION/04 Sự kiện/2026-08/05.jpg
         sizes: 640x299 1280x598 1800x840
       - credit: Trang trại Hiền Nương
         alt: Hai phụ nữ quàng khăn rằn, một người áo đỏ và một người áo dài xanh lá, trò chuyện với một vị khách đang cầm xem gói sản phẩm; phía sau là các gian hàng khác của triển lãm
         file: vf26-loi-di
-        origin: HIEN_NUONG_PHOTO_COLLECTION/events-8-2026/06.jpg
+        origin: HIEN_NUONG_PHOTO_COLLECTION/04 Sự kiện/2026-08/06.jpg
         sizes: 640x480 1280x960 1800x1350
       - credit: Trang trại Hiền Nương
         alt: Bốn chậu nấm linh chi bày trên kệ trước các chồng hộp thiếc in hình nấm linh chi; bên phải là hộp quà, giỏ mây xếp hũ sản phẩm và các túi nấm
         file: vf26-chau-linh-chi
-        origin: HIEN_NUONG_PHOTO_COLLECTION/events-8-2026/02.jpg
+        origin: HIEN_NUONG_PHOTO_COLLECTION/04 Sự kiện/2026-08/02.jpg
         sizes: 640x427 1280x854 1800x1201
     sources: []
     date: 2026-08
@@ -139,13 +139,13 @@ activities:
       - credit: Trang trại Hiền Nương
         alt: Chị Châu Thị Nương mặc áo dài đỏ, quàng khăn rằn, cài hoa đỏ trên ngực, đứng phát biểu giữa hội trường
         file: tbt-phat-bieu
-        origin: HIEN_NUONG_DAU_AN_HANDOFF/dau-an-handoff/dau-an-chi-nuong-phat-bieu.jpg (netid.vn, L08)
+        origin: HIEN_NUONG_PHOTO_COLLECTION/_Handoff Dấu ấn/dau-an-chi-nuong-phat-bieu.jpg (netid.vn, L08)
         position: 62% 30%
         sizes: 640x427 1280x854 1800x1200
       - credit: Trang trại Hiền Nương
         alt: Ảnh chụp chung đông đủ các đại biểu trên bậc thềm hội trường, chị Nương áo dài đỏ đứng hàng trước bên phải
         file: tbt-anh-chung
-        origin: HIEN_NUONG_DAU_AN_HANDOFF/dau-an-handoff/dau-an-gap-mat-nong-dan.jpg (netid.vn, L08)
+        origin: HIEN_NUONG_PHOTO_COLLECTION/_Handoff Dấu ấn/dau-an-gap-mat-nong-dan.jpg (netid.vn, L08)
         sizes: 640x427 1280x853
       - credit: Hệ sinh thái GBI
         alt: Toàn cảnh hội trường với hai dãy bàn phủ khăn đỏ, đại biểu ngồi kín hai bên
