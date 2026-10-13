@@ -32,6 +32,11 @@ press:
         file: bt-netzero-ta-danh
         origin: E007__baotintuc.vn/E007__a3970f__r005.avif
         sizes: 640x404 1280x807
+    alternates:
+      - outlet: Happy Vietnam – TTXVN
+        url: https://happyvietnam.vnanet.vn/nu-doanh-nhan-an-giang-va-giac-mo-netzero-tu-trang-trai-trong-nam/43349.html
+      - outlet: Báo ảnh Dân tộc và Miền núi – TTXVN
+        url: https://dantocmiennui.baotintuc.vn/bien-giac-mo-netzero-tu-trang-trai-nam-post360023.html
     date: 2025-05-18
     featured: true
     kind: article
@@ -39,6 +44,9 @@ press:
     url: https://baotintuc.vn/bien-giac-mo-netzero-tu-trang-trai-nam-post1379079.html
   - outlet: VietNamNet
     headline: Rời bục giảng, nữ giáo viên khởi nghiệp với trang trại nấm bạc tỷ
+    alternates:
+      - outlet: VNBizNews
+        url: https://vnbiznews.com/roi-buc-giang-nu-giao-vien-khoi-nghiep-voi-trang-trai-nam-bac-ty-pid1989346959
     byline: Trần Tuyên
     intro: 'Chân dung chị Châu Thị Nương: từ bục giảng đến mô hình trồng nấm tuần hoàn khép kín.'
     lede: Rời bục giảng sau gần 5 năm gắn bó, chị Châu Thị Nương khởi nghiệp với mô hình trồng nấm tuần hoàn khép kín.
@@ -64,6 +72,9 @@ press:
     url: https://vietnamnet.vn/roi-buc-giang-giao-vien-khoi-nghiep-voi-trang-trai-nam-bac-ty-2445463.html
   - outlet: Báo Nhân Dân
     headline: Người phụ nữ Khmer khởi nghiệp từ trồng nấm hữu cơ
+    alternates:
+      - outlet: Hiệp hội Doanh nghiệp tỉnh An Giang
+        url: https://aba.angiang.vn/hoat-dong-hoi-vien/nguoi-phu-nu-khmer-khoi-nghiep-tu-trong-nam-huu-co-219934
     byline: Thanh Dũng
     intro: Mô hình nông nghiệp tuần hoàn từ phụ phẩm nông nghiệp của chị Châu Thị Nương, ở xã Cô Tô, tỉnh An Giang.
     lede: Chị Châu Thị Nương, ngụ xã Cô Tô, tỉnh An Giang là người phụ nữ Khmer đầu tiên của tỉnh tham gia mô hình ứng dụng nông nghiệp tuần hoàn từ phụ phẩm nông nghiệp để tạo ra sản phẩm nấm sạch, giàu dinh dưỡng.
@@ -111,6 +122,9 @@ press:
     url: https://tapchivietnamhuongsac.vn/co-giao-tieng-anh-ung-dung-cong-nghe-vao-trong-nam-ocop-vuon-len-lam-kinh-te-gioi-5514.html
   - outlet: VnBusiness
     headline: 'Biến rơm rạ thành “vàng”: Nữ giám đốc HTX thu 20 tấn nấm mỗi năm'
+    alternates:
+      - outlet: Liên minh Hợp tác xã Việt Nam
+        url: https://vca.org.vn/bien-rom-ra-thanh-vang-nu-giam-doc-hop-tac-xa-thu-20-tan-nam-moi-nam-a34005.html
     byline: Hồng Hương
     intro: Rơm rạ, cám gạo, cám bắp trở thành phôi nấm trong chuỗi sản xuất của HTX Nông nghiệp Tà Đảnh.
     lede: Không chỉ tận dụng triệt để phụ phẩm nông nghiệp, mô hình trồng nấm của chị Châu Thị Nương còn tạo nên chuỗi sản xuất “không rác thải”, giúp nâng cao giá trị nông sản và tạo việc làm ổn định cho hàng chục lao động tại An Giang.
@@ -309,6 +323,9 @@ press:
     url: https://nhandan.vn/nam-moi-nang-nuong-post816923.html
   - outlet: Báo An Giang
     headline: Nông nghiệp tuần hoàn từ dược liệu tự nhiên
+    alternates:
+      - outlet: Hiệp hội Doanh nghiệp tỉnh An Giang
+        url: https://aba.angiang.vn/hoat-dong-hoi-vien/nong-nghiep-tuan-hoan-tu-duoc-lieu-tu-nhien-219115
     byline: Ngô Chuẩn
     intro: Bóng mát dưới mái pin mặt trời và phụ phẩm nông nghiệp trong quy trình tuần hoàn khép kín của HTX Nông nghiệp Tà Đảnh.
     lede: Tận dụng bóng mát dưới mái tấm pin năng lượng mặt trời, phế phẩm trong nông nghiệp (rơm rạ, thân cây rau màu, cám gạo, cám bắp), người phụ nữ dân tộc thiểu số Khmer Châu Thị Nương (Hợp tác xã Nông nghiệp Tà Đảnh, huyện Tri Tôn, tỉnh An Giang) đã xây dựng quy trình nông nghiệp tuần hoàn khép kín.
@@ -362,6 +379,8 @@ press:
     alternates:
       - outlet: Khuyến nông Đắk Lắk
         url: https://khuyennongdaklak.com.vn/an-giang-trong-nam-moi-den-theo-huong-tuan-hoan-khep-kin-10795.html
+      - outlet: Báo An Giang
+        url: https://baoangiang.com.vn/trong-nam-moi-den-theo-huong-tuan-hoan-khep-kin-a397186.html
     date: 2024-06-19
     kind: article
     slug: trong-nam-moi-den-theo-huong-tuan-hoan-khep-kin
@@ -527,6 +546,9 @@ press:
     url: https://baochinhphu.vn/cap-nhat-hoi-nghi-thu-tuong-chinh-phu-doi-thoai-voi-nong-dan-nam-2025-102251210080135023.htm
   - outlet: Báo Thanh Niên
     headline: Nông dân kể chuyện lên núi 'hứng sóng' livestream bán nông sản
+    alternates:
+      - outlet: VNBizNews
+        url: https://vnbiznews.com/nong-dan-ke-chuyen-len-nui-hung-song-livestream-ban-nong-san-pid1989389898
     date: 2025-12-10
     kind: article
     mention: true
@@ -551,6 +573,12 @@ press:
     mention: true
     slug: tong-bi-thu-gap-mat-nong-dan-xuat-sac-2025
     url: https://www.hoinongdan.org.vn/hoat-dong-hoi/tong-bi-thu-to-lam-gap-mat-cac-nong-dan-xuat-sac-nha-khoa-hoc-cua-nha-nong-tieu-bieu-380043
+  - outlet: Chính sách cuộc sống – TTXVN
+    headline: 'Nông dân tiêu biểu Việt Nam 2025: Dùng công nghệ làm đòn bẩy tạo kỳ tích doanh thu'
+    date: 2025-10-14
+    kind: article
+    slug: nong-dan-tieu-bieu-viet-nam-2025-dung-cong-nghe-lam-don-bay
+    url: https://chinhsachcuocsong.vnanet.vn/nong-dan-tieu-bieu-viet-nam-2025-dung-cong-nghe-lam-don-bay-tao-ky-tich-doanh-thu/70559.html
   - outlet: Báo điện tử Dân Việt
     headline: Nhặt thứ rác gì mang về nhà mà một "chị đẹp" An Giang nay là Nông dân Việt Nam xuất sắc 2025?
     date: 2025-09-12
@@ -591,6 +619,18 @@ press:
     kind: article
     slug: cultivating-medicinal-mushrooms-under-solar-panels
     url: https://van.nongnghiepmoitruong.vn/cultivating-medicinal-mushrooms-under-solar-panels-an-economic-and-environmental-solution-d423294.html
+  - outlet: VietNamNet
+    headline: 'An Giang: Phụ nữ Khmer thay đổi cuộc sống nhờ trồng nấm mối đen'
+    date: 2025-01-24
+    kind: article
+    slug: phu-nu-khmer-thay-doi-cuoc-song-nho-trong-nam-moi-den
+    url: https://vietnamnet.vn/an-giang-phu-nu-khmer-thay-doi-cuoc-song-nho-trong-nam-moi-den-2340268.html
+  - outlet: Tạp chí Gia đình Việt Nam
+    headline: 'Nấm mối Nàng Nương: Mô hình nông nghiệp bền vững gắn kết cộng đồng'
+    date: 2025-01-07
+    kind: article
+    slug: nam-moi-nang-nuong-mo-hinh-nong-nghiep-ben-vung
+    url: https://mientay.giadinhonline.vn/nam-moi-nang-nuong-mo-hinh-nong-nghiep-ben-vung-gan-ket-cong-dong-d15714.html
   - outlet: Hội Nông dân Việt Nam
     headline: Tập huấn kỹ năng truyền thông cho cán bộ, hội viên Hội Nông dân tại Cà Mau và An Giang
     date: 2024-08-23
@@ -613,6 +653,15 @@ press:
     kind: article
     slug: tao-viec-lam-cho-phu-nu-nong-thon-bang-nghe-trong-nam
     url: https://tuoitre.vn/phunuonline/tao-viec-lam-cho-phu-nu-nong-thon-bang-nghe-trong-nam-1101525754.htm
+  - outlet: Báo Giáo dục và Thời đại
+    headline: Phụ nữ An Giang 'khởi nghiệp' tạo việc làm cho hàng chục lao động nông thôn
+    alternates:
+      - outlet: Báo Mới
+        url: https://baomoi.com/phu-nu-an-giang-khoi-nghiep-tao-viec-lam-cho-hang-chuc-lao-dong-nong-thon-c49765104.epi
+    date: 2024-07-30
+    kind: article
+    slug: phu-nu-an-giang-khoi-nghiep-tao-viec-lam
+    url: https://giaoducthoidai.vn/phu-nu-an-giang-khoi-nghiep-tao-viec-lam-cho-hang-chuc-lao-dong-nong-thon-post693629.html
   - outlet: VOV Giao thông
     headline: Nữ giám đốc mê làm kinh tế tuần hoàn khép kín
     date: 2024-06-24
@@ -634,6 +683,9 @@ press:
     url: https://baocantho.com.vn/thu-nhap-tram-trieu-moi-nam-nho-trong-nam-moi-den-a171459.html
   - outlet: Cổng thông tin Hội LHPN Việt Nam
     headline: 'Thực hiện chương trình mục tiêu quốc gia phát triển vùng dân tộc thiểu số và miền núi: Tích cực triển khai các dự án trong Chương trình Mục tiêu quốc gia'
+    alternates:
+      - outlet: Báo Nhân Dân
+        url: https://nhandan.vn/tich-cuc-trien-khai-cac-du-an-trong-chuong-trinh-muc-tieu-quoc-gia-post785932.html
     date: 2023-12-06
     kind: article
     mention: true
@@ -662,14 +714,120 @@ press:
     url: https://vneconomy.vn/top-3-doanh-nghiep-dat-sang-kien-viet-nam-2023-se-duoc-cong-bo-vao-thang-10-2023.htm
   - outlet: Báo Phụ nữ Việt Nam
     headline: Trồng nấm mối đen để mang thực phẩm sạch đến người tiêu dùng
+    alternates:
+      - outlet: Dám Khởi Nghiệp
+        url: https://damkhoinghiep.vn/trong-nam-moi-den-de-mang-thuc-pham-sach-den-nguoi-tieu-dung/
     date: 2023-04-05
     kind: article
     slug: trong-nam-moi-den-de-mang-thuc-pham-sach
     url: https://phunuvietnam.vn/trong-nam-moi-den-de-mang-thuc-pham-sach-den-nguoi-tieu-dung-20230405144535187.htm
   - outlet: Báo Tin tức và Dân tộc – TTXVN
     headline: Tạo sự khác biệt cho sản phẩm OCOP
+    alternates:
+      - outlet: Tạp chí Làng nghề Việt Nam
+        url: https://langngheviet.com.vn/tao-su-khac-biet-cho-san-pham-ocop-13300.html
     date: 2023-01-31
     kind: article
     slug: tao-su-khac-biet-cho-san-pham-ocop
     url: https://baotintuc.vn/kinh-te/tao-su-khac-biet-cho-san-pham-ocop-20230131105311312.htm
+  - outlet: Báo điện tử Dân Việt
+    headline: Chị nông dân An Giang trồng các loại nấm làm thuốc, tạo vô số việc làm, tăng thu nhập cho hộ nghèo
+    alternates:
+      - outlet: Kiến thức gia đình
+        url: https://kienthucgiadinh.net/chi-nong-dan-an-giang-trong-cac-loai-nam-lam-thuoc-tao-vo-so-viec-lam-tang-thu-nhap-cho-ho-ngheo/
+    date: 2025-03-01
+    kind: article
+    slug: chi-nong-dan-an-giang-trong-cac-loai-nam-lam-thuoc
+    url: https://danviet.vn/chi-nong-dan-an-giang-trong-cac-loai-nam-lam-thuoc-tao-vo-so-viec-lam-tang-thu-nhap-cho-ho-ngheo-20250225130944932-d1212546.html
+  - outlet: Báo Cần Thơ
+    headline: Giải mã nấm Thất Sơn
+    date: 2025-01-07
+    kind: article
+    slug: giai-ma-nam-that-son
+    url: https://baocantho.com.vn/giai-ma-nam-that-son-a182270.html
+  - outlet: Báo Nông nghiệp và Môi trường
+    headline: Người mở hướng nông nghiệp công nghệ cao vùng Bảy Núi
+    date: 2025-10-27
+    kind: article
+    slug: nguoi-mo-huong-nong-nghiep-cong-nghe-cao-vung-bay-nui
+    url: https://nongnghiepmoitruong.vn/nguoi-mo-huong-nong-nghiep-cong-nghe-cao-vung-bay-nui-d780677.html
+  - outlet: Kinh tế Chứng khoán Việt Nam
+    headline: Nông dân An Giang biến rơm rạ thành “vàng nâu”, viết nên câu chuyện làm giàu đặc biệt giữa lòng Tứ giác Long Xuyên
+    date: 2025-10-27
+    kind: article
+    slug: nong-dan-an-giang-bien-rom-ra-thanh-vang-nau
+    url: https://kinhtechungkhoan.vn/nong-dan-an-giang-bien-rom-ra-thanh-vang-nau-viet-nen-cau-chuyen-lam-giau-dac-biet-giua-long-tu-giac-long-xuyen-1411524.html
+  - outlet: Tạp chí Khoa học Phát triển Nông thôn Việt Nam
+    headline: Nữ Giám đốc HTX biến phế phẩm thành tài nguyên, làm giàu cho cộng đồng
+    date: 2025-09-15
+    kind: article
+    slug: nu-giam-doc-htx-bien-phe-pham-thanh-tai-nguyen
+    url: https://nongthonvaphattrien.vn/nu-giam-doc-htx-bien-phe-pham-thanh-tai-nguyen-lam-giau-cho-cong-dong-a36420.html
+  - outlet: Báo Tin tức và Dân tộc – TTXVN
+    headline: Khát vọng vươn mình của ngành nông nghiệp Việt Nam
+    date: 2025-11-14
+    kind: article
+    slug: khat-vong-vuon-minh-cua-nganh-nong-nghiep-viet-nam
+    url: https://baotintuc.vn/long-form/emagazine/khat-vong-vuon-minh-cua-nganh-nong-nghiep-viet-nam-20251113212224737.htm
+  - outlet: Báo điện tử Dân Việt
+    headline: 'Nông nghiệp An Giang: ''Cú hích'' từ AI, dữ liệu số và công nghệ cao'
+    date: 2025-12-29
+    kind: article
+    slug: nong-nghiep-an-giang-cu-hich-tu-ai
+    url: https://danviet.vn/nong-nghiep-an-giang-cu-hich-tu-ai-du-lieu-so-va-cong-nghe-cao-d1390962.html
+  - outlet: Báo điện tử Dân Việt
+    headline: 'Hội nghị Thủ tướng Chính phủ đối thoại với nông dân năm 2025: Tám quyết sách lớn để phát triển nông nghiệp, nông thôn'
+    date: 2025-12-10
+    kind: article
+    mention: true
+    slug: hoi-nghi-thu-tuong-doi-thoai-voi-nong-dan-2025-dan-viet
+    url: https://danviet.vn/hoi-nghi-thu-tuong-chinh-phu-doi-thoai-voi-nong-dan-nam-2025-d1385683.html
+  - outlet: Báo Vĩnh Long
+    headline: Đẩy mạnh ứng dụng, chuyển giao khoa học công nghệ trong nông nghiệp
+    date: 2025-12-12
+    kind: article
+    mention: true
+    slug: day-manh-ung-dung-chuyen-giao-khoa-hoc-cong-nghe
+    url: https://baovinhlong.com.vn/khoa-hoc-cong-nghe/202512/day-manh-ung-dung-chuyen-giao-khoa-hoc-cong-nghe-trong-nong-nghiep-cca053b/
+  - outlet: Báo Tin tức và Dân tộc – TTXVN
+    headline: 95 nông dân và nhà khoa học sẽ được tôn vinh trong chương trình Tự hào Nông dân Việt Nam năm 2025
+    date: 2025-10-08
+    kind: article
+    mention: true
+    slug: 95-nong-dan-va-nha-khoa-hoc-se-duoc-ton-vinh
+    url: https://baotintuc.vn/95-nong-dan-va-nha-khoa-hoc-se-duoc-ton-vinh-trong-chuong-trinh-tu-hao-nong-dan-viet-nam-nam-2025-n20251008202854970.htm
+  - outlet: Vietnam Agriculture – Báo Nông nghiệp và Môi trường
+    headline: An Giang and a new generation of professional, business-minded farmers
+    date: 2025-11-13
+    kind: article
+    slug: an-giang-new-generation-of-professional-farmers
+    url: https://van.nongnghiepmoitruong.vn/an-giang-and-a-new-generation-of-professional-business-minded-farmers-d783863.html
+  - outlet: Trung tâm BSA
+    headline: 'Mekong Connect 2024: Kinh tế dược liệu – ''nàng công chúa còn đang ngủ trong rừng'''
+    date: 2024-12-17
+    kind: article
+    mention: true
+    slug: mekong-connect-2024-kinh-te-duoc-lieu
+    url: https://bsa.org.vn/?p=56702
+  - outlet: Cổng thông tin Hội LHPN Việt Nam
+    headline: Tôn vinh, trao giải 30 dự án xuất sắc chương trình “Phụ nữ Việt tự tin làm kinh tế” năm 2025
+    date: 2026-03-23
+    kind: article
+    mention: true
+    slug: ton-vinh-30-du-an-phu-nu-viet-tu-tin-lam-kinh-te-2025
+    url: https://www.hoilhpn.org.vn/web/ho-tro-phu-nu-khoi-nghiep-va-khoi-su-kinh-doanh/tin-chi-tiet/-/chi-tiet/ton-vinh-trao-giai-30-du-an-xuat-sac-chuong-trinh-phu-nu-viet-tu-tin-lam-kinh-te-nam-2025-870601-2001.html
+  - outlet: VnBusiness
+    headline: Phát triển kinh tế HTX giúp người nghèo an cư, lạc nghiệp ở An Giang
+    date: 2025-08-06
+    kind: article
+    mention: true
+    slug: phat-trien-kinh-te-htx-giup-nguoi-ngheo-an-giang
+    url: https://vnbusiness.vn/phat-trien-kinh-te-htx-giup-nguoi-ngheo-an-cu-lac-nghiep-o-an-giang.html
+  - outlet: Báo điện tử Dân Việt
+    headline: Đặc sản thốt nốt, "thiên đường mắm", gạo An Giang "lên đời" nhờ chương trình OCOP
+    date: 2026-07-10
+    kind: article
+    mention: true
+    slug: dac-san-thot-not-thien-duong-mam-gao-an-giang-ocop
+    url: https://danviet.vn/dac-san-thot-not-thien-duong-mam-gao-an-giang-len-doi-nho-chuong-trinh-ocop-d1441149.html
 ---

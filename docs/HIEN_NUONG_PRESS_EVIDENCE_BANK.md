@@ -1,5 +1,5 @@
 # Hiền Nương Farm — Press & Evidence Bank
-Updated: 2026-10-07
+Updated: 2026-10-14
 
 Purpose: source bank for the future `/bao-chi/` page and website fact-checking.
 
@@ -22,7 +22,16 @@ Purpose: source bank for the future `/bao-chi/` page and website fact-checking.
 ### Thanh Niên
 - Rẽ hướng trồng nấm, người phụ nữ miền Tây thu nhập gần 900 triệu đồng/năm
   https://thanhnien.vn/re-huong-trong-nam-nguoi-phu-nu-mien-tay-thu-nhap-gan-900-trieu-dong-nam-185240707101107657.htm
+  07/07/2024. Report and photos by Duy Tân. Dated figures: 3 ha farm, nấm mối đen as main product, rooftop solar, 5–6 tấn/tháng, hơn 40 lao động nữ Khmer, gần 900 triệu đồng/năm.
   Use: founder profile; income figure is source/date-specific.
+
+### Giáo dục và Thời đại
+- Phụ nữ An Giang “khởi nghiệp” tạo việc làm cho hàng chục lao động nông thôn
+  https://giaoducthoidai.vn/phu-nu-an-giang-khoi-nghiep-tao-viec-lam-cho-hang-chuc-lao-dong-nong-thon-post693629.html
+  30/07/2024 (as the page shows; Thành Thật). Chị Nương's move from rice to nấm mối đen; HTX Nông nghiệp Tà Đảnh; rơm rạ / cám gạo / cám bắp as substrate. Dated figures: hơn 40 lao động nữ Khmer, gần 900 triệu đồng/năm.
+  Use: founder journey / circular substrate / women's employment.
+  Repost (count with this article, not separately): Baomoi, 30/07/2024
+  https://baomoi.com/phu-nu-an-giang-khoi-nghiep-tao-viec-lam-cho-hang-chuc-lao-dong-nong-thon-c49765104.epi
 
 ### Nhân Dân
 - Nấm mối nàng Nương
@@ -39,11 +48,28 @@ Purpose: source bank for the future `/bao-chi/` page and website fact-checking.
 - Mở hướng mới phát triển nông nghiệp xanh ở lòng Bảy Núi
   https://baotintuc.vn/mo-huong-moi-phat-trien-nong-nghiep-xanh-o-long-bay-nui-post1380699.html
   Use: Bảy Núi / green agriculture.
+- Nữ doanh nhân An Giang và giấc mơ “NetZero” từ trang trại trồng nấm (Happy Vietnam)
+  https://happyvietnam.vnanet.vn/nu-doanh-nhan-an-giang-va-giac-mo-netzero-tu-trang-trai-trong-nam/43349.html
+  20/05/2025. Photo/republished version of the same TTXVN story as “Biến giấc mơ NetZero” above: solar at the farm, jobs for Khmer women. Keep the URL; do not count it as a separate story.
+- Nông dân tiêu biểu Việt Nam 2025: Dùng công nghệ làm đòn bẩy tạo kỳ tích doanh thu (Chính sách Cuộc sống)
+  https://chinhsachcuocsong.vnanet.vn/nong-dan-tieu-bieu-viet-nam-2025-dung-cong-nghe-lam-don-bay-tao-ky-tich-doanh-thu/70559.html
+  14/10/2025. Roundup of the 63 Nông dân Việt Nam xuất sắc 2025 profiles, with its own entry on chị Nương. Dated figures: doanh thu hơn 15 tỷ đồng/năm, lợi nhuận trên 7 tỷ đồng, 50 lao động; effect of solar panels on productivity.
+  Use: Nông dân Việt Nam xuất sắc 2025 / technology. Figures are source/date-specific.
 
 ### VietnamNet
 - Rời bục giảng, nữ giáo viên khởi nghiệp với trang trại nấm bạc tỷ
   https://vietnamnet.vn/roi-buc-giang-giao-vien-khoi-nghiep-voi-trang-trai-nam-bac-ty-2445463.html
   Use: founder biography / career transition.
+- An Giang: Phụ nữ Khmer thay đổi cuộc sống nhờ trồng nấm mối đen
+  https://vietnamnet.vn/an-giang-phu-nu-khmer-thay-doi-cuoc-song-nho-trong-nam-moi-den-2340268.html
+  24/01/2025. Short piece: closed circular model, use of agricultural by-products, plans to invest in freeze-drying / deep-freezing aimed at export. Dated figure: hơn 20 lao động nữ Khmer.
+  Use: circular model / Khmer women's employment. Export plans are plans, not achievements.
+
+### Gia đình Online (Miền Tây)
+- Nấm mối Nàng Nương: Mô hình nông nghiệp bền vững gắn kết cộng đồng
+  https://mientay.giadinhonline.vn/nam-moi-nang-nuong-mo-hinh-nong-nghiep-ben-vung-gan-ket-cong-dong-d15714.html
+  07/01/2025. Introduces the Nấm Mối Nàng Nương brand, chị Nương and anh Trần Phương Hiền, the circular model, processed mushroom lines, OCOP, trà linh chi, and the idea of pairing farming with eco-tourism. Only the first part of the page is about the farm; the rest covers other startups.
+  Use: brand / co-founders / circular model. Agritourism stays out (owner undecided).
 
 ### Cổng TTĐT tỉnh An Giang
 - Nữ nông dân xuất sắc vùng Bảy Núi An Giang
@@ -119,6 +145,11 @@ https://www.hoinongdan.org.vn/trung-uong-hoi/chu-tich-t-u-hoi-nong-dan-viet-nam-
 - Hội LHPN tỉnh An Giang: promotion and contest/event referrals, plus a visit by its vice-chair (same vwu.vn article). No signed programme is documented.
 - Oxfam: the image story is tagged GRAISEA 2. It records a first prize in "Tìm kiếm sáng kiến sinh kế nông nghiệp" for "Tận dụng rơm rạ sản xuất phôi nấm mối đen", entered on behalf of HTX Tà Đảnh. The year 2022 comes from vwu.vn (11.08.2023). This was a contest prize, not a commercial partnership.
 - Hội Nông dân: the Nông dân Việt Nam xuất sắc 2025 title (Nhân Dân, 08.10.2025), and a visit on 5.3.2026 by the Chairman of the Central Committee, Lương Quốc Đoàn (hoinongdan.org.vn, 06.03.2026).
+
+## Tag pages / non-article URLs
+- Phụ nữ Việt Nam tag “Nấm mối nàng Nương”
+  https://phunuvietnam.vn/nam-moi-nang-nuong.html
+  Topic page, not an article. Its related story is “Trồng nấm mối đen để mang thực phẩm sạch đến người tiêu dùng”. Do not count it as coverage.
 
 ## Video / broadcast leads
 - Hiền Nương Farm introduction film:
