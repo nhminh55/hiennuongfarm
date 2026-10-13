@@ -89,14 +89,7 @@ const summaryOf = (slug: string) => showroom.find((s) => s.slug === slug)?.summa
         ))}
       </ul>
 
-      <div class="ocop__note">
-        <p class="eyebrow">{t.chung_nhan_giay_nhan}</p>
-        <h2 class="ocop__note-title">{t.chung_nhan_giay_tieu_de}</h2>
-        {t.chung_nhan_giay_dan.split(/\n\s*\n/).map((para) => (
-          <p class="ocop__lead">{para.trim()}</p>
-        ))}
-      </div>
-
+      <p class="ocop__note">{t.chung_nhan_giay_dan}</p>
       <p class="ocop__source">
         {t.nguon}{' '}
         <a href={ocopSource.href} target="_blank" rel="noopener">{ocopSource.label}<span class="sr-only"> (mở trong thẻ mới)</span></a>
@@ -195,19 +188,17 @@ const summaryOf = (slug: string) => showroom.find((s) => s.slug === slug)?.summa
   .ocop__more :global(.arrow) { width: 0.875rem; }
   .ocop__more:hover { border-color: currentColor; }
 
-  .ocop__note { max-width: 40rem; margin-top: var(--space-2xl); }
-  .ocop__note-title {
-    margin-top: var(--space-s);
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: var(--type-product);
-    line-height: 1.15;
+  /* The decision behind all three certificates, then the source: small print. */
+  .ocop__note {
+    max-width: 40rem;
+    margin-top: var(--space-m);
+    font-size: var(--type-small);
+    color: var(--color-text-muted);
+    text-wrap: pretty;
   }
 
   .ocop__source {
-    margin-top: var(--space-xl);
-    padding-top: var(--space-s);
-    border-top: 1px solid var(--color-line);
+    margin-top: var(--space-2xs);
     font-size: 0.8125rem;
     color: var(--color-text-muted);
   }

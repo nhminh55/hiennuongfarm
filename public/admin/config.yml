@@ -2121,15 +2121,7 @@ collections:
             name: chung_nhan_xem_giay
             widget: string
             required: true
-          - label: 'Chứng nhận: nhãn phần giấy chứng nhận'
-            name: chung_nhan_giay_nhan
-            widget: string
-            required: true
-          - label: 'Chứng nhận: tiêu đề phần giấy chứng nhận'
-            name: chung_nhan_giay_tieu_de
-            widget: string
-            required: true
-          - label: 'Chứng nhận: lời giới thiệu giấy chứng nhận'
+          - label: 'Chứng nhận: chú thích dưới danh sách sản phẩm'
             name: chung_nhan_giay_dan
             widget: text
             required: true
