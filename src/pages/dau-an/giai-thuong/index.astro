@@ -28,7 +28,7 @@ const { page = listingPage('giai-thuong', awards) } = Astro.props;
 const title = dauAnPages.find((p) => p.href === '/dau-an/giai-thuong/')!.title;
 
 const captionOf = (p: Pic) => `${p.caption ?? p.alt} ${t.anh} ${p.credit}.`;
-// A document photographed flat is shown whole, at its own size.
+// A document photographed flat is shown whole within the frame.
 const isDocument = (p: Pic) => p.document ?? p.width < 600;
 ---
 <BaseLayout
@@ -60,7 +60,7 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
                 <img
                   src={a.photo.src}
                   srcset={a.photo.srcset}
-                  sizes={doc ? `(min-width: 1024px) min(40vw, ${a.photo.width}px), 100vw` : '(min-width: 1024px) 56vw, 100vw'}
+                  sizes="(min-width: 1024px) 56vw, 100vw"
                   width={a.photo.width}
                   height={a.photo.height}
                   alt={a.photo.alt}
@@ -148,16 +148,13 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
   }
 
   .award__photo { display: block; overflow: hidden; cursor: zoom-in; background: var(--color-cream); }
+  /* Every main photograph takes the same 3:2 frame. */
+  .award__photo { aspect-ratio: 3 / 2; }
   .award__photo img { width: 100%; height: 100%; object-fit: cover; }
-  .award:not(.award--document) .award__photo { aspect-ratio: 3 / 2; }
 
-  /* A certificate stands whole on a cream ground, at its own size. */
-  .award--document .award__photo {
-    display: grid;
-    place-items: center;
-    padding: clamp(var(--space-m), 4vw, var(--space-2xl));
-  }
-  .award--document .award__photo img { width: auto; max-width: 100%; height: auto; box-shadow: 0 1px 0 var(--color-line); }
+  /* A certificate stands whole on a cream ground within that frame. */
+  .award--document .award__photo { padding: clamp(var(--space-s), 3vw, var(--space-xl)); }
+  .award--document .award__photo img { object-fit: contain; filter: drop-shadow(0 1px 0 var(--color-line)); }
 
   .award__caption {
     margin-top: var(--space-xs);
@@ -244,10 +241,9 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
       grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
       column-gap: clamp(var(--space-l), 4vw, var(--space-3xl));
     }
+    /* Flipped, the photograph keeps the wide column. */
+    .award--flip .award__grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
     .award--flip .award__figure { order: 2; }
-    .award--document:not(.award--flip) .award__grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
-    .award--document.award--flip .award__grid { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
-    .award--document .award__text { align-self: center; }
     .award__evidence a { height: 7.5rem; }
   }
 </style>
