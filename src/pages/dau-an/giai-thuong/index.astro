@@ -17,7 +17,7 @@ import DauAnHead from '../../../components/dau-an/DauAnHead.astro';
 import Lightbox from '../../../components/dau-an/Lightbox.astro';
 import Pager from '../../../components/dau-an/Pager.astro';
 import Arrow from '../../../components/Arrow.astro';
-import { activities, awards, dauAnPages, dauAnText as t, listingPage, type Award, type ListingPage, type Pic } from '../../../data/dau-an';
+import { activities, awards, dauAnPages, dauAnText as t, formatDate, listingPage, type Award, type ListingPage, type Pic } from '../../../data/dau-an';
 
 interface Props {
   /** Set by trang/[page].astro; the first page otherwise. */
@@ -55,6 +55,7 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
     {page.data.map((a, i) => {
       const related = activities.find((act) => act.award === a.id);
       const doc = isDocument(a.photo);
+      const photos = [a.photo, ...a.evidence];
       return (
         <article
           class:list={['award', { 'award--flip': i % 2 === 1, 'award--document': doc }]}
@@ -65,7 +66,10 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
             <div class="award__text" data-reveal>
               <p class="award__year">{a.year}</p>
               <p class="eyebrow award__by">{a.by}</p>
-              <h2 class="award__name" id={`${a.id}-title`}>{a.name}</h2>
+              <h2 class="award__name" id={`${a.id}-title`}>
+                {a.name}
+                <time class="award__date" datetime={a.date ?? a.year}>{formatDate(a.date ?? a.year)}</time>
+              </h2>
               <p class="award__recipient">{a.recipient}</p>
               {a.significance.split(/\n\s*\n/).map((para) => (
                 <p class="award__significance">{para.trim()}</p>
@@ -93,11 +97,13 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
               )}
             </div>
 
-            <figure class="award__figure" data-reveal>
+            <figure class="award__figure" data-reveal data-award-gallery>
+              <div class="award__frame">
               <a
-                class="award__photo"
+                class:list={["award__photo", { "is-document": doc }]}
+                data-gallery-main
+                data-lightbox-trigger={`${a.id}-photo-0`}
                 href={a.photo.full}
-                data-lightbox={a.id}
                 data-caption={captionOf(a.photo)}
                 data-width={a.photo.width}
                 data-height={a.photo.height}
@@ -114,14 +120,31 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
                   fetchpriority={i === 0 && page.currentPage > 1 ? 'high' : undefined}
                 />
               </a>
-              <figcaption class="award__caption">{a.photo.caption} <span class="award__credit">{t.anh} {a.photo.credit}</span></figcaption>
+              {photos.length > 1 && <>
+                <button type="button" class="award__nav award__nav--prev" data-gallery-prev aria-label="Ảnh trước"><Arrow /></button>
+                <button type="button" class="award__nav award__nav--next" data-gallery-next aria-label="Ảnh sau"><Arrow /></button>
+              </>}
+              </div>
+              <figcaption class="award__caption" aria-live="polite" aria-atomic="true"><span data-gallery-caption>{a.photo.caption}</span> <span class="award__credit" data-gallery-credit>{t.anh} {a.photo.credit}</span></figcaption>
 
-              {a.evidence.length > 0 && (
+              {photos.length === 1 && <a hidden id={`${a.id}-photo-0`} href={a.photo.full} data-lightbox={a.id} data-caption={captionOf(a.photo)} data-width={a.photo.width} data-height={a.photo.height}><img src={a.photo.src} alt={a.photo.alt} /></a>}
+              {photos.length > 1 && (
                 <ul class="award__evidence" aria-label="Giấy chứng nhận và tư liệu">
-                  {a.evidence.map((e) => (
+                  {photos.map((e, index) => (
                     <li>
                       <a
                         class:list={{ 'is-document': isDocument(e) }}
+                        id={`${a.id}-photo-${index}`}
+                        data-gallery-thumb
+                        aria-current={index === 0 ? 'true' : 'false'}
+                        aria-label={`Chọn ảnh ${index + 1}: ${e.alt}`}
+                        data-src={e.src}
+                        data-srcset={e.srcset}
+                        data-alt={e.alt}
+                        data-photo-caption={e.caption ?? e.alt}
+                        data-credit={e.credit}
+                        data-position={e.position ?? '50% 50%'}
+                        data-document={isDocument(e)}
                         href={e.full}
                         data-lightbox={a.id}
                         data-caption={captionOf(e)}
@@ -147,7 +170,100 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
   <Lightbox closeLabel={t.xem_anh_dong} />
 </BaseLayout>
 
+<script>
+  document.querySelectorAll<HTMLElement>('[data-award-gallery]').forEach((gallery) => {
+    const main = gallery.querySelector<HTMLAnchorElement>('[data-gallery-main]')!;
+    const image = main.querySelector('img')!;
+    const thumbs = Array.from(gallery.querySelectorAll<HTMLAnchorElement>('[data-gallery-thumb]'));
+    if (!thumbs.length) return;
+    const caption = gallery.querySelector<HTMLElement>('[data-gallery-caption]')!;
+    const credit = gallery.querySelector<HTMLElement>('[data-gallery-credit]')!;
+    const creditPrefix = credit.textContent!.slice(0, credit.textContent!.indexOf(thumbs[0].dataset.credit!));
+    let selected = 0;
+    const select = (index: number) => {
+      selected = (index + thumbs.length) % thumbs.length;
+      const thumb = thumbs[selected];
+      main.href = thumb.href;
+      main.dataset.lightboxTrigger = thumb.id;
+      main.classList.toggle('is-document', thumb.dataset.document === 'true');
+      image.srcset = thumb.dataset.srcset!;
+      image.src = thumb.dataset.src!;
+      image.alt = thumb.dataset.alt!;
+      image.width = Number(thumb.dataset.width);
+      image.height = Number(thumb.dataset.height);
+      image.style.objectPosition = thumb.dataset.position!;
+      caption.textContent = thumb.dataset.photoCaption!;
+      credit.textContent = creditPrefix + thumb.dataset.credit!;
+      thumbs.forEach((item, i) => item.setAttribute('aria-current', String(i === selected)));
+      // Keep the selected thumbnail visible without moving the page vertically.
+      const list = thumb.closest('ul')!;
+      if (thumb.offsetLeft < list.scrollLeft) list.scrollLeft = thumb.offsetLeft;
+      else if (thumb.offsetLeft + thumb.offsetWidth > list.scrollLeft + list.clientWidth)
+        list.scrollLeft = thumb.offsetLeft + thumb.offsetWidth - list.clientWidth;
+    };
+    thumbs.forEach((thumb, i) => thumb.addEventListener('click', (event) => {
+      event.preventDefault();
+      select(i);
+    }));
+    gallery.querySelector('[data-gallery-prev]')?.addEventListener('click', () => select(selected - 1));
+    gallery.querySelector('[data-gallery-next]')?.addEventListener('click', () => select(selected + 1));
+    gallery.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      select(selected + (event.key === 'ArrowLeft' ? -1 : 1));
+    });
+    let start: { x: number; y: number; id: number } | undefined;
+    let swiped = false;
+    main.addEventListener('pointerdown', (event) => {
+      swiped = false;
+      if (event.pointerType !== 'touch' || !event.isPrimary) return;
+      start = { x: event.clientX, y: event.clientY, id: event.pointerId };
+      main.setPointerCapture(event.pointerId);
+    });
+    main.addEventListener('pointerup', (event) => {
+      if (!start || start.id !== event.pointerId) return;
+      const dx = event.clientX - start.x;
+      const dy = event.clientY - start.y;
+      start = undefined;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        swiped = true;
+        select(selected + (dx < 0 ? 1 : -1));
+      }
+    });
+    main.addEventListener('pointercancel', () => { start = undefined; });
+    main.addEventListener('click', (event) => {
+      if (!swiped) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      swiped = false;
+    }, true);
+    main.addEventListener('dragstart', (event) => event.preventDefault());
+  });
+</script>
+
 <style>
+  .award__frame { position: relative; aspect-ratio: 3 / 2; max-height: 440px; }
+  .award__photo { touch-action: pan-y; }
+  .award__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--color-line-strong);
+    background: var(--color-cream);
+    color: var(--color-deep-green);
+    cursor: pointer;
+  }
+  .award__nav--prev { left: 8px; }
+  .award__nav--next { right: 8px; }
+  .award__nav--prev :global(.arrow) { transform: rotate(180deg); }
+  .award__nav:hover { border-color: currentColor; }
+  .award__evidence a[aria-current="true"] { outline: 3px solid var(--color-deep-green); outline-offset: -3px; }
+  .award__figure :focus-visible { outline: 3px solid var(--color-deep-green); outline-offset: 2px; }
+
   /* The certificates and trophies together, page 1 only. */
   .awards-hero { margin-bottom: var(--space-2xl); }
   .awards-hero img {
@@ -181,8 +297,7 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
   .award__photo {
     display: block;
     width: 100%;
-    aspect-ratio: 3 / 2;
-    max-height: 440px;
+    height: 100%;
     overflow: hidden;
     cursor: zoom-in;
     background: var(--color-cream);
@@ -190,8 +305,8 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
   .award__photo img { width: 100%; height: 100%; object-fit: cover; }
 
   /* A certificate or trophy stands whole on a cream ground within that frame. */
-  .award--document .award__photo { padding: clamp(var(--space-s), 3vw, var(--space-xl)); }
-  .award--document .award__photo img { object-fit: contain; filter: drop-shadow(0 1px 0 var(--color-line)); }
+  .award__photo.is-document { padding: clamp(var(--space-s), 3vw, var(--space-xl)); }
+  .award__photo.is-document img { object-fit: contain; filter: drop-shadow(0 1px 0 var(--color-line)); }
 
   .award__caption {
     margin-top: var(--space-xs);
@@ -230,6 +345,17 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
     text-wrap: balance;
   }
 
+  .award__date {
+    display: block;
+    margin-top: var(--space-xs);
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: normal;
+    color: var(--color-text-muted);
+  }
+
   .award__recipient {
     margin-top: var(--space-s);
     font-weight: 400;
@@ -246,6 +372,7 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
   /* The other photographs: one row of equal 96×72 frames, scrolling
      sideways when there are many. */
   .award__evidence {
+    position: relative;
     display: flex;
     gap: 12px;
     margin-top: var(--space-s);
@@ -260,7 +387,7 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
     width: 96px;
     height: 72px;
     overflow: hidden;
-    cursor: zoom-in;
+    cursor: pointer;
     background: var(--color-cream);
     outline-offset: 2px;
   }

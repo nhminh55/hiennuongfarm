@@ -183,6 +183,7 @@ awards:
     id: top-10-sang-kien-esg-viet-nam-2023
     source: 'VnEconomy 08.09.2023 and Thời báo Tài chính 09.09.2023 name the HTX among 10 finalists (pitch on 07.09.2023). No source shows it among the three winners. Certificate photo: the farm''s profile on netid.vn. Stage photo of the ten finalists: owner-supplied, 13.10.2026.'
   - year: '2022'
+    date: 2022-07-29
     name: Giải Nhất — Cuộc thi Tìm kiếm sáng kiến tăng quyền năng kinh tế phụ nữ trong nông nghiệp
     by: Oxfam tại Việt Nam và các đối tác · Dự án GRAISEA 2
     recipient: Hợp tác xã Nông nghiệp Tà Đảnh, sáng kiến “Tận dụng rơm rạ sản xuất phôi nấm mối đen”

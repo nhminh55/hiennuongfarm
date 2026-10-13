@@ -119,11 +119,14 @@ const label = 'Xem ảnh';
       history.replaceState(history.state, '', hashFor(a));
     };
 
-    links.forEach((a) =>
+    const triggers = [...links.filter((a) => !a.hasAttribute('data-gallery-thumb') && !a.hidden),
+      ...document.querySelectorAll<HTMLAnchorElement>('a[data-lightbox-trigger]')];
+    triggers.forEach((a) =>
       a.addEventListener('click', (event) => {
         if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
         event.preventDefault();
-        open(a, true);
+        const target = a.dataset.lightboxTrigger ? document.getElementById(a.dataset.lightboxTrigger) as HTMLAnchorElement : a;
+        if (target) open(target, true);
       }),
     );
 
