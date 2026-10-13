@@ -147,6 +147,18 @@ activities:
         file: tbt-anh-chung
         origin: HIEN_NUONG_PHOTO_COLLECTION/_Handoff Dấu ấn/dau-an-gap-mat-nong-dan.jpg (netid.vn, L08)
         sizes: 640x427 1280x853
+      - caption: Chị Châu Thị Nương và anh Trần Phương Hiền (áo trắng) cùng các đại biểu trước phông chương trình Tự hào Nông dân Việt Nam 2025, Hà Nội, 14.10.2025.
+        credit: Trang trại Hiền Nương
+        alt: Chị Châu Thị Nương mặc áo dài đỏ, quàng khăn rằn, đứng cạnh anh Trần Phương Hiền mặc áo sơ mi trắng và hai đại biểu mặc vest trước phông đỏ vàng ghi Hà Nội, ngày 14 tháng 10 năm 2025 và tên các đơn vị tổ chức, tài trợ
+        file: ndvnxs-hau-truong
+        origin: netid.vn/6e7h297e05555f5 (95365799-4.jpg)
+        sizes: 640x480 1024x768
+      - caption: Chị Châu Thị Nương cùng Tiến sĩ Lê Doãn Hợp, nguyên Bộ trưởng Bộ Thông tin và Truyền thông, tại Hà Nội, tháng 10.2025.
+        credit: Trang trại Hiền Nương
+        alt: Chị Châu Thị Nương mặc áo dài đỏ, quàng khăn rằn, cài hoa đỏ, tươi cười chụp ảnh cùng Tiến sĩ Lê Doãn Hợp mặc vest, thắt cà vạt đỏ sọc trắng trong sảnh hội trường
+        file: ndvnxs-dai-bieu
+        origin: netid.vn/6e7h297e05555f5 (25635786-2.jpg)
+        sizes: 640x480 1024x768
       - credit: Hệ sinh thái GBI
         alt: Toàn cảnh hội trường với hai dãy bàn phủ khăn đỏ, đại biểu ngồi kín hai bên
         file: tbt-hoi-truong
