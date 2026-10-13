@@ -40,7 +40,7 @@ const summaryOf = (slug: string) => showroom.find((s) => s.slug === slug)?.summa
               <img
                 src={img(p.slug, 640)}
                 srcset={`${img(p.slug, 640)} 640w, ${img(p.slug, 1254)} 1254w`}
-                sizes="(min-width: 1024px) 55vw, (min-width: 768px) 50vw, 100vw"
+                sizes="(min-width: 1024px) 45vw, (min-width: 768px) 50vw, 100vw"
                 width="640"
                 height="640"
                 alt={p.alt}
@@ -213,6 +213,6 @@ const summaryOf = (slug: string) => showroom.find((s) => s.slug === slug)?.summa
     .ocop__cert { grid-template-columns: 9rem minmax(0, 1fr); }
   }
   @media (min-width: 1024px) {
-    .ocop__item { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-2xl); }
+    .ocop__item { grid-template-columns: minmax(0, 7fr) minmax(0, 8fr); gap: var(--space-2xl); }
   }
 </style>
