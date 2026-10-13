@@ -77,10 +77,10 @@ menus:
     href: /#san-vat
   - items:
       - label:
-          vi: Báo chí & Truyền thông
-          en: Press & media
-          zh: 新闻与媒体
-        href: /dau-an/bao-chi/
+          vi: Chứng nhận sản phẩm
+          en: Product certifications
+          zh: 产品认证
+        href: /dau-an/chung-nhan/
       - label:
           vi: Giải thưởng & Ghi nhận
           en: Awards & recognition
@@ -92,10 +92,10 @@ menus:
           zh: 活动与交流
         href: /dau-an/su-kien/
       - label:
-          vi: Chứng nhận sản phẩm
-          en: Product certifications
-          zh: 产品认证
-        href: /dau-an/chung-nhan/
+          vi: Báo chí & Truyền thông
+          en: Press & media
+          zh: 新闻与媒体
+        href: /dau-an/bao-chi/
     href: /#dau-an
   - items:
       - label:
