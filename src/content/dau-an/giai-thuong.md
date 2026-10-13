@@ -123,6 +123,18 @@ awards:
         file: ndvnxs-san-khau
         origin: dau-an-moi-webp/nong dan xuat sac/nong dan xuat sac.jpg (ảnh in đóng khung, cắt bỏ khung)
         sizes: 640x416 1076x700
+      - caption: Chị Châu Thị Nương và anh Trần Phương Hiền (áo trắng) cùng các đại biểu trước phông chương trình Tự hào Nông dân Việt Nam 2025, Hà Nội, 14.10.2025.
+        credit: Trang trại Hiền Nương
+        alt: Chị Châu Thị Nương mặc áo dài đỏ, quàng khăn rằn, đứng cạnh anh Trần Phương Hiền mặc áo sơ mi trắng và hai đại biểu mặc vest trước phông đỏ vàng ghi Hà Nội, ngày 14 tháng 10 năm 2025 và tên các đơn vị tổ chức, tài trợ
+        file: ndvnxs-hau-truong
+        origin: netid.vn/6e7h297e05555f5 (95365799-4.jpg)
+        sizes: 640x480 1024x768
+      - caption: Chị Châu Thị Nương cùng một đại biểu tại Hà Nội, tháng 10.2025.
+        credit: Trang trại Hiền Nương
+        alt: Chị Châu Thị Nương mặc áo dài đỏ, quàng khăn rằn, cài hoa đỏ, tươi cười chụp ảnh cùng một người đàn ông mặc vest, thắt cà vạt đỏ sọc trắng trong sảnh hội trường
+        file: ndvnxs-dai-bieu
+        origin: netid.vn/6e7h297e05555f5 (25635786-2.jpg)
+        sizes: 640x480 1024x768
       - caption: 'Chị Châu Thị Nương (xã Cô Tô, tỉnh An Giang) là nông dân Việt Nam xuất sắc năm 2025 với mô hình trồng nấm. Ảnh: Ban Tổ chức cung cấp, đăng trên Báo Nhân Dân.'
         credit: Ban Tổ chức cung cấp
         alt: Chị Châu Thị Nương đội nón lá, quàng khăn rằn, cầm hộp sản phẩm nấm linh chi
