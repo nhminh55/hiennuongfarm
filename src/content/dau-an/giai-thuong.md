@@ -160,21 +160,28 @@ awards:
     recipient: Hợp tác xã Nông nghiệp Tà Đảnh
     significance: Hợp tác xã Nông nghiệp Tà Đảnh là một trong mười doanh nghiệp vào vòng chung kết Sáng kiến ESG Việt Nam 2023, thuyết trình trước hội đồng đánh giá ngày 07.09.2023.
     photo:
-      caption: 'Giấy chứng nhận trao tặng Hợp tác xã Nông nghiệp Tà Đảnh: Thuộc Top 10 doanh nghiệp xuất sắc nhất Sáng kiến ESG Việt Nam 2023.'
+      caption: Mười doanh nghiệp vào chung kết Sáng kiến ESG Việt Nam 2023 trên sân khấu; chị Châu Thị Nương mặc áo dài đỏ.
       credit: Trang trại Hiền Nương
-      alt: Giấy chứng nhận khung vàng có logo USAID, trao tặng Hợp tác xã Nông nghiệp Tà Đảnh, thuộc Top 10 doanh nghiệp xuất sắc nhất Sáng kiến ESG Việt Nam 2023
-      document: true
-      file: esg-chung-nhan
-      origin: design-reference/chung nhan/chung-nhan-esg-top-10-2023.webp
-      sizes: 640x511 1280x1021 1404x1120
-    evidence: []
+      alt: Mười đại diện doanh nghiệp đứng thành hàng trên sân khấu, cầm hoa và chứng nhận, chị Châu Thị Nương mặc áo dài đỏ ở giữa; màn hình phía sau ghi Top 10 doanh nghiệp Finalists, Sáng kiến ESG Việt Nam 2023, cùng logo USAID
+      file: esg-san-khau
+      origin: ảnh chủ trang trại gửi (Nấm mối Nàng Nương [13-10-2026 20_31]/sáng kiến.jpg)
+      position: 50% 60%
+      sizes: 640x481 1080x811
+    evidence:
+      - caption: 'Giấy chứng nhận trao tặng Hợp tác xã Nông nghiệp Tà Đảnh: Thuộc Top 10 doanh nghiệp xuất sắc nhất Sáng kiến ESG Việt Nam 2023.'
+        credit: Trang trại Hiền Nương
+        alt: Giấy chứng nhận khung vàng có logo USAID, trao tặng Hợp tác xã Nông nghiệp Tà Đảnh, thuộc Top 10 doanh nghiệp xuất sắc nhất Sáng kiến ESG Việt Nam 2023
+        document: true
+        file: esg-chung-nhan
+        origin: design-reference/chung nhan/chung-nhan-esg-top-10-2023.webp
+        sizes: 640x511 1280x1021 1404x1120
     sources:
       - label: VnEconomy, 08.09.2023
         href: https://vneconomy.vn/top-3-doanh-nghiep-dat-sang-kien-viet-nam-2023-se-duoc-cong-bo-vao-thang-10-2023.htm
       - label: Thời báo Tài chính Việt Nam, 09.09.2023
         href: https://thoibaotaichinhvietnam.vn/to-chuc-vong-chung-ket-sang-kien-esg-viet-nam-2023-de-chon-3-doanh-nghiep-chien-thang-135459.html
     id: top-10-sang-kien-esg-viet-nam-2023
-    source: 'VnEconomy 08.09.2023 and Thời báo Tài chính 09.09.2023 name the HTX among 10 finalists (pitch on 07.09.2023). No source shows it among the three winners. Certificate photo: the farm''s profile on netid.vn.'
+    source: 'VnEconomy 08.09.2023 and Thời báo Tài chính 09.09.2023 name the HTX among 10 finalists (pitch on 07.09.2023). No source shows it among the three winners. Certificate photo: the farm''s profile on netid.vn. Stage photo of the ten finalists: owner-supplied, 13.10.2026.'
   - year: '2022'
     name: Giải Nhất — Cuộc thi Tìm kiếm sáng kiến tăng quyền năng kinh tế phụ nữ trong nông nghiệp
     by: Oxfam tại Việt Nam và các đối tác · Dự án GRAISEA 2
