@@ -1904,6 +1904,20 @@ collections:
                 name: name
                 widget: string
                 required: true
+              - label: Giấy chứng nhận
+                name: certificate
+                widget: object
+                required: true
+                collapsed: true
+                fields:
+                  - label: Chú thích ảnh
+                    name: caption
+                    widget: text
+                    required: true
+                  - label: Nguồn ảnh
+                    name: credit
+                    widget: string
+                    required: true
             allow_add: false
             allow_remove: false
             allow_duplicate: false
@@ -2102,6 +2116,18 @@ collections:
           - label: 'Chứng nhận: Xem sản phẩm'
             name: chung_nhan_xem_san_pham
             widget: string
+            required: true
+          - label: 'Chứng nhận: nhãn phần giấy chứng nhận'
+            name: chung_nhan_giay_nhan
+            widget: string
+            required: true
+          - label: 'Chứng nhận: tiêu đề phần giấy chứng nhận'
+            name: chung_nhan_giay_tieu_de
+            widget: string
+            required: true
+          - label: 'Chứng nhận: lời giới thiệu giấy chứng nhận'
+            name: chung_nhan_giay_dan
+            widget: text
             required: true
           - label: 'Khung xem ảnh: nút Đóng'
             name: xem_anh_dong

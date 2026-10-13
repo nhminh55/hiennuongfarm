@@ -1,16 +1,19 @@
 ---
 /**
  * /dau-an/chung-nhan/: Chứng nhận sản phẩm. The three OCOP products as
- * Báo An Giang names them (26.10.2025). No star rating, certificate year
- * or issuing body until the certificates themselves are in hand. Each
- * product opens in the showroom. Data: ocopProducts in src/data/dau-an.ts.
+ * Báo An Giang names them (26.10.2025), each opening in the showroom; then
+ * their certificates (OCOP 3 sao, UBND huyện Tri Tôn, 18.12.2024), shown
+ * whole and opening in the photo viewer. Data: ocopProducts in
+ * src/data/dau-an.ts.
  */
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import DauAnHead from '../../../components/dau-an/DauAnHead.astro';
+import Lightbox from '../../../components/dau-an/Lightbox.astro';
 import Arrow from '../../../components/Arrow.astro';
-import { dauAnPages, dauAnText as t, ocopProducts, ocopSource } from '../../../data/dau-an';
+import { dauAnPages, dauAnText as t, ocopProducts, ocopSource, type Pic } from '../../../data/dau-an';
 
 const img = (slug: string, w: number) => `/images/products/studio/${slug}-${w}.webp`;
+const captionOf = (p: Pic) => `${p.caption ?? p.alt} ${t.anh} ${p.credit}.`;
 ---
 <BaseLayout
   title={dauAnPages.find((p) => p.href === '/dau-an/chung-nhan/')!.title}
@@ -57,6 +60,49 @@ const img = (slug: string, w: number) => `/images/products/studio/${slug}-${w}.w
       </p>
     </div>
   </section>
+
+  <section class="certs" aria-labelledby="certs-title">
+    <div class="container">
+      <div class="certs__intro">
+        <p class="eyebrow">{t.chung_nhan_giay_nhan}</p>
+        <h2 class="ocop__title" id="certs-title">{t.chung_nhan_giay_tieu_de}</h2>
+        {t.chung_nhan_giay_dan.split(/\n\s*\n/).map((para) => (
+          <p class="ocop__lead">{para.trim()}</p>
+        ))}
+      </div>
+
+      <ul class="certs__list">
+        {ocopProducts.map((p, i) => (
+          <li data-reveal style={`--reveal-delay: ${i * 90}ms`}>
+            <figure class="certs__item">
+              <a
+                class="certs__photo"
+                href={p.certificate.full}
+                data-lightbox="ocop"
+                data-caption={captionOf(p.certificate)}
+                data-width={p.certificate.width}
+                data-height={p.certificate.height}
+              >
+                <img
+                  src={p.certificate.src}
+                  srcset={p.certificate.srcset}
+                  sizes="(min-width: 768px) 30vw, 20rem"
+                  width={p.certificate.width}
+                  height={p.certificate.height}
+                  alt={p.certificate.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+              <figcaption class="certs__caption">{p.certificate.caption}</figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <Lightbox closeLabel={t.xem_anh_dong} />
 </BaseLayout>
 
 <style>
@@ -135,7 +181,29 @@ const img = (slug: string, w: number) => `/images/products/studio/${slug}-${w}.w
   .ocop__source a { color: var(--color-text); border-bottom: 1px solid var(--color-line-strong); }
   .ocop__source a:hover { border-color: currentColor; }
 
+  .certs { padding-bottom: var(--section-y); }
+  .certs__intro { max-width: 40rem; }
+  .certs__list {
+    display: grid;
+    gap: var(--space-xl) var(--space-l);
+    margin-top: var(--space-xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--color-line);
+  }
+  .certs__item { max-width: 20rem; }
+  .certs__photo { display: block; }
+  .certs__photo img { width: 100%; height: auto; transition: opacity 300ms var(--ease); }
+  .certs__photo:hover img { opacity: 0.9; }
+  .certs__caption {
+    margin-top: var(--space-s);
+    font-size: var(--type-small);
+    color: var(--color-text-muted);
+    text-wrap: pretty;
+  }
+
   @media (min-width: 768px) {
-    .ocop__list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .ocop__list,
+    .certs__list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .certs__item { max-width: none; }
   }
 </style>

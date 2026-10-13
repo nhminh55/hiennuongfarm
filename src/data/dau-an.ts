@@ -239,10 +239,13 @@ export const activityBySlug = (slug: string) => activities.find((a) => a.slug ==
 // ---------------------------------------------------------------------------
 
 /**
- * OCOP products as Báo An Giang names them (26.10.2025, a465150). The
- * article gives no star rating, certificate year or issuing body: add them
- * only from the certificates themselves. Images are the products' studio
- * photographs from the showroom (src/data/showroom.ts).
+ * OCOP products as Báo An Giang names them (26.10.2025, a465150). Star
+ * rating, year and issuing body come from the certificates themselves
+ * (owner photographs, 13.10.2026): OCOP 3 sao, UBND huyện Tri Tôn,
+ * 18.12.2024, QĐ 6351/QĐ-UBND, valid 36 months. Each certificate names the
+ * product its own way (Nấm Đông trùng hạ thảo Nương farm, Nấm mối Nàng
+ * Nương). Images are the products' studio photographs from the showroom
+ * (src/data/showroom.ts).
  */
 export interface OcopProduct {
   /** Showroom slug: /san-pham/#slug and /images/products/studio/<slug>-*.webp. */
@@ -250,10 +253,14 @@ export interface OcopProduct {
   /** Name as the article gives it. */
   name: string;
   alt: string;
+  /** The OCOP certificate, photographed in its frame. */
+  certificate: Pic;
 }
 
-const ocop = dataFile<{ products: OcopProduct[]; citation: Source }>('dau-an/chung-nhan');
+const ocop = dataFile<{ products: (Omit<OcopProduct, 'certificate'> & { certificate: RawPic })[]; citation: Source }>(
+  'dau-an/chung-nhan',
+);
 
-export const ocopProducts: OcopProduct[] = ocop.products;
+export const ocopProducts: OcopProduct[] = ocop.products.map((p) => ({ ...p, certificate: pic(p.certificate) }));
 
 export const ocopSource: Source = ocop.citation;
