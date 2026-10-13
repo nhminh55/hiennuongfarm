@@ -25,6 +25,61 @@ awards:
     id: bang-khen-chu-tich-ubnd-an-giang-2026
     source: 'Owner-supplied text and photos 13.10.2026 (ceremony for Ngày Doanh nhân Việt Nam; 30+ workers, 90% Khmer women, from chị Nương''s tham luận): chị Nương received a bằng khen from the Chủ tịch UBND tỉnh An Giang for contributions to the province''s agriculture. Stage screens show individual (Bà Châu Thị Nương) and collective (HTX Nông nghiệp Tà Đảnh) awards. No press source yet; add one when published.'
   - year: '2025'
+    date: 2025-11-24
+    name: Bằng khen của Hội Liên hiệp Phụ nữ Việt Nam
+    by: Đoàn Chủ tịch Trung ương Hội Liên hiệp Phụ nữ Việt Nam
+    recipient: Hợp tác xã Nông nghiệp Tà Đảnh
+    significance: Hợp tác xã Nông nghiệp Tà Đảnh được Hội Liên hiệp Phụ nữ Việt Nam tặng Bằng khen vì đã có thành tích xuất sắc trong thực hiện Đề án “Hỗ trợ hợp tác xã do phụ nữ tham gia quản lý, tạo việc làm cho lao động nữ đến năm 2030” năm 2025. Chị Châu Thị Nương nhận bằng khen tại Hội nghị biểu dương điển hình hợp tác xã do phụ nữ tham gia quản lý năm 2025, Hà Nội, ngày 30.11.2025.
+    photo:
+      caption: Chị Châu Thị Nương với bằng khen tại Hội nghị của Hội Liên hiệp Phụ nữ Việt Nam, Hà Nội, 30.11.2025.
+      credit: Trang trại Hiền Nương
+      alt: Chị Châu Thị Nương mặc áo dài đỏ, cầm bằng khen và bó hoa, đứng trước phông nền Hội nghị tổng kết Đề án Hỗ trợ phụ nữ khởi nghiệp, biểu dương điển hình hợp tác xã do phụ nữ tham gia quản lý năm 2025
+      file: lhpn-trao-bang-khen
+      origin: ảnh chủ trang trại gửi (hoi lien hiep PN/2aobor5fxjucpdxogpanjbpmi58igkr1i40jzrss23.jpg)
+      position: 48% 50%
+      sizes: 640x461 1268x914
+    evidence:
+      - caption: Bằng khen của Hội Liên hiệp Phụ nữ Việt Nam tặng Hợp tác xã Nông nghiệp Tà Đảnh, Hà Nội, ngày 24.11.2025.
+        credit: Trang trại Hiền Nương
+        alt: Bằng khen khung vàng có logo Hội Liên hiệp Phụ nữ Việt Nam, tặng Hợp tác xã Nông nghiệp Tà Đảnh đã có thành tích xuất sắc trong thực hiện Đề án Hỗ trợ hợp tác xã do phụ nữ tham gia quản lý, tạo việc làm cho lao động nữ đến năm 2030 năm 2025, ký ngày 24 tháng 11 năm 2025
+        document: true
+        file: lhpn-bang-khen
+        origin: hoi lien hiep PN/bang-khen-hoi-lhpn-2025.webp
+        sizes: 640x480 1280x960 1448x1086
+      - caption: Chị Châu Thị Nương tại Hội nghị của Hội Liên hiệp Phụ nữ Việt Nam, Hà Nội, tháng 11.2025.
+        credit: Trang trại Hiền Nương
+        alt: Chị Châu Thị Nương mặc áo dài đỏ đứng cạnh hai standee của Hội Liên hiệp Phụ nữ Việt Nam ghi Phụ nữ tự chủ kinh tế và Phụ nữ khởi nghiệp tự tin, tự chủ, bứt phá
+        file: lhpn-hoi-nghi
+        origin: ảnh chủ trang trại gửi (hoi lien hiep PN/2aobor5fxjqdrcyebb7eap0wam68wsshgrpx4iem30.jpg)
+        sizes: 575x650
+    sources: []
+    id: bang-khen-hoi-lhpn-viet-nam-2025
+    source: 'Owner-supplied certificate and photos: Bằng khen of the Hội LHPN Việt Nam (QĐ 6322/QĐ-ĐCT, signed Hà Nội 24.11.2025, Nguyễn Thị Tuyến) to HTX Nông nghiệp Tà Đảnh; stage backdrop dates the Hội nghị 30.11.2025 in Hà Nội. No press source yet; add one when published.'
+  - year: '2025'
+    name: Giải “Phụ nữ Việt tự tin làm kinh tế” năm 2025
+    by: Hội Liên hiệp Phụ nữ Việt Nam · Công ty TNHH Quốc tế Unilever Việt Nam
+    recipient: Bà Châu Thị Nương — Chủ dự án “Trồng nấm theo hướng nông nghiệp tuần hoàn khép kín”
+    significance: Chị Châu Thị Nương đạt giải “Phụ nữ Việt tự tin làm kinh tế” năm 2025 với dự án trồng nấm theo hướng nông nghiệp tuần hoàn khép kín. Dự án áp dụng mô hình sản xuất tuần hoàn, biến phụ phẩm thành tài nguyên và góp phần xây dựng hệ sinh thái nông nghiệp thân thiện với môi trường.
+    photo:
+      caption: Màn hình lễ trao giải Phụ nữ Việt tự tin làm kinh tế 2025 giới thiệu chị Châu Thị Nương, tỉnh An Giang.
+      credit: Trang trại Hiền Nương
+      alt: Màn hình sân khấu có logo Unilever và Hội Liên hiệp Phụ nữ Việt Nam, ghi Trao giải Phụ nữ Việt tự tin làm kinh tế 2025, Chị Châu Thị Nương, tỉnh An Giang, dự án Trồng nấm theo hướng nông nghiệp tuần hoàn khép kín, kèm ảnh chân dung chị Nương đội nón, quàng khăn rằn
+      file: pnvtt-trao-giai
+      origin: ảnh chủ trang trại gửi (dau-an-moi-webp/2aobor5fxkaqeltspxg1tzu3exscy2viqgyuufje40.jpg)
+      position: 50% 40%
+      sizes: 640x496 1280x991
+    evidence:
+      - caption: Giấy chứng nhận bà Châu Thị Nương đạt giải “Phụ nữ Việt tự tin làm kinh tế” năm 2025.
+        credit: Trang trại Hiền Nương
+        alt: Giấy chứng nhận khung vàng có logo Hội Liên hiệp Phụ nữ Việt Nam và Unilever, chứng nhận bà Châu Thị Nương, chủ dự án Trồng nấm theo hướng nông nghiệp tuần hoàn khép kín, đạt giải Phụ nữ Việt tự tin làm kinh tế năm 2025
+        document: true
+        file: pnvtt-chung-nhan
+        origin: dau-an-moi-webp/chung-nhan-phu-nu-tu-tin-lam-kinh-te-2025.webp
+        sizes: 640x480 1280x960 1448x1086
+    sources: []
+    id: phu-nu-viet-tu-tin-lam-kinh-te-2025
+    source: 'Owner-supplied certificate (Hội LHPN Việt Nam, signed Trần Lan Phương; Unilever Việt Nam, signed Lê Thị Hồng Nhi; undated) and a photo of the ceremony screen, whose project description the significance follows. Ceremony date unknown; diendandoanhnghiep.vn 24.03.2026 reports 30 prizes of the 2025 programme awarded in Hà Nội without naming winners. Add a date and source when confirmed.'
+  - year: '2025'
     name: Nông dân Việt Nam xuất sắc năm 2025
     by: Trung ương Hội Nông dân Việt Nam · Chương trình Tự hào Nông dân Việt Nam năm 2025
     recipient: Chị Châu Thị Nương
@@ -41,15 +96,30 @@ awards:
       - caption: Giấy chứng nhận đạt danh hiệu Nông dân Việt Nam xuất sắc 2025, Hà Nội, ngày 10.10.2025.
         credit: Trang trại Hiền Nương
         alt: Giấy chứng nhận của Ban Tổ chức Chương trình Tự hào Nông dân Việt Nam năm 2025 ghi bà Châu Thị Nương, ấp Tân Bình, xã Cô Tô, tỉnh An Giang, đạt danh hiệu Nông dân Việt Nam xuất sắc 2025, ký ngày 10 tháng 10 năm 2025
+        document: true
         file: ndvnxs-chung-nhan
-        origin: dau-an-cup-chung-nhan-2025.jpg, phần bên phải
-        sizes: 379x522
+        origin: dau-an-moi-webp/nong dan xuat sac/chung-nhan-nong-dan-xuat-sac-2025.webp
+        sizes: 464x640 1068x1472
       - caption: Cúp danh hiệu Nông dân Việt Nam xuất sắc năm 2025.
         credit: Trang trại Hiền Nương
         alt: Cúp pha lê hình ngôi sao khắc dòng chữ Danh hiệu Nông dân Việt Nam xuất sắc năm 2025
+        document: true
         file: ndvnxs-cup
-        origin: dau-an-cup-chung-nhan-2025.jpg, phần bên trái
-        sizes: 379x522
+        origin: dau-an-moi-webp/nong dan xuat sac/cup-nong-dan-xuat-sac-2025.webp
+        sizes: 464x640 1068x1472
+      - caption: Bằng khen của Ban Chấp hành Trung ương Hội Nông dân Việt Nam tặng bà Châu Thị Nương, Hà Nội, ngày 11.09.2025.
+        credit: Trang trại Hiền Nương
+        alt: Bằng khen khung vàng có logo Hội Nông dân Việt Nam, Ban Chấp hành Trung ương Hội Nông dân Việt Nam tặng bà Châu Thị Nương, ấp Tân Bình, xã Cô Tô, tỉnh An Giang, đã có thành tích xuất sắc trong lao động, sản xuất và xây dựng nông thôn mới, góp phần xây dựng giai cấp nông dân và Hội Nông dân Việt Nam vững mạnh
+        document: true
+        file: hnd-bang-khen
+        origin: dau-an-moi-webp/bang-khen-hoi-nong-dan-2025.webp
+        sizes: 640x480 1280x960 1448x1086
+      - caption: Lễ tôn vinh Nông dân Việt Nam xuất sắc 2025 trên sân khấu chương trình Tự hào Nông dân Việt Nam 2025, Hà Nội, 14.10.2025.
+        credit: Trang trại Hiền Nương
+        alt: Các nông dân xuất sắc đứng thành hàng trên sân khấu, cầm chứng nhận; màn hình phía sau ghi Tự hào Nông dân Việt Nam 2025, Nông dân Việt Nam xuất sắc 2025, Hà Nội, ngày 14 tháng 10 năm 2025
+        file: ndvnxs-san-khau
+        origin: dau-an-moi-webp/nong dan xuat sac/nong dan xuat sac.jpg (ảnh in đóng khung, cắt bỏ khung)
+        sizes: 640x416 1076x700
       - caption: 'Chị Châu Thị Nương (xã Cô Tô, tỉnh An Giang) là nông dân Việt Nam xuất sắc năm 2025 với mô hình trồng nấm. Ảnh: Ban Tổ chức cung cấp, đăng trên Báo Nhân Dân.'
         credit: Ban Tổ chức cung cấp
         alt: Chị Châu Thị Nương đội nón lá, quàng khăn rằn, cầm hộp sản phẩm nấm linh chi
