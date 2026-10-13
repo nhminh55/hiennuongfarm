@@ -1,17 +1,10 @@
 ---
 awards:
   - year: '2026'
-    name: Bằng khen của Chủ tịch UBND tỉnh An Giang — Dấu mốc trên hành trình gắn bó với quê hương
+    name: Bằng khen của Chủ tịch UBND tỉnh An Giang
     by: Ủy ban nhân dân tỉnh An Giang
-    recipient: Bà Châu Thị Nương, Giám đốc Hợp tác xã Nông nghiệp Tà Đảnh
-    significance: |-
-      Ngày 13/10/2026, nhân dịp kỷ niệm Ngày Doanh nhân Việt Nam, bà Châu Thị Nương — Giám đốc Hợp tác xã Nông nghiệp Tà Đảnh, thương hiệu Hiền Nương Farm — vinh dự nhận Bằng khen của Chủ tịch UBND tỉnh An Giang vì những đóng góp cho tỉnh nhà trong lĩnh vực nông nghiệp. Tại cùng buổi lễ, tập thể Hợp tác xã Nông nghiệp Tà Đảnh cũng được khen thưởng.
-
-      Từ những ngày khởi nghiệp năm 2020, chị Nương cùng gia đình đã kiên trì xây dựng mô hình trồng nấm gắn với nông nghiệp tuần hoàn: tận dụng phụ phẩm làm nguyên liệu sản xuất, đưa phôi nấm sau thu hoạch trở lại phục vụ đất và cây trồng, từng bước nâng cao giá trị nông sản quê hương.
-
-      Hành trình ấy còn mang ý nghĩa từ những việc làm được tạo ra ngay tại địa phương. Theo bài tham luận của chị Nương nhân dịp này, Hợp tác xã hiện tạo việc làm ổn định cho hơn 30 lao động, trong đó 90% là phụ nữ Khmer tại Tri Tôn và Tịnh Biên. Đằng sau mỗi mẻ nấm là sự chung sức của những người phụ nữ đang học thêm kỹ thuật, có thu nhập và từng bước tự chủ cuộc sống.
-
-      Với Hiền Nương Farm, sự ghi nhận hôm nay là niềm vui chung của cả tập thể, đồng thời là động lực để tiếp tục chăm chút chất lượng sản phẩm, phát triển mô hình tuần hoàn và tạo thêm những giá trị thiết thực cho cộng đồng An Giang.
+    recipient: Bà Châu Thị Nương — Giám đốc HTX Nông nghiệp Tà Đảnh
+    significance: Ngày 13/10/2026, nhân dịp kỷ niệm Ngày Doanh nhân Việt Nam, bà Châu Thị Nương vinh dự nhận Bằng khen của Chủ tịch UBND tỉnh An Giang. Sự ghi nhận là dấu mốc đáng quý trên hành trình phát triển mô hình trồng nấm gắn với nông nghiệp tuần hoàn và tạo việc làm cho phụ nữ Khmer tại địa phương.
     photo:
       caption: Chị Châu Thị Nương nhận bằng khen, phần khen thưởng cá nhân, ngày 13.10.2026.
       credit: Trang trại Hiền Nương
