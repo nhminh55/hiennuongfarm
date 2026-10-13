@@ -129,9 +129,9 @@ awards:
         file: ndvnxs-hau-truong
         origin: netid.vn/6e7h297e05555f5 (95365799-4.jpg)
         sizes: 640x480 1024x768
-      - caption: Chị Châu Thị Nương cùng một đại biểu tại Hà Nội, tháng 10.2025.
+      - caption: Chị Châu Thị Nương cùng Tiến sĩ Lê Doãn Hợp, nguyên Bộ trưởng Bộ Thông tin và Truyền thông, tại Hà Nội, tháng 10.2025.
         credit: Trang trại Hiền Nương
-        alt: Chị Châu Thị Nương mặc áo dài đỏ, quàng khăn rằn, cài hoa đỏ, tươi cười chụp ảnh cùng một người đàn ông mặc vest, thắt cà vạt đỏ sọc trắng trong sảnh hội trường
+        alt: Chị Châu Thị Nương mặc áo dài đỏ, quàng khăn rằn, cài hoa đỏ, tươi cười chụp ảnh cùng Tiến sĩ Lê Doãn Hợp mặc vest, thắt cà vạt đỏ sọc trắng trong sảnh hội trường
         file: ndvnxs-dai-bieu
         origin: netid.vn/6e7h297e05555f5 (25635786-2.jpg)
         sizes: 640x480 1024x768
