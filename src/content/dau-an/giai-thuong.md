@@ -89,6 +89,7 @@ awards:
     id: bang-khen-hoi-lhpn-viet-nam-2025
     source: 'Owner-supplied certificate and photos: Bằng khen of the Hội LHPN Việt Nam (QĐ 6322/QĐ-ĐCT, signed Hà Nội 24.11.2025, Nguyễn Thị Tuyến) to HTX Nông nghiệp Tà Đảnh; stage backdrop dates the Hội nghị 30.11.2025 in Hà Nội. No press source yet; add one when published.'
   - year: '2025'
+    date: 2025-10-10
     name: Nông dân Việt Nam xuất sắc năm 2025
     by: Trung ương Hội Nông dân Việt Nam · Chương trình Tự hào Nông dân Việt Nam năm 2025
     recipient: Chị Châu Thị Nương
@@ -116,13 +117,6 @@ awards:
         file: ndvnxs-cup
         origin: dau-an-moi-webp/nong dan xuat sac/cup-nong-dan-xuat-sac-2025.webp
         sizes: 464x640 1068x1472
-      - caption: Bằng khen của Ban Chấp hành Trung ương Hội Nông dân Việt Nam tặng bà Châu Thị Nương, Hà Nội, ngày 11.09.2025.
-        credit: Trang trại Hiền Nương
-        alt: Bằng khen khung vàng có logo Hội Nông dân Việt Nam, Ban Chấp hành Trung ương Hội Nông dân Việt Nam tặng bà Châu Thị Nương, ấp Tân Bình, xã Cô Tô, tỉnh An Giang, đã có thành tích xuất sắc trong lao động, sản xuất và xây dựng nông thôn mới, góp phần xây dựng giai cấp nông dân và Hội Nông dân Việt Nam vững mạnh
-        document: true
-        file: hnd-bang-khen
-        origin: dau-an-moi-webp/bang-khen-hoi-nong-dan-2025.webp
-        sizes: 640x480 1280x960 1448x1086
       - caption: Lễ tôn vinh Nông dân Việt Nam xuất sắc 2025 trên sân khấu chương trình Tự hào Nông dân Việt Nam 2025, Hà Nội, 14.10.2025.
         credit: Trang trại Hiền Nương
         alt: Các nông dân xuất sắc đứng thành hàng trên sân khấu, cầm chứng nhận; màn hình phía sau ghi Tự hào Nông dân Việt Nam 2025, Nông dân Việt Nam xuất sắc 2025, Hà Nội, ngày 14 tháng 10 năm 2025
@@ -142,6 +136,24 @@ awards:
         href: https://www.hoinongdan.org.vn/hoat-dong-hoi/tong-bi-thu-to-lam-gap-mat-cac-nong-dan-xuat-sac-nha-khoa-hoc-cua-nha-nong-tieu-bieu-380043
     id: nong-dan-viet-nam-xuat-sac-2025
     source: 'Nhân Dân 08.10.2025 (list announced); certificate dated 10.10.2025; ceremony 14.10 in Hà Nội (Nhân Dân). Photo: the meeting with Tổng Bí thư Tô Lâm on 14.10.2025 (hoinongdan.org.vn 15.10.2025; GBI 28.10.2025).'
+  - year: '2025'
+    date: 2025-09-11
+    name: Bằng khen của Ban Chấp hành Trung ương Hội Nông dân Việt Nam
+    by: Ban Chấp hành Trung ương Hội Nông dân Việt Nam
+    recipient: Bà Châu Thị Nương — ấp Tân Bình, xã Cô Tô, tỉnh An Giang
+    significance: Ngày 11.09.2025, Ban Chấp hành Trung ương Hội Nông dân Việt Nam tặng Bằng khen cho bà Châu Thị Nương vì đã có thành tích xuất sắc trong lao động, sản xuất và xây dựng nông thôn mới, góp phần xây dựng giai cấp nông dân và Hội Nông dân Việt Nam vững mạnh.
+    photo:
+      caption: Bằng khen của Ban Chấp hành Trung ương Hội Nông dân Việt Nam tặng bà Châu Thị Nương, Hà Nội, ngày 11.09.2025.
+      credit: Trang trại Hiền Nương
+      alt: Bằng khen khung vàng có logo Hội Nông dân Việt Nam, Ban Chấp hành Trung ương Hội Nông dân Việt Nam tặng bà Châu Thị Nương, ấp Tân Bình, xã Cô Tô, tỉnh An Giang, đã có thành tích xuất sắc trong lao động, sản xuất và xây dựng nông thôn mới, góp phần xây dựng giai cấp nông dân và Hội Nông dân Việt Nam vững mạnh
+      document: true
+      file: hnd-bang-khen
+      origin: dau-an-moi-webp/bang-khen-hoi-nong-dan-2025.webp
+      sizes: 640x480 1280x960 1448x1086
+    evidence: []
+    sources: []
+    id: bang-khen-hoi-nong-dan-viet-nam-2025
+    source: 'Owner-supplied certificate: Bằng khen of the Ban Chấp hành TW Hội Nông dân Việt Nam (Quyết định số 006 QĐ/HNDTW, Hà Nội 11.09.2025, signed Chủ tịch Lương Quốc Đoàn) to bà Châu Thị Nương. A separate recognition from Nông dân Việt Nam xuất sắc 2025 (owner, 13.10.2026). No press source yet.'
   - year: '2023'
     name: Top 10 doanh nghiệp xuất sắc nhất Sáng kiến ESG Việt Nam 2023
     by: Sáng kiến ESG Việt Nam 2023 · Bộ Kế hoạch và Đầu tư phối hợp với USAID
