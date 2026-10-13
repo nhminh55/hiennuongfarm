@@ -45,6 +45,7 @@ chung_nhan_dan: Trong các dòng nấm của trang trại, ba sản phẩm mang 
 chung_nhan_huy_hieu: OCOP 3 sao
 chung_nhan_thuong_hieu: Thương hiệu Nàng Nương
 chung_nhan_xem_san_pham: Xem sản phẩm
+chung_nhan_xem_giay: Xem giấy chứng nhận
 chung_nhan_giay_nhan: Giấy chứng nhận
 chung_nhan_giay_tieu_de: OCOP 3 sao, năm 2024
 chung_nhan_giay_dan: |-

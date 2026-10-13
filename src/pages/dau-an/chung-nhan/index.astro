@@ -1,19 +1,23 @@
 ---
 /**
  * /dau-an/chung-nhan/: Chứng nhận sản phẩm. The three OCOP products as
- * Báo An Giang names them (26.10.2025), each opening in the showroom; then
- * their certificates (OCOP 3 sao, UBND huyện Tri Tôn, 18.12.2024), shown
- * whole and opening in the photo viewer. Data: ocopProducts in
- * src/data/dau-an.ts.
+ * Báo An Giang names them (26.10.2025), one row each: the studio photograph
+ * on the left; on the right the name, the showroom summary, the product's
+ * own certificate (OCOP 3 sao, UBND huyện Tri Tôn, 18.12.2024), shown whole
+ * and opening in the photo viewer, and a link to the showroom. Data:
+ * ocopProducts in src/data/dau-an.ts, summaries from src/data/showroom.ts.
  */
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import DauAnHead from '../../../components/dau-an/DauAnHead.astro';
 import Lightbox from '../../../components/dau-an/Lightbox.astro';
 import Arrow from '../../../components/Arrow.astro';
 import { dauAnPages, dauAnText as t, ocopProducts, ocopSource, type Pic } from '../../../data/dau-an';
+import { showroomProducts } from '../../../data/showroom';
 
 const img = (slug: string, w: number) => `/images/products/studio/${slug}-${w}.webp`;
 const captionOf = (p: Pic) => `${p.caption ?? p.alt} ${t.anh} ${p.credit}.`;
+const showroom = showroomProducts('vi');
+const summaryOf = (slug: string) => showroom.find((s) => s.slug === slug)?.summary;
 ---
 <BaseLayout
   title={dauAnPages.find((p) => p.href === '/dau-an/chung-nhan/')!.title}
@@ -30,75 +34,73 @@ const captionOf = (p: Pic) => `${p.caption ?? p.alt} ${t.anh} ${p.credit}.`;
       </div>
 
       <ul class="ocop__list">
-        {ocopProducts.map((p, i) => (
-          <li class="ocop__item" data-reveal style={`--reveal-delay: ${i * 90}ms`}>
-            <a class="ocop__link" href={`/san-pham/#${p.slug}`}>
-              <span class="ocop__photo">
-                <img
-                  src={img(p.slug, 640)}
-                  srcset={`${img(p.slug, 640)} 640w, ${img(p.slug, 1254)} 1254w`}
-                  sizes="(min-width: 768px) 30vw, 100vw"
-                  width="640"
-                  height="640"
-                  alt={p.alt}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </span>
-              <span class="ocop__badge">{t.chung_nhan_huy_hieu}</span>
-              <span class="ocop__name">{p.name}</span>
-              <span class="ocop__brand">{t.chung_nhan_thuong_hieu}</span>
-              <span class="ocop__more">{t.chung_nhan_xem_san_pham} <Arrow /></span>
+        {ocopProducts.map((p) => (
+          <li class="ocop__item" data-reveal>
+            <a class="ocop__photo" href={`/san-pham/#${p.slug}`} tabindex="-1" aria-hidden="true">
+              <img
+                src={img(p.slug, 640)}
+                srcset={`${img(p.slug, 640)} 640w, ${img(p.slug, 1254)} 1254w`}
+                sizes="(min-width: 1024px) 55vw, (min-width: 768px) 50vw, 100vw"
+                width="640"
+                height="640"
+                alt={p.alt}
+                loading="lazy"
+                decoding="async"
+              />
             </a>
-          </li>
-        ))}
-      </ul>
 
-      <p class="ocop__source">
-        {t.nguon}{' '}
-        <a href={ocopSource.href} target="_blank" rel="noopener">{ocopSource.label}<span class="sr-only"> (mở trong thẻ mới)</span></a>
-      </p>
-    </div>
-  </section>
+            <div class="ocop__body">
+              <p class="ocop__badge">{t.chung_nhan_huy_hieu}</p>
+              <h3 class="ocop__name">{p.name}</h3>
+              <p class="ocop__brand">{t.chung_nhan_thuong_hieu}</p>
+              {summaryOf(p.slug) && <p class="ocop__summary">{summaryOf(p.slug)}</p>}
 
-  <section class="certs" aria-labelledby="certs-title">
-    <div class="container">
-      <div class="certs__intro">
-        <p class="eyebrow">{t.chung_nhan_giay_nhan}</p>
-        <h2 class="ocop__title" id="certs-title">{t.chung_nhan_giay_tieu_de}</h2>
-        {t.chung_nhan_giay_dan.split(/\n\s*\n/).map((para) => (
-          <p class="ocop__lead">{para.trim()}</p>
-        ))}
-      </div>
-
-      <ul class="certs__list">
-        {ocopProducts.map((p, i) => (
-          <li data-reveal style={`--reveal-delay: ${i * 90}ms`}>
-            <figure class="certs__item">
               <a
-                class="certs__photo"
+                class="ocop__cert"
                 href={p.certificate.full}
                 data-lightbox="ocop"
                 data-caption={captionOf(p.certificate)}
                 data-width={p.certificate.width}
                 data-height={p.certificate.height}
               >
-                <img
-                  src={p.certificate.src}
-                  srcset={p.certificate.srcset}
-                  sizes="(min-width: 768px) 30vw, 20rem"
-                  width={p.certificate.width}
-                  height={p.certificate.height}
-                  alt={p.certificate.alt}
-                  loading="lazy"
-                  decoding="async"
-                />
+                <span class="ocop__cert-photo">
+                  <img
+                    src={p.certificate.src}
+                    srcset={p.certificate.srcset}
+                    sizes="10rem"
+                    width={p.certificate.width}
+                    height={p.certificate.height}
+                    alt={p.certificate.alt}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <span class="ocop__cert-text">
+                  <span class="ocop__cert-caption">{p.certificate.caption}</span>
+                  <span class="ocop__cert-more">{t.chung_nhan_xem_giay} <span aria-hidden="true">↗</span></span>
+                </span>
               </a>
-              <figcaption class="certs__caption">{p.certificate.caption}</figcaption>
-            </figure>
+
+              <a class="ocop__more" href={`/san-pham/#${p.slug}`}>
+                {t.chung_nhan_xem_san_pham}<span class="sr-only">: {p.name}</span> <Arrow />
+              </a>
+            </div>
           </li>
         ))}
       </ul>
+
+      <div class="ocop__note">
+        <p class="eyebrow">{t.chung_nhan_giay_nhan}</p>
+        <h2 class="ocop__note-title">{t.chung_nhan_giay_tieu_de}</h2>
+        {t.chung_nhan_giay_dan.split(/\n\s*\n/).map((para) => (
+          <p class="ocop__lead">{para.trim()}</p>
+        ))}
+      </div>
+
+      <p class="ocop__source">
+        {t.nguon}{' '}
+        <a href={ocopSource.href} target="_blank" rel="noopener">{ocopSource.label}<span class="sr-only"> (mở trong thẻ mới)</span></a>
+      </p>
     </div>
   </section>
 
@@ -124,27 +126,26 @@ const captionOf = (p: Pic) => `${p.caption ?? p.alt} ${t.anh} ${p.credit}.`;
     text-wrap: pretty;
   }
 
-  .ocop__list {
+  /* One row per product, divided by hairlines. */
+  .ocop__list { margin-top: var(--space-xl); border-top: 1px solid var(--color-line); }
+  .ocop__item {
     display: grid;
-    gap: var(--space-xl) var(--space-l);
-    margin-top: var(--space-xl);
-    padding-top: var(--space-xl);
-    border-top: 1px solid var(--color-line);
+    gap: var(--space-m);
+    padding-block: var(--space-xl);
+    border-bottom: 1px solid var(--color-line);
   }
 
-  .ocop__link { display: grid; justify-items: start; }
   .ocop__photo {
     display: block;
-    width: 100%;
     aspect-ratio: 1;
     overflow: hidden;
     background: var(--color-cream);
   }
   .ocop__photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms var(--ease); }
-  .ocop__link:hover .ocop__photo img { transform: scale(1.03); }
+  .ocop__photo:hover img { transform: scale(1.03); }
 
+  .ocop__body { display: grid; justify-items: start; align-content: center; }
   .ocop__badge {
-    margin-top: var(--space-m);
     padding: 0.125rem 0.5rem;
     font-size: 0.6875rem;
     font-weight: 500;
@@ -156,23 +157,55 @@ const captionOf = (p: Pic) => `${p.caption ?? p.alt} ${t.anh} ${p.credit}.`;
     margin-top: var(--space-s);
     font-family: var(--font-display);
     font-weight: 500;
-    font-size: var(--type-product);
-    line-height: 1.15;
+    font-size: var(--type-h2);
+    line-height: 1.12;
+    text-wrap: balance;
   }
   .ocop__brand { margin-top: var(--space-2xs); font-size: var(--type-small); color: var(--color-text-muted); }
+  .ocop__summary { margin-top: var(--space-s); max-width: 34rem; color: var(--color-text-muted); text-wrap: pretty; }
+
+  /* The certificate, whole (never cropped); the block opens the viewer. */
+  .ocop__cert {
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    gap: var(--space-m);
+    align-items: center;
+    margin-top: var(--space-m);
+    max-width: 30rem;
+  }
+  .ocop__cert-photo { display: block; }
+  .ocop__cert-photo img { width: 100%; height: auto; transition: opacity 300ms var(--ease); }
+  .ocop__cert:hover .ocop__cert-photo img { opacity: 0.9; }
+  .ocop__cert-text { display: grid; justify-items: start; gap: var(--space-s); }
+  .ocop__cert-caption { font-size: var(--type-small); color: var(--color-text-muted); text-wrap: pretty; }
+  .ocop__cert-more {
+    font-size: var(--type-small);
+    color: var(--color-earth);
+    border-bottom: 1px solid currentColor;
+  }
+
   .ocop__more {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    margin-top: var(--space-s);
+    margin-top: var(--space-m);
     font-size: var(--type-small);
     border-bottom: 1px solid var(--color-line-strong);
   }
   .ocop__more :global(.arrow) { width: 0.875rem; }
-  .ocop__link:hover .ocop__more { border-color: currentColor; }
+  .ocop__more:hover { border-color: currentColor; }
+
+  .ocop__note { max-width: 40rem; margin-top: var(--space-2xl); }
+  .ocop__note-title {
+    margin-top: var(--space-s);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--type-product);
+    line-height: 1.15;
+  }
 
   .ocop__source {
-    margin-top: var(--space-2xl);
+    margin-top: var(--space-xl);
     padding-top: var(--space-s);
     border-top: 1px solid var(--color-line);
     font-size: 0.8125rem;
@@ -181,29 +214,14 @@ const captionOf = (p: Pic) => `${p.caption ?? p.alt} ${t.anh} ${p.credit}.`;
   .ocop__source a { color: var(--color-text); border-bottom: 1px solid var(--color-line-strong); }
   .ocop__source a:hover { border-color: currentColor; }
 
-  .certs { padding-bottom: var(--section-y); }
-  .certs__intro { max-width: 40rem; }
-  .certs__list {
-    display: grid;
-    gap: var(--space-xl) var(--space-l);
-    margin-top: var(--space-xl);
-    padding-top: var(--space-xl);
-    border-top: 1px solid var(--color-line);
-  }
-  .certs__item { max-width: 20rem; }
-  .certs__photo { display: block; }
-  .certs__photo img { width: 100%; height: auto; transition: opacity 300ms var(--ease); }
-  .certs__photo:hover img { opacity: 0.9; }
-  .certs__caption {
-    margin-top: var(--space-s);
-    font-size: var(--type-small);
-    color: var(--color-text-muted);
-    text-wrap: pretty;
-  }
-
   @media (min-width: 768px) {
-    .ocop__list,
-    .certs__list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .certs__item { max-width: none; }
+    .ocop__item {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: var(--space-xl);
+    }
+    .ocop__cert { grid-template-columns: 9rem minmax(0, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .ocop__item { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-2xl); }
   }
 </style>

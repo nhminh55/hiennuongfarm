@@ -2117,6 +2117,10 @@ collections:
             name: chung_nhan_xem_san_pham
             widget: string
             required: true
+          - label: 'Chứng nhận: Xem giấy chứng nhận'
+            name: chung_nhan_xem_giay
+            widget: string
+            required: true
           - label: 'Chứng nhận: nhãn phần giấy chứng nhận'
             name: chung_nhan_giay_nhan
             widget: string
