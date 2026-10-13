@@ -121,8 +121,8 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
                 />
               </a>
               {photos.length > 1 && <>
-                <button type="button" class="award__nav award__nav--prev" data-gallery-prev aria-label="Ảnh trước"><Arrow /></button>
-                <button type="button" class="award__nav award__nav--next" data-gallery-next aria-label="Ảnh sau"><Arrow /></button>
+                <button type="button" class="award__nav award__nav--prev" data-gallery-prev aria-label="Ảnh trước"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6-6 6 6 6" /></svg></button>
+                <button type="button" class="award__nav award__nav--next" data-gallery-next aria-label="Ảnh sau"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 6 6 6-6 6" /></svg></button>
               </>}
               </div>
               <figcaption class="award__caption" aria-live="polite" aria-atomic="true"><span data-gallery-caption>{a.photo.caption}</span> <span class="award__credit" data-gallery-credit>{t.anh} {a.photo.credit}</span></figcaption>
@@ -248,19 +248,45 @@ const isDocument = (p: Pic) => p.document ?? p.width < 600;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     display: grid;
     place-items: center;
-    border: 1px solid var(--color-line-strong);
-    background: var(--color-cream);
+    border: 0;
+    border-radius: 50%;
     color: var(--color-deep-green);
     cursor: pointer;
   }
-  .award__nav--prev { left: 8px; }
-  .award__nav--next { right: 8px; }
-  .award__nav--prev :global(.arrow) { transform: rotate(180deg); }
-  .award__nav:hover { border-color: currentColor; }
+  /* The visible circle stays 40px while touch targets can be larger. */
+  .award__nav::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(248, 245, 237, .55);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 1px 4px rgba(16, 43, 33, .08);
+    transition: background 200ms var(--ease), box-shadow 200ms var(--ease);
+  }
+  .award__nav svg { position: relative; width: 18px; height: 18px; }
+  .award__nav--prev { left: 12px; }
+  .award__nav--next { right: 12px; }
+  @media (hover: hover) {
+    .award__nav:hover::before {
+      background: rgba(248, 245, 237, .85);
+      box-shadow: 0 2px 6px rgba(16, 43, 33, .12);
+    }
+  }
+  @media (max-width: 767px), (pointer: coarse) {
+    .award__nav { width: 44px; height: 44px; }
+    .award__nav--prev { left: 10px; }
+    .award__nav--next { right: 10px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .award__nav::before { transition: none; }
+  }
   .award__evidence a[aria-current="true"] { outline: 3px solid var(--color-deep-green); outline-offset: -3px; }
   .award__figure :focus-visible { outline: 3px solid var(--color-deep-green); outline-offset: 2px; }
 
