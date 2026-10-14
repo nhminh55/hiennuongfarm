@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@playwright/test": "^1.63.0",
-    "astro": "^7.3.5"
+    "astro": "^7.3.5",
+    "yaml": "^2.9.1"
   },
   "devDependencies": {
     "pagefind": "^1.5.2"

@@ -116,6 +116,11 @@ const skipLabel = { vi: 'Bỏ qua đến nội dung chính', en: 'Skip to main c
     <PlayWidget />
 
     <script>
+      // Edit mode for an admin signed in at /admin; nothing for visitors.
+      import '../scripts/edit-mode/boot';
+    </script>
+
+    <script>
       // Reveal-on-scroll for elements marked with [data-reveal].
       const reveal = (window as typeof window & {
         __hnReveal?: { recover: () => void; complete: () => void; readonly recovered: boolean };

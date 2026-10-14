@@ -13,5 +13,20 @@
     <!-- Annotated screenshots in the preview pane (scripts/admin-guide.mjs). -->
     <script src="./huong-dan/guide.js"></script>
     <script src="./preview.js"></script>
+    <!-- After a fresh sign-in, open the homepage in edit mode (src/scripts/edit-mode/).
+         Coming here already signed in (“Quản trị đầy đủ”) stays here. -->
+    <script>
+      (() => {
+        const signedIn = () => {
+          try { return !!JSON.parse(localStorage.getItem('sveltia-cms.user') || 'null')?.token; } catch { return false; }
+        };
+        if (signedIn()) return;
+        const timer = setInterval(() => {
+          if (!signedIn()) return;
+          clearInterval(timer);
+          location.href = '/?sua=1';
+        }, 500);
+      })();
+    </script>
   </body>
 </html>

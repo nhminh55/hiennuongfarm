@@ -103,6 +103,8 @@ const L = {
   've-chung-toi/trang': { _: 'Tiêu đề, ảnh, video, phần kết',
     eyebrow: 'Chữ nhỏ trên tiêu đề', title: 'Tiêu đề trang', lead: 'Câu dẫn dưới tiêu đề', home: 'Chữ “Trang chủ” trong đường dẫn',
     nav: ['Tên ngắn của 6 chương (thanh chương)', 'Đúng 6 tên'], circularLink: 'Nút “Khám phá vòng tuần hoàn”',
+    milestones: ['Mốc thời gian bên cạnh chương 01', 'Số năm trong ô “Mốc” phải có trong đúng đoạn văn của chương 01 kể về mốc đó'],
+    'milestones[].when': 'Mốc', 'milestones[].what': 'Điều gì xảy ra',
     media: 'Ảnh: chú thích và mô tả', film: 'Video giới thiệu', 'film.eyebrow': 'Chữ nhỏ', 'film.title': 'Tiêu đề', 'film.watch': 'Nút xem phim',
     closing: 'Phần kết', 'closing.eyebrow': 'Chữ nhỏ', 'closing.title': 'Tiêu đề', 'closing.body': ['Các đoạn văn', 'Mỗi ô là một đoạn'], 'closing.button': 'Nút',
     'nang_cao.pageTitle': 'Tên trang (trên tab trình duyệt)', 'nang_cao.description': 'Mô tả trang trên Google', 'nang_cao.heroAlt': ['Mô tả ảnh đầu trang', ALT], 'nang_cao.navLabel': 'Tên thanh chương' },

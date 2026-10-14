@@ -10,7 +10,7 @@ const t = dataFile('choi-cung-nong-trai/chung');
 const activities: {slug:string; title:string}[] = t.activities;
 ---
 <BaseLayout title={title} description={intro}>
- <div class="farm-play">
+ <div class="farm-play" data-edit-skip>
   <div class="play-container">
    <nav class="play-breadcrumb" aria-label="Đường dẫn"><a href="/">{t.home}</a><span aria-hidden="true">/</span>{activity ? <a href="/choi-cung-nong-trai/">{t.section}</a> : <span>{t.section}</span>}</nav>
    <header class:list={['play-heading',{'play-heading--collection':!activity}]}>

@@ -72,8 +72,9 @@ const peopleFeature = feature ? people.paragraphs.slice(feature[0], feature[1]) 
 const peopleAfter = feature ? people.paragraphs.slice(feature[1]) : [];
 
 // Title phrases, split after a comma ("," or "，") so that a line never
-// breaks inside a phrase ("thốt nốt").
-const phrases = (title: string) => title.split(/(?<=[,，])\s*/);
+// breaks inside a phrase ("thốt nốt"). A title the admin broke into lines
+// (edit mode) keeps its own breaks instead.
+const phrases = (title: string) => title.includes('\n') ? [title] : title.split(/(?<=[,，])\s*/);
 
 // The film's name without its closing full stop, for its button and player.
 const filmName = t.film.title.replace(/[.。]$/, '');

@@ -17,7 +17,7 @@ const t = dataFile('choi-cung-nong-trai/chung');
 const games: { slug: string; title: string; widget_text: string; image: string }[] = t.activities;
 ---
 {show && (
-  <div class="play-widget" data-play-widget>
+  <div class="play-widget" data-play-widget data-edit-skip>
     <button class="play-widget__tab" type="button" aria-expanded="false" aria-controls="play-widget-panel" data-play-open>
       <GameIcon class="play-widget__icon" />
       <span class="play-widget__tab-label">{t.widget_title}</span>

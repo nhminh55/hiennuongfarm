@@ -18,7 +18,7 @@ import Breadcrumb from '../../components/page/Breadcrumb.astro';
 const t = dataFile('chung/tim-kiem');
 ---
 <BaseLayout title={t.title} description={t.nang_cao.description} noindex>
-  <section class="search-page container" aria-labelledby="search-title">
+  <section class="search-page container" aria-labelledby="search-title" data-edit-skip>
     <Breadcrumb items={[{ label: t.home, href: '/' }, { label: t.title }]} />
 
     <h1 class="search-page__title" id="search-title">{t.heading}</h1>
