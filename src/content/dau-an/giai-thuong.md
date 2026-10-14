@@ -15,15 +15,36 @@ awards:
       position: 50% 40%
       sizes: 640x381 1018x606
     evidence:
+      - caption: Bằng khen của Chủ tịch UBND tỉnh An Giang tặng bà Châu Thị Nương, Giám đốc Hợp tác xã Nông nghiệp Tà Đảnh, ngày 12.10.2026.
+        credit: Trang trại Hiền Nương
+        alt: Bằng khen khung vàng có Quốc huy, Chủ tịch Ủy ban nhân dân tỉnh An Giang tặng bà Châu Thị Nương, Giám đốc Hợp tác xã Nông nghiệp Tà Đảnh, xã Cô Tô, tỉnh An Giang, đã có thành tích trong hoạt động sản xuất kinh doanh, góp phần vào sự phát triển kinh tế - xã hội tỉnh An Giang năm 2026, ký ngày 12 tháng 10 năm 2026
+        document: true
+        file: bang-khen-an-giang-ca-nhan-chung-nhan
+        origin: HIEN_NUONG_PHOTO_COLLECTION/03 Giải thưởng và chứng nhận/Khen thưởng 13-10-2026/bang khen 02.jpg
+        sizes: 640x480 1280x960
+      - caption: Bằng khen của Chủ tịch UBND tỉnh An Giang tặng Hợp tác xã Nông nghiệp Tà Đảnh, ngày 12.10.2026.
+        credit: Trang trại Hiền Nương
+        alt: Bằng khen khung vàng có Quốc huy, Chủ tịch Ủy ban nhân dân tỉnh An Giang tặng Hợp tác xã Nông nghiệp Tà Đảnh, xã Cô Tô, tỉnh An Giang, đã có thành tích trong hoạt động sản xuất kinh doanh, góp phần vào sự phát triển kinh tế - xã hội tỉnh An Giang năm 2026, ký ngày 12 tháng 10 năm 2026
+        document: true
+        file: bang-khen-an-giang-tap-the-chung-nhan
+        origin: HIEN_NUONG_PHOTO_COLLECTION/03 Giải thưởng và chứng nhận/Khen thưởng 13-10-2026/bang khen 01.jpg
+        sizes: 640x463 1246x901
       - caption: Phần khen thưởng tập thể trao cho Hợp tác xã Nông nghiệp Tà Đảnh, cùng buổi lễ.
         credit: Trang trại Hiền Nương
         alt: Chị Châu Thị Nương cầm bằng khen đứng giữa hai đại biểu mặc áo dài; màn hình phía sau ghi Khen thưởng tập thể, Hợp tác xã Nông nghiệp Tà Đảnh, cùng logo Nông nghiệp tuần hoàn
         file: bang-khen-an-giang-tap-the
         origin: ảnh chủ trang trại gửi, 13.10.2026
         sizes: 640x455 892x634
+      - caption: Các cá nhân, tập thể được khen thưởng chụp ảnh lưu niệm tại Lễ kỷ niệm Ngày Doanh nhân Việt Nam 13/10.
+        credit: Trang trại Hiền Nương
+        alt: Hai hàng đại biểu quàng khăn rằn, nhiều người cầm bằng khen, đứng trên sân khấu trước phông nền Lễ kỷ niệm Ngày Doanh nhân Việt Nam 13/10; chị Châu Thị Nương mặc áo dài hoa sen xanh đứng thứ tư từ trái hàng trước
+        file: bang-khen-an-giang-anh-chung
+        origin: HIEN_NUONG_PHOTO_COLLECTION/03 Giải thưởng và chứng nhận/Khen thưởng 13-10-2026/anh tap the.webp
+        position: 40% 50%
+        sizes: 640x425 1280x850
     sources: []
     id: bang-khen-chu-tich-ubnd-an-giang-2026
-    source: 'Owner-supplied text and photos 13.10.2026 (ceremony for Ngày Doanh nhân Việt Nam; 30+ workers, 90% Khmer women, from chị Nương''s tham luận): chị Nương received a bằng khen from the Chủ tịch UBND tỉnh An Giang for contributions to the province''s agriculture. Stage screens show individual (Bà Châu Thị Nương) and collective (HTX Nông nghiệp Tà Đảnh) awards. No press source yet; add one when published.'
+    source: 'Owner-supplied text and photos 13.10.2026 (ceremony for Ngày Doanh nhân Việt Nam; 30+ workers, 90% Khmer women, from chị Nương''s tham luận): chị Nương received a bằng khen from the Chủ tịch UBND tỉnh An Giang for contributions to the province''s agriculture. Stage screens show individual (Bà Châu Thị Nương) and collective (HTX Nông nghiệp Tà Đảnh) awards. Owner-supplied certificates 14.10.2026: two bằng khen (Bà Châu Thị Nương; HTX Nông nghiệp Tà Đảnh), Quyết định số 4652/QĐ-UBND ngày 12/10/2026, signed Chủ tịch Hồ Văn Mừng, for thành tích trong hoạt động sản xuất kinh doanh, góp phần vào sự phát triển kinh tế - xã hội tỉnh An Giang năm 2026. No press source yet; add one when published.'
   - year: '2026'
     date: 2026-03-23
     name: Giải “Phụ nữ Việt tự tin làm kinh tế” năm 2025
