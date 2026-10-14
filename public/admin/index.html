@@ -6,6 +6,23 @@
     <meta name="robots" content="noindex, nofollow" />
     <title>Quản trị nội dung · Hiền Nương Farm</title>
     <link rel="icon" href="/favicon.svg" />
+    <style>
+      .hn-to-site {
+        position: fixed;
+        left: 1rem;
+        bottom: 1rem;
+        z-index: 2147483000;
+        padding: 0.65rem 1.1rem;
+        border-radius: 999px;
+        background: #102B21;
+        color: #F3F0E7;
+        font: 500 0.875rem/1 system-ui, sans-serif;
+        text-decoration: none !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      }
+      .hn-to-site:hover { background: #173D2D; }
+      .hn-to-site[hidden] { display: none; }
+    </style>
   </head>
   <body>
     <!-- Sveltia CMS reads ./config.yml (the copy files in src/content/). Pinned version. -->
@@ -13,18 +30,26 @@
     <!-- Annotated screenshots in the preview pane (scripts/admin-guide.mjs). -->
     <script src="./huong-dan/guide.js"></script>
     <script src="./preview.js"></script>
-    <!-- After a fresh sign-in, open the homepage in edit mode (src/scripts/edit-mode/).
-         Coming here already signed in (“Quản trị đầy đủ”) stays here. -->
+    <!-- Edit mode on the site (src/scripts/edit-mode/): a fresh sign-in goes
+         to the homepage in edit mode; coming here already signed in
+         (“Quản trị đầy đủ”) stays here, with a button back to the site. -->
     <script>
       (() => {
         const signedIn = () => {
           try { return !!JSON.parse(localStorage.getItem('sveltia-cms.user') || 'null')?.token; } catch { return false; }
         };
-        if (signedIn()) return;
-        const timer = setInterval(() => {
-          if (!signedIn()) return;
-          clearInterval(timer);
-          location.href = '/?sua=1';
+        // Sveltia replaces the body's content: the button sits outside it.
+        const button = document.createElement('a');
+        button.className = 'hn-to-site';
+        button.href = '/?sua=1';
+        button.textContent = '✎ Sửa trực tiếp trên trang';
+        button.hidden = true;
+        document.documentElement.append(button);
+        const wasSignedIn = signedIn();
+        setInterval(() => {
+          const now = signedIn();
+          button.hidden = !now;
+          if (now && !wasSignedIn) location.href = '/?sua=1';
         }, 500);
       })();
     </script>
