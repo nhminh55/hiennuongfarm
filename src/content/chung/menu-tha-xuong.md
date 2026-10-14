@@ -2,7 +2,7 @@
 menus:
   - items:
       - label:
-          vi: CÂU CHUYỆN HIỀN NƯƠNG
+          vi: Câu chuyện Hiền Nương
           en: The Hiền Nương story
           zh: Hiền Nương 的故事
         href: /ve-chung-toi/#cau-chuyen

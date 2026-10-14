@@ -20,6 +20,8 @@
   outline-offset: 4px;
   background: rgba(248, 246, 240, 0.92);
   color: var(--color-text);
+  /* The text as written, not as styled (labels shown in capitals). */
+  text-transform: none !important;
 }
 /* While editing, line breaks show on every screen so they can be placed. */
 .hn-editing[data-title-lines] { white-space: pre-line; }

@@ -2,7 +2,7 @@
 vi:
   home: Trang chủ
   eyebrow: Về chúng tôi
-  title: CÂU CHUYỆN HIỀN NƯƠNG
+  title: Câu chuyện Hiền Nương
   lead: Một hành trình làm nông từ vùng Bảy Núi.
   nav:
     - Câu chuyện
