@@ -16,7 +16,7 @@ vi:
       what: Ông Tư Phú và giống lúa TP
     - when: '2020'
       what: Hợp tác xã Nông nghiệp Tà Đảnh thành lập
-    - when: 10/04/2024
+    - when: 04/2024
       what: Hộ kinh doanh Trang trại Nông nghiệp Hiền Nương được đăng ký
   media:
     thoiSon:
