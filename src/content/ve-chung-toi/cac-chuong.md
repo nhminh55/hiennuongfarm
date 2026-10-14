@@ -2,7 +2,7 @@
 vi:
   chapters:
     - label: CÂU CHUYỆN HIỀN NƯƠNG
-      title: Từ những ngày đầu gieo mầm đến Hiền Nương Farm hôm nay
+      title: "Từ những ngày đầu gieo mầm\nđến Hiền Nương Farm hôm nay"
       paragraphs:
         - 'Hiền Nương Farm không bắt đầu từ một cái tên, mà từ tình yêu dành cho nghề nông và những ngày tháng bền bỉ gắn bó với đất, với nấm của anh Hiền và chị Nương.'
         - Chị Nương là con gái ông Châu Thành Phú, thường được gọi là ông Tư Phú — lão nông được biết đến với biệt danh “vua trị phèn” ở vùng Tứ giác Long Xuyên, gắn với giống lúa TP từ những năm 1990. Từ nền tảng gia đình làm nông, chị chọn một hướng đi riêng. Nếu câu chuyện của người cha gắn với cây lúa và đất phèn, thì hành trình của chị cùng anh Hiền được tiếp nối bằng nghề trồng nấm.
