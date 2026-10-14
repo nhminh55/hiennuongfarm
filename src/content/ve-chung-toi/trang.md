@@ -11,6 +11,13 @@ vi:
     - Năng lượng
     - Tuần hoàn
     - Con người
+  milestones:
+    - when: Những năm 1990
+      what: Ông Tư Phú và giống lúa TP
+    - when: '2020'
+      what: Hợp tác xã Nông nghiệp Tà Đảnh thành lập
+    - when: 10/04/2024
+      what: Hộ kinh doanh Trang trại Nông nghiệp Hiền Nương được đăng ký
   media:
     thoiSon:
       caption: Thới Sơn — cơ sở đầu tiên
@@ -65,6 +72,13 @@ en:
     - Energy
     - Circularity
     - People
+  milestones:
+    - when: 1990s
+      what: Mr. Tư Phú and the TP rice variety
+    - when: '2020'
+      what: Tà Đảnh Agricultural Cooperative established
+    - when: 10 April 2024
+      what: Trang trại Nông nghiệp Hiền Nương registered
   media:
     thoiSon:
       caption: Thới Sơn — the first site
@@ -119,6 +133,13 @@ zh:
     - 能源
     - 循环
     - 人们
+  milestones:
+    - when: 1990年代
+      what: Tư Phú 老人与 TP 水稻品种
+    - when: 2020年
+      what: Tà Đảnh 农业合作社成立
+    - when: 2024年4月10日
+      what: “Trang trại Nông nghiệp Hiền Nương”登记注册
   media:
     thoiSon:
       caption: Thới Sơn——第一处基地

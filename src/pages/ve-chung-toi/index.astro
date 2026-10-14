@@ -18,6 +18,8 @@ import Breadcrumb from '../../components/page/Breadcrumb.astro';
 import Eyebrow from '../../components/Eyebrow.astro';
 import Arrow from '../../components/Arrow.astro';
 import AboutPhoto from '../../components/about/AboutPhoto.astro';
+import Milestones from '../../components/about/Milestones.astro';
+import RegionPeaks from '../../components/about/RegionPeaks.astro';
 import { aboutCopy, photos, storyChapters } from '../../data/about';
 import { getLocale, localizePath, pageHref } from '../../i18n';
 
@@ -39,6 +41,21 @@ const storyOpen = story.paragraphs.slice(0, 2);
 const storyRest = story.paragraphs.slice(2);
 const quoteAt = t.quote ? storyRest.findIndex((p) => p.includes(t.quote!)) : -1;
 if (t.quote && quoteAt < 0) throw new Error('about: the 01 quotation is not in the chapter text');
+
+// 01: the milestones beside the story, each tied to the paragraph that
+// holds its year; the narrow-screen list pauses the text before the first
+// milestone after the opening.
+const milestones = (t.milestones ?? []).map((m) => {
+  const year = m.when.match(/\d{4}/)?.[0];
+  const at = year ? story.paragraphs.findIndex((p) => p.includes(year)) : -1;
+  if (at < 0) throw new Error(`about: no 01 paragraph holds the milestone “${m.when}”`);
+  return { ...m, at };
+});
+const milestoneAt = (paragraph: number) => {
+  const i = milestones.findIndex((m) => m.at === paragraph);
+  return i < 0 ? undefined : i;
+};
+const inlineAt = milestones.find((m) => m.at >= storyOpen.length)?.at;
 
 // 03: the two sites open beside their photographs.
 const sitesOpen = sites.paragraphs.slice(0, 2);
@@ -98,15 +115,25 @@ const half = '(min-width: 1200px) 45vw, 100vw';
           <div class="chapter__head">
             <p class="chapter__kicker"><span class="chapter__num">{story.num}</span><span class="chapter__rule" aria-hidden="true"></span><span class="chapter__label">{story.label}</span></p>
             <h2 class="chapter__title" id={`${story.id}-title`}>{story.title}</h2>
-            <div class="prose">{storyOpen.map((p) => <p>{p}</p>)}</div>
+            <div class="prose">{storyOpen.map((p, i) => <p data-milestone={milestoneAt(i)}>{p}</p>)}</div>
           </div>
+          {milestones.length > 0 && (
+            <div class="chapter__rail">
+              <Milestones items={milestones} variant="rail" />
+            </div>
+          )}
           <div class="chapter__body prose">
-            {storyRest.map((p, i) => i === quoteAt ? (
-              <div class="quoted">
-                <blockquote class="pullquote" aria-hidden="true"><p>{t.quote}</p></blockquote>
-                <p>{p}</p>
-              </div>
-            ) : <p>{p}</p>)}
+            {storyRest.map((p, i) => (
+              <>
+                {i + storyOpen.length === inlineAt && <Milestones items={milestones} variant="inline" />}
+                {i === quoteAt ? (
+                  <div class="quoted">
+                    <blockquote class="pullquote" aria-hidden="true"><p>{t.quote}</p></blockquote>
+                    <p>{p}</p>
+                  </div>
+                ) : <p data-milestone={milestoneAt(i + storyOpen.length)}>{p}</p>}
+              </>
+            ))}
           </div>
         </div>
       </section>
@@ -120,6 +147,12 @@ const half = '(min-width: 1200px) 45vw, 100vw';
             <h2 class="chapter__title" id={`${region.id}-title`}>{phrases(region.title).map((phrase, j, all) => (
               <>{j > 0 && !all[j - 1].endsWith('，') && ' '}<span class="chapter__phrase">{phrase}</span></>
             ))}</h2>
+            {region.more && (
+              <aside class="region-aside" aria-label={region.more.summary}>
+                <p class="region-aside__title">{region.more.summary}</p>
+                <RegionPeaks more={region.more} />
+              </aside>
+            )}
           </div>
           <div class="chapter__body">
             <div class="prose">{region.paragraphs.map((p) => <p>{p}</p>)}</div>
@@ -131,17 +164,7 @@ const half = '(min-width: 1200px) 45vw, 100vw';
                   <span class="more__sign" aria-hidden="true"></span>
                 </summary>
                 <div class="more__body">
-                  <p>{region.more.intro}</p>
-                  <table class="more__table">
-                    {region.more.head && (
-                      <thead><tr><th scope="col">{region.more.head[0]}</th><th scope="col">{region.more.head[1]}</th></tr></thead>
-                    )}
-                    <tbody>
-                      {region.more.rows.map(([name, alt]) => (
-                        <tr><th scope="row">{name}</th><td>{alt}</td></tr>
-                      ))}
-                    </tbody>
-                  </table>
+                  <RegionPeaks more={region.more} />
                 </div>
               </details>
             )}
@@ -203,20 +226,20 @@ const half = '(min-width: 1200px) 45vw, 100vw';
         </div>
       </section>
 
-      <!-- 06 · Con người: the people at work, then their story. -->
+      <!-- 06 · Con người: the heading, the people at work beside their story. -->
       <section class="chapter chapter--people" id={people.id} aria-labelledby={`${people.id}-title`} data-chapter>
-        <div class="container">
-          <div class="people-photos">
-            <AboutPhoto photo={photos.team} alt={m.team.alt} caption={m.team.caption} ratio="3 / 2" sizes="(min-width: 768px) 58vw, 100vw" />
-            <AboutPhoto photo={photos.harvest} alt={m.harvest.alt} caption={m.harvest.caption} ratio="auto" sizes="(min-width: 768px) 42vw, 100vw" />
-          </div>
-        </div>
         <div class="container chapter__grid">
           <div class="chapter__head">
             <p class="chapter__kicker"><span class="chapter__num">{people.num}</span><span class="chapter__rule" aria-hidden="true"></span><span class="chapter__label">{people.label}</span></p>
             <h2 class="chapter__title" id={`${people.id}-title`}>{phrases(people.title).map((phrase, j, all) => (
               <>{j > 0 && !all[j - 1].endsWith('，') && ' '}<span class="chapter__phrase">{phrase}</span></>
             ))}</h2>
+          </div>
+          <div class="chapter__media">
+            <div class="chapter__media-hold people-photos">
+              <AboutPhoto photo={photos.team} alt={m.team.alt} caption={m.team.caption} ratio="3 / 2" sizes="(min-width: 1200px) 40vw, (min-width: 768px) 58vw, 100vw" />
+              <AboutPhoto class="people-photos__detail" photo={photos.harvest} alt={m.harvest.alt} caption={m.harvest.caption} ratio="auto" sizes="(min-width: 1200px) 28vw, (min-width: 768px) 42vw, 100vw" />
+            </div>
           </div>
           <div class="chapter__body">
             <div class="prose">{peopleBefore.map((p) => <p>{p}</p>)}</div>
@@ -285,17 +308,23 @@ const half = '(min-width: 1200px) 45vw, 100vw';
 <script>
   /**
    * Chapter bar: marks the chapter being read (aria-current) as the page
-   * scrolls. Links are plain anchors, so the browser handles direct
-   * links, history and focus; nothing here moves the page.
+   * scrolls, and in 01 the milestone being read in the margin. Links are
+   * plain anchors, so the browser handles direct links, history and focus;
+   * nothing here moves the page.
    */
   const nav = document.querySelector<HTMLElement>('[data-chapter-nav]');
   const list = nav?.querySelector<HTMLElement>('[data-chapter-list]');
   const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-chapter-link]')];
   const chapters = [...document.querySelectorAll<HTMLElement>('[data-chapter]')];
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const rail = document.querySelector<HTMLElement>('[data-milestones]');
+  const marks = rail ? [...rail.children] : [];
+  const marked: HTMLElement[] = [];
+  document.querySelectorAll<HTMLElement>('[data-milestone]').forEach((p) => { marked[Number(p.dataset.milestone)] = p; });
 
   if (nav && list && chapters.length === links.length) {
     let active = -2;
+    let mark = -2;
 
     // On narrow screens the bar scrolls sideways: keep the marked link in it.
     const reveal = (link: HTMLElement) => {
@@ -308,6 +337,16 @@ const half = '(min-width: 1200px) 45vw, 100vw';
     // the screen below the bar; none above the first chapter.
     const update = () => {
       const line = nav.getBoundingClientRect().bottom + (window.innerHeight - nav.getBoundingClientRect().bottom) * 0.25;
+      // 01: the last milestone whose paragraph has passed the same line.
+      let m = -1;
+      marked.forEach((p, i) => {
+        if (p.getBoundingClientRect().top <= line) m = i;
+      });
+      if (m !== mark) {
+        mark = m;
+        marks.forEach((item, i) => item.classList.toggle('is-current', i === m));
+      }
+
       let index = -1;
       chapters.forEach((chapter, i) => {
         if (chapter.getBoundingClientRect().top <= line) index = i;
@@ -335,6 +374,7 @@ const half = '(min-width: 1200px) 45vw, 100vw';
     window.addEventListener('hashchange', schedule);
     update();
     nav.classList.add('is-ready');
+    rail?.classList.add('is-ready');
   }
 
   // Film: the player replaces the poster only when asked to play.
@@ -572,6 +612,8 @@ const half = '(min-width: 1200px) 45vw, 100vw';
   .prose + .prose { margin-top: 1.1em; }
 
   .chapter__body:not(.prose) > * + * { margin-top: var(--space-l); }
+  /* The paragraph after the milestones (a component) keeps its spacing. */
+  .prose > :global(.milestones) + * { margin-top: 1.1em; }
 
   .chapter__link { margin-top: var(--space-l); }
 
@@ -603,8 +645,7 @@ const half = '(min-width: 1200px) 45vw, 100vw';
   /* Photographs on phones run to the screen edge. */
   @media (max-width: 767px) {
     .chapter__grid > :global(.chapter__media),
-    .chapter__grid > .chapter__media,
-    .people-photos { margin-inline: calc(-1 * var(--gutter)); }
+    .chapter__grid > .chapter__media { margin-inline: calc(-1 * var(--gutter)); }
     .chapter :global(.about-photo__caption) { padding-inline: var(--gutter); }
   }
 
@@ -646,21 +687,23 @@ const half = '(min-width: 1200px) 45vw, 100vw';
     .cycle-photos :global(.cycle-photos__detail .about-photo__caption) { padding-inline: 0; }
   }
 
-  /* 06: two photographs of the work. */
+  /* 06: two photographs of the work, under the heading. */
   .people-photos {
     display: grid;
     gap: var(--space-l) var(--space-m);
-    margin-bottom: clamp(2.5rem, 1.5rem + 4vw, 5rem);
   }
-  .people-photos :global(.about-photo:last-child .about-photo__frame) { aspect-ratio: 2 / 1; }
-  @media (min-width: 768px) {
+  .people-photos :global(.people-photos__detail .about-photo__frame) { aspect-ratio: 2 / 1; }
+  @media (min-width: 768px) and (max-width: 1199px) {
     .people-photos {
       grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
       align-items: end;
     }
     /* Same height as the 3:2 photograph beside it (7 : 5 widths). */
-    .people-photos :global(.about-photo:last-child .about-photo__frame) { aspect-ratio: 15 / 14; }
+    .people-photos :global(.people-photos__detail .about-photo__frame) { aspect-ratio: 15 / 14; }
   }
+
+  /* 01: the milestones' margin, desktops only. */
+  .chapter__rail { display: none; }
 
   /* 01: the narrative runs on from the opening paragraphs. */
   .chapter--story .chapter__grid { row-gap: 0; }
@@ -684,8 +727,19 @@ const half = '(min-width: 1200px) 45vw, 100vw';
     .chapter--sites .chapter__grid,
     .chapter--cycle .chapter__grid { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
 
-    .chapter--story .chapter__grid { grid-template-areas: "media head" "media body"; }
+    .chapter--story .chapter__grid { grid-template-areas: "media head" "rail body"; }
     .chapter--story .chapter__grid > :global(.chapter__media) { margin-bottom: 0; }
+    /* 01: the milestones stay in view beside the story below the photograph. */
+    .chapter__rail {
+      display: block;
+      grid-area: rail;
+      align-self: stretch;
+      padding-top: var(--space-xl);
+    }
+    .chapter__rail :global(.milestones) {
+      position: sticky;
+      top: calc(var(--header-h) + var(--nav-h) + var(--space-l));
+    }
     /* 03, 05: the text runs on from the opening paragraphs. */
     .chapter--sites .chapter__grid,
     .chapter--cycle .chapter__grid { row-gap: 0; }
@@ -693,8 +747,8 @@ const half = '(min-width: 1200px) 45vw, 100vw';
     .chapter--energy .chapter__grid { grid-template-areas: "media head" "media ."; }
     .chapter--sites .chapter__grid,
     .chapter--cycle .chapter__grid { grid-template-areas: "head media" "body media"; }
-    .chapter--region .chapter__grid,
-    .chapter--people .chapter__grid { grid-template-areas: "head body"; grid-template-rows: auto; }
+    .chapter--region .chapter__grid { grid-template-areas: "head body"; grid-template-rows: auto; }
+    .chapter--people .chapter__grid { grid-template-areas: "head body" "media body"; }
 
     .chapter__head { grid-area: head; }
     .chapter__body { grid-area: body; }
@@ -723,12 +777,38 @@ const half = '(min-width: 1200px) 45vw, 100vw';
       margin-left: calc(-1 * max(var(--gutter), (100vw - var(--container)) / 2));
     }
 
-    /* 02, 06: the heading stays beside the text it introduces. */
-    .chapter--region .chapter__head,
-    .chapter--people .chapter__head {
+    /* 02: the heading and the peaks stay beside the text they introduce;
+       the disclosure under the text is not needed. */
+    .chapter--region .chapter__head {
       position: sticky;
       top: calc(var(--header-h) + var(--nav-h) + var(--space-l));
     }
+    .chapter--region .more { display: none; }
+
+    /* 06: a detail beside the caption of the main photograph, as in 05. */
+    .people-photos :global(.people-photos__detail) {
+      width: 70%;
+      justify-self: end;
+    }
+  }
+
+  /* 02: the peaks in the margin, desktops only. */
+  .region-aside { display: none; }
+  @media (min-width: 1200px) {
+    .region-aside {
+      display: block;
+      max-width: 24rem;
+      margin-top: var(--space-xl);
+      padding-top: var(--space-s);
+      border-top: 1px solid var(--color-line);
+    }
+  }
+  .region-aside__title {
+    margin-bottom: var(--space-s);
+    font-size: var(--type-small);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--color-deep-green);
   }
 
   /* "Bảy Núi gồm những ngọn nào?": a quiet inline disclosure. */
@@ -791,34 +871,7 @@ const half = '(min-width: 1200px) 45vw, 100vw';
   .more__sign::after { transform: rotate(90deg); transition: transform 300ms var(--ease); }
   .more[open] .more__sign::after { transform: rotate(90deg) scaleX(0); }
 
-  .more__body {
-    padding: 0.5rem 0 0.25rem 1.5rem;
-    font-size: var(--type-small);
-    line-height: 1.6;
-    color: var(--color-text-muted);
-  }
-
-  .more__table {
-    width: 100%;
-    margin-top: var(--space-s);
-    border-collapse: collapse;
-    text-align: left;
-  }
-  .more__table th,
-  .more__table td {
-    padding: 0.5rem 1rem 0.5rem 0;
-    border-bottom: 1px solid var(--color-line);
-    vertical-align: top;
-    font-weight: 400;
-  }
-  .more__table thead th {
-    font-size: var(--type-eyebrow);
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--color-earth);
-  }
-  .more__table tbody th { color: var(--color-text); }
+  .more__body { padding: 0.5rem 0 0.25rem 1.5rem; }
 
   @media (prefers-reduced-motion: no-preference) {
     .more[open] .more__body { animation: more-in 350ms var(--ease); }

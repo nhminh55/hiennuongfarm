@@ -460,6 +460,20 @@ collections:
                 name: button
                 i18n: true
                 widget: string
+          - label: ⑩ Mốc thời gian bên cạnh chương 01
+            name: milestones
+            i18n: true
+            hint: Số năm trong ô “Mốc” phải có trong đúng đoạn văn của chương 01 kể về mốc đó
+            widget: list
+            collapsed: true
+            summary: '{{fields.when}} · {{fields.what}}'
+            fields:
+              - label: Mốc
+                name: when
+                widget: string
+              - label: Điều gì xảy ra
+                name: what
+                widget: string
       - name: cac-chuong
         label: Sáu chương
         file: src/content/ve-chung-toi/cac-chuong.md

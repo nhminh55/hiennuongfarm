@@ -1,0 +1,57 @@
+---
+/**
+ * "Bảy Núi gồm những ngọn nào?" (chapter 02 on /ve-chung-toi/): the intro
+ * and the table of peaks. The page shows it in the margin beside the
+ * chapter on desktops, and inside a disclosure on narrower screens.
+ */
+import type { StoryChapter } from '../../data/about';
+
+interface Props {
+  more: NonNullable<StoryChapter['more']>;
+}
+
+const { more } = Astro.props;
+---
+<div class="peaks">
+  <p>{more.intro}</p>
+  <table class="peaks__table">
+    {more.head && (
+      <thead><tr><th scope="col">{more.head[0]}</th><th scope="col">{more.head[1]}</th></tr></thead>
+    )}
+    <tbody>
+      {more.rows.map(([name, alt]) => (
+        <tr><th scope="row">{name}</th><td>{alt}</td></tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .peaks {
+    font-size: var(--type-small);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+  }
+
+  .peaks__table {
+    width: 100%;
+    margin-top: var(--space-s);
+    border-collapse: collapse;
+    text-align: left;
+  }
+  .peaks__table th,
+  .peaks__table td {
+    padding: 0.5rem 1rem 0.5rem 0;
+    border-bottom: 1px solid var(--color-line);
+    vertical-align: top;
+    font-weight: 400;
+  }
+  .peaks__table thead th {
+    font-size: var(--type-eyebrow);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-earth);
+  }
+  .peaks__table tbody th { color: var(--color-text); }
+</style>

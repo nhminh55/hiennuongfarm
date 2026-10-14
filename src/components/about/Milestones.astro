@@ -1,0 +1,88 @@
+---
+/**
+ * The milestones of chapter 01 on /ve-chung-toi/, beside the story they
+ * come from. `rail` (desktops) stays in view in the margin and marks the
+ * milestone being read (the page script sets `is-current`); `inline`
+ * (narrower screens) sits between the paragraphs as a pause. Each shows
+ * only at its own width. Hidden from screen readers: every milestone is
+ * in the chapter text.
+ */
+interface Props {
+  items: { when: string; what: string }[];
+  variant: 'rail' | 'inline';
+}
+
+const { items, variant } = Astro.props;
+---
+<ol class:list={['milestones', `milestones--${variant}`]} aria-hidden="true" data-milestones={variant === 'rail' ? '' : undefined}>
+  {items.map((m) => (
+    <li class="milestones__item">
+      <span class="milestones__when">{m.when}</span>
+      <span class="milestones__what">{m.what}</span>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .milestones {
+    display: grid;
+    gap: var(--space-m);
+    max-width: 22rem;
+    border-left: 1px solid var(--color-line);
+  }
+
+  .milestones__item {
+    position: relative;
+    padding-left: var(--space-m);
+    transition: opacity 400ms var(--ease);
+  }
+
+  /* The milestone being read: an earth rule on the line, as in the chapter bar. */
+  .milestones__item::before {
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-earth);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 400ms var(--ease);
+  }
+
+  .milestones__when {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text);
+  }
+
+  .milestones__what {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: var(--type-small);
+    line-height: 1.5;
+    color: var(--color-text-muted);
+  }
+
+  /* Until the script runs, every milestone reads at full strength. */
+  .milestones--rail.is-ready .milestones__item { opacity: 0.45; }
+  .milestones--rail .milestones__item.is-current { opacity: 1; }
+  .milestones--rail .milestones__item.is-current::before { transform: none; }
+
+  .milestones--inline { margin-block: var(--space-xl); }
+
+  @media (min-width: 1200px) {
+    .milestones--inline { display: none; }
+  }
+  @media (max-width: 1199px) {
+    .milestones--rail { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .milestones__item,
+    .milestones__item::before { transition: none; }
+  }
+</style>

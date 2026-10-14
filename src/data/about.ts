@@ -97,6 +97,8 @@ export interface AboutCopy {
   nav: string[];
   /** The inline quotation in chapter 01 (must appear in its prose). */
   quote?: string;
+  /** Milestones beside chapter 01; each `when` holds a year found in its paragraph. */
+  milestones?: { when: string; what: string }[];
   circularLink: string;
   media: Record<Exclude<PhotoKey, 'hero'>, MediaCopy>;
   /** Intro film block (#video-gioi-thieu); the title is the homepage brand film line. */
