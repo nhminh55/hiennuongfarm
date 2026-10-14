@@ -3,7 +3,7 @@ vi:
   eyebrow: Bảy Núi · An Giang
   title: Từ vùng đất Bảy Núi.
   body: Giữa vùng Bảy Núi, Hiền Nương nuôi dưỡng câu chuyện về con người, nông sản và cách làm nông nghiệp gắn bó với vùng đất.
-  more: Câu chuyện Hiền Nương
+  more: CÂU CHUYỆN HIỀN NƯƠNG
   nang_cao:
     alt: Ô ruộng lúa xanh nhìn thẳng từ trên cao, những cây thốt nốt mọc dọc bờ ruộng
 en:

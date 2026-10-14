@@ -1,7 +1,7 @@
 ---
 vi:
   chapters:
-    - label: Câu chuyện Hiền Nương
+    - label: CÂU CHUYỆN HIỀN NƯƠNG
       title: Từ những ngày đầu gieo mầm đến Hiền Nương Farm hôm nay
       paragraphs:
         - 'Hiền Nương Farm không bắt đầu từ một cái tên, mà từ tình yêu dành cho nghề nông và những ngày tháng bền bỉ gắn bó với đất, với nấm của anh Hiền và chị Nương.'
