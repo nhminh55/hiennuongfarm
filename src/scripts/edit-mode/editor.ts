@@ -232,10 +232,12 @@ function check(el: HTMLElement) {
   const warn = current?.tools.querySelector<HTMLElement>('.hn-tools__warn');
   if (!warn || !current?.lines) return;
   const wanted = read(el, true).split('\n').length;
-  const range = document.createRange();
-  range.selectNodeContents(el);
-  const tops = new Set([...range.getClientRects()].map((r) => Math.round(r.top)));
-  warn.hidden = tops.size <= wanted || innerWidth < 1024;
+  // Lines shown: the heading's height over its line height (counting text
+  // boxes miscounts at browser zoom levels such as 110%).
+  const style = getComputedStyle(el);
+  const line = parseFloat(style.lineHeight) || parseFloat(style.fontSize) * 1.2;
+  const height = el.getBoundingClientRect().height - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom);
+  warn.hidden = Math.round(height / line) <= wanted || innerWidth < 1024;
   warn.textContent = 'Có dòng vẫn tự xuống dòng vì khung chữ hẹp; thử tách ngắn hơn.';
 }
 
