@@ -1,0 +1,151 @@
+openapi: 3.1.0
+info:
+  title: Hiền Nương Farm Publishing
+  version: 0.1.0
+  description: Publish owner-confirmed Chuyện nhà Nấm articles with 1–2 authentic attached photos.
+servers:
+  - url: https://publisher.example.com
+security:
+  - bearerAuth: []
+paths:
+  /articles:
+    post:
+      operationId: publishFarmArticle
+      summary: Save a confirmed article and its attached photos to GitHub
+      description: Call only after the user approves the final article and explicitly requests publishing or saving a draft. Receive authentic user-uploaded photos. Saving published content starts deployment; this response does not mean the website is live. Use checkFarmPublication after receiving commitSha.
+      x-openai-isConsequential: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [title, slug, excerpt, category, date, status, openaiFileIdRefs, images, coverIndex, blocks]
+              properties:
+                title:
+                  type: string
+                  maxLength: 200
+                slug:
+                  type: string
+                  pattern: '^[a-z0-9]+(?:-[a-z0-9]+)*$'
+                  maxLength: 100
+                excerpt:
+                  type: string
+                  maxLength: 600
+                category:
+                  type: string
+                  enum: [hieu-ve-nam, bep-nha-nam, tu-dat-den-nam]
+                date:
+                  type: string
+                  format: date
+                  description: Owner-confirmed publication date in Vietnam, YYYY-MM-DD.
+                status:
+                  type: string
+                  enum: [draft, published]
+                openaiFileIdRefs:
+                  type: array
+                  minItems: 1
+                  maxItems: 2
+                  items:
+                    type: string
+                  description: Exactly 1 or 2 authentic JPG, PNG or WebP photos uploaded by the user in this conversation. OpenAI injects file reference objects with id, name, mime_type and download_link at runtime. Do not invent URLs or use generated images.
+                images:
+                  type: array
+                  minItems: 1
+                  maxItems: 2
+                  description: Alt text and optional caption in the same order as the attached files.
+                  items:
+                    type: object
+                    required: [alt]
+                    properties:
+                      alt:
+                        type: string
+                        maxLength: 500
+                      caption:
+                        type: string
+                        maxLength: 500
+                coverIndex:
+                  type: integer
+                  minimum: 0
+                  maximum: 1
+                blocks:
+                  type: array
+                  minItems: 1
+                  maxItems: 80
+                  items:
+                    type: object
+                    required: [type]
+                    properties:
+                      type:
+                        type: string
+                        enum: [paragraph, heading, quote, image]
+                      text:
+                        type: string
+                        description: Plain text for paragraph, heading or quote; no HTML or Markdown formatting.
+                        maxLength: 5000
+                      imageIndex:
+                        type: integer
+                        description: Zero-based index in attached files, only for image blocks.
+                        minimum: 0
+                        maximum: 1
+      responses:
+        '200':
+          description: Saved or already saved; inspect status and message before reporting publication.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [deploy_pending, draft_saved, already_saved]
+                  commitSha:
+                    type: string
+                  articleUrl:
+                    type: [string, 'null']
+                  message:
+                    type: string
+                  warnings:
+                    type: array
+                    items:
+                      type: string
+        '400':
+          description: Invalid article or expired attachment. Ask user to resend photos when needed.
+        '401':
+          description: Invalid publishing API key.
+        '409':
+          description: Existing slug or concurrent repository change. Never overwrite the old article.
+        '502':
+          description: Upstream failure; publication not confirmed.
+  /publications/{commitSha}:
+    get:
+      operationId: checkFarmPublication
+      summary: Check Cloudflare Pages deployment workflow for the saved commit
+      parameters:
+        - in: path
+          name: commitSha
+          required: true
+          schema:
+            type: string
+            pattern: '^[a-f0-9]{40}$'
+      responses:
+        '200':
+          description: Deployment status; deployed means the workflow succeeded, verify the article link separately if browser access is available.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [deploy_pending, deployed, deploy_failed]
+                  workflowUrl:
+                    type: string
+                  message:
+                    type: string
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
