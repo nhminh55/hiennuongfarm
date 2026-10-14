@@ -2,7 +2,7 @@
 vi:
   eyebrow: Về Hiền Nương
   title: Xuất phát từ tình yêu với đất và những điều giản dị
-  body: 'Từ những ngày đầu gắn bó với nghề nấm, anh Hiền và chị Nương đã từng bước xây dựng một hướng đi riêng trên vùng đất An Giang. Năm 2020, Hợp tác xã Nông nghiệp Tà Đảnh được thành lập, mở rộng hành trình ấy cùng các xã viên. Đến năm 2024, tên gọi Hiền Nương Farm chính thức được định hình, tiếp nối những giá trị đã vun đắp qua nhiều năm làm nông.'
+  body: 'Từ những ngày đầu gắn bó với nghề nấm, anh Hiền và chị Nương đã từng bước xây dựng một hướng đi riêng trên vùng đất An Giang. Năm 2020, Hợp tác xã Nông nghiệp Tà Đảnh được thành lập, mở rộng hành trình ấy cùng các xã viên. Đến năm 2024, tên gọi Hiền Nương Farm chính thức ra đời, tiếp nối những giá trị đã vun đắp qua nhiều năm làm nông.'
   more: Tìm hiểu thêm
   nang_cao:
     alt: 'Chị Châu Thị Nương mặc áo hồng, quàng khăn rằn, đứng giữa hai dãy kệ bịch phôi trong phòng nuôi nấm. Dòng chữ viết tay trên ảnh: “Từ tình yêu với đất, chúng tôi bắt đầu... Hiền Nương Farm.”'
