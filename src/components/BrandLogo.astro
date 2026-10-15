@@ -17,11 +17,15 @@ const Tag = href ? 'a' : 'span';
   href={href}
   aria-label={href ? `${site.name} — ${home}` : undefined}
 >
+  {dark ? (
+    <img class="wordmark__full" src="/brand/logo-ngang.webp" width="900" height="291" alt={href ? '' : site.name} aria-hidden={href ? 'true' : undefined} />
+  ) : (<>
   <img class="wordmark__icon" src="/brand/badge.webp" width="512" height="512" alt="" aria-hidden="true" />
   <span class="wordmark__type" aria-hidden={href ? 'true' : undefined}>
     <img class="wordmark__name" src="/brand/wordmark.webp" width="800" height="131" alt={href ? '' : site.name} />
     <span class="wordmark__sub">Nông nghiệp tuần hoàn</span>
   </span>
+  </>)}
 </Tag>
 
 <style>
@@ -37,6 +41,7 @@ const Tag = href ? 'a' : 'span';
     text-decoration: none;
   }
   .wordmark--dark { color: var(--color-cream); }
+  .wordmark__full { display: block; width: 100%; height: auto; }
   .wordmark__icon { display: block; width: 28%; height: auto; flex: none; }
   .wordmark__type { display: flex; flex-direction: column; gap: 0.3em; min-width: 0; flex: 1; container-type: inline-size; color: var(--color-earth); }
   .wordmark__name { display: block; width: 100%; height: auto; }
