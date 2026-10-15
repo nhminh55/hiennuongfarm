@@ -28,6 +28,8 @@ const { article, related, newer, older } = Astro.props;
 const { data } = article;
 const { Content } = await render(article);
 const category = categoryOf(data.category);
+// Brand illustration beside the category label.
+const icon = article.id.includes('rom-ra') ? 'tu-nhien' : article.id.includes('ocop') ? 'chat-luong' : 'suc-khoe';
 const minutes = readingMinutes(article);
 const shareImage = data.cover ? (await getImage({ src: data.cover.src, width: 1200, format: 'jpeg', quality: 80 })).src : undefined;
 const url = new URL(articleHref(article), Astro.site).href;
@@ -81,6 +83,7 @@ const jsonLd = [
       <div class:list={['story__top', { 'story__top--plain': !data.cover }]}>
         <header class="story__head">
           <p class="eyebrow story__eyebrow">
+            <img class="eyebrow__icon" src={`/brand/icons/${icon}.webp`} width="128" height="128" alt="" />
             <a href={listHref(data.category)}>{category.title}</a>
             {data.draft && <span class="cnn-draft">{t.draft}</span>}
           </p>

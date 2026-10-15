@@ -28,7 +28,7 @@ const filters = [{ id: undefined, title: t.all }, ...categories];
     <Breadcrumb items={crumbs} />
     <div class="cnn-head__grid">
       <div>
-        <p class="eyebrow">{current ? t.title : t.eyebrow}</p>
+        <p class="eyebrow"><img class="eyebrow__icon" src="/brand/icons/suc-khoe.webp" width="128" height="128" alt="" />{current ? t.title : t.eyebrow}</p>
         <h1 class="cnn-head__title" id="page-title">{current ? current.title : t.title}</h1>
       </div>
       <p class="cnn-head__intro">{current ? current.line : t.intro}</p>

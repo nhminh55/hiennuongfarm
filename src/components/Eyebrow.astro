@@ -3,10 +3,13 @@
 interface Props {
   num?: string;
   class?: string;
+  /** Brand illustration from /brand/icons/, e.g. "nam-trong". */
+  icon?: string;
 }
-const { num, class: className } = Astro.props;
+const { num, class: className, icon } = Astro.props;
 ---
 <p class:list={['eyebrow', className]}>
+  {icon && <img class="eyebrow__icon" src={`/brand/icons/${icon}.webp`} width="128" height="128" alt="" />}
   {num && <span class="eyebrow__num">{num}</span>}
   {num && <span class="eyebrow__rule" aria-hidden="true"></span>}
   <span><slot /></span>

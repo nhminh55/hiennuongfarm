@@ -75,7 +75,7 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
       <div class="container intro__inner">
         <Breadcrumb items={[{ label: t.home, href: localizePath('/', lang) }, { label: t.pageTitle }]} />
         <div class="intro__head" data-reveal>
-          <Eyebrow>{t.pageTitle}</Eyebrow>
+          <Eyebrow icon="nong-nghiep-tuan-hoan">{t.pageTitle}</Eyebrow>
           <h1 class="intro__title">{t.title}</h1>
         </div>
         <p class="intro__lead" data-reveal style="--reveal-delay: 120ms">{t.lead}</p>
@@ -86,6 +86,7 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
     <section class="cycle" id="vong-tuan-hoan" aria-labelledby="cycle-title" data-cycle data-live-template={t.live}>
       <div class="container">
         <h2 class="eyebrow cycle__title" id="cycle-title">
+          <img class="eyebrow__icon" src="/brand/icons/tu-nhien.webp" width="128" height="128" alt="" />
           <span class="eyebrow__rule" aria-hidden="true"></span>
           <span>{t.cycleTitle}</span>
         </h2>

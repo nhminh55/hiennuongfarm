@@ -26,7 +26,7 @@ const paramName = (r: LabResult) => ({ vi: r.name, en: r.en, zh: r.zh })[lang];
 <section class="section lab" id="kiem-nghiem" aria-labelledby="lab-title">
   <div class="container grid lab__grid">
     <div class="lab__head">
-      <Eyebrow>{t.eyebrow}</Eyebrow>
+      <Eyebrow icon="chat-luong">{t.eyebrow}</Eyebrow>
       <h2 class="h2 lab__title" id="lab-title">{t.title}</h2>
       <p class="body lab__intro">{t.intro}</p>
       {Astro.slots.has('default') && <p class="body lab__intro"><slot /></p>}
