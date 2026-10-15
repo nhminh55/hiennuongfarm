@@ -3,7 +3,7 @@ vi:
   home: Trang chủ
   eyebrow: Về chúng tôi
   title: Câu chuyện Nương Farm
-  lead: Nương Farm — nông sản từ Trang trại Hiền Nương, vùng Bảy Núi.
+  lead: Nương Farm — Nông sản từ Trang trại Hiền Nương, vùng Bảy Núi.
   nav:
     - Câu chuyện
     - Bảy Núi
@@ -11,11 +11,6 @@ vi:
     - Năng lượng
     - Tuần hoàn
     - Con người
-  milestones:
-    - when: Những năm 1990
-      what: Ông Tư Phú và giống lúa TP
-    - when: '2020'
-      what: Hợp tác xã Nông nghiệp Tà Đảnh thành lập
   media:
     thoiSon:
       caption: Thới Sơn — cơ sở đầu tiên
@@ -53,6 +48,11 @@ vi:
       - Nếu bạn quan tâm đến sản phẩm, muốn tìm hiểu mô hình hoặc trao đổi cơ hội hợp tác, chúng tôi mong được trò chuyện cùng bạn.
       - Mỗi cuộc gặp là một cơ hội để chia sẻ kinh nghiệm, hiểu thêm nhu cầu của nhau và tìm hướng đồng hành phù hợp.
     button: Trao đổi cùng chúng tôi
+  milestones:
+    - when: Những năm 1990
+      what: Ông Tư Phú và giống lúa TP
+    - when: '2020'
+      what: Hợp tác xã Nông nghiệp Tà Đảnh thành lập
   nang_cao:
     description: 'Câu chuyện Nương Farm: một hành trình làm nông từ vùng Bảy Núi, An Giang — từ hai người sáng lập năm 2020 đến hai cơ sở trồng nấm, điện mặt trời, cách làm tuần hoàn và những người cùng làm.'
     heroAlt: Cánh đồng lúa xanh vùng Bảy Núi điểm những cây thốt nốt, nhìn từ trên cao
@@ -70,11 +70,6 @@ en:
     - Energy
     - Circularity
     - People
-  milestones:
-    - when: 1990s
-      what: Mr. Tư Phú and the TP rice variety
-    - when: '2020'
-      what: Tà Đảnh Agricultural Cooperative established
   media:
     thoiSon:
       caption: Thới Sơn — the first site
@@ -112,6 +107,11 @@ en:
       - If you are interested in our products, would like to learn about our model or discuss partnership opportunities, we would be glad to talk with you.
       - Every meeting is a chance to share experience, understand each other’s needs and find the right way to work together.
     button: Talk with us
+  milestones:
+    - when: 1990s
+      what: Mr. Tư Phú and the TP rice variety
+    - when: '2020'
+      what: Tà Đảnh Agricultural Cooperative established
   nang_cao:
     description: 'The Nương Farm story: a farming journey from the Bảy Núi region of An Giang, Vietnam — from two founders in 2020 to two mushroom-growing sites, solar power, circular practice and the people who work together.'
     heroAlt: Green rice fields of the Bảy Núi region dotted with palmyra palms, seen from above
@@ -129,11 +129,6 @@ zh:
     - 能源
     - 循环
     - 人们
-  milestones:
-    - when: 1990年代
-      what: Tư Phú 老人与 TP 水稻品种
-    - when: 2020年
-      what: Tà Đảnh 农业合作社成立
   media:
     thoiSon:
       caption: Thới Sơn——第一处基地
@@ -171,6 +166,11 @@ zh:
       - 如果您对我们的产品感兴趣，想了解我们的模式，或希望洽谈合作机会，我们很期待与您交流。
       - 每一次见面，都是分享经验、了解彼此需求、找到合适合作方式的机会。
     button: 与我们交流
+  milestones:
+    - when: 1990年代
+      what: Tư Phú 老人与 TP 水稻品种
+    - when: 2020年
+      what: Tà Đảnh 农业合作社成立
   nang_cao:
     description: Nương Farm 的故事：一段源自越南安江省七山地区的农耕旅程——从2020年的两位创始人，到两处种菇基地、太阳能发电、循环做法，以及一起劳作的人们。
     heroAlt: 从高处俯瞰七山地区点缀着糖棕树的绿色稻田
