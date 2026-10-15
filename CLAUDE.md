@@ -79,3 +79,6 @@ When uncertain, preserve approved work.
 - Omit the household business (HKD) from the public story and footer. Do not invent cooperative registration/tax details.
 - Preserve domain, email, repository, Cloudflare identifiers, routes and anchors.
 - Preserve historical press titles, quotations, source credits, product names and holder names on certificates. Do not globally replace names in evidence or approved image assets.
+
+
+Naming story approved 15 October 2026: NƯƠNG FARM is the shorter, familiar name of Hiền Nương Farm (Trang trại Hiền Nương), connected to the shared farming journey of chị Châu Thị Nương and anh Trần Phương Hiền. Use NƯƠNG FARM as the primary public brand; retain the farm name and the cooperative’s separate production/trading role. Do not invent a renaming or brand founding date.

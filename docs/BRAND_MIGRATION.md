@@ -16,3 +16,6 @@ CMS registration fields are optional; the footer omits empty details. The genera
 The separate `codex/chatgpt-publisher-pilot` branch is not merged or modified by this change. Before enabling it, update its generated article author, GPT name and OpenAPI display title to NƯƠNG FARM while preserving repository and URL settings.
 
 Validation: production build with Pagefind/search dictionary; rendered HTML metadata, removal of HKD, Article organization authors, CMS optional fields; browser checks at mobile, tablet and desktop widths; source records/assets/infrastructure compared with the base commit. No production deployment is part of this change.
+
+
+Naming story approved 15 October 2026: NƯƠNG FARM is the shorter, familiar name of Hiền Nương Farm (Trang trại Hiền Nương), connected to the shared farming journey of chị Châu Thị Nương and anh Trần Phương Hiền. Use NƯƠNG FARM as the primary public brand; retain the farm name and the cooperative’s separate production/trading role. Do not invent a renaming or brand founding date.

@@ -11,7 +11,7 @@ vi:
         - Những ngày đầu có cả thử nghiệm và thất bại. Nấm hư hại vì việc xử lý bệnh chưa thành thạo; cơ sở vật chất, thiết bị và kinh nghiệm còn thiếu. Chị bắt đầu trên diện tích nhỏ, vừa làm vừa rút kinh nghiệm, tìm hiểu thêm những điều chưa nắm rõ sau mỗi lần thử.
         - Để hiểu đặc tính sinh trưởng của nấm, chị tìm đến giảng viên chuyên ngành tại Đại học Cần Thơ và Đại học An Giang. Kiến thức học được tiếp tục đi vào công việc tại nông trại, từ chuẩn bị nguyên liệu đến chăm sóc và thu hoạch. Từ chỗ mua phôi bên ngoài, chị từng bước tiến đến tự phân lập giống, làm meo và chia sẻ kỹ thuật với những người trồng khác.
         - 'Năm 2020, Hợp tác xã Nông nghiệp Tà Đảnh được thành lập, đánh dấu một bước phát triển trong hành trình làm nông. Anh Trần Phương Hiền giữ vai trò Chủ tịch Hội đồng quản trị, chị Nương đảm nhiệm công việc điều hành, cùng các xã viên chia sẻ kinh nghiệm, liên kết sản xuất và tìm hướng phát triển lâu dài.'
-        - 'NƯƠNG FARM là thương hiệu mang những sản phẩm từ Trang trại Hiền Nương đến với người tiêu dùng. Tên trang trại vẫn gắn với hành trình chung của chị Châu Thị Nương và anh Trần Phương Hiền; HTX Nông nghiệp Tà Đảnh là đơn vị sản xuất và kinh doanh.'
+        - 'NƯƠNG FARM là tên gọi ngắn gọn, gần gũi của Hiền Nương Farm — Trang trại Hiền Nương, được vun đắp từ hành trình làm nông của chị Châu Thị Nương và anh Trần Phương Hiền trên vùng đất An Giang. Hôm nay, tên gọi ấy đồng hành cùng những sản phẩm từ trang trại đến với người tiêu dùng. HTX Nông nghiệp Tà Đảnh là đơn vị sản xuất và kinh doanh.'
         - 'Từ những bước khởi đầu ấy, một hướng làm nông nghiệp tuần hoàn dần được hình thành. Rơm rạ được tận dụng làm nguyên liệu trồng nấm; giá thể sau thu hoạch tiếp tục phục vụ việc nuôi trùn quế, tạo nguồn phân bón cho cây trồng. Năng lượng mặt trời cũng được đưa vào hoạt động của trang trại. Những nguồn lực tưởng chừng đã kết thúc một vòng đời lại được tiếp nối bằng một công dụng mới.'
         - 'Hôm nay, Trang trại Hiền Nương không chỉ là tên gọi của một trang trại. Đó còn là câu chuyện tiếp nối giữa các thế hệ làm nông: từ người cha từng gắn bó với cây lúa trên đất phèn, đến người con gái chọn nghề nấm để tìm một hướng đi riêng. Một hành trình được vun đắp bằng kinh nghiệm, sự kiên trì và mong muốn tạo thêm giá trị từ chính những gì quê hương sẵn có.'
     - label: Vùng Bảy Núi
@@ -87,7 +87,7 @@ en:
         - In a region built on farming, the by-products left after each crop become material for the mushroom-growing substrate — where the Hiền Nương way of working begins.
         - It has also been a journey of learning to master the work. According to Báo An Giang, from buying spawn in the early days, Ms. Nương went on to isolate her own strains and make her own spawn.
         - 'In 2020, Tà Đảnh Agricultural Cooperative was established, a step forward in this farming journey. Mr. Trần Phương Hiền serves as Chairman of the Board of Directors and Ms. Nương runs its operations, while the members share experience, link their production and look for a long-term way forward together.'
-        - 'NƯƠNG FARM is the brand that brings products from Trang trại Hiền Nương to consumers. The farm’s name remains tied to the shared journey of Ms. Châu Thị Nương and Mr. Trần Phương Hiền; Tà Đảnh Agricultural Cooperative is the production and trading entity.'
+        - 'NƯƠNG FARM is the shorter, familiar name of Hiền Nương Farm — Trang trại Hiền Nương, shaped by the farming journey of Ms. Châu Thị Nương and Mr. Trần Phương Hiền in An Giang. Today, that name accompanies the farm’s products as they reach consumers. Tà Đảnh Agricultural Cooperative is the production and trading entity.'
         - 'From those first steps, a circular way of farming gradually took shape. Rice straw is used as material for growing mushrooms; after harvest, the substrate goes on to feed earthworms, producing fertiliser for crops. Solar power has also become part of the farm’s work. Resources that seemed to have reached the end of their life are carried on into a new use.'
         - 'Today, Trang trại Hiền Nương is more than the name of a farm. It is also a story passed on between generations of farmers: from a father devoted to rice on acid soil to a daughter who chose mushrooms to find her own path. A journey built on experience, perseverance and the wish to create more value from what the home region already offers.'
     - label: Bảy Núi
@@ -158,7 +158,7 @@ zh:
         - 在以农业为本的地方，每季收获后留下的副产品成为种菇基质的原料——这正是 Hiền Nương 做法的起点。
         - 这也是学习掌握工作的旅程。据《安江报》（Báo An Giang）报道，从起初需要购买菌种，到后来 Nương 女士已能自行分离菌种、制作菌种。
         - '2020年，Tà Đảnh 农业合作社成立，标志着这段农耕之路向前迈进了一步。Trần Phương Hiền 先生担任理事会主席，Nương 女士负责经营管理，各位社员一同分享经验、联合生产，寻找长远发展的方向。'
-        - 'NƯƠNG FARM 是将 Trang trại Hiền Nương 的产品带给消费者的品牌。农场名称依然承载着 Châu Thị Nương 女士与 Trần Phương Hiền 先生共同走过的历程；Tà Đảnh 农业合作社是生产与经营单位。'
+        - 'NƯƠNG FARM 是 Hiền Nương Farm（Trang trại Hiền Nương）简洁、亲切的称呼，承载着 Châu Thị Nương 女士与 Trần Phương Hiền 先生在安江共同走过的农耕历程。如今，这个名字伴随着农场的产品来到消费者身边。Tà Đảnh 农业合作社是生产与经营单位。'
         - '从最初的那些脚步开始，一条循环农业之路逐渐成形。稻草被用作种菇的原料；采收后的基质继续用于养殖蚯蚓，为作物提供肥料。太阳能也被引入农场的运作之中。那些看似已走到生命尽头的资源，又以新的用途延续下去。'
         - '今天，Trang trại Hiền Nương 不只是一座农场的名字，更是几代农人之间传承的故事：从曾与酸土上的水稻相伴的父亲，到选择种菇、走出自己道路的女儿。这是一段由经验、坚持，以及从家乡已有之物中创造更多价值的愿望所成就的旅程。'
     - label: 七山
