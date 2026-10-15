@@ -19,12 +19,12 @@ vi:
     - Đông trùng hạ thảo được nuôi cấy tại Trang trại Hiền Nương.
     - Nấm tươi được nuôi trồng theo quy trình của trang trại.
     - Nấm mối đen chế biến bằng phương pháp sấy thăng hoa.
-    - Sản phẩm chế biến từ nấm mối đen của NƯƠNG FARM.
-    - Sản phẩm chế biến từ nấm bào ngư của NƯƠNG FARM.
+    - Sản phẩm chế biến từ nấm mối đen của Nương Farm.
+    - Sản phẩm chế biến từ nấm bào ngư của Nương Farm.
     - Đông trùng hạ thảo chế biến bằng phương pháp sấy thăng hoa.
     - Sản phẩm trà hòa tan được phát triển từ nấm linh chi.
     - Trà hòa tan kết hợp linh chi và đông trùng hạ thảo.
-    - Sản phẩm từ bào tử của nấm linh chi tại NƯƠNG FARM.
+    - Sản phẩm từ bào tử của nấm linh chi tại Nương Farm.
     - Sự kết hợp giữa đông trùng hạ thảo và mật ong.
   all: Xem tất cả sản phẩm
   details: Chi tiết
@@ -54,12 +54,12 @@ en:
     - Cordyceps cultivated at Trang trại Hiền Nương.
     - Fresh mushrooms grown following the farm’s own process.
     - Black termite mushroom, processed by freeze-drying.
-    - Made from NƯƠNG FARM’s black termite mushrooms.
-    - Made from NƯƠNG FARM’s oyster mushrooms.
+    - Made from Nương Farm’s black termite mushrooms.
+    - Made from Nương Farm’s oyster mushrooms.
     - Cordyceps, processed by freeze-drying.
     - An instant tea developed from lingzhi.
     - An instant tea combining lingzhi and cordyceps.
-    - Made from the spores of NƯƠNG FARM’s lingzhi.
+    - Made from the spores of Nương Farm’s lingzhi.
     - Cordyceps paired with honey.
   all: View all products
   details: Details
@@ -89,12 +89,12 @@ zh:
     - 在 Trang trại Hiền Nương 培育的蛹虫草。
     - 按照农场自己的流程种植的新鲜菌菇。
     - 采用冷冻干燥工艺加工的黑皮鸡枞菌。
-    - 以 NƯƠNG FARM 的黑皮鸡枞菌加工而成。
-    - 以 NƯƠNG FARM 的平菇加工而成。
+    - 以 Nương Farm 的黑皮鸡枞菌加工而成。
+    - 以 Nương Farm 的平菇加工而成。
     - 采用冷冻干燥工艺加工的蛹虫草。
     - 以灵芝开发的速溶茶。
     - 灵芝与蛹虫草搭配的速溶茶。
-    - 取自 NƯƠNG FARM 灵芝孢子的产品。
+    - 取自 Nương Farm 灵芝孢子的产品。
     - 蛹虫草与蜂蜜的结合。
   all: 查看全部产品
   details: 详情

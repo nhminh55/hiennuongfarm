@@ -1,12 +1,12 @@
 ---
 activities:
-  - title: NƯƠNG FARM tại Vietfood & Beverage – ProPack Vietnam 2026
+  - title: Nương Farm tại Vietfood & Beverage – ProPack Vietnam 2026
     place: SECC, TP.HCM
-    summary: NƯƠNG FARM giới thiệu các sản phẩm nấm của trang trại trong không gian trưng bày chung cùng các đơn vị sản xuất.
+    summary: Nương Farm giới thiệu các sản phẩm nấm của trang trại trong không gian trưng bày chung cùng các đơn vị sản xuất.
     story:
-      - Tháng 8/2026, NƯƠNG FARM tham gia Vietfood & Beverage – ProPack Vietnam tại SECC, TP.HCM, giới thiệu các sản phẩm nấm của trang trại trong không gian trưng bày chung cùng các đơn vị sản xuất.
+      - Tháng 8/2026, Nương Farm tham gia Vietfood & Beverage – ProPack Vietnam tại SECC, TP.HCM, giới thiệu các sản phẩm nấm của trang trại trong không gian trưng bày chung cùng các đơn vị sản xuất.
     photos:
-      - caption: Sản phẩm NƯƠNG FARM trong không gian triển lãm.
+      - caption: Sản phẩm Nương Farm trong không gian triển lãm.
         credit: Trang trại Hiền Nương
         alt: Chị Châu Thị Nương mặc áo dài xanh, quàng khăn rằn, đội nón lá, đeo thẻ triển lãm, đứng tại gian trưng bày bên giỏ mây xếp các hũ sản phẩm
         file: vf26-chan-dung

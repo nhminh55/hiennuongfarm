@@ -18,7 +18,7 @@ vi:
     - Khóm Thới Thuận, Phường Thới Sơn
     - Tỉnh An Giang
   nang_cao:
-    description: NƯƠNG FARM — mô hình nông nghiệp tuần hoàn tại vùng Bảy Núi, An Giang.
+    description: Nương Farm — mô hình nông nghiệp tuần hoàn tại vùng Bảy Núi, An Giang.
 en:
   email: contact@hiennuongfarm.vn
   phone: +84 985 799 777
@@ -38,7 +38,7 @@ en:
     - Khóm Thới Thuận, Phường Thới Sơn
     - An Giang Province, Vietnam
   nang_cao:
-    description: NƯƠNG FARM — a circular agriculture model in the Bảy Núi region of An Giang, Vietnam.
+    description: Nương Farm — a circular agriculture model in the Bảy Núi region of An Giang, Vietnam.
 zh:
   email: contact@hiennuongfarm.vn
   phone: +84 985 799 777
@@ -58,5 +58,5 @@ zh:
     - Khóm Thới Thuận, Phường Thới Sơn
     - 越南安江省
   nang_cao:
-    description: NƯƠNG FARM——位于越南安江省七山地区的循环农业模式。
+    description: Nương Farm——位于越南安江省七山地区的循环农业模式。
 ---

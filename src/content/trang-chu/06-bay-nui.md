@@ -2,22 +2,22 @@
 vi:
   eyebrow: Bảy Núi · An Giang
   title: Từ vùng đất Bảy Núi.
-  body: Giữa vùng Bảy Núi, NƯƠNG FARM nuôi dưỡng câu chuyện về con người, nông sản và cách làm nông nghiệp gắn bó với vùng đất.
-  more: Câu chuyện NƯƠNG FARM
+  body: Giữa vùng Bảy Núi, Nương Farm nuôi dưỡng câu chuyện về con người, nông sản và cách làm nông nghiệp gắn bó với vùng đất.
+  more: Câu chuyện Nương Farm
   nang_cao:
     alt: Ô ruộng lúa xanh nhìn thẳng từ trên cao, những cây thốt nốt mọc dọc bờ ruộng
 en:
   eyebrow: Bảy Núi · An Giang
   title: From the land of Bảy Núi.
-  body: In the Bảy Núi region, NƯƠNG FARM nurtures a story of people, of farm produce, and of a way of farming bound to the land.
-  more: The NƯƠNG FARM story
+  body: In the Bảy Núi region, Nương Farm nurtures a story of people, of farm produce, and of a way of farming bound to the land.
+  more: The Nương Farm story
   nang_cao:
     alt: Green rice paddies seen straight down from above, with palmyra palms along the field banks
 zh:
   eyebrow: 七山 · 安江
   title: 来自七山这片土地。
-  body: 在七山地区，NƯƠNG FARM 讲述着关于人、农产品，以及与这片土地相依的农业方式的故事。
-  more: NƯƠNG FARM 的故事
+  body: 在七山地区，Nương Farm 讲述着关于人、农产品，以及与这片土地相依的农业方式的故事。
+  more: Nương Farm 的故事
   nang_cao:
     alt: 从正上方俯瞰的绿色稻田，田埂上长着糖棕树
 ---

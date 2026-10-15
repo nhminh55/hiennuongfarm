@@ -41,7 +41,7 @@ const chuyenNhaNam = defineCollection({
       description: z.string().optional(),
       /** <title> and share title; the title otherwise. */
       seoTitle: z.string().optional(),
-      /** Byline in the structured data; NƯƠNG FARM by default. */
+      /** Byline in the structured data; Nương Farm by default. */
       author: z.string().optional(),
     });
   },

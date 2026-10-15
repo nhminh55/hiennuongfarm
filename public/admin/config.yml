@@ -67,7 +67,7 @@ collections:
             collapsed: true
             summary: '{{fields.item}}'
       - name: 02-ve-hien-nuong
-        label: Mục 01 · Về NƯƠNG FARM
+        label: Mục 01 · Về Nương Farm
         file: src/content/trang-chu/02-ve-hien-nuong.md
         format: frontmatter
         i18n: true
@@ -3064,7 +3064,7 @@ collections:
             i18n: true
             widget: object
             fields:
-              - label: Về NƯƠNG FARM
+              - label: Về Nương Farm
                 name: about
                 i18n: true
                 widget: string
@@ -3098,7 +3098,7 @@ collections:
             hint: Cột “Khám phá” ở chân trang, dòng “Trang chủ / …” và các chỗ khác
             widget: object
             fields:
-              - label: Về NƯƠNG FARM
+              - label: Về Nương Farm
                 name: about
                 i18n: true
                 widget: string
@@ -3203,7 +3203,7 @@ collections:
             allow_duplicate: false
             allow_reorder: false
             summary: '{{fields.items.vi}}'
-            hint: Mỗi khối là menu thả xuống của một mục trên thanh menu (Về NƯƠNG FARM, Nông nghiệp tuần hoàn, Sản phẩm, Dấu ấn, Chuyện nhà Nấm, Hợp tác). Số trên ảnh là thứ tự các mục.
+            hint: Mỗi khối là menu thả xuống của một mục trên thanh menu (Về Nương Farm, Nông nghiệp tuần hoàn, Sản phẩm, Dấu ấn, Chuyện nhà Nấm, Hợp tác). Số trên ảnh là thứ tự các mục.
             max: 6
             min: 6
       - name: tim-kiem
@@ -3367,4 +3367,4 @@ collections:
         name: author
         widget: string
         required: false
-        default: NƯƠNG FARM
+        default: Nương Farm

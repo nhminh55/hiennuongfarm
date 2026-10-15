@@ -33,8 +33,8 @@ export const categoryOf = (id: CategoryId) => categories.find((c) => c.id === id
 export const text = {
   title: 'Chuyện nhà Nấm',
   eyebrow: 'Ghi chép từ trang trại',
-  intro: 'Chuyện về nấm, về bếp và về vòng tuần hoàn ở NƯƠNG FARM, kể từ vùng Bảy Núi.',
-  description: 'Chuyện nhà Nấm: ghi chép của NƯƠNG FARM về các dòng nấm, gợi ý vào bếp và vòng tuần hoàn từ đất đến nấm tại vùng Bảy Núi, An Giang.',
+  intro: 'Chuyện về nấm, về bếp và về vòng tuần hoàn ở Nương Farm, kể từ vùng Bảy Núi.',
+  description: 'Chuyện nhà Nấm: ghi chép của Nương Farm về các dòng nấm, gợi ý vào bếp và vòng tuần hoàn từ đất đến nấm tại vùng Bảy Núi, An Giang.',
   home: 'Trang chủ',
   all: 'Tất cả',
   filterLabel: 'Chọn chuyên mục',

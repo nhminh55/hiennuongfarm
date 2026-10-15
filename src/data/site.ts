@@ -26,7 +26,7 @@ const shared = contactCopy('vi');
 const tel = (display: string) => display.replace(/\s/g, '');
 
 export const site = {
-  name: 'NƯƠNG FARM',
+  name: 'Nương Farm',
   url: 'https://hiennuongfarm.vn',
   description: byLocale((lang) => contactCopy(lang).description),
 };

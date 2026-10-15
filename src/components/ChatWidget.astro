@@ -3,7 +3,7 @@
  * ChatWidget.astro
  *
  * A custom-branded, highly interactive client-side chatbot widget.
- * Styled to match NƯƠNG FARM's Premium Editorial aesthetic.
+ * Styled to match Nương Farm's Premium Editorial aesthetic.
  * Runs 100% on the client side with smart keyword matching and quick replies.
  */
 ---
@@ -27,7 +27,7 @@
     <!-- Header -->
     <div class="hn-chat-header">
       <div class="hn-chat-header-info">
-        <h3 class="hn-chat-title">Trợ lý NƯƠNG FARM</h3>
+        <h3 class="hn-chat-title">Trợ lý Nương Farm</h3>
         <p class="hn-chat-subtitle">Nông nghiệp tuần hoàn Bảy Núi</p>
       </div>
       <button class="hn-chat-close" id="hnChatClose" aria-label="Đóng hộp thoại">
@@ -42,7 +42,7 @@
       <!-- Welcome Message -->
       <div class="hn-message hn-message-ai">
         <div class="hn-message-bubble">
-          <p>Kính chào quý khách! Tôi là Trợ lý AI của <strong>NƯƠNG FARM</strong>. 🌾</p>
+          <p>Kính chào quý khách! Tôi là Trợ lý AI của <strong>Nương Farm</strong>. 🌾</p>
           <p>Tôi rất vui được chia sẻ cùng bạn về hành trình nông nghiệp tuần hoàn bền vững tại vùng Bảy Núi (An Giang), cũng như thông tin về các dòng sản vật nấm sạch của trang trại.</p>
           <p>Bạn muốn tìm hiểu về nội dung nào dưới đây ạ?</p>
         </div>
@@ -59,7 +59,7 @@
 
     <!-- Quick Replies -->
     <div class="hn-quick-replies" id="hnQuickReplies">
-      <button class="hn-quick-btn" data-question="Giới thiệu về NƯƠNG FARM">🎋 Về NƯƠNG FARM</button>
+      <button class="hn-quick-btn" data-question="Giới thiệu về Nương Farm">🎋 Về Nương Farm</button>
       <button class="hn-quick-btn" data-question="Mô hình nông nghiệp tuần hoàn hoạt động thế nào?">🔄 Nông nghiệp tuần hoàn</button>
       <button class="hn-quick-btn" data-question="Trang trại có những sản phẩm nấm nào?">🍄 Các sản vật nấm</button>
       <button class="hn-quick-btn" data-question="Thông tin liên hệ hợp tác và địa chỉ">📍 Địa chỉ & Liên hệ</button>
@@ -72,7 +72,7 @@
         type="text" 
         class="hn-chat-input" 
         id="hnChatInput" 
-        placeholder="Hỏi trợ lý NƯƠNG FARM..."
+        placeholder="Hỏi trợ lý Nương Farm..."
         autocomplete="off"
         maxlength="200"
         aria-label="Tin nhắn hỏi trợ lý"
@@ -490,38 +490,38 @@
       {
         keywords: ['chao', 'hello', 'hi', 'xin chao', 'bat dau', 'hey', 'alo', 'co ai khong'],
         answers: [
-          "Dạ, NƯƠNG FARM xin kính chào bạn! Thật vui vì được đón tiếp bạn ghé thăm trang trại số của chúng tôi. Tôi có thể chia sẻ gì cùng bạn về các dòng nấm sạch hay mô hình nông nghiệp tuần hoàn ở Bảy Núi ạ?",
-          "Dạ, xin chào bạn! Chúc bạn một ngày tràn đầy năng lượng an lành. Tôi ở đây để hỗ trợ giải đáp mọi thắc mắc của bạn về NƯƠNG FARM ạ!"
+          "Dạ, <strong>Nương Farm</strong> xin kính chào bạn! Thật vui vì được đón tiếp bạn ghé thăm trang trại số của chúng tôi. Tôi có thể chia sẻ gì cùng bạn về các dòng nấm sạch hay mô hình nông nghiệp tuần hoàn ở Bảy Núi ạ?",
+          "Dạ, xin chào bạn! Chúc bạn một ngày tràn đầy năng lượng an lành. Tôi ở đây để hỗ trợ giải đáp mọi thắc mắc của bạn về <strong>Nương Farm</strong> ạ!"
         ]
       },
       {
         keywords: ['ai', 'sang lap', 'thanh lap', 'chu', 'co sang lap', 'chau thi nuong', 'tran phuong hien', 'chi nuong', 'anh hien', 'vo chong', 'co ai', 'ai lam', 'sang lap ra'],
         answers: [
-          "Dạ, NƯƠNG FARM là thương hiệu nông sản từ <a href='/ve-chung-toi/#thuong-hieu'>Trang trại Hiền Nương</a>. Trang trại được thành lập vào năm 2020 bởi hai vợ chồng đồng sáng lập là <strong>chị Châu Thị Nương</strong> và <strong>anh Trần Phương Hiền</strong>.<br/><br/>Với lòng trân quý giá trị bản địa, chị Châu Thị Nương (Nông dân Việt Nam xuất sắc năm 2025) đã tâm huyết kiến tạo mô hình nuôi trồng nấm sạch gắn liền với chuỗi nông nghiệp xanh tại vùng đất Tà Đảnh, huyện Tri Tôn, tỉnh An Giang."
+          "Dạ, <strong>Nương Farm</strong> là thương hiệu nông sản từ Trang trại Hiền Nương. Trang trại được thành lập vào năm 2020 bởi hai vợ chồng đồng sáng lập là <strong>chị Châu Thị Nương</strong> và <strong>anh Trần Phương Hiền</strong>.<br/><br/>Với lòng trân quý giá trị bản địa, chị Châu Thị Nương (Nông dân Việt Nam xuất sắc năm 2025) đã tâm huyết kiến tạo mô hình nuôi trồng nấm sạch gắn liền với chuỗi nông nghiệp xanh tại vùng đất Tà Đảnh, huyện Tri Tôn, tỉnh An Giang."
         ]
       },
       {
         keywords: ['tuan hoan', 'nong nghiep tuan hoan', 'quy trinh', 'xoay vong', 'phe pham', 'phu pham', 'trun que', 'phan huu co', 'rom', 'cam', 'dat', 'mo hinh', 'tiet kiem', 'bao ve moi truong', 'sinh thai'],
         answers: [
-          "Dạ, tại NƯƠNG FARM, <strong>Nông nghiệp tuần hoàn</strong> được vận hành như một chu trình khép kín để triệt tiêu lãng phí và bồi dưỡng đất mẹ:<br/><br/>1. <strong>Thu gom phụ phẩm</strong>: Thu mua rơm rạ, cám gạo, cám bắp từ bà con nông dân địa phương làm giá thể trồng nấm.<br/>2. <strong>Nuôi trồng sạch</strong>: Trồng nấm sạch trong môi trường kiểm soát nghiêm ngặt, hoàn toàn không hóa chất.<br/>3. <strong>Tái chế bã nấm</strong>: Sau thu hoạch, các bịch giá thể thải ra (spent substrate) được tận dụng làm thức ăn nuôi trùn quế.<br/>4. <strong>Trả lại đất đai</strong>: Trùn quế xử lý bã nấm và thải ra phân hữu cơ giàu dinh dưỡng, được bón ngược lại cho đồng ruộng, khép kín dòng tuần hoàn.<br/><br/>Mô hình giúp nâng cao chuỗi giá trị và giảm thiểu ô nhiễm môi trường tại địa phương."
+          "Dạ, tại <strong>Nương Farm</strong>, <strong>Nông nghiệp tuần hoàn</strong> được vận hành như một chu trình khép kín để triệt tiêu lãng phí và bồi dưỡng đất mẹ:<br/><br/>1. <strong>Thu gom phụ phẩm</strong>: Thu mua rơm rạ, cám gạo, cám bắp từ bà con nông dân địa phương làm giá thể trồng nấm.<br/>2. <strong>Nuôi trồng sạch</strong>: Trồng nấm sạch trong môi trường kiểm soát nghiêm ngặt, hoàn toàn không hóa chất.<br/>3. <strong>Tái chế bã nấm</strong>: Sau thu hoạch, các bịch giá thể thải ra (spent substrate) được tận dụng làm thức ăn nuôi trùn quế.<br/>4. <strong>Trả lại đất đai</strong>: Trùn quế xử lý bã nấm và thải ra phân hữu cơ giàu dinh dưỡng, được bón ngược lại cho đồng ruộng, khép kín dòng tuần hoàn.<br/><br/>Mô hình giúp nâng cao chuỗi giá trị và giảm thiểu ô nhiễm môi trường tại địa phương."
         ]
       },
       {
         keywords: ['san pham', 'san vat', 'mua', 'ban', 'nam', 'nam moi', 'moi den', 'linh chi', 'dong trung', 'ha thao', 'bao ngu', 'nam tuoi', 'say', 'kho'],
         answers: [
-          "Dạ, NƯƠNG FARM tự hào cung cấp 4 dòng sản vật nấm đặc trưng nuôi trồng tại vùng Bảy Núi:<br/><br/>• <strong>Nấm Mối Đen</strong>: Thân nấm giòn sần sật, vị ngọt đậm đà, giàu chất xơ.<br/>• <strong>Nấm Linh Chi</strong>: Tai nấm dày dặn, được chăm sóc tỉ mỉ trên lớp rơm sạch.<br/>• <strong>Đông Trùng Hạ Thảo</strong>: Sợi nấm màu cam rực rỡ, được sấy thăng hoa giữ nguyên dưỡng chất quý giá.<br/>• <strong>Nấm Bào Ngư</strong>: Chùm nấm trắng xám, mọc khỏe khoắn, rất lành tính cho bữa ăn gia đình.<br/><br/>Bạn có thể tìm hiểu kỹ hơn tại trang <a href='/san-pham/'>Sản vật từ trang trại</a> nhé ạ!"
+          "Dạ, <strong>Nương Farm</strong> tự hào cung cấp 4 dòng sản vật nấm đặc trưng nuôi trồng tại vùng Bảy Núi:<br/><br/>• <strong>Nấm Mối Đen</strong>: Thân nấm giòn sần sật, vị ngọt đậm đà, giàu chất xơ.<br/>• <strong>Nấm Linh Chi</strong>: Tai nấm dày dặn, được chăm sóc tỉ mỉ trên lớp rơm sạch.<br/>• <strong>Đông Trùng Hạ Thảo</strong>: Sợi nấm màu cam rực rỡ, được sấy thăng hoa giữ nguyên dưỡng chất quý giá.<br/>• <strong>Nấm Bào Ngư</strong>: Chùm nấm trắng xám, mọc khỏe khoắn, rất lành tính cho bữa ăn gia đình.<br/><br/>Bạn có thể tìm hiểu kỹ hơn tại trang <a href='/san-pham/'>Sản vật từ trang trại</a> nhé ạ!"
         ]
       },
       {
         keywords: ['nam moi den', 'moi den', 'moi'],
         answers: [
-          "Dạ, <strong>Nấm Mối Đen</strong> tại NƯƠNG FARM được nuôi trồng từ bịch giá thể phối trộn rơm rạ tự nhiên. Nấm mối đen của trang trại nổi tiếng với thân nấm mập mạp, mũ nấm màu đen xám, khi ăn có độ giòn ngọt thanh nhẹ tự nhiên, rất thích hợp cho các món xào, nấu canh, lẩu hoặc nướng mỡ hành.<br/><br/>Sản phẩm mẫu đã được kiểm nghiệm an toàn vi sinh tại VietLabs và không chứa kim loại nặng độc hại."
+          "Dạ, <strong>Nấm Mối Đen</strong> tại <strong>Nương Farm</strong> được nuôi trồng từ bịch giá thể phối trộn rơm rạ tự nhiên. Nấm mối đen của trang trại nổi tiếng với thân nấm mập mạp, mũ nấm màu đen xám, khi ăn có độ giòn ngọt thanh nhẹ tự nhiên, rất thích hợp cho các món xào, nấu canh, lẩu hoặc nướng mỡ hành.<br/><br/>Sản phẩm mẫu đã được kiểm nghiệm an toàn vi sinh tại VietLabs và không chứa kim loại nặng độc hại."
         ]
       },
       {
         keywords: ['linh chi', 'nam linh chi'],
         answers: [
-          "Dạ, <strong>Nấm Linh Chi</strong> của NƯƠNG FARM được trồng trực tiếp từ bịch phôi đặt trên lớp rơm sạch tại nhà nấm. Qua quy trình kiểm định chất lượng mẫu thử tại VietLabs năm 2023, nấm linh chi của trang trại đạt tỉ lệ hoạt chất quý nổi bật gồm <i>Polysaccharides (6.60 mg/g)</i> và <i>Triterpen (6.57 mg/g)</i>, đồng thời hoàn toàn không phát hiện kim loại nặng nguy hại (chì, cadmium)."
+          "Dạ, <strong>Nấm Linh Chi</strong> của <strong>Nương Farm</strong> được trồng trực tiếp từ bịch phôi đặt trên lớp rơm sạch tại nhà nấm. Qua quy trình kiểm định chất lượng mẫu thử tại VietLabs năm 2023, nấm linh chi của trang trại đạt tỉ lệ hoạt chất quý nổi bật gồm <i>Polysaccharides (6.60 mg/g)</i> và <i>Triterpen (6.57 mg/g)</i>, đồng thời hoàn toàn không phát hiện kim loại nặng nguy hại (chì, cadmium)."
         ]
       },
       {
@@ -533,13 +533,13 @@
       {
         keywords: ['bao ngu', 'nam bao ngu'],
         answers: [
-          "Dạ, <strong>Nấm Bào Ngư</strong> được NƯƠNG FARM trồng dạng treo hoặc xếp kệ khoa học trong nhà trồng thông thoáng. Chùm nấm bào ngư xám dày dặn, lành tính, ngọt mát, là sản phẩm mộc mạc thích hợp cho thực đơn thuần chay và bữa cơm gia đình mỗi ngày."
+          "Dạ, <strong>Nấm Bào Ngư</strong> được <strong>Nương Farm</strong> trồng dạng treo hoặc xếp kệ khoa học trong nhà trồng thông thoáng. Chùm nấm bào ngư xám dày dặn, lành tính, ngọt mát, là sản phẩm mộc mạc thích hợp cho thực đơn thuần chay và bữa cơm gia đình mỗi ngày."
         ]
       },
       {
         keywords: ['dia chi', 'o dau', 'cho nao', 'toa lac', 'tinh', 'an giang', 'tri ton', 'ta danh', 'thoi son', 'viet nam', 'ban do', 'diem den', 'ghe tham'],
         answers: [
-          "Dạ, NƯƠNG FARM gắn liền với <a href='/ve-chung-toi/#thuong-hieu'>Trang trại Hiền Nương</a> tại vùng đất <strong>Tà Đảnh, huyện Tri Tôn, tỉnh An Giang</strong>. Địa chỉ liên hệ và cơ sở đóng tại khóm Thới Thuận, Phường Thới Sơn, Tỉnh An Giang.<br/><br/>Trang trại nằm nép mình dưới chân vùng Bảy Núi huyền thoại với khí hậu trong lành, cực kỳ phù hợp cho việc nuôi cấy các loại nấm dược liệu và nấm ăn cao cấp."
+          "Dạ, <strong>Nương Farm</strong> gắn liền với Trang trại Hiền Nương tại vùng đất <strong>Tà Đảnh, huyện Tri Tôn, tỉnh An Giang</strong>. Địa chỉ liên hệ và cơ sở đóng tại khóm Thới Thuận, Phường Thới Sơn, Tỉnh An Giang.<br/><br/>Trang trại nằm nép mình dưới chân vùng Bảy Núi huyền thoại với khí hậu trong lành, cực kỳ phù hợp cho việc nuôi cấy các loại nấm dược liệu và nấm ăn cao cấp."
         ]
       },
       {
@@ -551,13 +551,13 @@
       {
         keywords: ['kiem nghiem', 'vietlabs', 'an toan', 'sach', 'hoa chat', 'chat luong', 'bao cao', 'kim loai', 'doc hai', 'chi', 'cadmium', 'adenosine', 'cordycepin', 'polysaccharide'],
         answers: [
-          "Dạ, để bảo vệ sức khỏe người tiêu dùng, các sản phẩm nấm của NƯƠNG FARM đều được gửi đi phân tích mẫu tại trung tâm kiểm nghiệm uy tín <strong>VietLabs</strong> (các đợt kiểm nghiệm 2023, 2024).<br/><br/>Kết quả phân tích mẫu đạt tiêu chuẩn an toàn thực phẩm cực kỳ khắt khe: an toàn vi sinh (Coliforms, E. coli nằm trong ngưỡng an toàn), không phát hiện kim loại nặng độc hại (chì Pb, Cadmium Cd, ArsenicAs) và xác định rõ ràng các hoạt chất quý của nấm. Bạn có thể xem chi tiết bảng kết quả này tại trang chi tiết từng sản vật ạ."
+          "Dạ, để bảo vệ sức khỏe người tiêu dùng, các sản phẩm nấm của <strong>Nương Farm</strong> đều được gửi đi phân tích mẫu tại trung tâm kiểm nghiệm uy tín <strong>VietLabs</strong> (các đợt kiểm nghiệm 2023, 2024).<br/><br/>Kết quả phân tích mẫu đạt tiêu chuẩn an toàn thực phẩm cực kỳ khắt khe: an toàn vi sinh (Coliforms, E. coli nằm trong ngưỡng an toàn), không phát hiện kim loại nặng độc hại (chì Pb, Cadmium Cd, ArsenicAs) và xác định rõ ràng các hoạt chất quý của nấm. Bạn có thể xem chi tiết bảng kết quả này tại trang chi tiết từng sản vật ạ."
         ]
       },
       {
         keywords: ['ocop', 'giai thuong', 'chung nhan', 'nong dan xuat sac', 'vinh danh', 'dat dai', 'nang nuong', 'ta danh an giang'],
         answers: [
-          "Dạ, NƯƠNG FARM vô cùng tự hào khi:<br/><br/>• Ba dòng sản phẩm nấm của trang trại (gồm Linh chi, Đông trùng hạ thảo và Nấm mối) đã được ghi nhận đạt tiêu chuẩn <strong>OCOP 3 sao</strong>.<br/>• Đặc biệt, đồng sáng lập trang trại là <strong>chị Châu Thị Nương</strong> vinh dự được bình chọn là một trong những <strong>Nông dân Việt Nam xuất sắc năm 2025</strong> nhờ những đóng góp sáng tạo trong phát triển kinh tế nông thôn tuần hoàn vùng biên giới An Giang."
+          "Dạ, <strong>Nương Farm</strong> vô cùng tự hào khi:<br/><br/>• Ba dòng sản phẩm nấm của trang trại (gồm Linh chi, Đông trùng hạ thảo và Nấm mối) đã được ghi nhận đạt tiêu chuẩn <strong>OCOP 3 sao</strong>.<br/>• Đặc biệt, đồng sáng lập trang trại là <strong>chị Châu Thị Nương</strong> vinh dự được bình chọn là một trong những <strong>Nông dân Việt Nam xuất sắc năm 2025</strong> nhờ những đóng góp sáng tạo trong phát triển kinh tế nông thôn tuần hoàn vùng biên giới An Giang."
         ]
       }
     ];

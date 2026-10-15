@@ -3,7 +3,7 @@ title: "Nấm bào ngư: Nguyên liệu giản dị cho bữa cơm Việt"
 excerpt: "Dễ kết hợp với rau củ và gia vị quen thuộc, nấm bào ngư mở ra nhiều cách làm món ăn hàng ngày mà không cần cầu kỳ."
 category: hieu-ve-nam
 date: 2026-10-14
-author: "NƯƠNG FARM"
+author: "Nương Farm"
 featured: false
 draft: false
 seoTitle: "Nấm bào ngư nấu món gì ngon? | Chuyện nhà Nấm"
@@ -44,7 +44,7 @@ Không cần cắt nấm quá vụn. Hãy bỏ phần gốc cứng nếu có, t�
 
 Trong bữa cơm nhà, nấm bào ngư có thể là món chính của một bữa ăn đơn giản, hoặc là thành phần bổ sung cho nồi canh, chảo xào. Điều đáng quý không nằm ở công thức phức tạp, mà ở việc hiểu nguyên liệu và nấu vừa đủ để tận hưởng hương vị của nó.
 
-**Gợi ý:** Xem thêm các sản phẩm nấm tươi tại [NƯƠNG FARM](/san-pham/).
+**Gợi ý:** Xem thêm các sản phẩm nấm tươi tại [Nương Farm](/san-pham/).
 
 ---
 

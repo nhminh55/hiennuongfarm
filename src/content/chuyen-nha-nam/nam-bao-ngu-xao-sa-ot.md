@@ -3,7 +3,7 @@ title: "Nấm bào ngư xào sả ớt: Món thơm cho bữa cơm nhà"
 excerpt: "Một công thức dễ thực hiện, thơm mùi sả, điều chỉnh được độ cay và hợp với cơm nóng."
 category: bep-nha-nam
 date: 2026-10-14
-author: "NƯƠNG FARM"
+author: "Nương Farm"
 featured: true
 draft: false
 seoTitle: "Cách làm nấm bào ngư xào sả ớt | Bếp nhà Nấm"

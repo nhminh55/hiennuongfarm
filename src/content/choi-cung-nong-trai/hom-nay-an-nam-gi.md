@@ -249,7 +249,7 @@ hide_details: Thu gọn công thức
 alternative_button: Thử món khác
 alternative_one: Hiện có một món phù hợp. Đổi vị hoặc thời gian để tìm thêm món.
 alternative_many: Có {count} món phù hợp; đang xem món {index}.
-product_link: Khám phá nấm bào ngư tại NƯƠNG FARM
+product_link: Khám phá nấm bào ngư tại Nương Farm
 suggested: 'Gợi ý: {name}. {minutes} phút, cho {servings} người.'
 changed: Lựa chọn đã đổi. Bấm “Gợi ý món cho tui” để xem món phù hợp.
 details_meta: '{minutes} phút gồm sơ chế và nấu · {servings} người'

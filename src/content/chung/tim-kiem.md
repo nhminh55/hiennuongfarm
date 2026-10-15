@@ -13,6 +13,6 @@ emptyLinks:
     href: /dau-an/bao-chi/
 noscript: Cần bật JavaScript để xem kết quả tìm kiếm.
 nang_cao:
-  description: Tìm trên trang NƯƠNG FARM.
+  description: Tìm trên trang Nương Farm.
   inputLabel: Từ khóa
 ---

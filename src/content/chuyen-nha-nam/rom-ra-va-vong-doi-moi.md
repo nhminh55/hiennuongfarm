@@ -3,7 +3,7 @@ title: "Từ rơm rạ đến tai nấm: Câu chuyện về một vòng đời m
 excerpt: "Nhìn rơm rạ như một nguồn nguyên liệu thay vì thứ bỏ đi mở ra những hướng sử dụng thú vị trong nông nghiệp."
 category: tu-dat-den-nam
 date: 2026-10-14
-author: "NƯƠNG FARM"
+author: "Nương Farm"
 featured: true
 draft: false
 seoTitle: "Rơm rạ và trồng nấm: Tư duy nông nghiệp tuần hoàn"
@@ -38,7 +38,7 @@ Sau thu hoạch, giá thể đã qua sử dụng cũng cần được phân lo�
 
 Giá trị của mô hình tuần hoàn nằm ở những quyết định nhỏ nhưng nhất quán: chọn nguồn nguyên liệu phù hợp, giảm lãng phí, theo dõi chất lượng và tìm đầu ra hợp lý cho phụ phẩm. Những tai nấm trên giá thể thực vật gợi nhắc rằng một mùa thu hoạch có thể mở đường cho một công việc khác, khi con người biết nhìn tài nguyên bằng con mắt mới.
 
-**Tìm hiểu thêm:** [Nông nghiệp tuần hoàn](/nong-nghiep-tuan-hoan/) tại NƯƠNG FARM.
+**Tìm hiểu thêm:** [Nông nghiệp tuần hoàn](/nong-nghiep-tuan-hoan/) tại Nương Farm.
 
 ---
 

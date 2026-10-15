@@ -1,11 +1,11 @@
 ---
 vi:
   eyebrow: Dấu ấn
-  intro: Mỗi sự ghi nhận là một dấu mốc đáng nhớ trên hành trình phát triển của NƯƠNG FARM, góp phần lan tỏa những giá trị tốt đẹp từ vùng Bảy Núi.
+  intro: Mỗi sự ghi nhận là một dấu mốc đáng nhớ trên hành trình phát triển của Nương Farm, góp phần lan tỏa những giá trị tốt đẹp từ vùng Bảy Núi.
   title: Những chặng đường được ghi nhận
   groups:
     - title: Báo chí & Truyền thông
-      note: Những câu chuyện về NƯƠNG FARM trên báo chí, truyền hình và các kênh truyền thông.
+      note: Những câu chuyện về Nương Farm trên báo chí, truyền hình và các kênh truyền thông.
     - title: Giải thưởng & Ghi nhận
       note: Các danh hiệu, chứng nhận và những cột mốc được ghi nhận trên hành trình phát triển.
     - title: Sự kiện & Hoạt động
@@ -18,11 +18,11 @@ vi:
     moreOf: 'Xem chi tiết: {title}'
 en:
   eyebrow: Press
-  intro: Every recognition is a milestone to remember on NƯƠNG FARM’s journey, helping to carry the good things of the Bảy Núi region further.
+  intro: Every recognition is a milestone to remember on Nương Farm’s journey, helping to carry the good things of the Bảy Núi region further.
   title: Recognised along the way
   groups:
     - title: Press & Media
-      note: Stories about NƯƠNG FARM in newspapers, on television and across the media.
+      note: Stories about Nương Farm in newspapers, on television and across the media.
     - title: Awards & Recognition
       note: Titles, certifications and the milestones recognised along the way.
     - title: Events & Activities
@@ -35,11 +35,11 @@ en:
     moreOf: 'View details: {title} (in Vietnamese)'
 zh:
   eyebrow: 媒体报道
-  intro: 每一次认可，都是 NƯƠNG FARM 发展历程中值得铭记的里程碑，也让七山地区的美好价值传得更远。
+  intro: 每一次认可，都是 Nương Farm 发展历程中值得铭记的里程碑，也让七山地区的美好价值传得更远。
   title: 一路走来的认可
   groups:
     - title: 媒体报道
-      note: 报刊、电视及各类媒体上关于 NƯƠNG FARM 的故事。
+      note: 报刊、电视及各类媒体上关于 Nương Farm 的故事。
     - title: 奖项与荣誉
       note: 发展历程中获得的称号、认证与里程碑。
     - title: 活动与交流
