@@ -18,7 +18,7 @@ const Tag = href ? 'a' : 'span';
   aria-label={href ? `${site.name} — ${home}` : undefined}
 >
   <img class="wordmark__icon" src="/brand/badge.webp" width="512" height="512" alt="" aria-hidden="true" />
-  <img class="wordmark__type" src="/brand/wordmark.webp" width="353" height="83" alt={href ? '' : site.name} aria-hidden={href ? 'true' : undefined} />
+  <img class="wordmark__type" src="/brand/wordmark.webp" width="800" height="191" alt={href ? '' : site.name} aria-hidden={href ? 'true' : undefined} />
 </Tag>
 
 <style>
@@ -35,8 +35,6 @@ const Tag = href ? 'a' : 'span';
   }
   .wordmark--dark { color: var(--color-cream); }
   .wordmark__icon { display: block; width: 28%; height: auto; flex: none; }
-  .wordmark__type { display: block; min-width: 0; flex: 1; height: auto; transition: filter 400ms var(--ease); }
-  /* The official lettering is brown; on dark grounds it turns cream. */
-  .wordmark--dark .wordmark__type,
-  :global(.site-header.is-menu-open) .wordmark__type { filter: brightness(0) invert(0.95) sepia(0.12); }
+  .wordmark__type { display: block; min-width: 0; flex: 1; height: auto; }
+
 </style>
