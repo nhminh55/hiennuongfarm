@@ -2,9 +2,9 @@
 menus:
   - items:
       - label:
-          vi: Câu chuyện Hiền Nương
-          en: The Hiền Nương story
-          zh: Hiền Nương 的故事
+          vi: Câu chuyện NƯƠNG FARM
+          en: The NƯƠNG FARM story
+          zh: NƯƠNG FARM 的故事
         href: /ve-chung-toi/#cau-chuyen
       - label:
           vi: Vùng Bảy Núi

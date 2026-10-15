@@ -1,4 +1,5 @@
 ---
+import BrandContext from '../../../components/BrandContext.astro';
 /**
  * /dau-an/bao-chi/<slug>/: one report. The outlet's headline and date,
  * the photograph and short opening from the article, a link to read or
@@ -121,6 +122,7 @@ const href = (p: FeaturedPress) => `/dau-an/bao-chi/${p.slug}/`;
           </div>
         )}
 
+        <BrandContext />
         <div class="report__source">
           <a class="btn report__cta" href={item.url} target="_blank" rel="noopener">
             {action}

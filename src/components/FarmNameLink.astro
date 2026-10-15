@@ -1,0 +1,12 @@
+---
+import { getLocale, localizePath } from '../i18n';
+interface Props { text: string }
+const { text } = Astro.props;
+const match = /Trang trại Hiền Nương|trang trại Hiền Nương|Hiền Nương Farm|Hiền Nương farm|Hiền Nương 农场/.exec(text);
+const at = match?.index ?? -1;
+const href = localizePath('/ve-chung-toi/#thuong-hieu', getLocale(Astro.url));
+---
+{match ? <>{text.slice(0, at)}<a class="farm-name-link" href={href}>{match[0]}</a>{text.slice(at + match[0].length)}</> : text}
+<style>
+  .farm-name-link { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
+</style>

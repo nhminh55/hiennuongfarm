@@ -1,4 +1,5 @@
 ---
+import FarmNameLink from '../FarmNameLink.astro';
 import { copy } from '../../data/copy';
 import Photo from '../Photo.astro';
 import Arrow from '../Arrow.astro';
@@ -23,7 +24,7 @@ const t = copy('trang-chu/02-ve-hien-nuong', lang);
       <BrandFilm />
       <div class="about__text" data-reveal>
         <h2 class="h2 about__title" id="about-title">{t.title}</h2>
-        <p class="body about__body">{t.body}</p>
+        <p class="body about__body"><FarmNameLink text={t.body} /></p>
         <!-- The story page is Vietnamese only; other languages stay on this section. -->
         <a class="link-arrow about__more" href={pageHref('/ve-chung-toi/', lang, '/#ve-hien-nuong')}>{t.more} <Arrow /></a>
       </div>

@@ -1,4 +1,5 @@
 ---
+import FarmNameLink from './FarmNameLink.astro';
 import { copy } from '../data/copy';
 import { footerNav, contact, business, site } from '../data/site';
 import { getLocale, isTranslated, localizePath, pageHref } from '../i18n';
@@ -33,7 +34,7 @@ const t = copy('chung/footer', lang);
         <p class="site-footer__line">
           {t.line[0]}<br />{t.line[1]}
         </p>
-        <p class="site-footer__farm-line">{t.farmLine}</p>
+        <p class="site-footer__farm-line"><FarmNameLink text={t.farmLine} /></p>
         <div class="site-footer__business">
           <p class="site-footer__business-role">{t.businessRole}</p>
           <p class="site-footer__business-name" lang="vi">{business.name[0]}<br />{business.name[1]}</p>

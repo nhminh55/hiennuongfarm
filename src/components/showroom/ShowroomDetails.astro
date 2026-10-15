@@ -1,4 +1,5 @@
 ---
+import BrandContext from '../BrandContext.astro';
 import { copy } from '../../data/copy';
 /**
  * Showroom details — the tabbed information under the stage.
@@ -210,6 +211,7 @@ const isExternal = (href: string) => /^https?:/i.test(href) || /\.pdf($|[?#])/i.
             {tab === 'nhan-xet' && p.reviews && (
               <section class="details__section">
                 <h3 class="details__heading">{t.reviewsTitle}</h3>
+                {p.reviews.some((r) => r.quote.includes('Hiền Nương')) && <BrandContext />}
                 <div class="reviews">
                   {p.reviews.map((r) => (
                     <figure class="review">

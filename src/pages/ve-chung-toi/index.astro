@@ -132,7 +132,7 @@ const half = '(min-width: 1200px) 45vw, 100vw';
                     <blockquote class="pullquote" aria-hidden="true"><p>{t.quote}</p></blockquote>
                     <p>{p}</p>
                   </div>
-                ) : <p data-milestone={milestoneAt(i + storyOpen.length)}>{p}</p>}
+                ) : <p id={p.startsWith('NƯƠNG FARM') ? 'thuong-hieu' : undefined} data-milestone={milestoneAt(i + storyOpen.length)}>{p}</p>}
               </>
             ))}
           </div>
@@ -395,6 +395,7 @@ const half = '(min-width: 1200px) 45vw, 100vw';
 </script>
 
 <style>
+  #thuong-hieu { scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 1rem); }
   .about-page {
     /* Homepage display serif (Lora), as on the homepage. */
     --font-display: var(--font-editorial);

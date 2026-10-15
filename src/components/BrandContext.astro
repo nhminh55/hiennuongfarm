@@ -1,0 +1,10 @@
+---
+import { copy } from '../data/copy';
+import { getLocale } from '../i18n';
+import FarmNameLink from './FarmNameLink.astro';
+const t = copy('chung/thuong-hieu', getLocale(Astro.url));
+---
+<p class="brand-context"><FarmNameLink text={t.note} /></p>
+<style>
+  .brand-context { margin-block: 1rem; font-size: .875rem; line-height: 1.65; color: inherit; }
+</style>

@@ -11,7 +11,7 @@ vi:
         nông nghiệp
       lead: Tiếp nối giá trị từ rơm rạ.
       text:
-        - Sau mỗi vụ lúa, nguồn rơm rạ tại địa phương được tận dụng làm nguyên liệu trồng nấm mối đen. Thay vì bỏ đi, phụ phẩm nông nghiệp trở thành đầu vào cho một chu kỳ sản xuất mới tại Hiền Nương.
+        - Sau mỗi vụ lúa, nguồn rơm rạ tại địa phương được tận dụng làm nguyên liệu trồng nấm mối đen. Thay vì bỏ đi, phụ phẩm nông nghiệp trở thành đầu vào cho một chu kỳ sản xuất mới tại trang trại.
         - Nguồn nguyên liệu gồm rơm, trấu, cám và mùn cưa được kiểm tra trước khi sử dụng, chuẩn bị cho công đoạn xử lý và phối trộn giá thể. Từ những vật liệu quen thuộc của đồng ruộng, trang trại tạo thêm giá trị qua mô hình nuôi trồng nấm.
     - title: Chuẩn bị giá thể
       name: |-
@@ -28,7 +28,7 @@ vi:
       lead: Nuôi dưỡng tơ nấm từ bên trong.
       text:
         - Meo nấm được cấy vào giá thể đã xử lý, sau đó các bịch được đưa vào giai đoạn ủ để tơ nấm phát triển. Khi tơ lan dần trong giá thể, bịch chuyển thành phôi nấm để phục vụ nuôi trồng.
-        - Hiền Nương chủ động sản xuất meo giống và phôi tại cơ sở, theo dõi quá trình phát triển và kiểm tra chất lượng trước khi đưa phôi vào nhà trồng hoặc cung ứng cho người có nhu cầu. Việc chủ động từ khâu giống giúp trang trại kiểm soát đầu vào và đồng hành cùng người trồng bằng hướng dẫn kỹ thuật.
+        - NƯƠNG FARM chủ động sản xuất meo giống và phôi tại cơ sở, theo dõi quá trình phát triển và kiểm tra chất lượng trước khi đưa phôi vào nhà trồng hoặc cung ứng cho người có nhu cầu. Việc chủ động từ khâu giống giúp trang trại kiểm soát đầu vào và đồng hành cùng người trồng bằng hướng dẫn kỹ thuật.
     - title: Nuôi trồng & thu hoạch
       name: |-
         Nuôi trồng
@@ -51,7 +51,7 @@ vi:
         bón cây
       lead: Đưa nguồn dinh dưỡng hữu cơ trở lại đất.
       text:
-        - Phân trùn quế được sử dụng làm nguồn dinh dưỡng hữu cơ cho cây trồng; tại Hiền Nương, phân trùn còn được phối trộn thêm phân bò để phục vụ việc bón cây. Thành phẩm ở bước này là phân hữu cơ, được tách khỏi công đoạn nuôi trùn.
+        - Phân trùn quế được sử dụng làm nguồn dinh dưỡng hữu cơ cho cây trồng; tại trang trại, phân trùn còn được phối trộn thêm phân bò để phục vụ việc bón cây. Thành phẩm ở bước này là phân hữu cơ, được tách khỏi công đoạn nuôi trùn.
         - Nguồn dinh dưỡng tiếp tục nuôi dưỡng đất và cây trồng. Khi cây tạo ra phụ phẩm phù hợp, nguồn vật liệu ấy có thể được tận dụng cho những chu kỳ sản xuất tiếp theo — nối tiếp hành trình từ phụ phẩm đến nấm, từ giá thể đến phân bón, rồi trở về đất.
   motto:
     - Từ đất,
@@ -68,7 +68,7 @@ vi:
   solarTitle: Nguồn điện từ mặt trời.
   solarBody:
     - Nông trại được xây dựng trên khu đất khai thác điện năng lượng mặt trời. Toàn bộ hệ thống do chị Châu Thị Nương cùng anh Trần Phương Hiền tự xây dựng và phát triển. 100% điện sử dụng cho hoạt động trồng nấm được cung cấp từ nguồn năng lượng mặt trời này.
-    - Trên cùng một khu đất, Hiền Nương kết hợp sản xuất điện sạch và trồng nấm, đưa nguồn năng lượng tại chỗ vào công việc hằng ngày.
+    - Trên cùng một khu đất, NƯƠNG FARM kết hợp sản xuất điện sạch và trồng nấm, đưa nguồn năng lượng tại chỗ vào công việc hằng ngày.
   solarCaption: Phía trên là hệ thống điện mặt trời. Phía dưới là không gian sản xuất nấm.
   solarFact: Điện mặt trời cho hoạt động trồng nấm
   playQuiz:
@@ -79,7 +79,7 @@ vi:
   closingTitle: Cùng tiếp nối những vòng giá trị.
   watch: Xem phim
   nang_cao:
-    description: 'Nông nghiệp tuần hoàn tại Trang trại Hiền Nương: từ phụ phẩm nông nghiệp đến nấm, trùn quế và nguồn dinh dưỡng cho cây trồng, cùng nguồn điện mặt trời tại trang trại.'
+    description: 'Nông nghiệp tuần hoàn tại NƯƠNG FARM: từ phụ phẩm nông nghiệp đến nấm, trùn quế và nguồn dinh dưỡng cho cây trồng, cùng nguồn điện mặt trời tại trang trại.'
     live: 'Bước {n} trên {total}: {title}'
     next: Bước tiếp theo
     pageTitle: Nông nghiệp tuần hoàn
@@ -98,7 +98,7 @@ en:
         by-products
       lead: Carrying on the value of rice straw.
       text:
-        - After each rice harvest, local rice straw is put to use as material for growing black termite mushrooms. Instead of being thrown away, the by-products become the input for a new production cycle at Hiền Nương.
+        - After each rice harvest, local rice straw is put to use as material for growing black termite mushrooms. Instead of being thrown away, the by-products become the input for a new production cycle at NƯƠNG FARM.
         - The materials are checked before use, ready for treating and mixing into the substrate. From materials familiar to every rice field, the farm adds value through growing mushrooms.
     - title: Preparing the substrate
       name: |-
@@ -115,7 +115,7 @@ en:
       lead: Nurturing the mycelium from within.
       text:
         - Mushroom spawn is added to the treated substrate, and the bags are set aside to incubate while the mycelium grows. As it spreads through the substrate, each bag becomes a spawn bag ready for growing.
-        - Hiền Nương produces its own spawn and spawn bags on site, following their growth and checking their quality before they go into the grow houses or to growers who need them. Producing its own spawn lets the farm control what goes in and support growers with technical guidance.
+        - NƯƠNG FARM produces its own spawn and spawn bags on site, following their growth and checking their quality before they go into the grow houses or to growers who need them. Producing its own spawn lets the farm control what goes in and support growers with technical guidance.
     - title: Growing & harvesting
       name: |-
         Growing
@@ -138,7 +138,7 @@ en:
         for crops
       lead: Returning organic nourishment to the soil.
       text:
-        - Red worm castings are used as organic nourishment for crops; at Hiền Nương they are also mixed with cow manure for fertilising. The product of this step is an organic fertiliser, kept separate from raising the worms.
+        - Red worm castings are used as organic nourishment for crops; at NƯƠNG FARM they are also mixed with cow manure for fertilising. The product of this step is an organic fertiliser, kept separate from raising the worms.
         - The nourishment goes on to feed the soil and the crops. When the crops leave suitable by-products, those materials can be used in the next production cycles — carrying the journey on from by-products to mushrooms, from substrate to fertiliser, and back to the soil.
   motto:
     - From the soil,
@@ -155,7 +155,7 @@ en:
   solarTitle: Power from the sun.
   solarBody:
     - The farm is built on land that generates solar power. The whole system was built and developed by Ms. Châu Thị Nương and Mr. Trần Phương Hiền themselves. 100% of the electricity used for growing mushrooms comes from this solar power.
-    - On the same land, Hiền Nương combines clean power generation with mushroom growing, bringing energy made on site into everyday work.
+    - On the same land, NƯƠNG FARM combines clean power generation with mushroom growing, bringing energy made on site into everyday work.
   solarCaption: Above, the solar power system. Below, the space where the mushrooms are grown.
   solarFact: Solar electricity for growing mushrooms
   playQuiz:
@@ -166,7 +166,7 @@ en:
   closingTitle: Carrying the cycles of value forward, together.
   watch: Watch the film
   nang_cao:
-    description: 'Circular agriculture at Trang trại Hiền Nương: from agricultural by-products to mushrooms, red worms and nourishment for crops, alongside solar power generated on the farm.'
+    description: 'Circular agriculture at NƯƠNG FARM: from agricultural by-products to mushrooms, red worms and nourishment for crops, alongside solar power generated on the farm.'
     live: 'Step {n} of {total}: {title}'
     next: Next step
     pageTitle: Circular Agriculture
@@ -185,7 +185,7 @@ zh:
         副产品
       lead: 延续稻草的价值。
       text:
-        - 每季水稻收割之后，当地的稻草被用作种植黑皮鸡枞菌的原料。农业副产品不再被丢弃，而是成为 Hiền Nương 新一轮生产的起点。
+        - 每季水稻收割之后，当地的稻草被用作种植黑皮鸡枞菌的原料。农业副产品不再被丢弃，而是成为 NƯƠNG FARM 新一轮生产的起点。
         - 原料在使用前经过检查，为处理和混合基质做好准备。农场用田间熟悉的材料，通过种植菌菇创造更多价值。
     - title: 制备基质
       name: |-
@@ -202,7 +202,7 @@ zh:
       lead: 从内部培育菌丝。
       text:
         - 菌种接入处理好的基质，菌袋随后进入培养阶段，让菌丝生长。菌丝逐渐长满基质后，菌袋便成为可用于种植的菌包。
-        - Hiền Nương 在本场自行生产菌种和菌包，跟踪生长过程并检查质量，再将菌包送入种植棚或供应给有需要的种植户。从菌种开始自主生产，让农场能够把控投入，并以技术指导陪伴种植户。
+        - NƯƠNG FARM 在本场自行生产菌种和菌包，跟踪生长过程并检查质量，再将菌包送入种植棚或供应给有需要的种植户。从菌种开始自主生产，让农场能够把控投入，并以技术指导陪伴种植户。
     - title: 种植与采收
       name: |-
         种植
@@ -225,7 +225,7 @@ zh:
         施肥
       lead: 让有机养分回到土壤。
       text:
-        - 红蚯蚓粪被用作作物的有机养分；在 Hiền Nương，蚯蚓粪还会掺入牛粪用于施肥。这一步的成品是有机肥，与养殖蚯蚓的工序分开。
+        - 红蚯蚓粪被用作作物的有机养分；在农场，蚯蚓粪还会掺入牛粪用于施肥。这一步的成品是有机肥，与养殖蚯蚓的工序分开。
         - 养分继续滋养土壤和作物。当作物留下合适的副产品，这些材料又可用于下一轮生产——从副产品到菌菇，从基质到肥料，再回到土地。
   motto:
     - 源于土地，
@@ -242,7 +242,7 @@ zh:
   solarTitle: 来自太阳的电力。
   solarBody:
     - 农场建在一片利用太阳能发电的土地上。整套系统由 Châu Thị Nương 女士和 Trần Phương Hiền 先生亲手建设和发展。种植菌菇所用的电力 100% 来自这一太阳能电源。
-    - 在同一片土地上，Hiền Nương 将清洁发电与种植菌菇相结合，把就地产生的能源用于日常工作。
+    - 在同一片土地上，NƯƠNG FARM 将清洁发电与种植菌菇相结合，把就地产生的能源用于日常工作。
   solarCaption: 上方是太阳能发电系统，下方是菌菇生产空间。
   solarFact: 种植菌菇用电来自太阳能
   playQuiz:
@@ -253,7 +253,7 @@ zh:
   closingTitle: 一起延续价值的循环。
   watch: 观看影片
   nang_cao:
-    description: Trang trại Hiền Nương 的循环农业：从农业副产品到菌菇、红蚯蚓和作物养分，以及农场自产的太阳能电力。
+    description: NƯƠNG FARM 的循环农业：从农业副产品到菌菇、红蚯蚓和作物养分，以及农场自产的太阳能电力。
     live: 第 {n} 步，共 {total} 步：{title}
     next: 下一步
     pageTitle: 循环农业

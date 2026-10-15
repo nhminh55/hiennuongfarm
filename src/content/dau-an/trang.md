@@ -18,7 +18,7 @@ bao_chi_xem_bai: Xem bài
 bao_chi_bai_khac: Những bài viết khác
 bao_chi_trong_bai: Chị Châu Thị Nương, trong bài
 bao_chi_xem_toan_bo: Xem toàn bộ bài báo
-bao_chi_tra_cuu: Tra cứu các bài viết và phóng sự có nhắc đến Hiền Nương.
+bao_chi_tra_cuu: Tra cứu các bài viết và phóng sự về NƯƠNG FARM, Trang trại Hiền Nương và những người sáng lập.
 bai_doc_bai_goc: Đọc bài gốc
 bai_trich_mo_dau: Trích phần mở đầu bài viết
 bai_diem_chinh: Những điểm chính trong bài
@@ -51,9 +51,9 @@ xem_anh_dong: Đóng
 trang: Trang
 trang_truoc: Trang trước
 trang_sau: Trang sau
-bao_chi_mo_ta: 'Những bài báo, phóng sự về Trang trại Hiền Nương và chị Châu Thị Nương: tên báo, tiêu đề gốc, ngày đăng và liên kết đến bài gốc.'
+bao_chi_mo_ta: 'Những bài báo, phóng sự về NƯƠNG FARM, Trang trại Hiền Nương và chị Châu Thị Nương: tên báo, tiêu đề gốc, ngày đăng và liên kết đến bài gốc.'
 chung_nhan_mo_ta: 'Ba sản phẩm nấm của HTX Nông nghiệp Tà Đảnh đạt OCOP 3 sao năm 2024: nấm linh chi tai to, nấm đông trùng hạ thảo và nấm mối tươi, kèm giấy chứng nhận.'
 giai_thuong_mo_ta: Các danh hiệu và giải thưởng của chị Châu Thị Nương và HTX Nông nghiệp Tà Đảnh, kèm giấy chứng nhận và nguồn xác minh.
-su_kien_mo_ta: Nhật ký bằng ảnh các sự kiện và hoạt động của Trang trại Hiền Nương và chị Châu Thị Nương, sắp xếp theo thời gian, kèm nguồn.
-tu_lieu_mo_ta: 'Các bài viết và phóng sự đã được tổng hợp về Trang trại Hiền Nương và chị Châu Thị Nương: tiêu đề gốc, nguồn, ngày đăng và liên kết đến bài gốc.'
+su_kien_mo_ta: Nhật ký bằng ảnh các sự kiện và hoạt động của NƯƠNG FARM, Trang trại Hiền Nương và chị Châu Thị Nương, sắp xếp theo thời gian, kèm nguồn.
+tu_lieu_mo_ta: 'Các bài viết và phóng sự đã được tổng hợp về NƯƠNG FARM, Trang trại Hiền Nương và chị Châu Thị Nương: tiêu đề gốc, nguồn, ngày đăng và liên kết đến bài gốc.'
 ---

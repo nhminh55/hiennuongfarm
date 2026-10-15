@@ -1,4 +1,5 @@
 ---
+import BrandContext from '../../../components/BrandContext.astro';
 /**
  * /dau-an/su-kien/<slug>/: one activity. Date, title, place, a short
  * account from the sources, the album (every photograph opens in the
@@ -40,6 +41,7 @@ const href = (x: Activity) => `/dau-an/su-kien/${x.slug}/`;
 
       <div class="album__story">
         {a.story.map((s) => <p>{s}</p>)}
+        {a.story.some((p) => p.includes('Hiền Nương')) && <BrandContext />}
         {a.sources.length > 0 && (
           <p class="album__sources">
             {t.nguon}{' '}

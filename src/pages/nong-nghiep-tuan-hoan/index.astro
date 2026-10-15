@@ -1,4 +1,5 @@
 ---
+import FarmNameLink from '../../components/FarmNameLink.astro';
 /**
  * /nong-nghiep-tuan-hoan/ (and /en/, /zh/ through src/pages/[lang]/): the
  * farm's circular model.
@@ -189,7 +190,7 @@ const filmName = t.filmTitle.replace(/[.。]$/, '');
         <div class="film__head" data-reveal>
           <Eyebrow icon="video">{t.filmEyebrow}</Eyebrow>
           <h2 class="section-title" id="film-title">{t.filmTitle}</h2>
-          <div class="section-body"><p>{t.filmBody}</p></div>
+          <div class="section-body"><p><FarmNameLink text={t.filmBody} /></p></div>
           <p class="film__note">{t.filmNote}</p>
         </div>
 

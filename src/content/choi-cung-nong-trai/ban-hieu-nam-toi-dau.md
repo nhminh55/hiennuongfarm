@@ -20,7 +20,7 @@ questions:
     correct: 1
     id: treatment
     source: src/pages/nong-nghiep-tuan-hoan/index.astro — vi.steps
-  - question: Tại Hiền Nương, giá thể sau thu hoạch nấm được tận dụng cho việc gì?
+  - question: Tại NƯƠNG FARM, giá thể sau thu hoạch nấm được tận dụng cho việc gì?
     choices:
       - Làm thức ăn cho trùn quế
       - Trộn vào món ăn
@@ -60,7 +60,7 @@ questions:
     correct: 2
     id: harvest
     source: src/pages/nong-nghiep-tuan-hoan/index.astro — vi.steps
-  - question: Trong ảnh sản phẩm của Hiền Nương, chùm nấm bào ngư mọc từ đâu?
+  - question: Trong ảnh sản phẩm của NƯƠNG FARM, chùm nấm bào ngư mọc từ đâu?
     choices:
       - Bịch phôi trên kệ nhà trồng
       - Chậu nước không có giá thể

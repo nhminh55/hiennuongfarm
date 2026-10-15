@@ -2,7 +2,7 @@
 vi:
   home: Trang chủ
   eyebrow: Về chúng tôi
-  title: Câu chuyện Hiền Nương
+  title: Câu chuyện NƯƠNG FARM
   lead: NƯƠNG FARM — nông sản từ Trang trại Hiền Nương, vùng Bảy Núi.
   nav:
     - Câu chuyện
@@ -54,14 +54,14 @@ vi:
       - Mỗi cuộc gặp là một cơ hội để chia sẻ kinh nghiệm, hiểu thêm nhu cầu của nhau và tìm hướng đồng hành phù hợp.
     button: Trao đổi cùng chúng tôi
   nang_cao:
-    description: 'Câu chuyện Hiền Nương: một hành trình làm nông từ vùng Bảy Núi, An Giang — từ hai người sáng lập năm 2020 đến hai cơ sở trồng nấm, điện mặt trời, cách làm tuần hoàn và những người cùng làm.'
+    description: 'Câu chuyện NƯƠNG FARM: một hành trình làm nông từ vùng Bảy Núi, An Giang — từ hai người sáng lập năm 2020 đến hai cơ sở trồng nấm, điện mặt trời, cách làm tuần hoàn và những người cùng làm.'
     heroAlt: Cánh đồng lúa xanh vùng Bảy Núi điểm những cây thốt nốt, nhìn từ trên cao
     navLabel: Các chương
     pageTitle: Về chúng tôi
 en:
   home: Home
   eyebrow: About us
-  title: The Hiền Nương story
+  title: The NƯƠNG FARM story
   lead: NƯƠNG FARM — produce from Trang trại Hiền Nương in the Bảy Núi region.
   nav:
     - Story
@@ -113,14 +113,14 @@ en:
       - Every meeting is a chance to share experience, understand each other’s needs and find the right way to work together.
     button: Talk with us
   nang_cao:
-    description: 'The Hiền Nương story: a farming journey from the Bảy Núi region of An Giang, Vietnam — from two founders in 2020 to two mushroom-growing sites, solar power, circular practice and the people who work together.'
+    description: 'The NƯƠNG FARM story: a farming journey from the Bảy Núi region of An Giang, Vietnam — from two founders in 2020 to two mushroom-growing sites, solar power, circular practice and the people who work together.'
     heroAlt: Green rice fields of the Bảy Núi region dotted with palmyra palms, seen from above
     navLabel: Chapters
     pageTitle: About us
 zh:
   home: 首页
   eyebrow: 关于我们
-  title: Hiền Nương 的故事
+  title: NƯƠNG FARM 的故事
   lead: NƯƠNG FARM — 来自七山地区 Trang trại Hiền Nương 的农产品。
   nav:
     - 故事
@@ -172,7 +172,7 @@ zh:
       - 每一次见面，都是分享经验、了解彼此需求、找到合适合作方式的机会。
     button: 与我们交流
   nang_cao:
-    description: Hiền Nương 的故事：一段源自越南安江省七山地区的农耕旅程——从2020年的两位创始人，到两处种菇基地、太阳能发电、循环做法，以及一起劳作的人们。
+    description: NƯƠNG FARM 的故事：一段源自越南安江省七山地区的农耕旅程——从2020年的两位创始人，到两处种菇基地、太阳能发电、循环做法，以及一起劳作的人们。
     heroAlt: 从高处俯瞰七山地区点缀着糖棕树的绿色稻田
     navLabel: 章节
     pageTitle: 关于我们
