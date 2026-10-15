@@ -15,7 +15,7 @@ import { copy } from './copy';
 type ContactCopy = {
   description: string; address: string[]; locations: { name: string; address: string }[];
   email: string; phone: string; phone2: string;
-  business_name: string[]; business_code: string; business_registration: string[]; business_issuer: string;
+  business_name: string[]; business_code?: string; business_registration?: string[]; business_issuer?: string;
 };
 type MenuCopy = { nav: Record<string, string> };
 const byLocale = <T>(pick: (lang: Locale) => T) =>
@@ -26,7 +26,7 @@ const shared = contactCopy('vi');
 const tel = (display: string) => display.replace(/\s/g, '');
 
 export const site = {
-  name: 'Hiền Nương Farm',
+  name: 'NƯƠNG FARM',
   url: 'https://hiennuongfarm.vn',
   description: byLocale((lang) => contactCopy(lang).description),
 };
@@ -85,10 +85,10 @@ export const contact = {
   phone2Display: shared.phone2,
 };
 
-// Owner-provided household business registration, shown as-is in every language.
+// Owner-confirmed production and trading entity. Registration details stay empty until verified.
 export const business = {
   name: shared.business_name,
-  code: shared.business_code,
-  registration: shared.business_registration,
-  issuer: shared.business_issuer,
+  code: ('business_code' in shared ? shared.business_code : '') ?? '',
+  registration: ('business_registration' in shared ? shared.business_registration : []) ?? [],
+  issuer: ('business_issuer' in shared ? shared.business_issuer : '') ?? '',
 };

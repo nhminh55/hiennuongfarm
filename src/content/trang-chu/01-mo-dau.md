@@ -4,10 +4,10 @@ vi:
     - "Nông nghiệp từ\_đất"
     - "đến giá trị bền\_vững"
   sub: "Mô hình nông nghiệp tuần hoàn tại vùng Bảy\_Núi – An\_Giang"
-  cta: Khám phá Hiền Nương
+  cta: Khám phá NƯƠNG FARM
   scroll: Kéo xuống
   sections:
-    - Về Hiền Nương
+    - Về NƯƠNG FARM
     - Nông nghiệp tuần hoàn
     - Sản phẩm
     - Vùng Bảy Núi
@@ -24,10 +24,10 @@ en:
     - "Farming from the\_soil"
     - "to sustainable\_value"
   sub: "A circular agriculture model in the Bảy\_Núi region of An\_Giang"
-  cta: Discover Hiền Nương
+  cta: Discover NƯƠNG FARM
   scroll: Scroll
   sections:
-    - About Hiền Nương
+    - About NƯƠNG FARM
     - Circular Agriculture
     - Products
     - Bảy Núi Region
@@ -44,10 +44,10 @@ zh:
     - 始于土地的农业
     - 走向可持续的价值
   sub: 位于安江省七山地区的循环农业模式
-  cta: 探索 Hiền Nương
+  cta: 探索 NƯƠNG FARM
   scroll: 向下滚动
   sections:
-    - 关于 Hiền Nương
+    - 关于 NƯƠNG FARM
     - 循环农业
     - 产品
     - 七山地区

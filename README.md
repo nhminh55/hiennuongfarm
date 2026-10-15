@@ -1,7 +1,7 @@
 # hiennuongfarm
 Trang trại Hiền Nương
 
-Brand website for Hiền Nương Farm (`hiennuongfarm.vn`). See `CLAUDE.md` for design direction and content rules.
+Brand website for NƯƠNG FARM (`hiennuongfarm.vn`). See `CLAUDE.md` for design direction and content rules.
 
 ## Development
 
@@ -33,7 +33,7 @@ src/
 - **Product descriptions** — shown as "Mô tả sản phẩm đang được cập nhật." in `components/home/Products.astro`.
 - **Facts taken from the design mockup, not yet confirmed** (marked `VERIFY` in code):
   - Founding year 2020 and founders' names (`About.astro`)
-  - HTX Tà Đảnh as a development partner (`About.astro`)
+  - HTX Nông nghiệp Tà Đảnh as the production and trading entity (`About.astro`)
   - Product names (`Products.astro`)
   - Address and email (`data/site.ts`)
 - **Social links** — none added; URLs not yet provided.

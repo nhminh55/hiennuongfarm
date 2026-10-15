@@ -3,7 +3,7 @@ vi:
   home: Trang chủ
   eyebrow: Về chúng tôi
   title: Câu chuyện Hiền Nương
-  lead: Một hành trình làm nông từ vùng Bảy Núi.
+  lead: NƯƠNG FARM — nông sản từ Trang trại Hiền Nương, vùng Bảy Núi.
   nav:
     - Câu chuyện
     - Bảy Núi
@@ -16,8 +16,6 @@ vi:
       what: Ông Tư Phú và giống lúa TP
     - when: '2020'
       what: Hợp tác xã Nông nghiệp Tà Đảnh thành lập
-    - when: 04/2024
-      what: Hộ kinh doanh Trang trại Nông nghiệp Hiền Nương được đăng ký
   media:
     thoiSon:
       caption: Thới Sơn — cơ sở đầu tiên
@@ -50,7 +48,7 @@ vi:
     watch: Xem phim
   closing:
     eyebrow: Liên hệ
-    title: Kết nối cùng Hiền Nương
+    title: Kết nối cùng NƯƠNG FARM
     body:
       - Nếu bạn quan tâm đến sản phẩm, muốn tìm hiểu mô hình hoặc trao đổi cơ hội hợp tác, chúng tôi mong được trò chuyện cùng bạn.
       - Mỗi cuộc gặp là một cơ hội để chia sẻ kinh nghiệm, hiểu thêm nhu cầu của nhau và tìm hướng đồng hành phù hợp.
@@ -64,7 +62,7 @@ en:
   home: Home
   eyebrow: About us
   title: The Hiền Nương story
-  lead: A farming journey from the Bảy Núi region.
+  lead: NƯƠNG FARM — produce from Trang trại Hiền Nương in the Bảy Núi region.
   nav:
     - Story
     - Bảy Núi
@@ -77,8 +75,6 @@ en:
       what: Mr. Tư Phú and the TP rice variety
     - when: '2020'
       what: Tà Đảnh Agricultural Cooperative established
-    - when: 10 April 2024
-      what: Trang trại Nông nghiệp Hiền Nương registered
   media:
     thoiSon:
       caption: Thới Sơn — the first site
@@ -111,7 +107,7 @@ en:
     watch: Watch the film
   closing:
     eyebrow: Contact
-    title: Connect with Hiền Nương
+    title: Connect with NƯƠNG FARM
     body:
       - If you are interested in our products, would like to learn about our model or discuss partnership opportunities, we would be glad to talk with you.
       - Every meeting is a chance to share experience, understand each other’s needs and find the right way to work together.
@@ -125,7 +121,7 @@ zh:
   home: 首页
   eyebrow: 关于我们
   title: Hiền Nương 的故事
-  lead: 一段源自七山地区的农耕旅程。
+  lead: NƯƠNG FARM — 来自七山地区 Trang trại Hiền Nương 的农产品。
   nav:
     - 故事
     - 七山
@@ -138,8 +134,6 @@ zh:
       what: Tư Phú 老人与 TP 水稻品种
     - when: 2020年
       what: Tà Đảnh 农业合作社成立
-    - when: 2024年4月10日
-      what: “Trang trại Nông nghiệp Hiền Nương”登记注册
   media:
     thoiSon:
       caption: Thới Sơn——第一处基地
@@ -172,7 +166,7 @@ zh:
     watch: 观看影片
   closing:
     eyebrow: 联系我们
-    title: 与 Hiền Nương 联系
+    title: 与 NƯƠNG FARM 联系
     body:
       - 如果您对我们的产品感兴趣，想了解我们的模式，或希望洽谈合作机会，我们很期待与您交流。
       - 每一次见面，都是分享经验、了解彼此需求、找到合适合作方式的机会。

@@ -33,6 +33,12 @@
     :root .site-footer.site-footer .site-footer__top-link .arrow { rotate: -90deg; }
   }
   @media (min-width: 1024px) and (max-width: 1279px) {
+    /* Leave room for the farm and cooperative names at compact desktop widths. */
+    :root .site-footer.site-footer .site-footer__top { grid-template-columns: 13rem max-content minmax(0, 1fr); grid-template-areas: "brand nav contact" "brand nav social"; row-gap: 1rem; }
+    :root .site-footer.site-footer .site-footer__farm-line { max-width: 13rem; }
+    :root .site-footer.site-footer .site-footer__col--contact { min-width: 0; }
+    :root .site-footer.site-footer .site-footer__phones { flex-wrap: wrap; }
+    :root .site-footer.site-footer .site-footer__col--social { padding-top: 0; }
     :root .site-footer.site-footer .site-footer__brand .wordmark { width: 13rem; }
   }
 

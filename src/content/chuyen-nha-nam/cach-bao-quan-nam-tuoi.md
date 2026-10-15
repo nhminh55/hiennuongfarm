@@ -3,7 +3,7 @@ title: "Bảo quản nấm tươi thế nào để giữ trọn vị ngon?"
 excerpt: "Từ lúc mua nấm về đến khi vào bếp, một vài thói quen nhỏ có thể giúp nấm giữ được độ tươi và kết cấu tự nhiên."
 category: hieu-ve-nam
 date: 2026-10-14
-author: "Hiền Nương Farm"
+author: "NƯƠNG FARM"
 featured: true
 draft: false
 seoTitle: "Cách bảo quản nấm tươi trong tủ lạnh | Chuyện nhà Nấm"

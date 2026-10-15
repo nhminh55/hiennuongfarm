@@ -41,9 +41,9 @@ su_kien_tat_ca: Tất cả hoạt động
 su_kien_truoc_do: Trước đó
 chung_nhan_nhan: OCOP · Mỗi xã một sản phẩm
 chung_nhan_tieu_de: Ba sản phẩm đạt OCOP
-chung_nhan_dan: Trong các dòng nấm của trang trại, ba sản phẩm mang thương hiệu Hiền Nương Farm đã đạt OCOP 3 sao.
+chung_nhan_dan: Ba sản phẩm nấm của HTX Nông nghiệp Tà Đảnh được công nhận OCOP 3 sao, với tên sản phẩm và đơn vị được ghi trên từng giấy chứng nhận.
 chung_nhan_huy_hieu: OCOP 3 sao
-chung_nhan_thuong_hieu: Thương hiệu Hiền Nương Farm
+chung_nhan_thuong_hieu: 'Đơn vị: HTX Nông nghiệp Tà Đảnh'
 chung_nhan_xem_san_pham: Xem sản phẩm
 chung_nhan_xem_giay: Xem giấy chứng nhận
 chung_nhan_giay_dan: Ba sản phẩm được UBND huyện Tri Tôn công nhận OCOP 3 sao theo Quyết định số 6351/QĐ-UBND ngày 18/12/2024. Chứng nhận có giá trị 36 tháng kể từ ngày ban hành.
@@ -51,9 +51,9 @@ xem_anh_dong: Đóng
 trang: Trang
 trang_truoc: Trang trước
 trang_sau: Trang sau
-bao_chi_mo_ta: 'Những bài báo, phóng sự về Hiền Nương Farm và chị Châu Thị Nương: tên báo, tiêu đề gốc, ngày đăng và liên kết đến bài gốc.'
-chung_nhan_mo_ta: 'Ba sản phẩm nấm mang thương hiệu Hiền Nương Farm đạt OCOP 3 sao năm 2024: nấm linh chi tai to, nấm đông trùng hạ thảo và nấm mối tươi, kèm giấy chứng nhận.'
+bao_chi_mo_ta: 'Những bài báo, phóng sự về Trang trại Hiền Nương và chị Châu Thị Nương: tên báo, tiêu đề gốc, ngày đăng và liên kết đến bài gốc.'
+chung_nhan_mo_ta: 'Ba sản phẩm nấm của HTX Nông nghiệp Tà Đảnh đạt OCOP 3 sao năm 2024: nấm linh chi tai to, nấm đông trùng hạ thảo và nấm mối tươi, kèm giấy chứng nhận.'
 giai_thuong_mo_ta: Các danh hiệu và giải thưởng của chị Châu Thị Nương và HTX Nông nghiệp Tà Đảnh, kèm giấy chứng nhận và nguồn xác minh.
-su_kien_mo_ta: Nhật ký bằng ảnh các sự kiện và hoạt động của Hiền Nương Farm và chị Châu Thị Nương, sắp xếp theo thời gian, kèm nguồn.
-tu_lieu_mo_ta: 'Các bài viết và phóng sự đã được tổng hợp về Hiền Nương Farm và chị Châu Thị Nương: tiêu đề gốc, nguồn, ngày đăng và liên kết đến bài gốc.'
+su_kien_mo_ta: Nhật ký bằng ảnh các sự kiện và hoạt động của Trang trại Hiền Nương và chị Châu Thị Nương, sắp xếp theo thời gian, kèm nguồn.
+tu_lieu_mo_ta: 'Các bài viết và phóng sự đã được tổng hợp về Trang trại Hiền Nương và chị Châu Thị Nương: tiêu đề gốc, nguồn, ngày đăng và liên kết đến bài gốc.'
 ---

@@ -12,7 +12,7 @@ vi:
   nang_cao:
     next: Sản phẩm tiếp theo
     previous: Sản phẩm trước
-    subject: 'Tư vấn sản phẩm: {name} — Hiền Nương Farm'
+    subject: 'Tư vấn sản phẩm: {name} — NƯƠNG FARM'
 en:
   count:
     - ''
@@ -26,7 +26,7 @@ en:
   nang_cao:
     next: Next product
     previous: Previous product
-    subject: 'Product enquiry: {name} — Hiền Nương Farm'
+    subject: 'Product enquiry: {name} — NƯƠNG FARM'
 zh:
   count:
     - ''
@@ -40,5 +40,5 @@ zh:
   nang_cao:
     next: 下一款产品
     previous: 上一款产品
-    subject: 产品咨询：{name} — Hiền Nương Farm
+    subject: 产品咨询：{name} — NƯƠNG FARM
 ---

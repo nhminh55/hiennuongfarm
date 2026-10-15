@@ -3,7 +3,7 @@ title: "Canh nấm đậu hũ rau xanh: Nhẹ nhàng mà đủ vị"
 excerpt: "Một nồi canh trong, thơm dịu từ nấm, đậu hũ và rau xanh cho những bữa cơm bình thường mà ấm áp."
 category: bep-nha-nam
 date: 2026-10-14
-author: "Hiền Nương Farm"
+author: "NƯƠNG FARM"
 featured: false
 draft: false
 seoTitle: "Canh nấm đậu hũ rau xanh dễ nấu | Bếp nhà Nấm"
@@ -44,4 +44,4 @@ Nếu nấu trước bữa ăn, hãy giữ canh trong điều kiện an toàn th
 
 Một món canh đơn giản cũng có thể trở thành thói quen dễ chịu: nấu vừa đủ, ăn khi còn ấm và dành thời gian thưởng thức cùng gia đình.
 
-**Xem thêm:** [Các sản phẩm nấm](/san-pham/) từ Hiền Nương Farm.
+**Xem thêm:** [Các sản phẩm nấm](/san-pham/) từ NƯƠNG FARM.

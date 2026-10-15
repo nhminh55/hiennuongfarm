@@ -28,7 +28,7 @@ const withLead = !category && page.currentPage === 1;
 const [lead, ...rest] = withLead ? page.data : [undefined, ...page.data];
 const title = [current?.title ?? t.title, page.currentPage > 1 ? `${t.page} ${page.currentPage}` : '']
   .filter(Boolean).join(' · ');
-const description = current ? `${current.title}: ${current.line} ${t.title}, Hiền Nương Farm.` : t.description;
+const description = current ? `${current.title}: ${current.line} ${t.title}, NƯƠNG FARM.` : t.description;
 const meta = (a: Article) => (category ? formatDate(a.data.date) : categoryOf(a.data.category).title);
 ---
 <BaseLayout title={title} description={description}>

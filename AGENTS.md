@@ -1,4 +1,4 @@
-# AGENTS.md — Hiền Nương Farm
+# AGENTS.md — NƯƠNG FARM
 
 Rules for coding agents other than Claude.
 
