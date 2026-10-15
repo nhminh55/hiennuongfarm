@@ -2,7 +2,7 @@
 vi:
   eyebrow: Về NƯƠNG FARM
   title: Từ những điều giản dị
-  body: 'NƯƠNG FARM là tên gọi ngắn gọn, gần gũi của Hiền Nương Farm — Trang trại Hiền Nương, được vun đắp từ hành trình làm nông của chị Châu Thị Nương và anh Trần Phương Hiền trên vùng đất An Giang. Hôm nay, tên gọi ấy đồng hành cùng những sản phẩm từ trang trại đến với người tiêu dùng. HTX Nông nghiệp Tà Đảnh là đơn vị sản xuất và kinh doanh.'
+  body: 'Nương Farm là tên gọi là tên gọi thân thương của Trang trại Hiền Nương, nơi chị Châu Thị Nương và anh Trần Phương Hiền đã cùng nhau vun đắp hành trình làm nông trên vùng đất An Giang. Từ những ngày đầu gắn bó với nghề trồng nấm, Nương Farm dần trở thành thương hiệu mang những sản phẩm của trang trại đến gần hơn với người tiêu dùng, với HTX Nông nghiệp Tà Đảnh đồng hành trong hoạt động sản xuất và kinh doanh.'
   more: Tìm hiểu thêm
   nang_cao:
     alt: 'Chị Châu Thị Nương mặc áo hồng, quàng khăn rằn, đứng giữa hai dãy kệ bịch phôi trong phòng nuôi nấm. Dòng chữ viết tay trên ảnh: “Từ tình yêu với đất, chúng tôi bắt đầu... Hiền Nương Farm.”'
