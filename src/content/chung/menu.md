@@ -1,7 +1,7 @@
 ---
 vi:
   header:
-    about: Về NƯƠNG FARM
+    about: Về Nương Farm
     circular: Nông nghiệp tuần hoàn
     products: Sản phẩm
     press: Dấu ấn
@@ -9,7 +9,7 @@ vi:
     partner: Hợp tác
     contact: Liên hệ
   nav:
-    about: Về NƯƠNG FARM
+    about: Về Nương Farm
     circular: Nông nghiệp tuần hoàn
     press: Dấu ấn
     stories: Chuyện nhà Nấm
