@@ -19,9 +19,9 @@ products:
     intro:
       paragraphs:
         - text:
-            vi: Nấm mối đen Hiền Nương được nuôi trồng tại vùng Bảy Núi, An Giang theo mô hình hữu cơ tuần hoàn khép kín, sử dụng các nguyên liệu tự nhiên như rơm, rạ và cám gạo.
-            en: Hiền Nương black termite mushrooms are grown in Bảy Núi, An Giang using a closed-loop organic circular farming model and natural materials such as straw, rice stubble and rice bran.
-            zh: Hiền Nương 黑皮鸡枞菌在安江省七山地区采用闭环有机循环农业模式种植，使用稻草、稻茬和米糠等天然原料。
+            vi: Nấm mối đen NƯƠNG FARM được nuôi trồng tại vùng Bảy Núi, An Giang theo mô hình hữu cơ tuần hoàn khép kín, sử dụng các nguyên liệu tự nhiên như rơm, rạ và cám gạo.
+            en: NƯƠNG FARM black termite mushrooms are grown in Bảy Núi, An Giang using a closed-loop organic circular farming model and natural materials such as straw, rice stubble and rice bran.
+            zh: NƯƠNG FARM 黑皮鸡枞菌在安江省七山地区采用闭环有机循环农业模式种植，使用稻草、稻茬和米糠等天然原料。
           source: docs/products/01. Nam moi den.md
         - text:
             vi: Trang trại có dây chuyền sản xuất phôi nấm khép kín từ khâu làm meo, hấp đến phòng lạnh chạy tơ. Nấm có thịt chắc, giòn, vị ngọt thanh tự nhiên và mùi thơm đặc trưng.
@@ -52,9 +52,9 @@ products:
             en: Brand
             zh: 品牌
           value:
-            vi: Trang trại nông nghiệp Hiền Nương (Hiền Nương Farm)
-            en: Hiền Nương Agricultural Farm (Hiền Nương Farm)
-            zh: Hiền Nương 农业农场（Hiền Nương Farm）
+            vi: NƯƠNG FARM
+            en: NƯƠNG FARM
+            zh: NƯƠNG FARM
           source: docs/products/01. Nam moi den.md
         - label:
             vi: Xuất xứ
@@ -218,9 +218,9 @@ products:
     intro:
       paragraphs:
         - text:
-            vi: Nấm Linh Chi Tai To Nương Farm được nuôi trồng và thu hoạch theo mô hình hữu cơ tuần hoàn khép kín tại vùng Bảy Núi, An Giang.
-            en: Nương Farm large-cap lingzhi is grown and harvested using a closed-loop organic circular farming model in Bảy Núi, An Giang.
-            zh: Nương Farm 大朵灵芝在安江省七山地区以闭环有机循环农业模式种植并采收。
+            vi: Nấm Linh Chi Tai To NƯƠNG FARM được nuôi trồng và thu hoạch theo mô hình hữu cơ tuần hoàn khép kín tại vùng Bảy Núi, An Giang.
+            en: NƯƠNG FARM large-cap lingzhi is grown and harvested using a closed-loop organic circular farming model in Bảy Núi, An Giang.
+            zh: NƯƠNG FARM 大朵灵芝在安江省七山地区以闭环有机循环农业模式种植并采收。
           source: docs/products/02. Nam linh chi tai to.md
         - text:
             vi: Sản phẩm giữ nguyên tai nấm lớn, nguyên vẹn, có màu sắc và hương thơm tự nhiên, không chứa chất bảo quản.
@@ -233,9 +233,9 @@ products:
             en: Ingredient origin
             zh: 原料来源
           value:
-            vi: Nương Farm, vùng Bảy Núi, An Giang
-            en: Nương Farm, Bảy Núi, An Giang
-            zh: Nương Farm，安江省七山
+            vi: NƯƠNG FARM, vùng Bảy Núi, An Giang
+            en: NƯƠNG FARM, Bảy Núi, An Giang
+            zh: NƯƠNG FARM，安江省七山
           source: docs/products/02. Nam linh chi tai to.md
         - label:
             vi: Xuất xứ
@@ -424,9 +424,9 @@ products:
     intro:
       paragraphs:
         - text:
-            vi: Đông trùng hạ thảo tươi Nương Farm được nuôi trồng theo mô hình hữu cơ tuần hoàn khép kín tại vùng Bảy Núi, An Giang. Nấm được thu hoạch và đóng gói trực tiếp tại trang trại, không qua xử lý nhiệt hay sấy khô.
-            en: Nương Farm fresh cordyceps is cultivated using a closed-loop organic circular farming model in Bảy Núi, An Giang. The mushrooms are harvested and packed directly on the farm without heat treatment or drying.
-            zh: Nương Farm 鲜蛹虫草在安江省七山地区以闭环有机循环农业模式培育，在农场直接采收和包装，不经过热处理或干燥。
+            vi: Đông trùng hạ thảo tươi NƯƠNG FARM được nuôi trồng theo mô hình hữu cơ tuần hoàn khép kín tại vùng Bảy Núi, An Giang. Nấm được thu hoạch và đóng gói trực tiếp tại trang trại, không qua xử lý nhiệt hay sấy khô.
+            en: NƯƠNG FARM fresh cordyceps is cultivated using a closed-loop organic circular farming model in Bảy Núi, An Giang. The mushrooms are harvested and packed directly on the farm without heat treatment or drying.
+            zh: NƯƠNG FARM 鲜蛹虫草在安江省七山地区以闭环有机循环农业模式培育，在农场直接采收和包装，不经过热处理或干燥。
           source: docs/products/03. Dong trung ha thao.md
         - text:
             vi: Sợi nấm tươi mọng nước, có màu vàng cam, vị ngọt thanh và hương thơm nấm đặc trưng, dễ kết hợp vào bữa ăn hằng ngày.
@@ -457,9 +457,9 @@ products:
             en: Brand
             zh: 品牌
           value:
-            vi: Nương Farm (Hiền Nương Farm)
-            en: Nương Farm (Hiền Nương Farm)
-            zh: Nương Farm（Hiền Nương Farm）
+            vi: NƯƠNG FARM
+            en: NƯƠNG FARM
+            zh: NƯƠNG FARM
           source: docs/products/03. Dong trung ha thao.md
         - label:
             vi: Xuất xứ
@@ -556,9 +556,9 @@ products:
     intro:
       paragraphs:
         - text:
-            vi: Nấm bào ngư, còn gọi là nấm dai, là một trong những dòng nấm chủ lực tại Hiền Nương Farm, được nuôi trồng tại vùng Bảy Núi, An Giang theo mô hình nông nghiệp hữu cơ tuần hoàn.
-            en: Oyster mushroom, also known locally as “nấm dai”, is one of Hiền Nương Farm’s main mushroom lines, grown in Bảy Núi, An Giang using an organic circular farming model.
-            zh: 平菇在当地也称为“nấm dai”，是 Hiền Nương Farm 的主要菌菇产品之一，在安江省七山地区采用有机循环农业模式种植。
+            vi: Nấm bào ngư, còn gọi là nấm dai, là một trong những dòng nấm chủ lực tại NƯƠNG FARM, được nuôi trồng tại vùng Bảy Núi, An Giang theo mô hình nông nghiệp hữu cơ tuần hoàn.
+            en: Oyster mushroom, also known locally as “nấm dai”, is one of NƯƠNG FARM’s main mushroom lines, grown in Bảy Núi, An Giang using an organic circular farming model.
+            zh: 平菇在当地也称为“nấm dai”，是 NƯƠNG FARM 的主要菌菇产品之一，在安江省七山地区采用有机循环农业模式种植。
           source: docs/products/04. Nam bao ngu.md
         - text:
             vi: Nấm được nuôi trồng trong nhà lưới khép kín với nhiệt độ và độ ẩm được kiểm soát. Tai nấm to, dày, có màu sắc tự nhiên, độ dai giòn và vị ngọt thanh đặc trưng.
@@ -580,9 +580,9 @@ products:
             en: Brand
             zh: 品牌
           value:
-            vi: Hiền Nương Farm (Hợp tác xã Tà Đảnh)
-            en: Hiền Nương Farm (Tà Đảnh Cooperative)
-            zh: Hiền Nương Farm（Tà Đảnh 合作社）
+            vi: NƯƠNG FARM
+            en: NƯƠNG FARM
+            zh: NƯƠNG FARM
           source: docs/products/04. Nam bao ngu.md
         - label:
             vi: Mô hình canh tác
@@ -705,9 +705,9 @@ products:
     intro:
       paragraphs:
         - text:
-            vi: Nấm mối đen được nuôi trồng và thu hoạch trực tiếp tại Hiền Nương Farm theo mô hình hữu cơ tuần hoàn khép kín. Sản phẩm được chế biến bằng công nghệ sấy thăng hoa, không sử dụng chất bảo quản hay phẩm màu.
-            en: Black termite mushrooms are grown and harvested directly at Hiền Nương Farm using a closed-loop organic circular farming model. The product is freeze-dried without preservatives or colouring.
-            zh: 黑皮鸡枞菌由 Hiền Nương Farm 以闭环有机循环农业模式种植并直接采收，采用冷冻干燥工艺加工，不添加防腐剂或色素。
+            vi: Nấm mối đen được nuôi trồng và thu hoạch trực tiếp tại Trang trại Hiền Nương theo mô hình hữu cơ tuần hoàn khép kín. Sản phẩm được chế biến bằng công nghệ sấy thăng hoa, không sử dụng chất bảo quản hay phẩm màu.
+            en: Black termite mushrooms are grown and harvested directly at Trang trại Hiền Nương using a closed-loop organic circular farming model. The product is freeze-dried without preservatives or colouring.
+            zh: 黑皮鸡枞菌由 NƯƠNG FARM 以闭环有机循环农业模式种植并直接采收，采用冷冻干燥工艺加工，不添加防腐剂或色素。
           source: docs/products/05.Nam moi den say thang hoa.md
         - text:
             vi: Nấm tự nhiên được chọn lọc kỹ lưỡng trước khi sấy thăng hoa để giữ màu sắc, hình dáng và hương vị.
@@ -720,9 +720,9 @@ products:
             en: Ingredient origin
             zh: 原料来源
           value:
-            vi: Trồng và thu hoạch trực tiếp tại Hiền Nương Farm
-            en: Grown and harvested directly at Hiền Nương Farm
-            zh: 由 Hiền Nương Farm 种植并直接采收
+            vi: Trồng và thu hoạch trực tiếp tại Trang trại Hiền Nương
+            en: Grown and harvested directly at Trang trại Hiền Nương
+            zh: 由 Trang trại Hiền Nương 种植并直接采收
           source: docs/products/05.Nam moi den say thang hoa.md
         - label:
             vi: Phương pháp chế biến
@@ -882,9 +882,9 @@ products:
     intro:
       paragraphs:
         - text:
-            vi: Snack Nấm Mối Đen Hiền Nương Farm được chế biến từ nấm mối tươi hữu cơ của vùng Bảy Núi, An Giang. Nấm được tuyển chọn kỹ lưỡng và sấy giòn, giữ hương vị thơm ngon tự nhiên.
-            en: Hiền Nương Farm Black Termite Mushroom Snack is made from fresh organic termite mushrooms from Bảy Núi, An Giang. Carefully selected mushrooms are dried until crisp, retaining their natural flavour.
-            zh: Hiền Nương Farm 黑皮鸡枞菌零食采用安江省七山地区的新鲜有机鸡枞菌，经过精心挑选并干燥至酥脆，保留天然风味。
+            vi: Snack Nấm Mối Đen NƯƠNG FARM được chế biến từ nấm mối tươi hữu cơ của vùng Bảy Núi, An Giang. Nấm được tuyển chọn kỹ lưỡng và sấy giòn, giữ hương vị thơm ngon tự nhiên.
+            en: NƯƠNG FARM Black Termite Mushroom Snack is made from fresh organic termite mushrooms from Bảy Núi, An Giang. Carefully selected mushrooms are dried until crisp, retaining their natural flavour.
+            zh: NƯƠNG FARM 黑皮鸡枞菌零食采用安江省七山地区的新鲜有机鸡枞菌，经过精心挑选并干燥至酥脆，保留天然风味。
           source: docs/products/06. Snack nam moi den.md
         - text:
             vi: Sản phẩm tiện mang theo trong các chuyến đi chơi, dã ngoại hoặc làm quà tặng cho bạn bè, người thân.
@@ -897,9 +897,9 @@ products:
             en: Brand
             zh: 品牌
           value:
-            vi: Hiền Nương Farm
-            en: Hiền Nương Farm
-            zh: Hiền Nương Farm
+            vi: NƯƠNG FARM
+            en: NƯƠNG FARM
+            zh: NƯƠNG FARM
           source: docs/products/06. Snack nam moi den.md
         - label:
             vi: Sản xuất tại
@@ -1016,9 +1016,9 @@ products:
     intro:
       paragraphs:
         - text:
-            vi: Snack Nấm Bào Ngư Hiền Nương Farm được làm từ nấm bào ngư tươi, trồng và thu hoạch mới mỗi ngày tại trang trại.
-            en: Hiền Nương Farm Oyster Mushroom Snack is made from fresh oyster mushrooms grown and harvested daily on the farm.
-            zh: Hiền Nương Farm 平菇零食采用农场种植并每日新鲜采收的平菇。
+            vi: Snack Nấm Bào Ngư NƯƠNG FARM được làm từ nấm bào ngư tươi, trồng và thu hoạch mới mỗi ngày tại trang trại.
+            en: NƯƠNG FARM Oyster Mushroom Snack is made from fresh oyster mushrooms grown and harvested daily on the farm.
+            zh: NƯƠNG FARM 平菇零食采用农场种植并每日新鲜采收的平菇。
           source: docs/products/07. Snack nam bao ngu.md
         - text:
             vi: Nấm được sấy giòn để giữ hương thơm và vị ngọt tự nhiên. Sản phẩm không sử dụng phụ gia, phẩm màu hay chất bảo quản.
@@ -1031,9 +1031,9 @@ products:
             en: Ingredient origin
             zh: 原料来源
           value:
-            vi: Trồng và thu hoạch mới mỗi ngày tại Hiền Nương Farm
-            en: Grown and harvested daily at Hiền Nương Farm
-            zh: 由 Hiền Nương Farm 种植并每日新鲜采收
+            vi: Trồng và thu hoạch mới mỗi ngày tại Trang trại Hiền Nương
+            en: Grown and harvested daily at Trang trại Hiền Nương
+            zh: 由 Trang trại Hiền Nương 种植并每日新鲜采收
           source: docs/products/07. Snack nam bao ngu.md
         - label:
             vi: Đơn vị sản xuất
@@ -1160,9 +1160,9 @@ products:
     intro:
       paragraphs:
         - text:
-            vi: Đông trùng hạ thảo Nương Farm được nuôi trồng theo mô hình hữu cơ tuần hoàn khép kín tại vùng Bảy Núi, An Giang và chế biến bằng công nghệ sấy thăng hoa.
-            en: Nương Farm cordyceps is grown using a closed-loop organic circular farming model in Bảy Núi, An Giang, and processed by freeze-drying.
-            zh: Nương Farm 蛹虫草在安江省七山地区以闭环有机循环农业模式培育，并采用冷冻干燥工艺加工。
+            vi: Đông trùng hạ thảo NƯƠNG FARM được nuôi trồng theo mô hình hữu cơ tuần hoàn khép kín tại vùng Bảy Núi, An Giang và chế biến bằng công nghệ sấy thăng hoa.
+            en: NƯƠNG FARM cordyceps is grown using a closed-loop organic circular farming model in Bảy Núi, An Giang, and processed by freeze-drying.
+            zh: NƯƠNG FARM 蛹虫草在安江省七山地区以闭环有机循环农业模式培育，并采用冷冻干燥工艺加工。
           source: docs/products/08. Dong trung ha thao say thang hoa.md
         - text:
             vi: Sản phẩm có đặc tính giòn xốp và mùi thơm nấm tự nhiên, phù hợp để pha trà hoặc kết hợp vào các món ăn hằng ngày.
@@ -1184,9 +1184,9 @@ products:
             en: Brand
             zh: 品牌
           value:
-            vi: Nương Farm
-            en: Nương Farm
-            zh: Nương Farm
+            vi: NƯƠNG FARM
+            en: NƯƠNG FARM
+            zh: NƯƠNG FARM
           source: docs/products/08. Dong trung ha thao say thang hoa.md
         - label:
             vi: Phương pháp chế biến
@@ -1310,9 +1310,9 @@ products:
     intro:
       paragraphs:
         - text:
-            vi: Trà Hòa Tan Linh Chi Hiền Nương Farm được chiết xuất từ nấm linh chi hữu cơ nuôi trồng tại trang trại. Công nghệ hòa tan giúp pha trà nhanh chóng, tiện dùng trong nhịp sống bận rộn.
-            en: Hiền Nương Farm Instant Lingzhi Tea is extracted from organic lingzhi grown on the farm. Its instant format makes preparation quick and convenient for busy daily routines.
-            zh: Hiền Nương Farm 灵芝速溶茶提取自农场种植的有机灵芝。速溶形式冲泡快捷，方便忙碌的日常生活。
+            vi: Trà Hòa Tan Linh Chi NƯƠNG FARM được chiết xuất từ nấm linh chi hữu cơ nuôi trồng tại trang trại. Công nghệ hòa tan giúp pha trà nhanh chóng, tiện dùng trong nhịp sống bận rộn.
+            en: NƯƠNG FARM Instant Lingzhi Tea is extracted from organic lingzhi grown on the farm. Its instant format makes preparation quick and convenient for busy daily routines.
+            zh: NƯƠNG FARM 灵芝速溶茶提取自农场种植的有机灵芝。速溶形式冲泡快捷，方便忙碌的日常生活。
           source: docs/products/09. Tra hoa tan linh chi.md
         - text:
             vi: Trà có hương thơm nhẹ, dễ uống và có thể thưởng thức nóng hoặc lạnh tùy sở thích.
@@ -1325,9 +1325,9 @@ products:
             en: Ingredient origin
             zh: 原料来源
           value:
-            vi: Nấm linh chi nuôi trồng tại Hiền Nương Farm
-            en: Lingzhi grown at Hiền Nương Farm
-            zh: 由 Hiền Nương Farm 种植的灵芝
+            vi: Nấm linh chi nuôi trồng tại Trang trại Hiền Nương
+            en: Lingzhi grown at Trang trại Hiền Nương
+            zh: 由 Trang trại Hiền Nương 种植的灵芝
           source: docs/products/09. Tra hoa tan linh chi.md
         - label:
             vi: Đơn vị sản xuất
@@ -1449,9 +1449,9 @@ products:
     intro:
       paragraphs:
         - text:
-            vi: Trà Hòa Tan Linh Chi Trùng Thảo Hiền Nương Farm kết hợp chiết xuất nấm linh chi và đông trùng hạ thảo. Nguyên liệu được nuôi trồng theo mô hình nông nghiệp hữu cơ tuần hoàn.
-            en: Hiền Nương Farm Instant Lingzhi & Cordyceps Tea combines lingzhi and cordyceps extracts. The ingredients are grown using an organic circular farming model.
-            zh: Hiền Nương Farm 灵芝虫草速溶茶结合灵芝和蛹虫草提取物，原料采用有机循环农业模式种植。
+            vi: Trà Hòa Tan Linh Chi Trùng Thảo NƯƠNG FARM kết hợp chiết xuất nấm linh chi và đông trùng hạ thảo. Nguyên liệu được nuôi trồng theo mô hình nông nghiệp hữu cơ tuần hoàn.
+            en: NƯƠNG FARM Instant Lingzhi & Cordyceps Tea combines lingzhi and cordyceps extracts. The ingredients are grown using an organic circular farming model.
+            zh: NƯƠNG FARM 灵芝虫草速溶茶结合灵芝和蛹虫草提取物，原料采用有机循环农业模式种植。
           source: docs/products/10. Tra hoa tan linh chi trung thao.md
         - text:
             vi: Công nghệ chiết xuất tạo nên trà dạng bột hòa tan, thơm dịu, vị thanh nhã, dễ uống và không đắng gắt. Sản phẩm tiện pha chế trong nhịp sống bận rộn.
@@ -1464,9 +1464,9 @@ products:
             en: Brand
             zh: 品牌
           value:
-            vi: Hiền Nương Farm
-            en: Hiền Nương Farm
-            zh: Hiền Nương Farm
+            vi: NƯƠNG FARM
+            en: NƯƠNG FARM
+            zh: NƯƠNG FARM
           source: docs/products/10. Tra hoa tan linh chi trung thao.md
         - label:
             vi: Đơn vị sản xuất
@@ -1696,9 +1696,9 @@ products:
     intro:
       paragraphs:
         - text:
-            vi: Đông Trùng Hạ Thảo Ngâm Mật Ong Hiền Nương Farm kết hợp đông trùng hạ thảo tươi hữu cơ nuôi trồng tại trang trại với mật ong rừng nguyên chất.
-            en: Hiền Nương Farm Cordyceps in Honey combines fresh organic cordyceps cultivated on the farm with pure forest honey.
-            zh: Hiền Nương Farm 蜂蜜浸蛹虫草结合农场培育的新鲜有机蛹虫草与纯森林蜂蜜。
+            vi: Đông Trùng Hạ Thảo Ngâm Mật Ong NƯƠNG FARM kết hợp đông trùng hạ thảo tươi hữu cơ nuôi trồng tại trang trại với mật ong rừng nguyên chất.
+            en: NƯƠNG FARM Cordyceps in Honey combines fresh organic cordyceps cultivated on the farm with pure forest honey.
+            zh: NƯƠNG FARM 蜂蜜浸蛹虫草结合农场培育的新鲜有机蛹虫草与纯森林蜂蜜。
           source: docs/products/12. Dong trung ha thao ngam mat ong.md
         - text:
             vi: Sản phẩm có thành phần tự nhiên, không chất bảo quản hay hương liệu. Có thể dùng trực tiếp hoặc pha cùng nước ấm, nước chanh hay trà thảo mộc.
@@ -1729,9 +1729,9 @@ products:
             en: Brand
             zh: 品牌
           value:
-            vi: Hiền Nương Farm
-            en: Hiền Nương Farm
-            zh: Hiền Nương Farm
+            vi: NƯƠNG FARM
+            en: NƯƠNG FARM
+            zh: NƯƠNG FARM
           source: docs/products/12. Dong trung ha thao ngam mat ong.md
         - label:
             vi: Xuất xứ

@@ -62,7 +62,7 @@ vi:
     label: Ghé chơi
   filmEyebrow: Trải nghiệm nông trại
   filmTitle: Khám phá trang trại nấm
-  filmBody: Theo chân chúng mình ghé thăm Hiền Nương Farm để khám phá những bịch phôi và quá trình làm nấm tuần hoàn như thế nào nhé!
+  filmBody: Theo chân chúng mình ghé thăm Trang trại Hiền Nương để khám phá những bịch phôi và quá trình làm nấm tuần hoàn như thế nào nhé!
   filmNote: Một chuyến đi, bao điều mới
   solarEyebrow: Năng lượng mặt trời
   solarTitle: Nguồn điện từ mặt trời.
@@ -79,7 +79,7 @@ vi:
   closingTitle: Cùng tiếp nối những vòng giá trị.
   watch: Xem phim
   nang_cao:
-    description: 'Nông nghiệp tuần hoàn tại Hiền Nương Farm: từ phụ phẩm nông nghiệp đến nấm, trùn quế và nguồn dinh dưỡng cho cây trồng, cùng nguồn điện mặt trời tại trang trại.'
+    description: 'Nông nghiệp tuần hoàn tại Trang trại Hiền Nương: từ phụ phẩm nông nghiệp đến nấm, trùn quế và nguồn dinh dưỡng cho cây trồng, cùng nguồn điện mặt trời tại trang trại.'
     live: 'Bước {n} trên {total}: {title}'
     next: Bước tiếp theo
     pageTitle: Nông nghiệp tuần hoàn
@@ -149,7 +149,7 @@ en:
     label: Ghé chơi
   filmEyebrow: Farm experience
   filmTitle: Discover the mushroom farm
-  filmBody: Come along with us to Hiền Nương Farm and discover the spawn bags and how mushrooms are grown in a cycle!
+  filmBody: Come along with us to Trang trại Hiền Nương and discover the spawn bags and how mushrooms are grown in a cycle!
   filmNote: One trip, so much to discover
   solarEyebrow: Solar energy
   solarTitle: Power from the sun.
@@ -166,7 +166,7 @@ en:
   closingTitle: Carrying the cycles of value forward, together.
   watch: Watch the film
   nang_cao:
-    description: 'Circular agriculture at Hiền Nương Farm: from agricultural by-products to mushrooms, red worms and nourishment for crops, alongside solar power generated on the farm.'
+    description: 'Circular agriculture at Trang trại Hiền Nương: from agricultural by-products to mushrooms, red worms and nourishment for crops, alongside solar power generated on the farm.'
     live: 'Step {n} of {total}: {title}'
     next: Next step
     pageTitle: Circular Agriculture
@@ -236,7 +236,7 @@ zh:
     label: Ghé chơi
   filmEyebrow: 农场体验
   filmTitle: 探访菌菇农场
-  filmBody: 跟随我们走进 Hiền Nương Farm，看看菌袋，了解菌菇循环种植的过程吧！
+  filmBody: 跟随我们走进 Trang trại Hiền Nương，看看菌袋，了解菌菇循环种植的过程吧！
   filmNote: 一次旅程，许多新发现
   solarEyebrow: 太阳能
   solarTitle: 来自太阳的电力。
@@ -253,7 +253,7 @@ zh:
   closingTitle: 一起延续价值的循环。
   watch: 观看影片
   nang_cao:
-    description: Hiền Nương Farm 的循环农业：从农业副产品到菌菇、红蚯蚓和作物养分，以及农场自产的太阳能电力。
+    description: Trang trại Hiền Nương 的循环农业：从农业副产品到菌菇、红蚯蚓和作物养分，以及农场自产的太阳能电力。
     live: 第 {n} 步，共 {total} 步：{title}
     next: 下一步
     pageTitle: 循环农业

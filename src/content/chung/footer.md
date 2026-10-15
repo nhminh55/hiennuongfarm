@@ -1,5 +1,7 @@
 ---
 vi:
+  businessRole: Đơn vị sản xuất và kinh doanh
+  farmLine: Nông sản từ Trang trại Hiền Nương
   explore: Khám phá
   contact: Liên hệ
   line:
@@ -11,6 +13,8 @@ vi:
     noLink: liên kết chưa được cung cấp
     top: Lên đầu trang
 en:
+  businessRole: Production and trading entity
+  farmLine: Produce from Trang trại Hiền Nương
   explore: Explore
   contact: Contact
   line:
@@ -22,6 +26,8 @@ en:
     noLink: link not yet available
     top: Back to top
 zh:
+  businessRole: 生产与经营单位
+  farmLine: 来自 Trang trại Hiền Nương 的农产品
   explore: 探索
   contact: 联系方式
   line:

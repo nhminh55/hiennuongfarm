@@ -67,7 +67,7 @@ collections:
             collapsed: true
             summary: '{{fields.item}}'
       - name: 02-ve-hien-nuong
-        label: Mục 01 · Về Hiền Nương
+        label: Mục 01 · Về NƯƠNG FARM
         file: src/content/trang-chu/02-ve-hien-nuong.md
         format: frontmatter
         i18n: true
@@ -2991,7 +2991,7 @@ collections:
             name: phone2
             i18n: duplicate
             widget: string
-          - label: ④ Tên hộ kinh doanh
+          - label: ④ Tên đơn vị sản xuất và kinh doanh
             name: business_name
             i18n: duplicate
             hint: Mỗi ô là một dòng
@@ -3020,23 +3020,25 @@ collections:
                 widget: string
             collapsed: true
             summary: '{{fields.name}}'
-          - label: ⑥ Mã số HKD
+          - label: ⑥ Mã số đơn vị (chỉ điền khi đã xác minh)
             name: business_code
+            required: false
             i18n: duplicate
             widget: string
           - label: ⑦ Số và ngày đăng ký
             name: business_registration
+            required: false
             i18n: duplicate
             hint: Mỗi ô là một dòng
             widget: list
-            min: 2
-            max: 2
+            min: 0
             field:
               label: Dòng
               name: item
               widget: string
           - label: ⑧ Cơ quan cấp
             name: business_issuer
+            required: false
             i18n: duplicate
             widget: string
           - label: Địa chỉ (menu trên điện thoại)
@@ -3062,7 +3064,7 @@ collections:
             i18n: true
             widget: object
             fields:
-              - label: Về Hiền Nương
+              - label: Về NƯƠNG FARM
                 name: about
                 i18n: true
                 widget: string
@@ -3096,7 +3098,7 @@ collections:
             hint: Cột “Khám phá” ở chân trang, dòng “Trang chủ / …” và các chỗ khác
             widget: object
             fields:
-              - label: Về Hiền Nương
+              - label: Về NƯƠNG FARM
                 name: about
                 i18n: true
                 widget: string
@@ -3127,6 +3129,14 @@ collections:
         i18n: true
         preview_path: /
         fields:
+          - label: Vai trò đơn vị
+            name: businessRole
+            i18n: true
+            widget: string
+          - label: Tên trang trại dưới logo
+            name: farmLine
+            i18n: true
+            widget: string
           - label: ① Tiêu đề cột “Khám phá”
             name: explore
             i18n: true
@@ -3193,7 +3203,7 @@ collections:
             allow_duplicate: false
             allow_reorder: false
             summary: '{{fields.items.vi}}'
-            hint: Mỗi khối là menu thả xuống của một mục trên thanh menu (Về Hiền Nương, Nông nghiệp tuần hoàn, Sản phẩm, Dấu ấn, Chuyện nhà Nấm, Hợp tác). Số trên ảnh là thứ tự các mục.
+            hint: Mỗi khối là menu thả xuống của một mục trên thanh menu (Về NƯƠNG FARM, Nông nghiệp tuần hoàn, Sản phẩm, Dấu ấn, Chuyện nhà Nấm, Hợp tác). Số trên ảnh là thứ tự các mục.
             max: 6
             min: 6
       - name: tim-kiem
@@ -3357,4 +3367,4 @@ collections:
         name: author
         widget: string
         required: false
-        default: Hiền Nương Farm
+        default: NƯƠNG FARM

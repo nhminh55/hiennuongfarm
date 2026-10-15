@@ -52,7 +52,7 @@ const jsonLd = [
     mainEntityOfPage: url,
     url,
     ...(shareImage && { image: [abs(shareImage)] }),
-    author: !data.author || data.author === site.name
+    author: !data.author || [site.name, 'Hiền Nương Farm', 'Nương Farm'].includes(data.author)
       ? { '@type': 'Organization', name: site.name, url: site.url }
       : { '@type': 'Person', name: data.author },
     publisher: { '@type': 'Organization', name: site.name, url: site.url, logo: { '@type': 'ImageObject', url: abs('/app_icon.png') } },

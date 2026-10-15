@@ -1,4 +1,4 @@
-# CLAUDE.md — Hiền Nương Farm
+# CLAUDE.md — NƯƠNG FARM
 
 ## Project
 
@@ -71,3 +71,11 @@ Never blindly `git add .` or discard unrelated work.
 
 **Build less, but build it exceptionally well.**
 When uncertain, preserve approved work.
+
+## Brand identity — approved 15 October 2026
+
+- Main public brand: **NƯƠNG FARM** (same spelling in VI/EN/ZH).
+- Keep the physical farm name **Trang trại Hiền Nương** and the entity **HTX Nông nghiệp Tà Đảnh**. The cooperative is the owner-confirmed production and trading entity.
+- Omit the household business (HKD) from the public story and footer. Do not invent cooperative registration/tax details.
+- Preserve domain, email, repository, Cloudflare identifiers, routes and anchors.
+- Preserve historical press titles, quotations, source credits, product names and holder names on certificates. Do not globally replace names in evidence or approved image assets.

@@ -1,7 +1,7 @@
 ---
 vi:
   header:
-    about: Về Hiền Nương
+    about: Về NƯƠNG FARM
     circular: Nông nghiệp tuần hoàn
     products: Sản phẩm
     press: Dấu ấn
@@ -9,7 +9,7 @@ vi:
     partner: Hợp tác
     contact: Liên hệ
   nav:
-    about: Về Hiền Nương
+    about: Về NƯƠNG FARM
     circular: Nông nghiệp tuần hoàn
     press: Dấu ấn
     stories: Chuyện nhà Nấm
@@ -20,7 +20,7 @@ vi:
     produce: Sản vật
 en:
   header:
-    about: About Hiền Nương
+    about: About NƯƠNG FARM
     circular: Circular Agriculture
     products: Products
     press: Press
@@ -28,7 +28,7 @@ en:
     partner: Partnership
     contact: Contact
   nav:
-    about: About Hiền Nương
+    about: About NƯƠNG FARM
     circular: Circular Agriculture
     press: Press
     stories: Mushroom Stories
@@ -39,7 +39,7 @@ en:
     produce: Farm Produce
 zh:
   header:
-    about: 关于 Hiền Nương
+    about: 关于 NƯƠNG FARM
     circular: 循环农业
     products: 产品
     press: 媒体报道
@@ -47,7 +47,7 @@ zh:
     partner: 合作
     contact: 联系我们
   nav:
-    about: 关于 Hiền Nương
+    about: 关于 NƯƠNG FARM
     circular: 循环农业
     press: 媒体报道
     stories: 蘑菇故事

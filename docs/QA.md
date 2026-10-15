@@ -1,4 +1,4 @@
-# QA Guide — Hiền Nương Farm
+# QA Guide — NƯƠNG FARM
 
 Read for milestone QA, responsive audits, or changes with meaningful regression risk.
 

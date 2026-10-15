@@ -1,11 +1,11 @@
 ---
 vi:
   origin: Nuôi trồng tại trang trại Hiền Nương, vùng Bảy Núi – An Giang.
-  heroBody: Một trong bốn dòng nấm chính của Hiền Nương, nấm mối đen được nuôi trồng từ bịch giá thể tại trang trại, trong mô hình nông nghiệp gắn với nguồn nguyên liệu của địa phương.
+  heroBody: Một trong bốn dòng nấm chính của NƯƠNG FARM, nấm mối đen được nuôi trồng từ bịch giá thể tại trang trại, trong mô hình nông nghiệp gắn với nguồn nguyên liệu của địa phương.
   introEyebrow: Giới thiệu
   introTitle: Một trong bốn dòng nấm chính của trang trại.
   introBody:
-    - Bên cạnh nấm linh chi, đông trùng hạ thảo và nấm bào ngư, nấm mối đen là một trong bốn dòng nấm chính mà Hiền Nương nuôi trồng tại vùng Bảy Núi, An Giang.
+    - Bên cạnh nấm linh chi, đông trùng hạ thảo và nấm bào ngư, nấm mối đen là một trong bốn dòng nấm chính mà NƯƠNG FARM nuôi trồng tại vùng Bảy Núi, An Giang.
     - Từ vùng Bảy Núi, chị Châu Thị Nương phát triển mô hình trồng nấm gắn với nguồn nguyên liệu nông nghiệp tại địa phương.
   facts:
     - label: Dòng sản phẩm
@@ -35,10 +35,10 @@ vi:
   peopleTitle: Qua bàn tay của những người làm nấm.
   peopleBody: Từ đóng bịch đến chăm sóc trên kệ, mỗi công đoạn tại trang trại đều qua bàn tay của người làm nấm.
   labNote: Tên mẫu ghi trên báo cáo là “Nấm mối”.
-  ctaBody: Liên hệ với Hiền Nương để trao đổi về sản phẩm, phân phối và các hình thức hợp tác từ những dòng nấm của trang trại.
+  ctaBody: Liên hệ với NƯƠNG FARM để trao đổi về sản phẩm, phân phối và các hình thức hợp tác từ những dòng nấm của trang trại.
   ctaTitle: Trao đổi về nấm mối đen và hợp tác.
   nang_cao:
-    description: Nấm mối đen — một trong bốn dòng nấm chính của Hiền Nương Farm, nuôi trồng tại vùng Bảy Núi, An Giang.
+    description: Nấm mối đen — một trong bốn dòng nấm chính của NƯƠNG FARM, nuôi trồng tại vùng Bảy Núi, An Giang.
     introAlt: Hai người mặc áo blouse trắng cùng xem một bịch giá thể giữa các kệ bịch nấm trong nhà trồng
     peopleAlts:
       - Những người làm nấm mặc áo lao động xanh đậm, đeo găng tay hồng, ngồi trên nền xưởng đóng giá thể vào bịch
@@ -49,11 +49,11 @@ vi:
       - Những dãy bịch nấm có nắp xanh xếp kín trên các tầng kệ sắt trong nhà trồng
 en:
   origin: Grown at the Hiền Nương farm, in the Bảy Núi region of An Giang.
-  heroBody: One of Hiền Nương’s four main mushroom lines, black termite mushroom is grown from substrate bags on the farm, in a farming model tied to local materials.
+  heroBody: One of NƯƠNG FARM’s four main mushroom lines, black termite mushroom is grown from substrate bags on the farm, in a farming model tied to local materials.
   introEyebrow: Introduction
   introTitle: One of the farm’s four main mushroom lines.
   introBody:
-    - Alongside lingzhi, cordyceps and oyster mushroom, black termite mushroom is one of the four main mushroom lines Hiền Nương grows in the Bảy Núi region of An Giang.
+    - Alongside lingzhi, cordyceps and oyster mushroom, black termite mushroom is one of the four main mushroom lines NƯƠNG FARM grows in the Bảy Núi region of An Giang.
     - From the Bảy Núi region, Ms. Châu Thị Nương has developed a way of growing mushrooms tied to local agricultural materials.
   facts:
     - label: Product line
@@ -83,10 +83,10 @@ en:
   peopleTitle: Through the hands of the mushroom growers.
   peopleBody: From bagging to tending the shelves, every stage at the farm passes through the hands of the people who grow the mushrooms.
   labNote: The sample name on the report is “Nấm mối” (termite mushroom).
-  ctaBody: Contact Hiền Nương to discuss products, distribution and ways of partnering around the farm’s mushroom lines.
+  ctaBody: Contact NƯƠNG FARM to discuss products, distribution and ways of partnering around the farm’s mushroom lines.
   ctaTitle: Talk with us about black termite mushroom and partnership.
   nang_cao:
-    description: Black termite mushroom — one of Hiền Nương Farm’s four main mushroom lines, grown in the Bảy Núi region of An Giang, Vietnam.
+    description: Black termite mushroom — one of NƯƠNG FARM’s four main mushroom lines, grown in the Bảy Núi region of An Giang, Vietnam.
     introAlt: Two people in white coats looking at a substrate bag together between shelves of mushroom bags in a grow house
     peopleAlts:
       - Mushroom growers in dark green work clothes and pink gloves, sitting on the workshop floor packing substrate into bags
@@ -97,11 +97,11 @@ en:
       - Rows of green-capped mushroom bags packed onto tiers of steel shelving in a grow house
 zh:
   origin: 种植于安江省七山地区的 Hiền Nương 农场。
-  heroBody: 黑皮鸡枞菌是 Hiền Nương 四类主要菌菇之一，在农场以基质袋种植，所采用的农业模式与当地原料紧密相连。
+  heroBody: 黑皮鸡枞菌是 NƯƠNG FARM 四类主要菌菇之一，在农场以基质袋种植，所采用的农业模式与当地原料紧密相连。
   introEyebrow: 简介
   introTitle: 农场四类主要菌菇之一。
   introBody:
-    - 除灵芝、蛹虫草和平菇外，黑皮鸡枞菌也是 Hiền Nương 在安江省七山地区种植的四类主要菌菇之一。
+    - 除灵芝、蛹虫草和平菇外，黑皮鸡枞菌也是 NƯƠNG FARM 在安江省七山地区种植的四类主要菌菇之一。
     - Châu Thị Nương 女士在七山地区发展了与当地农业原料相结合的种菇模式。
   facts:
     - label: 产品类别
@@ -131,10 +131,10 @@ zh:
   peopleTitle: 经由种菇人之手。
   peopleBody: 从装袋到架上照料，农场的每一道工序都经由种菇人亲手完成。
   labNote: 报告上的样品名称为“Nấm mối”。
-  ctaBody: 欢迎联系 Hiền Nương，洽谈产品、分销以及围绕农场菌菇的各种合作方式。
+  ctaBody: 欢迎联系 NƯƠNG FARM，洽谈产品、分销以及围绕农场菌菇的各种合作方式。
   ctaTitle: 洽谈黑皮鸡枞菌与合作事宜。
   nang_cao:
-    description: 黑皮鸡枞菌——Hiền Nương Farm 四类主要菌菇之一，种植于越南安江省七山地区。
+    description: 黑皮鸡枞菌——NƯƠNG FARM 四类主要菌菇之一，种植于越南安江省七山地区。
     introAlt: 两位身穿白大褂的人在种植棚的菌袋架之间一起查看一个基质袋
     peopleAlts:
       - 身穿深绿色工作服、戴粉色手套的种菇人坐在车间地上，将基质装入菌袋

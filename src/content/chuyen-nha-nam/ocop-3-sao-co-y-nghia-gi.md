@@ -3,7 +3,7 @@ title: "OCOP 3 sao có ý nghĩa gì với một sản phẩm địa phương?"
 excerpt: "Những ngôi sao OCOP nói lên điều gì, sản phẩm được đánh giá theo các nhóm tiêu chí nào và người mua nên hiểu chứng nhận ra sao?"
 category: tu-dat-den-nam
 date: 2026-10-14
-author: "Hiền Nương Farm"
+author: "NƯƠNG FARM"
 featured: false
 draft: false
 seoTitle: "OCOP 3 sao là gì? Cách hiểu đúng về chứng nhận OCOP"
@@ -43,8 +43,8 @@ Bên cạnh chất lượng, một sản phẩm địa phương còn mang theo c
 
 Đó cũng là tinh thần thú vị của OCOP: nhìn sản phẩm không chỉ như một món hàng trên kệ, mà như một phần của kinh tế và đời sống địa phương.
 
-**Khám phá thêm:** Xem [các sản phẩm Hiền Nương Farm](/san-pham/) và thông tin chứng nhận được công bố trên từng trang sản phẩm.
+**Khám phá thêm:** Xem [các sản phẩm NƯƠNG FARM](/san-pham/) và thông tin chứng nhận được công bố trên từng trang sản phẩm.
 
 ---
 
-*Nguồn tham khảo: [Cổng thông tin Chính phủ — Quyết định 26/2026/QĐ-TTg](https://xaydungchinhsach.chinhphu.vn/quyet-dinh-so-26-2026-qd-ttg-bo-tieu-chi-va-quy-trinh-danh-gia-phan-hang-san-pham-ocop-119260529164111182.htm). Nội dung chỉ giải thích chương trình nói chung, không khẳng định sản phẩm cụ thể nào của Hiền Nương Farm đã được chứng nhận.*
+*Nguồn tham khảo: [Cổng thông tin Chính phủ — Quyết định 26/2026/QĐ-TTg](https://xaydungchinhsach.chinhphu.vn/quyet-dinh-so-26-2026-qd-ttg-bo-tieu-chi-va-quy-trinh-danh-gia-phan-hang-san-pham-ocop-119260529164111182.htm). Nội dung chỉ giải thích chương trình nói chung, không khẳng định sản phẩm cụ thể nào của NƯƠNG FARM đã được chứng nhận.*

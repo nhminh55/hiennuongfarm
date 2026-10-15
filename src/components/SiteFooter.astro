@@ -1,6 +1,6 @@
 ---
 import { copy } from '../data/copy';
-import { footerNav, contact, business } from '../data/site';
+import { footerNav, contact, business, site } from '../data/site';
 import { getLocale, isTranslated, localizePath, pageHref } from '../i18n';
 import BrandLogo from './BrandLogo.astro';
 import Arrow from './Arrow.astro';
@@ -33,9 +33,11 @@ const t = copy('chung/footer', lang);
         <p class="site-footer__line">
           {t.line[0]}<br />{t.line[1]}
         </p>
-        <div class="site-footer__business" lang="vi">
-          <p class="site-footer__business-name">{business.name[0]}<br />{business.name[1]}</p>
-          <p class="site-footer__business-code">{business.code}</p>
+        <p class="site-footer__farm-line">{t.farmLine}</p>
+        <div class="site-footer__business">
+          <p class="site-footer__business-role">{t.businessRole}</p>
+          <p class="site-footer__business-name" lang="vi">{business.name[0]}<br />{business.name[1]}</p>
+          {business.code && <p class="site-footer__business-code">{business.code}</p>}
         </div>
       </div>
 
@@ -95,9 +97,9 @@ const t = copy('chung/footer', lang);
     <img class="site-footer__mobile-mountains" src="/mountain.png" width="356" height="142" alt="" aria-hidden="true" />
     <div class="site-footer__bottom">
       <div class="site-footer__legal" lang="vi">
-        <p>{business.registration.map((item, i) => <>{i > 0 && <span class="site-footer__sep" aria-hidden="true"> · </span>}<span class="site-footer__reg">{item}</span></>)}</p>
-        <p>{business.issuer}</p>
-        <p lang={lang}>© {year} Hiền Nương Farm. {t.rights}</p>
+        {business.registration.length > 0 && <p>{business.registration.map((item, i) => <>{i > 0 && <span class="site-footer__sep" aria-hidden="true"> · </span>}<span class="site-footer__reg">{item}</span></>)}</p>}
+        {business.issuer && <p>{business.issuer}</p>}
+        <p lang={lang}>© {year} {site.name}. {t.rights}</p>
       </div>
       <a class="site-footer__top-link" href="#top">
         {t.top} <Arrow direction="up" />
@@ -107,6 +109,7 @@ const t = copy('chung/footer', lang);
 </footer>
 
 <style>
+  .site-footer__farm-line { margin-top: 0.75rem; max-width: 15rem; font-size: 0.8125rem; color: var(--color-text-inverse-muted); }
   .site-footer { position: relative; isolation: isolate; overflow: hidden; }
   .site-footer__landscape { position: absolute; inset: auto 0 0; width: 100%; height: 15rem; color: var(--color-cream); opacity: 0.035; z-index: -1; pointer-events: none; }
   .site-footer__mountains { display: none; }
@@ -115,6 +118,7 @@ const t = copy('chung/footer', lang);
   .site-footer__list a { display: inline-flex; align-items: center; min-height: 2.75rem; }
 
   /* Dense, quiet close: one band of brand, links and contact over a hairline. */
+  .site-footer__business-role { margin: 0 0 0.5rem; font-size: 0.75rem; color: var(--color-text-inverse-muted); }
   .site-footer {
     background: var(--color-deep-green);
     color: var(--color-cream);

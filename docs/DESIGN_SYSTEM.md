@@ -1,4 +1,4 @@
-# Design System — Hiền Nương Farm
+# Design System — NƯƠNG FARM
 
 Read only for visual, layout, responsive, typography, photography, or interaction work.
 

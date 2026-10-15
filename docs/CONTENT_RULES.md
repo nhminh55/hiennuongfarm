@@ -1,4 +1,4 @@
-# Content Rules — Hiền Nương Farm
+# Content Rules — NƯƠNG FARM
 
 Read only for content creation, editing, validation, or restructuring.
 
@@ -30,3 +30,11 @@ Do not rewrite approved Vietnamese brand copy unless requested or technically ne
 Never present placeholders, mockup/stock content, or AI-generated copy as authentic company information.
 
 Voice: **grounded, specific, calm, human, non-exaggerated.**
+
+## Brand identity — approved 15 October 2026
+
+- Main public brand: **NƯƠNG FARM** (same spelling in VI/EN/ZH).
+- Keep the physical farm name **Trang trại Hiền Nương** and the entity **HTX Nông nghiệp Tà Đảnh**. The cooperative is the owner-confirmed production and trading entity.
+- Omit the household business (HKD) from the public story and footer. Do not invent cooperative registration/tax details.
+- Preserve domain, email, repository, Cloudflare identifiers, routes and anchors.
+- Preserve historical press titles, quotations, source credits, product names and holder names on certificates. Do not globally replace names in evidence or approved image assets.
