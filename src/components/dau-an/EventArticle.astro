@@ -1,0 +1,128 @@
+---
+import { formatDate, type Activity } from '../../data/dau-an';
+interface Props { activity: Activity; }
+const { activity: a } = Astro.props;
+const products = a.story[2].replace(/^Nương Farm giới thiệu tại hội chợ:\s*/, '').replace(/\.$/, '').split('; ');
+---
+<article class="event-article" aria-labelledby="event-title">
+  <header class="event-header">
+    <p class="eyebrow"><time datetime={a.date}>{formatDate(a.date)}</time> · Sự kiện &amp; Hoạt động</p>
+    <h1 id="event-title">{a.title}</h1>
+    <p class="event-lead">{a.summary}</p>
+    <p class="event-place">{a.place}</p>
+  </header>
+
+  <section class="event-slideshow" aria-label="Ảnh Hội chợ Tri Tôn 2026" data-event-gallery>
+    <div class="gallery-stage">
+      {a.photos.map((p, i) => <figure class="gallery-slide" hidden={i !== 0}>
+        <a href={p.full} data-lightbox="album" data-caption={`${p.caption ?? p.alt} Ảnh: ${p.credit}.`} data-width={p.width} data-height={p.height}>
+          <img src={p.src} srcset={p.srcset} sizes="(min-width: 1100px) 1024px, 100vw" width={p.width} height={p.height} alt={p.alt} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
+        </a>
+        <figcaption>{p.caption} <span>Ảnh: {p.credit}.</span></figcaption>
+      </figure>)}
+    </div>
+    <div class="gallery-toolbar">
+      <div class="gallery-thumbs" aria-label="Chọn ảnh">
+        {a.photos.map((p, i) => <button type="button" data-gallery-index={i} aria-label={`Xem ảnh ${i + 1}: ${p.alt}`} aria-pressed={i === 0}>
+          <img src={p.src} width="72" height="54" alt="" loading="lazy" />
+        </button>)}
+      </div>
+      <div class="gallery-controls">
+        <button type="button" data-gallery-prev aria-label="Ảnh trước">←</button>
+        <span class="gallery-counter" aria-live="polite" aria-atomic="true">1 / {a.photos.length}</span>
+        <button type="button" data-gallery-next aria-label="Ảnh tiếp theo">→</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="event-body">
+    <p>{a.story[0]}</p>
+    <p>{a.story[1]}</p>
+    <h2>Ghé gian hàng, khám phá những sản phẩm từ nấm</h2>
+    <ul>{products.map((product) => <li>{product.charAt(0).toUpperCase() + product.slice(1)}</li>)}</ul>
+    <p>{a.story[3]}</p>
+  </div>
+
+
+  <div class="event-body">
+    <h2>Mang theo câu chuyện làm nông tuần hoàn</h2>
+    <p>{a.story[4]}</p>
+    <p>{a.story[5]}</p>
+    <p>{a.story[6]}</p>
+    <aside class="event-visit" aria-labelledby="visit-title">
+      <h2 id="visit-title">Hẹn gặp cả nhà tại Hội chợ Tri Tôn</h2>
+      <dl>
+        <div><dt>Thời gian</dt><dd>16–21/10/2026</dd></div>
+        <div><dt>Địa điểm</dt><dd>Phố đi bộ xã Tri Tôn, tỉnh An Giang</dd></div>
+        <div><dt>Liên hệ</dt><dd><a href="tel:0985799777">0985 799 777</a></dd></div>
+      </dl>
+    </aside>
+    <p>{a.story[8]}</p>
+  </div>
+</article>
+
+<style>
+  .event-article { width: min(100% - 2 * var(--gutter), 1024px); margin-inline: auto; padding-bottom: var(--space-2xl); }
+  .event-header { max-width: 800px; margin: 0 auto clamp(1.75rem, 4vw, 3rem); }
+  .event-header h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.75rem); font-weight: 500; line-height: 1.22; text-wrap: balance; margin: 1rem 0 1.25rem; }
+  .event-lead { font-size: clamp(1.05rem, 1.4vw, 1.2rem); line-height: 1.75; color: var(--color-text-muted); }
+  .event-place { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--color-line); font-size: .875rem; line-height: 1.7; color: var(--color-earth); }
+  figure { margin: 0; min-width: 0; }
+  figure a { display: block; cursor: zoom-in; }
+  figure img { display: block; width: 100%; height: auto; }
+  figcaption { margin-top: .65rem; font-size: .8125rem; line-height: 1.65; color: var(--color-text-muted); }
+  figcaption span { white-space: nowrap; }
+  .event-slideshow { margin-bottom: clamp(2rem, 4vw, 3rem); }
+  .gallery-slide[hidden] { display: none; }
+  .gallery-slide a { height: min(60vw, 620px); min-height: 230px; background: var(--color-cream); }
+  .gallery-slide img { width: 100%; height: 100%; object-fit: contain; }
+  .gallery-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1rem; }
+  .gallery-thumbs { display: flex; gap: .5rem; }
+  .gallery-thumbs button { padding: 3px; border: 1px solid transparent; cursor: pointer; background: none; }
+  .gallery-thumbs button[aria-pressed="true"] { border-color: var(--color-earth); }
+  .gallery-thumbs img { display: block; width: 64px; height: 48px; object-fit: contain; }
+  .gallery-controls { display: flex; align-items: center; gap: .75rem; flex-shrink: 0; }
+  .gallery-controls button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--color-line-strong); background: transparent; color: var(--color-text); font-size: 1.3rem; cursor: pointer; }
+  .gallery-controls button:hover { background: var(--color-text); color: var(--color-cream); }
+  .gallery-counter { font-size: .875rem; min-width: 2.75rem; text-align: center; }
+  .gallery-toolbar button:focus-visible { outline: 2px solid var(--color-earth); outline-offset: 3px; }
+  .event-body { max-width: 720px; margin-inline: auto; font-size: 1rem; line-height: 1.9; }
+  .event-body p + p { margin-top: 1.25rem; }
+  .event-body h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.35rem, 2vw, 1.7rem); line-height: 1.4; margin: 2.25rem 0 1rem; }
+  .event-body ul { padding-left: 1.35rem; margin: 1rem 0 1.5rem; list-style: disc; }
+  .event-body li { margin-bottom: .55rem; padding-left: .2rem; }
+  .event-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; align-items: start; margin: clamp(2rem, 4vw, 3rem) 0; }
+  .event-visit { border-top: 1px solid var(--color-line-strong); border-bottom: 1px solid var(--color-line); padding: 1.5rem 0; margin: 2rem 0; }
+  .event-visit h2 { margin: 0 0 1.25rem; }
+  .event-visit dl { margin: 0; }
+  .event-visit dl div { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 1rem; margin-top: .65rem; }
+  .event-visit dt { font-weight: 500; }
+  .event-visit dd { margin: 0; }
+  .event-visit a { text-decoration: underline; text-underline-offset: .2em; }
+  @media (max-width: 639px) {
+    .gallery-slide a { height: 90vw; min-height: 0; }
+    .gallery-thumbs { gap: .25rem; }
+    .gallery-thumbs img { width: 42px; height: 38px; }
+    .gallery-controls { gap: .3rem; }
+    .gallery-controls button { width: 40px; height: 40px; }
+    .event-visit dl div { grid-template-columns: minmax(0, 1fr); gap: .1rem; margin-top: 1rem; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-event-gallery]').forEach((gallery) => {
+    const slides = Array.from(gallery.querySelectorAll<HTMLElement>('.gallery-slide'));
+    const thumbs = Array.from(gallery.querySelectorAll<HTMLButtonElement>('[data-gallery-index]'));
+    const counter = gallery.querySelector<HTMLElement>('.gallery-counter');
+    let current = 0;
+    const show = (index: number) => {
+      current = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => { slide.hidden = i !== current; });
+      thumbs.forEach((thumb, i) => thumb.setAttribute('aria-pressed', String(i === current)));
+      if (counter) counter.textContent = `${current + 1} / ${slides.length}`;
+    };
+    gallery.querySelector('[data-gallery-prev]')?.addEventListener('click', () => show(current - 1));
+    gallery.querySelector('[data-gallery-next]')?.addEventListener('click', () => show(current + 1));
+    thumbs.forEach((thumb, i) => thumb.addEventListener('click', () => show(i)));
+  });
+</script>

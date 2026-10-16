@@ -1,5 +1,6 @@
 ---
 import BrandContext from '../../../components/BrandContext.astro';
+import EventArticle from '../../../components/dau-an/EventArticle.astro';
 /**
  * /dau-an/su-kien/<slug>/: one activity. Date, title, place, a short
  * account from the sources, the album (every photograph opens in the
@@ -31,6 +32,7 @@ const href = (x: Activity) => `/dau-an/su-kien/${x.slug}/`;
 <BaseLayout title={a.title} description={`${formatDate(a.date)}: ${a.summary}`}>
   <DauAnHead current="/dau-an/su-kien/" title={a.title} as="p" />
 
+  {a.slug === 'nuong-farm-hoi-cho-tri-ton-2026' ? <EventArticle activity={a} /> : (
   <article class="album" aria-labelledby="album-title">
     <div class="container album__grid">
       <header class="album__head">
@@ -93,6 +95,7 @@ const href = (x: Activity) => `/dau-an/su-kien/${x.slug}/`;
       </section>
     )}
   </article>
+  )}
 
   <nav class="pager container" aria-label="Hoạt động khác">
     <div class="pager__inner">
