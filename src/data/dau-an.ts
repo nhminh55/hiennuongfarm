@@ -243,7 +243,7 @@ type RawActivity = Omit<Activity, 'photos'> & { photos: RawPic[] };
 
 /** Newest first. */
 export const activities: Activity[] = newestFirst(
-  dataFile<{ activities: RawActivity[] }>('dau-an/su-kien').activities.map(
+  [...dataFile<{ activities: RawActivity[] }>('dau-an/hoi-cho-tri-ton-2026').activities, ...dataFile<{ activities: RawActivity[] }>('dau-an/su-kien').activities].map(
     (a) => ({ ...a, photos: a.photos.map(pic) }),
   ),
   (a) => a.date,
