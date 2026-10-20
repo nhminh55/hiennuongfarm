@@ -45,6 +45,8 @@ const categories: [string, string][] = [
 ];
 const category = categories.find(([prefix]) => basePath.startsWith(prefix))?.[1] ?? 'Trang chủ';
 const skipLabel = { vi: 'Bỏ qua đến nội dung chính', en: 'Skip to main content', zh: '跳到主要内容' }[lang];
+// Google Analytics 4. Production builds only, so local work is not counted.
+const gaId = import.meta.env.PROD ? 'G-7Y0DG5B7JS' : undefined;
 ---
 <!doctype html>
 <html lang={languages[lang].htmlLang} id="top">
@@ -77,6 +79,15 @@ const skipLabel = { vi: 'Bỏ qua đến nội dung chính', en: 'Skip to main c
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Noto+Serif+Display:ital,wght@0,300..600;1,300..500&family=Lora:ital,wght@0,400..600;1,400..500&display=swap"
     />
+    {gaId && <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>}
+    {gaId && (
+      <script is:inline define:vars={{ gaId }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', gaId);
+      </script>
+    )}
     <!-- Chinese pages: the Latin faces above have no Chinese glyphs (see global.css :lang(zh)). -->
     {lang === 'zh' && (
       <link
