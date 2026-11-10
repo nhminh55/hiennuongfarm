@@ -13,9 +13,9 @@ menus:
         href: /ve-chung-toi/#video-gioi-thieu
         video: true
       - label:
-          vi: Tải Brochure Nương Farm
-          en: Download the Nương Farm brochure
-          zh: 下载 Nương Farm 宣传册
+          vi: Xem Brochure Nương Farm
+          en: View the Nương Farm brochure
+          zh: 查看 Nương Farm 宣传册
         href: /brochure/nuong-farm-brochure-vi.pdf
         download: true
     href: /#ve-hien-nuong
