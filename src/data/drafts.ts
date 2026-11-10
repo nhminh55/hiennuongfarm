@@ -72,7 +72,7 @@ export const draftPages: DraftPage[] = [];
  * anchor. Links to Vietnamese-only pages open the Vietnamese page. The
  * labels: src/content/chung/menu-tha-xuong.md (one entry per header link).
  */
-type NavItem = { label: Record<Locale, string>; href: string; video?: boolean; /** Showroom group whose products open in a side flyout. */ group?: 0 | 1 };
+type NavItem = { label: Record<Locale, string>; href: string; video?: boolean; /** PDF download; non-Vietnamese pages get the -en file. */ download?: boolean; /** Showroom group whose products open in a side flyout. */ group?: 0 | 1 };
 export const navDropdowns: Record<string, NavItem[]> = Object.fromEntries(
   dataFile<{ menus: { href: string; items: NavItem[] }[] }>('chung/menu-tha-xuong').menus.map((m) => [m.href, m.items]),
 );

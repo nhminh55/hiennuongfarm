@@ -41,7 +41,7 @@ const productGroups = [products.slice(0, SHOWROOM_FRESH), products.slice(SHOWROO
 const navItems = links.map((item) => ({
   label: item.label,
   href: localizePath(item.anchor, lang),
-  children: navDropdowns[item.anchor]?.map((child) => ({ label: child.label[lang], video: child.video, items: child.group === undefined ? undefined : productGroups[child.group], ...subLink(child.href) })),
+  children: navDropdowns[item.anchor]?.map((child) => ({ label: child.label[lang], video: child.video, download: child.download, items: child.group === undefined ? undefined : productGroups[child.group], ...(child.download ? { href: lang === 'vi' ? child.href : child.href.replace(/-vi\.pdf$/, '-en.pdf') } : subLink(child.href)) })),
 }));
 // Contact details: the cooperation page's contact section; the homepage
 // section in languages without that page.
@@ -91,7 +91,7 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
                         </ul>
                       </li>
                     ) : (
-                      <li><a class="site-nav__sublink" href={child.href} hreflang={child.hreflang} aria-current={currentSub(child.href)}>{child.label}{child.video && <svg class="nav-video" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1" y="3.5" width="10" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.2" /><path d="M11 7l4-2.5v7L11 9z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" /></svg>}</a></li>
+                      <li><a class="site-nav__sublink" href={child.href} hreflang={child.hreflang} download={child.download || undefined} target={child.download ? '_blank' : undefined} aria-current={currentSub(child.href)}>{child.label}{child.video && <svg class="nav-video" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1" y="3.5" width="10" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.2" /><path d="M11 7l4-2.5v7L11 9z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" /></svg>}</a></li>
                     ))}
                   </ul>
                 </div>
@@ -158,7 +158,7 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
                   </button>
                   <ul class="mobile-menu__sub" id={`menu-sub-${i}`} data-dropdown-panel hidden>
                     {item.children.map((child) => (
-                      <li><a href={child.href} hreflang={child.hreflang} aria-current={currentSub(child.href)} data-menu-link>{child.label}{child.video && <svg class="nav-video" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1" y="3.5" width="10" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.2" /><path d="M11 7l4-2.5v7L11 9z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" /></svg>}</a></li>
+                      <li><a href={child.href} hreflang={child.hreflang} download={child.download || undefined} target={child.download ? '_blank' : undefined} aria-current={currentSub(child.href)} data-menu-link>{child.label}{child.video && <svg class="nav-video" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1" y="3.5" width="10" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.2" /><path d="M11 7l4-2.5v7L11 9z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" /></svg>}</a></li>
                     ))}
                   </ul>
                 </>
