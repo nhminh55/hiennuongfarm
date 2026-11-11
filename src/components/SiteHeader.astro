@@ -784,11 +784,23 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
     /* Room for the language switch: a narrower logo, a tighter switch, and
        the menu toggle as its icon alone (the label stays for screen readers). */
     .site-header__inner { gap: 0.5rem; }
-    .site-header__inner :global(.site-header__brand) { width: min(12rem, 100vw - 15.5rem); }
-    .site-header__inner :global(.site-header__lang) { gap: 0; font-size: 0.75rem; letter-spacing: 0.04em; }
-    .site-header__inner :global(.site-header__lang .lang-switch__link) { min-width: 1.625rem; }
+    /* The logo takes the room the controls leave (up to 12rem). With a large
+       phone text size that room can be small: below 6rem only the round
+       badge shows, so the logo never shrinks to nothing. */
+    .site-header__inner :global(.site-header__brand) {
+      width: auto;
+      flex: 0 1 12rem;
+      min-width: 2.75rem;
+      container-type: inline-size;
+    }
+    @container (max-width: 6rem) {
+      .site-header__inner :global(.wordmark__type) { display: none; }
+      .site-header__inner :global(.wordmark__icon) { width: 2.75rem; }
+    }
+    .site-header__inner :global(.site-header__lang) { flex: none; gap: 0; font-size: 0.75rem; letter-spacing: 0.04em; }
+    .site-header__inner :global(.site-header__lang .lang-switch__link) { min-width: 1.5rem; }
     .search-toggle { width: 2.5rem; }
-    .menu-toggle { min-width: 2.75rem; justify-content: flex-end; }
+    .menu-toggle { flex: none; min-width: 2.75rem; justify-content: flex-end; }
     .menu-toggle__label {
       position: absolute;
       width: 1px;
