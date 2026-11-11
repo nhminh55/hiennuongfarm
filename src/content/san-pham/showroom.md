@@ -1756,6 +1756,43 @@ products:
             en: Extraction produces an instant tea powder with a gentle aroma and a mild taste without harsh bitterness. It is convenient to prepare during busy daily routines.
             zh: 提取工艺制成速溶茶粉，香气柔和、口味清雅、容易入口，没有强烈苦味，方便忙碌的日常冲泡。
           source: docs/products/10. Tra hoa tan linh chi trung thao.md
+      gallery:
+        - file: tra-hoa-tan-linh-chi-trung-thao-1-nguoi.webp
+          caption:
+            vi: 'Trà linh chi trùng thảo bên ruộng lúa'
+            en: 'Lingzhi & cordyceps tea beside the rice fields'
+            zh: '稻田边的灵芝虫草茶'
+          alt:
+            vi: 'Người phụ nữ đội nón lá, mặc áo hồng, cầm ly trà; trên khay gỗ có hai hộp thiếc trà hòa tan linh chi trùng thảo'
+            en: 'A woman in a conical hat and pink blouse holds a glass of tea, with two tins of instant lingzhi and cordyceps tea on a wooden tray'
+            zh: '头戴斗笠、身穿粉色上衣的女子手持一杯茶，木托盘上放着两罐灵芝虫草速溶茶'
+        - file: tra-hoa-tan-linh-chi-trung-thao-2-ba-hop.webp
+          caption:
+            vi: 'Hũ thiếc 200 g bên linh chi và trùng thảo'
+            en: '200 g tins with lingzhi and cordyceps'
+            zh: '200 克铁罐与灵芝、虫草'
+          alt:
+            vi: 'Ba hộp thiếc trà hòa tan linh chi trùng thảo xếp chồng trên tấm gỗ, cạnh linh chi thái lát, đông trùng hạ thảo và chén trà'
+            en: 'Three tins of instant lingzhi and cordyceps tea stacked on a wooden board, beside sliced lingzhi, cordyceps and a cup of tea'
+            zh: '三罐灵芝虫草速溶茶叠放在木板上，旁边是灵芝切片、虫草和一杯茶'
+        - file: tra-hoa-tan-linh-chi-trung-thao-3-can-canh.webp
+          caption:
+            vi: 'Cận cảnh bao bì'
+            en: 'Packaging close-up'
+            zh: '包装特写'
+          alt:
+            vi: 'Cận cảnh hộp thiếc trà linh chi trùng thảo với hình vẽ linh chi, phía trước là linh chi thái lát và đông trùng hạ thảo'
+            en: 'Close-up of the lingzhi and cordyceps tea tins with lingzhi illustrations, with sliced lingzhi and cordyceps in front'
+            zh: '绘有灵芝图案的灵芝虫草茶铁罐特写，前方是灵芝切片和虫草'
+        - file: tra-hoa-tan-linh-chi-trung-thao-4-hop-200g.webp
+          caption:
+            vi: 'Thiết kế hũ thiếc 200 g'
+            en: '200 g tin design'
+            zh: '200 克铁罐设计'
+          alt:
+            vi: 'Một hộp thiếc trà hòa tan linh chi trùng thảo 200 g trên nền trắng'
+            en: 'A 200 g tin of instant lingzhi and cordyceps tea on a white background'
+            zh: '白色背景上的一罐 200 克灵芝虫草速溶茶'
       facts:
         - label:
             vi: Thương hiệu
@@ -1784,6 +1821,104 @@ products:
             en: Vietnam
             zh: 越南
           source: docs/products/10. Tra hoa tan linh chi trung thao.md
+    audio:
+      file: tra-hoa-tan-linh-chi-trung-thao.mp3
+    benefits:
+      highlights:
+        - label:
+            vi: 'Hỗ trợ tăng cường sức đề kháng'
+            en: 'Supports natural resistance'
+            zh: '有助增强抵抗力'
+          value:
+            vi: 'Polysaccharide, beta-glucan trong linh chi cùng polysaccharide trong đông trùng hạ thảo được quan tâm nghiên cứu về vai trò hỗ trợ hệ miễn dịch, phù hợp với người muốn chủ động chăm sóc sức khỏe.'
+            en: 'Polysaccharides and beta-glucans in lingzhi, together with polysaccharides in cordyceps, are studied for their supporting role in the immune system — for people who want to look after their health proactively.'
+            zh: '灵芝中的多糖、β-葡聚糖与虫草中的多糖，因其对免疫系统的辅助作用而受到研究关注，适合希望主动保健的人。'
+          source: Owner product copy (Trà hòa tan linh chi trùng thảo, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ giảm mệt mỏi, phục hồi thể trạng'
+            en: 'Helps with tiredness and recovery'
+            zh: '有助缓解疲劳、恢复体力'
+          value:
+            vi: 'Đông trùng hạ thảo từ lâu được dùng để bồi bổ cơ thể, phù hợp với người làm việc căng thẳng, dễ xuống sức hoặc thấy thiếu năng lượng sau một ngày dài.'
+            en: 'Cordyceps has long been used to nourish the body — suited to people with demanding work who tire easily or feel low on energy after a long day.'
+            zh: '虫草历来用于滋补身体，适合工作紧张、容易疲惫或在漫长一天后感到精力不足的人。'
+          source: Owner product copy (Trà hòa tan linh chi trùng thảo, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ sức bền, duy trì năng lượng'
+            en: 'Supports stamina and energy'
+            zh: '有助增强耐力、保持精力'
+          value:
+            vi: 'Cordycepin và adenosine là hợp chất đặc trưng của đông trùng hạ thảo, liên quan đến quá trình chuyển hóa năng lượng. Phù hợp với người bận rộn, thường xuyên vận động.'
+            en: 'Cordycepin and adenosine, characteristic compounds of cordyceps, are linked to energy metabolism. Suited to busy, active people.'
+            zh: '虫草素和腺苷是虫草的特征成分，与能量代谢相关，适合忙碌、经常运动的人。'
+          source: Owner product copy (Trà hòa tan linh chi trùng thảo, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ chống oxy hóa'
+            en: 'Supports antioxidant activity'
+            zh: '有助抗氧化'
+          value:
+            vi: 'Các hợp chất tự nhiên từ linh chi và đông trùng hạ thảo góp phần hỗ trợ cơ thể trước tác động của gốc tự do và stress oxy hóa.'
+            en: 'Natural compounds from lingzhi and cordyceps help support the body against free radicals and oxidative stress.'
+            zh: '灵芝和虫草中的天然成分有助于身体应对自由基和氧化应激。'
+          source: Owner product copy (Trà hòa tan linh chi trùng thảo, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ thư giãn, giấc ngủ'
+            en: 'Supports relaxation and sleep'
+            zh: '有助放松与睡眠'
+          value:
+            vi: 'Linh chi từ lâu được dùng trong cách chăm sóc sức khỏe phương Đông để hỗ trợ thư giãn, phù hợp với người hay căng thẳng hoặc quan tâm đến chất lượng giấc ngủ.'
+            en: 'Lingzhi has long been used in Eastern wellness traditions to support relaxation — for people who are often stressed or care about sleep quality.'
+            zh: '灵芝在东方养生传统中历来用于帮助放松，适合常感紧张或关注睡眠质量的人。'
+          source: Owner product copy (Trà hòa tan linh chi trùng thảo, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ chuyển hóa'
+            en: 'Supports metabolism'
+            zh: '有助新陈代谢'
+          value:
+            vi: 'Hoạt chất trong linh chi và đông trùng hạ thảo được quan tâm trong các nghiên cứu về chuyển hóa năng lượng, đường và chất béo, góp phần duy trì thể trạng lâu dài.'
+            en: 'Compounds in lingzhi and cordyceps are of interest in research on the metabolism of energy, sugars and fats, helping maintain long-term wellbeing.'
+            zh: '灵芝和虫草中的活性成分在能量、糖和脂肪代谢方面受到研究关注，有助于长期保持良好状态。'
+          source: Owner product copy (Trà hòa tan linh chi trùng thảo, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ cân bằng tự nhiên của cơ thể'
+            en: 'Supports the body’s natural balance'
+            zh: '有助维持身体自然平衡'
+          value:
+            vi: 'Cordycepin, polysaccharide và triterpenoid được quan tâm nghiên cứu về vai trò hỗ trợ cơ chế tự điều hòa phản ứng viêm của cơ thể.'
+            en: 'Cordycepin, polysaccharides and triterpenoids are studied for their role in supporting the body’s own regulation of inflammatory responses.'
+            zh: '虫草素、多糖和三萜类化合物因其有助于身体自我调节炎症反应的作用而受到研究关注。'
+          source: Owner product copy (Trà hòa tan linh chi trùng thảo, 2026-11-11)
+      audience:
+        - text:
+            vi: 'Người trưởng thành muốn chăm sóc sức khỏe hằng ngày.'
+            en: 'Adults who want to look after their health every day.'
+            zh: '希望日常保健的成年人。'
+          source: Owner product copy (Trà hòa tan linh chi trùng thảo, 2026-11-11)
+        - text:
+            vi: 'Người thường xuyên mệt mỏi, thiếu năng lượng.'
+            en: 'People who often feel tired or low on energy.'
+            zh: '经常疲惫、精力不足的人。'
+          source: Owner product copy (Trà hòa tan linh chi trùng thảo, 2026-11-11)
+        - text:
+            vi: 'Người làm việc căng thẳng hoặc cường độ cao.'
+            en: 'People with stressful or intensive work.'
+            zh: '工作紧张或强度高的人。'
+          source: Owner product copy (Trà hòa tan linh chi trùng thảo, 2026-11-11)
+        - text:
+            vi: 'Người thường xuyên vận động, cần duy trì thể trạng và sức bền.'
+            en: 'Active people who want to keep up their condition and stamina.'
+            zh: '经常运动、需要保持体能和耐力的人。'
+          source: Owner product copy (Trà hòa tan linh chi trùng thảo, 2026-11-11)
+        - text:
+            vi: 'Người quan tâm đến sức đề kháng, giấc ngủ và sự thư giãn.'
+            en: 'People who care about their resistance, sleep and relaxation.'
+            zh: '关注抵抗力、睡眠与放松的人。'
+          source: Owner product copy (Trà hòa tan linh chi trùng thảo, 2026-11-11)
+        - text:
+            vi: 'Người trung niên và lớn tuổi.'
+            en: 'Middle-aged and older people.'
+            zh: '中老年人。'
+          source: Owner product copy (Trà hòa tan linh chi trùng thảo, 2026-11-11)
     composition:
       ingredients:
         text:
@@ -1831,6 +1966,11 @@ products:
             en: Add honey or a slice of fresh lemon for additional flavour.
             zh: 可加入蜂蜜或新鲜柠檬片增添风味。
           source: docs/products/10. Tra hoa tan linh chi trung thao.md
+        - text:
+            vi: 'Lưu ý: Không dùng nếu dị ứng với thành phần sản phẩm. Người đang dùng thuốc, có bệnh lý, phụ nữ mang thai hoặc cho con bú nên hỏi ý kiến chuyên gia y tế trước khi dùng.'
+            en: 'Note: Do not use if allergic to any ingredient. If you take medication, have a medical condition, or are pregnant or breastfeeding, consult a health professional before use.'
+            zh: 注意：对产品成分过敏者请勿饮用。正在服药、患有疾病、孕期或哺乳期女性，饮用前请咨询医疗专业人士。
+          source: Owner product copy (Trà hòa tan linh chi trùng thảo, 2026-11-11)
       storage:
         - text:
             vi: Bảo quản nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp. Đậy kín hộp sau khi mở.
@@ -1857,10 +1997,10 @@ products:
         source: docs/products/10. Tra hoa tan linh chi trung thao.md
     image:
       alt:
-        en: A tin of instant lingzhi and cordyceps tea illustrated with lingzhi and cordyceps, beside a glass cup of tea
-        vi: Hộp thiếc trà hòa tan linh chi trùng thảo với hình vẽ linh chi và đông trùng hạ thảo, bên cạnh một chén trà thủy tinh
-        zh: 绘有灵芝和虫草图案的灵芝虫草速溶茶铁罐，旁边是一杯茶
-      file: 10-tra-linh-chi-trung-thao.webp
+        en: Three tins of instant lingzhi and cordyceps tea stacked on a wooden board, beside sliced lingzhi, cordyceps and a glass cup of tea
+        vi: Ba hộp thiếc trà hòa tan linh chi trùng thảo xếp chồng trên tấm gỗ, bên cạnh linh chi thái lát, đông trùng hạ thảo và chén trà thủy tinh
+        zh: 三罐灵芝虫草速溶茶铁罐叠放在木板上，旁边是灵芝切片、虫草和一杯茶
+      file: 10-tra-linh-chi-trung-thao-2026-11.webp
     slug: tra-hoa-tan-linh-chi-trung-thao
   - name:
       vi: Bào tử nấm linh chi
