@@ -6,6 +6,7 @@ import { SHOWROOM_FRESH, showroomHref, showroomProducts } from '../data/showroom
 import { getLocale, isTranslated, localizePath, pageHref } from '../i18n';
 import '../styles/desktop-header.css';
 import BrandLogo from './BrandLogo.astro';
+import LanguagePicker from './LanguagePicker.astro';
 import LanguageSwitch from './LanguageSwitch.astro';
 
 interface Props {
@@ -105,6 +106,11 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
       </nav>
 
       <LanguageSwitch class="site-header__lang" />
+
+      {/* Pages without search keep its slot on phones, so the logo is the
+          same size in every language. */}
+      {!searchable && <span class="search-slot" aria-hidden="true"></span>}
+      <LanguagePicker class="site-header__picker" />
 
       {searchable && (
         <button class="search-toggle" type="button" aria-expanded="false" aria-controls="site-search" aria-label="Tìm kiếm" data-search-toggle>
@@ -522,10 +528,13 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
   .site-nav__contact .site-nav__link:hover { background: var(--color-deep-green); }
   .site-nav__contact .site-nav__link::after { display: none; }
 
-  /* Language switch: always in the bar, beside Liên hệ on desktop and
-     before search and the menu toggle below that, so it is never hidden
-     inside the menu. It takes the free space on its left. */
-  .site-header__inner :global(.site-header__lang) { margin-left: auto; }
+  /* Language: always in the bar, never hidden inside the menu. Desktop
+     shows "VI | EN | CH" beside Liên hệ; below that one flag button
+     (LanguagePicker) sits before search and the menu toggle. Either takes
+     the free space on its left. */
+  .site-header__inner :global(.site-header__lang) { display: none; margin-left: auto; }
+  .site-header__inner :global(.site-header__picker) { flex: none; margin-left: auto; }
+  .search-slot { display: none; }
 
   /* Search ---------------------------------------------------------------
      A magnifier in the bar; the field opens as one quiet row beneath it. */
@@ -797,8 +806,7 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
       .site-header__inner :global(.wordmark__type) { display: none; }
       .site-header__inner :global(.wordmark__icon) { width: 2.75rem; }
     }
-    .site-header__inner :global(.site-header__lang) { flex: none; gap: 0; font-size: 0.75rem; letter-spacing: 0.04em; }
-    .site-header__inner :global(.site-header__lang .lang-switch__link) { min-width: 1.5rem; }
+    .search-slot { display: block; flex: none; width: 2.5rem; }
     .search-toggle { width: 2.5rem; }
     .menu-toggle { flex: none; min-width: 2.75rem; justify-content: flex-end; }
     .menu-toggle__label {
@@ -819,6 +827,7 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
     .site-nav { display: block; }
     /* Set close to Liên hệ. */
     .site-header__inner :global(.site-header__lang) { display: flex; margin-right: calc(1rem - var(--space-l)); }
+    .site-header__inner :global(.site-header__picker) { display: none; }
     .search-toggle { margin-left: 0; margin-right: calc(0.5rem - var(--space-l)); }
     .site-search__form { justify-content: flex-end; }
     .site-search__input { flex: 0 1 28rem; }
