@@ -2,7 +2,7 @@
 vi:
   email: contact@hiennuongfarm.vn
   phone: +84 985 799 777
-  phone2: +84 988 799 777
+  phone2: +84 988 779 777
   business_name:
     - HTX NÔNG NGHIỆP
     - TÀ ĐẢNH
@@ -22,7 +22,7 @@ vi:
 en:
   email: contact@hiennuongfarm.vn
   phone: +84 985 799 777
-  phone2: +84 988 799 777
+  phone2: +84 988 779 777
   business_name:
     - HTX NÔNG NGHIỆP
     - TÀ ĐẢNH
@@ -42,7 +42,7 @@ en:
 zh:
   email: contact@hiennuongfarm.vn
   phone: +84 985 799 777
-  phone2: +84 988 799 777
+  phone2: +84 988 779 777
   business_name:
     - HTX NÔNG NGHIỆP
     - TÀ ĐẢNH
