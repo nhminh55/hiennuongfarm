@@ -227,6 +227,43 @@ products:
             en: The product retains its large, whole mushroom cap, natural colour and aroma, and contains no preservatives.
             zh: 产品保留完整的大朵菌盖、天然色泽和香气，不含防腐剂。
           source: docs/products/02. Nam linh chi tai to.md
+      gallery:
+        - file: nam-linh-chi-tai-to-1-tai-non.webp
+          caption:
+            vi: 'Tai linh chi đang sinh trưởng tại trang trại'
+            en: 'Lingzhi caps growing at the farm'
+            zh: '农场里正在生长的灵芝'
+          alt:
+            vi: 'Tai nấm linh chi màu nâu đỏ bóng, viền trắng, đang phát triển trên nền rơm'
+            en: 'Glossy red-brown lingzhi caps with white rims growing above straw'
+            zh: '在稻草上生长的红褐色、白边、有光泽的灵芝'
+        - file: nam-linh-chi-tai-to-2-dang-lon.webp
+          caption:
+            vi: 'Tai nấm dần lớn, vân tròn rõ nét'
+            en: 'Caps growing larger, with clear rings'
+            zh: '菌盖逐渐长大，环纹清晰'
+          alt:
+            vi: 'Hai tai nấm linh chi nâu đỏ với nhiều lớp vân tròn, nhìn từ trên xuống trên nền rơm'
+            en: 'Two red-brown lingzhi caps with layered rings, seen from above over straw'
+            zh: '俯视稻草上两朵带层层环纹的红褐色灵芝'
+        - file: nam-linh-chi-tai-to-3-tai-truong-thanh.webp
+          caption:
+            vi: 'Tai nấm lớn, hoàn thiện'
+            en: 'A large, mature cap'
+            zh: '长成的大朵菌盖'
+          alt:
+            vi: 'Một tai nấm linh chi lớn màu nâu, nhiều lớp vân tròn, đã đạt hình thái hoàn thiện'
+            en: 'A large brown lingzhi cap with many concentric rings, fully grown'
+            zh: '一朵已长成的大朵褐色灵芝，带有多层环纹'
+        - file: nam-linh-chi-tai-to-4-dong-goi.webp
+          caption:
+            vi: 'Nguyên tai nấm đóng gói hút chân không'
+            en: 'Whole caps, vacuum-packed'
+            zh: '真空包装的整朵灵芝'
+          alt:
+            vi: 'Túi hút chân không đựng nguyên tai nấm linh chi tai to có nhãn sản phẩm, bên cạnh các lát linh chi trên thớt gỗ'
+            en: 'Vacuum packs of whole large-cap lingzhi with a product label, beside lingzhi slices on a wooden board'
+            zh: '贴有产品标签的真空包装整朵大朵灵芝，旁边木板上放着灵芝切片'
       facts:
         - label:
             vi: Nguồn gốc nguyên liệu
@@ -255,6 +292,109 @@ products:
             en: 3-star OCOP
             zh: OCOP 三星
           source: docs/products/02. Nam linh chi tai to.md
+    audio:
+      file: nam-linh-chi-tai-to.mp3
+    benefits:
+      highlights:
+        - label:
+            vi: 'Hỗ trợ tăng cường sức đề kháng'
+            en: 'Supports natural resistance'
+            zh: '有助增强抵抗力'
+          value:
+            vi: 'Polysaccharide và beta-glucan trong linh chi được quan tâm nhờ vai trò hỗ trợ hoạt động của hệ miễn dịch, phù hợp với người muốn chủ động chăm sóc sức khỏe và duy trì khả năng bảo vệ tự nhiên của cơ thể.'
+            en: 'Polysaccharides and beta-glucans in lingzhi are of interest for their supporting role in immune function — for people who want to look after their health proactively and keep up the body’s natural defences.'
+            zh: '灵芝中的多糖和β-葡聚糖因其对免疫功能的辅助作用而受到关注，适合希望主动保健、维持身体自然防护能力的人。'
+          source: Owner product copy (Nấm linh chi tai to, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ chống oxy hóa'
+            en: 'Supports antioxidant activity'
+            zh: '有助抗氧化'
+          value:
+            vi: 'Các hợp chất tự nhiên trong linh chi góp phần hỗ trợ cơ thể trước tác động của gốc tự do và stress oxy hóa, phù hợp với người thường làm việc căng thẳng, thiếu ngủ hoặc có nhịp sống bận rộn.'
+            en: 'Natural compounds in lingzhi help support the body against free radicals and oxidative stress — suited to people with stressful work, little sleep or a busy pace of life.'
+            zh: '灵芝中的天然成分有助于身体应对自由基和氧化应激，适合工作紧张、睡眠不足或生活节奏忙碌的人。'
+          source: Owner product copy (Nấm linh chi tai to, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ thư giãn, giấc ngủ'
+            en: 'Supports relaxation and sleep'
+            zh: '有助放松与睡眠'
+          value:
+            vi: 'Linh chi từ lâu được dùng trong cách chăm sóc sức khỏe phương Đông để hỗ trợ thư giãn. Một tách nước linh chi ấm có thể trở thành thói quen nhẹ nhàng vào cuối ngày.'
+            en: 'Lingzhi has long been used in Eastern wellness traditions to support relaxation. A warm cup of lingzhi can become a gentle end-of-day habit.'
+            zh: '灵芝在东方养生传统中历来用于帮助放松。一杯温热的灵芝水可以成为一天结束时的温和习惯。'
+          source: Owner product copy (Nấm linh chi tai to, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ phục hồi thể trạng'
+            en: 'Helps with tiredness and recovery'
+            zh: '有助恢复体力'
+          value:
+            vi: 'Phù hợp với người làm việc cường độ cao, thường cảm thấy xuống sức hoặc muốn duy trì thể trạng ổn định hơn trong sinh hoạt hằng ngày.'
+            en: 'Suited to people with intensive work who often feel run down, or who want steadier wellbeing in daily life.'
+            zh: '适合工作强度高、常感体力不支，或希望在日常生活中保持更稳定状态的人。'
+          source: Owner product copy (Nấm linh chi tai to, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ tuần hoàn, sức khỏe tim mạch'
+            en: 'Supports circulation and heart health'
+            zh: '有助循环与心血管健康'
+          value:
+            vi: 'Hoạt chất trong linh chi được quan tâm trong các nghiên cứu về tuần hoàn, chuyển hóa lipid và những yếu tố góp phần duy trì sức khỏe tim mạch.'
+            en: 'Compounds in lingzhi are of interest in research on circulation, lipid metabolism and factors that help maintain heart health.'
+            zh: '灵芝中的活性成分在循环、脂质代谢及维持心血管健康相关因素的研究中受到关注。'
+          source: Owner product copy (Nấm linh chi tai to, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ chuyển hóa đường và chất béo'
+            en: 'Supports sugar and fat metabolism'
+            zh: '有助糖与脂肪代谢'
+          value:
+            vi: 'Các hợp chất trong linh chi được nghiên cứu về mối liên hệ với quá trình chuyển hóa glucose và lipid, phù hợp với người quan tâm đến sức khỏe chuyển hóa và lối sống cân bằng lâu dài.'
+            en: 'Compounds in lingzhi are studied for their link to glucose and lipid metabolism — for people who care about metabolic health and a balanced long-term lifestyle.'
+            zh: '灵芝中的成分因与葡萄糖和脂质代谢的关联而受到研究，适合关注代谢健康和长期均衡生活方式的人。'
+          source: Owner product copy (Nấm linh chi tai to, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ cân bằng tự nhiên của cơ thể'
+            en: 'Supports the body’s natural balance'
+            zh: '有助维持身体自然平衡'
+          value:
+            vi: 'Triterpenoid trong linh chi được quan tâm nghiên cứu về vai trò hỗ trợ cơ chế tự điều hòa phản ứng viêm của cơ thể.'
+            en: 'Triterpenoids in lingzhi are studied for their role in supporting the body’s own regulation of inflammatory responses.'
+            zh: '灵芝中的三萜类化合物因其有助于身体自我调节炎症反应的作用而受到研究关注。'
+          source: Owner product copy (Nấm linh chi tai to, 2026-11-11)
+      audience:
+        - text:
+            vi: 'Người trưởng thành quan tâm đến chăm sóc sức khỏe hằng ngày.'
+            en: 'Adults who care about their everyday health.'
+            zh: '关注日常保健的成年人。'
+          source: Owner product copy (Nấm linh chi tai to, 2026-11-11)
+        - text:
+            vi: 'Người thường xuyên làm việc căng thẳng hoặc cường độ cao.'
+            en: 'People with stressful or intensive work.'
+            zh: '工作紧张或强度高的人。'
+          source: Owner product copy (Nấm linh chi tai to, 2026-11-11)
+        - text:
+            vi: 'Người hay cảm thấy mệt mỏi, cần duy trì thể trạng.'
+            en: 'People who often feel tired and want to keep up their condition.'
+            zh: '常感疲惫、需要保持体力的人。'
+          source: Owner product copy (Nấm linh chi tai to, 2026-11-11)
+        - text:
+            vi: 'Người quan tâm đến giấc ngủ và sự thư giãn.'
+            en: 'People who care about sleep and relaxation.'
+            zh: '关注睡眠与放松的人。'
+          source: Owner product copy (Nấm linh chi tai to, 2026-11-11)
+        - text:
+            vi: 'Người trung niên và lớn tuổi.'
+            en: 'Middle-aged and older people.'
+            zh: '中老年人。'
+          source: Owner product copy (Nấm linh chi tai to, 2026-11-11)
+        - text:
+            vi: 'Người quan tâm đến sức khỏe tim mạch và chuyển hóa.'
+            en: 'People who care about heart and metabolic health.'
+            zh: '关注心血管与代谢健康的人。'
+          source: Owner product copy (Nấm linh chi tai to, 2026-11-11)
+        - text:
+            vi: 'Người yêu thích trà thảo mộc và các sản phẩm từ nấm.'
+            en: 'Lovers of herbal teas and mushroom products.'
+            zh: '喜爱草本茶和菌菇产品的人。'
+          source: Owner product copy (Nấm linh chi tai to, 2026-11-11)
     composition:
       ingredients:
         text:
@@ -312,9 +452,9 @@ products:
             zh: 用 1.5–2 升水煮或焖泡 20 克灵芝。煮沸约 5 分钟后滤出，当日饮用。
           source: docs/products/02. Nam linh chi tai to.md
         - text:
-            vi: Có thể kết hợp thêm táo đỏ, cam thảo hoặc các loại thảo mộc khác để tăng hương vị.
-            en: Combine with red dates, liquorice or other herbs for additional flavour.
-            zh: 可搭配红枣、甘草或其他草本植物增添风味。
+            vi: Có thể kết hợp thêm táo đỏ, cam thảo, kỷ tử hoặc các loại thảo mộc khác để tăng hương vị.
+            en: Combine with red dates, liquorice, goji berries or other herbs for additional flavour.
+            zh: 可搭配红枣、甘草、枸杞或其他草本植物增添风味。
           source: docs/products/02. Nam linh chi tai to.md
       storage:
         - text:
