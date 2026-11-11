@@ -37,7 +37,7 @@ const t = copy('chung/footer', lang);
         <p class="site-footer__farm-line"><FarmNameLink text={t.farmLine} /></p>
         <div class="site-footer__business">
           <p class="site-footer__business-role">{t.businessRole}</p>
-          <p class="site-footer__business-name" lang="vi">{business.name[0]}<br />{business.name[1]}</p>
+          <p class="site-footer__business-name" lang={lang === 'vi' ? 'vi' : undefined}>{business.name[0]}<br />{business.name[1]}</p>
           {business.code && <p class="site-footer__business-code">{business.code}</p>}
         </div>
       </div>

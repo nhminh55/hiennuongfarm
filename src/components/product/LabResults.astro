@@ -38,7 +38,7 @@ const paramName = (r: LabResult) => ({ vi: r.name, en: r.en, zh: r.zh })[lang];
           <dl class="lab__meta">
             <div>
               <dt>{t.sample}</dt>
-              <dd lang="vi">{report.sample}</dd>
+              <dd lang={lang === 'vi' ? 'vi' : undefined}>{report.sample}</dd>
             </div>
             <div>
               <dt>{t.lab}</dt>
@@ -46,7 +46,7 @@ const paramName = (r: LabResult) => ({ vi: r.name, en: r.en, zh: r.zh })[lang];
             </div>
             <div>
               <dt>{t.customer}</dt>
-              <dd lang="vi">{report.customer}</dd>
+              <dd lang={lang === 'vi' ? 'vi' : undefined}>{report.customer}</dd>
             </div>
             <div>
               <dt>{t.testedOn}</dt>
