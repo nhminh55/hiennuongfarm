@@ -857,6 +857,102 @@ products:
             en: Vietnam
             zh: 越南
           source: docs/products/03. Dong trung ha thao.md
+    benefits:
+      highlights:
+        - label:
+            vi: 'Tươi nguyên, không qua sấy hay xử lý nhiệt'
+            en: 'Fresh, not dried or heat-treated'
+            zh: '新鲜原样，未经烘干或热处理'
+          value:
+            vi: 'Sợi nấm được thu hoạch và đóng gói ngay tại trang trại, không qua xử lý nhiệt hay sấy khô, nên giữ được độ mọng nước, màu vàng cam và hương thơm nấm đặc trưng.'
+            en: 'The strands are harvested and packed right on the farm with no heat treatment or drying, so they keep their juiciness, orange-yellow colour and distinctive mushroom aroma.'
+            zh: '在农场直接采收包装，不经热处理或干燥，保留饱满多汁的口感、橙黄色泽和独特菌香。'
+          source: docs/products/03. Dong trung ha thao.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Bồi bổ cơ thể, hỗ trợ giảm mệt mỏi'
+            en: 'Nourishes the body, helps with tiredness'
+            zh: '滋补身体，有助缓解疲劳'
+          value:
+            vi: 'Đông trùng hạ thảo từ lâu được dùng để bồi bổ cơ thể, phù hợp với người làm việc căng thẳng, dễ xuống sức hoặc thấy thiếu năng lượng sau một ngày dài.'
+            en: 'Cordyceps has long been used to nourish the body — suited to people with demanding work who tire easily or feel low on energy after a long day.'
+            zh: '虫草历来用于滋补身体，适合工作紧张、容易疲惫或在漫长一天后感到精力不足的人。'
+          source: Owner-approved cordyceps copy (Trà hòa tan linh chi trùng thảo, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ sức bền, duy trì năng lượng'
+            en: 'Supports stamina and energy'
+            zh: '有助增强耐力、保持精力'
+          value:
+            vi: 'Cordycepin và adenosine là hợp chất đặc trưng của đông trùng hạ thảo, liên quan đến quá trình chuyển hóa năng lượng. Phù hợp với người bận rộn, thường xuyên vận động.'
+            en: 'Cordycepin and adenosine, characteristic compounds of cordyceps, are linked to energy metabolism. Suited to busy, active people.'
+            zh: '虫草素和腺苷是虫草的特征成分，与能量代谢相关，适合忙碌、经常运动的人。'
+          source: Owner-approved cordyceps copy (Trà hòa tan linh chi trùng thảo, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ tăng cường sức đề kháng'
+            en: 'Supports natural resistance'
+            zh: '有助增强抵抗力'
+          value:
+            vi: 'Polysaccharide trong đông trùng hạ thảo được quan tâm nghiên cứu về vai trò hỗ trợ hệ miễn dịch, phù hợp với người muốn chủ động chăm sóc sức khỏe.'
+            en: 'Polysaccharides in cordyceps are studied for their supporting role in the immune system — for people who want to look after their health proactively.'
+            zh: '虫草中的多糖因其对免疫系统的辅助作用而受到研究关注，适合希望主动保健的人。'
+          source: Owner-approved cordyceps copy (Trà hòa tan linh chi trùng thảo, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ chống oxy hóa'
+            en: 'Supports antioxidant activity'
+            zh: '有助抗氧化'
+          value:
+            vi: 'Các hợp chất tự nhiên trong đông trùng hạ thảo góp phần hỗ trợ cơ thể trước tác động của gốc tự do và stress oxy hóa.'
+            en: 'Natural compounds in cordyceps help support the body against free radicals and oxidative stress.'
+            zh: '虫草中的天然成分有助于身体应对自由基和氧化应激。'
+          source: Owner-approved cordyceps copy (Trà hòa tan linh chi trùng thảo, 2026-11-11)
+        - label:
+            vi: 'Vị ngọt thanh, hợp món bồi bổ gia đình'
+            en: 'Mildly sweet, for nourishing family dishes'
+            zh: '口感清甜，适合家庭滋补菜'
+          value:
+            vi: 'Sợi nấm tươi có vị ngọt thanh, dễ kết hợp với các món chưng yến, hầm gà, chim bồ câu, nấu canh hay cháo — món quen thuộc để bồi bổ cho cả nhà, nhất là ông bà, cha mẹ.'
+            en: 'The fresh strands have a mild sweetness and pair easily with bird’s nest, chicken or pigeon stews, soups and congee — familiar nourishing dishes for the whole family, especially grandparents and parents.'
+            zh: '鲜虫草口感清甜，可搭配燕窝、炖鸡、炖鸽、汤品或粥，是全家（尤其是长辈）常用的滋补菜式。'
+          source: docs/products/03. Dong trung ha thao.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Dễ dùng theo nhiều cách'
+            en: 'Easy to use in many ways'
+            zh: '多种方式，简单易用'
+          value:
+            vi: 'Có thể hãm trà uống mỗi sáng rồi ăn cả sợi nấm, hoặc ngâm cùng mật ong nguyên chất, rượu nếp để dùng dần — không cần chế biến cầu kỳ.'
+            en: 'Steep as a morning tea and eat the strands afterwards, or steep in pure honey or glutinous rice wine to enjoy over time — no elaborate preparation needed.'
+            zh: '可每天早上泡茶饮用并食用虫草，或浸于纯蜂蜜、糯米酒中慢慢享用，无需复杂烹调。'
+          source: docs/products/03. Dong trung ha thao.md (owner product copy; benefits written 2026-11-12)
+      audience:
+        - text:
+            vi: 'Gia đình muốn bồi bổ sức khỏe bằng thực phẩm tươi, tự nhiên.'
+            en: 'Families wanting to nourish their health with fresh, natural food.'
+            zh: '希望用新鲜天然食材滋补身体的家庭。'
+          source: docs/products/03. Dong trung ha thao.md (benefits written 2026-11-12)
+        - text:
+            vi: 'Người thường xuyên mệt mỏi, thiếu năng lượng.'
+            en: 'People who often feel tired or low on energy.'
+            zh: '经常疲惫、精力不足的人。'
+          source: Owner-approved cordyceps copy (Trà hòa tan linh chi trùng thảo, 2026-11-11)
+        - text:
+            vi: 'Người làm việc căng thẳng hoặc cường độ cao.'
+            en: 'People with stressful or intensive work.'
+            zh: '工作紧张或强度高的人。'
+          source: Owner-approved cordyceps copy (Trà hòa tan linh chi trùng thảo, 2026-11-11)
+        - text:
+            vi: 'Người thường xuyên vận động, cần duy trì thể trạng và sức bền.'
+            en: 'Active people who want to keep up their condition and stamina.'
+            zh: '经常运动、需要保持体能和耐力的人。'
+          source: Owner-approved cordyceps copy (Trà hòa tan linh chi trùng thảo, 2026-11-11)
+        - text:
+            vi: 'Người trung niên, lớn tuổi và con cháu muốn chưng yến, nấu món bồi bổ cho cha mẹ.'
+            en: 'Middle-aged and older people, and those cooking nourishing dishes for their parents.'
+            zh: '中老年人，以及想为父母炖燕窝、做滋补菜的子女。'
+          source: docs/products/03. Dong trung ha thao.md (benefits written 2026-11-12)
+        - text:
+            vi: 'Người ưu tiên nấm tươi, không chất bảo quản, rõ nguồn gốc.'
+            en: 'People who prefer fresh, preservative-free mushrooms with a clear origin.'
+            zh: '偏好新鲜、无防腐剂、来源清晰菌菇的人。'
+          source: docs/products/03. Dong trung ha thao.md (benefits written 2026-11-12)
     composition:
       ingredients:
         text:
