@@ -11,7 +11,7 @@ activities:
       - "Đồng hành cùng các sản phẩm là phương châm mà Nương Farm theo đuổi: “Nông nghiệp xanh – Sản xuất tuần hoàn – Chất lượng từ tâm”."
       - Với farm, câu chuyện làm nông còn nằm ở cách tận dụng phụ phẩm, chăm chút từng công đoạn và tìm hướng tiếp nối cho nguồn nguyên liệu sau mỗi mùa nấm. Tinh thần “từ đất, trở về với đất” ấy cũng là điều Nương Farm muốn chia sẻ trong những cuộc gặp gỡ tại hội chợ.
       - Mời cả nhà dành chút thời gian ghé chơi, ngắm các sản phẩm từ nấm và trò chuyện cùng farm. Nương Farm rất vui được đón những người đã quen với sản phẩm, cũng như những vị khách lần đầu biết đến gian hàng.
-      - "Thời gian: từ ngày 16/10 đến hết ngày 21/10/2026. Địa điểm: Phố đi bộ xã Tri Tôn, tỉnh An Giang. Liên hệ Nương Farm: 0985 799 777."
+      - "Thời gian: từ ngày 16/10 đến hết ngày 21/10/2026. Địa điểm: Phố đi bộ xã Tri Tôn, tỉnh An Giang. Liên hệ Nương Farm: 0985 799 777 hoặc 0988 779 777."
       - Hẹn gặp cả nhà tại Hội chợ Tri Tôn 2026!
     photos:
       - file: tri-ton-2026-1

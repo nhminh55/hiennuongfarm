@@ -179,6 +179,7 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
         <p class="mobile-menu__label">{contactLink.label}</p>
         <a href={`mailto:${contact.email}`}>{contact.email}</a>
         <a href={`tel:${contact.phone}`}>{contact.phoneDisplay}</a>
+        <a href={`tel:${contact.phone2}`}>{contact.phone2Display}</a>
         <p>{contact.addressLines[lang].join(', ')}</p>
       </div>
     </div>
