@@ -1006,7 +1006,7 @@ products:
         en: A paper box of freeze-dried black termite mushroom with a window panel, beside a few dried mushrooms
         vi: Hộp giấy nấm mối đen sấy thăng hoa có ô cửa sổ, bên cạnh vài cây nấm sấy
         zh: 带透明窗的冻干黑皮鸡枞菌纸盒，旁边放着几朵干菌
-      file: 05-nam-moi-den-say-thang-hoa.webp
+      file: 05-nam-moi-den-say-thang-hoa-2026-11.webp
     slug: nam-moi-den-say-thang-hoa
   - name:
       vi: Snack nấm mối đen
