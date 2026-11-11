@@ -1085,6 +1085,102 @@ products:
             en: Vietnam
             zh: 越南
           source: docs/products/04. Nam bao ngu.md
+    benefits:
+      highlights:
+        - label:
+            vi: 'Nguồn đạm thực vật cho bữa ăn'
+            en: 'Plant protein for your meals'
+            zh: '餐桌上的植物蛋白'
+          value:
+            vi: 'Nấm bào ngư cung cấp đạm có nguồn gốc thực vật, dễ đưa vào thực đơn ăn chay hoặc thực dưỡng, giúp đa dạng nguồn đạm bên cạnh thịt cá.'
+            en: 'Oyster mushrooms provide plant-based protein that fits easily into vegetarian or macrobiotic menus, adding variety alongside meat and fish.'
+            zh: '平菇提供植物来源的蛋白质，容易融入素食或养生食谱，让肉、鱼之外的蛋白质来源更加多样。'
+          source: docs/products/04. Nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Bổ sung chất xơ, vitamin nhóm B và khoáng chất'
+            en: 'Fibre, B vitamins and minerals'
+            zh: '补充膳食纤维、B族维生素和矿物质'
+          value:
+            vi: 'Nấm chứa chất xơ, các vitamin nhóm B (B1, B2, B3, B5, B6) cùng một số khoáng chất cần thiết, góp phần làm phong phú giá trị dinh dưỡng của bữa ăn.'
+            en: 'The mushrooms contain fibre, B vitamins (B1, B2, B3, B5, B6) and a number of essential minerals, adding nutritional richness to your meals.'
+            zh: '平菇含有膳食纤维、B族维生素（B1、B2、B3、B5、B6）及多种必需矿物质，让餐食营养更丰富。'
+          source: docs/products/04. Nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Hỗ trợ chế độ ăn thân thiện với hệ tiêu hóa'
+            en: 'Supports a gut-friendly diet'
+            zh: '有助于打造对消化友好的饮食'
+          value:
+            vi: 'Nhờ hàm lượng chất xơ, nấm bào ngư là lựa chọn phù hợp cho chế độ ăn đa dạng, giàu thực vật và nhẹ nhàng với hệ tiêu hóa.'
+            en: 'With its fibre, oyster mushroom is a good choice for a varied, plant-rich diet that is gentle on digestion.'
+            zh: '凭借膳食纤维，平菇适合多样化、富含植物且对消化温和的饮食。'
+          source: docs/products/04. Nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Thanh đạm, hợp bữa ăn lành mạnh'
+            en: 'Light, for wholesome meals'
+            zh: '清淡，适合健康餐'
+          value:
+            vi: 'Nấm có vị thanh, dễ chế biến bằng các cách ít dầu như nấu canh, nấu lẩu hay xào nhanh, phù hợp với bữa ăn lành mạnh của gia đình.'
+            en: 'Mild in flavour and easy to cook with little oil — in soups, hotpots or quick stir-fries — for wholesome family meals.'
+            zh: '口味清淡，易用少油方式烹调，如煮汤、火锅或快炒，适合健康的家庭餐。'
+          source: docs/products/04. Nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Dai giòn, ngọt thanh tự nhiên'
+            en: 'Chewy-crisp and naturally sweet'
+            zh: '口感韧脆，天然清甜'
+          value:
+            vi: 'Tai nấm to, dày thịt, giữ độ dai giòn sần sật và vị ngọt thanh khi nấu, giúp món chay thêm đậm đà và món mặn thêm hấp dẫn.'
+            en: 'Large, thick caps stay chewy and crisp with a mild sweetness when cooked, giving vegetarian dishes more depth and everyday dishes more appeal.'
+            zh: '菇体大而厚实，烹调后仍保持韧脆口感和清甜味，让素菜更有滋味、荤菜更诱人。'
+          source: docs/products/04. Nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Dễ chế biến, nhiều món ngon'
+            en: 'Easy to cook, many dishes'
+            zh: '易于烹调，花样多'
+          value:
+            vi: 'Từ xào sả ớt, nấu canh, thả lẩu đến tẩm bột chiên giòn hay làm chà bông nấm, nấm bào ngư dễ biến tấu cho cả bữa cơm hằng ngày lẫn món ăn vặt cho bé.'
+            en: 'From lemongrass-chilli stir-fries, soups and hotpots to crispy battered bites or mushroom floss, oyster mushrooms adapt easily to everyday meals and snacks for children.'
+            zh: '从香茅辣椒炒、煮汤、火锅到裹粉炸或做菇松，平菇可轻松变化成日常家常菜或孩子的小零食。'
+          source: docs/products/04. Nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Nuôi trồng trong nhà lưới khép kín'
+            en: 'Grown in closed net houses'
+            zh: '封闭网棚种植'
+          value:
+            vi: 'Nấm được nuôi trồng trong nhà lưới với nhiệt độ, độ ẩm được kiểm soát, theo mô hình nông nghiệp hữu cơ tuần hoàn tại vùng Bảy Núi, An Giang.'
+            en: 'Grown in net houses with controlled temperature and humidity, under an organic circular farming model in Bảy Núi, An Giang.'
+            zh: '在温湿度受控的网棚中，以有机循环农业模式种植于安江省七山地区。'
+          source: docs/products/04. Nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+      audience:
+        - text:
+            vi: 'Gia đình muốn bữa ăn thanh đạm, giàu dinh dưỡng.'
+            en: 'Families wanting light, nourishing meals.'
+            zh: '希望餐食清淡又营养的家庭。'
+          source: docs/products/04. Nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+        - text:
+            vi: 'Người ăn chay, ăn thực dưỡng hoặc ưu tiên đạm thực vật.'
+            en: 'Vegetarians, macrobiotic eaters and people who favour plant protein.'
+            zh: '素食者、养生饮食者或偏好植物蛋白的人。'
+          source: docs/products/04. Nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+        - text:
+            vi: 'Người muốn bổ sung chất xơ và vitamin từ thực phẩm.'
+            en: 'People wanting more fibre and vitamins from food.'
+            zh: '希望从食物中补充纤维和维生素的人。'
+          source: docs/products/04. Nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+        - text:
+            vi: 'Người thích nấm dai giòn, ngọt thịt.'
+            en: 'Lovers of chewy-crisp, sweet mushrooms.'
+            zh: '喜欢口感韧脆、肉质清甜菌菇的人。'
+          source: docs/products/04. Nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+        - text:
+            vi: 'Người bận rộn cần nguyên liệu dễ chế biến.'
+            en: 'Busy people who need easy-to-cook ingredients.'
+            zh: '需要易于烹调食材的忙碌人士。'
+          source: docs/products/04. Nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+        - text:
+            vi: 'Phụ huynh muốn tự làm món ăn vặt cho con.'
+            en: 'Parents who like to make homemade snacks for their children.'
+            zh: '想为孩子自制小零食的家长。'
+          source: docs/products/04. Nam bao ngu.md (owner product copy; benefits written 2026-11-12)
     composition:
       ingredients:
         text:
@@ -1548,6 +1644,93 @@ products:
             en: Vietnam
             zh: 越南
           source: docs/products/06. Snack nam moi den.md
+    benefits:
+      highlights:
+        - label:
+            vi: 'Ăn vặt từ nấm tự nhiên'
+            en: 'A snack made from real mushrooms'
+            zh: '天然菌菇零食'
+          value:
+            vi: 'Làm từ nấm mối tươi hữu cơ của vùng Bảy Núi, An Giang, được tuyển chọn kỹ và sấy giòn — một lựa chọn ăn vặt từ nấm thay cho các loại snack thông thường.'
+            en: 'Made from carefully selected fresh organic termite mushrooms from Bảy Núi, An Giang, dried to a crisp — a mushroom-based alternative to ordinary snacks.'
+            zh: '以安江省七山地区精选的新鲜有机鸡枞菌制成并烘至酥脆，是替代一般零食的菌菇之选。'
+          source: docs/products/06. Snack nam moi den.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Giữ hương vị nấm mối đặc trưng'
+            en: 'Keeps the termite mushroom flavour'
+            zh: '保留鸡枞菌的独特风味'
+          value:
+            vi: 'Nấm được sấy giòn mà vẫn giữ hương thơm và vị ngọt tự nhiên của nấm mối — đặc sản nổi tiếng của vùng Bảy Núi.'
+            en: 'Dried to a crunch while keeping the natural aroma and sweetness of termite mushroom, a well-known speciality of Bảy Núi.'
+            zh: '烘至酥脆，仍保留鸡枞菌天然的香气与甜味——七山地区的知名特产。'
+          source: docs/products/06. Snack nam moi den.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Bổ sung chất xơ và vitamin từ nấm'
+            en: 'Fibre and vitamins from mushrooms'
+            zh: '来自菌菇的纤维和维生素'
+          value:
+            vi: 'Nấm mối mang đến chất xơ và vitamin, giúp món ăn vặt thêm giá trị dinh dưỡng thay vì chỉ để nhâm nhi.'
+            en: 'Termite mushrooms bring fibre and vitamins, giving a snack some nutritional value beyond nibbling.'
+            zh: '鸡枞菌带来膳食纤维和维生素，让零食不只是解馋，也多一分营养。'
+          source: docs/products/06. Snack nam moi den.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Giòn tan, ăn liền'
+            en: 'Crunchy and ready to eat'
+            zh: '酥脆即食'
+          value:
+            vi: 'Mở hộp là dùng được ngay, không cần chế biến. Có thể nhâm nhi cùng trà, cà phê hoặc bày trong các buổi tiệc.'
+            en: 'Ready the moment you open the box, with no cooking. Enjoy with tea or coffee, or serve at gatherings.'
+            zh: '开盒即食，无需烹调。可配茶、咖啡享用，或在聚会时招待客人。'
+          source: docs/products/06. Snack nam moi den.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Nhỏ gọn, tiện mang theo'
+            en: 'Compact and portable'
+            zh: '小巧便携'
+          value:
+            vi: 'Hộp 50 g nhỏ gọn, dễ bỏ túi khi đi làm, đi chơi, dã ngoại hay những chuyến đi xa.'
+            en: 'The compact 50 g box slips easily into a bag for work, outings, picnics or long trips.'
+            zh: '50 克小盒装，上班、出游、野餐或远行都方便携带。'
+          source: docs/products/06. Snack nam moi den.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Món quà đặc sản An Giang'
+            en: 'A gift from An Giang'
+            zh: '安江特产伴手礼'
+          value:
+            vi: 'Một món quà lạ miệng, mang hương vị nấm mối vùng Bảy Núi để tặng bạn bè, người thân.'
+            en: 'An unusual treat carrying the taste of Bảy Núi termite mushrooms, to share with friends and family.'
+            zh: '别具风味的小礼物，带着七山鸡枞菌的味道，送给亲友。'
+          source: docs/products/06. Snack nam moi den.md (owner product copy; benefits written 2026-11-12)
+      audience:
+        - text:
+            vi: 'Người thích ăn vặt nhưng muốn chọn món từ nguyên liệu tự nhiên.'
+            en: 'Snack lovers who want something made from natural ingredients.'
+            zh: '爱吃零食、又想选择天然原料的人。'
+          source: docs/products/06. Snack nam moi den.md (owner product copy; benefits written 2026-11-12)
+        - text:
+            vi: 'Gia đình tìm món ăn vặt hợp với nhiều lứa tuổi.'
+            en: 'Families looking for a snack for all ages.'
+            zh: '寻找老少皆宜零食的家庭。'
+          source: docs/products/06. Snack nam moi den.md (owner product copy; benefits written 2026-11-12)
+        - text:
+            vi: 'Người đi làm cần món nhâm nhi tiện lợi.'
+            en: 'Working people who want a convenient nibble.'
+            zh: '需要便捷小食的上班族。'
+          source: docs/products/06. Snack nam moi den.md (owner product copy; benefits written 2026-11-12)
+        - text:
+            vi: 'Người hay đi du lịch, dã ngoại.'
+            en: 'People who often travel or go on picnics.'
+            zh: '经常旅行、野餐的人。'
+          source: docs/products/06. Snack nam moi den.md (owner product copy; benefits written 2026-11-12)
+        - text:
+            vi: 'Người tìm quà đặc sản An Giang.'
+            en: 'People looking for An Giang specialities to give.'
+            zh: '想寻找安江特产作礼物的人。'
+          source: docs/products/06. Snack nam moi den.md (owner product copy; benefits written 2026-11-12)
+        - text:
+            vi: 'Người yêu thích hương vị nấm mối.'
+            en: 'Fans of termite mushroom flavour.'
+            zh: '喜爱鸡枞菌风味的人。'
+          source: docs/products/06. Snack nam moi den.md (owner product copy; benefits written 2026-11-12)
     composition:
       ingredients:
         text:
@@ -1682,6 +1865,88 @@ products:
             en: Vietnam
             zh: 越南
           source: docs/products/07. Snack nam bao ngu.md
+    benefits:
+      highlights:
+        - label:
+            vi: '100% nấm bào ngư tươi'
+            en: '100% fresh oyster mushroom'
+            zh: '100% 新鲜平菇'
+          value:
+            vi: 'Làm từ nấm bào ngư tươi trồng và thu hoạch mới mỗi ngày tại trang trại, không pha tạp nguyên liệu khác.'
+            en: 'Made from fresh oyster mushrooms grown and harvested daily on the farm, with nothing else mixed in.'
+            zh: '以农场每天新鲜种植采收的平菇制成，不掺杂其他原料。'
+          source: docs/products/07. Snack nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Không phụ gia, phẩm màu, chất bảo quản'
+            en: 'No additives, colourings or preservatives'
+            zh: '不含添加剂、色素和防腐剂'
+          value:
+            vi: 'Nấm được sấy giòn mà không dùng phụ gia, phẩm màu hay chất bảo quản, giúp bố mẹ yên tâm hơn khi chọn món ăn vặt cho cả nhà.'
+            en: 'Dried to a crunch without additives, colourings or preservatives, so parents can choose a family snack with more peace of mind.'
+            zh: '烘至酥脆，不使用添加剂、色素或防腐剂，让父母为全家挑选零食时更放心。'
+          source: docs/products/07. Snack nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Ăn vặt nhẹ nhàng, ít calo'
+            en: 'A light, low-calorie snack'
+            zh: '清爽低卡零食'
+          value:
+            vi: 'Ít calo và giữ được giá trị dinh dưỡng từ nấm, là lựa chọn ăn vặt nhẹ nhàng cho các thành viên trong gia đình.'
+            en: 'Low in calories and keeping the nutrition of mushrooms, it is a light snack for the whole family.'
+            zh: '热量低并保留菌菇营养，是适合全家人的清爽零食。'
+          source: docs/products/07. Snack nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Giòn rụm, ngọt tự nhiên'
+            en: 'Crunchy, naturally sweet'
+            zh: '酥脆，天然清甜'
+          value:
+            vi: 'Công nghệ sấy giòn giữ được hương thơm và vị ngọt tự nhiên của nấm bào ngư, ăn lạ miệng mà không ngấy.'
+            en: 'Crisp-drying keeps the aroma and natural sweetness of oyster mushroom — unusual, and never cloying.'
+            zh: '烘脆工艺保留平菇的香气与天然甜味，口感新奇而不腻。'
+          source: docs/products/07. Snack nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Dễ kết hợp'
+            en: 'Easy to pair'
+            zh: '易于搭配'
+          value:
+            vi: 'Ăn trực tiếp như món ăn vặt, hoặc rắc lên salad, cơm trộn và các món ăn nhẹ để thêm độ giòn.'
+            en: 'Eat straight from the jar, or scatter over salads, rice bowls and light dishes for extra crunch.'
+            zh: '可直接当零食，或撒在沙拉、拌饭和轻食上增添脆感。'
+          source: docs/products/07. Snack nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Hũ nhỏ, tiện dùng dần'
+            en: 'A small jar to enjoy over time'
+            zh: '小罐装，可慢慢享用'
+          value:
+            vi: 'Hũ 50 g đóng kín nắp sau khi dùng là giữ được độ giòn; hạn sử dụng 6 tháng kể từ ngày sản xuất.'
+            en: 'Close the 50 g jar after use to keep the snack crisp; shelf life is 6 months from production.'
+            zh: '50 克罐装用后盖紧即可保持酥脆；保质期为生产之日起 6 个月。'
+          source: docs/products/07. Snack nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+      audience:
+        - text:
+            vi: 'Phụ huynh muốn chọn món ăn vặt rõ nguồn gốc cho con.'
+            en: 'Parents wanting snacks of clear origin for their children.'
+            zh: '想为孩子选择来源清晰零食的家长。'
+          source: docs/products/07. Snack nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+        - text:
+            vi: 'Người ăn vặt theo hướng lành mạnh, ít calo.'
+            en: 'People who prefer healthy, low-calorie snacks.'
+            zh: '偏好健康、低卡零食的人。'
+          source: docs/products/07. Snack nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+        - text:
+            vi: 'Người ăn chay hoặc yêu thích sản phẩm từ nấm.'
+            en: 'Vegetarians and mushroom lovers.'
+            zh: '素食者或喜爱菌菇产品的人。'
+          source: docs/products/07. Snack nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+        - text:
+            vi: 'Người muốn thêm độ giòn cho salad, cơm trộn.'
+            en: 'People who want extra crunch for salads and rice bowls.'
+            zh: '想为沙拉、拌饭增添脆感的人。'
+          source: docs/products/07. Snack nam bao ngu.md (owner product copy; benefits written 2026-11-12)
+        - text:
+            vi: 'Người tìm món quà lạ miệng từ An Giang.'
+            en: 'People looking for an unusual gift from An Giang.'
+            zh: '寻找安江特色小礼物的人。'
+          source: docs/products/07. Snack nam bao ngu.md (owner product copy; benefits written 2026-11-12)
     composition:
       ingredients:
         text:
@@ -1845,6 +2110,102 @@ products:
             en: Vietnam
             zh: 越南
           source: docs/products/08. Dong trung ha thao say thang hoa.md
+    benefits:
+      highlights:
+        - label:
+            vi: 'Sấy thăng hoa, giữ màu sắc và hình dáng'
+            en: 'Freeze-dried to keep colour and shape'
+            zh: '冻干工艺，保留色泽与形态'
+          value:
+            vi: 'Sấy thăng hoa ở nhiệt độ thấp giúp sợi nấm giữ tốt hơn màu vàng cam, hương thơm và hình dáng so với nhiều phương pháp sấy nhiệt thông thường.'
+            en: 'Low-temperature freeze-drying helps the strands keep their orange-yellow colour, aroma and shape better than many conventional heat-drying methods.'
+            zh: '低温冻干比许多常规热风干燥方式更能保留虫草的橙黄色泽、香气和形态。'
+          source: docs/products/08. Dong trung ha thao say thang hoa.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Bồi bổ cơ thể, hỗ trợ giảm mệt mỏi'
+            en: 'Nourishes the body, helps with tiredness'
+            zh: '滋补身体，有助缓解疲劳'
+          value:
+            vi: 'Đông trùng hạ thảo từ lâu được dùng để bồi bổ cơ thể, phù hợp với người làm việc căng thẳng, dễ xuống sức hoặc thấy thiếu năng lượng sau một ngày dài.'
+            en: 'Cordyceps has long been used to nourish the body — suited to people with demanding work who tire easily or feel low on energy after a long day.'
+            zh: '虫草历来用于滋补身体，适合工作紧张、容易疲惫或在漫长一天后感到精力不足的人。'
+          source: Owner-approved cordyceps copy (Trà hòa tan linh chi trùng thảo, 2026-11-11; Đông trùng hạ thảo tươi, 2026-11-12)
+        - label:
+            vi: 'Hỗ trợ sức bền, duy trì năng lượng'
+            en: 'Supports stamina and energy'
+            zh: '有助增强耐力、保持精力'
+          value:
+            vi: 'Cordycepin và adenosine là hợp chất đặc trưng của đông trùng hạ thảo, liên quan đến quá trình chuyển hóa năng lượng. Phù hợp với người bận rộn, thường xuyên vận động.'
+            en: 'Cordycepin and adenosine, characteristic compounds of cordyceps, are linked to energy metabolism. Suited to busy, active people.'
+            zh: '虫草素和腺苷是虫草的特征成分，与能量代谢相关，适合忙碌、经常运动的人。'
+          source: Owner-approved cordyceps copy (Trà hòa tan linh chi trùng thảo, 2026-11-11; Đông trùng hạ thảo tươi, 2026-11-12)
+        - label:
+            vi: 'Hỗ trợ tăng cường sức đề kháng'
+            en: 'Supports natural resistance'
+            zh: '有助增强抵抗力'
+          value:
+            vi: 'Polysaccharide trong đông trùng hạ thảo được quan tâm nghiên cứu về vai trò hỗ trợ hệ miễn dịch, phù hợp với người muốn chủ động chăm sóc sức khỏe.'
+            en: 'Polysaccharides in cordyceps are studied for their supporting role in the immune system — for people who want to look after their health proactively.'
+            zh: '虫草中的多糖因其对免疫系统的辅助作用而受到研究关注，适合希望主动保健的人。'
+          source: Owner-approved cordyceps copy (Trà hòa tan linh chi trùng thảo, 2026-11-11; Đông trùng hạ thảo tươi, 2026-11-12)
+        - label:
+            vi: 'Hỗ trợ chống oxy hóa'
+            en: 'Supports antioxidant activity'
+            zh: '有助抗氧化'
+          value:
+            vi: 'Các hợp chất tự nhiên trong đông trùng hạ thảo góp phần hỗ trợ cơ thể trước tác động của gốc tự do và stress oxy hóa.'
+            en: 'Natural compounds in cordyceps help support the body against free radicals and oxidative stress.'
+            zh: '虫草中的天然成分有助于身体应对自由基和氧化应激。'
+          source: Owner-approved cordyceps copy (Trà hòa tan linh chi trùng thảo, 2026-11-11; Đông trùng hạ thảo tươi, 2026-11-12)
+        - label:
+            vi: 'Hợp món bồi bổ cho cả nhà'
+            en: 'For nourishing family dishes'
+            zh: '适合全家的滋补菜'
+          value:
+            vi: 'Dễ thả vào cháo, súp, món hầm gà, sườn hay chưng cùng tổ yến, táo đỏ, kỷ tử — món bồi bổ quen thuộc cho ông bà, cha mẹ và trẻ nhỏ. Sợi nấm giữ dáng, không bở nát khi nấu.'
+            en: 'Easy to add to congee, soups, chicken or pork-rib stews, or to steam with bird’s nest, red dates and goji — familiar nourishing dishes for grandparents, parents and children. The strands hold their shape when cooked.'
+            zh: '可轻松加入粥、汤、炖鸡或炖排骨，或与燕窝、红枣、枸杞同炖——是为长辈、父母和孩子准备的常见滋补菜。虫草烹煮后仍保持形态，不易软烂。'
+          source: docs/products/08. Dong trung ha thao say thang hoa.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Hãm trà tiện lợi, bảo quản lâu'
+            en: 'Easy tea, long shelf life'
+            zh: '泡茶方便，保存期长'
+          value:
+            vi: 'Chỉ cần 5–10 sợi hãm với nước nóng là có một tách trà thơm dịu, rồi ăn luôn cả sợi nấm. Hũ 25 g dùng được trong 1 năm kể từ ngày sản xuất.'
+            en: 'Just 5–10 strands steeped in hot water make a gently fragrant tea, and you can eat the strands afterwards. The 25 g jar keeps for 1 year from production.'
+            zh: '只需 5–10 根虫草用热水冲泡，即成一杯香气柔和的茶，饮后可食用虫草。25 克罐装自生产之日起可保存 1 年。'
+          source: docs/products/08. Dong trung ha thao say thang hoa.md (owner product copy; benefits written 2026-11-12)
+      audience:
+        - text:
+            vi: 'Gia đình muốn bồi bổ sức khỏe bằng sản phẩm tự nhiên, rõ nguồn gốc.'
+            en: 'Families wanting to nourish their health with natural products of clear origin.'
+            zh: '希望用来源清晰的天然产品滋补身体的家庭。'
+          source: docs/products/08. Dong trung ha thao say thang hoa.md (owner product copy; benefits written 2026-11-12)
+        - text:
+            vi: 'Người thường xuyên mệt mỏi, thiếu năng lượng.'
+            en: 'People who often feel tired or low on energy.'
+            zh: '经常疲惫、精力不足的人。'
+          source: Owner-approved cordyceps copy (Trà hòa tan linh chi trùng thảo, 2026-11-11; Đông trùng hạ thảo tươi, 2026-11-12)
+        - text:
+            vi: 'Người làm việc căng thẳng hoặc cường độ cao.'
+            en: 'People with stressful or intensive work.'
+            zh: '工作紧张或强度高的人。'
+          source: Owner-approved cordyceps copy (Trà hòa tan linh chi trùng thảo, 2026-11-11; Đông trùng hạ thảo tươi, 2026-11-12)
+        - text:
+            vi: 'Người thường xuyên vận động, cần duy trì thể trạng và sức bền.'
+            en: 'Active people who want to keep up their condition and stamina.'
+            zh: '经常运动、需要保持体能和耐力的人。'
+          source: Owner-approved cordyceps copy (Trà hòa tan linh chi trùng thảo, 2026-11-11; Đông trùng hạ thảo tươi, 2026-11-12)
+        - text:
+            vi: 'Người trung niên, lớn tuổi và người cần phục hồi sức khỏe.'
+            en: 'Middle-aged and older people, and those regaining their strength.'
+            zh: '中老年人，以及需要恢复体力的人。'
+          source: docs/products/08. Dong trung ha thao say thang hoa.md (owner product copy; benefits written 2026-11-12)
+        - text:
+            vi: 'Người muốn dự trữ đông trùng dùng lâu dài thay cho nấm tươi.'
+            en: 'People who want cordyceps that keeps, rather than fresh.'
+            zh: '想储备可长期保存的虫草、代替鲜品的人。'
+          source: docs/products/08. Dong trung ha thao say thang hoa.md (owner product copy; benefits written 2026-11-12)
     composition:
       ingredients:
         text:
@@ -2569,6 +2930,102 @@ products:
             en: Vietnam
             zh: 越南
           source: docs/products/11. Bao tu nam linh chi.md
+    benefits:
+      highlights:
+        - label:
+            vi: 'Phần tinh túy của nấm linh chi'
+            en: 'The essence of lingzhi'
+            zh: '灵芝的精华'
+          value:
+            vi: 'Bào tử là lớp phấn mịn được giải phóng từ tai nấm linh chi khi trưởng thành, chứa các hoạt chất sinh học như triterpene và polysaccharide.'
+            en: 'Spores are the fine powder released by mature lingzhi caps, containing bioactive compounds such as triterpenes and polysaccharides.'
+            zh: '孢子是成熟灵芝释放出的细粉，含有三萜、多糖等生物活性成分。'
+          source: docs/products/11. Bao tu nam linh chi.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Hỗ trợ tăng cường sức đề kháng'
+            en: 'Supports natural resistance'
+            zh: '有助增强抵抗力'
+          value:
+            vi: 'Polysaccharide trong linh chi được quan tâm nghiên cứu về vai trò hỗ trợ hệ miễn dịch, phù hợp với người muốn chủ động chăm sóc sức khỏe.'
+            en: 'Polysaccharides in lingzhi are studied for their supporting role in the immune system — for people who want to look after their health proactively.'
+            zh: '灵芝中的多糖因其对免疫系统的辅助作用而受到研究关注，适合希望主动保健的人。'
+          source: Owner-approved lingzhi copy (Nấm linh chi tai to / Trà hòa tan linh chi, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ chống oxy hóa'
+            en: 'Supports antioxidant activity'
+            zh: '有助抗氧化'
+          value:
+            vi: 'Các hợp chất tự nhiên trong linh chi góp phần hỗ trợ cơ thể trước tác động của gốc tự do và stress oxy hóa, phù hợp với người thường làm việc căng thẳng, thiếu ngủ hoặc có nhịp sống bận rộn.'
+            en: 'Natural compounds in lingzhi help support the body against free radicals and oxidative stress — for people who are often stressed, short of sleep or busy.'
+            zh: '灵芝中的天然成分有助于身体应对自由基和氧化应激，适合常感压力、睡眠不足或生活忙碌的人。'
+          source: Owner-approved lingzhi copy (Nấm linh chi tai to / Trà hòa tan linh chi, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ thư giãn, giấc ngủ'
+            en: 'Supports relaxation and sleep'
+            zh: '有助放松与睡眠'
+          value:
+            vi: 'Linh chi từ lâu được dùng trong cách chăm sóc sức khỏe phương Đông để hỗ trợ thư giãn, phù hợp với người hay căng thẳng hoặc quan tâm đến chất lượng giấc ngủ.'
+            en: 'Lingzhi has long been used in Eastern wellness traditions to support relaxation — for people who are often stressed or care about sleep quality.'
+            zh: '灵芝在东方养生传统中历来用于帮助放松，适合常感紧张或关注睡眠质量的人。'
+          source: Owner-approved lingzhi copy (Nấm linh chi tai to / Trà hòa tan linh chi, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ giảm mệt mỏi, phục hồi thể trạng'
+            en: 'Helps with tiredness and recovery'
+            zh: '有助缓解疲劳、恢复体力'
+          value:
+            vi: 'Phù hợp với người làm việc cường độ cao, dễ xuống sức hoặc muốn duy trì thể trạng ổn định hơn trong sinh hoạt hằng ngày.'
+            en: 'Suited to people with intensive work who tire easily or want to keep a steadier condition in daily life.'
+            zh: '适合工作强度高、容易疲惫，或希望在日常生活中保持更稳定体能的人。'
+          source: Owner-approved lingzhi copy (Nấm linh chi tai to / Trà hòa tan linh chi, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ tuần hoàn, sức khỏe tim mạch'
+            en: 'Supports circulation and heart health'
+            zh: '有助血液循环与心血管健康'
+          value:
+            vi: 'Hoạt chất trong linh chi được quan tâm trong các nghiên cứu về tuần hoàn, chuyển hóa lipid và những yếu tố góp phần duy trì sức khỏe tim mạch.'
+            en: 'Compounds in lingzhi are of interest in research on circulation, lipid metabolism and factors that help maintain heart health.'
+            zh: '灵芝中的活性成分在血液循环、脂质代谢以及维持心血管健康相关因素方面受到研究关注。'
+          source: Owner-approved lingzhi copy (Nấm linh chi tai to / Trà hòa tan linh chi, 2026-11-11)
+        - label:
+            vi: 'Nguyên chất, dễ dùng hằng ngày'
+            en: 'Pure and easy to take daily'
+            zh: '纯正，日常易用'
+          value:
+            vi: '100% bào tử linh chi đỏ nguyên chất, không pha trộn. Chỉ cần pha 1–2 g với nước nóng, hãm trà hoặc thêm chút mật ong cho dễ uống.'
+            en: '100% pure red lingzhi spores, unblended. Simply mix 1–2 g with hot water, brew as tea or add a little honey to make it easier to drink.'
+            zh: '100% 纯正赤灵芝孢子，无掺杂。只需取 1–2 克用热水冲调、泡茶，或加少许蜂蜜更易入口。'
+          source: docs/products/11. Bao tu nam linh chi.md (owner product copy; benefits written 2026-11-12)
+      audience:
+        - text:
+            vi: 'Người trưởng thành quan tâm chăm sóc sức khỏe hằng ngày.'
+            en: 'Adults who want to look after their health every day.'
+            zh: '希望日常保健的成年人。'
+          source: Owner-approved lingzhi copy (Nấm linh chi tai to / Trà hòa tan linh chi, 2026-11-11)
+        - text:
+            vi: 'Người làm việc căng thẳng hoặc cường độ cao.'
+            en: 'People with stressful or intensive work.'
+            zh: '工作紧张或强度高的人。'
+          source: Owner-approved lingzhi copy (Nấm linh chi tai to / Trà hòa tan linh chi, 2026-11-11)
+        - text:
+            vi: 'Người hay cảm thấy mệt mỏi, cần duy trì thể trạng.'
+            en: 'People who often feel tired and want to keep up their condition.'
+            zh: '常感疲惫、需要保持体能的人。'
+          source: Owner-approved lingzhi copy (Nấm linh chi tai to / Trà hòa tan linh chi, 2026-11-11)
+        - text:
+            vi: 'Người quan tâm đến giấc ngủ và sự thư giãn.'
+            en: 'People who care about sleep and relaxation.'
+            zh: '关注睡眠与放松的人。'
+          source: Owner-approved lingzhi copy (Nấm linh chi tai to / Trà hòa tan linh chi, 2026-11-11)
+        - text:
+            vi: 'Người trung niên và lớn tuổi.'
+            en: 'Middle-aged and older people.'
+            zh: '中老年人。'
+          source: Owner-approved lingzhi copy (Nấm linh chi tai to / Trà hòa tan linh chi, 2026-11-11)
+        - text:
+            vi: 'Con cháu muốn chọn quà sức khỏe cho cha mẹ.'
+            en: 'Those choosing a wellness gift for their parents.'
+            zh: '想为父母挑选养生礼物的子女。'
+          source: docs/products/11. Bao tu nam linh chi.md (owner product copy; benefits written 2026-11-12)
     composition:
       ingredients:
         text:
@@ -2697,6 +3154,93 @@ products:
             en: Vietnam
             zh: 越南
           source: docs/products/12. Dong trung ha thao ngam mat ong.md
+    benefits:
+      highlights:
+        - label:
+            vi: 'Đông trùng tươi ngâm mật ong rừng'
+            en: 'Fresh cordyceps in forest honey'
+            zh: '鲜虫草浸野生蜂蜜'
+          value:
+            vi: 'Đông trùng hạ thảo tươi nuôi trồng hữu cơ tại trang trại được ngâm cùng mật ong rừng nguyên chất, không chất bảo quản, không hương liệu.'
+            en: 'Fresh, organically grown cordyceps from the farm steeped in pure forest honey, with no preservatives or flavourings.'
+            zh: '农场有机种植的新鲜虫草浸于纯正野生蜂蜜中，不含防腐剂和香精。'
+          source: docs/products/12. Dong trung ha thao ngam mat ong.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Dưỡng chất từ đông trùng và mật ong'
+            en: 'Nutrients from cordyceps and honey'
+            zh: '虫草与蜂蜜的营养'
+          value:
+            vi: 'Kết hợp các hợp chất đặc trưng của đông trùng hạ thảo như cordycepin, adenosine, polysaccharide và axit amin với vitamin, khoáng chất có trong mật ong.'
+            en: 'Combines characteristic cordyceps compounds — cordycepin, adenosine, polysaccharides and amino acids — with the vitamins and minerals in honey.'
+            zh: '结合虫草素、腺苷、多糖和氨基酸等虫草特征成分，以及蜂蜜中的维生素和矿物质。'
+          source: docs/products/12. Dong trung ha thao ngam mat ong.md (owner product copy; benefits written 2026-11-12)
+        - label:
+            vi: 'Bồi bổ cơ thể, hỗ trợ giảm mệt mỏi'
+            en: 'Nourishes the body, helps with tiredness'
+            zh: '滋补身体，有助缓解疲劳'
+          value:
+            vi: 'Đông trùng hạ thảo từ lâu được dùng để bồi bổ cơ thể, phù hợp với người làm việc căng thẳng, dễ xuống sức hoặc thấy thiếu năng lượng sau một ngày dài.'
+            en: 'Cordyceps has long been used to nourish the body — suited to people with demanding work who tire easily or feel low on energy after a long day.'
+            zh: '虫草历来用于滋补身体，适合工作紧张、容易疲惫或在漫长一天后感到精力不足的人。'
+          source: Owner-approved cordyceps copy (Trà hòa tan linh chi trùng thảo, 2026-11-11; Đông trùng hạ thảo tươi, 2026-11-12)
+        - label:
+            vi: 'Hỗ trợ tăng cường sức đề kháng'
+            en: 'Supports natural resistance'
+            zh: '有助增强抵抗力'
+          value:
+            vi: 'Polysaccharide trong đông trùng hạ thảo được quan tâm nghiên cứu về vai trò hỗ trợ hệ miễn dịch, phù hợp với người muốn chủ động chăm sóc sức khỏe.'
+            en: 'Polysaccharides in cordyceps are studied for their supporting role in the immune system — for people who want to look after their health proactively.'
+            zh: '虫草中的多糖因其对免疫系统的辅助作用而受到研究关注，适合希望主动保健的人。'
+          source: Owner-approved cordyceps copy (Trà hòa tan linh chi trùng thảo, 2026-11-11; Đông trùng hạ thảo tươi, 2026-11-12)
+        - label:
+            vi: 'Hỗ trợ sức bền, duy trì năng lượng'
+            en: 'Supports stamina and energy'
+            zh: '有助增强耐力、保持精力'
+          value:
+            vi: 'Cordycepin và adenosine là hợp chất đặc trưng của đông trùng hạ thảo, liên quan đến quá trình chuyển hóa năng lượng. Phù hợp với người bận rộn, thường xuyên vận động.'
+            en: 'Cordycepin and adenosine, characteristic compounds of cordyceps, are linked to energy metabolism. Suited to busy, active people.'
+            zh: '虫草素和腺苷是虫草的特征成分，与能量代谢相关，适合忙碌、经常运动的人。'
+          source: Owner-approved cordyceps copy (Trà hòa tan linh chi trùng thảo, 2026-11-11; Đông trùng hạ thảo tươi, 2026-11-12)
+        - label:
+            vi: 'Dễ uống, tiện dùng mỗi ngày'
+            en: 'Easy to take every day'
+            zh: '易饮，每日方便'
+          value:
+            vi: 'Vị ngọt dịu của mật ong giúp dễ dùng: 1–2 thìa nhỏ trực tiếp, hoặc pha cùng nước ấm, nước chanh, trà thảo mộc thành thức uống buổi sáng.'
+            en: 'The gentle sweetness of honey makes it easy to take: 1–2 small spoonfuls on their own, or stirred into warm water, lemon water or herbal tea as a morning drink.'
+            zh: '蜂蜜的柔和甜味让它易于食用：直接食用 1–2 小勺，或调入温水、柠檬水、花草茶，作为早晨饮品。'
+          source: docs/products/12. Dong trung ha thao ngam mat ong.md (owner product copy; benefits written 2026-11-12)
+      audience:
+        - text:
+            vi: 'Người trưởng thành, cả nam và nữ, muốn chăm sóc sức khỏe hằng ngày.'
+            en: 'Adults, men and women alike, who want to look after their health every day.'
+            zh: '希望日常保健的成年男女。'
+          source: docs/products/12. Dong trung ha thao ngam mat ong.md (owner product copy; benefits written 2026-11-12)
+        - text:
+            vi: 'Người cần bồi bổ, tăng cường sức khỏe.'
+            en: 'People who want to nourish and build up their health.'
+            zh: '需要滋补、增强体质的人。'
+          source: docs/products/12. Dong trung ha thao ngam mat ong.md (owner product copy; benefits written 2026-11-12)
+        - text:
+            vi: 'Người lớn tuổi.'
+            en: 'Older people.'
+            zh: '老年人。'
+          source: docs/products/12. Dong trung ha thao ngam mat ong.md (owner product copy; benefits written 2026-11-12)
+        - text:
+            vi: 'Người lao động trí óc hoặc làm việc căng thẳng.'
+            en: 'Knowledge workers and people with stressful work.'
+            zh: '脑力劳动者或工作紧张的人。'
+          source: docs/products/12. Dong trung ha thao ngam mat ong.md (owner product copy; benefits written 2026-11-12)
+        - text:
+            vi: 'Người thường xuyên mệt mỏi, thiếu năng lượng.'
+            en: 'People who often feel tired or low on energy.'
+            zh: '经常疲惫、精力不足的人。'
+          source: Owner-approved cordyceps copy (Trà hòa tan linh chi trùng thảo, 2026-11-11; Đông trùng hạ thảo tươi, 2026-11-12)
+        - text:
+            vi: 'Người thích thức uống buổi sáng từ mật ong.'
+            en: 'People who enjoy a honey drink in the morning.'
+            zh: '喜欢早晨喝一杯蜂蜜饮品的人。'
+          source: docs/products/12. Dong trung ha thao ngam mat ong.md (owner product copy; benefits written 2026-11-12)
     composition:
       ingredients:
         text:
