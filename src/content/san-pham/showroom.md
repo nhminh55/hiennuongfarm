@@ -1464,6 +1464,61 @@ products:
             en: The tea has a light aroma and a mild taste, and can be enjoyed hot or cold.
             zh: 茶香清淡，口感柔和，可根据喜好热饮或冷饮。
           source: docs/products/09. Tra hoa tan linh chi.md
+      gallery:
+        - file: tra-hoa-tan-linh-chi-1-nguoi.webp
+          caption:
+            vi: 'Trà hòa tan linh chi bên ruộng lúa'
+            en: 'Instant lingzhi tea beside the rice fields'
+            zh: '稻田边的灵芝速溶茶'
+          alt:
+            vi: 'Người phụ nữ đội nón lá, mặc áo hồng, cầm các gói trà hòa tan linh chi; trên bàn có ly trà và hai hộp trà'
+            en: 'A woman in a conical hat and pink blouse holds sachets of instant lingzhi tea, with a glass of tea and two boxes on the table'
+            zh: '头戴斗笠、身穿粉色上衣的女子手持灵芝速溶茶小包，桌上有一杯茶和两盒茶'
+        - file: tra-hoa-tan-linh-chi-2-tai-nam.webp
+          caption:
+            vi: 'Nguyên liệu: nấm linh chi tai to'
+            en: 'Raw material: large-cap lingzhi'
+            zh: '原料：大朵灵芝'
+          alt:
+            vi: 'Cận cảnh một tai nấm linh chi lớn màu nâu với nhiều vân tròn'
+            en: 'Close-up of a large brown lingzhi cap with concentric rings'
+            zh: '一朵带同心纹路的大朵褐色灵芝特写'
+        - file: tra-hoa-tan-linh-chi-3-hop-50g.webp
+          caption:
+            vi: 'Hộp 50 g, gồm 10 gói × 5 g'
+            en: '50 g box, 10 sachets × 5 g'
+            zh: '50 克盒装，10 包 × 5 克'
+          alt:
+            vi: 'Hộp giấy trà hòa tan nấm linh chi màu xanh lá trên nền xám'
+            en: 'A green paper box of instant lingzhi tea on a grey background'
+            zh: '灰色背景上的绿色灵芝速溶茶纸盒'
+        - file: tra-hoa-tan-linh-chi-4-hu-200g.webp
+          caption:
+            vi: 'Hũ thiếc 200 g'
+            en: '200 g tin'
+            zh: '200 克铁罐'
+          alt:
+            vi: 'Hũ thiếc trà hòa tan nấm linh chi 200 g màu xanh lá trên nền trắng'
+            en: 'A green 200 g tin of instant lingzhi tea on a white background'
+            zh: '白色背景上的 200 克绿色灵芝速溶茶铁罐'
+        - file: tra-hoa-tan-linh-chi-5-ba-hu.webp
+          caption:
+            vi: 'Pha nhanh, dùng nóng hoặc lạnh'
+            en: 'Quick to make, hot or cold'
+            zh: '冲泡快捷，冷热皆宜'
+          alt:
+            vi: 'Ba hũ thiếc trà linh chi xếp chồng trên tấm gỗ, bên cạnh linh chi thái lát và chén trà thủy tinh'
+            en: 'Three tins of lingzhi tea stacked on a wooden board, beside sliced lingzhi and a glass cup of tea'
+            zh: '三罐灵芝茶叠放在木板上，旁边是灵芝切片和一杯茶'
+        - file: tra-hoa-tan-linh-chi-6-thiet-ke-hu.webp
+          caption:
+            vi: 'Thiết kế bao bì hũ 200 g'
+            en: '200 g tin packaging design'
+            zh: '200 克铁罐包装设计'
+          alt:
+            vi: 'Hình minh họa hũ thiếc trà hòa tan nấm linh chi trên nền đồi xanh'
+            en: 'Illustration of the instant lingzhi tea tin against green hills'
+            zh: '绿色山丘背景上的灵芝速溶茶铁罐插图'
       facts:
         - label:
             vi: Nguồn gốc nguyên liệu
@@ -1492,6 +1547,99 @@ products:
             en: Vietnam
             zh: 越南
           source: docs/products/09. Tra hoa tan linh chi.md
+    audio:
+      file: tra-hoa-tan-linh-chi.mp3
+    benefits:
+      highlights:
+        - label:
+            vi: 'Hỗ trợ tăng cường sức đề kháng'
+            en: 'Supports natural resistance'
+            zh: '有助增强抵抗力'
+          value:
+            vi: 'Nấm linh chi chứa polysaccharide và beta-glucan, những hợp chất được quan tâm nghiên cứu về vai trò hỗ trợ hệ miễn dịch.'
+            en: 'Lingzhi contains polysaccharides and beta-glucans, compounds studied for their supporting role in the immune system.'
+            zh: '灵芝含有多糖和 β-葡聚糖，这些成分因其对免疫系统的辅助作用而受到研究关注。'
+          source: Owner product copy (Trà hòa tan linh chi, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ chống oxy hóa'
+            en: 'Supports antioxidant activity'
+            zh: '有助抗氧化'
+          value:
+            vi: 'Các hợp chất tự nhiên trong linh chi góp phần hỗ trợ cơ thể trước tác động của gốc tự do, phù hợp với người thường chịu áp lực, thiếu ngủ hoặc làm việc cường độ cao.'
+            en: 'Natural compounds in lingzhi help support the body against free radicals — suited to people under pressure, short on sleep or working long hours.'
+            zh: '灵芝中的天然成分有助于身体应对自由基，适合常受压力、睡眠不足或高强度工作的人。'
+          source: Owner product copy (Trà hòa tan linh chi, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ thư giãn, nghỉ ngơi'
+            en: 'Supports relaxation and rest'
+            zh: '有助放松与休息'
+          value:
+            vi: 'Linh chi từ lâu được dùng trong cách chăm sóc sức khỏe phương Đông để hỗ trợ thư giãn, giúp cơ thể dễ đi vào trạng thái nghỉ ngơi hơn.'
+            en: 'Lingzhi has long been used in Eastern wellness traditions to support relaxation and help the body settle into rest.'
+            zh: '灵芝在东方养生传统中历来用于帮助放松，让身体更容易进入休息状态。'
+          source: Owner product copy (Trà hòa tan linh chi, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ giảm cảm giác mệt mỏi'
+            en: 'Helps with everyday tiredness'
+            zh: '有助缓解疲劳感'
+          value:
+            vi: 'Phù hợp với người thường làm việc căng thẳng, dễ xuống sức, muốn giữ cơ thể ổn định và khỏe khoắn hơn trong ngày.'
+            en: 'Suited to people with demanding work who tire easily and want to feel steadier and more energetic through the day.'
+            zh: '适合工作紧张、容易疲惫，希望全天保持状态稳定、精神饱满的人。'
+          source: Owner product copy (Trà hòa tan linh chi, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ tuần hoàn'
+            en: 'Supports circulation'
+            zh: '有助血液循环'
+          value:
+            vi: 'Hoạt chất trong linh chi được quan tâm trong các nghiên cứu về tuần hoàn và chuyển hóa lipid, góp phần hỗ trợ sức khỏe tim mạch trong lối sống hằng ngày.'
+            en: 'Compounds in lingzhi are of interest in research on circulation and lipid metabolism, helping support heart health as part of a daily routine.'
+            zh: '灵芝中的活性成分在血液循环和脂质代谢方面受到研究关注，有助于在日常生活中维护心血管健康。'
+          source: Owner product copy (Trà hòa tan linh chi, 2026-11-11); owner asked to keep, phrased as support 2026-11-11
+        - label:
+            vi: 'Hỗ trợ chuyển hóa'
+            en: 'Supports metabolism'
+            zh: '有助新陈代谢'
+          value:
+            vi: 'Góp phần hỗ trợ quá trình chuyển hóa đường và chất béo, phù hợp với người quan tâm đến lối sống cân bằng lâu dài.'
+            en: 'Helps support the metabolism of sugars and fats — for people who care about a balanced long-term lifestyle.'
+            zh: '有助于糖和脂肪的代谢，适合注重长期均衡生活方式的人。'
+          source: Owner product copy (Trà hòa tan linh chi, 2026-11-11); owner asked to keep, phrased as support 2026-11-11
+        - label:
+            vi: 'Hỗ trợ cân bằng tự nhiên của cơ thể'
+            en: 'Supports the body’s natural balance'
+            zh: '有助维持身体自然平衡'
+          value:
+            vi: 'Triterpenoid trong nấm linh chi được quan tâm nghiên cứu về vai trò hỗ trợ cơ chế tự điều hòa phản ứng viêm của cơ thể.'
+            en: 'Triterpenoids in lingzhi are studied for their role in supporting the body’s own regulation of inflammatory responses.'
+            zh: '灵芝中的三萜类化合物因其有助于身体自我调节炎症反应的作用而受到研究关注。'
+          source: Owner product copy (Trà hòa tan linh chi, 2026-11-11); owner asked to keep, phrased as support 2026-11-11
+      audience:
+        - text:
+            vi: 'Người trưởng thành quan tâm chăm sóc sức khỏe hằng ngày.'
+            en: 'Adults who look after their health every day.'
+            zh: '注重日常保健的成年人。'
+          source: Owner product copy (Trà hòa tan linh chi, 2026-11-11)
+        - text:
+            vi: 'Người làm việc căng thẳng, áp lực hoặc cường độ cao.'
+            en: 'People with stressful, high-pressure or intensive work.'
+            zh: '工作紧张、压力大或强度高的人。'
+          source: Owner product copy (Trà hòa tan linh chi, 2026-11-11)
+        - text:
+            vi: 'Người quan tâm đến giấc ngủ và sự thư giãn.'
+            en: 'People who care about sleep and relaxation.'
+            zh: '关注睡眠与放松的人。'
+          source: Owner product copy (Trà hòa tan linh chi, 2026-11-11)
+        - text:
+            vi: 'Người trung niên, lớn tuổi quan tâm đến sức khỏe tổng thể.'
+            en: 'Middle-aged and older people who care about their overall health.'
+            zh: '关注整体健康的中老年人。'
+          source: Owner product copy (Trà hòa tan linh chi, 2026-11-11)
+        - text:
+            vi: 'Người yêu thích sản phẩm từ nấm và nguyên liệu tự nhiên.'
+            en: 'People who enjoy mushroom products and natural ingredients.'
+            zh: '喜爱菌菇产品和天然原料的人。'
+          source: Owner product copy (Trà hòa tan linh chi, 2026-11-11)
     composition:
       ingredients:
         text:
@@ -1544,6 +1692,11 @@ products:
             en: Enjoy hot or cold, according to preference.
             zh: 可根据喜好热饮或冷饮。
           source: docs/products/09. Tra hoa tan linh chi.md
+        - text:
+            vi: 'Lưu ý: Không dùng nếu dị ứng với thành phần sản phẩm. Người đang dùng thuốc, có bệnh lý, phụ nữ mang thai hoặc cho con bú nên hỏi ý kiến chuyên gia y tế trước khi dùng.'
+            en: 'Note: Do not use if allergic to any ingredient. If you take medication, have a medical condition, or are pregnant or breastfeeding, consult a health professional before use.'
+            zh: 注意：对产品成分过敏者请勿饮用。正在服药、患有疾病、孕期或哺乳期女性，饮用前请咨询医疗专业人士。
+          source: Owner product copy (Trà hòa tan linh chi, 2026-11-11)
       storage:
         - text:
             vi: Để nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp và môi trường ẩm thấp. Đóng kín nắp hộp hoặc bọc kín sau khi mở.
@@ -1570,10 +1723,10 @@ products:
         source: docs/products/09. Tra hoa tan linh chi.md
     image:
       alt:
-        en: A green tin of instant lingzhi tea beside a glass cup of tea
-        vi: Hộp thiếc trà hòa tan linh chi màu xanh lá, bên cạnh một chén trà thủy tinh
-        zh: 绿色灵芝速溶茶铁罐，旁边是一杯茶
-      file: 09-tra-hoa-tan-linh-chi-200g.webp
+        en: Three green tins of instant lingzhi tea stacked on a wooden board, beside sliced lingzhi and a glass cup of tea
+        vi: Ba hũ thiếc trà hòa tan linh chi màu xanh lá xếp chồng trên tấm gỗ, bên cạnh linh chi thái lát và chén trà thủy tinh
+        zh: 三罐绿色灵芝速溶茶铁罐叠放在木板上，旁边是灵芝切片和一杯茶
+      file: 09-tra-hoa-tan-linh-chi-200g-2026-11.webp
     slug: tra-hoa-tan-linh-chi
   - name:
       vi: Trà hòa tan linh chi trùng thảo
