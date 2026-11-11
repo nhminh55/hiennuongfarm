@@ -1,9 +1,9 @@
 ---
 products:
   - name:
-      vi: Nấm mối đen
-      en: Black Termite Mushroom
-      zh: 黑皮鸡枞菌
+      vi: Nấm mối Nàng Nương
+      en: Nàng Nương Black Termite Mushroom
+      zh: Nàng Nương 黑皮鸡枞菌
     category:
       text:
         vi: Nấm tươi
@@ -28,6 +28,43 @@ products:
             en: The farm has an integrated mushroom spawn production line covering culture preparation, steaming and mycelium growth in cold rooms. The mushrooms have firm, crisp flesh, a mild natural sweetness and a distinctive aroma.
             zh: 农场的菌包生产流程涵盖制种、蒸汽处理和冷房菌丝培养。菌肉紧实爽脆，带有天然清甜味和独特香气。
           source: docs/products/01. Nam moi den.md
+      gallery:
+        - file: nam-moi-nang-nuong-1-tuyen-chon.webp
+          caption:
+            vi: 'Nấm tươi tuyển chọn'
+            en: 'Selected fresh mushrooms'
+            zh: '精选鲜菇'
+          alt:
+            vi: 'Rổ tre đầy nấm mối đen tươi, mũ nâu, thân trắng ngà, chụp từ trên xuống'
+            en: 'A bamboo basket full of fresh black termite mushrooms with brown caps and ivory stems, seen from above'
+            zh: '俯拍竹篮里满满的新鲜黑皮鸡枞菌，褐色菌盖、象牙白菌柄'
+        - file: nam-moi-nang-nuong-2-than-chac.webp
+          caption:
+            vi: 'Thịt nấm chắc, giòn'
+            en: 'Firm, crisp flesh'
+            zh: '菌肉紧实爽脆'
+          alt:
+            vi: 'Một chùm nấm mối đen với thân trắng dày, mũ nâu xám, trên nền trắng'
+            en: 'A cluster of black termite mushrooms with thick white stems and grey-brown caps on a white background'
+            zh: '白色背景上一簇黑皮鸡枞菌，菌柄白而粗壮，菌盖灰褐色'
+        - file: nam-moi-nang-nuong-3-thu-hoach.webp
+          caption:
+            vi: 'Thu hoạch tại trang trại'
+            en: 'Harvested at the farm'
+            zh: '农场采收'
+          alt:
+            vi: 'Rất nhiều nấm mối đen vừa thu hoạch xếp trong rổ, mũ nâu sẫm, thân dài trắng ngà'
+            en: 'Freshly harvested black termite mushrooms piled in a basket, with dark brown caps and long ivory stems'
+            zh: '刚采收的黑皮鸡枞菌堆放在篮中，深褐色菌盖、细长的象牙白菌柄'
+        - file: nam-moi-nang-nuong-4-dong-khay.webp
+          caption:
+            vi: 'Đóng khay và hút chân không'
+            en: 'Tray-packed and vacuum-sealed'
+            zh: '装盘并真空密封'
+          alt:
+            vi: 'Các túi nấm mối đen tươi hút chân không, có nhãn Nấm mối Nàng Nương'
+            en: 'Vacuum-sealed packs of fresh black termite mushrooms with a Nấm mối Nàng Nương label'
+            zh: '贴有 Nấm mối Nàng Nương 标签的真空包装新鲜黑皮鸡枞菌'
       facts:
         - label:
             vi: Vùng nuôi trồng
@@ -65,6 +102,118 @@ products:
             en: Vietnam
             zh: 越南
           source: docs/products/01. Nam moi den.md
+    audio:
+      file: nam-moi-nang-nuong.mp3
+    benefits:
+      highlights:
+        - label:
+            vi: 'Bổ sung nguồn protein từ nấm'
+            en: 'A source of mushroom protein'
+            zh: '补充菌类蛋白'
+          value:
+            vi: 'Nấm mối đen cung cấp protein có nguồn gốc từ nấm, giúp đa dạng nguồn đạm trong khẩu phần. Đặc biệt phù hợp với người ăn chay, người muốn tăng tỷ lệ thực phẩm có nguồn gốc thực vật hoặc gia đình muốn đổi vị cho bữa ăn.'
+            en: 'Black termite mushrooms provide mushroom-based protein that diversifies the protein in your diet — especially suited to vegetarians, people eating more plant-based foods, or families wanting variety at the table.'
+            zh: '黑皮鸡枞菌提供菌类来源的蛋白质，让膳食中的蛋白质来源更加多样，尤其适合素食者、希望增加植物性食物比例的人，或想为餐桌换换口味的家庭。'
+          source: Owner product copy (Nấm mối Nàng Nương, 2026-11-11)
+        - label:
+            vi: 'Bổ sung chất xơ cho chế độ ăn hằng ngày'
+            en: 'Fibre for everyday meals'
+            zh: '为日常饮食补充膳食纤维'
+          value:
+            vi: 'Chất xơ trong nấm góp phần làm phong phú khẩu phần, hỗ trợ xây dựng chế độ ăn cân bằng và tăng lượng thực phẩm thực vật trong bữa ăn.'
+            en: 'The fibre in mushrooms enriches your meals, supports a balanced diet and adds more plant foods to the table.'
+            zh: '菌菇中的膳食纤维让膳食更丰富，有助于建立均衡饮食，并增加餐中的植物性食物。'
+          source: Owner product copy (Nấm mối Nàng Nương, 2026-11-11)
+        - label:
+            vi: 'Hàm lượng chất béo tương đối thấp'
+            en: 'Relatively low in fat'
+            zh: '脂肪含量相对较低'
+          value:
+            vi: 'Nấm mối đen là lựa chọn phù hợp cho những bữa ăn thanh nhẹ. Khi chế biến bằng các phương pháp ít dầu như hấp, nấu canh hoặc áp chảo nhẹ, nấm dễ kết hợp trong chế độ ăn cân bằng.'
+            en: 'Black termite mushrooms suit light meals. Cooked with little oil — steamed, in soups or lightly pan-seared — they fit easily into a balanced diet.'
+            zh: '黑皮鸡枞菌适合清淡的餐食。用蒸、煮汤或轻煎等少油方式烹调时，很容易融入均衡饮食。'
+          source: Owner product copy (Nấm mối Nàng Nương, 2026-11-11)
+        - label:
+            vi: 'Bổ sung axit amin, vitamin và khoáng chất'
+            en: 'Amino acids, vitamins and minerals'
+            zh: '补充氨基酸、维生素和矿物质'
+          value:
+            vi: 'Nấm chứa nhiều thành phần dinh dưỡng khác nhau, trong đó có axit amin cùng một số vitamin và khoáng chất, góp phần làm đa dạng giá trị dinh dưỡng của bữa ăn.'
+            en: 'The mushrooms contain a range of nutrients, including amino acids and a number of vitamins and minerals, adding nutritional variety to your meals.'
+            zh: '菌菇含有多种营养成分，包括氨基酸以及多种维生素和矿物质，让餐食的营养更加多样。'
+          source: Owner product copy (Nấm mối Nàng Nương, 2026-11-11)
+        - label:
+            vi: 'Cung cấp các hợp chất có hoạt tính chống oxy hóa'
+            en: 'Compounds with antioxidant activity'
+            zh: '含有具抗氧化活性的成分'
+          value:
+            vi: 'Polysaccharides, polyphenol và một số hợp chất tự nhiên trong nấm được quan tâm về hoạt tính chống oxy hóa, góp phần tạo nên giá trị sinh học bên cạnh giá trị dinh dưỡng thông thường.'
+            en: 'Polysaccharides, polyphenols and other natural compounds in mushrooms are of interest for their antioxidant activity, adding biological value alongside ordinary nutrition.'
+            zh: '菌菇中的多糖、多酚及其他天然成分因其抗氧化活性而受到关注，在一般营养价值之外增添了生物学价值。'
+          source: Owner product copy (Nấm mối Nàng Nương, 2026-11-11)
+        - label:
+            vi: 'Hỗ trợ chế độ ăn thân thiện với hệ tiêu hóa'
+            en: 'Supports a gut-friendly diet'
+            zh: '有助于打造对消化友好的饮食'
+          value:
+            vi: 'Nhờ thành phần chất xơ và polysaccharides, nấm là nguồn thực phẩm phù hợp để bổ sung vào chế độ ăn đa dạng, giàu thực vật và hướng đến sức khỏe đường ruột.'
+            en: 'With their fibre and polysaccharides, mushrooms are a good addition to a varied, plant-rich diet aimed at gut health.'
+            zh: '凭借膳食纤维和多糖，菌菇适合加入多样化、富含植物且注重肠道健康的饮食中。'
+          source: Owner product copy (Nấm mối Nàng Nương, 2026-11-11)
+        - label:
+            vi: 'Giòn – ngọt tự nhiên, giúp món ăn thêm đậm đà'
+            en: 'Naturally crisp and sweet, for richer dishes'
+            zh: '天然爽脆清甜，让菜肴更鲜美'
+          value:
+            vi: 'Thịt nấm chắc, giòn và có vị ngọt thanh tự nhiên giúp tăng độ ngon cho món ăn, đặc biệt phù hợp với canh, lẩu, xào hoặc món chay cần vị ngọt tự nhiên từ nguyên liệu.'
+            en: 'Firm, crisp flesh with a mild natural sweetness makes dishes tastier — ideal for soups, hotpots, stir-fries or vegetarian dishes that rely on natural sweetness from ingredients.'
+            zh: '菌肉紧实爽脆、带天然清甜，让菜肴更美味，尤其适合汤、火锅、炒菜或需要食材天然鲜甜的素菜。'
+          source: Owner product copy (Nấm mối Nàng Nương, 2026-11-11)
+        - label:
+            vi: 'Dễ chế biến, phù hợp với bữa ăn gia đình'
+            en: 'Easy to cook for family meals'
+            zh: '易于烹调，适合家常餐'
+          value:
+            vi: 'Không cần kỹ thuật cầu kỳ, nấm mối đen có thể biến tấu nhanh thành nhiều món khác nhau, từ món chay đến món mặn, phù hợp cả bữa cơm hằng ngày lẫn các món đãi khách.'
+            en: 'No elaborate technique needed: black termite mushrooms turn quickly into many dishes, vegetarian or not, for everyday meals and for guests alike.'
+            zh: '无需复杂技巧，黑皮鸡枞菌就能快速做成荤素各式菜肴，既适合日常家常饭，也适合待客。'
+          source: Owner product copy (Nấm mối Nàng Nương, 2026-11-11)
+      audience:
+        - text:
+            vi: 'Gia đình muốn bổ sung nấm tươi vào bữa ăn.'
+            en: 'Families wanting to add fresh mushrooms to their meals.'
+            zh: '希望在餐桌上增加新鲜菌菇的家庭。'
+          source: Owner product copy (Nấm mối Nàng Nương, 2026-11-11)
+        - text:
+            vi: 'Người ăn chay hoặc ưu tiên thực phẩm có nguồn gốc thực vật.'
+            en: 'Vegetarians and people who prefer plant-based foods.'
+            zh: '素食者或偏好植物性食物的人。'
+          source: Owner product copy (Nấm mối Nàng Nương, 2026-11-11)
+        - text:
+            vi: 'Người muốn đa dạng nguồn protein và chất xơ trong khẩu phần.'
+            en: 'People wanting more varied sources of protein and fibre.'
+            zh: '希望膳食中蛋白质和纤维来源更多样的人。'
+          source: Owner product copy (Nấm mối Nàng Nương, 2026-11-11)
+        - text:
+            vi: 'Người ưu tiên chế độ ăn thanh nhẹ, ít chất béo.'
+            en: 'People who prefer light, low-fat meals.'
+            zh: '偏好清淡、低脂饮食的人。'
+          source: Owner product copy (Nấm mối Nàng Nương, 2026-11-11)
+        - text:
+            vi: 'Người thích nấm có kết cấu giòn, thịt chắc và vị ngọt tự nhiên.'
+            en: 'Lovers of crisp, firm mushrooms with natural sweetness.'
+            zh: '喜欢口感爽脆、肉质紧实、带天然甜味菌菇的人。'
+          source: Owner product copy (Nấm mối Nàng Nương, 2026-11-11)
+        - text:
+            vi: 'Người bận rộn cần nguyên liệu dễ chế biến.'
+            en: 'Busy people who need easy-to-cook ingredients.'
+            zh: '需要易于烹调食材的忙碌人士。'
+          source: Owner product copy (Nấm mối Nàng Nương, 2026-11-11)
+        - text:
+            vi: 'Người quan tâm đến thực phẩm nuôi trồng theo hướng nông nghiệp xanh.'
+            en: 'People who care about food grown through green farming.'
+            zh: '关注绿色农业种植食品的人。'
+          source: Owner product copy (Nấm mối Nàng Nương, 2026-11-11)
     composition:
       ingredients:
         text:
@@ -82,6 +231,15 @@ products:
             en: Fresh mushrooms are harvested, selected, tray-packed and vacuum-sealed
             zh: 鲜菌采收、精选后装盘并真空密封
           source: docs/products/01. Nam moi den.md
+        - label:
+            vi: Khối lượng
+            en: Net weight
+            zh: 规格
+          value:
+            vi: Khay 500 g • Khay 1 kg
+            en: 500 g tray • 1 kg tray
+            zh: 500 克装 • 1 公斤装
+          source: Owner product copy (Nấm mối Nàng Nương, 2026-11-11)
     usage:
       preparation:
         - text:
@@ -111,10 +269,15 @@ products:
             zh: 将真空密封的菌菇盘存放于冰箱冷藏室，温度为 3–5°C。
           source: docs/products/01. Nam moi den.md
         - text:
-            vi: Nên chế biến trong vòng 5–7 ngày kể từ ngày đóng gói để thưởng thức hương vị ngon nhất.
-            en: For the best flavour, cook within 5–7 days of the packing date.
-            zh: 为享受最佳风味，建议在包装日期起 5–7 天内烹饪。
-          source: docs/products/01. Nam moi den.md
+            vi: Nên sử dụng trong vòng 1 tuần kể từ ngày đóng gói.
+            en: Use within 1 week of the packing date.
+            zh: 建议在包装日期起 1 周内食用。
+          source: Owner product copy (Nấm mối Nàng Nương, 2026-11-11)
+        - text:
+            vi: Có thể bảo quản trong ngăn đông tối đa 3 tháng. Sau khi rã đông, nên chế biến ngay và hạn chế cấp đông lại nhiều lần để giữ kết cấu của nấm.
+            en: Can be kept in the freezer for up to 3 months. Cook right after thawing, and avoid refreezing repeatedly to keep the mushrooms’ texture.
+            zh: 可冷冻保存最长 3 个月。解冻后应立即烹调，避免反复冷冻，以保持菌菇口感。
+          source: Owner product copy (Nấm mối Nàng Nương, 2026-11-11)
     records:
       - title:
           vi: Báo cáo thử nghiệm mẫu nấm mối
