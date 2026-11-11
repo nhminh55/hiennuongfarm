@@ -1808,15 +1808,6 @@ products:
             vi: 'Đông trùng hạ thảo màu cam trải đều trên các khay inox'
             en: 'Orange cordyceps spread evenly across stainless-steel trays'
             zh: '均匀铺在不锈钢托盘上的橙色虫草'
-        - file: dong-trung-ha-thao-say-thang-hoa-2-sau-say.webp
-          caption:
-            vi: 'Đông trùng hạ thảo sau khi sấy'
-            en: 'Cordyceps after drying'
-            zh: '烘干后的虫草'
-          alt:
-            vi: 'Rổ tre đầy sợi đông trùng hạ thảo đã sấy màu cam nâu'
-            en: 'A bamboo basket full of dried orange-brown cordyceps'
-            zh: '竹篮里满满的橙褐色干虫草'
       facts:
         - label:
             vi: Vùng nuôi trồng
