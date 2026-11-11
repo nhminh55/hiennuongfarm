@@ -3,7 +3,7 @@ vi:
   tabs:
     gioi-thieu: Giới thiệu
     cong-dung: Công dụng
-    thanh-phan: Thành phần
+    thanh-phan: Thành phần & quy cách
     cach-dung: Cách dùng
     ho-so: Hồ sơ
     nhan-xet: Nhận xét
@@ -33,7 +33,7 @@ en:
   tabs:
     gioi-thieu: Introduction
     cong-dung: Benefits
-    thanh-phan: Ingredients
+    thanh-phan: Ingredients & specs
     cach-dung: How to use
     ho-so: Records
     nhan-xet: Reviews
@@ -63,7 +63,7 @@ zh:
   tabs:
     gioi-thieu: 简介
     cong-dung: 功用
-    thanh-phan: 成分
+    thanh-phan: 成分与规格
     cach-dung: 用法
     ho-so: 档案
     nhan-xet: 评价

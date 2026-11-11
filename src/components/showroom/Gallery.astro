@@ -1,0 +1,197 @@
+---
+/**
+ * Showroom photo strip: square, uncropped photos that drift slowly sideways
+ * (seamless loop), with arrows and drag/swipe. When the photos all fit in
+ * view they are shown as they are: no motion, no arrows, no empty cells.
+ */
+import { getLocale } from '../../i18n';
+
+interface Props {
+  items: { src: string; alt: string; caption: string }[];
+}
+const { items } = Astro.props;
+const lang = getLocale(Astro.url);
+const labels = {
+  vi: { prev: 'Ảnh trước', next: 'Ảnh tiếp theo' },
+  en: { prev: 'Previous photo', next: 'Next photo' },
+  zh: { prev: '上一张', next: '下一张' },
+}[lang as 'vi' | 'en' | 'zh'] ?? { prev: 'Ảnh trước', next: 'Ảnh tiếp theo' };
+---
+{items.length > 0 && (
+  <div class="carousel" data-carousel>
+    <ul class="carousel__track" data-carousel-track>
+      {items.map((g) => (
+        <li class="carousel__slide">
+          <figure>
+            <a href={g.src} target="_blank" rel="noopener">
+              <img src={g.src} width="1200" height="1200" alt={g.alt} loading="lazy" decoding="async" />
+            </a>
+            <figcaption>{g.caption}</figcaption>
+          </figure>
+        </li>
+      ))}
+    </ul>
+    <button type="button" class="carousel__btn carousel__btn--prev" data-carousel-prev aria-label={labels.prev}>
+      <svg viewBox="0 0 10 18" aria-hidden="true"><path d="M9 1 1 9l8 8" /></svg>
+    </button>
+    <button type="button" class="carousel__btn carousel__btn--next" data-carousel-next aria-label={labels.next}>
+      <svg viewBox="0 0 10 18" aria-hidden="true"><path d="M1 1l8 8-8 8" /></svg>
+    </button>
+  </div>
+)}
+
+<script>
+  // Gallery carousel: drifts slowly and continuously (seamless loop via a
+  // cloned set of slides). Arrows glide one photo; drag/swipe moves it by hand.
+  // Pauses on hover/focus, while hidden, and for reduced-motion visitors.
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const SPEED = 28; // px per second
+  document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((root) => {
+    const track = root.querySelector<HTMLElement>('[data-carousel-track]')!;
+    const prev = root.querySelector<HTMLButtonElement>('[data-carousel-prev]')!;
+    const next = root.querySelector<HTMLButtonElement>('[data-carousel-next]')!;
+    const originals = Array.from(track.children) as HTMLElement[];
+    originals.forEach((li) => {
+      const c = li.cloneNode(true) as HTMLElement;
+      c.setAttribute('aria-hidden', 'true');
+      c.setAttribute('data-clone', '');
+      c.setAttribute('inert', '');
+      track.append(c);
+    });
+
+    let pos = 0; // px the strip has moved left
+    let paused = false;
+    let glide: { from: number; to: number; t0: number } | null = null;
+    let drag: { x: number; pos: number; moved: boolean } | null = null;
+    let last = performance.now();
+
+    const step = () => {
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      return originals[0].offsetWidth + gap;
+    };
+    const perView = () => parseFloat(getComputedStyle(root).getPropertyValue('--per-view')) || 3;
+    const isStatic = () => originals.length <= perView();
+    const wrap = (v: number) => { const w = originals.length * step(); return w ? ((v % w) + w) % w : 0; };
+    const render = () => { track.style.transform = `translate3d(${-wrap(pos)}px,0,0)`; };
+
+    const frame = (now: number) => {
+      const dt = Math.min(now - last, 64) / 1000;
+      last = now;
+      const visible = root.offsetParent !== null && !document.hidden;
+      root.classList.toggle('is-static', isStatic());
+      if (isStatic()) { pos = 0; render(); }
+      else if (glide) {
+        const t = Math.min((now - glide.t0) / 450, 1);
+        const e = 1 - Math.pow(1 - t, 3);
+        pos = glide.from + (glide.to - glide.from) * e;
+        if (t >= 1) glide = null;
+        render();
+      } else if (!drag && !paused && visible && !reduceMotion) {
+        pos += SPEED * dt;
+        render();
+      }
+      requestAnimationFrame(frame);
+    };
+
+    const go = (dir: 1 | -1) => {
+      const s = step();
+      const base = glide ? glide.to : pos;
+      const to = dir > 0 ? (Math.floor(base / s + 0.01) + 1) * s : (Math.ceil(base / s - 0.01) - 1) * s;
+      glide = { from: pos, to, t0: performance.now() };
+    };
+    prev.addEventListener('click', () => go(-1));
+    next.addEventListener('click', () => go(1));
+
+    root.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') paused = true; });
+    root.addEventListener('pointerleave', () => { paused = false; });
+    root.addEventListener('focusin', () => { paused = true; });
+    root.addEventListener('focusout', () => { paused = false; });
+
+    track.addEventListener('pointerdown', (e) => {
+      if (isStatic() || e.button !== 0) return;
+      drag = { x: e.clientX, pos, moved: false };
+      glide = null;
+    });
+    window.addEventListener('pointermove', (e) => {
+      if (!drag) return;
+      const dx = e.clientX - drag.x;
+      if (Math.abs(dx) > 5) drag.moved = true;
+      pos = drag.pos - dx;
+      render();
+    });
+    const endDrag = () => { if (drag && !drag.moved) drag = null; else if (drag) setTimeout(() => { drag = null; }, 0); };
+    window.addEventListener('pointerup', endDrag);
+    window.addEventListener('pointercancel', () => { drag = null; });
+    // A drag must not open the photo link.
+    track.addEventListener('click', (e) => { if (drag?.moved) e.preventDefault(); }, true);
+    track.addEventListener('dragstart', (e) => e.preventDefault());
+
+    requestAnimationFrame(frame);
+  });
+</script>
+
+<style>
+  .carousel {
+    --per-view: 3;
+    --gap: var(--space-s);
+    position: relative;
+    max-width: 52rem;
+    margin: var(--space-m) 0 0;
+    overflow: hidden;
+  }
+  .carousel__track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view));
+    column-gap: var(--gap);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    will-change: transform;
+    touch-action: pan-y;
+    user-select: none;
+  }
+  .carousel figure { margin: 0; }
+  .carousel a { display: block; }
+  .carousel img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    background: #f1ede3;
+  }
+  .carousel figcaption {
+    margin-top: var(--space-2xs);
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: var(--color-text-muted);
+  }
+  .carousel__btn {
+    position: absolute;
+    top: 0;
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    /* vertical centre of a square slide (% margins resolve against width) */
+    margin-top: calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view) / 2 - 1.25rem);
+    padding: 0;
+    border: 1px solid rgb(0 0 0 / 0.12);
+    border-radius: 50%;
+    background: rgb(255 255 255 / 0.92);
+    color: #1f3b2c;
+    cursor: pointer;
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+  }
+  .carousel__btn svg { width: 0.55rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 1.5; }
+  .carousel__btn:hover:not(:disabled) { background: #fff; }
+  .carousel__btn:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+  .carousel__btn--prev { left: 0.5rem; }
+  .carousel__btn--next { right: 0.5rem; }
+  .carousel.is-static [data-clone] { display: none; }
+  .carousel.is-static .carousel__btn { display: none; }
+  @media (max-width: 599px) {
+    .carousel { --per-view: 2; }
+  }
+</style>

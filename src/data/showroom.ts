@@ -29,6 +29,8 @@ interface SourcedText {
   source: string;
 }
 
+interface RawPhoto { file: string; alt: Text; caption: Text }
+
 interface RawFact {
   label: Text;
   value: Text;
@@ -90,8 +92,8 @@ interface RawProduct {
   /** Giới thiệu: description, characteristics, ingredient origin. */
   intro?: {
     paragraphs?: SourcedText[];
-    /** Authentic photos, all cropped to 1200×1500 (4:5), under /images/products/gallery/. */
-    gallery?: { file: string; alt: Text; caption: Text }[];
+    /** Authentic, uncropped photos under /images/products/gallery/. */
+    gallery?: RawPhoto[];
     facts?: RawFact[];
   };
   /** Spoken introduction (Vietnamese), file under /audio/. */
@@ -99,9 +101,9 @@ interface RawProduct {
   /** Công dụng: owner-sourced product values and who it suits. No disease or treatment claims. */
   benefits?: { highlights?: RawFact[]; audience?: SourcedText[] };
   /** Thành phần: ingredients (label wording), proportions, net weight, packaging, variants. */
-  composition?: { ingredients?: SourcedText; facts?: RawFact[] };
+  composition?: { ingredients?: SourcedText; facts?: RawFact[]; gallery?: RawPhoto[] };
   /** Cách dùng: preparation, storage, approved recipes. */
-  usage?: { preparation?: SourcedText[]; storage?: SourcedText[]; recipes?: RawRecipe[] };
+  usage?: { preparation?: SourcedText[]; storage?: SourcedText[]; recipes?: RawRecipe[]; gallery?: RawPhoto[] };
   /** Hồ sơ: product declaration, OCOP, test reports and other documents. */
   records?: RawDocument[];
   /** Nhận xét: authentic customer feedback, with permission. */
@@ -122,6 +124,8 @@ export type TabId = 'gioi-thieu' | 'cong-dung' | 'thanh-phan' | 'cach-dung' | 'h
 export const tabIds: TabId[] = ['gioi-thieu', 'cong-dung', 'thanh-phan', 'cach-dung', 'ho-so', 'nhan-xet'];
 
 export interface ShowroomFact { label: string; value: string }
+
+export interface ShowroomPhoto { src: string; alt: string; caption: string }
 
 export interface ShowroomDocument {
   title: string;
@@ -166,11 +170,11 @@ export interface ShowroomItem {
   };
   /** Localized link to a dedicated product page. */
   detail?: string;
-  intro: { paragraphs: string[]; gallery: { src: string; alt: string; caption: string }[]; facts: ShowroomFact[] };
+  intro: { paragraphs: string[]; gallery: ShowroomPhoto[]; facts: ShowroomFact[] };
   audio?: string;
   benefits?: { highlights: ShowroomFact[]; audience: string[] };
-  composition?: { ingredients?: string; facts: ShowroomFact[] };
-  usage?: { preparation: string[]; storage: string[]; recipes: ShowroomRecipe[] };
+  composition?: { ingredients?: string; facts: ShowroomFact[]; gallery: ShowroomPhoto[] };
+  usage?: { preparation: string[]; storage: string[]; recipes: ShowroomRecipe[]; gallery: ShowroomPhoto[] };
   records?: ShowroomDocument[];
   reviews?: ShowroomReview[];
   /** Tabs with content, in order. Giới thiệu is always present. */
@@ -179,6 +183,9 @@ export interface ShowroomItem {
 
 const facts = (list: RawFact[] | undefined, lang: Locale): ShowroomFact[] =>
   (list ?? []).map((f) => ({ label: f.label[lang], value: f.value[lang] }));
+
+const photos = (list: RawPhoto[] | undefined, lang: Locale): ShowroomPhoto[] =>
+  (list ?? []).map((g) => ({ src: `/images/products/gallery/${g.file}`, alt: g.alt[lang], caption: g.caption[lang] }));
 
 const texts = (list: SourcedText[] | undefined, lang: Locale) => (list ?? []).map((p) => p.text[lang]);
 
@@ -196,11 +203,12 @@ export const showroomProducts = (lang: Locale): ShowroomItem[] =>
     const benefits = p.benefits && (p.benefits.highlights?.length || p.benefits.audience?.length)
       ? { highlights: facts(p.benefits.highlights, lang), audience: texts(p.benefits.audience, lang) }
       : undefined;
-    const composition = p.composition && (p.composition.ingredients || p.composition.facts?.length)
-      ? { ingredients: p.composition.ingredients?.text[lang], facts: facts(p.composition.facts, lang) }
+    const composition = p.composition && (p.composition.ingredients || p.composition.facts?.length || p.composition.gallery?.length)
+      ? { ingredients: p.composition.ingredients?.text[lang], facts: facts(p.composition.facts, lang), gallery: photos(p.composition.gallery, lang) }
       : undefined;
-    const usage = p.usage && (p.usage.preparation?.length || p.usage.storage?.length || p.usage.recipes?.length)
+    const usage = p.usage && (p.usage.preparation?.length || p.usage.storage?.length || p.usage.recipes?.length || p.usage.gallery?.length)
       ? {
+          gallery: photos(p.usage.gallery, lang),
           preparation: texts(p.usage.preparation, lang),
           storage: texts(p.usage.storage, lang),
           recipes: (p.usage.recipes ?? []).map((r) => ({
@@ -252,7 +260,7 @@ export const showroomProducts = (lang: Locale): ShowroomItem[] =>
       detail: p.detail && localizePath(p.detail, lang),
       intro: {
         paragraphs: texts(p.intro?.paragraphs, lang),
-        gallery: (p.intro?.gallery ?? []).map((g) => ({ src: `/images/products/gallery/${g.file}`, alt: g.alt[lang], caption: g.caption[lang] })),
+        gallery: photos(p.intro?.gallery, lang),
         facts: facts(p.intro?.facts, lang),
       },
       audio: p.audio && `/audio/${p.audio.file}`,

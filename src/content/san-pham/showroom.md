@@ -29,6 +29,15 @@ products:
             zh: 农场的菌包生产流程涵盖制种、蒸汽处理和冷房菌丝培养。菌肉紧实爽脆，带有天然清甜味和独特香气。
           source: docs/products/01. Nam moi den.md
       gallery:
+        - file: nam-moi-nang-nuong-4-dong-khay.webp
+          caption:
+            vi: 'Đóng khay và hút chân không'
+            en: 'Tray-packed and vacuum-sealed'
+            zh: '装盘并真空密封'
+          alt:
+            vi: 'Các túi nấm mối đen tươi hút chân không, có nhãn Nấm mối Nàng Nương'
+            en: 'Vacuum-sealed packs of fresh black termite mushrooms with a Nấm mối Nàng Nương label'
+            zh: '贴有 Nấm mối Nàng Nương 标签的真空包装新鲜黑皮鸡枞菌'
         - file: nam-moi-nang-nuong-1-tuyen-chon.webp
           caption:
             vi: 'Nấm tươi tuyển chọn'
@@ -40,9 +49,9 @@ products:
             zh: '俯拍竹篮里满满的新鲜黑皮鸡枞菌，褐色菌盖、象牙白菌柄'
         - file: nam-moi-nang-nuong-2-than-chac.webp
           caption:
-            vi: 'Thịt nấm chắc, giòn'
-            en: 'Firm, crisp flesh'
-            zh: '菌肉紧实爽脆'
+            vi: 'Cận cảnh nấm mối đen'
+            en: 'Black termite mushrooms up close'
+            zh: '黑皮鸡枞菌特写'
           alt:
             vi: 'Một chùm nấm mối đen với thân trắng dày, mũ nâu xám, trên nền trắng'
             en: 'A cluster of black termite mushrooms with thick white stems and grey-brown caps on a white background'
@@ -56,15 +65,24 @@ products:
             vi: 'Rất nhiều nấm mối đen vừa thu hoạch xếp trong rổ, mũ nâu sẫm, thân dài trắng ngà'
             en: 'Freshly harvested black termite mushrooms piled in a basket, with dark brown caps and long ivory stems'
             zh: '刚采收的黑皮鸡枞菌堆放在篮中，深褐色菌盖、细长的象牙白菌柄'
-        - file: nam-moi-nang-nuong-4-dong-khay.webp
+        - file: nam-moi-nang-nuong-5-moc-gia-the.webp
           caption:
-            vi: 'Đóng khay và hút chân không'
-            en: 'Tray-packed and vacuum-sealed'
-            zh: '装盘并真空密封'
+            vi: 'Nấm mối đen mọc trên giá thể'
+            en: 'Black termite mushrooms growing on substrate'
+            zh: '在培养料上生长的黑皮鸡枞菌'
           alt:
-            vi: 'Các túi nấm mối đen tươi hút chân không, có nhãn Nấm mối Nàng Nương'
-            en: 'Vacuum-sealed packs of fresh black termite mushrooms with a Nấm mối Nàng Nương label'
-            zh: '贴有 Nấm mối Nàng Nương 标签的真空包装新鲜黑皮鸡枞菌'
+            vi: 'Cụm nấm mối đen mũ nâu xám, thân trắng ngà mọc từ túi giá thể trong nhà nuôi trồng'
+            en: 'A cluster of black termite mushrooms with grey-brown caps and ivory stems growing from a substrate bag in the growing house'
+            zh: '种植棚内从培养料袋中长出的一簇黑皮鸡枞菌，灰褐色菌盖、象牙白菌柄'
+        - file: nam-moi-nang-nuong-6-nha-nuoi.webp
+          caption:
+            vi: 'Nhà nuôi trồng nấm mối đen'
+            en: 'The black termite mushroom growing house'
+            zh: '黑皮鸡枞菌种植棚'
+          alt:
+            vi: 'Dãy kệ xếp túi giá thể nấm mối đen trong nhà nuôi trồng của trang trại'
+            en: 'Rows of shelves stacked with black termite mushroom substrate bags in the farm growing house'
+            zh: '农场种植棚内整排货架上摆放的黑皮鸡枞菌培养料袋'
       facts:
         - label:
             vi: Vùng nuôi trồng
@@ -240,6 +258,34 @@ products:
             en: 500 g tray • 1 kg tray
             zh: 500 克装 • 1 公斤装
           source: Owner product copy (Nấm mối Nàng Nương, 2026-11-11)
+      gallery:
+        - file: nam-moi-nang-nuong-4-dong-khay.webp
+          caption:
+            vi: 'Đóng khay và hút chân không'
+            en: 'Tray-packed and vacuum-sealed'
+            zh: '装盘并真空密封'
+          alt:
+            vi: 'Các túi nấm mối đen tươi hút chân không, có nhãn Nấm mối Nàng Nương'
+            en: 'Vacuum-sealed packs of fresh black termite mushrooms with a Nấm mối Nàng Nương label'
+            zh: '贴有 Nấm mối Nàng Nương 标签的真空包装新鲜黑皮鸡枞菌'
+        - file: nam-moi-nang-nuong-7-khay-tuoi.webp
+          caption:
+            vi: 'Nấm mối đen tươi xếp khay'
+            en: 'Fresh black termite mushrooms in trays'
+            zh: '装盘的新鲜黑皮鸡枞菌'
+          alt:
+            vi: 'Tám khay xốp trắng xếp đầy nấm mối đen tươi, nhìn từ trên xuống'
+            en: 'Eight white trays filled with fresh black termite mushrooms, seen from above'
+            zh: '俯拍八个装满新鲜黑皮鸡枞菌的白色托盘'
+        - file: nam-moi-nang-nuong-8-khay-hut-chan-khong.webp
+          caption:
+            vi: 'Khay nấm bọc hút chân không'
+            en: 'Vacuum-sealed trays'
+            zh: '真空密封的菌盘'
+          alt:
+            vi: 'Các khay nấm mối đen tươi được bọc trong túi hút chân không'
+            en: 'Trays of fresh black termite mushrooms sealed in vacuum bags'
+            zh: '装在真空袋中的新鲜黑皮鸡枞菌托盘'
     usage:
       preparation:
         - text:
@@ -391,6 +437,15 @@ products:
             zh: 产品保留完整的大朵菌盖、天然色泽和香气，不含防腐剂。
           source: docs/products/02. Nam linh chi tai to.md
       gallery:
+        - file: nam-linh-chi-tai-to-0-nha-nuoi.webp
+          caption:
+            vi: 'Nhà nuôi linh chi tại trang trại'
+            en: 'The lingzhi growing house at the farm'
+            zh: '农场的灵芝种植棚'
+          alt:
+            vi: 'Hàng dài phôi linh chi đặt trên nền đất, tai nấm nâu đỏ đang lớn'
+            en: 'Long rows of lingzhi growing bags on the ground, with red-brown caps developing'
+            zh: '地面上成排的灵芝菌包，红褐色菌盖正在生长'
         - file: nam-linh-chi-tai-to-1-tai-non.webp
           caption:
             vi: 'Tai linh chi đang sinh trưởng tại trang trại'
@@ -418,15 +473,24 @@ products:
             vi: 'Một tai nấm linh chi lớn màu nâu, nhiều lớp vân tròn, đã đạt hình thái hoàn thiện'
             en: 'A large brown lingzhi cap with many concentric rings, fully grown'
             zh: '一朵已长成的大朵褐色灵芝，带有多层环纹'
-        - file: nam-linh-chi-tai-to-4-dong-goi.webp
+        - file: nam-linh-chi-tai-to-5-do-kich-thuoc.webp
           caption:
-            vi: 'Nguyên tai nấm đóng gói hút chân không'
-            en: 'Whole caps, vacuum-packed'
-            zh: '真空包装的整朵灵芝'
+            vi: 'Đo kích thước tai nấm'
+            en: 'Measuring a cap'
+            zh: '测量菌盖尺寸'
           alt:
-            vi: 'Túi hút chân không đựng nguyên tai nấm linh chi tai to có nhãn sản phẩm, bên cạnh các lát linh chi trên thớt gỗ'
-            en: 'Vacuum packs of whole large-cap lingzhi with a product label, beside lingzhi slices on a wooden board'
-            zh: '贴有产品标签的真空包装整朵大朵灵芝，旁边木板上放着灵芝切片'
+            vi: 'Thước dây đặt ngang một tai linh chi lớn màu nâu cam'
+            en: 'A tape measure laid across a large orange-brown lingzhi cap'
+            zh: '卷尺横放在一朵橙褐色的大灵芝上'
+        - file: nam-linh-chi-tai-to-6-thu-hoach.webp
+          caption:
+            vi: 'Linh chi vừa thu hoạch'
+            en: 'Freshly harvested lingzhi'
+            zh: '刚采收的灵芝'
+          alt:
+            vi: 'Nhiều tai linh chi lớn màu nâu xếp trong rổ nhựa xanh'
+            en: 'Several large brown lingzhi caps piled in a blue plastic crate'
+            zh: '蓝色塑料筐里堆放的多朵褐色大灵芝'
       facts:
         - label:
             vi: Nguồn gốc nguyên liệu
@@ -602,6 +666,16 @@ products:
             en: 1 year from the date of manufacture
             zh: 自生产日期起 1 年
           source: docs/products/02. Nam linh chi tai to.md
+      gallery:
+        - file: nam-linh-chi-tai-to-4-dong-goi.webp
+          caption:
+            vi: 'Nguyên tai nấm đóng gói hút chân không'
+            en: 'Whole caps, vacuum-packed'
+            zh: '真空包装的整朵灵芝'
+          alt:
+            vi: 'Túi hút chân không đựng nguyên tai nấm linh chi tai to có nhãn sản phẩm, bên cạnh các lát linh chi trên thớt gỗ'
+            en: 'Vacuum packs of whole large-cap lingzhi with a product label, beside lingzhi slices on a wooden board'
+            zh: '贴有产品标签的真空包装整朵大朵灵芝，旁边木板上放着灵芝切片'
     usage:
       preparation:
         - text:
@@ -736,6 +810,16 @@ products:
             en: The fresh strands are juicy, with an orange-yellow colour, a mild sweetness and a distinctive mushroom aroma, and are easy to add to everyday meals.
             zh: 新鲜虫草饱满多汁，呈橙黄色，带有清甜味和独特菌菇香气，易于搭配日常菜肴。
           source: docs/products/03. Dong trung ha thao.md
+      gallery:
+        - file: dong-trung-ha-thao-1-tuoi.webp
+          caption:
+            vi: 'Đông trùng hạ thảo tươi'
+            en: 'Fresh cordyceps'
+            zh: '新鲜虫草'
+          alt:
+            vi: 'Cụm đông trùng hạ thảo màu cam, sợi dài mọc dày'
+            en: 'A dense cluster of long orange cordyceps'
+            zh: '一簇茂密细长的橙色虫草'
       facts:
         - label:
             vi: Vùng nuôi trồng
@@ -1018,24 +1102,6 @@ products:
             zh: 精心挑选的天然菌菇经过冷冻干燥，保留其色泽、形态和风味。
           source: docs/products/05.Nam moi den say thang hoa.md
       gallery:
-        - file: nam-moi-den-say-thang-hoa-1-nam-tuoi.webp
-          caption:
-            vi: 'Nguyên liệu: nấm mối đen tươi từ trang trại'
-            en: 'Raw material: fresh black termite mushrooms from the farm'
-            zh: '原料：农场新鲜黑皮鸡枞菌'
-          alt:
-            vi: 'Một rổ tre đầy nấm mối đen tươi, mũ nâu sẫm, thân trắng ngà đã gọt sạch gốc'
-            en: 'A bamboo basket full of fresh black termite mushrooms with dark brown caps and trimmed ivory stems'
-            zh: '竹筐里装满新鲜黑皮鸡枞菌，深褐色菌盖，象牙白菌柄已削净根部'
-        - file: nam-moi-den-say-thang-hoa-2-hop.webp
-          caption:
-            vi: 'Hộp 45 g, nhìn rõ nấm qua ô cửa sổ'
-            en: '45 g box, with the mushrooms visible through the window'
-            zh: '45 克纸盒，透过小窗可见菌菇'
-          alt:
-            vi: 'Hộp giấy Nấm Mối Đen Sấy Thăng Hoa 45 g đặt giữa nhiều cây nấm sấy trên mặt gỗ'
-            en: 'A 45 g paper box of freeze-dried black termite mushroom lying among dried mushrooms on a wooden board'
-            zh: '45 克冻干黑皮鸡枞菌纸盒，放在木板上的干菌之间'
         - file: nam-moi-den-say-thang-hoa-3-ba-hop.webp
           caption:
             vi: 'Nấm mối đen sấy thăng hoa'
@@ -1243,6 +1309,25 @@ products:
             en: 1 year from the date of manufacture
             zh: 自生产日期起 1 年
           source: docs/products/05.Nam moi den say thang hoa.md
+      gallery:
+        - file: nam-moi-den-say-thang-hoa-2-hop.webp
+          caption:
+            vi: 'Hộp 45 g, nhìn rõ nấm qua ô cửa sổ'
+            en: '45 g box, with the mushrooms visible through the window'
+            zh: '45 克纸盒，透过小窗可见菌菇'
+          alt:
+            vi: 'Hộp giấy Nấm Mối Đen Sấy Thăng Hoa 45 g đặt giữa nhiều cây nấm sấy trên mặt gỗ'
+            en: 'A 45 g paper box of freeze-dried black termite mushroom lying among dried mushrooms on a wooden board'
+            zh: '45 克冻干黑皮鸡枞菌纸盒，放在木板上的干菌之间'
+        - file: nam-moi-den-say-thang-hoa-1-nam-tuoi.webp
+          caption:
+            vi: 'Nguyên liệu: nấm mối đen tươi từ trang trại'
+            en: 'Raw material: fresh black termite mushrooms from the farm'
+            zh: '原料：农场新鲜黑皮鸡枞菌'
+          alt:
+            vi: 'Một rổ tre đầy nấm mối đen tươi, mũ nâu sẫm, thân trắng ngà đã gọt sạch gốc'
+            en: 'A bamboo basket full of fresh black termite mushrooms with dark brown caps and trimmed ivory stems'
+            zh: '竹筐里装满新鲜黑皮鸡枞菌，深褐色菌盖，象牙白菌柄已削净根部'
     usage:
       preparation:
         - text:
@@ -1617,6 +1702,25 @@ products:
             en: With a crisp, porous texture and a natural mushroom aroma, the product can be brewed as tea or added to everyday dishes.
             zh: 产品质地酥脆疏松，带有天然菌菇香气，可用于泡茶或搭配日常菜肴。
           source: docs/products/08. Dong trung ha thao say thang hoa.md
+      gallery:
+        - file: dong-trung-ha-thao-say-thang-hoa-1-khay-say.webp
+          caption:
+            vi: 'Đông trùng hạ thảo trên khay sấy'
+            en: 'Cordyceps on drying trays'
+            zh: '烘干盘上的虫草'
+          alt:
+            vi: 'Đông trùng hạ thảo màu cam trải đều trên các khay inox'
+            en: 'Orange cordyceps spread evenly across stainless-steel trays'
+            zh: '均匀铺在不锈钢托盘上的橙色虫草'
+        - file: dong-trung-ha-thao-say-thang-hoa-2-sau-say.webp
+          caption:
+            vi: 'Đông trùng hạ thảo sau khi sấy'
+            en: 'Cordyceps after drying'
+            zh: '烘干后的虫草'
+          alt:
+            vi: 'Rổ tre đầy sợi đông trùng hạ thảo đã sấy màu cam nâu'
+            en: 'A bamboo basket full of dried orange-brown cordyceps'
+            zh: '竹篮里满满的橙褐色干虫草'
       facts:
         - label:
             vi: Vùng nuôi trồng
@@ -1689,6 +1793,16 @@ products:
             en: 1 year from the date of manufacture
             zh: 自生产日期起 1 年
           source: docs/products/08. Dong trung ha thao say thang hoa.md
+      gallery:
+        - file: dong-trung-ha-thao-say-thang-hoa-3-hu-25g.webp
+          caption:
+            vi: 'Hũ 25 g'
+            en: '25 g jar'
+            zh: '25 克罐装'
+          alt:
+            vi: 'Ba hũ đông trùng hạ thảo nắp đen, nhãn đen viền vàng, xếp chồng trong khay tre'
+            en: 'Three cordyceps jars with black lids and black-and-gold labels, stacked on a bamboo tray'
+            zh: '竹盘上叠放的三罐虫草，黑色瓶盖、黑金色标签'
     usage:
       preparation:
         - text:
@@ -1777,51 +1891,6 @@ products:
             vi: 'Người phụ nữ đội nón lá, mặc áo hồng, cầm các gói trà hòa tan linh chi; trên bàn có ly trà và hai hộp trà'
             en: 'A woman in a conical hat and pink blouse holds sachets of instant lingzhi tea, with a glass of tea and two boxes on the table'
             zh: '头戴斗笠、身穿粉色上衣的女子手持灵芝速溶茶小包，桌上有一杯茶和两盒茶'
-        - file: tra-hoa-tan-linh-chi-2-tai-nam.webp
-          caption:
-            vi: 'Nguyên liệu: nấm linh chi tai to'
-            en: 'Raw material: large-cap lingzhi'
-            zh: '原料：大朵灵芝'
-          alt:
-            vi: 'Cận cảnh một tai nấm linh chi lớn màu nâu với nhiều vân tròn'
-            en: 'Close-up of a large brown lingzhi cap with concentric rings'
-            zh: '一朵带同心纹路的大朵褐色灵芝特写'
-        - file: tra-hoa-tan-linh-chi-3-hop-50g.webp
-          caption:
-            vi: 'Hộp 50 g, gồm 10 gói × 5 g'
-            en: '50 g box, 10 sachets × 5 g'
-            zh: '50 克盒装，10 包 × 5 克'
-          alt:
-            vi: 'Hộp giấy trà hòa tan nấm linh chi màu xanh lá trên nền xám'
-            en: 'A green paper box of instant lingzhi tea on a grey background'
-            zh: '灰色背景上的绿色灵芝速溶茶纸盒'
-        - file: tra-hoa-tan-linh-chi-4-hu-200g.webp
-          caption:
-            vi: 'Hũ thiếc 200 g'
-            en: '200 g tin'
-            zh: '200 克铁罐'
-          alt:
-            vi: 'Hũ thiếc trà hòa tan nấm linh chi 200 g màu xanh lá trên nền trắng'
-            en: 'A green 200 g tin of instant lingzhi tea on a white background'
-            zh: '白色背景上的 200 克绿色灵芝速溶茶铁罐'
-        - file: tra-hoa-tan-linh-chi-5-ba-hu.webp
-          caption:
-            vi: 'Pha nhanh, dùng nóng hoặc lạnh'
-            en: 'Quick to make, hot or cold'
-            zh: '冲泡快捷，冷热皆宜'
-          alt:
-            vi: 'Ba hũ thiếc trà linh chi xếp chồng trên tấm gỗ, bên cạnh linh chi thái lát và chén trà thủy tinh'
-            en: 'Three tins of lingzhi tea stacked on a wooden board, beside sliced lingzhi and a glass cup of tea'
-            zh: '三罐灵芝茶叠放在木板上，旁边是灵芝切片和一杯茶'
-        - file: tra-hoa-tan-linh-chi-6-thiet-ke-hu.webp
-          caption:
-            vi: 'Thiết kế bao bì hũ 200 g'
-            en: '200 g tin packaging design'
-            zh: '200 克铁罐包装设计'
-          alt:
-            vi: 'Hình minh họa hũ thiếc trà hòa tan nấm linh chi trên nền đồi xanh'
-            en: 'Illustration of the instant lingzhi tea tin against green hills'
-            zh: '绿色山丘背景上的灵芝速溶茶铁罐插图'
       facts:
         - label:
             vi: Nguồn gốc nguyên liệu
@@ -1978,6 +2047,43 @@ products:
             en: 3 years from the date of manufacture
             zh: 自生产日期起 3 年
           source: docs/products/09. Tra hoa tan linh chi.md
+      gallery:
+        - file: tra-hoa-tan-linh-chi-4-hu-200g.webp
+          caption:
+            vi: 'Hũ thiếc 200 g'
+            en: '200 g tin'
+            zh: '200 克铁罐'
+          alt:
+            vi: 'Hũ thiếc trà hòa tan nấm linh chi 200 g màu xanh lá trên nền trắng'
+            en: 'A green 200 g tin of instant lingzhi tea on a white background'
+            zh: '白色背景上的 200 克绿色灵芝速溶茶铁罐'
+        - file: tra-hoa-tan-linh-chi-3-hop-50g.webp
+          caption:
+            vi: 'Hộp 50 g, gồm 10 gói × 5 g'
+            en: '50 g box, 10 sachets × 5 g'
+            zh: '50 克盒装，10 包 × 5 克'
+          alt:
+            vi: 'Hộp giấy trà hòa tan nấm linh chi màu xanh lá trên nền xám'
+            en: 'A green paper box of instant lingzhi tea on a grey background'
+            zh: '灰色背景上的绿色灵芝速溶茶纸盒'
+        - file: tra-hoa-tan-linh-chi-7-hai-quy-cach.webp
+          caption:
+            vi: 'Hộp 50 g và hũ 200 g'
+            en: '50 g box and 200 g tin'
+            zh: '50 克盒装与 200 克罐装'
+          alt:
+            vi: 'Hộp giấy và hũ thiếc trà hòa tan linh chi xếp cạnh lát linh chi và chén trà'
+            en: 'Paper boxes and tins of instant lingzhi tea beside lingzhi slices and a cup of tea'
+            zh: '灵芝速溶茶纸盒与铁罐，旁边是灵芝片和一杯茶'
+        - file: tra-hoa-tan-linh-chi-2-tai-nam.webp
+          caption:
+            vi: 'Nguyên liệu: nấm linh chi tai to'
+            en: 'Raw material: large-cap lingzhi'
+            zh: '原料：大朵灵芝'
+          alt:
+            vi: 'Cận cảnh một tai nấm linh chi lớn màu nâu với nhiều vân tròn'
+            en: 'Close-up of a large brown lingzhi cap with concentric rings'
+            zh: '一朵带同心纹路的大朵褐色灵芝特写'
     usage:
       preparation:
         - text:
@@ -2011,6 +2117,25 @@ products:
             en: 'Shelf life: 3 years from the date of manufacture.'
             zh: 保质期：自生产日期起 3 年。
           source: docs/products/09. Tra hoa tan linh chi.md
+      gallery:
+        - file: tra-hoa-tan-linh-chi-8-pha-tra.webp
+          caption:
+            vi: 'Trà linh chi pha nóng'
+            en: 'Lingzhi tea served hot'
+            zh: '热饮灵芝茶'
+          alt:
+            vi: 'Ly trà linh chi màu hổ phách đặt cạnh hộp trà và tai linh chi trên bàn'
+            en: 'An amber glass of lingzhi tea beside tea tins and lingzhi caps on a table'
+            zh: '桌上一杯琥珀色灵芝茶，旁边是茶罐和灵芝'
+        - file: tra-hoa-tan-linh-chi-5-ba-hu.webp
+          caption:
+            vi: 'Pha nhanh, dùng nóng hoặc lạnh'
+            en: 'Quick to make, hot or cold'
+            zh: '冲泡快捷，冷热皆宜'
+          alt:
+            vi: 'Ba hũ thiếc trà linh chi xếp chồng trên tấm gỗ, bên cạnh linh chi thái lát và chén trà thủy tinh'
+            en: 'Three tins of lingzhi tea stacked on a wooden board, beside sliced lingzhi and a glass cup of tea'
+            zh: '三罐灵芝茶叠放在木板上，旁边是灵芝切片和一杯茶'
     reviews:
       - quote:
           vi: Trà có vị thanh nhẹ dễ uống, cả nhà mình ai cũng dùng.
@@ -2069,33 +2194,6 @@ products:
             vi: 'Người phụ nữ đội nón lá, mặc áo hồng, cầm ly trà; trên khay gỗ có hai hộp thiếc trà hòa tan linh chi trùng thảo'
             en: 'A woman in a conical hat and pink blouse holds a glass of tea, with two tins of instant lingzhi and cordyceps tea on a wooden tray'
             zh: '头戴斗笠、身穿粉色上衣的女子手持一杯茶，木托盘上放着两罐灵芝虫草速溶茶'
-        - file: tra-hoa-tan-linh-chi-trung-thao-2-ba-hop.webp
-          caption:
-            vi: 'Hũ thiếc 200 g bên linh chi và trùng thảo'
-            en: '200 g tins with lingzhi and cordyceps'
-            zh: '200 克铁罐与灵芝、虫草'
-          alt:
-            vi: 'Ba hộp thiếc trà hòa tan linh chi trùng thảo xếp chồng trên tấm gỗ, cạnh linh chi thái lát, đông trùng hạ thảo và chén trà'
-            en: 'Three tins of instant lingzhi and cordyceps tea stacked on a wooden board, beside sliced lingzhi, cordyceps and a cup of tea'
-            zh: '三罐灵芝虫草速溶茶叠放在木板上，旁边是灵芝切片、虫草和一杯茶'
-        - file: tra-hoa-tan-linh-chi-trung-thao-3-can-canh.webp
-          caption:
-            vi: 'Cận cảnh bao bì'
-            en: 'Packaging close-up'
-            zh: '包装特写'
-          alt:
-            vi: 'Cận cảnh hộp thiếc trà linh chi trùng thảo với hình vẽ linh chi, phía trước là linh chi thái lát và đông trùng hạ thảo'
-            en: 'Close-up of the lingzhi and cordyceps tea tins with lingzhi illustrations, with sliced lingzhi and cordyceps in front'
-            zh: '绘有灵芝图案的灵芝虫草茶铁罐特写，前方是灵芝切片和虫草'
-        - file: tra-hoa-tan-linh-chi-trung-thao-4-hop-200g.webp
-          caption:
-            vi: 'Thiết kế hũ thiếc 200 g'
-            en: '200 g tin design'
-            zh: '200 克铁罐设计'
-          alt:
-            vi: 'Một hộp thiếc trà hòa tan linh chi trùng thảo 200 g trên nền trắng'
-            en: 'A 200 g tin of instant lingzhi and cordyceps tea on a white background'
-            zh: '白色背景上的一罐 200 克灵芝虫草速溶茶'
       facts:
         - label:
             vi: Thương hiệu
@@ -2257,6 +2355,25 @@ products:
             en: 3 years from the date of manufacture
             zh: 自生产日期起 3 年
           source: docs/products/10. Tra hoa tan linh chi trung thao.md
+      gallery:
+        - file: tra-hoa-tan-linh-chi-trung-thao-4-hop-200g.webp
+          caption:
+            vi: 'Hũ thiếc 200 g'
+            en: '200 g tin'
+            zh: '200 克铁罐'
+          alt:
+            vi: 'Một hộp thiếc trà hòa tan linh chi trùng thảo 200 g trên nền trắng'
+            en: 'A 200 g tin of instant lingzhi and cordyceps tea on a white background'
+            zh: '白色背景上的一罐 200 克灵芝虫草速溶茶'
+        - file: tra-hoa-tan-linh-chi-trung-thao-3-can-canh.webp
+          caption:
+            vi: 'Nguyên liệu: linh chi và đông trùng hạ thảo'
+            en: 'Ingredients: lingzhi and cordyceps'
+            zh: '原料：灵芝与虫草'
+          alt:
+            vi: 'Cận cảnh hộp thiếc trà linh chi trùng thảo với hình vẽ linh chi, phía trước là linh chi thái lát và đông trùng hạ thảo'
+            en: 'Close-up of the lingzhi and cordyceps tea tins with lingzhi illustrations, with sliced lingzhi and cordyceps in front'
+            zh: '绘有灵芝图案的灵芝虫草茶铁罐特写，前方是灵芝切片和虫草'
     usage:
       preparation:
         - text:
@@ -2285,6 +2402,16 @@ products:
             en: 'Shelf life: 3 years from the date of manufacture.'
             zh: 保质期：自生产日期起 3 年。
           source: docs/products/10. Tra hoa tan linh chi trung thao.md
+      gallery:
+        - file: tra-hoa-tan-linh-chi-trung-thao-2-ba-hop.webp
+          caption:
+            vi: 'Trà pha sẵn bên hũ thiếc 200 g'
+            en: 'Brewed tea beside the 200 g tins'
+            zh: '冲泡好的茶与 200 克铁罐'
+          alt:
+            vi: 'Ba hộp thiếc trà hòa tan linh chi trùng thảo xếp chồng trên tấm gỗ, cạnh linh chi thái lát, đông trùng hạ thảo và chén trà'
+            en: 'Three tins of instant lingzhi and cordyceps tea stacked on a wooden board, beside sliced lingzhi, cordyceps and a cup of tea'
+            zh: '三罐灵芝虫草速溶茶叠放在木板上，旁边是灵芝切片、虫草和一杯茶'
     reviews:
       - quote:
           vi: Trà có vị thanh, dễ uống, rất thích hợp để thư giãn sau giờ làm việc.
@@ -2518,6 +2645,16 @@ products:
             en: 12 months from the date of manufacture
             zh: 自生产日期起 12 个月
           source: docs/products/12. Dong trung ha thao ngam mat ong.md
+      gallery:
+        - file: dong-trung-ha-thao-ngam-mat-ong-1-hu.webp
+          caption:
+            vi: 'Hũ thủy tinh 200 ml'
+            en: '200 ml glass jar'
+            zh: '200 毫升玻璃罐'
+          alt:
+            vi: 'Ba hũ thủy tinh đông trùng hạ thảo ngâm mật ong, nhãn xanh lá, đặt trên khay gỗ'
+            en: 'Three glass jars of cordyceps in honey with green labels on a wooden board'
+            zh: '木板上三罐绿色标签的蜂蜜浸虫草玻璃罐'
     usage:
       preparation:
         - text:
