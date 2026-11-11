@@ -168,8 +168,6 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
         </ol>
       </nav>
 
-      <LanguageSwitch class="mobile-menu__lang" />
-
       <!-- VERIFY: address and email (see src/data/site.ts). -->
       <div class="mobile-menu__foot">
         <p class="mobile-menu__label">{contactLink.label}</p>
@@ -524,15 +522,15 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
   .site-nav__contact .site-nav__link:hover { background: var(--color-deep-green); }
   .site-nav__contact .site-nav__link::after { display: none; }
 
-  /* Language switch: in the bar beside Liên hệ on desktop, in the menu
-     panel below that. */
-  .site-header__inner :global(.site-header__lang) { display: none; }
+  /* Language switch: always in the bar, beside Liên hệ on desktop and
+     before search and the menu toggle below that, so it is never hidden
+     inside the menu. It takes the free space on its left. */
+  .site-header__inner :global(.site-header__lang) { margin-left: auto; }
 
   /* Search ---------------------------------------------------------------
      A magnifier in the bar; the field opens as one quiet row beneath it. */
   .search-toggle {
     flex: none;
-    margin-left: auto;
     display: inline-grid;
     place-items: center;
     width: 2.75rem;
@@ -544,7 +542,6 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
   .search-toggle[aria-expanded="true"] { opacity: 1; }
   .search-toggle svg,
   .site-search__submit svg { width: 1.125rem; height: 1.125rem; }
-  .search-toggle + .desktop-contact + .menu-toggle { margin-left: 0; }
   .is-menu-open .search-toggle { visibility: hidden; }
 
   .site-search {
@@ -589,7 +586,6 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
 
   /* Menu toggle (below desktop) */
   .menu-toggle {
-    margin-left: auto;
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
@@ -741,7 +737,6 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
       justify-content: space-between;
       gap: 1rem;
     }
-    .site-header__inner :global(.site-header__brand) { width: 12rem; }
     .menu-toggle {
       gap: 0.625rem;
       padding-inline: 0;
@@ -786,7 +781,22 @@ const currentSub = (href: string) => (href === path ? 'page' : undefined);
       padding-block: 0.5rem;
     }
     .mobile-menu__label { margin-bottom: 0; }
-    .mobile-menu__inner :global(.mobile-menu__lang) { padding-left: 2.25rem; }
+    /* Room for the language switch: a narrower logo, a tighter switch, and
+       the menu toggle as its icon alone (the label stays for screen readers). */
+    .site-header__inner { gap: 0.5rem; }
+    .site-header__inner :global(.site-header__brand) { width: min(12rem, 100vw - 15.5rem); }
+    .site-header__inner :global(.site-header__lang) { gap: 0; font-size: 0.75rem; letter-spacing: 0.04em; }
+    .site-header__inner :global(.site-header__lang .lang-switch__link) { min-width: 1.625rem; }
+    .search-toggle { width: 2.5rem; }
+    .menu-toggle { min-width: 2.75rem; justify-content: flex-end; }
+    .menu-toggle__label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
   }
 
   /* Horizontal navigation wherever it fits on one line with room to spare:
