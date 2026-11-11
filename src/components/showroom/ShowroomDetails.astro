@@ -71,6 +71,20 @@ const isExternal = (href: string) => /^https?:/i.test(href) || /\.pdf($|[?#])/i.
                     {p.intro.paragraphs.map((text) => <p>{text}</p>)}
                   </div>
                 )}
+                {p.intro.gallery.length > 0 && (
+                  <ul class="details__gallery">
+                    {p.intro.gallery.map((g) => (
+                      <li>
+                        <figure>
+                          <a href={g.src} target="_blank" rel="noopener">
+                            <img src={g.src} width="1200" height="1500" alt={g.alt} loading="lazy" decoding="async" />
+                          </a>
+                          <figcaption>{g.caption}</figcaption>
+                        </figure>
+                      </li>
+                    ))}
+                  </ul>
+                )}
                 {p.intro.paragraphs.length === 0 && p.intro.facts.length === 0 && (
                   <div class="details__prose"><p>{p.summary}</p></div>
                 )}
@@ -85,6 +99,29 @@ const isExternal = (href: string) => /^https?:/i.test(href) || /\.pdf($|[?#])/i.
                   <a class="link-arrow details__more" href={p.detail}>{t.detail} <Arrow /></a>
                 )}
               </section>
+            )}
+
+            {tab === 'cong-dung' && p.benefits && (
+              <>
+                {p.benefits.highlights.length > 0 && (
+                  <section class="details__section">
+                    <h3 class="details__heading">{t.benefitsTitle}</h3>
+                    <dl class="details__facts">
+                      {p.benefits.highlights.map((f) => (
+                        <div class="details__fact"><dt>{f.label}</dt><dd>{f.value}</dd></div>
+                      ))}
+                    </dl>
+                  </section>
+                )}
+                {p.benefits.audience.length > 0 && (
+                  <section class="details__section">
+                    <h3 class="details__heading">{t.audienceTitle}</h3>
+                    <ul class="details__list">
+                      {p.benefits.audience.map((text) => <li>{text}</li>)}
+                    </ul>
+                  </section>
+                )}
+              </>
             )}
 
             {tab === 'thanh-phan' && p.composition && (
@@ -433,6 +470,41 @@ const isExternal = (href: string) => /^https?:/i.test(href) || /\.pdf($|[?#])/i.
 
   .details__more { margin-top: var(--space-m); }
 
+  .details__gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-s);
+    max-width: 52rem;
+    margin: var(--space-m) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .details__gallery figure { margin: 0; }
+  .details__gallery a { display: block; }
+  .details__gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+  .details__gallery figcaption {
+    margin-top: var(--space-2xs);
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: var(--color-text-muted);
+  }
+  @media (max-width: 599px) {
+    .details__gallery {
+      grid-template-columns: none;
+      grid-auto-flow: column;
+      grid-auto-columns: 68%;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+    .details__gallery li { scroll-snap-align: start; }
+  }
   .details__list {
     margin-top: var(--space-s);
     max-width: 44rem;

@@ -7,6 +7,7 @@ vi:
   groups:
     - Nấm tươi
     - Sản phẩm chế biến
+  listen: Nghe giới thiệu {name}
   ask: Liên hệ tư vấn
   call: Gọi điện
   nang_cao:
@@ -21,6 +22,7 @@ en:
   groups:
     - Fresh mushrooms
     - Made from them
+  listen: 'Listen: {name} (in Vietnamese)'
   ask: Ask for advice
   call: Call us
   nang_cao:
@@ -35,6 +37,7 @@ zh:
   groups:
     - 鲜菇
     - 加工产品
+  listen: 收听介绍：{name}（越南语）
   ask: 咨询
   call: 致电
   nang_cao:

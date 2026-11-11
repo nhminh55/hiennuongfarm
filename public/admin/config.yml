@@ -662,6 +662,10 @@ collections:
             name: ask
             i18n: true
             widget: string
+          - label: 'Chú thích audio — {name} là chỗ website tự điền tên sản phẩm, giữ nguyên'
+            name: listen
+            i18n: true
+            widget: string
           - label: ④ Nút gọi điện
             name: call
             i18n: true
@@ -682,6 +686,10 @@ collections:
                 name: gioi-thieu
                 i18n: true
                 widget: string
+              - label: Tab Công dụng
+                name: cong-dung
+                i18n: true
+                widget: string
               - label: Tab Thành phần
                 name: thanh-phan
                 i18n: true
@@ -700,6 +708,14 @@ collections:
                 widget: string
           - label: ② Liên kết “Xem trang sản phẩm”
             name: detail
+            i18n: true
+            widget: string
+          - label: 'Tab Công dụng: tiêu đề giá trị'
+            name: benefitsTitle
+            i18n: true
+            widget: string
+          - label: 'Tab Công dụng: tiêu đề “Phù hợp với”'
+            name: audienceTitle
             i18n: true
             widget: string
           - label: 'Tab Thành phần: tiêu đề'
@@ -1078,6 +1094,46 @@ collections:
                     allow_duplicate: false
                     allow_reorder: false
                     summary: '{{fields.text.vi}}'
+                  - label: Ảnh sản phẩm (3 ảnh cùng khổ 4:5)
+                    name: gallery
+                    widget: list
+                    required: false
+                    collapsed: true
+                    fields:
+                      - label: Tên file trong public/images/products/gallery
+                        name: file
+                        widget: string
+                      - label: Chú thích dưới ảnh
+                        name: caption
+                        widget: object
+                        fields:
+                          - label: Tiếng Việt
+                            name: vi
+                            widget: string
+                          - label: Tiếng Anh
+                            name: en
+                            widget: string
+                          - label: Tiếng Trung
+                            name: zh
+                            widget: string
+                      - label: Mô tả ảnh cho người khiếm thị và Google — không hiện trên trang
+                        name: alt
+                        widget: object
+                        fields:
+                          - label: Tiếng Việt
+                            name: vi
+                            widget: string
+                          - label: Tiếng Anh
+                            name: en
+                            widget: string
+                          - label: Tiếng Trung
+                            name: zh
+                            widget: string
+                    allow_add: false
+                    allow_remove: false
+                    allow_duplicate: false
+                    allow_reorder: false
+                    summary: '{{fields.caption.vi}}'
                   - label: Bảng thông tin
                     name: facts
                     widget: list
@@ -1117,6 +1173,85 @@ collections:
                     allow_duplicate: false
                     allow_reorder: false
                     summary: '{{fields.label.vi}}'
+              - label: Audio giới thiệu
+                name: audio
+                widget: object
+                required: false
+                collapsed: true
+                fields:
+                  - label: Tên file trong public/audio
+                    name: file
+                    widget: string
+              - label: Tab Công dụng
+                name: benefits
+                widget: object
+                required: false
+                collapsed: true
+                fields:
+                  - label: Giá trị nổi bật
+                    name: highlights
+                    widget: list
+                    required: false
+                    collapsed: true
+                    fields:
+                      - label: Tên dòng
+                        name: label
+                        widget: object
+                        required: true
+                        fields:
+                          - label: Tiếng Việt
+                            name: vi
+                            widget: string
+                          - label: Tiếng Anh
+                            name: en
+                            widget: string
+                          - label: Tiếng Trung
+                            name: zh
+                            widget: string
+                      - label: Nội dung
+                        name: value
+                        widget: object
+                        required: true
+                        fields:
+                          - label: Tiếng Việt
+                            name: vi
+                            widget: text
+                          - label: Tiếng Anh
+                            name: en
+                            widget: text
+                          - label: Tiếng Trung
+                            name: zh
+                            widget: string
+                    allow_add: false
+                    allow_remove: false
+                    allow_duplicate: false
+                    allow_reorder: false
+                    summary: '{{fields.label.vi}}'
+                  - label: Phù hợp với
+                    name: audience
+                    widget: list
+                    required: false
+                    collapsed: true
+                    fields:
+                      - label: Nội dung
+                        name: text
+                        widget: object
+                        required: true
+                        fields:
+                          - label: Tiếng Việt
+                            name: vi
+                            widget: text
+                          - label: Tiếng Anh
+                            name: en
+                            widget: text
+                          - label: Tiếng Trung
+                            name: zh
+                            widget: string
+                    allow_add: false
+                    allow_remove: false
+                    allow_duplicate: false
+                    allow_reorder: false
+                    summary: '{{fields.text.vi}}'
               - label: Tab Thành phần
                 name: composition
                 widget: object

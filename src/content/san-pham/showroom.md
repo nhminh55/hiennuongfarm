@@ -714,6 +714,34 @@ products:
             en: Carefully selected natural mushrooms are freeze-dried to preserve their colour, shape and flavour.
             zh: 精心挑选的天然菌菇经过冷冻干燥，保留其色泽、形态和风味。
           source: docs/products/05.Nam moi den say thang hoa.md
+      gallery:
+        - file: nam-moi-den-say-thang-hoa-1-nam-tuoi.webp
+          caption:
+            vi: 'Nguyên liệu: nấm mối đen tươi từ trang trại'
+            en: 'Raw material: fresh black termite mushrooms from the farm'
+            zh: '原料：农场新鲜黑皮鸡枞菌'
+          alt:
+            vi: 'Một rổ tre đầy nấm mối đen tươi, mũ nâu sẫm, thân trắng ngà đã gọt sạch gốc'
+            en: 'A bamboo basket full of fresh black termite mushrooms with dark brown caps and trimmed ivory stems'
+            zh: '竹筐里装满新鲜黑皮鸡枞菌，深褐色菌盖，象牙白菌柄已削净根部'
+        - file: nam-moi-den-say-thang-hoa-2-hop.webp
+          caption:
+            vi: 'Hộp 45 g, nhìn rõ nấm qua ô cửa sổ'
+            en: '45 g box, with the mushrooms visible through the window'
+            zh: '45 克纸盒，透过小窗可见菌菇'
+          alt:
+            vi: 'Hộp giấy Nấm Mối Đen Sấy Thăng Hoa 45 g đặt giữa nhiều cây nấm sấy trên mặt gỗ'
+            en: 'A 45 g paper box of freeze-dried black termite mushroom lying among dried mushrooms on a wooden board'
+            zh: '45 克冻干黑皮鸡枞菌纸盒，放在木板上的干菌之间'
+        - file: nam-moi-den-say-thang-hoa-3-ba-hop.webp
+          caption:
+            vi: 'Nấm mối đen sấy thăng hoa'
+            en: 'Freeze-dried black termite mushroom'
+            zh: '冻干黑皮鸡枞菌'
+          alt:
+            vi: 'Ba hộp nấm mối đen sấy thăng hoa trên tấm gỗ, bên cạnh đĩa nấm sấy và vải bao bố'
+            en: 'Three boxes of freeze-dried black termite mushroom on a wooden board, beside a dish of dried mushrooms and burlap'
+            zh: '三盒冻干黑皮鸡枞菌摆在木板上，旁边是一碟干菌和麻布'
       facts:
         - label:
             vi: Nguồn gốc nguyên liệu
@@ -760,6 +788,123 @@ products:
             en: Tân Bình hamlet, Tà Đảnh commune, Tri Tôn district, An Giang province
             zh: 安江省知尊县 Tà Đảnh 乡 Tân Bình 村
           source: Bản tự công bố sản phẩm số 02/TADANH/2024, HTX Nông nghiệp Tà Đảnh, 30/09/2024 (https://mekongsen.vn/datafiles/1950631709934493696/2025-08/74586519-TU%20CONG%20BO%20SAN%20PHAM.pdf), mục II.5 (p.3), as printed in 2024
+    audio:
+      file: nam-moi-den-say-thang-hoa.mp3
+    benefits:
+      highlights:
+        - label:
+            vi: 'Nguồn thực phẩm từ nấm cho bữa ăn'
+            en: 'Easy mushrooms for everyday meals'
+            zh: '方便日常食用的菌菇'
+          value:
+            vi: 'Làm từ 100% nấm mối đen, giúp dễ dàng đưa món nấm vào bữa ăn mà không phụ thuộc vào nấm tươi.'
+            en: 'Made from 100% black termite mushroom, it makes it easy to bring mushrooms into meals without relying on fresh ones.'
+            zh: '以 100% 黑皮鸡枞菌制成，无需依赖鲜菇，也能轻松把菌菇端上餐桌。'
+          source: Owner product copy (Nấm mối đen sấy thăng hoa, 2026-11-11)
+        - label:
+            vi: 'Dinh dưỡng từ nấm'
+            en: 'Nourishment from mushrooms'
+            zh: '来自菌菇的营养'
+          value:
+            vi: 'Giúp bổ sung protein và chất xơ, hỗ trợ tiêu hóa và chống oxy hóa.'
+            en: 'Helps add protein and fibre, and supports digestion and antioxidant activity.'
+            zh: '有助于补充蛋白质和膳食纤维，帮助消化并有助抗氧化。'
+          source: Owner product copy (Nấm mối đen sấy thăng hoa, 2026-11-11); owner confirmed keeping this claim 2026-11-11
+        - label:
+            vi: 'Giữ đặc trưng của nấm sau khi sấy'
+            en: 'Keeps the mushroom’s character'
+            zh: '干燥后仍保留菌菇特色'
+          value:
+            vi: 'Sấy thăng hoa ở nhiệt độ thấp giúp nấm giữ tốt hơn hình dáng, màu sắc, cấu trúc và hương vị so với nhiều phương pháp sấy nhiệt thông thường.'
+            en: 'Low-temperature freeze-drying keeps the shape, colour, texture and flavour better than many conventional heat-drying methods.'
+            zh: '低温冷冻干燥比许多常规热风干燥方式更能保留菌菇的形态、色泽、质地和风味。'
+          source: Owner product copy (Nấm mối đen sấy thăng hoa, 2026-11-11)
+        - label:
+            vi: 'Tiện bảo quản và dự trữ'
+            en: 'Easy to store and keep'
+            zh: '便于储存'
+          value:
+            vi: 'Không cần dùng ngay trong vài ngày như nấm tươi. Hạn sử dụng 12 tháng, phù hợp để dự trữ trong gia đình.'
+            en: 'No need to use it within days like fresh mushrooms. With a 12-month shelf life, it suits keeping at home.'
+            zh: '无需像鲜菇那样几天内吃完。保质期 12 个月，适合家庭常备。'
+          source: Owner product copy (Nấm mối đen sấy thăng hoa, 2026-11-11)
+        - label:
+            vi: 'Nhẹ, gọn, dễ mang theo'
+            en: 'Light and easy to carry'
+            zh: '轻便易携带'
+          value:
+            vi: 'Sau khi phần lớn độ ẩm được loại bỏ, sản phẩm nhẹ và gọn, tiện mang theo khi du lịch, công tác hoặc những chuyến đi dài ngày.'
+            en: 'With most of the moisture removed, it is light and compact — handy for travel, work trips or longer journeys.'
+            zh: '去除大部分水分后，产品轻巧紧凑，方便旅行、出差或长途出行时携带。'
+          source: Owner product copy (Nấm mối đen sấy thăng hoa, 2026-11-11)
+        - label:
+            vi: 'Hoàn nguyên nhanh'
+            en: 'Quick to rehydrate'
+            zh: '泡发快捷'
+          value:
+            vi: 'Ngâm nước ấm khoảng 5–10 phút, nấm hút nước trở lại và mềm, sẵn sàng để chế biến.'
+            en: 'Soak in warm water for about 5–10 minutes and the mushrooms soften, ready to cook.'
+            zh: '温水浸泡约 5–10 分钟，菌菇即可吸水变软，随时烹饪。'
+          source: Owner product copy (Nấm mối đen sấy thăng hoa, 2026-11-11)
+        - label:
+            vi: 'Thành phần đơn giản'
+            en: 'Simple ingredients'
+            zh: '成分简单'
+          value:
+            vi: '100% nấm mối đen, không sử dụng chất bảo quản hay phẩm màu.'
+            en: '100% black termite mushroom, with no preservatives or colouring.'
+            zh: '100% 黑皮鸡枞菌，不添加防腐剂或色素。'
+          source: Owner product copy (Nấm mối đen sấy thăng hoa, 2026-11-11)
+        - label:
+            vi: 'Vị ngọt thanh, dễ kết hợp'
+            en: 'Naturally sweet, easy to pair'
+            zh: '清甜自然，易于搭配'
+          value:
+            vi: 'Vị ngọt thanh và hương thơm đặc trưng giúp món canh, lẩu, xào, hầm hay món chay thêm đậm đà.'
+            en: 'Its gentle sweetness and distinctive aroma add depth to soups, hotpots, stir-fries, stews and vegetarian dishes.'
+            zh: '清甜的口感和独特香气，为汤、火锅、炒菜、炖菜和素食增添风味。'
+          source: Owner product copy (Nấm mối đen sấy thăng hoa, 2026-11-11)
+      audience:
+        - text:
+            vi: 'Gia đình thường dùng nấm trong bữa ăn.'
+            en: 'Families who often cook with mushrooms.'
+            zh: '经常在餐桌上吃菌菇的家庭。'
+          source: Owner product copy (Nấm mối đen sấy thăng hoa, 2026-11-11)
+        - text:
+            vi: 'Người ăn chay hoặc ưu tiên thực phẩm có nguồn gốc thực vật.'
+            en: 'Vegetarians and people who prefer plant-based foods.'
+            zh: '素食者或偏好植物性食物的人。'
+          source: Owner product copy (Nấm mối đen sấy thăng hoa, 2026-11-11)
+        - text:
+            vi: 'Người muốn bổ sung thêm protein và chất xơ từ thực phẩm.'
+            en: 'People who want more protein and fibre from their food.'
+            zh: '希望从食物中补充更多蛋白质和膳食纤维的人。'
+          source: Owner product copy (Nấm mối đen sấy thăng hoa, 2026-11-11)
+        - text:
+            vi: 'Người cần nguyên liệu bảo quản được lâu hơn nấm tươi.'
+            en: 'People who need an ingredient that keeps longer than fresh mushrooms.'
+            zh: '需要比鲜菇更耐储存食材的人。'
+          source: Owner product copy (Nấm mối đen sấy thăng hoa, 2026-11-11)
+        - text:
+            vi: 'Người bận rộn muốn dự trữ nguyên liệu dễ chế biến.'
+            en: 'Busy people who want an easy-to-cook ingredient on hand.'
+            zh: '想常备易烹饪食材的忙碌人士。'
+          source: Owner product copy (Nấm mối đen sấy thăng hoa, 2026-11-11)
+        - text:
+            vi: 'Người thường đi du lịch hoặc công tác.'
+            en: 'People who often travel for leisure or work.'
+            zh: '经常旅行或出差的人。'
+          source: Owner product copy (Nấm mối đen sấy thăng hoa, 2026-11-11)
+        - text:
+            vi: 'Người thích nấm mối đen nhưng khó mua nấm tươi thường xuyên.'
+            en: 'People who love black termite mushroom but can’t easily buy it fresh.'
+            zh: '喜欢黑皮鸡枞菌却不易常买到鲜菇的人。'
+          source: Owner product copy (Nấm mối đen sấy thăng hoa, 2026-11-11)
+        - text:
+            vi: 'Người ưu tiên sản phẩm không chất bảo quản, phẩm màu.'
+            en: 'People who prefer products without preservatives or colouring.'
+            zh: '偏好不含防腐剂和色素产品的人。'
+          source: Owner product copy (Nấm mối đen sấy thăng hoa, 2026-11-11)
     composition:
       ingredients:
         text:

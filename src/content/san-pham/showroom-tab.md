@@ -2,11 +2,14 @@
 vi:
   tabs:
     gioi-thieu: Giới thiệu
+    cong-dung: Công dụng
     thanh-phan: Thành phần
     cach-dung: Cách dùng
     ho-so: Hồ sơ
     nhan-xet: Nhận xét
   detail: Xem trang sản phẩm
+  benefitsTitle: Giá trị nổi bật
+  audienceTitle: Phù hợp với
   compositionTitle: Thành phần & quy cách
   ingredients: Thành phần
   preparation: Cách dùng
@@ -29,11 +32,14 @@ vi:
 en:
   tabs:
     gioi-thieu: Introduction
+    cong-dung: Benefits
     thanh-phan: Ingredients
     cach-dung: How to use
     ho-so: Records
     nhan-xet: Reviews
   detail: View product page
+  benefitsTitle: Key qualities
+  audienceTitle: Well suited to
   compositionTitle: Ingredients & specifications
   ingredients: Ingredients
   preparation: How to use
@@ -56,11 +62,14 @@ en:
 zh:
   tabs:
     gioi-thieu: 简介
+    cong-dung: 功用
     thanh-phan: 成分
     cach-dung: 用法
     ho-so: 档案
     nhan-xet: 评价
   detail: 查看产品页面
+  benefitsTitle: 产品特点
+  audienceTitle: 适合人群
   compositionTitle: 成分与规格
   ingredients: 成分
   preparation: 用法
