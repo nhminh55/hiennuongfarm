@@ -32,7 +32,7 @@ const href = (x: Activity) => `/dau-an/su-kien/${x.slug}/`;
 <BaseLayout title={a.title} description={`${formatDate(a.date)}: ${a.summary}`}>
   <DauAnHead current="/dau-an/su-kien/" title={a.title} as="p" />
 
-  {a.slug === 'nuong-farm-hoi-cho-tri-ton-2026' ? <EventArticle activity={a} /> : (
+  {a.slug === 'nuong-farm-hoi-cho-tri-ton-2026' || a.layout === 'article' ? <EventArticle activity={a} /> : (
   <article class="album" aria-labelledby="album-title">
     <div class="container album__grid">
       <header class="album__head">

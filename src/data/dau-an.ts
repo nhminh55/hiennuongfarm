@@ -237,13 +237,17 @@ export interface Activity {
   award?: string;
   /** Provenance notes, not shown. */
   source?: string;
+  /** 'article': shown as a written article (EventArticle); "## " story lines are headings. */
+  layout?: 'article';
+  /** Invitation block at the end of an article. */
+  visit?: { title: string; text?: string; rows: { label: string; value: string }[] };
 }
 
 type RawActivity = Omit<Activity, 'photos'> & { photos: RawPic[] };
 
 /** Newest first. */
 export const activities: Activity[] = newestFirst(
-  [...dataFile<{ activities: RawActivity[] }>('dau-an/hoi-cho-tri-ton-2026').activities, ...dataFile<{ activities: RawActivity[] }>('dau-an/su-kien').activities].map(
+  ['dau-an/vietnam-foodexpo-2026', 'dau-an/hoi-cho-tri-ton-2026', 'dau-an/su-kien'].flatMap((f) => dataFile<{ activities: RawActivity[] }>(f).activities).map(
     (a) => ({ ...a, photos: a.photos.map(pic) }),
   ),
   (a) => a.date,

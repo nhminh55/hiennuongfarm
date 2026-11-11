@@ -2,7 +2,8 @@
 import { formatDate, type Activity } from '../../data/dau-an';
 interface Props { activity: Activity; }
 const { activity: a } = Astro.props;
-const products = a.story[2].replace(/^Nương Farm giới thiệu tại hội chợ:\s*/, '').replace(/\.$/, '').split('; ');
+const article = a.layout === 'article';
+const products = article ? [] : a.story[2].replace(/^Nương Farm giới thiệu tại hội chợ:\s*/, '').replace(/\.$/, '').split('; ');
 ---
 <article class="event-article" aria-labelledby="event-title">
   <header class="event-header">
@@ -12,7 +13,7 @@ const products = a.story[2].replace(/^Nương Farm giới thiệu tại hội ch
     <p class="event-place">{a.place}</p>
   </header>
 
-  <section class="event-slideshow" aria-label="Ảnh Hội chợ Tri Tôn 2026" data-event-gallery>
+  <section class="event-slideshow" aria-label={article ? `Ảnh: ${a.title}` : 'Ảnh Hội chợ Tri Tôn 2026'} data-event-gallery>
     <div class="gallery-stage">
       {a.photos.map((p, i) => <figure class="gallery-slide" hidden={i !== 0}>
         <a href={p.full} data-lightbox="album" data-caption={`${p.caption ?? p.alt} Ảnh: ${p.credit}.`} data-width={p.width} data-height={p.height}>
@@ -35,6 +36,20 @@ const products = a.story[2].replace(/^Nương Farm giới thiệu tại hội ch
     </div>
   </section>
 
+  {article ? (
+  <div class="event-body">
+    {a.story.map((s) => (s.startsWith('## ') ? <h2>{s.slice(3)}</h2> : <p>{s}</p>))}
+    {a.visit && (
+      <aside class="event-visit" aria-labelledby="visit-title">
+        <h2 id="visit-title">{a.visit.title}</h2>
+        {a.visit.text && <p class="event-visit__text">{a.visit.text}</p>}
+        <dl>
+          {a.visit.rows.map((r) => <div><dt>{r.label}</dt><dd>{r.value}</dd></div>)}
+        </dl>
+      </aside>
+    )}
+  </div>
+  ) : (<>
   <div class="event-body">
     <p>{a.story[0]}</p>
     <p>{a.story[1]}</p>
@@ -59,6 +74,7 @@ const products = a.story[2].replace(/^Nương Farm giới thiệu tại hội ch
     </aside>
     <p>{a.story[8]}</p>
   </div>
+  </>)}
 </article>
 
 <style>
@@ -94,6 +110,7 @@ const products = a.story[2].replace(/^Nương Farm giới thiệu tại hội ch
   .event-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; align-items: start; margin: clamp(2rem, 4vw, 3rem) 0; }
   .event-visit { border-top: 1px solid var(--color-line-strong); border-bottom: 1px solid var(--color-line); padding: 1.5rem 0; margin: 2rem 0; }
   .event-visit h2 { margin: 0 0 1.25rem; }
+  .event-visit__text { margin-bottom: .5rem; }
   .event-visit dl { margin: 0; }
   .event-visit dl div { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 1rem; margin-top: .65rem; }
   .event-visit dt { font-weight: 500; }
