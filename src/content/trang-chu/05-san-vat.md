@@ -2,7 +2,7 @@
 vi:
   eyebrow: Sản vật từ trang trại
   title: Tinh hoa từ những loại nấm quý
-  intro: 'Bốn dòng nấm chính được nuôi trồng tại trang trại — nấm mối đen, nấm linh chi, đông trùng hạ thảo và nấm bào ngư — cùng tám sản phẩm chế biến từ chúng: nấm sấy thăng hoa, snack nấm, trà hòa tan, bào tử linh chi và đông trùng hạ thảo ngâm mật ong.'
+  intro: 'Bốn dòng nấm chính được nuôi trồng tại trang trại — nấm mối đen, nấm linh chi, đông trùng hạ thảo và nấm bào ngư — cùng chín sản phẩm chế biến từ chúng: nấm sấy thăng hoa, snack nấm, trà hòa tan, bào tử linh chi, đông trùng hạ thảo ngâm mật ong và chà bông nấm mối.'
   linhChi: Nấm Linh Chi Tai To
   additional:
     - Nấm Mối Đen Sấy Thăng Hoa
@@ -13,6 +13,7 @@ vi:
     - Trà Hòa Tan Linh Chi Trùng Thảo
     - Bào Tử Nấm Linh Chi
     - Đông Trùng Hạ Thảo Ngâm Mật Ong
+    - Chà Bông Nấm Mối
   descriptions:
     - Nấm tươi nuôi trồng tại trang trại Hiền Nương.
     - Dòng linh chi được nuôi trồng và thu hái tại trang trại.
@@ -26,18 +27,19 @@ vi:
     - Trà hòa tan kết hợp linh chi và đông trùng hạ thảo.
     - Sản phẩm từ bào tử của nấm linh chi tại Nương Farm.
     - Sự kết hợp giữa đông trùng hạ thảo và mật ong.
+    - Chà bông chay làm từ 100% nấm mối.
   all: Xem tất cả sản phẩm
   details: Chi tiết
   nang_cao:
     carousel: băng chuyền
     detailsOf: Chi tiết {name}
-    list: Danh sách 12 sản phẩm
+    list: Danh sách 13 sản phẩm
     next: Sản phẩm tiếp theo
     prev: Sản phẩm trước
 en:
   eyebrow: Produce from the Farm
   title: The essence of prized mushrooms
-  intro: 'Four main mushroom lines are grown on the farm — black termite mushroom, lingzhi, cordyceps and oyster mushroom — alongside eight products made from them: freeze-dried mushrooms, mushroom snacks, instant teas, lingzhi spores and cordyceps in honey.'
+  intro: 'Four main mushroom lines are grown on the farm — black termite mushroom, lingzhi, cordyceps and oyster mushroom — alongside nine products made from them: freeze-dried mushrooms, mushroom snacks, instant teas, lingzhi spores, cordyceps in honey and termite mushroom floss.'
   linhChi: Large-Cap Lingzhi Mushroom
   additional:
     - Freeze-Dried Black Termite Mushroom
@@ -48,6 +50,7 @@ en:
     - Instant Lingzhi & Cordyceps Tea
     - Lingzhi Spores
     - Cordyceps in Honey
+    - Termite Mushroom Floss
   descriptions:
     - Fresh mushrooms grown at the Hiền Nương farm.
     - Lingzhi grown and harvested on the farm.
@@ -61,18 +64,19 @@ en:
     - An instant tea combining lingzhi and cordyceps.
     - Made from the spores of Nương Farm’s lingzhi.
     - Cordyceps paired with honey.
+    - Vegetarian floss made from 100% termite mushrooms.
   all: View all products
   details: Details
   nang_cao:
     carousel: carousel
     detailsOf: 'Details: {name}'
-    list: List of 12 products
+    list: List of 13 products
     next: Next product
     prev: Previous product
 zh:
   eyebrow: 农场物产
   title: 珍贵菌菇的精华
-  intro: 农场主要种植四类菌菇——黑皮鸡枞菌、灵芝、蛹虫草和平菇，并以此制成八款产品：冻干菌菇、菌菇零食、速溶茶、灵芝孢子和蜂蜜浸蛹虫草。
+  intro: 农场主要种植四类菌菇——黑皮鸡枞菌、灵芝、蛹虫草和平菇，并以此制成九款产品：冻干菌菇、菌菇零食、速溶茶、灵芝孢子、蜂蜜浸蛹虫草和鸡枞菌松。
   linhChi: 大朵灵芝
   additional:
     - 冻干黑皮鸡枞菌
@@ -83,6 +87,7 @@ zh:
     - 灵芝虫草速溶茶
     - 灵芝孢子
     - 蜂蜜浸蛹虫草
+    - 鸡枞菌松
   descriptions:
     - 在 Trang trại Hiền Nương 种植的新鲜菌菇。
     - 在农场种植和采收的灵芝。
@@ -96,12 +101,13 @@ zh:
     - 灵芝与蛹虫草搭配的速溶茶。
     - 取自 Nương Farm 灵芝孢子的产品。
     - 蛹虫草与蜂蜜的结合。
+    - 以 100% 鸡枞菌制成的素肉松。
   all: 查看全部产品
   details: 详情
   nang_cao:
     carousel: 轮播
     detailsOf: '{name}详情'
-    list: 12 款产品列表
+    list: 13 款产品列表
     next: 下一个产品
     prev: 上一个产品
 ---

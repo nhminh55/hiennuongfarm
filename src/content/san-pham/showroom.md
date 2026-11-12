@@ -3409,4 +3409,268 @@ products:
         zh: 金色瓶盖的玻璃瓶装蜂蜜浸蛹虫草，旁边是一个小玻璃碗
       file: 12-dong-trung-ha-thao-ngam-mat-ong.webp
     slug: dong-trung-ha-thao-ngam-mat-ong
+  - name:
+      vi: Chà bông nấm mối
+      en: Termite Mushroom Floss
+      zh: 鸡枞菌松
+    category:
+      text:
+        vi: Chà bông chay
+        en: Vegetarian floss
+        zh: 素肉松
+      source: Owner confirmation 2026-11-12 (món chay); product name from the jar label
+    summary:
+      text:
+        vi: Chà bông chay từ 100% nấm mối, sợi tơi thơm, ăn liền.
+        en: Vegetarian floss made from 100% termite mushrooms — light, fragrant and ready to eat.
+        zh: 以 100% 鸡枞菌制成的素肉松，松软喷香，开盖即食。
+      source: docs/products/13. Cha bong nam moi.md (owner-confirmed 2026-11-12)
+    intro:
+      paragraphs:
+        - text:
+            vi: Chà bông nấm mối Nương Farm là món chà bông chay làm từ 100% nấm mối. Nấm được xé sợi rồi sao trên chảo cho đến khi khô, tơi và thơm, thành những sợi chà bông màu nâu óng.
+            en: Nương Farm Termite Mushroom Floss is a vegetarian floss made from 100% termite mushrooms. The mushrooms are shredded and pan-roasted until dry, light and fragrant, becoming golden-brown strands.
+            zh: Nương Farm 鸡枞菌松是以 100% 鸡枞菌制成的素肉松。菌菇撕成细丝后在锅中翻炒，直至干爽、蓬松、喷香，成为金褐色的松丝。
+          source: docs/products/13. Cha bong nam moi.md (owner-confirmed 2026-11-12)
+        - text:
+            vi: Món ăn liền, mở nắp là dùng được — ăn kèm cơm, cháo, xôi, bánh mì hay nhâm nhi đều hợp. Hũ nắp vặn kín, tiện bảo quản và làm quà.
+            en: Ready to eat as soon as you open the lid — with rice, congee, sticky rice, bread, or on its own. The screw-top jar keeps it fresh and makes a handy gift.
+            zh: 开盖即食，配米饭、粥、糯米饭、面包或直接吃都很合适。旋盖罐密封好，方便保存，也适合送礼。
+          source: docs/products/13. Cha bong nam moi.md (owner-confirmed 2026-11-12)
+      gallery:
+        - file: cha-bong-nam-moi-1-thap-hu.webp
+          caption:
+            vi: 'Hũ chà bông nấm mối'
+            en: 'Jars of termite mushroom floss'
+            zh: '罐装鸡枞菌松'
+          alt:
+            vi: 'Tám hũ chà bông nấm mối nắp nhôm, nhãn vàng, xếp chồng trên bàn tại cửa hàng'
+            en: 'Eight jars of termite mushroom floss with aluminium lids and yellow labels, stacked on a shop table'
+            zh: '店内桌上叠放的八罐鸡枞菌松，铝盖、黄色标签'
+        - file: cha-bong-nam-moi-2-hu-200g.webp
+          caption:
+            vi: 'Hũ 200 g, nắp nhôm vặn'
+            en: '200 g jar with a screw-top aluminium lid'
+            zh: '200 克装，铝制旋盖'
+          alt:
+            vi: 'Tay cầm hũ chà bông nấm mối, nhãn ghi 100% Natural, Bổ sung dinh dưỡng – Ăn là nghiền'
+            en: 'A hand holding a jar of termite mushroom floss; the label reads 100% Natural'
+            zh: '手持一罐鸡枞菌松，标签上写着 100% Natural'
+        - file: cha-bong-nam-moi-3-tren-nia.webp
+          caption:
+            vi: 'Bày trên nia tre'
+            en: 'Displayed on a bamboo tray'
+            zh: '摆放在竹筛上'
+          alt:
+            vi: 'Sáu hũ chà bông nấm mối xếp hình tháp trên nia tre'
+            en: 'Six jars of termite mushroom floss stacked in a pyramid on a woven bamboo tray'
+            zh: '六罐鸡枞菌松在竹筛上叠成金字塔'
+        - file: cha-bong-nam-moi-4-sao-chao.webp
+          caption:
+            vi: 'Sao nấm trên chảo'
+            en: 'Pan-roasting the mushrooms'
+            zh: '在锅中翻炒菌丝'
+          alt:
+            vi: 'Đũa gắp sợi chà bông nấm mối màu nâu đang được sao trong chảo'
+            en: 'Chopsticks lifting brown strands of termite mushroom floss as it is roasted in a pan'
+            zh: '筷子夹起锅中正在翻炒的褐色鸡枞菌松'
+        - file: cha-bong-nam-moi-5-soi-to.webp
+          caption:
+            vi: 'Sợi chà bông tơi, thơm'
+            en: 'Light, fragrant strands'
+            zh: '松软喷香的菌丝'
+          alt:
+            vi: 'Cận cảnh sợi chà bông nấm mối màu nâu vàng, tơi xốp'
+            en: 'Close-up of light, golden-brown termite mushroom floss'
+            zh: '金褐色、蓬松的鸡枞菌松特写'
+      facts:
+        - label:
+            vi: Thương hiệu
+            en: Brand
+            zh: 品牌
+          value:
+            vi: Nương Farm
+            en: Nương Farm
+            zh: Nương Farm
+          source: docs/products/13. Cha bong nam moi.md
+        - label:
+            vi: Đơn vị sản xuất
+            en: Producer
+            zh: 生产单位
+          value:
+            vi: Hợp tác xã Nông nghiệp Tà Đảnh
+            en: Tà Đảnh Agricultural Cooperative
+            zh: Tà Đảnh 农业合作社
+          source: Owner confirmation 2026-11-12
+        - label:
+            vi: Xuất xứ
+            en: Country of origin
+            zh: 原产国
+          value:
+            vi: Việt Nam
+            en: Vietnam
+            zh: 越南
+          source: docs/products/13. Cha bong nam moi.md
+    benefits:
+      highlights:
+        - label:
+            vi: 'Bổ sung dinh dưỡng từ nấm'
+            en: 'Nutrition from mushrooms'
+            zh: '来自菌菇的营养'
+          value:
+            vi: 'Chà bông làm từ 100% nấm mối, mang đến nguồn đạm và chất xơ từ nấm, giúp bữa ăn thêm đa dạng.'
+            en: 'Made from 100% termite mushrooms, the floss brings mushroom protein and fibre, adding variety to your meals.'
+            zh: '以 100% 鸡枞菌制成，带来菌菇蛋白和膳食纤维，让餐食更加多样。'
+          source: docs/products/13. Cha bong nam moi.md (owner-approved 2026-11-12)
+        - label:
+            vi: 'Món chay đậm đà'
+            en: 'A flavourful vegetarian dish'
+            zh: '浓郁的素食'
+          value:
+            vi: 'Không dùng thịt, phù hợp bữa chay mà vẫn có món ăn kèm thơm, tơi như chà bông truyền thống.'
+            en: 'Made without meat, it suits vegetarian meals while staying as fragrant and fluffy as traditional floss.'
+            zh: '不含肉类，适合素食餐，又像传统肉松一样喷香蓬松。'
+          source: docs/products/13. Cha bong nam moi.md (owner-approved 2026-11-12)
+        - label:
+            vi: 'Giữ vị nấm mối đặc trưng'
+            en: 'Keeps the termite mushroom flavour'
+            zh: '保留鸡枞菌的独特风味'
+          value:
+            vi: 'Nấm được sao kỹ đến khi khô tơi mà vẫn giữ hương thơm và vị ngọt tự nhiên của nấm mối.'
+            en: 'Roasted until dry and fluffy while keeping the natural aroma and sweetness of termite mushrooms.'
+            zh: '细心翻炒至干爽蓬松，仍保留鸡枞菌天然的香气与甜味。'
+          source: docs/products/13. Cha bong nam moi.md (owner-approved 2026-11-12)
+        - label:
+            vi: 'Ăn liền, tiện lợi'
+            en: 'Ready to eat'
+            zh: '即食方便'
+          value:
+            vi: 'Không cần chế biến, mở nắp là dùng — hợp với bữa sáng vội, bữa trưa văn phòng hay những chuyến đi xa.'
+            en: 'No cooking needed — just open the lid. Good for a rushed breakfast, an office lunch or a long trip.'
+            zh: '无需烹调，开盖即食，适合匆忙的早餐、办公室午餐或长途旅行。'
+          source: docs/products/13. Cha bong nam moi.md (owner-approved 2026-11-12)
+        - label:
+            vi: 'Dễ kết hợp nhiều món'
+            en: 'Goes with many dishes'
+            zh: '百搭多种菜式'
+          value:
+            vi: 'Ăn cùng cơm, cháo, xôi, bánh mì; sợi chà bông tơi, thơm giúp bữa ăn của cả nhà thêm ngon miệng.'
+            en: 'Enjoy with rice, congee, sticky rice or bread; the light, fragrant strands make family meals more appetising.'
+            zh: '可配米饭、粥、糯米饭或面包，松软喷香的菌丝让全家餐食更开胃。'
+          source: docs/products/13. Cha bong nam moi.md (owner-approved 2026-11-12)
+        - label:
+            vi: 'Món quà đặc sản An Giang'
+            en: 'A gift from An Giang'
+            zh: '安江特产伴手礼'
+          value:
+            vi: 'Hũ 200 g nắp vặn gọn gàng, mang hương vị nấm mối để tặng bạn bè, người thân.'
+            en: 'A neat 200 g screw-top jar carrying the taste of termite mushrooms, to share with friends and family.'
+            zh: '200 克旋盖罐，简洁得体，带着鸡枞菌的味道送给亲友。'
+          source: docs/products/13. Cha bong nam moi.md (owner-approved 2026-11-12)
+      audience:
+        - text:
+            vi: 'Người ăn chay hoặc muốn giảm thịt trong bữa ăn.'
+            en: 'Vegetarians and people eating less meat.'
+            zh: '素食者或想减少吃肉的人。'
+          source: docs/products/13. Cha bong nam moi.md (owner-approved 2026-11-12)
+        - text:
+            vi: 'Gia đình muốn có món ăn kèm nhanh, tiện cho bữa sáng và bữa cơm.'
+            en: 'Families wanting a quick side dish for breakfast and meals.'
+            zh: '希望早餐和正餐有便捷配菜的家庭。'
+          source: docs/products/13. Cha bong nam moi.md (owner-approved 2026-11-12)
+        - text:
+            vi: 'Người bận rộn, sinh viên, người đi làm cần món ăn liền.'
+            en: 'Busy people, students and office workers who need ready-to-eat food.'
+            zh: '需要即食食品的忙碌人士、学生和上班族。'
+          source: docs/products/13. Cha bong nam moi.md (owner-approved 2026-11-12)
+        - text:
+            vi: 'Người hay đi du lịch, đi công tác.'
+            en: 'People who often travel for leisure or work.'
+            zh: '经常旅行或出差的人。'
+          source: docs/products/13. Cha bong nam moi.md (owner-approved 2026-11-12)
+        - text:
+            vi: 'Người tìm quà đặc sản An Giang.'
+            en: 'People looking for An Giang specialities to give.'
+            zh: '想寻找安江特产作礼物的人。'
+          source: docs/products/13. Cha bong nam moi.md (owner-approved 2026-11-12)
+        - text:
+            vi: 'Người yêu thích hương vị nấm mối.'
+            en: 'Fans of termite mushroom flavour.'
+            zh: '喜爱鸡枞菌风味的人。'
+          source: docs/products/13. Cha bong nam moi.md (owner-approved 2026-11-12)
+    composition:
+      ingredients:
+        text:
+          vi: 100% nấm mối.
+          en: 100% termite mushrooms.
+          zh: 100% 鸡枞菌。
+        source: Owner confirmation 2026-11-12
+      facts:
+        - label:
+            vi: Khối lượng tịnh
+            en: Net weight
+            zh: 净含量
+          value:
+            vi: 200 g
+            en: 200 g
+            zh: 200 克
+          source: Owner confirmation 2026-11-12
+        - label:
+            vi: Quy cách đóng gói
+            en: Packaging
+            zh: 包装
+          value:
+            vi: Hũ nhựa trong, nắp nhôm vặn
+            en: Clear jar with a screw-top aluminium lid
+            zh: 透明罐，铝制旋盖
+          source: Product photos (jar), docs/products/13. Cha bong nam moi.md
+        - label:
+            vi: Hạn sử dụng
+            en: Shelf life
+            zh: 保质期
+          value:
+            vi: 1 năm kể từ ngày sản xuất
+            en: 1 year from the date of manufacture
+            zh: 自生产日期起 1 年
+          source: Owner confirmation 2026-11-12
+      gallery:
+        - file: cha-bong-nam-moi-2-hu-200g.webp
+          caption:
+            vi: 'Hũ 200 g, nắp nhôm vặn'
+            en: '200 g jar with a screw-top aluminium lid'
+            zh: '200 克装，铝制旋盖'
+          alt:
+            vi: 'Tay cầm hũ chà bông nấm mối, nhãn ghi 100% Natural, Bổ sung dinh dưỡng – Ăn là nghiền'
+            en: 'A hand holding a jar of termite mushroom floss; the label reads 100% Natural'
+            zh: '手持一罐鸡枞菌松，标签上写着 100% Natural'
+    usage:
+      preparation:
+        - text:
+            vi: Ăn liền ngay sau khi mở nắp.
+            en: Ready to eat as soon as you open the lid.
+            zh: 开盖即可食用。
+          source: docs/products/13. Cha bong nam moi.md
+        - text:
+            vi: Rắc lên cơm trắng, cháo, xôi; kẹp bánh mì, cuộn bánh tráng hoặc làm topping cho cơm cuộn.
+            en: Sprinkle over rice, congee or sticky rice; tuck into bread, roll in rice paper, or top rice rolls.
+            zh: 可撒在米饭、粥或糯米饭上，夹入面包、卷入米纸，或作为饭卷的配料。
+          source: docs/products/13. Cha bong nam moi.md
+      storage:
+        - text:
+            vi: Bảo quản nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp. Đậy kín nắp sau khi mở để chà bông giữ độ tơi, không bị ẩm.
+            en: Store in a dry, cool place away from direct sunlight. Close the lid tightly after opening to keep the floss light and dry.
+            zh: 存放于干燥阴凉处，避免阳光直射。开盖后请拧紧盖子，以保持松软干爽、防止受潮。
+          source: docs/products/13. Cha bong nam moi.md
+        - text:
+            vi: 'Hạn sử dụng: 1 năm kể từ ngày sản xuất.'
+            en: 'Shelf life: 1 year from the date of manufacture.'
+            zh: 保质期：自生产日期起 1 年。
+          source: Owner confirmation 2026-11-12
+    image:
+      alt:
+        en: A clear jar with an aluminium lid holding termite mushroom floss, on a wooden board
+        vi: Hũ nhựa trong nắp nhôm đựng chà bông nấm mối, đặt trên thớt gỗ
+        zh: 铝盖透明罐装的鸡枞菌松，放在木板上
+      file: 13-cha-bong-nam-moi.webp
+    slug: cha-bong-nam-moi
 ---

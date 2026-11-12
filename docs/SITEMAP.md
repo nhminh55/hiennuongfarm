@@ -150,7 +150,7 @@ Implemented 2026-10-09 as a showroom (src/components/showroom/, data in src/data
 
 - One page in VI, EN, ZH. A product list (12 studio images, exact owner-supplied names) beside a stationary display stage; on phones the list is a horizontal thumbnail selector above the stage.
 - Each product has a shareable URL: /san-pham/#{slug} (/en/…, /zh/…). Direct links, refresh and Back/Forward select the product; an unknown slug shows product 01 and the hash is removed. No element uses a product slug as its id.
-- Slugs: nam-moi-den, nam-linh-chi, dong-trung-ha-thao, nam-bao-ngu, nam-moi-den-say-thang-hoa, snack-nam-moi-den, snack-nam-bao-ngu, dong-trung-ha-thao-say-thang-hoa, tra-hoa-tan-linh-chi, tra-hoa-tan-linh-chi-trung-thao, bao-tu-nam-linh-chi, dong-trung-ha-thao-ngam-mat-ong.
+- Slugs: nam-moi-den, nam-linh-chi, dong-trung-ha-thao, nam-bao-ngu, nam-moi-den-say-thang-hoa, snack-nam-moi-den, snack-nam-bao-ngu, dong-trung-ha-thao-say-thang-hoa, tra-hoa-tan-linh-chi, tra-hoa-tan-linh-chi-trung-thao, bao-tu-nam-linh-chi, dong-trung-ha-thao-ngam-mat-ong, cha-bong-nam-moi.
 - Five content tabs in this order: Giới thiệu, Thành phần, Cách dùng, Hồ sơ, Nhận xét. A tab shows only when the product has verified content for it.
 - Enquiry: “Liên hệ tư vấn” opens an email with the product name in the subject; “Gọi điện” calls the main number. No cart, checkout or prices.
 - Homepage product cards (#san-vat) link to their showroom selection.
