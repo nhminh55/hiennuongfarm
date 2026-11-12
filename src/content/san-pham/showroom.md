@@ -2064,6 +2064,33 @@ products:
             zh: 产品质地酥脆疏松，带有天然菌菇香气，可用于泡茶或搭配日常菜肴。
           source: docs/products/08. Dong trung ha thao say thang hoa.md
       gallery:
+        - file: dong-trung-ha-thao-say-thang-hoa-0-nuoi-trong.webp
+          caption:
+            vi: 'Giai đoạn sinh trưởng'
+            en: 'Growing stage'
+            zh: '生长阶段'
+          alt:
+            vi: 'Cận cảnh những sợi đông trùng hạ thảo màu cam mọc trong hũ nuôi, phía sau là các hũ nuôi khác'
+            en: 'Close-up of orange cordyceps strands growing in a culture tub, with more tubs behind'
+            zh: '培养盒中生长的橙色虫草特写，后方是更多培养盒'
+        - file: dong-trung-ha-thao-say-thang-hoa-2-sau-thu-hoach.webp
+          caption:
+            vi: 'Nguyên liệu sau thu hoạch'
+            en: 'Freshly harvested'
+            zh: '刚采收的原料'
+          alt:
+            vi: 'Bàn tay đeo găng cầm cụm đông trùng hạ thảo tươi màu cam, sợi nấm rõ và đồng đều'
+            en: 'A gloved hand holding a cluster of fresh orange cordyceps with clear, even strands'
+            zh: '戴手套的手托着一簇新鲜橙色虫草，菌丝清晰均匀'
+        - file: dong-trung-ha-thao-say-thang-hoa-4-so-tuyen.webp
+          caption:
+            vi: 'Sơ tuyển nguyên liệu'
+            en: 'Sorting the harvest'
+            zh: '原料初选'
+          alt:
+            vi: 'Người làm đội mũ trùm tóc, đeo khẩu trang và găng tay phân loại đông trùng hạ thảo trên khay inox, bên cạnh máy sấy thăng hoa'
+            en: 'A worker in a hair net, mask and gloves sorts cordyceps on a stainless-steel tray beside the freeze-dryer'
+            zh: '戴发网、口罩和手套的工作人员在冻干机旁的不锈钢托盘上分拣虫草'
         - file: dong-trung-ha-thao-say-thang-hoa-1-khay-say.webp
           caption:
             vi: 'Đông trùng hạ thảo trên khay sấy'
@@ -2073,6 +2100,24 @@ products:
             vi: 'Đông trùng hạ thảo màu cam trải đều trên các khay inox'
             en: 'Orange cordyceps spread evenly across stainless-steel trays'
             zh: '均匀铺在不锈钢托盘上的橙色虫草'
+        - file: dong-trung-ha-thao-say-thang-hoa-5-may-say.webp
+          caption:
+            vi: 'Sấy thăng hoa'
+            en: 'Freeze-drying'
+            zh: '冷冻干燥'
+          alt:
+            vi: 'Năm khay đông trùng hạ thảo xếp tầng trong buồng máy sấy thăng hoa'
+            en: 'Five trays of cordyceps stacked inside the freeze-dryer chamber'
+            zh: '冻干机舱内层层叠放的五盘虫草'
+        - file: dong-trung-ha-thao-say-thang-hoa-6-thanh-pham.webp
+          caption:
+            vi: 'Thành phẩm sau sấy'
+            en: 'After freeze-drying'
+            zh: '冻干后的成品'
+          alt:
+            vi: 'Khay đông trùng hạ thảo đã sấy thăng hoa được kéo ra khỏi máy, sợi nấm giữ rõ hình dáng và màu vàng cam'
+            en: 'A tray of freeze-dried cordyceps pulled out of the dryer, the strands keeping their shape and orange-yellow colour'
+            zh: '从冻干机中拉出的一盘冻干虫草，菌丝保持形态与橙黄色泽'
       facts:
         - label:
             vi: Vùng nuôi trồng
@@ -2110,6 +2155,8 @@ products:
             en: Vietnam
             zh: 越南
           source: docs/products/08. Dong trung ha thao say thang hoa.md
+    audio:
+      file: dong-trung-ha-thao-say-thang-hoa.mp3
     benefits:
       highlights:
         - label:
@@ -2157,6 +2204,15 @@ products:
             en: 'Natural compounds in cordyceps help support the body against free radicals and oxidative stress.'
             zh: '虫草中的天然成分有助于身体应对自由基和氧化应激。'
           source: Owner-approved cordyceps copy (Trà hòa tan linh chi trùng thảo, 2026-11-11; Đông trùng hạ thảo tươi, 2026-11-12)
+        - label:
+            vi: 'Hỗ trợ sức khỏe hô hấp'
+            en: 'Supports respiratory health'
+            zh: '有助呼吸系统健康'
+          value:
+            vi: 'Đông trùng hạ thảo chứa nhiều hợp chất sinh học như cordycepin, adenosine, polysaccharide, amino acid, peptide, vitamin và khoáng chất; phù hợp để bổ sung vào chế độ chăm sóc sức khỏe hằng ngày.'
+            en: 'Cordyceps contains many bioactive compounds such as cordycepin, adenosine, polysaccharides, amino acids, peptides, vitamins and minerals — a good addition to everyday health care.'
+            zh: '虫草含有虫草素、腺苷、多糖、氨基酸、肽、维生素和矿物质等多种生物活性成分，适合融入日常保健。'
+          source: Owner product copy (Đông trùng hạ thảo sấy thăng hoa, 2026-11-12)
         - label:
             vi: 'Hợp món bồi bổ cho cả nhà'
             en: 'For nourishing family dishes'
@@ -2251,6 +2307,15 @@ products:
             vi: 'Ba hũ đông trùng hạ thảo nắp đen, nhãn đen viền vàng, xếp chồng trong khay tre'
             en: 'Three cordyceps jars with black lids and black-and-gold labels, stacked on a bamboo tray'
             zh: '竹盘上叠放的三罐虫草，黑色瓶盖、黑金色标签'
+        - file: dong-trung-ha-thao-say-thang-hoa-7-hu-va-hop.webp
+          caption:
+            vi: 'Hũ thủy tinh 25 g'
+            en: '25 g glass jar'
+            zh: '25 克玻璃罐'
+          alt:
+            vi: 'Hũ thủy tinh vuông nắp đen ghi Nấm Đông Trùng Hạ Thảo Nương Farm, KLT 25 gam, đặt cạnh hộp giấy đen và một nắm đông trùng sấy'
+            en: 'A square black-lidded glass jar labelled Nấm Đông Trùng Hạ Thảo Nương Farm, 25 g, beside a black box and a handful of dried cordyceps'
+            zh: '黑盖方形玻璃罐，标签写着 Nấm Đông Trùng Hạ Thảo Nương Farm、净含量 25 克，旁边是黑色纸盒和一小堆冻干虫草'
     usage:
       preparation:
         - text:
@@ -2294,6 +2359,16 @@ products:
             en: Do not use if the product shows signs of spoilage or mould.
             zh: 产品如有变质或发霉迹象，请勿食用。
           source: docs/products/08. Dong trung ha thao say thang hoa.md
+      gallery:
+        - file: dong-trung-ha-thao-say-thang-hoa-8-pha-tra.webp
+          caption:
+            vi: 'Trà đông trùng bên ruộng lúa'
+            en: 'Cordyceps tea beside the rice fields'
+            zh: '稻田边的虫草茶'
+          alt:
+            vi: 'Người phụ nữ đội nón lá, mặc áo hồng ngồi bên ruộng lúa; trên khay gỗ có ly trà đông trùng và hai hũ đông trùng hạ thảo'
+            en: 'A woman in a conical hat and pink blouse sits by the rice fields, with a glass of cordyceps tea and two cordyceps jars on a wooden tray'
+            zh: '头戴斗笠、身穿粉色上衣的女子坐在稻田边，木托盘上有一杯虫草茶和两罐虫草'
     image:
       alt:
         en: A square glass jar with a black lid holding freeze-dried cordyceps, with a few strands beside it
